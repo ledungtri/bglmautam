@@ -1,0 +1,112 @@
+17BĐ3B;2017;Bao Đồng;3B;Sân Núi Đức Mẹ
+17BĐ3A;2017;Bao Đồng;3A;Lầu 2 Phòng 12
+17BĐ2B;2017;Bao Đồng;2B;Lửng PHT
+17BĐ2A;2017;Bao Đồng;2A;Lửng đường số 3
+17BĐ1B;2017;Bao Đồng;1B;Hội Trường
+17BĐ1A;2017;Bao Đồng;1A;Hội Trường
+16BĐ3B;2016;Bao Đồng;3B;Sân Núi Đức Mẹ
+16BĐ3A;2016;Bao Đồng;3A;Lầu 2 Phòng 12
+16BĐ2B;2016;Bao Đồng;2B;Lầu 6 Sảnh
+16BĐ2A;2016;Bao Đồng;2A;Lầu 6 Phòng 4
+16BĐ1B;2016;Bao Đồng;1B;Lầu 5 Hội Trường
+16BĐ1A;2016;Bao Đồng;1A;Lầu 5 Hội Trường
+15BĐ3;2015;Bao Đồng;3;Lầu 2 Phòng 12
+15BĐ2B;2015;Bao Đồng;2B;Lửng Ca Đoàn
+15BĐ2A;2015;Bao Đồng;2A;Lửng PHT
+15BĐ1B;2015;Bao Đồng;1B;Hội Trường Lầu 5
+15BĐ1A;2015;Bao Đồng;1A;Hội Trường Lầu 5
+14BĐ3;2014;Bao Đồng;3;Lửng đường PHT
+14BĐ2;2014;Bao Đồng;2;Sảng Lầu 6
+14BĐ1B;2014;Bao Đồng;1B;Hội Trường Lầu 5
+14BĐ1A;2014;Bao Đồng;1A;Hội Trường Lầu 5
+18KTB;2018;Khai Tâm;B;Tầng Hầm
+18KTA;2018;Khai Tâm;A;Tầng Hầm
+17KTB;2017;Khai Tâm;B;Sân Trước
+17KTA;2017;Khai Tâm;A;Tầng Hầm
+16KTB;2016;Khai Tâm;B;Sân Nhà Soeur
+16KTA;2016;Khai Tâm;A;Tầng Hầm
+15KTB;2015;Khai Tâm;B;Sân Nhà Thờ
+15KTA;2015;Khai Tâm;A;Hầm Nhà Thờ
+14KTB;2014;Khai Tâm;B;Hầm Nhà Thờ
+14KTA;2014;Khai Tâm;A;Hầm Nhà Thờ
+18KT;2018;Kỹ Thuật;;Tầng Hầm
+17KT;2017;Kỹ Thuật;;Tầng Hầm
+16KT;2016;Kỹ Thuật;;Tầng Hầm
+15KT;2015;Kỹ Thuật;;Tầng Hầm
+14KT;2014;Kỹ Thuật;;Tầng Hầm
+17RL3C;2017;Rước Lễ;3C;Lầu 4 Phòng 4
+17RL3B;2017;Rước Lễ;3B;Lầu 4 Phòng 6
+17RL3A;2017;Rước Lễ;3A;Lầu 4 Phòng 5
+17RL2C;2017;Rước Lễ;2C;Lầu 4 Phòng 3
+17RL2B;2017;Rước Lễ;2B;Lầu 4 Phòng 9
+17RL2A;2017;Rước Lễ;2A;Lầu 4 Phòng 8
+17RL1D;2017;Rước Lễ;1D;Sân Trước
+17RL1C;2017;Rước Lễ;1C;Lầu 4 Phòng 10
+17RL1B;2017;Rước Lễ;1B;Lầu 2 Phòng 2
+17RL1A;2017;Rước Lễ;1A;Lầu 2 Phòng 1
+16RL3C;2016;Rước Lễ;3C;Lầu 6 Phòng 2
+16RL3B;2016;Rước Lễ;3B;Lầu 6 Phòng 1
+16RL3A;2016;Rước Lễ;3A;Lầu 6 Phòng 3
+16RL2C;2016;Rước Lễ;2C;Lầu 4 Phòng 7
+16RL2B;2016;Rước Lễ;2B;Lầu 4 Phòng 9
+16RL2A;2016;Rước Lễ;2A;Lầu 4 Phòng 11
+16RL1D;2016;Rước Lễ;1D;Lửng đường số 3
+16RL1C;2016;Rước Lễ;1C;Lửng đường số 3
+16RL1B;2016;Rước Lễ;1B;Lầu 2 Phòng 2
+16RL1A;2016;Rước Lễ;1A;Lầu 2 Phòng 1
+15RL3C;2015;Rước Lễ;3C;Sảnh Lầu 6
+15RL3B;2015;Rước Lễ;3B;Lầu 6 Phòng 2
+15RL3A;2015;Rước Lễ;3A;Lầu 6 Phòng 3
+15RL2C;2015;Rước Lễ;2C;Lửng đường số 3
+15RL2B;2015;Rước Lễ;2B;Lầu 4 Phòng 9
+15RL2A;2015;Rước Lễ;2A;Lầu 4 Phòng 10
+15RL1D;2015;Rước Lễ;1D;Lầu 4 Phòng 11
+15RL1C;2015;Rước Lễ;1C;Lầu 4 Phòng 8
+15RL1B;2015;Rước Lễ;1B;Lầu 2 Phòng 2
+15RL1A;2015;Rước Lễ;1A;Lầu 2 Phòng 1
+14RL3C;2014;Rước Lễ;3C;Lầu 4 Phòng 3
+14RL3B;2014;Rước Lễ;3B;Lầu 6 Phòng 3
+14RL3A;2014;Rước Lễ;3A;Lầu 6 Phòng 2
+14RL2C;2014;Rước Lễ;2C;Lầu 4 Phòng 5
+14RL2B;2014;Rước Lễ;2B;Lầu 4 Phòng 8
+14RL2A;2014;Rước Lễ;2A;Lầu 4 Phòng 11
+14RL1D;2014;Rước Lễ;1D;Lửng đường số 3
+14RL1C;2014;Rước Lễ;1C;Lầu 4 Phòng 10
+14RL1B;2014;Rước Lễ;1B;Lầu 2 Phòng 2
+14RL1A;2014;Rước Lễ;1A;Lầu 2 Phòng 1
+17TS3B;2017;Thêm Sức;3B;Lầu 6 Phòng 1
+17TS3A;2017;Thêm Sức;3A;Lầu 6 Phòng 4
+17TS2C;2017;Thêm Sức;2C;Lầu 6 Sảnh
+17TS2B;2017;Thêm Sức;2B;Lầu 6 Phòng 3
+17TS2A;2017;Thêm Sức;2A;Lầu 6 Phòng 2
+17TS1C;2017;Thêm Sức;1C;Lửng Giữa
+17TS1B;2017;Thêm Sức;1B;Lầu 4 Phòng 7
+17TS1A;2017;Thêm Sức;1A;Lầu 4 Phòng 11
+16TS3B;2016;Thêm Sức;3B;Lầu 4 Phòng 4
+16TS3A;2016;Thêm Sức;3A;Lầu 4 Phòng 6
+16TS2C;2016;Thêm Sức;2C;Lầu 4 Phòng 10
+16TS2B;2016;Thêm Sức;2B;Lửng PHT
+16TS2A;2016;Thêm Sức;2A;Lửng PHT
+16TS1C;2016;Thêm Sức;1C;Lầu 4 Phòng 5
+16TS1B;2016;Thêm Sức;1B;Lầu 4 Phòng 8
+16TS1A;2016;Thêm Sức;1A;Lầu 4 Phòng 3
+15TS3B;2015;Thêm Sức;3B;Lầu 6 Phòng 1
+15TS3A;2015;Thêm Sức;3A;Lầu 6 Phòng 4
+15TS2B;2015;Thêm Sức;2B;Lầu 4 Phòng 4
+15TS2A;2015;Thêm Sức;2A;Lầu 4 Phòng 6
+15TS1C;2015;Thêm Sức;1C;Lầu 4 Phòng 5
+15TS1B;2015;Thêm Sức;1B;Lầu 4 Phòng 3
+15TS1A;2015;Thêm Sức;1A;Lầu 4 Phòng 7
+14TS3B;2014;Thêm Sức;3B;Lầu 4 Phòng 6
+14TS3A;2014;Thêm Sức;3A;Lầu 4 Phòng 4
+14TS2B;2014;Thêm Sức;2B;Lầu 4 Phòng 7
+14TS2A;2014;Thêm Sức;2A;Lầu 4 Phòng 9
+14TS1B;2014;Thêm Sức;1B;Lầu 6 Phòng 4
+14TS1A;2014;Thêm Sức;1A;Lầu 6 Phòng 1
+18TB;2018;Trưởng Ban;;Tầng Hầm
+17TB;2017;Trưởng Ban;;Tầng Hầm
+16TB;2016;Trưởng Ban;;Tầng Hầm
+15TB;2015;Trưởng Ban;;Tầng Hầm
+14TB;2014;Trưởng Ban;;Tầng Hầm
+15VĐ;2015;Vào Đời;;Lầu 2 Phòng 12
+14VĐ;2014;Vào Đời;;

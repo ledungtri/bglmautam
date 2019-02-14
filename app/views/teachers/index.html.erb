@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Danh Sách Giáo Lý Viên Năm Học <%= @current_year.to_s + " - " + (@current_year+1).to_s %></h1>
+<h4>Số Lượng : <%= @teachers.count %></h4>
+
+<div style="witdh : 100%; text-align: right">
+  <%= link_to "In Danh Sách GLV", teachers_path(format: "pdf") %>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th style='width: 200px'>Tên Thánh - Họ và Tên</th>
+      <th style='width:  80px'>Ngày Sinh</th>
+      <th style='width: 130px'>Nghề Nghiệp</th>
+      <th style='width: 310px'>Địa Chỉ</th>
+      <th style='width:  80px'>Điện Thoại</th>
+      <th style='width:  80px'>Lớp</th>
+      <th style='width:  80px'>Phụ Trách</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @teachers.each do |teacher| %>
+    <% instruction = teacher.instructions.select { |ins| Cell.find(ins.cell_id).year == @current_year }.first %>
+      <tr class="table-row">
+        <td style='width: 200px'><%= link_to teacher.name, teacher %></td>
+        <td style='width:  80px'><%= teacher.date_birth.strftime("%d-%m-%Y") %></td>
+        <td style='width: 130px'><%= teacher.occupation %></td>
+        <td style='width: 310px'><%= teacher.address %></td>
+        <td style='width:  80px'><%= teacher.phone %></td>
+        <td style='width:  80px'><%= link_to Cell.find(instruction.cell_id).name, "/cells/"+instruction.cell_id.to_s %></td> 
+        <td style='width:  80px'><%= instruction.position %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+

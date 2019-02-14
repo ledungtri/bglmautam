@@ -1,0 +1,239 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Sơ Yếu Lý Lịch</h1>
+<div style= "width: 100%; text-align: right">
+  <%= link_to "In Sơ Yếu Lý Lịch", student_path(format: "pdf") %>
+</div>
+
+
+<p style="margin: 10px"></p>
+<fieldset>
+  <legend><h3>Thông Tin Cá Nhân</h3></legend>
+    <div class="block">
+      <div class="label">Tên Thánh - Họ và Tên:</div>
+      <strong><%= @student.name %></strong>
+    </div>
+    
+    <div class="block">
+      <div class="label">Giới Tính:</div>
+      <strong><%= @student.gender %></strong>
+    </div>
+  
+    <div class="block">
+      <div class="label">Ngày Sinh:</div>
+      <strong><%= @student.date_birth.strftime("%d-%m-%Y") %></strong>
+      <% if @student.place_birth? %>
+        <div style="display: inline-block; width: 30px; text-align: center">tại</div>
+        <strong><%= @student.place_birth %></strong>
+      <% end %>
+    </div>
+    
+    <div class="block">
+      <div class="label">Điện Thoại Cá Nhân:</div>
+      <strong><%= @student.phone %></strong>
+    </div>
+</fieldset>
+
+<p style="margin: 10px"></p>
+  
+<fieldset>
+  <legend><h3>Ngày Bí Tích</h3></legend>
+
+    <div class="block">
+      <div class="label">Rửa Tội:</div>
+      <strong><%= @student.date_baptism.strftime("%d-%m-%Y") if @student.date_baptism? %></strong>
+      <% if @student.place_baptism? %>
+        <div style="display: inline-block; width: 30px; text-align: center">tại</div>
+        <strong><%= @student.place_baptism %></strong>
+      <% end %>
+    </div>
+    
+    <div class="block">
+      <div class="label">Rước Lễ:</div>
+      <strong><%= @student.date_communion.strftime("%d-%m-%Y") if @student.date_communion? %></strong>
+      <% if @student.place_communion? %>
+        <div style="display: inline-block; width: 30px; text-align: center">tại</div>
+        <strong><%= @student.place_communion %></strong>
+      <% end %>
+    </div>
+    
+    <div class="block">
+      <div class="label">Thêm Sức:</div>
+      <strong><%= @student.date_confirmation.strftime("%d-%m-%Y") if @student.date_confirmation? %></strong>
+      <% if @student.place_confirmation? %>
+        <div style="display: inline-block; width: 30px; text-align: center">tại</div>
+        <strong><%= @student.place_confirmation %></strong>
+      <% end %>
+    </div>
+    
+    <div class="block">
+      <div class="label">Tuyên Xưng:</div>
+      <strong><%= @student.date_declaration.strftime("%d-%m-%Y") if @student.date_declaration? %></strong>
+      <% if @student.place_declaration? %>
+        <div style="display: inline-block; width: 30px; text-align: center">tại</div>
+        <strong><%= @student.place_declaration %></strong>
+      <% end %>
+    </div>
+</fieldset>
+
+<p style="margin: 10px"></p>
+
+<fieldset>
+  <legend><h3>Địa Chỉ Nhà</h3></legend>
+  
+  <div>
+    <div class="label">Địa Chỉ:</div>
+    <strong><%= @student.address %></strong>
+  </div>
+  <div class="block">
+    <div class="label">Xóm Giáo:</div>
+    <strong><%= @student.area %></strong>
+  </div>
+  <div class ="block">
+    <div class="label">Điện Thoại Nhà:</div>
+    <strong><%= @student.home_phone %></strong>
+  </div>
+</fieldset>
+
+<p style="margin: 10px"></p>
+
+<fieldset>
+  <legend><h3>Thông Tin Cha Mẹ</h3></legend>
+    <div class="block">
+      <div class="label">Tên Thánh - Họ và Tên Cha:</div>
+      <strong><%= @student.father_name %></strong>
+    </div>
+
+    <div class="block">
+      <div class="label">Điện Thoại Cha:</div>
+      <strong><%= @student.father_phone %></strong>
+    </div>      
+    
+    <div class="block">
+      <div class="label">Tên Thánh - Họ và Tên Mẹ:</div>
+      <strong><%= @student.mother_name %></strong>
+    </div>
+
+    <div class="block">
+      <div class="label">Điện Thoại Mẹ:</div>
+      <strong><%= @student.mother_phone %></strong> 
+    </div>      
+</fieldset>
+<%= link_to 'Chỉnh Sửa', edit_student_path(@student), :class => "button" %>
+
+<p style="margin: 10px"></p>
+
+<h1><center>Hành Trình Thiêng Liêng</center></h1>
+
+<table>
+  <thead>
+    <tr>
+      <th style="width: 200px; font-size: 18px">Năm Học</th>
+      <th style="width: 200px; font-size: 18px">Lớp</th>
+      <th style="width: 200px; font-size: 18px">Kết Quả</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @student.cells.sort_by {|cell| cell.year}.each do |cell| %>
+    <tr class="table-row">
+      <td style="width: 200px; font-size: 14px"><%= cell.long_year %></td>
+      <td style="width: 200px; font-size: 14px"><%= link_to cell.name, "/cells/" + cell.id.to_s %></td>
+      <td style="width: 200px; font-size: 14px"><%= link_to @student.result(cell), Attendance.where(student_id: @student.id, cell_id: cell.id).take %></td>
+    </tr>
+    <% end %>
+    
+    <tr class="table-row">
+    
+    
+    
+    <% @attendance = Attendance.new %>
+    <%= form_for(@attendance) do |f| %>
+      <% if @attendance.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@attendance.errors.count, "error") %> prohibited this attendance from being saved:</h2>
+    
+          <ul>
+          <% @attendance.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+    
+        <%= f.hidden_field :student_id, :value => @student.id %>
+        <%= f.hidden_field :result, :value => "Đang Học" %>
+    
+    
+    
+      <td id="year" style="width: 200px; font-size: 14px; display: none">
+        <select id="year_combobox" onchange="changeCell()">
+          <% selected_year = @years[0] %>
+          <% @years.each do |year| %>
+            <option value="<%=year%>"><%= year.to_s + " - " + (year.to_i+1).to_s %></option>
+          <% end %>
+        </select>
+      </td>
+      <td id="cell" style="width: 200px; font-size: 14px; display: none">
+        <%= f.select :cell_id, options_for_select(@opts), :id => 'cell_id' %>
+      </td>
+      <td id="createBtn" style="width: 200px; font-size: 14px; display: none">
+        <%= f.submit "Thêm Lớp Mới" %>
+      </td>
+      
+      
+    <% end %>
+    </tr>
+  </tbody>
+</table>
+
+<center><button id="btn" onClick="showForm()" class="button" style="width:600px">Thêm Lớp Mới</button></center>
+
+
+
+
+
+
+
+
+
+<script>
+  function showForm() {
+    document.getElementById("btn").style.display = "none";
+    document.getElementById("year").style.display = "table-cell";
+    document.getElementById("cell").style.display = "table-cell";
+    document.getElementById("createBtn").style.display = "table-cell";
+  }
+  
+  function changeCell() {
+    var e = document.getElementById("year_combobox");
+    var selected = e.options[e.selectedIndex].value;
+
+    
+    //Create array of options to be added
+    var hash = {};
+    var keys = [];
+    
+    <% Cell.all.sort_by{|c| c.sort_param}.each do |cell| %>
+    if(selected == "<%= cell.year %>" && "<%= cell.name %>" != "Trưởng Ban" && "<%= cell.name %>" != "Kỹ Thuật") {
+      hash[<%= cell.id %>] = "<%= cell.name %>";
+      keys.push(<%= cell.id %>);
+    }
+    <% end %>
+    
+    
+    var list = document.getElementById("attendance_cell_id");
+    list.options.length = 0;
+    
+    
+    //Create and append the options
+    for (var i = 0; i < keys.length; i++) {
+        var option = document.createElement("option");
+        option.value = keys[i];
+        option.text = hash[keys[i]];
+        list.appendChild(option); 
+    }
+    
+  }
+</script>
+
+

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  year: 1
+  grade: MyString
+  group: MyString
+  location: MyString
+
+two:
+  year: 1
+  grade: MyString
+  group: MyString
+  location: MyString

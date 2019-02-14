@@ -1,0 +1,104 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Thông Tin Lớp</h1>
+
+<p style="margin:10px"></p>
+  
+<fieldset>    
+  <div class="block">
+    <div class="label">Năm Học:</div>
+    <strong><%= @cell.long_year %></strong>
+  </div>
+
+  <div class="block">
+    <div class="label">Tên Lớp:</div>
+    <strong><%= @cell.name %></strong>
+  </div>
+   
+  <div class="block">
+    <div class="label">Vị Trí Lớp:</div>
+    <strong><%= @cell.location %></strong>  
+  </div>
+</fieldset>  
+<%= link_to 'Chỉnh Sửa', edit_cell_path(@cell), :class =>"button" %>
+
+<p style="margin: 30px"></p>
+<h1>Giáo Lý Viên</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th style='width: 200px'>Tên Thánh - Họ và Tên</th>
+      <th style='width:  80px'>Ngày Sinh</th>
+      <th style='width: 130px'>Nghề Nghiệp</th>
+      <th style='width: 310px'>Địa Chỉ</th>
+      <th style='width:  80px'>Điện Thoại</th>
+      <th style='width:  80px'>Lớp</th>
+      <th style='width:  80px'>Phụ Trách</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @teachers.each do |teacher| %>
+      <tr class="table-row">
+        <td style='width: 200px'><%= link_to teacher.name, teacher %></td>
+        <td style='width:  80px'><%= teacher.date_birth.strftime("%d-%m-%Y") %></td>
+        <td style='width: 130px'><%= teacher.occupation %></td>
+        <td style='width: 310px'><%= teacher.address %></td>
+        <td style='width:  80px'><%= teacher.phone %></td>
+        <td style='width:  80px'><%= @cell.name %></td> 
+        <td style='width:  80px'><%= @cell.instructions.where(teacher_id: teacher.id).first.position %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<% if !@students.empty? %>
+  <p style="margin: 30px"></p>
+  
+  <h1>Danh Sách Thiếu Nhi</h1>
+  
+  <h4>Số Lượng : <%= @students.count %></h4>
+  
+  <div style="width: 100%; text-align: right">
+    <%= link_to "In Danh Sách Lớp", cell_path(format: "pdf") %>
+  </div>
+  <div style="width: 100%; text-align: right">
+    <%= link_to "In Danh Sách Điểm Danh", "/cells/"+@cell.id.to_s+"/attendance_check.pdf" %>
+  </div>
+  
+  <% arrays = [@hoc_lai, @nghi_luon, @chuyen_xu, @dang_hoc, @len_lop] %>
+  
+  <% arrays.each do |arr| %>
+    <% if !arr.empty? %>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th style='width: 230px'>Tên Thánh - Họ và Tên</th>
+            <th style='width:  80px'>Ngày Sinh</th>
+            <th style='width: 340px'>Địa Chỉ</th>
+            <th style='width:  80px'>ĐT Cha</th>
+            <th style='width:  80px'>ĐT Mẹ</th>
+            <th style='width:  73px'>Lớp</th>
+            <th style='width:  73px'>Kết Quả</th>
+          </tr>
+        </thead>
+      
+        <tbody>
+          <% arr.each do |student| %>
+              <tr class = table-row>
+              <td style='width: 230px'><div class ='btn-link'><%= link_to student.name, student %></div></td>
+              <td style='width:  80px'><%= student.date_birth.strftime("%d-%m-%Y") %></td>
+              <td style='width: 340px'><%= student.address %></td>
+              <td style='width:  80px'><%= student.father_phone %></td>
+              <td style='width:  80px'><%= student.mother_phone %></td>
+              <td style='width:  73px'><%= @cell.name %></td>
+              <td style='width:  73px'><%= student.result(@cell) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <div style="text-align: right; padding-bottom: 10px; font-size: 11px">Số Lượng: <%= arr.count %></div>
+    <% end %>
+  <% end %>
+<% end %>

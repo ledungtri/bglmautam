@@ -1,0 +1,71 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Thông Tin Giáo Lý Viên</h1>
+<p style="margin: 10px"></p>
+
+<fieldset>
+  <div class="block">
+    <div class="label">Tên Thánh - Họ và Tên:</div>
+    <strong><%= @teacher.name %></strong>
+  </div>
+  
+  <div class="block">
+    <div class="label">Ngày Sinh:</div>
+    <strong><%= @teacher.date_birth %></strong>
+  </div>
+  
+  <div class="block">
+    <div class="label">Nghề Nghiệp:</div>
+    <strong><%= @teacher.occupation %></strong>
+  </div>
+  
+  <div class="block">
+    <div class="label">Bổn Mạng:</div>
+    <strong><%= @teacher.named_date %></strong>
+  </div>
+  
+  <div class="block">
+    <div class="label">Số Điện Thoại:</div>
+    <strong><%= @teacher.phone %></strong>
+  </div>
+  
+  <div class="block">
+    <div class="label">Email:</div>
+    <strong><%= @teacher.email %></strong>
+  </div>
+  
+  <div>
+    <div class="label">Địa Chỉ:</div>
+    <strong><%= @teacher.address %></strong>
+  </div>
+  
+</fieldset>
+
+<%= link_to 'Chỉnh Sửa', edit_teacher_path(@teacher), :class => "button" %>
+
+<p style="margin: 30px"></p>
+<h1>Hành Trình Thiêng Liêng</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th style='width: 100px'>Năm Học</th>
+      <th style='width: 100px'>Tên Lớp</th>
+      <th style='width: 100px'>Phụ Trách</th>
+      <th style='width: 190px'>Vị Trí</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @cells.each do |cell| %>
+    <% instruction = @teacher.instructions.select { |ins| ins.cell_id == cell.id }.first %>
+    <% default_location = "Vô Gia Cư"; default_location = cell.location if cell.location? %>
+      <tr class="table-row">
+        <td style='width: 100px'><%= cell.long_year %></td>
+        <td style='width: 100px'><%= link_to cell.name, cell %></td>
+        <td style='width: 100px'><%= instruction.position %></td>
+        <td style='width: 190px'><%= default_location %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

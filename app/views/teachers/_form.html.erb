@@ -1,0 +1,75 @@
+<%= form_for(@teacher) do |f| %>
+  <% if @teacher.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@teacher.errors.count, "error") %> prohibited this teacher from being saved:</h2>
+
+      <ul>
+      <% @teacher.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <fieldset>
+    <div class="block">
+      <div class="label">Tên Thánh:</div>
+      <%= f.text_field :christian_name %>
+    </div>
+  
+    <div class="block">
+      <div class="label">Họ và Tên:</div>
+      <%= f.text_field :full_name %>
+    </div>
+
+    <div class="block">
+      <div class="label">Ngày Sinh:</div>
+      <%= f.date_select :date_birth %>
+    </div>
+    
+    <div class="block">
+      <div class="label">Bổn Mạng:</div>
+      <%= f.text_field :named_date %>
+    </div>
+    
+    <div class="block">
+      <div class="label">Nghề Nghiệp:</div>
+      <%= f.text_field :occupation %>
+    </div>
+    
+    <div class="block">
+      <div class="label">Số Điện Thoại:</div>
+      <%= f.text_field :phone %>
+    </div>
+    
+    <div class="block">
+      <div class="label">Email:</div>
+      <%= f.text_field :email %>
+    </div>
+    
+    <div class="block"></div>
+    
+    <div class="block">
+      <div class="label">Số Nhà:</div>
+      <%= f.text_field :street_number %>
+    </div>
+    
+    <div class="block">
+      <div class="label">Đường:</div>
+      <%= f.text_field :street_name %>
+    </div>
+    
+    <div class="block">
+      <div class="label">Phường/Xã:</div>
+      <%= f.text_field :ward %>
+    </div>
+    
+    <div class="block">
+      <div class="label">Quận/Huyện:</div>
+      <%= f.text_field :district %>
+    </div>
+  </fieldset>
+  <div class="actions">
+    <%= f.submit "Cập Nhật", :class => "button"%>
+  </div>
+<% end %>

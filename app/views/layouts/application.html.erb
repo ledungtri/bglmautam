@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Giáo Lý Gx Mẫu Tâm</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+
+<header style="height: 89px">
+  <a href=<%=root_path%>>
+   <img src="/assets/logo.png" height='50px' width='50px' style="float: left"></img>
+   <div style="font-size: 15px; float: left; width: 120px; padding-top: 5px">Ban Giáo Lý<br>Giáo Xứ Mẫu Tâm</div>
+  </a>
+  <div style="text-align: center; font-size: 35px; float: left; width: 860px">
+   Học Với Giêsu Trở Nên Người Con Trong Gia Đình<br>
+  </div>
+
+ <body>
+   <nav>
+      <center>
+        <a href="/teachers"> Thông Tin Giáo Lý Viên</a>
+        <a href="/cells"> Thông Tin Lớp</a>
+        <a href="/students"> Thông Tin Thiếu Nhi</a>
+        <a href="/temp"> Migrate</a>
+      </center>
+    </nav>
+    
+    <div id=btt onclick='window.scrollTo(0,0)'>&uarr;</div>
+ </body>
+</header>
+
+<body>
+  <main>
+      <article>
+        <%= yield %>
+      </article>
+  </main>
+</body>
+
+<footer>
+    <center>
+      Địa Chỉ: 16-18 Phan Huy Thực, phường Tân Kiểng, Quận 7 <br>
+      Điện Thoại: (028)-3771-1090 <br>
+      Email: gx.mautam@gmail.com<br>
+    </center>
+</footer>
+</html>

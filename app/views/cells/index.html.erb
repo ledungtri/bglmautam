@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Danh Sách Các Lớp Năm Học <%= @current_year.to_s + " - " + (@current_year+1).to_s %></h1>
+<h4>Số Lượng : <%= @cells.count %></h4>
+
+  
+<div style="width: 100%; text-align: right">
+  <%= link_to "In Bảng Thống Kê", cells_path(format: "pdf") %>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th style='width: 100px'>Năm Học</th>
+      <th style='width: 100px'>Tên Lớp</th>
+      <th style='width: 190px'>Vị Trí</th>
+      <th style='width:  94px'>Tổng Số</th>
+      <th style='width:  94px'>Đang Học</th>
+      <th style='width:  94px'>Lên Lớp</th>
+      <th style='width:  94px'>Nghỉ Luôn</th>
+      <th style='width:  94px'>Học Lại</th>
+      <th style='width:  94px'>Chuyển Xứ</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @cells.each do |cell| %>
+    <% default_location = "Vô Gia Cư"; default_location = cell.location if cell.location? %>
+      <tr class="table-row">
+        <td style='width: 100px'><%= cell.long_year %></td>
+        <td style='width: 100px'><%= link_to cell.name, "/cells/"+cell.id.to_s %></td>
+        <td style='width: 190px'><%= default_location %></td>
+        <td style='width:  94px'><%= cell.attendances.count %></td>
+        <td style='width:  94px'><%= cell.attendances.where(result: 'Đang Học').count %></td>
+        <td style='width:  94px'><%= cell.attendances.where(result: 'Lên Lớp').count %></td>
+        <td style='width:  94px'><%= cell.attendances.where(result: 'Nghỉ Luôn').count %></td>
+        <td style='width:  94px'><%= cell.attendances.where(result: 'Học Lại').count %></td>
+        <td style='width:  94px'><%= cell.attendances.where(result: 'Chuyển Xứ').count %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

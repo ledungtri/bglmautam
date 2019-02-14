@@ -1,0 +1,135 @@
+﻿1;Phêrô;Trần Lê Quốc;29-06;1981-01-01;Đạo Diễn Truyền Hình;0908227148;quoc1181@yahoo.com;112/35;Chiến Thắng;9;Q.Phú Nhuận
+2;Anna;Trần Hoàng Nguyệt Trân;26-07;1997-02-05;Sinh Viên;01682420601;nguyettran5297@gmail.com;183;đường 17;Tân Quy;Q.7
+3;Maria;Trần Thị Ngọc Hà;15-08;1992-08-15;Sinh Viên;01655400967;tranngocha70@gmail.com;228;Nam Kì Khởi Nghĩa;6;Q.3
+4;Maria;Nguyễn Thanh Tâm;15-09;1992-12-21;Sinh Viên;01629803916;marianttam@gmail.com;228;Nam Kì Khởi Nghĩa;6;Q.3
+5;Agnes;Nguyễn Thị Hồng Phúc;21-01;1978-06-08;Tu Sĩ;0906865340;anehongphuc@gmail.com;228;Nam Kì Khởi Nghĩa;6;Q.3
+6;Maria;Vũ Thị Thanh Nhung;08-09;1986-11-01;Tu Sĩ;01638463380;thanhnhungbrvt@yahoo.com;228;Nam Kì Khởi Nghĩa;6;Q.3
+7;Elisabeth;Bùi Phạm Phương An;17-11;1981-12-28;Tu Sĩ;0912309321;buiphamphuongan@yahoo.com;228;Nam Kì Khởi Nghĩa;6;Q.3
+8;Anna;Phạm Thị Mỹ Trinh;26-07;1988-10-23;Tu Sĩ;39326798;mytrinh176@gmail.com;228;Nam Kì Khởi Nghĩa;6;Q.3
+9;Anna;Nguyễn Thị Thúy Phượng;26-07;1982-08-26;Tu Sĩ;39326798;thuyphuongcgvdt@gmail.com;228;Nam Kì Khởi Nghĩa;6;Q.3
+10;Maria Juliano Eymard;Nguyễn Thị Lan;Lễ Mình Máu Chúa;1987-06-30;Tu Sĩ;38640000;hocvienmancoich@gmail.com;94;Bành Văn Trân;7;Q.Tân Bình
+11;Maria Têrêxa;Nguyễn Thị Phương;01-10;1988-02-29;Tu Sĩ;38640000;hocvienmancoich@gmail.com;94;Bành Văn Trân;7;Q.Tân Bình
+12;Têrêsa;Ngô Thị Thúy Vy;01-10;1998-05-08;Sinh Viên;0906370851;ngothithuyvy080598@gmail.com;214/2/24;Đào Sư Tích, ấp 2, Phước Lộc;;Nhà Bè
+13;Maria Têrêxa Auila;Nguyễn Thị Thanh Tâm;01-01;1986-11-29;Tu Sĩ;38640000;hocvienmancoich@gmail.com;94;Bành Văn Trân;7;Q.Tân Bình
+14;Maria Catarina;Nguyễn Thị Thùy Dương;29-04;1987-04-09;Tu Sĩ;38640000;hocvienmancoich@gmail.com;94;Bành Văn Trân;7;Q.Tân Bình
+15;Maria Emmanuel;Nguyễn Thị Hồng Nhung;Thứ 6 Tuần Thánh;1989-10-30;Tu Sĩ;38640000;hocvienmancoich@gmail.com;94;Bành Văn Trân;7;Q.Tân Bình
+16;Maria Têrêsa;Đỗ Thị Hương;CN II Phục Sinh;1989-03-20;Tu Sĩ;39491274;hocvienmancoich@gmail.com;94;Bành Văn Trân;7;Q.Tân Bình
+17;Maria Giuse;Phạm Thị Phương Hòa;19-03;1986-08-09;Tu Sĩ;38640000;hocvienmancoich@gmail.com;94;Bành Văn Trân;7;Q.Tân Bình
+18;Têrêxa;Nguyễn Bảo Thùy Ngân;01-10;1992-11-23;Sinh Viên;0902776909;teresa.augustino23@gmail.com;158;Nguyễn Trọng Tuyển;8;Q.Phú Nhuận
+19;Têrêxa;Ngô Thị Dự;01-10;1992-07-12;Kế Toán;01694320117;Ngodu1207@gmail.com;158;Nguyễn Trọng Tuyển;8;Q.Phú Nhuận
+20;Inede;Đào Thị Thẩm Khuyên;12-07;1990-06-26;Giai Đoạn Tiền Tập;0986916449;inedekhun@gmail.com;40/3;Lam Sơn;6;Bình Thạnh
+21;Fx;Cao Minh Toàn;03-12;1991-01-05;Tu Sĩ;0934804402;phanxicoxavietoan@gmail.com;37;đường 11;Hiệp Bình Chánh;Q. Thủ Đức
+22;Antôn;Nguyễn Hữu Thái;13-06;1985-08-28;Tu Sĩ;0972344344;nguyenthai0909@yahoo.com.vn;37;đường 11;Hiệp Bình Chánh;Q.Thủ Đức
+23;Maria;Dương Thị Thanh Linh;15-08;1996-06-11;Học Sinh;01653508420;;161;Lê Văn Lương, ấp 2, Phước Kiển;;Nhà Bè
+24;Phaolô;Nguyễn Văn Truyền;29-06;1978-10-20;Tu Sĩ;01655528187;ngtruyen10t2@yahoo.com;37;đường 11;Hiệp Bình Chánh;Q.Thủ Đức
+25;GBt;Nguyễn Văn Ích;24-06;1983-06-06;Tu Sĩ;0984886408;antonich83@gmail.com;37;đường 11;Hiệp Bình Chánh;Q.Thủ Đức
+26;Maria;Ngô Thị Quỳnh Như;15-08;1994-01-01;Sinh Viên;01674255224;ngoquynhnhu1508@gmail.com;35/5A;khu phố 2;Phú Thuận;Q.7
+27;Maria;Dương Ngọc Gia Bảo;15-08;1995-10-16;Sinh Viên;01269313921;;;;;
+28;Maria;Nguyễn Thị Mỹ Duyên;15-08;1993-10-29;Sinh Viên;37716928;;645/28/6;Trần Xuân Soạn;Tân Hưng;Q.7
+29;Têrêxa;Lý Huỳnh Thiên Trúc;01-10;1996-05-01;Sinh Viên;0904332534;;11/19B;Trần Xuân Soạn;Tân Hưng;Q.7
+30;Maria;Nguyễn Thụy Ái Vinh;15-08;1997-06-10;Học Sinh;0908947611;;791/23/7F;Trần Xuân Soạn;Tân Hưng;Q.7
+31;Phaolô;Nguyễn Trần Hoài Ân;29-06;2000-11-13;Học Sinh;01265803267;anhandeptrai1234@gmail.com;54/33/43;Lê Văn Lương;Tân Kiểng;Q.7
+32;Anna;Nguyễn Trần Hoài Phương;26-07;1990-12-17;Giáo Viên;0908152249;;75/10;Lê Văn Lương;Tân Kiểng;Q.7
+33;Giuse;Võ Phát Tài;19-03;1996-08-30;Sinh Viên;01227712122;;337;Lê Văn Lương;Tân Kiểng;Q.7
+34;Maria;Nguyễn Đặng Thảo Vy;15-08;1994-08-11;Sinh Viên;0909775044;maria_110894@yahoo.com;119B;Lê Văn Lương, ấp 3, Phước Kiển;;Nhà Bè
+35;Maria Phêrô;Lê Thị Hồng Vân;01-01;1984-11-14;Tu Sĩ;37711090;hocvienmancoich@gmail.com;16-18;Phan Huy Thực;Tân Kiểng;Q.7
+36;GBt;Trần Phước Lộc;24-06;1986-04-03;Chủng Sinh;0909150838;gbtranphuocloc@gmail.com;16-18;Phan Huy Thực;Tân Kiểng;Q.7
+37;Maria Ignatio;Đinh Thị Thu Huyền;27-01;2016-01-27;Tu Sĩ;37711090;cdmautamfmsr@gmail.com;16-18;Phan Huy Thực;Tân Kiểng;Q.7
+38;Giuse;Trần Bá Tước;19-03;1995-02-14;Sinh Viên;01635982773;tuoctran7777@gmail.com;16-18;Phan Huy Thực;Tân Kiểng;Q.7
+39;Maria;Nguyễn Thị Ngọc Bích;CN Phục Sinh;2018-01-01;Tu Sĩ;37711090;cdmautamfmsr@gmail.com;16-18;Phan Huy Thực;Tân Kiểng;Q.7
+40;Giuse;Nguyễn Trí Thông;01-05;1993-08-21;Sinh Viên;01682128094;josephnguyenthong93@gmail.com;16-18;Phan Huy Thực;Tân Kiểng;Q.7
+41;Maria Phanxicô;Nguyễn Thị Yến;04-10;1971-01-30;Tu Sĩ;37711090;;16-18;Phan Huy Thực;Tân Kiểng;Q.7
+42;Cecilia;Nguyễn Mộng Thanh Trúc;22-11;1979-05-01;Giáo Viên;0907800501;thanh_truc575@yahoo.com;7B/15;đường 13;Tân Kiểng;Q.7
+43;Giuse;Nguyễn Trọng Quyền;19-03;1998-07-21;Học Sinh;0974721147;ruaconloveheoxjnh@gmail.com;75;đường 13;Tân Kiểng;Q.7
+44;Maria;Bùi Thị Thanh Vân;15-08;1967-07-26;Nội Trợ;01203643212;;19;đường 23;Tân Kiểng;Q.7
+45;Maria;Nguyễn Thủy Phương Thảo;29-05;1992-05-25;Sinh Viên;0909779092;;119B;Lê Văn Lương, ấp 3, Phước Kiển;;Nhà Bè
+46;Đaminh;Nguyễn Duy Hiếu;08-08;1996-01-05;Sinh Viên;0989251470;hieuhacker96@gmail.com;48A;đường 29;Tân Kiểng;Q.7
+47;Magarita;Phạm Thị Hiếu;16-10;1945-06-07;Giáo Viên Về Hưu;0936033019;;21A;đường số 1;Tân Kiểng;Q.7
+48;Cecilia;Hoàng Hồng Phúc;22-11;1990-10-18;Trợ Lý Kế Toán;01234022045;hphuc111@gmail.com;61;đường số 1;Tân Kiểng;Q.7
+49;Têrêsa;Nguyễn Võ Xuân Quỳnh;01-10;1995-08-06;Sinh Viên;01229998192;ng.voxuanquynh@gmail.com;02;đường số 7;Tân Kiểng;Q.7
+50;Maria;Châu Ngọc Linh;01-01;1980-11-27;Tu Sĩ;38721969;marylyn_chow@yahoo.com;30/30;Lâm Văn Bền;Tân Kiểng;Q.7
+51;Anna;Nguyễn Thị Mỹ Hòa;26-07;1954-12-12;Giáo Viên Tiểu Học;0988462127;annamahuy@gmail.com;30/31;Lâm Văn Bền;Tân Kiểng;Q.7
+52;Maria;Đặng Thị Lan;15-08;1992-10-08;Sinh Viên;01659455528;mailanhuongnt@gmail.com;30/30;Lâm Văn Bền;Tân Kiểng;Q.7
+53;Maria;Hoàng Hồng Thủy;08-12;1989-01-20;Tu Sĩ;38721969;hongthuy201@gmail.com;30/30;Lâm Văn Bền;Tân Kiểng;Q.7
+54;Têrêxa;Trần Nguyễn Minh Ngọc;01-10;1996-12-09;Sinh Viên;01882607634;;30/30;Lâm Văn Bền;Tân Kiểng;Q.7
+55;Cecilia;Trần Thị Mận;22-11;1993-02-14;Sinh Viên;0972570191;tranthiman140293@gmail.com;30/30;Lâm Văn Bền;Tân Kiểng;Q.7
+56;Phêrô;Nguyễn Đặng Đức Tín;29-06;1997-01-13;Sinh Viên;0937822626;duc.tin.1301@gmail.com;119B;Lê Văn Lương, ấp 3, Phước Kiển;;Nhà Bè
+57;Têrêxa;Trần Thanh Tuyền;01-10;1996-05-22;Sinh Viên;01696769137;tranthanhtuyen.2205@gmail.com;30/30;Lâm Văn Bền;Tân Kiểng;Q.7
+58;Têrêxa;Nguyễn Kim Kiều;01-10;1995-12-22;Sinh Viên;01634168104;nguyenkimkieu2212@gmail.com;30/30;Lâm Văn Bền;Tân Kiểng;Q.7
+59;Cecilia;Vũ Quang Diễm Chi;22-11;1984-09-16;Tu Sĩ;38721969;vuquangdiemchi@yahoo.com;30/30;Lâm Văn Bền;Tân Kiểng;Q.7
+60;Agnes;Bùi Kim Ngọc;21-01;1977-12-09;Tu Sĩ;38721969;;30/30;Lâm Văn Bền;Tân Kiểng;Q.7
+61;Maria;Nguyễn Thị Ngọc Mỹ;08-12;1988-02-15;Tu Sĩ;38721969;marynguyenngocmy@gmail.com;30/30;Lâm Văn Bền;Tân Kiểng;Q.7
+62;Maria;Trần Thị Hoàng Hoa;08-09;1976-03-22;Tu Sĩ;0988190893;hoatranms@yahoo.com;30/30;Lâm Văn Bền;Tân Kiểng;Q.7
+63;Maria;Trần Hoàng Uyên;15-08;1996-08-24;Sinh Viên;01657837809;hoanguyen.lhp@gmail.com;30/30;Lâm Văn Bền;Tân Kiểng;Q.7
+64;Giuse;Nguyễn Lê Thanh Tân;19-03;1998-10-11;Sinh Viên;01203587466;thanhtannguyenle69@gmail.com;71A;Phan Huy Thực;Tân Kiểng;Q.7
+65;Giuse;Nguyễn Lê Thanh Toàn;19-03;1996-04-15;Sinh Viên;01225130531;toannguyenjae@gmail.com;71A;Phan Huy Thực;Tân Kiểng;Q.7
+66;Maria Phanxicô;Hoàng Thùy Linh;Thứ 6 Tuần Thánh;2016-03-08;Tu Sĩ;37711090;hocvienfmsrvn@gmail.com;16-18;Phan Huy Thực;Tân Kiểng;Q.7
+67;Maria;Trần Ngọc Phương Chi;15-08;1998-09-22;Học Sinh;01238643412;pchi2209@gmail.com;871/11B;Lê Văn Lương, ấp 4, Phước Kiển;;Nhà Bè
+68;Maria;Nguyễn Thị Kiều Oanh;15-08;1994-12-25;Sinh Viên;0901406214;lkkieuoanh@gmail.com;85;đường 30, khu Tân Quy Đông;Tân Phong;Q.7
+69;Agata;Huỳnh Ngọc Thu;05-02;1993-09-13;Sinh Viên;0904650917;agata.hnt@gmail.com;534;Lê Văn Lương;Tân Phong;Q.7
+70;Maria;Huỳnh Thị Bích Thúy;15-08;1997-08-19;Học Sinh;01886872931;;534;Lê Văn Lương;Tân Phong;Q.7
+71;Anna;Trần Thị Ngọc Châu;26-07;1995-09-20;Sinh Viên;01628900195;ngocchautran2009@gmail.com;62/14;Lâm Văn Bền;Tân Kiểng;Q.7
+72;Giuse;Huỳnh Trần Hữu Tài;19-03;1993-05-28;Nhân Viên Giao Nhận;0903460362;kimhotu93@gmail.com;176/7/3;Nguyễn Thị Thập;Bình Thuận;Q.7
+73;Maria;Lê Phương Uyên;15-08;1999-04-29;Học Sinh;01229054829;;68;đường 25;Tân Quy;Q.7
+74;Giuse;Lâm Vũ Hoàng Tuấn;19-03;1994-02-06;Sinh Viên;01645975827;htuan62@yahoo.com.vn;76B;đường 51;Tân Quy;Q.7
+75;GBt;Trần Nguyễn Thanh Bình;24-06;1999-02-11;Học Sinh;0903608945;deus_caritas_est1903@outlook.com;95/34/4;Lê Văn Lương;Tân Kiểng;Q.7
+76;Maria;Vũ Thị Bích Trâm;15-08;1994-05-31;Sinh Viên;01227459288;bunny.vbt@gmail.com;355/11;Lê Văn Lương;Tân Quy;Q.7
+77;Maria Goretty;Nguyễn Ngọc Bảo Trúc;06-07;1994-10-08;Nhân Viên;0937382791;nnbtruc2103@gmail.com;7/3;đường 27;Tân Quy;Q.7
+78;Maria;Đào Thị Phương Loan;15-08;1974-09-07;Tu Sĩ;0988209766;phuongloanntba@yahoo.com.vn;6/5;Nguyễn Cao;Tân Phong;Q.7
+79;Maria;Cao Thị Thanh Tâm;15-08;1997-07-28;Học Sinh;01226657175;;8;đường 27;Tân Quy;Q.7
+80;Phêrô;Nguyễn Tiến Phương;29-06;1993-10-12;Sinh Viên;0121568548;nguyenphuong121093@gmail.com;45;đường 41;Tân Quy;Q.7
+81;Giacôbê;Lê Dũng Trí;25-07;1996-02-22;Sinh Viên;01256043633;ledungtri.2202@gmail.com;A1302;HAGL 1, 357 Lê Văn Lương;Tân Quy;Q.7
+82;Giuse;Đinh Xuân Giao;01-05;1976-12-11;Kinh Doanh;0903689674;dinhgiao1080@gmail.com;33;đường số 9, khu biệt thự Nam Phú;Tân Thuận Đông;Q.7
+83;Giuse;Nguyễn Trí Minh;19-03;1996-12-23;Sinh Viên;01264333767;timmi231296@gmail.com;42M;đường 9M;Tân Thuận Tây;Q.7
+84;Maria;Nguyễn Thùy Mỹ Trinh;25-03;1997-10-10;Sinh Viên;0932071737;buffalotrin@gmail.com;360/1/6;Phạm Hữu Lầu, Phước Kiển;;Nhà Bè
+85;Têrêsa;Nguyễn Dương Xuân Mai;01-10;2000-05-13;Học Sinh;01293934121;mainguyen2572@gmail.com;78/11;Lê Văn Lương;Tân Hưng;Q.7
+86;Maria Christina;Nguyễn Thị Phương Ngọc;;1999-10-27;Học Sinh;01208636291;;625/34;Trần Xuân Soạn;Tân Hưng;Q.7
+87;Cecilia;Nguyễn Ngọc Bảo Châu;22-11;2000-12-15;Học Sinh;01204764795;nguyengocbaochau1512@gmail.com;389b/9;đường 79;Tân Quy;Q.7
+88;Maria;Huỳnh Trần Bảo Trâm;15-08;1999-10-01;Học Sinh;01238338385;beobeo011099@gmail.com;176/7/3;Nguyễn Thị Thập;Bình Thuận;Q.7
+89;GBt;Nguyễn Văn Thế;24-06;1988-07-20;Tu Sĩ;0971710645;men.jbthe@yahoo.com;37;đường 11;Hiệp Bình Chánh;Thủ Đức
+91;Giuse;Nguyễn Nhật Trường;19-03;1988-11-25;Tu Sĩ;0971428313;jstruong88@gmail.com;;;;
+92;Maria Cecilia;Nguyễn Thị Hoài Sâm;22-11;2016-05-24;Tu Sĩ;37711090;hocvienmancoich@gmail.com;16-18;Phan Huy Thực;Tân Kiểng;Q.7
+93;Giêrônimô;Bùi Quang Huy;30-09;2000-04-20;Học Sinh;0901346645;buiminhphat2010@gmail.com;97;Khánh Hội;3;Q.4
+94;Maria;Nguyễn Thị Trúc;01-01;1991-03-07;Dự Tu;;diemtruc91@gmail.com;40/3;Lam Sơn;6;Bình Thạnh
+95;Phêrô;Nguyễn Đức Trọng;29-06;1986-06-21;Chủng Sinh;01633558972;pherondtrong@yahoo.com;6;Tôn Đức Thắng;Bến Nghé;Q.1
+96;Maria;Phan Hồng Ngọc;15-08;2000-07-30;Học Sinh;01203203450;hnco0214@gmail.com;1056/53/3;Huỳnh Tấn Phát;Tân Phú;Q.7
+97;Maria Raphael;Trần Thị Hải Yến;29-09;1990-07-01;Tu Sĩ;38640000;hocvienmancoich@gmail.com;94;Bành Văn Trân;7;Tân Bình
+102;Maria;Nguyễn Thị Xuân Vy;15-08;2000-04-23;Học Sinh;01633199500;nguyenthixuanvy2304@gmail.com;95/52/29;Lê Văn Lương;Tân Kiểng;Q.7
+103;Têrêsa;Nguyễn Thanh Trúc;01-10;2000-06-17;Học Sinh;01264286788;ttangel2000@gmail.com;24J;đường số 6, Phước Kiển;;Nhà Bè
+104;Maria Thánh Tâm;Trịnh Thị Nhàn;Thứ 6 Tuần Thánh;2016-11-12;Tu Sĩ;;hocvienmancoich@gmail.com;;;;
+105;Phaolô;Trần Ngọc Huy;29-06;2001-05-03;Học Sinh;01238643412;;871/11B;Lê Văn Lương, ấp 4, Nhơn Đức;;Nhà Bè
+109;Giêrônimô;Trần Văn Chiến;30-09;1999-09-03;Học Sinh;0932665352;;284;Lê Văn Lương;Tân Hưng;Q.7
+110;Maria;Nguyễn Thảo Vi;15-08;2000-12-20;Học Sinh;;lisakuka2000@gmail.com;77/34;đường 25A;Tân Quy;Q.7
+111;Maria Thánh Tâm;Nguyễn Thị Ngọc Diễm;Lễ Thánh Tâm Chúa;1991-10-22;Tu Sĩ;37711090;hocvienmancoich@gmail.com;16-18;Phan Huy Thực;Tân Kiểng;Q.7
+112;Gioan;Nguyễn Đức Huyền;27-12;1988-08-19;Tu Sĩ;0963606499;nguyenduchuyen88@gmail.com;37;đường 11;Hiệp Bình Chánh;Thủ Đức
+113;Anna;Nguyễn Thị Thắm;26-07;2016-02-16;Tu Sĩ;39326798;nguyentham162@gmail.com;228;Nam Kì Khởi Nghĩa;6;Q.3
+114;Maria;Phạm Minh Anh;15-08;2000-03-25;Học Sinh;0901953541;minnann2503@gmail.com;6/14;đường 11;Tân Kiểng;Q.7
+115;Phêrô;Nguyễn Hùng Anh;29-06;1999-12-29;Học Sinh;0939082612;hunganhproq7@gmail.com;130;Lê Văn Lương;Tân Hưng;Q.7
+116;Giuse;Phạm Đình Khánh;19-03;1999-10-09;Học Sinh;0978050348;KloveSforever15@gmail.com;302;Lê Văn Lương;Tân Hưng;Q.7
+117;Anna;Hoàng Ngọc Tú Uyên;26-07;2000-05-30;Học Sinh;01626764391;tuuyencutieo@gmail.com;257/80;Nguyễn Thị Thập;Tân Phú;Q.7
+118;Micae;Hoàng Anh Tuấn;29-09;1982-08-04;Chủng Sinh;01239678968;micaeanhtuan@gmail.com;6;Tôn Đức Thắng;Bến Nghé;Q.1
+119;Gioan;Phạm Kông Anh;29-12;2000-12-12;Học Sinh;0917760294;phamkonganh@gmail.com;84;đường 25;Tân Quy;Q.7
+120;Anna;Trần Hoàng Thạch An;26-07;2002-07-31;Học Sinh;0945603736;tran.thachan@gmail.com;183;đường 17;Tân Quy;Q.7
+121;Giuse;Nguyễn Ngọc Hoàng;19-03;2002-06-12;Học Sinh;0912130446;nngochoangg06@gmail.com;289B/9;đường 79;Tân Quy;Q.7
+122;Giuse;Phạm Hữu Triết;19-03;2002-03-05;Học Sinh;0985185019;trietpham03052002@gmail.com;43;đường 27;Tân Quy;Q.7
+123;Maria;Phạm Thuý Vy;;2000-04-28;Học Sinh;0904409921;vyt.pham222@gmail.com;597;Lê Văn Lương;Tân Phong;Q.7
+124;Maria;Phạm Nguyễn Đoan Thuỳ;;2002-01-10;Học Sinh;0909893840;;222;Nguyễn Thị Thập;Bình Thuận;Q.7
+125;Phêrô;Trần Quang Vũ;29-06;2001-10-01;Học Sinh;01268017143;quangvu10012001@gmail.com;783;Trần Xuân Soạn;Tân Hưng;Q.7
+126;Lucia;Nguyễn Thị Minh Châu;;2001-04-19;Học Sinh;01656615086;quyquy4219@gmail.com;79;đường số 3;Tân Kiểng;Q.7
+127;Maria;Dương Thị Hoàng Phương;01-01;1993-09-29;Nhân Viên Văn phòng;0909250276;duongphuong29993@gmail.com;;chung cư Tân Hưng;Tân Hưng;Q.7
+128;Agata;Võ Ngọc Bảo Yên;05-02;1996-11-06;Sinh Viên;01635419563;dr.zeb6@gmail.com;27A;Đào Sư Tích, Phước Kiển;;Q.7
+129;Giuse;Trần Phúc Tâm;19-03;1999-10-29;Sinh Viên;01229963429;tammytran789@gmail.com;675//31/20;Trần Xuân Soạn;Tân Hưng;Q.7
+130;Batolomeo;Lương Tấn Lộc;24-08;1999-12-21;Sinh Viên;0916451573;loc.luong2112@gmail.com;392/12C;Trần Xuân Soạn;Tân Hưng;Q.7
+131;Maria;Nguyễn Đăng Tâm Đan;;1999-08-12;Sinh Viên;0937007765;ngdtdann0812@gmail.com;88/30;Nguyễn Văn Quý;Tân Thuận Đông;Q.7
+132;Maria Gioan;Bùi Thị Hiền;27-12;1990-03-30;Tu Sĩ;;hocvienmancoichihoa@gmail.com;94;Bành Văn Trân;7;Tân Bình
+133;Maria Têrêsa;Nguyễn Thuỳ Trang;01-10;1991-08-16;Tu Sĩ;;;94;Bành Văn Trân;7;Tân Bình
+135;Maria Gioan;Hoàng Thị Hà Thanh;27-12;2018-03-04;Tu Sĩ;;;94;Bành Văn Trân;7;Tân Bình
+136;Anna;Hồng Tâm;26-07;1983-03-25;Tu Sĩ;54124940;hongtam253@gmail.com;6/5;Nguyễn Cao;Tân Phong;Q.7
+137;Maria;Phạm Thị Thanh Thuỷ;01-01;2018-07-20;Tu Sĩ;;phamthuy0720@gmail.com;30/36;Lâm Văn Bền;Tân Kiểng;Q.7
+138;Martino;Ya Nghiệp;3-11;2018-11-06;Tu Sĩ;01212114260;yanghiepmartin@gmail.com;E13/13N;Phạm Văn Sáng, Vĩnh Lộc A;;Q.7
+139;Têrêsa;Nguyễn Thị Thao;01-10;2018-03-27;Tu Sĩ;;terthaonguyen@gmail.com;228;Nam Kì Khởi Nghĩa;6;Q.3
+140;Giuse;Nguyễn Đăng Châu;19-03;2018-12-10;Tu Sĩ;0909538832;vongxoay_07@yahoo.com;E13/13N;Phạm Văn Sáng, Vĩnh Lộc A;;Bình Chánh
+141;Têrêsa;Hoàng Thị Ái;01-10;1986-07-10;Tu Sĩ;01692577427;teresahoangai@gmail.com;228;Nam Kì Khởi Nghĩa;6;Q.3
+142;Vinh Sơn Ferie;Phạm Trung Hiếu;5-4;1987-12-07;Tu Sĩ;09069599642;phamtrunghieu87@gmail.com;E13/13N;Phạm Văn Sáng, Vĩnh Lộc A;;Q.7
+143;Maria;Đỗ Thị Thuý An;7-10;2018-07-19;Tu Sĩ;;do.thuyan@yahoo.com.vn;228;Nam Kì Khởi Nghĩa;6;Q.3
+144;Maria Matta;Nguyễn Thị Kim Hằng;08-12;1975-04-01;Tu Sĩ;0989571575;khang@gmail.com;30/36;Lâm Văn Bền;Tân Kiểng;Q.7

@@ -1,0 +1,57 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  christian_name: MyString
+  full_name: MyString
+  gender: MyString
+  phone: MyString
+  date_birth: 2018-06-23
+  place_birth: MyString
+  date_baptism: 2018-06-23
+  place_baptism: MyString
+  date_communion: 2018-06-23
+  place_communion: MyString
+  date_comfirmation: 2018-06-23
+  place_confirmation: MyString
+  date_declaration: 2018-06-23
+  place_declaration: MyString
+  street_number: MyString
+  street_name: MyString
+  ward: MyString
+  district: MyString
+  home_phone: MyString
+  area: MyString
+  father_christian_name: MyString
+  father_full_name: MyString
+  father_phone: MyString
+  mother_christian_name: MyString
+  mother_full_name: MyString
+  mother_phone: MyString
+
+two:
+  christian_name: MyString
+  full_name: MyString
+  gender: MyString
+  phone: MyString
+  date_birth: 2018-06-23
+  place_birth: MyString
+  date_baptism: 2018-06-23
+  place_baptism: MyString
+  date_communion: 2018-06-23
+  place_communion: MyString
+  date_comfirmation: 2018-06-23
+  place_confirmation: MyString
+  date_declaration: 2018-06-23
+  place_declaration: MyString
+  street_number: MyString
+  street_name: MyString
+  ward: MyString
+  district: MyString
+  home_phone: MyString
+  area: MyString
+  father_christian_name: MyString
+  father_full_name: MyString
+  father_phone: MyString
+  mother_christian_name: MyString
+  mother_full_name: MyString
+  mother_phone: MyString
