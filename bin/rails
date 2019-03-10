@@ -16,4 +16,6 @@ end
 
 Rails::Server.send(:prepend, DefaultOptions)
 
+
+
 require 'rails/commands'
