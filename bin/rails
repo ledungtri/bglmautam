@@ -10,7 +10,7 @@ require_relative '../config/boot'
 require 'rails/commands/server'
 module DefaultOptions
   def default_options
-    super.merge!(Port: 4000) if Rails.env.development?
+    super.merge!(Port: process.env.PORT || 5000) if Rails.env.development?
   end
 end
 
