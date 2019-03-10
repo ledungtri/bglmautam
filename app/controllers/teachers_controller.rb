@@ -25,6 +25,14 @@ class TeachersController < ApplicationController
   # GET /teachers/1.json
   def show
     @cells = @teacher.cells
+    
+    @years = Cell.all.map{|c| c.year}.uniq.sort{|x,y| -(x <=> y)}
+    @opts = Array.new
+    Cell.all.sort_by{|c| c.sort_param}.each do |cell|
+      if cell.year == @years[0]
+        @opts.push([cell.name, cell.id])
+      end
+    end
   end
 
   # GET /teachers/new

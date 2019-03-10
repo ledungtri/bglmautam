@@ -52,7 +52,7 @@
       <th style='width: 100px'>Năm Học</th>
       <th style='width: 100px'>Tên Lớp</th>
       <th style='width: 100px'>Phụ Trách</th>
-      <th style='width: 190px'>Vị Trí</th>
+      <th style='width: 200px'>Vị Trí</th>
     </tr>
   </thead>
 
@@ -64,8 +64,101 @@
         <td style='width: 100px'><%= cell.long_year %></td>
         <td style='width: 100px'><%= link_to cell.name, cell %></td>
         <td style='width: 100px'><%= instruction.position %></td>
-        <td style='width: 190px'><%= default_location %></td>
+        <td style='width: 200px'><%= default_location %></td>
       </tr>
+    <% end %>
+    
+    
+    
+    
+    <tr class="table-row">
+    
+    
+    
+    <% @instruction = Instruction.new %>
+    <%= form_for(@instruction) do |f| %>
+      <% if @instruction.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@instruction.errors.count, "error") %> prohibited this instruction from being saved:</h2>
+    
+          <ul>
+          <% @instruction.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+    
+        <%= f.hidden_field :teacher_id, :value => @teacher.id %>
+    
+    
+      <td id="year" style="width: 100px; font-size: 14px; display: none">
+        <select id="year_combobox" onchange="changeCell()">
+          <% selected_year = @years[0] %>
+          <% @years.each do |year| %>
+            <option value="<%=year%>"><%= year.to_s + " - " + (year.to_i+1).to_s %></option>
+          <% end %>
+        </select>
+      </td>
+      <td id="cell" style="width: 100px; font-size: 14px; display: none">
+        <%= f.select :cell_id, options_for_select(@opts), :id => 'cell_id' %>
+      </td>
+      <td id="position" style="width: 100px; font-size: 14px; display: none">
+        <%= f.select :position, options_for_select(["Đứng Chính", "Phụ Tá"]), :style => "width: 98px"%>
+      </td>
+      <td id="createBtn" style="width: 100px; font-size: 14px; display: none">
+        <%= f.submit "Thêm Lớp Mới" %>
+      </td>
+      
+      
     <% end %>
   </tbody>
 </table>
+
+
+
+
+<center><button id="btn" onClick="showForm()" class="button" style="width:500px">Thêm Lớp Mới</button></center>
+
+
+
+<script>
+  function showForm() {
+    document.getElementById("btn").style.display = "none";
+    document.getElementById("year").style.display = "table-cell";
+    document.getElementById("cell").style.display = "table-cell";
+    document.getElementById("position").style.display = "table-cell";
+    document.getElementById("createBtn").style.display = "table-cell";
+  }
+  
+  function changeCell() {
+    var e = document.getElementById("year_combobox");
+    var selected = e.options[e.selectedIndex].value;
+
+    
+    //Create array of options to be added
+    var hash = {};
+    var keys = [];
+    
+    <% Cell.all.sort_by{|c| c.sort_param}.each do |cell| %>
+    if(selected == "<%= cell.year %>") {
+      hash[<%= cell.id %>] = "<%= cell.name %>";
+      keys.push(<%= cell.id %>);
+    }
+    <% end %>
+    
+    
+    var list = document.getElementById("instruction_cell_id");
+    list.options.length = 0;
+    
+    
+    //Create and append the options
+    for (var i = 0; i < keys.length; i++) {
+        var option = document.createElement("option");
+        option.value = keys[i];
+        option.text = hash[keys[i]];
+        list.appendChild(option); 
+    }
+    
+  }
+</script>

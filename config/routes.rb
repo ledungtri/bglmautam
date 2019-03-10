@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   
   # root 'students#index'
   root 'students#index'
+  get '/' => 'students#index'
   # get '/temp' => 'application#admin'
   get '/temp' => 'students#migrate'
   
