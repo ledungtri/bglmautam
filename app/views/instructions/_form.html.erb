@@ -11,19 +11,14 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :position %><br>
-    <%= f.text_field :position %>
-  </div>
-  <div class="field">
-    <%= f.label :teacher_id %><br>
-    <%= f.number_field :teacher_id %>
-  </div>
-  <div class="field">
-    <%= f.label :cell_id %><br>
-    <%= f.number_field :cell_id %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+  <center>
+    <div class="block">
+      <div class="label">Phụ Trách:</div>
+      <%= f.select :position, options_for_select(["GLV", "Phụ Tá"], @instruction.position) %>
+    </div>
+  </center>
+  
+  <div class="actions" style="padding-top:10px">
+    <%= f.submit "Cập Nhật", :class =>"button" %>
   </div>
 <% end %>

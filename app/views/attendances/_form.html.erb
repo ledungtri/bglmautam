@@ -14,7 +14,7 @@
   <center>
     <div class="block">
       <div class="label">Kết Quả:</div>
-      <%= f.text_field :result %>
+      <%= f.select :result, options_for_select(["Học Lại", "Nghỉ Luôn", "Lên Lớp", "Đang Học", "Chuyển Xứ"], @attendance.result) %>
     </div>
   </center>
 

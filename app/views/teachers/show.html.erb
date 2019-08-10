@@ -43,6 +43,7 @@
 
 <%= link_to 'Chỉnh Sửa', edit_teacher_path(@teacher), :class => "button" %>
 
+
 <p style="margin: 30px"></p>
 <h1>Hành Trình Thiêng Liêng</h1>
 
@@ -60,10 +61,11 @@
     <% @cells.each do |cell| %>
     <% instruction = @teacher.instructions.select { |ins| ins.cell_id == cell.id }.first %>
     <% default_location = "Vô Gia Cư"; default_location = cell.location if cell.location? %>
+    <% default_position = "_"; default position = instruction.position if instruction.position? %>
       <tr class="table-row">
         <td style='width: 200px'><%= cell.long_year %></td>
         <td style='width: 200px'><%= link_to cell.name, cell %></td>
-        <td style='width: 200px'><%= instruction.position %></td>
+        <td style='width: 200px'><%= link_to default_position, edit_instruction_path(instruction.id) %></td>
         <td style='width: 200px'><%= default_location %></td>
       </tr>
     <% end %>
