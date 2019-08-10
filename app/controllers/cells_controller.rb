@@ -1,6 +1,7 @@
 class CellsController < ApplicationController
   before_action :set_cell, only: [:show, :edit, :update, :destroy]
   # before_action :years_combobox, only: [:new, :edit]
+  before_action :auth 
 
   # GET /cells
   # GET /cells.json

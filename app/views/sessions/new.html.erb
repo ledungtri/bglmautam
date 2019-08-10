@@ -1,0 +1,14 @@
+<p id=”alert”><%= alert %></p>
+<h1>Login</h1>
+<%= form_tag sessions_path do |form| %>
+  <div class="block">
+    <div class="label">Username:</div>
+    <%= text_field_tag :username %>
+  </div>
+  <div class="block">
+    <div class="label">Password:</div>
+    <%= password_field_tag :password %>
+  </div>
+  <div class="actions" style="padding-top:10px">
+    <%= submit_tag "Login", :class => "button" %>
+<% end %>

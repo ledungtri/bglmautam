@@ -28,7 +28,16 @@
     
     <div class="block">
       <div class="label">Ngày Sinh:</div>
-      <%= f.date_select :date_birth, {:include_blank => true, :default => nil, :use_two_digit_numbers => true, :order => [:day, :month, :year], :with_css_classes => true, :prompt => {:day => "Ngày", :month => "Tháng", :year => "Năm"}} %>
+      <%= f.date_select :date_birth, {
+        :start_year => 1900,
+        :end_year => Date.today.year + 5,
+        :include_blank => true, 
+        :default => nil, 
+        :use_two_digit_numbers => true, 
+        :order => [:day, :month, :year], 
+        :with_css_classes => true, 
+        :prompt => {:day => "Ngày", :month => "Tháng", :year => "Năm"}
+      }%>
     </div>
 
     <div class="block">
@@ -38,7 +47,10 @@
     
     <div class="block">
       <div class="label">Giới Tính:</div>
-      <%= f.text_field :gender %>
+      <%= f.select :gender, options_for_select(["Nam", "Nữ"]), {
+        :include_blank => true, 
+        :default => nil
+      }%>
     </div>
     
     <div class="block">
@@ -54,7 +66,16 @@
 
     <div class="block">
       <div class="label">Rửa Tội:</div>
-            <%= f.date_select :date_baptism, {:include_blank => true, :default => nil, :use_two_digit_numbers => true, :order => [:day, :month, :year], :with_css_classes => true, :prompt => {:day => "Ngày", :month => "Tháng", :year => "Năm"}} %>
+            <%= f.date_select :date_baptism, {
+              :start_year => 1900,
+              :end_year => Date.today.year + 5,
+              :include_blank => true, 
+              :default => nil, 
+              :use_two_digit_numbers => true, 
+              :order => [:day, :month, :year], 
+              :with_css_classes => true, 
+              :prompt => {:day => "Ngày", :month => "Tháng", :year => "Năm"}
+            } %>
     </div>
     
     <div class="block">
@@ -64,7 +85,16 @@
     
     <div class="block">
       <div class="label">Rước Lễ:</div>
-            <%= f.date_select :date_communion, {:include_blank => true, :default => nil, :use_two_digit_numbers => true, :order => [:day, :month, :year], :with_css_classes => true, :prompt => {:day => "Ngày", :month => "Tháng", :year => "Năm"}} %>
+        <%= f.date_select :date_communion, {
+          :start_year => 1900,
+          :end_year => Date.today.year + 5,
+          :include_blank => true, 
+          :default => nil, 
+          :use_two_digit_numbers => true, 
+          :order => [:day, :month, :year], 
+          :with_css_classes => true, 
+          :prompt => {:day => "Ngày", :month => "Tháng", :year => "Năm"}
+        }%>
     </div>
       
     <div class="block">
@@ -74,7 +104,16 @@
     
     <div class="block">
       <div class="label">Thêm Sức:</div>
-            <%= f.date_select :date_confirmation, {:include_blank => true, :default => nil, :use_two_digit_numbers => true, :order => [:day, :month, :year], :with_css_classes => true, :prompt => {:day => "Ngày", :month => "Tháng", :year => "Năm"}} %>
+        <%= f.date_select :date_confirmation, {
+          :start_year => 1900,
+          :end_year => Date.today.year + 5,
+          :include_blank => true, 
+          :default => nil, 
+          :use_two_digit_numbers => true, 
+          :order => [:day, :month, :year], 
+          :with_css_classes => true, 
+          :prompt => {:day => "Ngày", :month => "Tháng", :year => "Năm"}
+        }%>
     </div>
 
     <div class="block">
@@ -84,7 +123,16 @@
     
     <div class="block">
       <div class="label">Tuyên Xưng:</div>
-            <%= f.date_select :date_declaration, {:include_blank => true, :default => nil, :use_two_digit_numbers => true, :order => [:day, :month, :year], :with_css_classes => true, :prompt => {:day => "Ngày", :month => "Tháng", :year => "Năm"}} %>
+        <%= f.date_select :date_declaration, {
+          :start_year => 1900,
+          :end_year => Date.today.year + 5,
+          :include_blank => true, 
+          :default => nil, 
+          :use_two_digit_numbers => true, 
+          :order => [:day, :month, :year], 
+          :with_css_classes => true, 
+          :prompt => {:day => "Ngày", :month => "Tháng", :year => "Năm"}
+        }%>
     </div>
 
     <div class="block">

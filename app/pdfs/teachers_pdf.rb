@@ -33,20 +33,28 @@ class TeachersPdf < Prawn::Document
             
             row(0).style(:align => :center, :font_style => :bold, :height => 35, :valign => :center)
             
+            column(0).style(:align => :center)
             column(1).style(:align => :center, :width => 60)
-            column(2).style(:align => :center, :width => 90)
-            column(5).style(:align => :center, :width => 60)
-            column(6).style(:align => :center, :width => 60)
+            column(2).style(:align => :center, :width => 60)
+            column(5).style(:align => :center)
+            column(7).style(:align => :center)
         end
        end
    end
    
    def line_item_rows
-        [["Họ và Tên", "Ngày Sinh", "Nghề Nghiệp", "Địa Chỉ", "Điện Thoại", "Lớp", "Phụ Trách"]] +
+        [["STT", "Lớp", "Phụ Trách", "Họ và Tên", "Ngày Sinh", "Bổn Mạng", "Email", "Điện Thoại"]] +
         @teachers.map do |teacher|
-           [teacher.name, teacher.date_birth.strftime("%d/%m/%Y"), teacher.occupation, teacher.address, teacher.phone,
-           teacher.cells.where(year: @year).first.name,
-           teacher.cells.where(year: @year).first.instructions.where(teacher_id: teacher.id).first.position] 
+           [
+               @teachers.index(teacher)+1,
+               teacher.cells.where(year: @year).first.name,
+               teacher.cells.where(year: @year).first.instructions.where(teacher_id: teacher.id).first.position,
+               teacher.name, 
+               teacher.date_birth.strftime("%d/%m/%Y"), 
+               teacher.named_date,
+               teacher.email,
+               teacher.phone
+           ] 
         end
    end
    

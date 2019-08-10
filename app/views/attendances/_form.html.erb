@@ -10,20 +10,16 @@
       </ul>
     </div>
   <% end %>
+  
+  <center>
+    <div class="block">
+      <div class="label">Kết Quả:</div>
+      <%= f.text_field :result %>
+    </div>
+  </center>
 
-  <div class="field">
-    <%= f.label :result %><br>
-    <%= f.text_field :result %>
-  </div>
-  <div class="field">
-    <%= f.label :student_id %><br>
-    <%= f.number_field :student_id %>
-  </div>
-  <div class="field">
-    <%= f.label :cell_id %><br>
-    <%= f.number_field :cell_id %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+
+  <div class="actions" style="padding-top:10px">
+    <%= f.submit "Cập Nhật", :class =>"button" %>
   </div>
 <% end %>
