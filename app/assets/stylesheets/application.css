@@ -244,3 +244,7 @@ th {
 input {
   width: 200px;
 }
+
+.year, .month, .day{
+  width: 65px;
+}  

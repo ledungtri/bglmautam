@@ -9,7 +9,9 @@ class Cell < ActiveRecord::Base
     validates :group, format: { with: /\A\d?[A-Z]?\z/, message: "invalid input" }, allow_blank: true
     
     def long_year
-        self.year.to_s + " - " + (self.year+1).to_s
+        if self.year != nil
+            self.year.to_s + " - " + (self.year+1).to_s
+        end
     end
     
     def name 
