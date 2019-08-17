@@ -260,7 +260,7 @@ class StudentsController < ApplicationController
       if ins.save
           
       else
-        logger.debug("MY_ERROR: " + codeClass, + key)
+        logger.debug("MY_ERROR: " + codeClass + key)
         @ins_unsaved.push([codeClass, key, @class_id[codeClass], @teacher_id[key], position])
       end
     end
