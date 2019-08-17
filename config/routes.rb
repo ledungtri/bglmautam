@@ -1,27 +1,21 @@
 Rails.application.routes.draw do
-  get 'sessions/new'
-
-  get 'sessions/create'
-
-  get 'sessions/destroy'
-
-  resources :users
-  resources :instructions
-  resources :attendances
+  resources :students
+  resources :teachers
   resources :cells do 
     get "/attendance_check" => 'cells#attendance_check'
   end
-  resources :students
-  resources :teachers
+  resources :instructions
+  resources :attendances
+  
+  resources :users
   resources :sessions, only: [:new, :create, :destroy]
   
-  # root 'students#index'
   root 'students#index'
   get '/' => 'students#index'
-  # get '/temp' => 'application#admin'
-  get '/temp' => 'students#migrate'
-  get 'login', to: 'sessions#new', as: 'login'
-  get 'logout', to: 'sessions#destroy', as: 'logout'
+  get '/migrate' => 'students#migrate'
+  get '/login', to: 'sessions#new', as: 'login'
+  get '/logout', to: 'sessions#destroy', as: 'logout'
+  get '/search', to: 'students#searchByName'
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

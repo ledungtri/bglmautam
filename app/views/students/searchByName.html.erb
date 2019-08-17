@@ -1,0 +1,37 @@
+<h1>SEARCH</h1>
+
+
+<h2>Search for Student</h2>
+<form action="/search" method="get">
+    <center>
+        <div class="block">
+            <div class="label">Name:</div>
+            <input type="text" name="student_name"></input>
+        </div>
+    </center>
+    <div class="actions" style="padding-top:10px">
+        <input type="submit" class="button" value="Search"></input>
+    </div>
+</form>
+
+<h2>Search for Teacher</h2>
+<form action="/search" method="get">
+    <center>
+        <div class="block">
+            <div class="label">Name:</div>
+            <input type="text" name="teacher_name"></input>
+        </div>
+    </center>
+    <div class="actions" style="padding-top:10px">
+        <input type="submit" class="button" value="Search"></input>
+    </div>
+</form>
+
+
+<% unless @students.nil? %>
+    <h2>Count : <%= @students.count %></h2>
+    <% @students.each do |s| %>
+    <%= link_to s.full_name, s %>
+    <br>
+    <% end %>
+<% end %>

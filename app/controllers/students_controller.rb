@@ -12,7 +12,7 @@ class StudentsController < ApplicationController
     @chuyen_xu = Array.new
     
     @students = Array.new
-
+    
     Student.all.sort_by {|student| student.sort_param}.each do |student|
       cell = student.cells.where(year: @current_year).take
       if (cell != nil)
@@ -262,6 +262,12 @@ class StudentsController < ApplicationController
       else
         @ins_unsaved.push([codeClass, key, @class_id[codeClass], @teacher_id[key], position])
       end
+    end
+  end
+  
+  def searchByName
+    if !params[:student_name].nil?
+      @students = Student.where("full_name like ?", "%#{params[:student_name]}%")
     end
   end
   

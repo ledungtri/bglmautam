@@ -1,4 +1,4 @@
-﻿1;Phêrô;Trần Lê Quốc;29-06;1981-01-01;Đạo Diễn Truyền Hình;0908227148;quoc1181@yahoo.com;112/35;Chiến Thắng;9;Q.Phú Nhuận
+1;Phêrô;Trần Lê Quốc;29-06;1981-01-01;Đạo Diễn Truyền Hình;0908227148;quoc1181@yahoo.com;112/35;Chiến Thắng;9;Q.Phú Nhuận
 2;Anna;Trần Hoàng Nguyệt Trân;26-07;1997-02-05;Sinh Viên;01682420601;nguyettran5297@gmail.com;183;đường 17;Tân Quy;Q.7
 3;Maria;Trần Thị Ngọc Hà;15-08;1992-08-15;Sinh Viên;01655400967;tranngocha70@gmail.com;228;Nam Kì Khởi Nghĩa;6;Q.3
 4;Maria;Nguyễn Thanh Tâm;15-09;1992-12-21;Sinh Viên;01629803916;marianttam@gmail.com;228;Nam Kì Khởi Nghĩa;6;Q.3
@@ -36,7 +36,7 @@
 36;GBt;Trần Phước Lộc;24-06;1986-04-03;Chủng Sinh;0909150838;gbtranphuocloc@gmail.com;16-18;Phan Huy Thực;Tân Kiểng;Q.7
 37;Maria Ignatio;Đinh Thị Thu Huyền;27-01;2016-01-27;Tu Sĩ;37711090;cdmautamfmsr@gmail.com;16-18;Phan Huy Thực;Tân Kiểng;Q.7
 38;Giuse;Trần Bá Tước;19-03;1995-02-14;Sinh Viên;01635982773;tuoctran7777@gmail.com;16-18;Phan Huy Thực;Tân Kiểng;Q.7
-39;Maria;Nguyễn Thị Ngọc Bích;CN Phục Sinh;2018-01-01;Tu Sĩ;37711090;cdmautamfmsr@gmail.com;16-18;Phan Huy Thực;Tân Kiểng;Q.7
+39;Maria;Nguyễn Thị Ngọc Bích;CN Phục Sinh;1900-01-01;Tu Sĩ;37711090;cdmautamfmsr@gmail.com;16-18;Phan Huy Thực;Tân Kiểng;Q.7
 40;Giuse;Nguyễn Trí Thông;01-05;1993-08-21;Sinh Viên;01682128094;josephnguyenthong93@gmail.com;16-18;Phan Huy Thực;Tân Kiểng;Q.7
 41;Maria Phanxicô;Nguyễn Thị Yến;04-10;1971-01-30;Tu Sĩ;37711090;;16-18;Phan Huy Thực;Tân Kiểng;Q.7
 42;Cecilia;Nguyễn Mộng Thanh Trúc;22-11;1979-05-01;Giáo Viên;0907800501;thanh_truc575@yahoo.com;7B/15;đường 13;Tân Kiểng;Q.7
