@@ -1,24 +1,4 @@
-;372;
-;438;
-;438;
-;438;
-;913;Đang Học
-;978;
-;978;Học Lại
-;978;
-;1003;Đang Học
-;1028;Đang Học
-;1053;Đang Học
-;1087;Lên Lớp
-;1093;Nghỉ
-;1097;
-;1099;Đang Học
-;1105;
-;1106;Đang Học
-;1112;Đang Học
-;1113;Đang Học
-;1116;Đang Học
-14BĐ1A;13;Lên Lớp
+﻿14BĐ1A;13;Lên Lớp
 14BĐ1A;52;Lên Lớp
 14BĐ1A;129;Lên Lớp
 14BĐ1A;162;Lên Lớp
@@ -2801,8 +2781,8 @@
 18BĐ2B;1092;Đang Học
 18BĐ2B;1104;Đang Học
 18BĐ3A;22;Đang Học
-18BĐ3A;36;Đang Học
-18BĐ3A;64;Đang Học
+18BĐ3A;36;Nghỉ
+18BĐ3A;64;Nghỉ
 18BĐ3A;117;Đang Học
 18BĐ3A;154;Đang Học
 18BĐ3A;262;Đang Học
@@ -2823,15 +2803,15 @@
 18BĐ3A;1013;Đang Học
 18BĐ3B;6;Đang Học
 18BĐ3B;37;Đang Học
-18BĐ3B;69;Đang Học
+18BĐ3B;69;Chuyển Xứ
 18BĐ3B;185;Đang Học
 18BĐ3B;251;Đang Học
 18BĐ3B;285;Đang Học
 18BĐ3B;379;Nghỉ
 18BĐ3B;398;Đang Học
-18BĐ3B;442;Đang Học
+18BĐ3B;442;Chuyển Xứ
 18BĐ3B;472;Nghỉ
-18BĐ3B;476;Đang Học
+18BĐ3B;476;Nghỉ
 18BĐ3B;490;Đang Học
 18BĐ3B;561;Đang Học
 18BĐ3B;575;Đang Học
@@ -2871,7 +2851,7 @@
 18KTA;1094;Đang Học
 18KTA;1108;Đang Học
 18KTA;1109;Đang Học
-18KTA;1110;Đang Học
+18KTA;1110;Nghỉ
 18KTA;1111;Đang Học
 18KTA;1117;Đang Học
 18KTA;1120;Đang Học
@@ -3044,7 +3024,7 @@
 18RL2B;798;Đang Học
 18RL2B;799;Đang Học
 18RL2B;800;Đang Học
-18RL2B;801;Đang Học
+18RL2B;801;Nghỉ
 18RL2B;802;Đang Học
 18RL2B;803;Đang Học
 18RL2B;805;Đang Học
@@ -3064,7 +3044,7 @@
 18RL2C;635;Đang Học
 18RL2C;893;Đang Học
 18RL2C;894;Đang Học
-18RL2C;901;Đang Học
+18RL2C;901;Nghỉ
 18RL2C;905;Đang Học
 18RL2C;908;Đang Học
 18RL2C;917;Đang Học
@@ -3072,7 +3052,7 @@
 18RL2C;952;Đang Học
 18RL2C;953;Đang Học
 18RL2C;954;Đang Học
-18RL2C;955;Đang Học
+18RL2C;955;Nghỉ
 18RL2C;956;Đang Học
 18RL2C;958;Đang Học
 18RL2C;959;Đang Học
@@ -3130,7 +3110,7 @@
 18RL3B;828;Đang Học
 18RL3B;833;Đang Học
 18RL3B;847;Nghỉ
-18RL3B;860;Nghỉ
+18RL3B;860;Chuyển Xứ
 18RL3C;9;Đang Học
 18RL3C;770;Đang Học
 18RL3C;771;Đang Học
@@ -3213,7 +3193,7 @@
 18TS1B;548;Đang Học
 18TS1B;566;Đang Học
 18TS1B;626;Đang Học
-18TS1B;656;Nghỉ
+18TS1B;656;Học Lại
 18TS1B;705;Đang Học
 18TS1B;707;Đang Học
 18TS1B;716;Đang Học
@@ -3271,7 +3251,7 @@
 18TS2A;966;Đang Học
 18TS2A;1027;Đang Học
 18TS2A;1074;Đang Học
-18TS2A;1098;Đang Học
+18TS2A;1098;Nghỉ
 18TS2B;40;Đang Học
 18TS2B;59;Đang Học
 18TS2B;60;Nghỉ
@@ -3302,7 +3282,7 @@
 18TS2B;695;Đang Học
 18TS2B;708;Đang Học
 18TS2B;746;Đang Học
-18TS2B;1071;Đang Học
+18TS2B;1071;Nghỉ
 18TS2C;3;Đang Học
 18TS2C;47;Nghỉ
 18TS2C;87;Đang Học
@@ -3384,4 +3364,16 @@
 18TS3C;372;Đang Học
 18TS3C;401;Nghỉ
 18TS3C;402;Đang Học
-18TS3C;419;Đang Họ
+18TS3C;419;Đang Học
+18TS3C;445;Đang Học
+18TS3C;533;Đang Học
+18TS3C;596;Đang Học
+18TS3C;701;Đang Học
+18TS3C;734;Đang Học
+18TS3C;749;Đang Học
+18TS3C;752;Đang Học
+18TS3C;822;Đang Học
+18TS3C;859;Nghỉ
+18TS3C;886;Đang Học
+18TS3C;888;Đang Học
+18TS3C;1072;Đang Học
