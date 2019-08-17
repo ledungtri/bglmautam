@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   before_action :current_year, :subject
   
   def current_year
-    @current_year = 2016
+    @current_year = 2018
   end
   
   def subject 

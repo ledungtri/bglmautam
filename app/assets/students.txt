@@ -1,10 +1,36 @@
-﻿1128;Maria;Đào Yến Linh Nhi;Nữ;;1900-01-04;TP.HCM;;;;;;;;;791/23/7G;Trần Xuân Soạn;;Quận 7;;;Micae ;Đào Duy Linh;;Micae ;Trần Thị Mỹ Linh;0909963664
+﻿1122;Toma;Bùi Hoàng Tiến;Nam;;1900-01-01;;;;;;;;;;;;;;;;;;;;;
+1116;;Bân Bân;Nam;;1900-01-02;;;;;;;;;;;;;;;;;;;;;
+976;;Đặng Vân Nhi;Nữ;;1900-01-03;;;;;;;;;;;;;;;;;;;;;
+1128;Maria;Đào Yến Linh Nhi;Nữ;;1900-01-04;TP.HCM;;;;;;;;;791/23/7G;Trần Xuân Soạn;;Quận 7;;;Micae ;Đào Duy Linh;;Micae ;Trần Thị Mỹ Linh;0909963664
+965;Phêrô;Đỗ Quốc An;Nam;;1900-01-05;;;;;;;;;;;;;;;;;;;;;
+971;;Hồ Nguyễn Hoàng Long;Nam;;1900-01-06;;;;;;;;;;;;;;;;;;;;;
+1102;;Hoàng Thịnh;Nam;;1900-01-07;;;;;;;;;;;;;;;;;;;;;
+966;Đaminh;Huỳnh Lê Minh Quân;Nam;;1900-01-08;;;;;;;;;;;;;;;;;;;;;
+978;;Kiệt;Nam;;1900-01-09;;;;;;;;;;;;;;;;;;;;;
+988;;Minh Khôi;Nam;;1900-01-10;;;;;;;;;;;;;;;;;;;;;
+1025;Ambrosio;Ngô Lê Bảo Khoa;Nam;;1900-01-11;;;;;;;;;;;;;;;;;;;;;
+1125;;Nguyễn Anh Thy;Nữ;;1900-01-12;;;;;;;;;;;;;;;;;;;;;
+1121;Toma;Nguyễn Bùi Hoàng Tiến;Nam;;1900-01-13;;;;;;;;;;;;;;;;;;;;;
+1112;;Nguyễn Chí Hoàng Nguyên;Nam;;1900-01-14;;;;;;;;;;;;;;;;;;;;;
+1104;Maria;Nguyễn Minh Huệ;Nữ;;1900-01-15;;;;;;;;;;;;;;;;;;;;;
+992;Maria;Nguyễn Ngọc Hà My;Nữ;;1900-01-16;;;;;;;;;;;;;;;0888733700;;;;;;
+1105;Giuse;Nguyễn Ngọc Thiên Ân;Nam;;1900-01-17;;;;;;;;;;;;;;;0888733700;;;;;;
+1106;Giuse;Nguyễn Ngọc Thiên Ân;Nam;;1900-01-18;;;;;;;;;;;;;;;;;;;;;
+1077;Giuse;Nguyễn Tích Khang;Nam;;1900-01-19;;;;;;;;;;;;;;;;;;;;;0902599107
+969;Phê-rô;Phạm Thế Duyệt;Nam;;1900-01-20;;;;;;;;;;;;;;;;;;;;;
+1103;;Phạm Trần Gia Nghiêm;Nam;;1900-01-21;;;;;;;;;;;;;;;;;;;;;
+980;;Tường Vy;Nữ;;1900-01-22;;;;;;;;;;;;;;;;;;;;;
+981;;Vân Nhi;Nữ;;1900-01-23;;;;;;;;;;;;;;;;;;;;;
+862;;Võ Hoàng Phương Duy;Nam;;1900-01-24;;;;;;;;;;;;;;;;;;;;;
+960;;Võ Thị Hồng Trinh;Nữ;;1900-01-25;;;;;;;;;;;;;;;;;;;;;
+959;;Võ Thị Hồng Vân;Nữ;;1900-01-26;;;;;;;;;;;;;;;0935416632;;;;;;
 175;Giuse;Lê Ngọc Hậu;Nam;;1993-09-16;;1993-10-17;Xóm Chiếu;2011-06-10;Mẫu Tâm;2012-06-08;Mẫu Tâm;2015-06-14;Mẫu Tâm;14/6;ấp 5;Phước Kiển;Nhà Bè;La Vang;;;;;;;0935416632
 537;Phêrô;Phan Khánh Hưng;Nam;;1994-06-11;;1994-07-11;Mẫu Tâm;2004-01-18;Đức Bà Sài Gòn;2014-06-07;Mẫu Tâm;;;47A;đường 37;Tân Quy;Quận 7;Hằng Cứu Giúp;;;;;;;0938110694
 78;Maria;Dương Thị Thanh Linh;Nữ;;1996-06-11;;1996-09-21;An Long;2011-07-14;Cả Nổ;2012-06-08;Mẫu Tâm;2015-06-14;Mẫu Tâm;52C;Phạm Hữu Lầu;Phước Kiển;Nhà Bè;La Vang;;;;;;;01222574643
 710;Agata;Võ Ngọc Bảo Yên;Nữ;;1996-06-11;TP.HCM;2013-06-02;Mẫu Tâm;2013-06-09;Mẫu Tâm;2015-06-12;Mẫu Tâm;;;27A;Đào Sư Tích;Phước Kiển;Nhà Bè;La Vang;;;Võ Quốc Việt;;;Nguyễn Ngọc Sang;01635419563
 299;Anna;Nguyễn Thị Kim Anh;Nữ;;1996-06-20;;;;;;;;;;136;Đào Sư Tích;Phước Kiển;Nhà Bè;La Vang Thượng;;;;;;;01883457693
 214;Tôma;Nguyễn Anh Tú;Nam;;1996-11-18;;2013-06-02;Mẫu Tâm;2013-06-09;Mẫu Tâm;;;;;77A;đường 21;Tân Quy;Quận 7;Mông Triệu;;;;;;;01207013300
+556;Têrêsa;Phạm Thị Ngọc Trâm Anh;Nữ;;1997-01-08;;;;;;;;;;;;;;;;;;;;;01654912153
 218;Anna;Nguyễn Anh Tú;Nữ;;1997-01-31;TP.HCM;;;2012-06-08;Mẫu Tâm;2014-06-07;Mẫu Tâm;;;364;Lê Văn Lương;Tân Hưng;Quận 7;Mân Côi;;;;;;;0937874266
 742;Phêrô;Văn Quang Quốc Đạt;Nam;;1997-10-28;;2001-08-26;Thuận Phát;2010-07-31;Mẫu Tâm;2013-06-08;Mẫu Tâm;;;39;đường 27;Tân Quy;Quận 7;Mông Triệu;;;;;;;37713640
 55;Phêrô;Đặng Hoàng Phúc;Nam;;1998-01-01;;;;;;;;;;W2.17.03;Sunrise City, 23 Nguyễn Hữu Thọ;Tân Hưng;Quận 7;;;;;;;;0972988177
@@ -22,6 +48,7 @@
 14;Đaminh;Bùi Đức Huy;Nam;;1998-09-03;;2000-05-28;Mẫu Tâm;2013-06-09;Mẫu Tâm;2015-06-12;Mẫu Tâm;;;51;đường 23;Tân Quy;Quận 7;;;;;;;;0909235118
 644;Maria;Trần Ngọc Phương Chi;Nữ;;1998-09-22;;1998-11-01;Bình Hòa;2009-06-14;Xóm Chiếu;2011-07-10;Xóm Chiếu;2015-06-14;Mẫu Tâm;3/7B;Lê Văn Lương, ấp 4;Phước Kiển;Nhà Bè;La Vang Hạ;;;;;;;01219854729
 467;Giuse;Nguyễn Lê Thanh Tân;Nam;;1998-10-11;;1998-11-22;Mẫu Tâm;2009-06-14;Mẫu Tâm;2012-06-08;Mẫu Tâm;2015-06-14;Mẫu Tâm;71;Phan Huy Thực;Tân Kiểng;Quận 7;Thánh Mẫu;;;Lý Kim Long;;;Lê Thị Thúy Oanh;37711733
+239;Maria;Nguyễn Hoàng Bảo Trâm;Nữ;;1998-10-17;;1998-12-13;Mẫu Tâm;2010-07-31;Mẫu Tâm;2014-06-07;Mẫu Tâm;;;;;;;;;;;;;;37715144
 386;Maria;Nguyễn Thị Phương Thanh;Nữ;;1998-11-29;;1999-01-03;Xóm Chiếu;2011-06-10;Mẫu Tâm;2014-06-07;Mẫu Tâm;;;B78/85A;Tôn Thất Thuyết;;Nhà Bè;La Vang;;;;;;;37816833
 538;Phêrô;Phạm Khắc Việt;Nam;;1999-01-08;;1999-01-02;Vinh Đức;2009-06-14;Mẫu Tâm;2012-06-08;Mẫu Tâm;2015-06-14;Mẫu Tâm;344;Nguyễn Thị Thập;Tân Quy;Quận 7;Vô Nhiễm;;;;;;;0938541437
 31;Luciano;Bùi Hà Tấn Phát;Nam;;1999-01-12;;2000-02-26;Mông Triệu;;;2015-06-12;Mẫu Tâm;;;30/5;đường số 2;Tân Quy;Quận 7;Thánh Mẫu;;;;;;;0918059267
@@ -43,12 +70,14 @@
 29;Têrêsa;Bùi Thảo Hiền;Nữ;;1999-04-26;;1999-05-23;Xóm Chiếu;2010-07-31;Mẫu Tâm;2013-06-08;Mẫu Tâm;;;54/33/3;Lê Văn Lương;Tân Hưng;Quận 7;Mân Côi;;;;;;;37717994
 180;Maria;Lê Phương Uyên;Nữ;;1999-04-29;;1999-09-13;Mẫu Tâm;2009-06-14;Mẫu Tâm;2012-06-08;Mẫu Tâm;2015-06-14;Mẫu Tâm;8;đường 29;Tân Kiểng;Quận 7;Hằng Cứu Giúp;;;;;;;0903966806
 495;Maria;Nguyễn Vân Nhi;Nữ;;1999-04-30;TP.HCM;1999-08-21;Mẫu Tâm;2012-06-08;Mẫu Tâm;2015-06-12;Mẫu Tâm;;;24/8;Nguyễn Bình;;Nhà Bè;La Vang;;;;;;;0906773267
+613;;Trần Thị Kim Ngân;Nữ;;1999-06-18;;;;;;;;;;;;;;;;;;;;;0903389503
 536;Phêrô;Phan Khánh Huy;Nam;;1999-07-02;;1999-08-07;Mẫu Tâm;2011-06-10;Mẫu Tâm;2015-06-12;Mẫu Tâm;;;47A;đường 37;Tân Quy;Quận 7;Hằng Cứu Giúp;;;;;;;0919081776
 125;Giuse Maria;Hoàng Tuấn Duy;Nam;;1999-07-17;;1999-08-29;Bình Xuyên;2010-07-31;Mẫu Tâm;2013-06-08;Mẫu Tâm;;;166D;Lê Văn Lương;Tân Kiểng;Quận 7;Lộ Đức;0937238388;;;;;;37816324
 162;Giuse;Lê Nguyễn Khánh Huy;Nam;;1999-08-07;TP.HCM;1999-09-10;Mẫu Tâm;2011-06-10;Mẫu Tâm;2014-06-07;Mẫu Tâm;;;691/22/11;Trần Xuân Soạn;Tân Hưng;Quận 7;Mân Côi;;;;;;;0937238388
 690;;Trần Thanh Thảo;Nữ;;1999-08-11;;;;;;;;;;539C;Nguyễn Thị Thập;Tân Phong;Quận 7;Thăm Viếng;;;;;;;0937664589
 116;;Huỳnh Thị Ngọc Trang;Nữ;;1999-08-15;;;;;;;;;;62/28;Lâm Văn Bền;Tân Kiểng;Quận 7;;;;;;;;0933847561
 700;Hiêrônimô;Trần Văn Chiến;Nam;;1999-09-03;Thái Bình;1999-09-10;Bắc Trạch Thái Bình;2010-07-31;Mẫu Tâm;2013-06-08;Mẫu Tâm;2016-07-24;Mẫu Tâm;284;Lê Văn Lương;Tân Hưng;Quận 7;Mân Côi;;Hirônimô ; Trần Văn Hoan;;Hirônimô ;Phạm Thị Điệp;37713587
+510;Phêrô;Phạm Hoàng Anh Tuấn;Nam;;1999-09-08;;;;2012-06-08;Mẫu Tâm;2015-06-12;Mẫu Tâm;;;;;;;;;;;;;;0909250256
 685;Anna;Tatlock Rizana;Nữ;;1999-09-22;;1999-11-07;Antôn Cầu Ông Lãnh;2010-07-31;Mẫu Tâm;2013-06-08;Mẫu Tâm;;;12/12B;đường số 2;Tân Kiểng;Quận 7;Thánh Mẫu;;;;;;;37751618
 96;Maria;Huỳnh Trần Bảo Trâm;Nữ;;1999-10-01;Đồng Nai;1999-12-05;Xuân Mỹ;2010-08-15;Xuân Mỹ;2013-06-08;Mẫu Tâm;2016-07-24;Mẫu Tâm;176/7/3;Nguyễn Thị Thập;Bình Thuận;Quận 7;;;Giuse ;Huỳnh Văn Phước;;Giuse ;Trần Thị Thu Xuân;01203423264
 520;Giuse;Phạm Đình Khánh;Nam;;1999-10-02;;1999-11-18;Thủy Nhai;2010-07-31;Mẫu Tâm;2013-06-08;Mẫu Tâm;2016-07-24;Mẫu Tâm;302;Lê Văn Lương;Tân Hưng;Quận 7;Mân Côi;;Giuse ;Phạm Văn Chung;0912979054;Giuse ;Phạm Thị Son;2621590
@@ -88,7 +117,9 @@
 28;Hiêrônimô;Bùi Quang Huy;Nam;;2000-04-21;Thái Bình;2000-05-31;Bắc Trạch Thái Bình;2010-07-31;Mẫu Tâm;2013-06-08;Mẫu Tâm;2016-07-24;Mẫu Tâm;284;Lê Văn Lương;Tân Hưng;Quận 7;Mân Côi;;Hiêrônimô ;Bùi Quyết Thắng;0918982852;Hiêrônimô ;Ngô Thị Lệ;62716546
 505;Maria;Nguyễn Thị Xuân Vy;Nữ;;2000-04-23;TP.HCM;2000-05-28;Mẫu Tâm;2010-07-31;Mẫu Tâm;2013-06-08;Mẫu Tâm;2016-07-24;Mẫu Tâm;95/52/29;Lê Văn Lương;Tân Kiểng;Quận 7;Lộ Đức;;GBt ;Nguyễn Xuân Trường;0913924132;GBt ;Nguyễn Thị Xuân Nhiên;01698578512
 567;Maria;Phạm Thuý Vy;Nữ;;2000-04-28;TP.HCM;2000-06-11;Mẫu Tâm;2011-06-10;Mẫu Tâm;2014-06-07;Mẫu Tâm;;;99;đường 79;Tân Quy;Quận 7;Vô Nhiễm;;;;;;;01208588609
+846;;Nguyễn Thị Thu Thảo;Nữ;;2000-05-07;TP.HCM;;;;;;;;;;;;;;;;Đổ Văn Thuận;;;Nguyễn Thị Ngọc Nga;0908571916
 368;;Nguyễn Sơn Ngọc Trang;Nam;;2000-05-09;;;;2014-06-07;Mẫu Tâm;;;;;14/4H;Nguyễn Văn Quỳ;Phú Thuận;Quận 7;Ngoài Xứ;;;;;;;01653430575
+649;Giuse;Trịnh Phương Nam;Nam;;2000-05-15;TP.HCM;2000-07-02;Ninh Phát;2010-07-31;Mẫu Tâm;2013-06-08;Mẫu Tâm;2016-07-24;Mẫu Tâm;;;;;;01265822939;Phaolô ;Trịnh Đình Liêm;01665135754;Phaolô ;Nguyễn Thị Mơ;0962356626
 499;Têrêsa;Nguyễn Dương Xuân Mai;Nữ;;2000-05-23;Vĩnh Long;2000-07-02;Chánh Tòa Vĩnh Long;2011-01-16;Vĩnh Hội;2013-06-08;Mẫu Tâm;2016-07-24;Mẫu Tâm;78/11;Lê Văn Lương;Tân Hưng;Quận 7;Mân Côi;;GBT ;Nguyễn Xuân Trường;0935158341;GBT ;Madalena Dương Thị Lệ Thủy;0934132843
 145;Anna;Hoàng Ngọc Tú Uyên;Nữ;;2000-05-30;TP.HCM;2000-07-02;Mẫu Tâm;2010-07-31;Mẫu Tâm;2013-06-08;Mẫu Tâm;2016-07-24;Mẫu Tâm;257/80;Nguyễn Thị Thập;Tân Phú;Quận 7;Thăm Viếng;;Phanxicô ;Hoàng Ngọc Tấn;0906808584;Phanxicô ;Nguyễn Thị Trinh;37716308
 394;Phêrô;Nguyễn Quốc Hiếu;Nam;;2000-06-13;;2000-07-16;Mai Khôi;2011-06-10;Mẫu Tâm;2014-06-07;Mẫu Tâm;;;264/19;Lê Văn Lương;Tân Hưng;Quận 7;Mân Côi;;;;;;;0976685417
@@ -108,6 +139,7 @@
 428;Anna;Nguyễn Thị Thúy Em;Nữ;;2000-08-26;Đồng Tháp;2015-06-07;Mẫu Tâm;2015-06-12;Mẫu Tâm;;;;;561;ấp 2;Phước Kiển;Nhà Bè;La Vang Trung;;;Nguyễn Văn Giàu;01692828244;;Traafn Thị Lệ Dung;01867258471
 466;Maria;Nguyễn Lê Thanh Thảo;Nữ;;2000-09-11;;2000-11-05;Thăng Long;;;;;;;211;Lê Văn Lương, ấp 3;Phước Kiển;Nhà Bè;La Vang Trung;;;;;;;01227964099
 203;Phêrô;Nguyễn Anh Hùng;Nam;;2000-09-11;;;;2014-06-07;Mẫu Tâm;;;;;150;đường số 1;Tân Kiểng;Quận 7;Thánh Mẫu;;;;;;;0933357223
+192;Maria;Lê Thị Thu Thủy;Nữ;;2000-09-14;TP.HCM;2003-12-08;Sông Mây Bùi Đệ;2013-06-02;Huyện Sĩ;;;;;;;;;;;;;;;;01204448125
 472;Maria;Nguyễn Thanh Thùy;Nữ;;2000-09-19;TP.HCM;2000-10-22;Mẫu Tâm;2012-06-08;Mẫu Tâm;2015-06-12;Mẫu Tâm;;;253;Lê Văn Lương;Tân Quy;Quận 7;Lộ Đức;0906773267;;;;;;0908477082
 490;Lucia;Nguyễn Vân Anh;Nữ;;2000-10-02;TP.HCM;2001-01-07;Mẫu Tâm;2013-06-09;Mẫu Tâm;2016-06-11;Mẫu Tâm;;;703/18/5/3;ấp 1, Long Thới;;Nhà Bè;La Vang Trung;;Giuse ;Nguyễn Văn Phúc;0934800035;Giuse ;Madalena Trần Thị Hồng Vân;0906773267
 442;Maria;Nguyễn Thị Tuyết Ngọc;Nữ;;2000-10-06;TP.HCM;2000-11-05;Phaolô;2013-06-09;Mẫu Tâm;2016-06-11;Mẫu Tâm;;;791/23/7;Trần Xuân Soạn;Tân Hưng;Quận 7;Đức Mẹ Phù Hộ;;Đaminh ;Nguyễn Quốc Thanh;01204468391;Đaminh ;Nguyễn Thị Thùy Linh;01626845293
@@ -132,9 +164,11 @@
 638;Maria;Trần Nguyễn Nhật Thy;Nữ;;2001-02-18;;2001-04-07;Vinh Đức;2012-06-08;Mẫu Tâm;2015-06-12;Mẫu Tâm;;;641;Nguyễn Hữu Thọ;Tân Phong;Quận 7;Thăm Viếng;;;;;;;0912991910
 885;Phaolô;Mai Lâm Dũng;Nam;;2001-02-26;;;;;;;;;;33A;đường 37;Tân Kiểng;Quận 7;;;;;;;;
 688;Phêrô;Tatlock Thanhdon;Nam;;2001-03-05;;2001-05-06;Antôn Cầu Ông Lãnh;2011-06-10;Mẫu Tâm;2014-06-07;Mẫu Tâm;;;12/12B;đường số 2;Tân Kiểng;Quận 7;Thánh Mẫu;;;;;;;37751618
+691;Maria;Trần Thị Thủy;Nữ;;2001-03-13;Thanh Hóa;2001-04-20;Nghi Sơn - Thanh Hóa;2011-05-21;Nghi Sơn - Thanh Hóa;;;;;;;;;;;;;01659762017;;;01669246870
 335;Rosa;Nguyễn Hồ Minh Phương;Nữ;;2001-04-01;;;;;;;;;;012-01;HAGL 3, Nguyễn Hữu Thọ;Phước Kiển;Nhà Bè;La Vang Thượng;;;;;;;0918033733
 578;Anê;Trần Vũ Bảo Trâm;Nữ;;2001-04-06;;;;2011-06-10;Mẫu Tâm;2014-06-07;Mẫu Tâm;;;13/53A;đường 27;Tân Quy;Quận 7;Mông Triệu;;;;;;;0913122372
 252;Giuse;Nguyễn Đăng Khôi;Nam;;2001-04-06;Phước Long;2001-05-27;Phước Tín;2012-06-10;Văn Côi;2016-06-11;Mẫu Tâm;;;69;đường 15;Tân Kiểng;Quận 7;;;Phêrô ;Nguyễn Văn Khanh;;Phêrô ;Mai Thị Tuyết Lan;0975540161
+673;Maria;Trần Thị Thanh Hương;Nữ;;2001-04-06;Đơn Dương;2013-06-02;Mẫu Tâm;2013-06-09;Mẫu Tâm;2016-06-11;Mẫu Tâm;;;;;;;;;;;;;Phạm Thị Ngọc Lợi;37714610
 5;Lucia;Nguyễn Thị Minh Châu;Nữ;;2001-04-19;Bình Thuận;2008-03-01;Gioan;2013-06-02;Gioan;2016-05-15;Thánh Tâm;;;31;đường số 3;Tân Kiểng;Quận 7;Mông Triệu;;;;;;Nguyễn Thị Thùy Chung;0918784647
 631;Phaolô;Trần Ngọc Huy;Nam;;2001-05-03;TP.HCM;2001-05-10;Bình Hòa;2010-06-06;Xóm Chiếu;2012-07-15;Xóm Chiếu;2016-07-24;Mẫu Tâm;3/7B;Lê Văn Lương, ấp 4;Phước Kiển;Nhà Bè;La Vang Hạ;;Antôn ;Trần Đình Thọ;01219854729;Antôn ;;
 15;Đaminh;Bùi Tường Đăng Khoa;Nam;;2001-05-13;TP.HCM;2001-08-07;Tân Hòa;2015-06-12;Mẫu Tâm;;;;;19K;Nam Khang;Tân Phú;Quận 7;Ngoài Xứ;;Antôn ;Bùi Văn Dũng;0903948587;Antôn ;Phạm Thị Thu Hồng;0908164157
@@ -146,12 +180,15 @@
 665;Phêrô;Trần Sỹ Nguyên;Nam;;2001-06-22;;2011-05-26;Mẫu Tâm;2011-06-10;Mẫu Tâm;2014-06-07;Mẫu Tâm;;;174/2;Lê Văn Lương;Tân Hưng;Quận 7;Mân Côi;;;;;;;0903181585
 371;Anna;Nguyễn Hoàng Như Yến;Nữ;;2001-06-23;TP.HCM;2001-08-26;Thuận Phát;2010-06-06;Thuận Phát;2014-06-07;Mẫu Tâm;;;381/31;Phạm Hữu Lầu, ấp 4;Phước Kiển;Nhà Bè;La Vang Trung;;GBt ;Nguyễn Văn Tuấn;;GBt ;Maria Phạm Thị Kim Liên;0937534177
 366;Maria;Nguyễn Huỳnh Ngọc Trinh;Nữ;;2001-07-01;Buôn Ma Thuộc;2011-05-26;Mẫu Tâm;2011-06-10;Mẫu Tâm;2014-06-07;Mẫu Tâm;;;6;đường số 3;Tân Kiểng;Quận 7;Thăm Viếng;;;;;;;0909125844
+501;Phêrô;Nguyễn Xuân Thọ;Nam;;2001-07-05;;2001-08-05;Bình Minh;2011-06-10;Mẫu Tâm;2014-06-07;Mẫu Tâm;;;;;;;;;;;;;;0909258774
 54;Giuse;Đặng Hoàng Lân;Nam;;2001-07-08;TP.HCM;2001-11-18;Hòa Hưng;2013-06-09;Mẫu Tâm;2016-06-11;Mẫu Tâm;;;734C;Lê Văn Lương;Phước Kiển;Nhà Bè;La Vang;;GBt ;Đặng Quốc Tiến;;GBt ;Nguyễn Thị Ngọc Tuyền;0909345195
 1028;Giuse;Đặng Hoàng Lân;Nam;;2001-07-08;TP.HCM;2001-11-18;Hòa Hưng;2013-09-06;Mẫu Tâm;2016-11-06;Mẫu Tâm;;;73A;Lê Văn Lương;ấp 2, Phước Kiển;Nhà Bè;La Vang Trung;;GBt ;Đặng Quốc Tiến;0909345195;GBt ;Nguyễn Thị Ngọc Tuyền;
 1040;Giuse;Đặng Hoàng Lân;Nam;;2001-07-08;TP.HCM;2001-11-18;Hòa Hưng;2013-09-06;Mẫu Tâm;2016-11-06;Mẫu Tâm;;;73A;Lê Văn Lương;Ấp 2, Phước Kiển;Nhà Bè;La Vang Trung;;GBt ;Đặng Quốc Tiến;0909345195;GBt ;Nguyễn Thị Ngọc Tuyền;
+1012;Giuse;Đặng Hoàng Lân;Nam;;2001-07-08;TP.HCM;2001-11-18;Hòa Hưng;2013-09-06;Mẫu Tâm;2016-11-06;;;;;;;;;;;;;;;
 740;Đaminh;Võ Hoàng Phương Duy;Nam;;2001-07-13;;2001-08-13;Mẫu Tâm;2011-06-10;Mẫu Tâm;2014-06-07;Mẫu Tâm;;;33/99/10;Lâm Văn Bền;Tân Kiểng;Quận 7;Truyền Tin;;;;;;;01639087944
 576;Giuse;Trần Nguyễn Anh Tú;Nam;;2001-07-17;TP.HCM;2001-08-17;Mẫu Tâm;2013-06-09;Mẫu Tâm;;;;;171/4;Lê Văn Lương;Tân Quy;Quận 7;Lộ Đức;;Giuse ;Trần Văn Quang;01264156717;Giuse ;Nguyễn Thị Anh Đào;
 68;Maria;Diêm Ngọc Quế;Nữ;;2001-07-28;TP.HCM;2001-08-26;Mẫu Tâm;2012-06-08;Mẫu Tâm;2015-06-12;Mẫu Tâm;;;21/12;ấp Trung Đông;;Hóc Môn;Ngoài Xứ;;;;;;;01649373239
+738;Giuse;Vũ Đinh Nhật Phi;Nam;;2001-07-30;Vĩnh Long;2001-09-02;Chánh Tòa Vĩnh Long;2013-06-02;Tân Đông;2016-06-11;Mẫu Tâm;;;;;;;;;Đominicô ;Vũ Ngọc Uy;;Đominicô ;Đinh Thị Thu Trang;0907840125
 189;Monica;Lương Hoàng Tuyết Như;Nữ;;2001-08-01;;2004-04-20;Gò Vấp;;;;;;;51;đường 23;Tân Quy;Quận 7;;;;;;;;0964021905
 283;Giuse;Nguyễn Dương Hoàng Kha;Nam;;2001-08-16;Vĩnh Long;2001-10-07;Chánh Tòa Vĩnh Long;2012-11-08;Vĩnh Hội;2015-06-12;Mẫu Tâm;;;78/11;Lê Văn Lương;Tân Hưng;Quận 7;Mân Côi;;GBt ;Nguyễn Xuân Trường;01288768256;GBt ;Dương Thị Lệ Thủy;01265822939
 177;Đaminh;Lê Nhật Trường;Nam;;2001-08-17;;2007-02-09;Mẫu Tâm;;;;;;;1419/78/5;Lê Văn Lương, ấp 1;Phước Kiển;Nhà Bè;;;;;;;;0932547483
@@ -177,15 +214,19 @@
 476;Maria;Nguyễn Huỳnh Thanh Trúc;Nữ;;2001-12-23;TP.HCM;2002-01-20;Mẫu Tâm;2013-06-09;Mẫu Tâm;;;;;20;đường số 4;Tân Kiểng;Quận 7;Thánh Mẫu;01884203362;Phaolô ; Nguyễn Quốc Dũng;;Phaolô ;Lê Thị Thanh Nghĩa;0933021366
 500;Maria;Nguyễn Lan Xuân Mai;Nữ;;2001-12-27;Cần Thơ;2002-04-11;An Châu;2013-06-09;Mẫu Tâm;2016-06-11;Mẫu Tâm;;;793/32/1A;Trần Xuân Soạn;Tân Hưng;Quận 7;;;Giuse ;Nguyễn Thanh Tèo;01227746399;Giuse ;Nguyễn Thị Ánh Loan;01226875303
 264;Anna;Ngô Diễm Vy;Nữ;;2002-01-02;TP.HCM;2002-02-24;Vườn Xoài;;;;;;;38;đường số 7;Tân Kiểng;Quận 7;Truyền Tin;;Giuse ;Ngô Đình Thành;0908310185;Giuse ;Hồ Thị Diễm Loan;0906807493
+1091;Đaminh;Võ Vũ Phương Nam;Nam;;2002-01-13;;;;;;;;;;;;;;;01682404409;;;;;;
+979;Maria;Phạm Thị Ngọc Ánh;Nữ;;2002-01-17;BRVT;2002-02-07;Hòa Thuận;2013-06-02;Hòa Thuận;2016-07-26;Hòa Thuận;2018-06-10;Mẫu Tâm;;;;;;;Giu-se ;Phạm Văn Vĩnh;;Giu-se ;Võ Thị Nhân;
 430;Têrêsa;Nguyễn Thị Thanh Huyền;Nữ;;2002-01-20;;2002-01-05;Tân Khẩn;2016-06-11;Mẫu Tâm;;;;;371;Nguyễn Thị Thập;Tân Quy;Quận 7;;;Phêrô ;Nguyễn Văn Chương;;Phêrô ;Phạm Thị Sáng;0985930733
 704;Maria;Trần Xuân An;Nữ;;2002-02-07;;;;2013-01-01;Tân Phú Hòa;;;;;791/23/10;Trần Xuân Soạn;Tân Hưng;Quận 7;;;;;;;;0908300459
 598;Têrêsa;Trần Nguyễn Hồng Ân;Nữ;;2002-02-15;TP.HCM;2002-08-25;Gia Định;2012-06-08;Mẫu Tâm;2015-06-12;Mẫu Tâm;;;3C/12B;đường số 2;Tân Kiểng;Quận 7;Thánh Mẫu;;;;;;;37716305
+38;Đaminh;Cao Nguyễn Hoàng Phi Hải;Nam;;2002-02-17;;;;;;;;;;;;;;;;;;;;;0909562514
 117;Maria;Hoàng Thị Phương Thảo;Nữ;;2002-02-20;;2002-05-09;Trại Lê;2013-07-28;Phú Xuân;2016-06-11;Mẫu Tâm;;;146A;Lê Văn Lương, ấp 2;Phước Kiển;Nhà Bè;La Vang Trung;;;;;;;0902563474
 178;Maria;Lê Ngọc Tuyền;Nữ;;2002-02-24;;2002-05-19;Mẫu Tâm;2012-06-08;Mẫu Tâm;2015-06-12;Mẫu Tâm;;;83/145;đường 17;Tân Quy;Quận 7;Truyền Tin;;;;;;;37716621
 13;Maria;Bùi Lê Anh Thư;Nữ;;2002-02-26;TP.HCM;2002-05-05;Mẫu Tâm;2011-06-10;Mẫu Tâm;2014-06-07;Mẫu Tâm;;;19;đường 23;Tân Quy;Quận 7;Mông Triệu;;;;;;;01268959672
 498;Antôn;Nguyễn Xuân Kỳ;Nam;;2002-03-11;;2002-04-14;Mẫu Tâm;2014-06-07;Mẫu Tâm;;;;;74A;đường 15;Tân Kiểng;Quận 7;Truyền Tin;;;;;;;0908159909
 694;Giuse;Trần Thanh Tùng;Nam;;2002-03-18;TP.HCM;2002-04-14;Mẫu Tâm;2012-06-08;Mẫu Tâm;2015-06-12;Mẫu Tâm;;;38/3;Huỳnh Tấn Phát;Tân Thuận Tây;Quận 7;Thánh Mẫu;;;;;;;0938232809
 238;Cécilia;Nguyễn Bảo Trâm;Nữ;;2002-04-15;TP.HCM;2002-05-19;Mẫu Tâm;2011-06-10;Mẫu Tâm;2014-06-07;Mẫu Tâm;;;873;Huỳnh Tấn Phát;Phú Thuận;Quận 7;;;;;0908182133;;;0907200745
+196;Martin;Lê Vĩnh Khang;Nam;;2002-04-18;;;;2011-06-10;Mẫu Tâm;2014-06-07;Mẫu Tâm;;;;;;;;;;;;;;0908083883
 120;Giuse;Hồ Quốc Bình;Nam;;2002-04-24;;2002-06-02;Mẫu Tâm;2012-06-08;Mẫu Tâm;2015-06-12;Mẫu Tâm;;;33;đường số 9;Tân Kiểng;Quận 7;Truyền Tin;;;;;;;37711795
 379;Helena;Nguyễn Phúc Hợp;Nam;;2002-04-26;TP.HCM;2002-06-09;Mẫu Tâm;2012-06-08;Mẫu Tâm;2015-06-12;Mẫu Tâm;;;3/66A;đường 47;Bình Thuận;Quận 7;Hằng Cứu Giúp;;;;;;;0913195392
 433;Matta;Nguyễn Lê Thanh Huyền;Nữ;;2002-04-26;TP.HCM;2014-06-06;Mẫu Tâm;2014-06-07;Mẫu Tâm;;;;;84/2;Trần Xuân Soạn;Tân Hưng;Quận 7;Mân Côi;;;Nguyễn Chung Hưng;0988641179;;Lê Thị Hằng;
@@ -200,6 +241,7 @@
 155;Vinh Sơn;Lê Duy Khương;Nam;;2002-07-19;;2002-09-15;Mẫu Tâm;2012-06-08;Mẫu Tâm;2015-06-12;Mẫu Tâm;;;68;đường 25;Tân Quy;Quận 7;Mông Triệu;;;;;;;0909211577
 139;Maria;Huỳnh Nguyễn Trúc Phương;Nữ;;2002-07-25;TP.HCM;2002-09-25;Cầu Kho;2012-06-08;Mẫu Tâm;2015-06-12;Mẫu Tâm;;;144;đường số 1;Tân Kiểng;Quận 7;Thánh Mẫu;;Vincente ;Huỳnh Văn Hưng;;Vincente ;Nguyễn Thị Hoa Huệ;0938053373
 477;Anna;Nguyễn Thanh Trân;Nữ;;2002-07-26;Đắk Lắk;;;2012-06-08;Mẫu Tâm;2015-06-12;Mẫu Tâm;;;334;Nguyễn Thị Thập;Tân Quy;Quận 7;Thăm Viếng;01635222144;;;;;;37717159
+217;Têrêsa;Nguyễn Thị Ánh Tuyết;Nữ;;2002-07-26;;;;2014-06-07;Mẫu Tâm;;;;;;;;;;;;Trương Văn Bình;;;Nguyễn Thi Thủy;01647995342
 52;Maria;Đinh Ngọc Hồng Đào;Nữ;;2002-07-28;TP.HCM;2004-08-01;Mẫu Tâm;2011-06-10;Mẫu Tâm;2014-06-07;Mẫu Tâm;;;259;Lê Văn Lương;Tân Quy;Quận 7;Lộ Đức;;;;;;;01697965697
 667;Anna;Trần Hoàng Thạch An;Nữ;;2002-07-31;TP.HCM;2002-09-01;Xóm Chiếu;2011-06-10;Mẫu Tâm;2014-06-07;Mẫu Tâm;;;183;đường 17;Tân Quy;Quận 7;Mông Triệu;;Vincent ;Trần Ngọc Thạch;;Vincent ;Hoàng Thị Ánh Nguyệt;37714949
 482;Maria;Nguyễn Ngọc Thanh Vy;Nữ;;2002-07-31;TP.HCM;2002-11-24;Mẫu Tâm;2012-06-08;Mẫu Tâm;2015-06-12;Mẫu Tâm;;;20;đường số 4;Tân Kiểng;Quận 7;Thánh Mẫu;;;;;;;0909452700
@@ -209,6 +251,8 @@
 223;Phêrô;Nguyễn Lương Bảo Huy;Nam;;2002-08-14;;;;;;;;;;119A;Lê Văn Lương, ấp 3;Phước Kiển;Nhà Bè;La Vang Trung;;;;;;;0909417182
 380;Maria;Nguyễn Ngọc Phương Khanh;Nữ;;2002-09-07;;2002-10-13;Mẫu Tâm;2012-06-08;Mẫu Tâm;2015-06-12;Mẫu Tâm;;;95/34/10;Lê Văn Lương;Tân Kiểng;Quận 7;Lộ Đức;;;;;;;01219873435
 398;Giuse;Nguyễn Quang Minh;Nam;;2002-09-17;Đồng Hiệp;2002-11-03;Đồng Hiệp;2013-06-09;Mẫu Tâm;2016-06-11;Mẫu Tâm;;;527/130E;Lê Văn Lương, ấp 1;Phước Kiển;Nhà Bè;La Vang Hạ;;Giuse ;Nguyễn Văn Tùng;0903375128;Giuse ;Nguyễn Thùy Trang;01212389100
+1092;Matta;Dương Thị Thanh Liêm;Nữ;;2002-09-17;Đồng Tháp;2002-11-30;An Long;2014-07-06;Mẫu Tâm;2017-12-06;Mẫu Tâm;;;;;;;;;Stephano ;Duong Thanh Tú;0961952272;Stephano ;Trần lệ Hồng;09350911941
+1124;;Ngô Đặng Tường Vy;Nữ;;2002-09-23;TP.HCM;;;;;;;;;;;;;;;Phero ;Ngô Văn Hải;0908333392;Phero ;Đặng Thị Nhung;0903026220
 269;Maria;Nguyễn Gia Hân;Nữ;;2002-09-26;;;;2014-06-07;Mẫu Tâm;;;;;14;đường 30;Tân Phong;Quận 7;Thăm Viếng;;;;;;;54330329
 523;Maria;Phạm Nguyễn Đoan Thùy;Nữ;;2002-10-01;TP.HCM;2002-11-03;Bình An;2011-06-10;Mẫu Tâm;2014-06-07;Mẫu Tâm;;;9B;đường 21;Tân Quy;Quận 7;Mông Triệu;;;;;;;0913750825
 339;Maria;Nguyễn Mai Thụy;Nữ;;2002-10-01;TP.HCM;;;2012-06-08;Mẫu Tâm;2015-06-12;Mẫu Tâm;;;167/5;Lê Văn Lương;Tân Kiểng;Quận 7;Mông Triệu;0909154427;;;;;;0918148200
@@ -235,10 +279,12 @@
 726;Maria;Vũ Ngọc Kim Anh;Nữ;;2002-12-21;;2003-01-19;Xóm Chiếu;2011-06-26;Xóm Chiếu;2013-06-30;Xóm Chiếu;;;70;đường 11;Tân Kiểng;Quận 7;;;;;;;;0907069195
 378;Đôminicô;Nguyễn Phong Hào;Nam;;2002-12-24;An Giang;2002-03-01;Cái Đôi;2015-06-12;Mẫu Tâm;;;;;196;Lê Văn Lương;Tân Hưng;Quận 7;Mân Côi;;Phêrô ;Nguyễn Thúc Thuần;0903166498;Phêrô ;Nguyễn Kim Tuyền;01204400656
 671;Giuse;Trần Vũ Tùng Dương;Nam;;2002-12-24;Thanh Hóa;2006-05-20;Mẫu Tâm;2016-06-11;Mẫu Tâm;;;;;43A;đường 19;Tân Quy;Quận 7;Mông Triệu;;;;;;Vũ Thị Tịnh;0978937815
+152;Fx;Lê Bá Phúc;Nam;;2003-01-01;;2011-05-11;Bình Ba;2015-06-21;Bình Xuyên;;;;;;;;;;;;;;;;0903723766
 508;Maria;Nguyễn Thị Yến Vĩ;Nữ;;2003-01-20;TP.HCM;2016-06-05;Mẫu Tâm;2016-06-11;Mẫu Tâm;;;;;12/15;Lê Văn Lương;Tân Hưng;Quận 7;Mân Côi;;Phêrô ;Nguyễn Thanh Hùng;01688850380;Phêrô ;Nguyễn Thị Cẩm Thúy;01265453772
 1046;Anê;Tăng Ngọc Phương Đông;Nữ;;2003-01-21;TP.HCM;2003-12-07;Thủ Ngữ;;;;;;;148/12/50/5/3;Tôn Đản;Phước Kiển;Nhà Bè;;;Phero ;Tăng Hán Huệ;0976191393;Phero ;Nguyễn Thị Hồng Thảo;01696520540
 435;Đaminh;Nguyễn Tuấn Khải;Nam;;2003-01-31;TP.HCM;2003-04-13;Mẫu Tâm;2013-06-09;Mẫu Tâm;;;;;152;đường 47;Tân Quy;Quận 7;Hằng Cứu Giúp;;;Nguyễn Tuấn Anh;;;Nguyễn Thị Bích Ngọc;37716767
 739;Phaolô;Võ Nguyên Phúc;Nam;;2003-01-31;;2007-11-04;Tân Phước;2013-06-09;Mẫu Tâm;;;;;17/51;đường 37;Tân Quy;Quận 7;Hằng Cứu Giúp;;;;;;;01225086060
+645;Laurenso;Trần Phát Huy;Nam;;2003-02-15;TP.HCM;2003-03-03;Vĩnh Hội;2012-01-06;Xóm Chiếu;2016-11-06;Mẫu Tâm;;;;;;;;;Alonso ;Trần Văn Mẫn;074614821;Alonso ;Lưu Kim Chi;0902380963
 580;Phêrô;Trần Nguyễn Duy Bảo;Nam;;2003-02-15;TP.HCM;2003-04-20;Mẫu Tâm;2012-06-08;Mẫu Tâm;2015-06-12;Mẫu Tâm;;;150;đường số 1;Tân Kiểng;Quận 7;Thánh Mẫu;;;;;;;37714985
 417;Giuse;Nguyễn Thành Công;Nam;;2003-02-15;TP.HCM;2003-06-04;Vĩnh Hòa;2013-06-09;Mẫu Tâm;2017-12-06;Mẫu Tâm;;;20;đường số 2;Tân Quy;Quận 7;Thánh Mẫu;;Giuse ;Nguyễn Văn Bằng;0907103445;Giuse ;Nguyễn Thị Thanh Hiếu;0903952039
 834;Maria;Phạm Uyên Thy;Nữ;;2003-02-16;TP.HCM;2003-04-27;Thị Nghè;2018-06-13;Mẫu Tâm;;;;;B135;số 7, KDC Kim Sơn;Tân Phong;Q.7;Thăm Viếng;;Stephano ;Phạm Văn Phước;0903622720;Stephano ;Phạm thị Y Uyên;0909288576
@@ -250,6 +296,7 @@
 42;Anna;Đoàn Vũ Anh Thư;Nữ;;2003-03-21;TP.HCM;2003-04-21;Mẫu Tâm;2013-06-09;Mẫu Tâm;2016-06-11;Mẫu Tâm;;;280/12A4/2;Lê Văn Lương;Tân Hưng;Quận 7;Thăm Viếng;;Antôn ;Đoàn Duy Linh;;Antôn ;Vũ Thị Phương Thúy;37713585
 450;Emmanuel;Nguyễn Thanh Thiện Nhân;Nam;;2003-03-25;;;;2014-06-07;Mẫu Tâm;;;;;746C;Huỳnh Tấn Phát;Tân Phú;Quận 7;Ngoài Xứ;;;;;;;01664195007
 489;Maria;Nguyễn Ngọc Vân Anh;Nữ;;2003-04-02;TP.HCM;2003-05-04;Mẫu Tâm;2015-06-12;Mẫu Tâm;;;;;65;đường 13;Tân Kiểng;Quận 7;Truyền Tin;;Phaolô ;Nguyễn Chí Bình;;Phaolô ;Nguyễn Thị Mai Thảo;0909795419
+2;Phanxicô;Nguyễn Thế Anh;Nam;;2003-04-15;Vĩnh Long;2003-05-15;An Hiệp;;;;;;;;;;;;;Phanxicô ;Nguyễn Huy Hùng;0902433541;Phanxicô ;Nguyễn Vũ Hồng Trâm;
 521;Giuse;Phạm Duy Khánh;Nam;;2003-04-17;TP.HCM;2003-06-08;Mẫu Tâm;2015-06-12;Mẫu Tâm;;;;;730/2;Huỳnh Tấn Phát;Tân Phú;Quận 7;;;Tôma ;Phạm Văn Doanh;0935393915;Tôma ;Nguyễn Thị Nga;01666158403
 396;Phaolo;Nguyễn Quốc Huy;Nam;;2003-04-25;;2012-06-01;Mẫu Tâm;2012-06-08;Mẫu Tâm;2015-06-12;Mẫu Tâm;;;150;đường số 1;Tân Kiểng;Quận 7;Thánh Mẫu;;;;;;;37714985
 400;Maria;Nguyễn Thanh Quỳnh Như;Nữ;;2003-04-27;TP.HCM;2002-05-25;Mẫu Tâm;2012-06-08;Mẫu Tâm;2015-06-12;Mẫu Tâm;;;135;đường 79;Tân Quy;Quận 7;Vô Nhiễm;02854332609;;;;;;24332609
@@ -267,6 +314,7 @@
 18;Têrêsa;Bùi Hiên Chi;Nữ;;2003-07-01;Thái Bình;2003-07-09;Bác Trạch;2012-06-08;Mẫu Tâm;2015-06-12;Mẫu Tâm;;;284;Lê Văn Lương;Tân Hưng;Quận 7;Mân Côi;;;;0918982852;;;62716546
 659;Anna;Trương Quỳnh Giao;Nữ;;2003-07-08;TP.HCM;2017-10-06;Mẫu Tâm;2017-12-06;Mẫu Tâm;;;;;108/7/1;Lê Văn Lương;Tân Hưng;Quận 7;;;Giuse ;Nguyễn Văn Xuân;0903853722;Giuse ;Trương Thị Thu Trang;01227445706
 701;Giuse;Trần Văn Hoàn;Nam;;2003-07-16;Thanh Hóa;2003-07-09;Nghi Sơn - Thanh Hóa;2016-11-06;Mẫu Tâm;2019-12-06;Mẫu Tâm;;;174/17;Lê Văn Lương;Tân Hưng;Quận 7;Mân Côi;;Phêrô ;Trần Văn Điệu;0367208875;Phêrô ;Phan Thị Bình;0359762017
+486;Phaolô;Nguyễn Ngọc Thái Yu;Nam;;2003-07-31;TP.HCM;2005-04-09;Vườn Xoài;2014-06-07;Mẫu Tâm;;;;;;;;;;;;;;;Madalena Nguyễn Thị Thu Uyên;0918733700
 513;Têrêsa;Phạm Thị Bích Ngân;Nữ;;2003-08-04;TP.HCM;2003-09-14;Mẫu Tâm;2013-06-09;Mẫu Tâm;2016-06-11;Mẫu Tâm;;;45;Lê Văn Lương;Tân Kiểng;Quận 7;Lộ Đức;;Giuse ;Phạm Đức Vượng;;Giuse ;Têrêsa Trần Thị Ánh Tuyết;0907144545
 711;Anê;Vũ Phan Cát Tường;Nữ;;2003-08-11;TP.HCM;2003-09-07;Hòa Hưng;2013-06-09;Mẫu Tâm;2016-06-11;Mẫu Tâm;;;13-E2-9;Sky Garden 3, Phú Mỹ Hưng;Tân Phong;Quận 7;La Vang Thượng;;;Vũ Đình Cường;0913915822;;Phan Thị Quỳnh Mai;0918299612
 138;Maria;Hoàng Thị Thanh Phương;Nữ;;2003-08-21;TP.HCM;2003-09-14;Mẫu Tâm;2012-06-08;Mẫu Tâm;2015-06-12;Mẫu Tâm;;;675/28;Trần Xuân Soạn;Tân Hưng;Quận 7;Mân Côi;;;;;;;5393893
@@ -295,6 +343,7 @@
 154;Vinh Sơn;Lê Minh Đăng Khoa;Nam;;2003-11-05;TP.HCM;2003-12-07;Mẫu Tâm;2013-06-09;Mẫu Tâm;2016-06-11;Mẫu Tâm;;;100;đường 13;Tân Kiểng;Quận 7;Truyền Tin;;GBt ;Lê Ngọc Tuấn;;GBt ;Têrêsa Lâm Thị Ngọc Minh;0918542741
 436;Maria;Nguyễn Thị Thuỳ Linh;Nữ;;2003-11-07;Thái Bình;2003-11-19;Bác Trạch;2012-06-08;Mẫu Tâm;2015-06-12;Mẫu Tâm;;;271/91/1;Lê Văn Lương;Tân Quy;Quận 7;Vô Nhiễm;;;;;;;5393888
 88;Phêrô;Đặng Thanh Toàn;Nam;;2003-11-13;TP.HCM;;;2014-06-07;Mẫu Tâm;;;;;67;đường 25;Tân Quy;Quận 7;Mông Triệu;;;;;;;01653747648
+64;Giuse;Đoàn Vũ Minh Hoàng;Nam;;2003-11-16;Đồng Nai;2004-01-04;Ngũ Phúc;2013-06-16;Thiên Ân;;;;;;;;;;;Giuse ;Đoàn Giáo Tuấn;;Giuse ;Vũ Thị Mai;01203787847
 97;Maria;Hồ Lê Cẩm Ly;Nữ;;2003-11-19;TP.HCM;2013-06-02;Mẫu Tâm;2013-06-09;Mẫu Tâm;2016-06-11;Mẫu Tâm;;;11/2;Lê Văn Lương;Tân Hưng;Quận 7;Mân Côi;;Mathêu ;Hồ Hồng Hải;;Mathêu ;Lê Thị Thảo Lý;0913682451
 672;Anna;Tatlock Eva;Nữ;;2003-11-22;;2004-01-04;Cầu Ông Lãnh;2013-06-09;Mẫu Tâm;;;;;12/12B;đường số 2;Tân Kiểng;Quận 7;Thánh Mẫu;;;;;;;37751618
 222;Đaminh;Nguyễn Bảo Duy;Nam;;2003-12-09;Đồng  Nai;2004-01-01;Hố Nai;2014-06-07;Mẫu Tâm;;;;;100;Lê Văn Lương;Phước Kiển;Nhà Bè;;;;;;;;097127730
@@ -311,9 +360,11 @@
 105;Maria;Huỳnh Nguyễn Kim Ngân;Nữ;;2004-02-14;TP.HCM;2004-04-18;Mẫu Tâm;2015-06-12;Mẫu Tâm;;;;;389/15B;Lê Văn Lương;Phước Kiển;Nhà Bè;La Vang;0918206954;Phêrô ;Huỳnh Trung Hưng;0919992426;Phêrô ;Lucia Nguyễn Thị Kim Hương;01265557527
 440;GBt Maria;Nguyễn Thái Minh;Nam;;2004-02-18;TP.HCM;2004-04-04;Đa Kao;2014-06-07;Mẫu Tâm;;;;;B1-89;Mỹ Thái 1, Phú Mỹ Hưng;Tân Phú;Quận 7;Vô Nhiễm;;GBt ;Nguyễn Thế Dân;0918206945;GBt ;Đỗ Bình Nguyên;0988513835
 206;Giuse;Nguyễn Hoàng Anh Minh;Nam;;2004-02-24;TP.HCM;2004-03-24;Thuận Phát;2014-06-07;Mẫu Tâm;;;;;84;đường 43;Tân Quy;Quận 7;Hằng Cứu Giúp;;;;;;;0938005118
+348;Phêrô;Nguyễn Minh Tấn;Nam;;2004-02-24;TP.HCM;2004-07-26;Thuận Phát;2014-06-07;Mẫu Tâm;;;;;;;;;;;;;0908129790;;;0939437239
 415;Clémentime;Nguyễn Ngọc Thiên Ân;Nữ;;2004-02-27;TP.HCM;2004-03-28;Mẫu Tâm;2013-06-09;Mẫu Tâm;2016-06-11;Mẫu Tâm;;;109;Phan Huy Thực;Tân Kiểng;Quận 7;Thánh Mẫu;;Phaolô ;Nguyễn Khắc Thọ;0903623473;Phaolô ;Ngô Anh Phương Thảo;0908727575
 159;Têrêsa;Lê Gia Hiếu;Nữ;;2004-03-01;TP.HCM;2016-06-05;Mẫu Tâm;2016-06-11;Mẫu Tâm;;;;;95/47;Lê Văn Lương;Tân Kiểng;Quận 7;Lộ Đức;;;;0903028525;;Lê Thị Hồng Yến;0902506313
 110;Maria Giuse;Huỳnh Đỗ Nguyên Đan;Nữ;;2004-03-03;TP.HCM;;;2015-06-12;Mẫu Tâm;;;;;48;Đào Sư Tích;Phước Kiển;Nhà Bè;La Vang Trung;;;Huỳnh gọc Ba;;;Martin Đỗ Thị Thái Diễm;0908122303
+841;Maria;Ngô Quỳnh Phương Anh;Nữ;;2004-03-05;TP.HCM;2004-05-02;Lạc Quang;2013-05-26;Lạc Quang;;;;;;Sunrise City, 27 Nguyễn Hữu Thọ;Tân Hưng;Quận 7;;;Giuse ;Ngô Mạnh Lực;;Giuse ;Nguyễn Thị Tuyết Trinh;092302545
 696;Maria;Trương Vũ Thanh Trúc;Nữ;;2004-03-22;TP.HCM;2004-01-05;Gò Vấp;2014-07-06;Mẫu Tâm;2017-12-06;Mẫu Tâm;;;13/53A;đường số 10;Tân Quy;Quận 7;Mông Triệu;;;Trương Văn Khoa;0984809834;;Vũ Mộng Huyền Trang;01264851018
 90;Tôma;Đặng Thái Tuấn;Nam;;2004-03-31;;2004-05-02;Mẫu Tâm;2015-06-12;Mẫu Tâm;;;;;112;đường 17;Tân Kiểng;Quận 7;Hằng Cứu Giúp;;;;;;;01285674546
 533;Têrêsa;Phan Hồng Phương;Nữ;;2004-03-31;TP.HCM;2004-02-05;Mẫu Tâm;2016-11-06;Mẫu Tâm;2019-12-06;Mẫu Tâm;;;47;đường 37;Tân Quy;Quận 7;;;Phêrô ;Phan Văn Hồng;;Phêrô ;Nguyễn Thị Thúy;0978739009
@@ -332,15 +383,23 @@
 227;Giuse;Nguyễn Bảo Lâm;Nam;;2004-05-22;;2004-10-10;Ngưỡng Nhân;;;;;;;159;Lê Văn Lương;Phước Kiển;Nhà Bè;;;Giuse ;Nguyễn Văn Sơn;;Giuse ;Nguyễn Thu Hương;0984023256
 504;Giuse;Nguyễn Võ Xuân Triều;Nam;;2004-05-28;;2004-10-10;Mẫu Tâm;2014-06-07;Mẫu Tâm;;;;;38;đường 17;Tân Kiểng;Quận 7;Truyền Tin;;;;;;;0908188206
 564;;Phạm Đỗ Tú Quyên;Nữ;;2004-06-02;;;;2014-06-07;Mẫu Tâm;;;;;A507;chung cư Quốc Cường;Tân Kiểng;Quận 7;Lộ Đức;;;;;;;0908017336
+519;Giuse;Phùng Trần Đăng Khoa;Nam;;2004-06-02;TP.HCM;2004-07-04;Đức Mẹ Hằng Cứu Giúp;2014-06-07;Mẫu Tâm;;;;;;;;;;;Phaolô ;Phụng Kim Hạnh;0913928498;Phaolô ;Trần Thị Anh;0918264619
 675;Giuse;Trịnh Tuấn Kiệt;Nam;;2004-06-05;Ninh Bình;2004-07-03;Phát Diệm;2015-06-12;Mẫu Tâm;;;;;533;Nguyễn Thị Thập;Tân Phong;Quận 7;Thăm Viếng;;Giuse ;Trịnh Văn Bằng;0985146203;Giuse ;Nguyễn Thị Hường;0977996860
 66;Maria;Đỗ Nguyễn Ngọc Châu;Nữ;;2004-06-05;Khánh Hòa;2016-06-05;Mẫu Tâm;2016-06-11;Mẫu Tâm;;;;;11A;đường số 8, Lý Thục Man;Bình Thuận;Quận 7;Ngoài Xứ;;;;;;Nguyễn Thụy Thu Oanh;0909912639
+369;;Nguyễn Nhật Tân;Nam;;2004-06-16;;;;;;;;;;;;;;;;;;;;;
 612;Maria;Trần Hà Khánh Linh;Nữ;;2004-06-27;TP.HCM;;;;;;;;;11;Bế Văn Cấm;Tân Kiểng;Quận 7;;;Vincent ;Trần Đình Long;;Vincent ;Hà Thị Hồng Thắm;0903727801
+506;Maria Mônica;Nguyễn Quốc Yên Khê;Nữ;;2004-07-03;;2004-04-28;Vườn Xoài;;;;;;;;;;;;;;;;;;
 434;Têrêsa;Nguyễn Hoàng Thiên Kim;Nữ;;2004-07-05;TP.HCM;2004-10-10;Mẫu Tâm;;;;;;;125A;đường 79;Tân Quy;Quận 7;Vô Nhiễm;;Phêrô ;Nguyễn Minh Tiền;;Phêrô ;Dương Phương Thảo;0933237372
+1127;;Kỳ Ngọc Lý;Nam;;2004-07-08;TP.HCM;;;;;;;;;;;;;;;Gioan ;Nguyễn Văn Hiền;0937381370;Gioan ;Kỳ Thị Mỹ Hạnh;0905614728
 563;Micae;Phan Võ Thành Nhân;Nam;;2004-07-10;TP.HCM;2004-08-22;Mẫu Tâm;2013-06-09;Mẫu Tâm;2016-06-11;Mẫu Tâm;;;24;đường 21;Tân Quy;Quận 7;Mông Triệu;;;Phan Tấn Nông;;;Nguyễn Thị Mùi;01689688339
+744;Phaolô;Võ Quang Thắng;Nam;;2004-07-11;TP.HCM;;;2014-06-07;Mẫu Tâm;;;;;;;;;;;;;0903925996;;;0966990088
+745;GBt;Vũ Đinh Quang Tiến;Nam;;2004-07-16;;;;2014-06-22;Thiên Ân;;;;;;;;;;;;;;;;0933678727
+693;Têrêsa;Trần Thanh Thảo;Nữ;;2004-07-16;TP.HCM;2005-03-03;Minh Hòa;2014-07-06;Mẫu Tâm;2017-12-06;Mẫu Tâm;;;;Huỳnh Tấn Phát;;Nhà Bè;;;Tôma ;Trần Công Hoan;0937552362;Tôma ;Lê Thị Ngọc Trang;0907557550
 240;GBt;Nguyễn Hoàng Bá Thông;Nam;;2004-07-22;TP.HCM;2006-06-04;Bắc Hà;2013-06-09;Mẫu Tâm;2016-06-11;Mẫu Tâm;;;256C;Cống Quỳnh;Phạm Ngũ Lão;Quận 1;Ngoài Xứ;;Giuse ;Nguyễn Văn Hoàng;;Giuse ;Phạm Thị Phượng Hồng;0903620990
 200;Matta;Mai Bảo Hân;Nữ;;2004-07-29;TP.HCM;2004-09-12;Đức Mẹ Hằng Cứu Giúp;;;;;;;197/1C;Lê Văn Lương, ấp 3;Phước Kiển;Nhà Bè;;;Giuse ;Mai Kim Đỉnh;;Giuse ;Ngô Hồng Hái;0903877725
 45;Fx;Đinh Bảo Toàn;Nam;;2004-07-29;TP.HCM;2015-06-07;Mẫu Tâm;2015-06-12;Mẫu Tâm;;;;;466;Nguyễn Thị Thập;Tân Quy;Quận 7;Vô Nhiễm;;;Đinh Văn Tuấn;;;Nguyễn Thị Kiều Oanh;0907819481
 148;;Kỳ Ngọc Lý;Nam;;2004-08-07;;;;;;;;;;108/40/10;Lê Văn Lương;Tân Hưng;Quận 7;Mân Côi;;;;;;;0937381370
+637;GBt;Trần Lâm Nhật Tiến;Nam;;2004-08-07;Trà Vinh;2004-10-04;Mặc Bắc;;;;;;;;;;;;;Giuse ;Trần Văn Đi;;Giuse ;Lâm Ngọc Thanh;0909274298
 443;Matta;Nguyễn Trần Trúc Nguyên;Nữ;;2004-08-07;TP.HCM;2005-03-07;Bình Xuyên;2014-06-07;Mẫu Tâm;2017-12-06;Mẫu Tâm;;;hẻm 591;Trần Xuân Soạn;Tân Hưng;Q.7;Ngoài Xứ;;;Trần Văn Huy;01226937769;;Nguyễn Thị Mộng Diễm;01207244792
 453;GBt;Nguyễn Thanh Phong;Nam;;2004-08-07;TP.HCM;2004-09-12;Phú Hải;2014-07-27;Phú Hải;;;;;60;đường 33;Tân Kiểng;Quận 7;;;;;;;;0909688304
 329;Đôminicô;Nguyễn Minh Kha;Nam;;2004-08-10;Bảo Lộc;2004-03-10;Bảo Lộc;2016-11-06;Mẫu Tâm;2019-12-06;Mẫu Tâm;;;căn hộ T2 12B 05;35/12 Bế Văn Cấm, chung cư Mone;Tân Kiểng;Quận 7;Lộ Đức;;;Nguyễn Văn Chính;0387795285;;Trịnh Thị Hoa Phượng;0908446126
@@ -368,10 +427,12 @@
 303;Giuse;Nguyễn Nam Khôi Nguyên;Nam;;2004-11-02;;;;2014-06-07;Mẫu Tâm;;;;;29B;đường 67, khu Tân Quy Đông;Tân Phong;Quận 7;Thăm Viếng;;;;;;;0983415403
 698;Maria;Trần Thảo Uyên;Nữ;;2004-11-09;TP.HCM;2004-02-15;Mẫu Tâm;2015-06-12;Mẫu Tâm;;;;;253B;Lê Văn Lương;Tân Quy;Quận 7;Lộ Đức;;;;;;;0909606334
 678;Maria Goretti;Trương Phúc Thảo Minh;Nữ;;2004-11-11;TP.HCM;2004-12-05;Mẫu Tâm;2013-06-09;Mẫu Tâm;2016-06-11;Mẫu Tâm;;;135;đường 79;Tân Quy;Quận 7;Vô Nhiễm;;Phêrô ;Trương Minh Đức;;Phêrô ;Phạm Thị Thảo Sương;0909754210
+724;Anna;Võ Huyền Trân;Nữ;;2004-11-15;;;;2014-06-07;Mẫu Tâm;;;;;;;;;;;;;;;;0908802873
 543;Antôn;Phạm Minh Quân;Nam;;2004-11-15;TP.HCM;2005-01-02;Mẫu Tâm;2015-06-12;Mẫu Tâm;;;;;14;đường 19;Tân Quy;Quận 7;Mông Triệu;;Phêrô ;Phạm Ngọc Quang;;Phêrô ;Nguyễn Thị Ngân Hà;0939386316
 91;Têrêsa;Đặng Vân Nhi;Nữ;;2004-11-21;TP.HCM;2005-06-03;Mẫu Tâm;2014-07-06;Mẫu Tâm;2017-12-06;Mẫu Tâm;;;68/29;đường 25;Tân Quy;Q.7;Hằng Cứu Giúp;0964523030;Phanxico ;Đặng Đức Huy;0903600681;Phanxico ;Trương Thị Thùy Nhung;01223069459
 963;Giuse;Nguyễn Toàn Thiện;Nam;;2004-11-23;Hà nội;2006-04-30;Kẻ Chuôn;2019-12-06;Mẫu Tâm;;;;;CC HAGL 2;769-783 Trần Xuân Soạn;Tân hưng;;Đức Mẹ Phù Hộ;;Phaolô ;Nguyễn Toàn Thắng;0915539468;Phaolô ;Vũ Thị Hồng;0915621493
 22;Vincent;Bùi Bá Minh Đăng;Nam;;2004-12-04;;2005-01-02;Bình Hòa;2013-06-08;Gia Định;2016-06-11;Mẫu Tâm;;;174/46;Chu Văn An;Phường 12;Bình Thạnh;Ngoài Xứ;;;;;;;0909721912
+623;Giuse;Trương Minh Phước;Nam;;2004-12-07;;;;;;;;;;;;;;;;;;;;;0988724430
 141;;Hồ Đắc Trường Thành;Nam;;2004-12-08;;2014-12-28;Thuận Phát;;;;;;;82;đường 21;Tân Quy;Quận 7;Mông Triệu;;;Hồ Đắc Trường Vũ;;;Nguyễn Thị Kim Oanh;0985107848
 297;Đaminh;Nguyễn Hoàng Vũ;Nam;;2004-12-10;Kiên Giang;2005-05-01;Thánh Phaolô;2014-08-03;Thánh Phaolô;;;;;791/23/7F;Trần Xuân Soạn;Tân Hưng;Quận 7;Đức Mẹ Phù Hộ;;;;;;;0919534323
 595;Maria;Trần Gia Linh;Nữ;;2004-12-12;;;;2014-06-07;Mẫu Tâm;;;;;43;đường 19;Tân Quy;Quận 7;Mông Triệu;;;;;;;0937974269
@@ -392,6 +453,7 @@
 590;Giuse;Trần Võ Gia Huy;Nam;;2005-02-13;TP.HCM;2005-12-06;Tân Châu;2015-12-06;Mẫu Tâm;2018-06-13;Mẫu Tâm;;;150/23G;Đào Sư Tích;ấp 2, Phước Lộc;Nhà Bè;La Vang Thượng;;Giuse ;Trần Phước Tuấn;01696007946;Giuse ;Võ Thị Phương Thảo;01689254582
 41;Maria;Đặng Ngọc Anh Thư;Nữ;;2005-02-15;Trà Vinh;2005-01-05;Mẫu Tâm;2016-11-06;Mẫu Tâm;2019-12-06;Mẫu Tâm;;;675/15/12D;Trần Xuân Soạn;Tân Hưng;Q.7;Đức Mẹ Phù Hộ;;;Đặng Văn Sạch;;;Đặng Thị Loan;0938677178
 822;Anna;Nguyễn Lê Anh Thư;Nữ;;2005-02-16;Đồng Nai;2005-03-27;Chánh Tòa Xuân Lộc;2015-06-06;Gò Mây;2019-12-06;Mẫu Tâm;;;B1505;HAGL 2, Trần Xuân Soạn;Tân Hưng;Quận 7;Đức Mẹ Phù Hộ;;Gioan ;Nguyễn Quốc Tú;0989108676;Gioan ;Lê Thị Hiền;0983228847
+167;Fx;Lê Bá Khánh Toàn;Nam;;2005-03-02;;2011-05-01;Bình Ba;;;;;;;;;;;;;;;;;;0903723766
 247;Giuse;Nguyễn Duy Đạt;Nam;;2005-03-05;Thanh Hóa;2018-03-27;Tam Tổng;2015-12-06;Mẫu Tâm;2018-06-13;Mẫu Tâm;;;77/34;đường 25A;Tân Quy;Q.7;Hằng Cứu Giúp;;Giuse ;Nguyễn Văn Mạnh;0937670245;Giuse ;Trần Thị Hà;0903141130
 393;Phanxicô Xavie;Nguyễn Quang Huy;Nam;;2005-03-10;TP.HCM;2005-05-15;Môi Khôi;2015-12-06;Mẫu Tâm;2018-06-13;Mẫu Tâm;;;527/130E;Lê Văn Lương;Phước Kiển;Nhà Bè;La Vang Hạ;;Giuse ;Nguyễn Văn Tùng;0903375128;Giuse ;Nguyễn Thùy Trang;0792389100
 389;Phaolô;Nguyễn Hoàn Quốc Anh;Nam;;2005-03-17;TP.HCM;2005-05-15;Môi Khôi;2014-06-07;Mẫu Tâm;;;;;33;Bùi Văn Ba;Tân Thuận Đông;Quận 7;;;Phaolô ;Nguyễn Như Tân;;Phaolô ;Đoàn Thị Thu Tuyết;0902575138
@@ -399,9 +461,11 @@
 426;Giuse;Nguyễn Tuấn Duy;Nam;;2005-03-25;TP.HCM;2006-06-03;Thiên Ân;2015-06-12;Mẫu Tâm;;;;;148;đường số 1;Tân Kiểng;Quận 7;Thánh Mẫu;;Giuse ;Nguyễn Hoàng Tuấn;0902375607;Giuse ;Nguyễn Thị Thu Nguyệt;
 634;Anna;Trần Thị Ngọc Như;Nữ;;2005-03-29;;;;2014-06-07;Mẫu Tâm;;;;;293/28;Trần Xuân Soạn;Tân Hưng;Quận 7;Mân Côi;;Phêrô ;Trần Ngọc Đức;;Phêrô ;Trần Thị Hồng;0933737025
 271;Giuse;Nguyễn Hoàng Gia Long;Nam;;2005-04-10;;;;;;;;;;300/50;Nguyễn Văn Linh;Bình Thuận;Quận 7;La Vang;;;;;;;0903323422
+338;Phaolô;Nguyễn Đức Minh Quân;Nam;;2005-04-10;;2005-05-06;Mẫu Tâm;2016-11-06;Mẫu Tâm;2019-12-06;Mẫu Tâm;;;;;;;;;Giuse ;Nguyễn Đức Thuận;0903355855;Giuse ;Nguyễn Minh Toàn;0908388588
 497;Phaolô;Nguyễn Xuân Đạt;Nam;;2005-04-12;TP.HCM;2005-03-07;Gia Định;2016-11-06;Mẫu Tâm;2019-12-06;Mẫu Tâm;;;85;đường 30, khu Tân Quy Đông;Tân Phong;Quận 7;Thăm Viếng;;Phero ;Nguyễn Xuân Thịnh;0913662558;Phero ;Nguyễn Lâm Hồng Anh;0938004468
 377;Maria;Nguyễn Thị Phương Hằng;Nữ;;2005-04-17;TP.HCM;2005-06-05;Mẫu Tâm;2015-06-12;Mẫu Tâm;;;;;138;Lâm Văn Bền;Tân Quy;Quận 7;;;;;;;;0906603111
 602;Luca;Trần Hoàng Dũng;Nam;;2005-04-20;;;;;;;;;;42D;Tôn Thất Thuyết;Phường 16;Quận 4;Ngoài Xứ;;;;;;;37712233
+248;GBt;Nguyễn Đức Sơn Hải;Nam;;2005-04-23;TP.HCM;2005-05-29;Minh Đức;2016-11-06;Mẫu Tâm;2019-12-06;Mẫu Tâm;;;;;;;;;Phaolo ;Nguyễn Khắc Bính;0932734522;Phaolo ;Nguyễn Thị Trang;
 603;Martin;Trịnh Hoàng Gia;Nam;;2005-04-25;TP.HCM;2006-03-05;Mẫu Tâm;2015-06-12;Mẫu Tâm;;;;;18;đường 23;Tân Quy;Quận 7;Mông Triệu;;;;;;;0908616134
 144;Têrêsa;Huỳnh Thanh Trúc;Nữ;;2005-04-26;TP.HCM;2005-03-07;Bình Xuyên;2016-11-06;Mẫu Tâm;2019-12-06;Mẫu Tâm;;;418;KDC Phước Kiển, ấp 5, Lê Văn Lương;;Nhà Bè;;0974091548;Antôn ;Nguyễn Anh Tài;0902209330;Antôn ;Huỳnh Thị Kim Liên;0901448216
 122;Gioan;Hà Quốc Triệu;Nam;;2005-05-04;Bảo Lộc;2005-05-06;Hòa Phát;;;;;;;12A;Lê Văn Lương;Tân Hưng;Quận 7;;;Phanxicô ;Hà Dương Hoàng Giang;;Phanxicô ;Lê Thị Tố Hà;0931637375
@@ -411,10 +475,12 @@
 712;Maria;Võ Trần Thị Cẩm Tú;Nữ;;2005-05-31;TP.HCM;2005-07-06;Xóm Chiếu;2014-07-06;Mẫu Tâm;2017-12-06;Mẫu Tâm;;;54/27A;Lê Văn Lương;Tân Hưng;Quận 7;Mân Côi;;Giuse ;Võ Châu Kỳ;0907019036;Giuse ;Trần Thị Mỹ Ngọc;
 729;Giuse;Võ Minh Nhật;Nam;;2005-06-01;Bình Dương;2005-07-08;Tân Thới;2015-12-06;Mẫu Tâm;2018-06-13;Mẫu Tâm;;;74;đường 40, khu Tân Quy Đông;Tân Phong;Quận 7;Thăm Viếng;;;;;;Võ Thị Mộng Loan;01686978979
 376;Giuse;Nguyễn Phúc Điền;Nam;;2005-06-02;TP.HCM;2005-03-07;Mẫu Tâm;2015-12-06;Mẫu Tâm;2018-06-13;Mẫu Tâm;;;34/7;đường 25A;Tân Quy;Quận 7;Hằng Cứu Giúp;;Phero ;Nguyễn Văn Ninh;0903777619;Phero ;Nguyễn Thị Thùy Trang;0908663246
+624;Anna;Trần Minh Thư;Nữ;;2005-06-03;;;;2015-06-12;Mẫu Tâm;;;;;;;;;;;;;;;;0918632220
 419;Phaolô;Nguyễn Tấn Đạt;Nam;;2005-06-07;Nha Trang;2005-08-07;Hộ Diêm;;;;;;;283/9;Lê Văn Lương;Tân Quy;Quận 7;;;Giacôbê ;Nguyễn Ngọc Đỉnh;;Giacôbê ;Nguyễn Thị Thúy Phượng;0983131228
 552;Têrêsa;Phạm Phương Vy;Nữ;;2005-06-07;TP.HCM;2005-03-07;Mẫu Tâm;2014-07-06;Mẫu Tâm;2018-06-13;Mẫu Tâm;;;329;Lê Văn Lương;Tân Quy;Quận 7;Mân Côi;;;Phạm An Dưỡng;0909848556;;Ngô Thị Hoa;0909083392
 86;Têrêsa;Dương Thuỵ Thanh Trâm;Nữ;;2005-06-08;;;;2015-06-12;Mẫu Tâm;;;;;95/59/13;Lê Văn Lương;Tân Kiểng;Quận 7;Lộ Đức;;;;;;;0932694342
 621;;Trương Huỳnh Minh Nhựt;Nam;;2005-06-09;;;;2015-06-12;Mẫu Tâm;;;;;66;đường 23;Tân Quy;Quận 7;Mông Triệu;;;;;;;
+50;Phaolô;Đặng Huỳnh Đức;Nam;;2005-06-16;;;;2015-06-12;Mẫu Tâm;;;;;;;;;;;;;;;;3862624695
 1072;Phaolo;Đặng Huỳnh Đức;Nam;;2005-06-16;TP.HCM;2005-07-08;Mẫu Tâm;2015-12-06;Mẫu Tâm;2019-12-06;Mẫu Tâm;;;05/15A;Mai Văn Vinh;Tân Kiểng;Quận 7;Hằng Cứu Giúp;;Phaolo ;Đặng Văn Khang;;Phaolo ;Mai Thị Hương;0962702203
 1043;;Nguyễn Lê Hoàng Phong;Nam;;2005-06-18;TP.HCM;;;;;;;;;10;đường 21;Tân Quy;Quận 7;;;;Nguyễn Thanh Hoàng;;;Lê Đông Phương;01219901943
 121;Giuse;Hồ Quang Huy;Nam;;2005-06-21;TP.HCM;2005-07-20;Bùi Môn;;;;;;;20/24;Bùi Thị Xuân;Phường 3;Tân Bình;Ngoài Xứ;;;;;;;0906925800
@@ -426,19 +492,23 @@
 629;Isave;Trần Phương Ngân Châu;Nữ;;2005-07-21;TP.HCM;2013-10-27;Đồng Phát;2015-12-06;Mẫu Tâm;2018-06-13;Mẫu Tâm;;;14/12A;Lê Văn Lương;Tân Hưng;Quận 7;Mân Côi;;Phanxico ;Trần Văn Hiền (mất);;Phanxico ;Nguyễn Thị Kim Anh;01203638828
 334;Maria Gioan;Nguyễn Huỳnh Mẫn Nhi;Nữ;;2005-08-08;TP.HCM;2005-08-28;Đồng Phát;2016-11-06;Mẫu Tâm;2019-12-06;Mẫu Tâm;;;320/19/6;Nguyễn Văn Linh;Bình Thuận;Quận 7;Ngoài Xứ;;Toma ;Lê Văn Chức;0903636448;Toma ;Huỳnh Thị Anh Thi;0919820982
 327;Maria Christina;Nguyễn Minh Kiều;Nữ;;2005-08-08;TP.HCM;2016-05-06;Mẫu Tâm;2016-11-06;Mẫu Tâm;2019-12-06;Mẫu Tâm;;;67/9;đường số 6;Bình Trưng Tây;Quận 2;Ngoài Xứ;;Phero ;Nguyen Minh Quân;0918450649;Phero ;Đinh Thị Bạch Quyền;0365306720
+23;;Bùi Minh Nhật;Nam;;2005-08-12;;;;;;;;;;;;;;;;;;;;;0903161854
 633;Têrêsa;Trần Bảo Ngọc Nhung;Nữ;;2005-08-28;;2005-10-02;Phương Lâm;;;;;;;146A;Lê Văn Lương, ấp 2;Phước Kiển;Nhà Bè;;;;;;;;0909856357
 818;;Nguyễn Ngọc Yến Nhi;Nữ;;2005-09-02;TP.HCM;;;;;;;;;465/12/12;Trần Xuân Soạn;Tân Hưng;Quận 7;Lộ Đức;;Innaxiô ;Nguyễn Ngọc Kiệt;0909261819;Innaxiô ;Phan Hoàng Ngọc Trinh;
 272;Giuse;Nguyễn Gia Thịnh;Nam;;2005-09-02;;;;2015-06-12;Mẫu Tâm;;;;;1225/49/1;Huỳnh Tấn Phát;Phú Thuận;Quận 7;Ngoài Xứ;;;;;;;0945400779
 407;Anna;Nguyễn Thiên Anh;Nữ;;2005-09-03;;;;2014-06-29;Phanxico Đakao;;;;;3A4.12;Garden Court 1, Phú Mỹ Hưng;Tân Phong;Quận 7;;;;;;;;0916785759
 220;Maria;Nguyễn Thị Bảo Châu;Nữ;;2005-09-05;TP.HCM;2005-06-11;Phaolô;2017-12-06;;;;;;791/23/7F;Trần Xuân Soạn;Tân Hưng;Quận 7;Đức Mẹ Phù Hộ;;Đaminh ;Nguyễn Quốc Thanh;;Đaminh ;Nguyễn Thị Thùy Linh;0378372752
+344;Maria;Nguyễn Ngọc Mai Trang;Nữ;;2005-09-14;;;;2015-06-12;Mẫu Tâm;;;;;;;;;;;;;0913879982;;;0938545338
 650;Maria;Trần Phương Trang;Nữ;;2005-09-18;;;;2015-06-12;Mẫu Tâm;;;;;11;đường 25;Tân Quy;Quận 7;Mông Triệu;;;;;;;0902932224
 19;Laurenso;Bùi Đặng Hoàng Quân;Nam;;2005-09-21;;;;2015-06-12;Mẫu Tâm;;;;;68/13;đường 25A;Tân Quy;Quận 7;Hằng Cứu Giúp;;;;;;;0933566062
 560;Emmanuel;Phan Thanh Hà;Nữ;;2005-09-27;;2006-01-01;Mẫu Tâm;2015-12-06;Mẫu Tâm;2018-06-13;Mẫu Tâm;;;8;đường số 7;Tân Kiểng;Quận 7;Truyền Tin;;;Phan Thanh Tùng;0914805887;;Nguyễn Thị Thanh Loan;37712288
+1006;Maria;Bùi Phương Anh Thư;Nữ;;2005-09-28;Sài Gòn;;;;;;;;;;;;;;;Phaolo ;Bùi Văn Kỳ Thoại;;Phaolo ;Võ Thị Phương Loan;0906617576
 592;Têrêsa;Trần Hợp Gia Hân;Nữ;;2005-09-28;TP.HCM;;;2014-07-06;Mẫu Tâm;2017-12-06;Mẫu Tâm;;;537;Lê Văn Lương;Tân Phong;Quận 7;;;;Trần Hợp Hòa;;;Văn Thị Hương;0901407620
 3;Têrêsa;Nguyễn Ngọc Yến Nhi;Nữ;;2005-10-02;Ninh Bình;2005-12-02;Tân Khẩn;;;;;;;104/7;đường 77;Tân Quy;Quận 7;;;Gioan ;Nguyễn Văn Hòa;;Gioan ;Nguyễn Thị Hà;0907498331
 304;Phaolô;Nguyễn Chí Khải Nguyên;Nam;;2005-10-06;TP.HCM;2005-11-06;;2014-06-07;Mẫu Tâm;;;;;66;đường 11;Tân Kiểng;Quận 7;Truyền Tin;;;;0913119911;;;01207244792
 4;GBt;Phạm Đăng Khải;Nam;;2005-10-11;TP.HCM;2005-12-25;Hoàng Mai;2013-09-01;Chúa Hiển Linh;;;;;B10104;Hoàng Anh An Tiến;Phước Kiển;Nhà Bè;;;Giuse ;Phạm Đăng Khoa;0903850654;Giuse ;Nguyễn Mộng Nguyên;0906384991
 149;;Kỳ Ngọc Lâm;Nam;;2005-10-16;;;;;;;;;;108/40/10;Lê Văn Lương;Tân Hưng;Quận 7;Mân Côi;;;;;;;0937381370
+1126;;Kỳ Ngọc Lâm;Nam;;2005-10-16;TP.HCM;;;;;;;;;;;;;;;Gioan ;Nguyễn Văn Hiền;0937381370;Gioan ;Kỳ Thị Mỹ Hạnh;0905614728
 766;Maria;Nguyễn Ngọc Như Ý;Nữ;;2005-10-18;Đồng Nai;2005-12-01;Phú Lâm;2015-06-07;Phú Lâm;;;;;B1-0406;Hoàng Anh An Tiến;Phước Kiển;Nhà Bè;;;Giuse ;Nguyễn Đình Thảo;;Giuse ;Mông Thị Tường Linh;01673240093
 170;Maria;Lê Nguyễn Mai Khanh;Nữ;;2005-10-19;;;;2015-06-12;Mẫu Tâm;;;;;2;Đào Sư Tích;Phước Lộc;Nhà Bè;La Vang;;;;;;;0908799626
 35;Giuse;Bùi Xuân Phong;Nam;;2005-10-20;TP.HCM;2006-02-05;Thánh Gia;2016-06-11;Mẫu Tâm;;;;;133/14/1;đường 47;Tân Quy;Quận 7;Hằng Cứu Giúp;;Giuse ;Bùi Xuân Mai;;Giuse ;Trần Thị Thu Hằng;0903108729
@@ -449,6 +519,8 @@
 962;Giuse;Nguyễn Minh Học;Nam;;2005-11-07;;2005-04-12;Thanh Đa;2019-12-06;Mẫu Tâm;;;;;2/6;đường số 2;Tân Quy;Q.7;Vô Nhiễm;;Phaolô ;Nguyễn Minh Hiếu;0909085378;Phaolô ;Nguyễn Thị Thúy Khương;0994590282
 589;Giuse;Trần Gia Bảo;Nam;;2005-11-11;;2006-04-02;Mông Triệu;;;;;;;69;đường số 1;Tân Kiểng;Quận 7;Mông Triệu;;;;;;;01286821271
 150;GBt;Lưu Trần Anh Phát;Nam;;2005-11-11;TP.HCM;2005-11-12;Chợ Đũi;2015-12-06;Mẫu Tâm;2018-06-13;Mẫu Tâm;;;92;đường 43;Tân Quy;Quận 7;Hằng Cứu Giúp;;;Lưu Giai Hùng;0908385952;;Trần Thùy Mỹ Linh;0937729649
+727;Têrêsa;Vân Hoàng Khánh Linh;Nữ;;2005-11-19;Đà Nẵng;2006-02-05;Chánh Tòa Đà Nẵng;2015-06-12;Mẫu Tâm;;;;;;;;;;;;Vân Duy Lâm;;;Hoàng Thị Mỹ Thảo;0903906044
+618;Phaolô;Trần Hoàng Minh Khang;Nam;;2005-11-25;;;;2015-06-12;Mẫu Tâm;;;;;;;;;;;;;;;;0903314399
 617;Maria;Trần Nguyễn Mỹ Anh;Nữ;;2005-12-08;Thanh Hóa;;;2014-07-06;Mẫu Tâm;2017-12-06;Mẫu Tâm;;;675/38;Trần Xuân Soạn;Tân Hưng;Quận 7;Mân Côi;;Giuse ;Trần Văn Huệ Thông;0918489066;Giuse ;Nguyễn Thị Thanh Huệ;0909837411
 236;;Nguyễn Bá Thy;Nữ;;2005-12-11;;;;2015-06-12;Mẫu Tâm;;;;;8A;đường số 4;Tân Kiểng;Quận 7;Thánh Mẫu;;;;;;;0938767799
 596;Gioan;Trần Gia Phúc;Nam;;2005-12-16;TP.HCM;2006-04-02;Thánh Giuse;2016-11-06;Mẫu Tâm;2019-12-06;Mẫu Tâm;;;346;Bến Vân Đồn;;Quận 4;;;Gioan ;Trần Quang Sơn;0903970971;Gioan ;Lý Thụy Ngọc Trâm;0983907971
@@ -477,6 +549,7 @@
 849;;Trần Minh Thư;Nữ;;2006-03-28;;;;;;;;;;28;đường số 2;Tân Kiểng;Quận 7;;;;;;;Nguyễn Thị Kinh Thịnh;0942394565
 43;Giuse;Đỗ Bảo Chấn;Nam;;2006-03-31;TP.HCM;2006-06-04;Đồng Tiến;;;;;;;23D;đường 15;Tân Hưng;Quận 7;Đức Mẹ Phù Hộ;;Giuse ;Đỗ Mạnh Tường;;Giuse ;Lê Thị Cẩm Thu;01679534752
 82;Maria;Đoàn Tuyết Nhung;Nữ;;2006-03-31;Đồng Nai;2006-07-05;Ngũ Phúc;2016-11-06;Mẫu Tâm;2019-12-06;Mẫu Tâm;;;548/1/29;Lê Văn Lương;ấp 2, Nhơn Đức;Nhà Bè;La Vang Hạ;;Giuse ;Đoàn Giáo Tuấn;0933906647;Giuse ;Vũ Thị Mai;0904813513
+266;Têrêsa;Ngô Thị Gia Hân;Nữ;;2006-04-05;TP.HCM;2006-05-28;Thuận Phát;;;;;;;;;;;;;Luca ;Ngô Xuân Ơn;01677042715;Luca ;Nguyễn Thị Hương;01249779904
 169;Giuse;Lại Vũ Minh Huy;Nam;;2006-04-07;TP.HCM;2006-01-10;Khánh Hội;2016-11-06;Mẫu Tâm;2019-12-06;Mẫu Tâm;;;39;đường 23;Tân Quy;Quận 7;Mông Triệu;;Giuse ;Lại Minh Hoàng;0903031210;Giuse ;Võ Thị Kim Ngân;0934184598
 429;Maria;Nguyễn Thanh Hiền;Nữ;;2006-04-12;TP.HCM;2006-05-07;Trung Bắc;2015-06-12;Mẫu Tâm;;;;;167/20;Lê Văn Lương;Tân Hưng;Quận 7;Lộ Đức;;;;;;;01217362919
 137;Martinô;Huỳnh Thanh Phong;Nam;;2006-04-21;TP.HCM;2006-04-06;Mẫu Tâm;2016-11-06;Mẫu Tâm;2019-12-06;Mẫu Tâm;;;279/17/1E;Lâm Văn Bền;Bình Thuận;Quận 7;;;Anton ;Huỳnh Minh Thái;0909864053;Anton ;Cao Hồng Diệu;0909974673
@@ -487,8 +560,12 @@
 611;Maria;Trịnh Khánh Huyền;Nữ;;2006-05-10;Bình Dương;2006-02-07;Bá Trà;2016-11-06;Mẫu Tâm;2019-12-06;Mẫu Tâm;;;D5;Lê Văn Lương;Tân Kiểng;Q.7;Lộ Đức;;Giuse ;Trịnh Văn Hưng;0909124152;Giuse ;Nguyễn Thị Nguyên;0962489229
 293;Đaminh;Nguyễn Hữu Thắng;Nam;;2006-05-12;TP.HCM;2007-05-06;Thanh Đa;;;;;;;228/8;Lê Văn Lương;Tân Hưng;Quận 7;Mân Côi;;;Nguyễn Kế Nghiệp;;;Nguyễn Thụy Diễm Trang;0909661513
 836;;Vũ Thùy Trâm;Nữ;;2006-05-17;TP.HCM;;;;;;;;;380/46/10/6;Lê Văn Lương;Tân Hưng;Quận 7;;;;Vũ Ngọc Tuyên;01234737099;;;0979876699
+1038;Phero;Hoàng Lê Phúc Nguyên;Nam;;2006-05-18;TP.HCM;2006-05-11;Hàng Xanh;;;;;;;;;;;;0936949149;Phero ;Hoàng Võ Duy;0942449603;Phero ;Lê Hồng Bích Ngọc;0988020830
 639;Maria;Trần Ngân Tú;Nữ;;2006-05-20;TP.HCM;2006-06-08;Mẫu Tâm;2018-06-13;Mẫu Tâm;;;;;184/3/6/6;Nguyễn Văn Quỳ;Phú Thuận;Quận 7;;;Phêrô ;Trần Duy Trinh;0936949149;Phêrô ;Đỗ Hoàng Yến;0908370251
+113;Giuse;Huỳnh Nhật Hào;Nam;;2006-05-31;TP.HCM;;;2016-06-11;Mẫu Tâm;;;;;;;;;;;;;;;;0902332993
+1053;Teresa;Đậu Yến Nhi;Nữ;;2006-06-05;;2006-06-28;Nghi Sơn;2017-06-07;Nghi Sơn;;;;;;đường 25;Tân Quy;Quận 7;;;Phero ;Đậu Văn Lưu;0979787204;Phero ;Nguyễn Thị Giang;
 87;Giuse;Đoàn Trọng Tín;Nam;;2006-06-09;TP.HCM;2006-10-06;Bình An;2017-12-06;Mẫu Tâm;;;;;88A;đường 49;Tân Quy;Quận 7;;;Giuse ;Đoàn Văn Khanh;0908493819;Giuse ;Nguyễn Thị Lê Xuyên;0933841703
+677;Phêrô;Trần Thiên Long;Nam;;2006-06-14;TP.HCM;2006-08-06;Mẫu Tâm;2015-06-12;Mẫu Tâm;;;;;;;;;;;;;;;;0932701512
 201;GBt;Mai Duy Tân;Nam;;2006-06-23;;;;;;;;;;197/1C;Lê Văn Lương;Phước Kiển;Nhà Bè;La Vang Thượng;;;;;;;0903877725
 574;Giuse;Trịnh Anh Tuấn;Nam;;2006-07-10;Cồn Thoi;2006-05-08;Cồn Thôi;2017-12-06;Mẫu Tâm;2019-12-06;Mẫu Tâm;;;1191/22;Lê Văn Lương;;Nhà Bè;;;Giuse ;Trịnh Văn Bằng;097799860;Giuse ;Nguyễn Thị Hường;0985146203
 721;GBt;Vũ Hòa Phát;Nam;;2006-07-12;TP.HCM;2006-03-09;Bình An Thượng;2015-12-06;Mẫu Tâm;2018-06-13;Mẫu Tâm;;;675;Nguyễn Văn Tạo;Hiệp Phước;Nhà Bè;;;GBt ;Vũ Hòa Bình;;GBt ;Phạm Thị Hồng Trang;0932852216
@@ -521,6 +598,7 @@
 619;Têrêsa;Thái Nguyễn Minh Lâm;Nữ;;2006-11-27;TP.HCM;;;;;;;;;2M;đường 9M;Tân Thuận Tây;Quận 7;;;;Thái Hùng Khanh;0918292040;;Nguyễn Thị Thanh Vân;0937078254
 858;Têrêsa;Phạm Phúc Quỳnh;Nữ;;2006-12-02;TP.HCM;2007-07-01;Chợ Quán;;;;;;;49;đường 31, khu Tân Quy Đông;Tân Phong;Quận 7;;;Gioan ;Kim Nguyễn Cảnh Chỉnh;0933424898;Gioan ;Võ Hạnh Duy;0903638989
 124;Vinh Sơn;Nguyễn Tiến Đạt;Nam;;2006-12-04;TP.HCM;2007-07-01;Mẫu Tâm;2016-11-06;Mẫu Tâm;2019-12-06;Mẫu Tâm;;;604/5;Huỳnh Tấn Phát;;Quận 7;;;Giuse ;Nguyễn Văn Huy;0918408556;Giuse ;Nguyễn Thị Len;0937134738
+703;Giuse;Tạ Văn Thinh;Nam;;2006-12-08;;2007-01-14;Thanh Châu;;;;;;;;;;;;;Giuse ;Tạ Văn Chung;;Giuse ;Trần Thị Thoan;0942643999
 583;Phêrô;Trần Duy Khương;Nam;;2006-12-08;TP.HCM;2007-04-01;Bùi Thái;2016-11-06;Mẫu Tâm;2019-12-06;Mẫu Tâm;;;60;Phan Huy Thực;Tân Kiểng;Quận 7;Thánh Mẫu;;Philipphe ;Trần Anh Dũng;0913755303;Philipphe ;Nguyễn Thị Thanh Vân;0902946445
 360;Giuse;Nguyễn Hoàng Ngọc Minh;Nam;;2006-12-13;TP.HCM;2007-07-01;Mẫu Tâm;2016-11-06;Mẫu Tâm;2019-12-06;Mẫu Tâm;;;26;đường 3;Tân Kiểng;Quận 7;Thánh Mẫu;;Phanxicô Xaviê ;Nguyễn Ngọc Ân;;Phanxicô Xaviê ;Hoàng Kim Yến;0916359994
 288;Giuse;Nguyễn Văn Hoàng Nguyên;Nam;;2006-12-20;TP.HCM;2007-04-02;Mẫu Tâm;2016-11-06;Mẫu Tâm;2019-12-06;Mẫu Tâm;;;4;đường 27;Tân Quy;Quận 7;Mông Triệu;;GBt Lasan ;Nguyễn Văn Chiến;0933737797;GBt Lasan ;hài đông Nguyễn Thị Bích Thảo;0908804209
@@ -542,6 +620,8 @@
 353;Maria;Nguyễn Thị Ngọc Hân;Nữ;;2007-02-04;TP.HCM;2007-04-01;Mẫu Tâm;;;;;;;67;Gò Ô Môi;Phú Thuận;Quận 7;Hằng Cứu Giúp;;Giuse ;Nguyễn Văn Tâm;0907805381;Giuse ;Coretti Nguyễn Thị Diệp;0908454375
 826;Simon;Phan Thành Tân;Nam;;2007-02-09;Phú Yên;2007-07-01;Phú Yên;;;;;;;702/6A;Lê Văn Lương, ấp 2;Phước Kiển;Nhà Bè;La Vang Hạ;;Gioakim ;Phim Văn Dũng;0965151216;Gioakim ;Bùi Thị Kim Hoàng;0989012172
 59;Micae;Đặng Kiến Hào;Nam;;2007-02-16;Trà Vinh;2007-03-17;Mặc Bắc;2017-12-06;Mẫu Tâm;;;;;380/46/20/52D;Lê Văn Lương;Tân Hưng;Quận 7;Thăm Viếng;;GBt ;Đặng Thái Hùng;0937899986;GBt ;Bùi Thị Thanh Ly;0909120786
+774;Matta;Trần Thị Thanh Trúc;Nữ;;2007-02-17;Sóc Trăng;2008-01-03;Tân Phú;2019-12-06;Mẫu Tâm;;;;;;Lê Văn Lương, ấp 3;Nhơn Đức;Nhà Bè;;;Giuse ;Trần Văn Tuân;0906936911;Giuse ;Đặng Thị Phúc;0907003813
+817;Teresa;Nguyễn Gia Hân;Nữ;;2007-02-22;TP.HCM;2019-02-06;Mẫu Tâm;2019-12-06;Mẫu Tâm;;;;;;;;;;;;Nguyễn Đức Hiếu;;;Nguyễn Thị Bích Hạnh;0901379582
 112;Giuse;Hồ Ngọc Hoàng;Nam;;2007-02-28;TP.HCM;2007-03-28;Bùi Môn;;;;;;;75/4A;xã Xuân Thới Đông;;Hóc Môn;Ngoài Xứ;;Giuse ;Hồ Quang Hùng;;Giuse ;Bùi Kim Dung;0906925800
 387;Anna;Nguyễn Hoàng Phương Vy;Nữ;;2007-02-28;TP.HCM;2007-03-06;Mẫu Tâm;2018-06-13;Mẫu Tâm;;;;;410;Lê Văn Lương;Tân Hưng;Quận 7;Thăm Viếng;;Phêrô ;Nguyễn Trung Cang;0913704272;Phêrô ;Lucia Hoàng Thị Thủy;
 61;Giêrađô;Đinh Ngọc Lan Chi;Nam;;2007-03-02;TP.HCM;2007-04-01;Mẫu Tâm;;;;;;;72;đường số 3;Tân Kiểng;Quận 7;Thánh Mẫu;;Anphong ;Đinh Viết Lộc;0937513787;Anphong ;Nguyễn Thị Hoàng Phương;
@@ -549,6 +629,7 @@
 1071;Micae;Nguyễn Thiên Bảo;Nam;;2007-03-03;TP.HCM;2007-04-06;Quảng Biên;2017-12-06;Mẫu Tâm;;;;;34/1;đường 25a;Tân Quy;Quận 7;Hằng Cứu Giúp;;Giuse ;Nguyễn Thiên Ấn;;Giuse ;Hoàng Nữ Nhật Anh;0913699057
 646;Têrêsa;Trịnh Thiên Phương Linh;Nữ;;2007-03-07;TP.HCM;2007-04-01;Mẫu Tâm;;;;;;;31;đường số 3;Tân Kiểng;Quận 7;;;GBt ;Trịnh Thiên Hoàng Di;0909438059;GBt ;Phạm Thị Ngọc Phụng;01226110380
 468;Phaolô;Nguyễn Thanh Triết;Nam;;2007-03-14;TP.HCM;2007-04-29;Vĩnh Hội;2018-06-13;Mẫu Tâm;;;;;88/30;Nguyễn Văn Quỳ;Tân Phong;Quận 7;Thăm Viếng;;Phaolô ;Nguyễn Thanh Nghi;;Phaolô ;Đặng Thị Kim Vân;0909187856
+680;GBt;Trần Thanh Ngoan;Nam;;2007-03-16;An Giang;2007-06-13;Cù Lao Giêng;;;;;;;;;;;;;Phêrô ;Trần Minh Thanh Lâm;;Phêrô ;Võ Thị Kiều Loan;01699230396
 584;Micae;Trần Đại Lộc;Nam;;2007-03-24;TP.HCM;2007-04-29;Huyện Sĩ;2016-11-06;Mẫu Tâm;2019-12-06;Mẫu Tâm;;;99;Phan Huy Thực;Tân Kiểng;Quận 7;Thánh Mẫu;;Giuse ;Trần Tấn Ngọc;0382944309;Giuse ;Nguyễn Thị Thanh Vân;0389655539
 880;Giuse;Phạm Dương Tuyển;Nam;;2007-03-26;;2007-05-07;Trại Lê;;;;;;;347;Lê Văn Lương, ấp 2;Phước Kiển;Nhà Bè;;;Phêrô ;Phạm Văn Hùng;01228453534;Phêrô ;Trần Thị Long;0976951561
 383;Phaolô;Nguyễn Phúc Nguyên;Nam;;2007-03-26;TP.HCM;2007-06-05;Mẫu Tâm;2016-11-06;Mẫu Tâm;2019-12-06;Mẫu Tâm;;;34/7;đường 25;Tân Quy;Quận 7;Hằng Cứu Giúp;;Phero ;Nguyễn Văn Ninh;0903777619;Phero ;Nguyễn Thị Thùy Trang;0908663246
@@ -564,10 +645,12 @@
 343;Maria;Nguyễn Mai Thanh;Nữ;;2007-05-13;TP.HCM;2007-03-06;Mẫu Tâm;2016-11-06;Mẫu Tâm;;;;;167/5;Lê Văn Lương;Tân Kiểng;Quận 7;Lộ Đức;;Simon ;Nguyễn Văn Tổng;;Simon ;Mai Thị Từ Vi;01224600359
 752;Tôma;Vũ Tấn Tài;Nam;;2007-05-20;TP.HCM;2007-06-24;Xóm Chiếu;2016-11-06;Mẫu Tâm;2019-12-06;Mẫu Tâm;;;B5-05 chung cư Florita;đường D1;Tân Hưng;Quận 7;;;Giuse ;Vũ Thanh Phong;0902833173;Giuse ;Lê Thị Ngọc Nhung;0907069195
 9;Isave;Đinh Cát Tiên;Nữ;;2007-05-22;TP.HCM;2007-01-07;Chúa Hiển Linh;2019-12-06;Mẫu Tâm;;;;;381/11a;Phạm Hữu Lầu;Phước Kiển;Nhà Bè;;;Giuse ;Đinh Chiến Thắng;0908184503;Giuse ;Võ Thị Ánh Loan;0909650907
+842;Giuse;Ngô Nguyễn Đức Anh;Nam;;2007-05-26;TP.HCM;2007-09-02;Lạc Quang;2016-06-19;Lạc Quang;;;;;;Sunrise City, 27 Nguyễn Hữu Thọ;Tân Hưng;Quận 7;;;Giuse ;Ngô Mạnh Lực;;Giuse ;Nguyễn Thị Tuyết Trinh;092302545
 883;Têrêsa;Trần Thị Mai Sương;Nữ;;2007-06-04;;2007-12-28;Nghi Sơn;;;;;;;77;đường 25;Tân Quy;Quận 7;Mông Triệu;;Phêrô ;Trần Văn Khôi;0963360090;Phêrô ;Trần Thị Bình;
 76;Giuse;Đặng Thái Gia;Nam;;2007-06-05;TP.HCM;2019-02-06;Mẫu Tâm;2019-12-06;Mẫu Tâm;;;;;119/100A;Phạm Thế Hiển;phường 2;q.8;;;;;;;Nguyễn Thị Kim Loan;0762748483
 582;Giuse;Trần Nguyễn Đại Giao;Nam;;2007-06-10;TP.HCM;2007-07-07;Tân Hóa;2016-11-06;Mẫu Tâm;2019-12-06;Mẫu Tâm;;;675/38;Trần Xuân Soạn;Tân Hưng;Quận 7;Đức Mẹ Phù Hộ;;Giuse ;Trần Văn Huệ Thông;0918489066;Giuse ;Nguyễn Thị Thanh Huệ;0903838646
 411;Giuse;Nguyễn Thiên Ân;Nam;;2007-06-19;TP.HCM;2007-05-08;Mẫu Tâm;2016-11-06;Mẫu Tâm;2019-12-06;Mẫu Tâm;;;21;đường 23;Tân Quy;Quận 7;Mông Triệu;37716305;Phero Phaolo;Nguyễn Thiên Thạch;0903115354;Phero Phaolo;Mai Trúc Thanh;0909281818
+579;Giuse;Trần Nguyễn Công Trí;Nam;;2007-06-20;TP.HCM;2008-04-13;Mẫu Tâm;2017-12-06;Mẫu Tâm;;;;;;;;;;;Phêrô ;Trần Anh Tuấn;0909596025;Phêrô ;Nguyễn Xuân Thảo;
 1059;;Kuo Humg Cheng (Thành);Nam;;2007-06-22;TP.HCM;;;;;;;;;The Park Resident;Nguyễn Hữu Thọ;;Quận 7;;;;Nguyễn Quốc Duy;0934129088;;Ngô Thị Ngọc Trân;
 30;Anna;Bùi Ngọc Thảo Như;Nữ;;2007-06-23;;2007-08-05;Mẫu Tâm;;;;;;;84/7;đường 77;Tân Quy;Quận 7;Vô Nhiễm;;;;;;;0903161854
 255;Phêrô;Nguyễn Duy Khang;Nam;;2007-06-25;;2007-08-05;Mẫu Tâm;;;;;;;3/5;Phan Huy Thực;Tân Kiểng;Quận 7;Thánh Mẫu;;;;;;;0907929570
@@ -596,8 +679,10 @@
 289;Phêrô;Nguyễn Phan Hồng Phúc;Nam;;2007-09-10;TP.HCM;2007-11-24;An Lạc;;;;;;;34/2;Cách Mạng Tháng Tám;Phường 5;Tân Bình;Ngoài Xứ;;Phêrô ;Nguyễn Hiệp Hùng;0903874700;Phêrô ;Phan Thị Mỹ Duyên;
 176;GBt;Lê Nguyên Khang;Nam;;2007-09-17;;2007-12-09;Phú Lâm;;;;;;;459C;Nguyễn Thị Thập;Tân Phong;Quận 7;;;;;;;;0908871782
 39;Anê;Chung Quỳnh Thảo Nghi;Nữ;;2007-09-19;TP.HCM;2007-04-11;Bình Hòa;2016-11-06;Mẫu Tâm;2019-12-06;Mẫu Tâm;;;506, CC An Khang;KDC Nam Long;Tân Thuận Đông;Quận 7;;;Vinh Sơn; Chung Thanh Huy;0908211799;Vinh Sơn;Bùi Thanh Tương Quan;0908163046
+600;Maria;Trịnh Thị Hồng Ánh;Nữ;;2007-09-20;Thanh Hóa;2007-04-11;Mẫu Tâm;2016-11-06;Mẫu Tâm;2019-12-06;Mẫu Tâm;;;;;;;;;Phaolô ;Trịnh Đình Liêm;0936178271;Phaolô ;Nguyễn Thị Mơ;0365135754
 215;Matta;Nguyễn Anh Thy;Nữ;;2007-09-22;TP.HCM;2007-12-19;Chợ Lách;2017-12-06;Mẫu Tâm;;;;;701/25;Trần Xuân Soạn;Tân Hưng;Quận 7;Đức Mẹ Phù Hộ;;Giuse ;Nguyễn Hồng Minh;0909502838;Giuse ;Tô Huỳnh My;0938333380
 587;Giuse;Trương Đức Thịnh;Nam;;2007-10-04;TP.HCM;2007-02-12;Mẫu Tâm;2016-11-06;Mẫu Tâm;2019-12-06;Mẫu Tâm;;;135;đường 79;Tân Quy;Quận 7;Vô Nhiễm;;Phero ;Trương Minh Đức;0909754210;Phero ;Phạm Thị Thảo Sương;0965669692
+465;Maria;Nguyễn Thanh Thảo;Nữ;;2007-10-06;Bà Rịa - Vũng Tàu;2007-01-11;Teresa;2017-12-06;Mẫu Tâm;;;;;;;;;;;Phêrô ;Nguyễn Văn Thành;0919401511;Phêrô ;Nguyễn Thị Nhã;
 554;Maria;Phạm Nguyễn Quỳnh Như;Nữ;;2007-10-13;TP.HCM;2008-02-24;Xóm Chiếu;2018-06-13;Mẫu Tâm;;;;;1419/5;Lê Văn Lương, ấp 1;Phước Kiển;Nhà Bè;La Vang;;;Phạm Văn Lâm;0967341488;;Nguyễn Thị Kim Phương;0902730021
 332;Maria;Nguyễn Mỹ Linh;Nữ;;2007-10-16;TP.HCM;2008-09-21;Mẫu Tâm;;;;;;;137;đường 41;Tân Quy;Quận 7;Hằng Cứu Giúp;;Phêrô ;Nguyễn Kỳ Mỹ;;Phêrô ;Nguyễn Thị Hạnh;0902993578
 447;Têrêsa;Nguyễn Thanh Như;Nữ;;2007-10-19;TP.HCM;2007-02-12;Trung Bắc;;;;;;;63;đường số 3;Tân Kiểng;Quận 7;Thánh Mẫu;;Fx ;Nguyễn Minh Trung;0908258027;Fx ;Đỗ Thị Thanh Thảo;0909859410
@@ -621,11 +706,13 @@
 775;Maria;Phạm Nguyễn Anh Thư;Nữ;;2007-12-20;TP.HCM;2008-01-06;Chánh Toà Sài Gòn;2019-12-06;Mẫu Tâm;;;;;1205/1/20;Huỳnh Tấn Phát;Phú Thuận;Quận 7;Mân Côi;;Giuse ;Phạm Văn Tân;0909860249;Giuse ;Nguyễn Thị Hoài Thu;0904068241
 1008;Maria;Phạm Thảo Vy;Nữ;;2007-12-23;Sài Gòn;2008-04-13;Mẫu Tâm;;;;;;;99;đường 79;Tân Quy;Quận 7;Vô Nhiễm;;Vinh Sơn; Phạm Văn Thái;0913159784;Vinh Sơn;Phạm Thị Thúy;0919159784
 733;Giuse;Vũ Minh Trí;Nam;;2008-01-14;;;;;;;;;;215/19;đường 15;Tân Quy;Quận 7;Truyền Tin;;;;;;;01225969698
+473;Maria;Nguyễn Võ  Thiên Thư;Nữ;;2008-01-21;;;;;;;;;;;;;;;;;;;;;0982503112
 234;Giuse;Nguyễn Thanh Bảo Phúc;Nam;;2008-01-22;TP.HCM;2008-04-13;Mẫu Tâm;;;;;;;135;đường 79;Tân Quy;Quận 7;Vô Nhiễm;;Phanxicô ;Nguyễn Thanh Bình;;Phanxicô ;Trương Thị Hồng;0908106040
 63;Maria Madalena;Đinh Mộc Anh;Nữ;;2008-01-25;TP.HCM;2009-03-01;Chính Tòa Sài Gòn;;;;;;;33;đường số 9, khu Nam Phú;Tân Thuận Đông;Quận 7;Thăm Viếng;0919171096;Giuse ;Đinh Xuân Giao;0903689674;Giuse ;Têrêsa Đào Đại Uyên;0906373637
 954;;Võ Ngọc Bảo Hân;Nữ;;2008-01-27;;;;;;;;;;147A;đường số 45;Tân Quy;7;Hằng Cứu Giúp;;;Võ Văn Nhanh;;;Nguyễn Thị Ngọc Hiền;0919171096
 205;Giuse;Nguyễn Anh Khoa;Nam;;2008-01-28;TP.HCM;2008-03-02;Mẫu Tâm;;;;;;;65;đường 13;Tân Kiểng;Quận 7;Truyền Tin;;Phaolô ;Nguyễn Chí BÌnh;;Phaolô ;Nguyễn Thị Mai Thảo;0909795419
 451;Anna;Nguyễn Trí Ngọc;Nữ;;2008-01-28;TP.HCM;2010-12-09;Mẫu Tâm;2018-06-13;Mẫu Tâm;;;;;645/45;Trần Xuân Soạn;Tân Hưng;Quận 7;Đức Mẹ Phù Hộ;;;Nguyễn Chí Thanh;0916480490;;Thái Thanh Thúy;0909428541
+748;Antôn;Vân Thiên Ân;Nam;;2008-02-05;TP.HCM;2008-04-06;Bình Hòa;;;;;;;;;;;;;;Vân Duy Lâm;;;Hoàng Thị Mỹ Thảo;0903906044
 502;Phêrô;Nguyễn Xuân Tâm;Nam;;2008-02-06;;2008-05-04;Mẫu Tâm;;;;;;;873;Huỳnh Tấn Phát;Phú Thuận;Quận 7;Mân Côi;;Phêrô ;Nguyễn Văn Tiến;;Phêrô ;Nguyễn Vũ Mộng Trinh;0907200745
 636;Maria;Trần Thị Như Quỳnh;Nữ;;2008-02-12;TP.HCM;2008-02-03;Mẫu Tâm;2017-12-06;Mẫu Tâm;;;;;364;Nguyễn Thị Thập;Tân Phong;Quận 7;Vô Nhiễm;;Giuse ;Trần Văn Khương;0918137157;Giuse ;Nguyễn Thị Ngoan;0918137157
 350;Maria;Ngô Phương Ngọc Anh;Nữ;;2008-02-14;;2013-06-29;Phú Hạnh;;;;;;;A5.2;Phú Hoàng Anh;Phước Kiển;Nhà Bè;;;;;;;;0903344455
@@ -635,14 +722,18 @@
 273;Maria;Nguyễn Hoàng Anh;Nữ;;2008-03-03;;2008-04-06;Xóm Chiếu;;;;;;;106;đường 11;Tân Kiểng;Quận 7;Thánh Mẫu;;;;;;;0933694322
 1058;Giuse;Vũ Tuấn Anh;Nam;;2008-03-06;;2008-07-04;Lạc Đạo;;;;;;;36A;đường 19;Tân Quy;Quận 7;Mông Triệu;;Giuse ;Vũ Đình Viên;0917888923;Giuse ;Nguyễn Thị Oanh;0906033688
 225;;Nguyễn Bá Kiên;Nam;;2008-03-12;;;;;;;;;;8A;đường số 4;Tân Kiểng;Quận 7;Thánh Mẫu;;;;;;;0938767799
+958;Phêrô;Nguyễn Toàn Tâm;Nam;;2008-03-16;;;;;;;;;;;;;;;;;;;;;
 569;Têrêsa;Quách Phương Nghi;Nữ;;2008-03-18;;2008-04-27;Vĩnh Hội;;;;;;;25A;đường số 1;Tân Kiểng;Quận 7;Thánh Mẫu;;;;0909359089;;;0918502999
 503;Anna;Nguyễn Xuân Trang;Nữ;;2008-03-27;TP.HCM;2008-01-06;Mẫu Tâm;2018-06-13;Mẫu Tâm;;;;;108/32;Lê Văn Lương;Tân Hưng;Quận 7;Mân Côi;;Vincente ;Nguyễn Trọng Hùng;0903920084;Vincente ;Huỳnh Thị Thủy;
 172;Giuse;Lại Vũ Minh Quang;Nam;;2008-03-30;TP.HCM;2008-08-21;Mẫu Tâm;;;;;;;39;đường 23;Tân Quy;Quận 7;Mông Triệu;;Giuse ;Lại Minh Hoàng;;Giuse ;Võ Thị Kim Ngân;0903031210
 195;Maria;Lê Võ Tường Vân;Nữ;;2008-03-31;TP.HCM;2008-05-04;Mẫu Tâm;;;;;;;2;đường 13;Tân Kiểng;Quận 7;Truyền Tin;;;Lê Thanh Việt;;;Võ Nguyên Thúy Vy;0984050368
+1001;Teresa;Bùi Phương Bảo Ngọc;Nữ;;2008-04-14;Sài Gòn;2009-12-27;Chánh Tòa Xuân Lộc;;;;;;;;;;;;;Phaolo ;Bùi Văn Kỳ Thoại;;Phaolo ;Võ Thị Phương Loan;0906617576
 824;Maria;Trần Thị Tuyết Nhung;Nữ;;2008-04-20;TP.HCM;2008-05-25;Thuận Phát;2019-12-06;Mẫu Tâm;;;;;1708;ấp 3;Nhơn Đức;Nhà Bè;La Vang;;Phêrô ;Trần Văn Anh;0919408969;Phêrô ;Nguyễn Thị Tuyết;0909408969
 432;Têrêsa;Nguyễn Thị Thu Hà;Nữ;;2008-04-25;TP.HCM;2008-01-06;Mẫu Tâm;2018-06-13;Mẫu Tâm;;;;;4/10;Lê Văn Lương;Tân Quy;Quận 7;Thăm Viếng;;Phêrô ;Nguyễn Văn Phú;01695372453;Phêrô ;Phạm Thị Hương;01656834951
 25;Tôma Aquinô;Bùi Minh Trị;Nam;;2008-04-28;;;;;;;;;;25J;đường số 2, khu dân cư Phú Mỹ;Phú Mỹ;Quận 7;;;;;;;;09097198823
 229;Vinh Sơn;Nguyễn Cao Bảo Minh;Nam;;2008-04-28;TP.HCM;2008-01-06;Mẫu Tâm;2018-06-13;Mẫu Tâm;;;;;350/1/6G;Huỳnh Tấn Phát;Bình Thuận;Quận 7;Thánh Mẫu;;Vincente ;Nguyễn Cao Trọng;0903620635;Vincente ;Nguyễn Thị Thùy Vân;0918101836
+790;Phero;Nguyễn Gia Kiệt;Nam;;2008-05-05;TP.HCM;2019-02-06;Mẫu Tâm;2019-12-06;Mẫu Tâm;;;;;;;;;;;;Nguyễn Đức Hiếu;;;Nguyễn Thị Bích Hạnh;0901379582
+755;Maria;Vũ Lê Uyên Như;Nữ;;2008-05-10;TP.HCM;2008-06-01;Nam Hải;;;;;;;;;;;;;Giuse ;Vũ Ngọc Đức;;Giuse ;Lê Thị Thanh Nga;0938175827
 34;Fx;Bùi Văn Trọng;Nam;;2008-05-10;TP.HCM;2008-09-21;Mẫu Tâm;;;;;;;52/1;đường 32;Tân Quy;Quận 7;Vô Nhiễm;;Giuse ;Bùi Văn Nguyên;;Giuse ;Trịnh Thị Long;0974217102
 1011;Phanxico;Bùi Văn Trọng;Nam;;2008-05-10;Sài Gòn;2008-09-21;Mẫu Tâm;;;;;;;52/1;32;Tân Quy;Quận 7;Vô Nhiễm;;Giuse ;Bùi Văn Nguyên;0919275175;Giuse ;Trịnh Thị Long;0974217102
 1098;Maria;Vũ Lê Thái Dương;Nữ;;2008-05-10;TP.HCM;2008-01-06;Nam Hải;2017-12-06;Mẫu Tâm;;;;;645/42;Trần Xuân Soạn;Tân Hưng;Quận 7;Đức Mẹ Phù Hộ;;Giuse ;Vũ Ngọc Đức;0908874401;Giuse ;Lê Thị Thanh Nga;0938175827
@@ -653,6 +744,7 @@
 835;Maria;Phạm Uyên Chi;Nữ;;2008-05-28;TP.HCM;2008-08-31;Martino-Thị Nghè;2019-12-06;Mẫu Tâm;;;;;B135;đường số 7, KDC Kim Sơn;Tân Phong;Q.7;Thăm Viếng;;Stephano ;Phạm Văn Phước;0903622720;Stephano ;Phạm Thị Y Uyên;0909288576
 127;Vinh Sơn;Huỳnh Tuấn Hưng;Nam;;2008-05-31;TP.HCM;2008-06-29;Bạch Đằng;2018-06-13;Mẫu Tâm;;;;;1I/19;đường số 19;Tân Quy;Quận 7;Mông Triệu;;Tôma ;Huỳnh Thanh Minh;0898303352;Tôma ;Vũ Thị Hồng Thu;01225030252
 409;Vincente;Nguyễn Đình Thiên An;Nam;;2008-06-11;TP.HCM;2008-08-02;Môi Khôi;;;;;;;B.D-26-4;Phú Hoàng Anh;Phước Kiển;Nhà Bè;La Vang Thượng;;Phaolô ;Nguyễn Như Tân;0908339633;Phaolô ;Đoàn Thị Thu Tuyết;0902575138
+1050;;Nguyễn Lê Hoàng Sang;Nam;;2008-06-15;TP.HCM;;;;;;;;;;;;;;;;Nguyễn Thanh Hoàng;;;Lê Đông Phương;0121990
 1051;;Nguyễn Lê Hoàng Sang;Nam;;2008-06-15;TP.HCM;;;;;;;;;10;đường 21;Tân Quy;Quận 7;;;;Nguyễn Thanh Hoàng;;;Lê Đông Phương;01219901943
 171;Giuse;Lý Minh Phúc;Nam;;2008-06-16;TP.HCM;2008-08-03;Mẫu Tâm;;;;;;;11/19B;Trần Xuân Soạn;Tân Hưng;Quận 7;Đức Mẹ Phù Hộ;01264851018;Gioan ;Lý Thái Vinh;;Gioan ;Huỳnh Quang Thị Nga;0938370931
 670;Phaolô;Trương Vũ Thành Đạt;Nam;;2008-06-23;TP.HCM;2008-08-02;Gò Vấp;;;;;;;3/19C;Lê Văn Lương;Ấp 3, Nhơn Đức;Nhà Bè;La Vang Hạ;;;Trương Văn Khoa;;;Vũ Mộng Huyền Trang;01264851018
@@ -670,6 +762,7 @@
 664;Giuse;Trần Quang Vinh;Nam;;2008-08-27;TP.HCM;2006-01-10;Mẫu Tâm;2015-12-06;Mẫu Tâm;2018-06-13;Mẫu Tâm;;;364;Nguyễn Thị Thập;Tân Quy;Quận 7;Vô Nhiễm;;Giuse ;Trần Văn Khương;0918137157;Giuse ;Nguyễn Thị Ngoan;
 1100;Phero;Đậu Thế Đan;Nam;;2008-08-30;Nghi Sơn;2008-08-31;Nghi Sơn;;;;;;;77;đường 25;Tân Quy;Quận 7;;01284636709;Phero ;Đậu Văn Lưu;0979787204;Phero ;Nguyễn Thị Giang;
 151;Giuse;Lê Bảo Nguyên;Nam;;2008-09-05;TP.HCM;2008-10-05;An Nhơn;2018-06-13;Mẫu Tâm;;;;;355;Lê Văn Lương;Tân Quy;Quận 7;Lộ Đức;;Giuse ;Lê Văn Ngọc;0902544583;Giuse ;Phạm Thị Hường;0902463624
+390;Anna;Nguyễn Ngọc Quỳnh Anh;Nữ;;2008-09-19;TP.HCM;2008-02-11;Nghĩa Sơn;2018-06-13;Mẫu Tâm;;;;;;;;;;;Phêrô ;Nguyễn Minh Hoàng;0939204141;Phêrô ;Trần Ngọc Tường Vy;0903608819
 284;Vincent;Nguyễn Hoàng Khiêm;Nam;;2008-09-19;TP.HCM;2008-11-02;Vinh Sơn;2018-06-13;Mẫu Tâm;;;;;Cc Hồng Lĩnh;số 9A;KDC Trung Sơn;Huyện Bình Chánh;;;Tôma ;Nguyễn Trung Nghĩa;0909270267;Tôma ;Phạm Nguyễn Tú Anh;0909250067
 568;Đaminh;Phạm Viết Hữu;Nam;;2008-09-28;TP.HCM;2008-11-02;Mẫu Tâm;;;;;;;1;đường số 9;Tân Kiểng;Quận 7;Truyền Tin;;Đaminh ;Phạm Văn Quốc;;Đaminh ;Nguyễn Thị Mộng Huyền;0908755068
 879;Phêrô;Nguyễn Mạnh Huy;Nam;;2008-09-28;;2008-11-08;Huyện Sĩ - Chợ Đũi;;;;;;;468;Nguyễn Tất Thành;Phường 18;Quận 4;Ngoài Xứ;;Phêrô ;Nguyễn Mạnh Bảo;0944369999;Phêrô ;Lê Thị Thu Huyền;0903999492
@@ -677,6 +770,7 @@
 509;;Phạm Ánh Nhi;Nữ;;2008-10-04;TP.HCM;;;;;;;;;45/24;đường số 10;Tân Quy;Quận 7;Hằng Cứu Giúp;;;Phạm Hoàng Trung;0909305859;;Phạm Thị Kim Ánh;0979479408
 656;Maria;Trần Thụy Quỳnh Anh;Nữ;;2008-10-06;TP.HCM;2008-12-07;Mẫu Tâm;2018-06-13;Mẫu Tâm;;;;;63A;đường số 1;Tân Kiểng;Quận 7;Thánh Mẫu;;Giuse ;Trần Anh Tuấn;;Giuse ;Trần Thụy Phương Quỳnh;0908969325
 707;Maria;Trần Thị Yến Nhi;Nữ;;2008-10-07;TP.HCM;2008-11-01;Môi Khôi;2018-06-13;;;;;;1289;Lê Văn Lương, Ấp 2;Phước Kiển;Nhà Bè;La Vang;;Phêrô ;Trần Đình Ngọc;0905555819;Phêrô ;Trần Thị Loan;0982977600
+614;Maria;Trần Khánh Vy;Nữ;;2008-10-14;TP.HCM;2008-07-12;Bạch Đằng;2019-12-06;Mẫu Tâm;;;;;;;;;;;Phêrô ;Trần Tuấn Em;0973169468;Phêrô ;Võ Thanh Thúy;0983071303
 811;Vinh Sơn;Phan Tấn Nhật;Nam;;2008-10-15;TP.HCM;2009-01-03;Mẫu Tâm;2019-12-06;Mẫu Tâm;;;;;115/22/44;Nguyễn Du;Bến Thành;Quận 1;;;Phêrô ;Phan Tấn Nhật;0797725978;Phêrô ;Lê Kim Phượng;
 245;Maria;Nguyễn Đan Anh;Nữ;;2008-10-17;;2008-11-08;Chợ Đũi;2018-06-13;Mẫu Tâm;;;;;101/62/5;Lê Văn Lương;Phước Kiển;Huyện Nhà Bè;;;GB. ;Nguyễn Quốc Hoàng;;GB. ;Phạm Thị Mai;0918767779
 132;Teresa;Hoàng Tiểu My;Nữ;;2008-10-21;Củ Chi;2018-03-06;Mẫu Tâm;2019-12-06;Mẫu Tâm;;;;;1959/33/16;Lê Văn Lương;Nhơn Đức;Nhà Bè;La Vang Hạ;;Giuse ;Hoàng Đức Dũng;0903153757;Giuse ;Goretti Hà Thị Cẩm Nhung;0964937395
@@ -707,9 +801,12 @@
 844;Giuse;Đặng Nguyễn Phúc;Nam;;2009-01-08;TP.HCM;;;;;;;;;23E;ấp 3;Phước Kiển;Nhà Bè;;;Phaolô ;Nguyễn Thàng Tâm;;Phaolô ;Đặng Thị Nguyết Ánh;0902396654
 1015;;Nguyễn Minh Tuấn;Nam;;2009-01-12;;;;;;;;;;228/8;Lê Văn Lương;Tân Hưng;Quận 7;;;;Nguyễn Kế Nghiệp;;;Nguyễn Thị Diễm Trang;0909661513
 160;;Lê Gia Huy;Nam;;2009-01-15;;;;;;;;;;459C;Nguyễn Thị Thập;Tân Phong;Quận 7;;;;;;;;0908871782
+237;Têrêsa;Ngô Bảo Thy;Nữ;;2009-01-15;TP.HCM;2009-04-26;Thuận Phát;;;;;;;;;;;;;Luca ;Ngô Xuân Ơn;01677042715;Luca ;Nguyễn Thị Hương;01249779904
 787;Têrêsa;Nguyễn Thị Lan;Nữ;;2009-01-16;Thái Bình;;;;;;;;;12;Lê Văn Lương;Phước Kiển;Nhà Bè;;;Luca ;Nguyễn Văn Lang;0964813292;Luca ;Ngô Thị Liễu;
+812;Teresa;Nguyễn Thị Lan;Nữ;;2009-01-16;;2009-03-01;Bác Trạch;2019-12-06;Mẫu Tâm;;;;;;;;;;;Luca ;Nguyễn Văn Lang;;Luca ;Ngô Thị Liễu;0282690370
 845;;Võ Ngọc Vân Anh;Nữ;;2009-02-03;TP.HCM;;;;;;;;;283;Lê Văn Lương;Tân Quy;Quận 7;;;Phêrô ;Võ Huy Hoàng;01234582129;Phêrô ;;0909407140
 397;Phêrô;Nguyễn Quang Minh;Nam;;2009-02-03;TP.HCM;2009-03-01;Bùi Đức;;;;;;;316;Lê Văn Lương;Tân Phong;Quận 7;Mân Côi;;Phêrô ;Nguyễn Văn Hậu;;Phêrô ;Trần Thị Kim Xuyến;0908928119
+893;;Nguyễn Anh Khoa;Nam;;2009-02-06;;;;;;;;;;;;;;Truyền Tin;;;;;;;
 702;Hiêrônimô;Trần Văn Khiêm;Nam;;2009-02-08;TP.HCM;2009-03-01;Mẫu Tâm;;;;;;;284;Lê Văn Lương;Tân Hưng;Quận 7;Mân Côi;;Hiêrônimô ;Trần Văn Nam;;Hiêrônimô ;Phạm Thị Điệp;0919442251
 562;Phêrô;Phạm Triển Khang;Nam;;2009-02-08;TP.HCM;2009-03-05;Chợ Quán;2019-12-06;Mẫu Tâm;;;;;49;đường 31, khu Tân Quy Đông;Tân Phong;Quận 7;;;Gioakim ;Phạm Cảnh Chỉnh;0933424898;Gioakim ;Võ Hạnh Duy;0903638989
 731;Anna;Vũ Hồng Minh Thư;Nữ;;2009-02-10;TP.HCM;2009-03-01;Bắc Hà;;;;;;;10/124;đường 79;Tân Quy;Quận 7;Vô Nhiễm;;Phêrô ;Vũ Thanh Phong;;Phêrô ;Hồng Thị Quỳnh Giao;0934189198
@@ -738,6 +835,7 @@
 287;Maria;Nguyễn Lê Hoàng Ngọc;Nữ;;2009-06-09;TP.HCM;2009-08-02;Mẫu Tâm;;;;;;;75;đường 13;Tân Kiểng;Quận 7;Truyền Tin;;Phêrô ;Nguyễn Tiến Hưng;;Phêrô ;Lê Xuân Đông Châu;0903688715
 741;Maria;Võ Phương Hằng;Nữ;;2009-06-12;TP.HCM;2009-08-15;Khiết Tâm;;;;;;;102/5;đường 77;Tân Quy;Quận 7;Vô Nhiễm;;Antôn ;Võ Bá Thọ;0913915723;Antôn ;Đỗ Thị Phượng Diễm;0909316490
 705;Anna;Trần Diệp Xuân Giao;Nữ;;2009-06-17;Sađéc;2009-01-11;Mẫu Tâm;2018-06-13;Mẫu Tâm;;;;;30;đường số 19;Tân Quy;Quận 7;Mông Triệu;;Antôn ;Trần Bá Lộc;0908739533;Antôn ;Diệp Hải Băng Huyền;01289823337
+496;GBt;Ngô Nguyễn Võ Trần;Nam;;2009-06-20;TP.HCM;2010-09-12;Mẫu Tâm;;;;;;;;;;;;;Phêrô ;Ngô Nguyễn Châu;0919610442;Phêrô ;Võ Thị Khánh Hội;01238130834
 291;Vinh Sơn;Nguyễn Hoàng Phúc;Nam;;2009-06-24;TP.HCM;2009-02-08;Mẫu Tâm;2018-06-13;Mẫu Tâm;;;;;19;đường số 13;Tân Kiểng;Quận 7;Vô Nhiễm;;Giêrônimô ;Nguyễn Văn Khuynh;0909366589;Giêrônimô ;Trần Thị Vân;0909166589
 210;Maria;Nguyễn Anh Thư;Nữ;;2009-07-10;TP.HCM;2009-08-02;Phú Xuân;;;;;;;91;Lê Văn Lương, ấp 3;Phước Kiển;Nhà Bè;;;Phêrô ;Nguyễn Văn Nam;0903099021;Phêrô ;Phạm Thị Tỉnh;01234894894
 98;Gioakim;Hà Đăng Khôi;Nam;;2009-07-11;TP.HCM;2009-08-30;Thuận Phát;;;;;;;57/9;Lâm Văn Bền;Tân Kiểng;Quận 7;;;Gioakim ;Hà Trọng Lộc;;Gioakim ;Huỳnh Thị Ngọc Nhi;0909884144
@@ -745,6 +843,7 @@
 661;Giuse;Trần Quang Thắng;Nam;;2009-07-23;TP.HCM;2009-09-13;Mẫu Tâm;2019-12-06;Mẫu Tâm;;;;;106;Phan Huy Thực;Tân Kiểng;Quận 7;Thánh Mẫu;01626469538;GBt ;Trần Quang Quyền;0912442750;GBt ;Nguyễn Hoàng Thuỷ Tú;0909906424
 905;Phêrô;Trần Thái Tú;Nam;;2009-07-26;;2009-08-26;Nghi Sơn;;;;;;;77;đường số 25;Tân Quy;Quận 7;Mông Triệu;;Phêrô ;Trần Văn Thôi;0963360090;Phêrô ;Trần Thị Bình;01626469538
 244;Maria;Nguyễn Lâm Cát Tường;Nữ;;2009-07-29;;2009-09-20;Thánh Khang;;;;;;;95/41;Lê Văn Lương;Tân Kiểng;Quận 7;;;;;;;;0907706089
+763;Lucia;Nguyễn Hoài Bảo Nhi;Nữ;;2009-08-02;TP.HCM;2013-05-05;Cần Giuộc;2019-12-06;Mẫu Tâm;;;;;;Lê Văn Lương, ấp 4;Nhơn Đức;Nhà Bè;La Vang Hạ;;;Nguyễn Văn Hải;;;Nguyễn Ngọc Dung;0904919828
 56;Micae;Đinh Hồng Phúc;Nam;;2009-08-05;TP.HCM;2009-10-14;Đông Quang;;;;;;;41;Phan Huy Thực;Tân Kiểng;Quận 7;Thánh Mẫu;;Micae ;Đinh Công Kim Phượng;;Micae ;Nguyễn Thị Thanh;0909334807
 722;Đaminh;Vũ Hoàng Quân;Nam;;2009-08-09;TP.HCM;2009-09-06;Xuân Hiệp;;;;;;;75/33E;Lê Văn Lương;Tân Kiểng;Quận 7;;;Đaminh ;Vũ Tuấn Đạt;;Đaminh ;Hoàng Thị Thủy;0975623526
 357;Têrêsa;Nguyễn Mỹ Ngọc Lam;Nữ;;2009-08-13;;2009-09-27;Thuận Phát;;;;;;;92;đường 17;Tân Kiểng;Quận 7;;;Giuse ;Nguyễn Văn Lắm;;Giuse ;Phạm Thị Mỹ Trang;0906668503
@@ -755,6 +854,7 @@
 1000;Maria;Trần Tú Gia Hân;Nữ;;2009-08-24;Sài Gòn;2016-02-16;Hiệp Hòa;;;;;;;943E;Lê Văn Lương;Phước Kiển;Nhà Bè;;;Vincente ;Trần Quốc Tuấn;0907286699;Vincente ;Nguyễn Thị Xuân Lan;0907838378
 515;Cécilia;Phan Ngọc Bảo Uyên;Nữ;;2009-08-27;TP.HCM;2009-11-01;Mẫu Tâm;;;;;;;27;đường 11;Tân Kiểng;Quận 7;;0918204086;Leonardo ;Phan Châu Tùng;;Leonardo ;Trương Thị Ngọc Bích;0977746963
 336;Têrêsa;Nguyễn Phạm Mai Phương;Nữ;;2009-08-28;TP.HCM;2009-11-29;Thuận Phát;;;;;;;320/22/1;Nguyễn Văn Linh;Bình Thuận;Quận 7;;;Giuse ;Nguyễn Văn Dũng;01638867960;Giuse ;Phạm Thị Minh Yến;0918204086
+857;Andre;Trần Đại Lộc;Nam;;2009-08-30;;;;;;;;;;;Sunrise City, 25 Nguyễn Hữu Thọ;Tân Hưng;Quận 7;;01269029621;;;;;;0987799784
 550;GBt;Phạm Phước Thành;Nam;;2009-09-06;TP.HCM;2009-10-25;Thuận Phát;;;;;;;121;đường 37;Tân Quy;Quận 7;;;Clirolo ;Phạm Tấn Phước;;Clirolo ;Ngô Thị Hồng Nhung;01269029621
 444;Maria;Nguyễn Thảo Ngọc;Nữ;;2009-09-08;TP.HCM;2009-11-10;Mẫu Tâm;2019-12-06;Mẫu Tâm;;;;;77/34;hẻm 34, đường 25A;Tân Quy;Quận 7;Hằng Cứu Giúp;;Giuse ;Nguyễn Công Vịnh;0909152624;Giuse ;Trần Thị Nhung;0937945779
 823;Giuse;Khấu Tấn Đạt;Nam;;2009-09-08;TP.HCM;2010-04-04;Mẫu Tâm;2019-12-06;Mẫu Tâm;;;;;77/39, hẻm số 3;đường 25A;Tân Quy;Quận 7;Hằng Cứu Giúp;;Giuse ;Khấu Triều Minh Tâm;02854331907;Giuse ;Nguyễn Thị Bích Riêng;0972622563
@@ -770,6 +870,7 @@
 530;Giêrôminô;Phạm Hoàng Nam;Nam;;2009-10-15;TP.HCM;2009-12-06;;;;;;;;246;Lê Văn Lương;Tân Kiểng;Quận 7;;;Giêrôminô ;Phạm An Dưỡng;;Giêrôminô ;Ngô Thị Hoa;0909848556
 395;Gioakim;Nguyễn Đình Quốc Hưng;Nam;;2009-10-17;TP.HCM;2012-05-18;Tiên Sơn;;;;;;;59/52;đường số 10, hẻm Vườn Điều;Tân Quy;Quận 7;Hằng Cứu Giúp;;Simon ;Nguyễn Đinh Lân;;Simon ;Trần Thị Diễm My;01222714707
 1096;Gioakim;Nguyễn Đình Quốc Hưng;Nam;;2009-10-17;TP.HCM;2012-05-18;Tiên Sơn;;;;;;;13/41/51 hẻm vườn điều;đường số 10;Tân Qui;Quận 7;;;Simon ;Nguyễn Đình Lân;0903573897;Simon ;Trần Thị Diễm My;
+1068;Phero;Đậu Gia Kiệt;Nam;;2009-10-19;;2009-11-30;Nghi Sơn;;;;;;;;;;;;;;Đậu Văn Cường;0965169654;;Đậu Thị Hà;0978130735
 756;Maria;Vũ Lê Uyên Uyên;Nữ;;2009-10-19;TP.HCM;2009-12-06;Nam Hải;;;;;;;645/45;Trần Xuân Soạn;Tân Kiểng;Quận 7;Đức Mẹ Phù Hộ;;Giuse ;Vũ Ngọc Đức;;Giuse ;Lê Thị Thanh Nga;0938175827
 764;Emmanuel;Nguyễn Hoàng Phương Uyên;Nữ;;2009-10-22;TP.HCM;2010-04-25;Chợ Đũi;;;;;;;79;đường số 9;Tân Kiểng;Quận 7;;;;Nguyễn Thanh Tùng;093370763;;Trần Thụy Như Hoàng;01222644852
 626;Giuse;Trần Minh Tâm;Nam;;2009-10-23;Biên Hòa;2009-05-12;Thánh Giuse;2018-06-13;Mẫu Tâm;;;;;Chung cư Hoàng Anh An Tiến;Ấp 3;Phước Kiển;Nhà Bè;La Vang Trung;;Giuse ;Trần Minh Nhật;;Giuse ;Phạm Thị Ngọc Diệp;0919842179
@@ -788,6 +889,7 @@
 635;Têrêsa;Trương Vũ Như Quỳnh;Nữ;;2009-12-06;Rạch Giá;2010-01-03;Thái Hòa - Long Xuyên;;;;;;;27;đường 11;Tân Kiểng;Quận 7;;;Vincente ;Trương Hiếu Nghĩa;;Vincente ;Vũ Nguyễn Mỹ Anh;01262252616
 765;Phaolô;Nguyễn Phước Thịnh;Nam;;2009-12-08;TP.HCM;2010-03-01;Mẫu Tâm;2019-12-06;Mẫu Tâm;;;;;5A;đường số 10;Tân Kiểng;Quận 7;;0948687331;Phêrô ;Nguyễn Trần Lê Vinh;0933113986;Phêrô ;Nguyễn Thị Kim Khuyên;0933544122
 142;Maria Christina;Huỳnh Thị Thanh Thảo;Nữ;;2009-12-09;TP.HCM;2010-02-07;Mẫu Tâm;;;;;;;108/40/20;Lê Văn Lương;Tân Hưng;Quận 7;Mân Côi;;;Huỳnh Thành Giàu;37710739;;Đinh Thị Mỹ Hạnh;0948687331
+828;Maria;Dương Minh Châu;Nữ;;2009-12-10;TP.HCM;2010-07-02;Nam Hải;2019-12-06;Mẫu Tâm;;;;;;;;;;;Giuse ;Dương Hải Luyến;0919206939;Giuse ;Nguyễn Thị Thu Anh;0924561223
 48;GBt;Đào Vũ Gia Điềm;Nam;;2009-12-17;;2010-02-28;Tân Định;;;;;;;160A;Võ Thị Sáu;Phường 8;Quận 3;Ngoài Xứ;;;;;;;01265708382
 179;Anna;Lê Thanh Nhã Uyên;Nữ;;2009-12-22;TP.HCM;;;;;;;;;1051;Huỳnh Tấn Phát;Phú Thuận;Quận 7;;;Stêphanô ;Lê Thanh Quốc Hưng;0903967529;Stêphanô ;Lê Thị Kiều Trang;0903950879
 100;Giuse;Hoàng Nguyễn Đức Tuấn;Nam;;2009-12-29;TP.HCM;2010-07-02;Gia Định;2019-12-06;Mẫu Tâm;;;;;374A;Lê Văn Lương;Phước Kiển;Nhà Bè;La Vang Trung;;Giuse ;Hoàng Đức Dũng;0973189589;Giuse ;Nguyễn Thị Ân;0902653477
@@ -806,10 +908,14 @@
 871;Rosa;Nguyễn Ánh Ngọc;Nữ;;2010-03-04;;;;;;;;;;9A;đường 71;Tân Quy;Quận 7;;;Phaolô ;Nguyễn Minh Hiếu;0909085378;Phaolô ;Bùi Thị Thúy Khương;0994590282
 853;Giuse;Lê Nguyễn Thiên Phúc;Nam;;2010-03-23;TP.HCM;2010-07-04;Mẫu Tâm;;;;;;;80;đường 45;Tân Quy;Quận 7;;;Martin ;Lê Chuẩn;;Martin ;Nguyễn Thị Minh Châu;0908293560
 816;Anna;Nguyễn An Quế Chi;Nữ;;2010-04-02;TP.HCM;2010-07-04;An Nhơn;;;;;;;A2-22-04;Hoàng Anh Gold House;Phước Kiển;Nhà Bè;;;Phêrô ;Nguyễn Văn Linh;0989695939;Phêrô ;An Thị Oanh Thu;0989684606
+1083;Anna;Nguyễn Thị Anh Thư;Nữ;;2010-04-06;TP.HCM;2010-06-06;Mẫu Tâm;;;;;;;;;;;;;Phero ;Nguyễn Phú Tráng;0983699630;Phero ;Nguyễn Thị Anh Thư;0987937552
 837;Anna;Ngô An Nhiên;Nữ;;2010-04-16;TP.HCM;2010-07-04;Mẫu Tâm;;;;;;;38;đường 27;Tân Quy;Quận 7;Mông Triệu;;Giuse ;Ngô Hoàng Quốc Tuấn;;Giuse ;Trần Thị Minh Nguyệt;0908204449
 869;Maria;Trần Ngọc Hồng Ân;Nữ;;2010-04-20;TP.HCM;2010-05-23;Antôn, Cầu Ông Lãnh;;;;;;;117/54;Xô Viết Nghệ Tĩnh;phương 17;Bình Thạnh;;;Đaminh ;Trần Ngọc Sương;0917355450;Đaminh ;Nguyễn Thị Ngọc Mỹ;0903612020
 809;Katarina;Nguyễn Ngọc Khánh Linh;Nữ;;2010-04-21;TP.HCM;2010-05-23;Phú Lộc;;;;;;;B406 Chung cư HAGL 1;Lê Văn Lương;Tân Quy;Quận 7;Lộ Đức;;;;;;Trần Thị Thúy Diễm;02822230482
 346;Maria;Nguyễn Mai Thư;Nữ;;2010-04-22;TP.HCM;2010-06-06;Mẫu Tâm;2019-12-06;Mẫu Tâm;;;;;167/5;Lê Văn Lương;Tân Kiểng;Quận 7;Lộ Đức;;Simon ;Nguyễn Văn Tổng;0938875141;Simon ;Mai Thị Từ Vi;0774600359
+1005;Maria Veronica;Nguyễn Đại Trúc Lâm;Nữ;;2010-04-27;Sài Gòn;2010-02-07;Gx. Đức Mẹ Hằng Cứu Giúp;;;;;;;;;;;;;;;;;Goretti Nguyễn Khả Thiên Nhi;0909696627
+1002;Giuse;Võ Nhựt Khang;Nam;;2010-04-27;Sài Gòn;2010-06-05;Phú Xuân;;;;;;;;;;;;;Giuse ;Võ Thanh Tuấn;0902991021;Giuse ;Nguyễn Thị Nào;0932636276
+1003;Maria;Đậu Thanh Trúc;Nữ;;2010-05-03;;2010-08-30;Nghi Sơn;;;;;;;;đường 25;Tân Quy;Quận 7;;;Phero ;Đậu Văn Lưu;0979787204;Phero ;Nguyễn Thị Giang;
 1039;Maria;Đậu Thanh Trúc;Nữ;;2010-05-03;;2010-08-30;Nghi Sơn;;;;;;;77;đường 25;Tân Quy;Quận 7;;;Phero ;Đậu Văn Lưu;0979787204;Phero ;Nguyễn Thị Gian;
 784;Phêrô;Hoàng Tiến Đạt;Nam;;2010-05-19;TP.HCM;2010-06-27;Thuận Phát;;;;;;;227;đường 17;Tân Quy;Quận 7;;;Phêrô ;Hoàng Ngọc Sinh;0987789927;Phêrô ;Hoàng Thị Liễu;
 364;Antôn;Nguyễn Trung Nhật Quang;Nam;;2010-05-20;TP.HCM;2010-06-27;Vĩnh Hội;2019-12-06;Mẫu Tâm;;;;;101/21/8A;Lê Văn Lương;Phước Kiển;Nhà Bè;La Vang Thượng;;Phêrô ;Nguyễn Trung Thành Đạt;0918094193;Phêrô ;Dương Vân Du;0918949301
@@ -819,8 +925,13 @@
 757;Giuse;Võ Vương Lâm;Nam;;2010-06-15;TP.HCM;2010-04-07;Mẫu Tâm;2019-12-06;Mẫu Tâm;;;;;380/81/3;Lê Văn Lương;Tân Hưng;Quận 7;Thăm Viếng;;Phêrô ;Võ Nguyễn Đình Luật;0903669585;Phêrô ;Phan Thị Bé Mười;0908938797
 758;Giuse;Lê Minh Tâm;Nam;;2010-06-18;TP.HCM;2010-05-12;Mẫu Tâm;;;;;;;35/14;Trần Xuân Soạn;Tân Hưng;Quận 7;Mân Côi;;Antôn ;Lê Anh Tùng;;Antôn ;Đặng Thị Kim Dung;0902788679
 306;Tôma;Nguyễn Khang Thịnh;Nam;;2010-07-02;TP.HCM;2010-01-08;Bình Thuận;2019-12-06;Mẫu Tâm;;;;;791/23/7K5;Trần Xuân Soạn;Tân Hưng;Quận 7;Đức Mẹ Phù Hộ;;GBt ;Nguyễn Xuân Trường;0907181728;GBt ;Phạm Thị Thảo;0933994313
+1119;Anna;Nguyễn Ngọc Gia Hân;Nữ;;2010-07-04;TP.HCM;;;;;;;;;;;;;;0977820843;Phero ;Nguyễn Tghafnh Nghĩa;0938499332;Phero ;Lê Thị Đào Tiên;0932614124
+850;Anna;Nguyễn Ngọc Gia Hân;Nữ;;2010-07-04;La Gi - Bình Thuận;;;;;;;;;;;;;;0908480450;Phêrô ;Nguyễn Thành Nghĩa;0938499332;Phêrô ;Lê Thị Đào Tiên;0977820843
+952;Phêrô;Nguyễn Thiên Anh;Nam;;2010-07-08;;;;;;;;;;;CC Hoàng Anh Thanh Bình, D4;Tân Hưng;7;;;;;;;Nguyễn Thị Hồng Phúc;0908480450
 625;Maria;Trương Quỳnh Minh Thư;Nữ;;2010-07-09;;2011-02-06;Phú Túc;;;;;;;30/31/24/28A;Lâm Văn Bền;Tân Kiểng;Quận 7;;0903630411;;;;;;0915561591
 917;Maria;Lê Vân An;Nữ;;2010-07-21;;2010-08-14;Thủ Đức;;;;;;;H18;đường số 6;;KDC Phước Kiển A, LVL, Nhà Bè;La Vang Thượng;;Phêrô ;Lê Quốc Tuấn;0902700411;Phêrô ;Võ Thị Kim Thanh;0903630411
+1069;GBt;Nguyễn Thanh Thiên;Nam;;2010-07-25;TP.HCM;;;;;;;;;;;;;;;GBt ;Nguyễn Thế Dân;0918206945;GBt ;Đỗ Bình Nguyên;0988513835
+461;Phero;Nguyễn Tấn Phong;Nam;;2010-07-27;Cần Thơ;2018-05-03;Giáo điểm Tin Mừng;2019-12-06;Mẫu Tâm;;;;;;ấp 4;Long Hậu;Cần Giuộc, Long An;;;Gioakim ;Nguyễn Kim Lê;0916411160;Gioakim ;Phạm Thị Cẩm Nương;0908525582
 783;Maria;Nguyễn Lê Anh Thư;Nữ;;2010-08-06;TP.HCM;2011-04-03;Tân Việt;;;;;;;41;đường 15;Tân Kiểng;Quận 7;;;Micae ;Nguyễn Minh Thuyết;;Micae ;Têrêsa Lê Thị Tường Nhung;0903550718
 961;Giuse;Bùi Huy Quang;Nam;;2010-08-10;;;;;;;;;;38;đường 27;Tân Quy;Quận 7;Mông Triệu;;;;;;;
 608;Phêrô;Trần Hoàng Quân;Nam;;2010-08-11;;2010-03-10;Mẫu Tâm;;;;;;;68A;Phan Huy Thực;Tân Kiểng;Quận 7;Thánh Mẫu;01633617307;Phero ;Trần Thế Vy;0903373525;Phero ;Lương Thị Thu Phương;0907272225
@@ -837,6 +948,9 @@
 1023;Maria;Lê Thị Quỳnh Anh;Nữ;;2010-09-25;TP.HCM;2012-06-26;Mẫu Tâm;;;;;;;142;Lê Văn Lương;Ấp 5, Phước Kiển;Nhà Bè;;;Phero ;Nguyễn Văn Hải;01638059307;Phero ;Nguyễn Thị Xoài;01659987124
 866;Maria;Nguyễn Đan Thảo Nguyên;Nữ;;2010-10-20;;;;;;;;;;56/42/5D;đường 25A;Tân Quy;Quận 7;;;;;;;;
 762;Martino;Đỗ Phúc Khang;Nam;;2010-10-22;Đồng Nai;2010-03-06;;;;;;;;B1-04-06;chung cư Hoàng Anh An Tiến;;Nhà Bè;La Vang Trung;;Giuse ;Đỗ Nguyễn Hoàng Phúc;0933492359;Giuse ;Goretti Phạm Hà Bảo Trân;
+761;Maria;Tạ Nguyệt Ánh;Nữ;;2010-11-05;;2010-12-02;Phú Đa;;;;;;;;Đào Sư Tích;Phước Kiển;Nhà Bè;;;Vincente ;Tạ Minh Xứng;0986991775;Vincente ;Tạ Kim Tuyết;01684062514
+820;Anna;Nguyễn Võ Bảo Thy;Nữ;;2010-11-05;TP.HCM;2010-12-05;Hiệp Hòa;;;;;;;;;;;;;Martinô ;Nguyễn Văn Đối;0902621713;Martinô ;Võ Thị Thu Hồng;
+1062;Giuse;Phạm Công Thiên Triệu;Nam;;2010-11-10;TP.HCM;;;;;;;;;;;;;;;Giuse ;Phạm Công Thiên Vũ;0909539197;Giuse ;Lê Thị Hồng Ân;01206029919
 422;Phêrô;Nguyễn Thành Danh;Nam;;2010-11-12;TP.HCM;2010-04-03;Bến Dinh;;;;;;;13;Đào Sư Tích, ấp 2;Phước Lộc;Nhà Bè;La Vang Thượng;;Toma ;Nguyễn Thành Đạt;0918023114;Toma ;Nguyễn Thị Diễm Kiều;
 1048;Gieronimo;Bùi Minh Phát;Nam;;2010-11-22;TP.HCM;2011-02-01;Mẫu Tâm;;;;;;;97;Khánh Hội;phường 3;Quận 4;;;;;0918982852;;Ngô Thị Lê;0927317424
 793;Phêrô;Hàn Quốc Nam An;Nam;;2010-11-25;TP.HCM;;;;;;;;;3/10;Lê Văn Lương, ấp 4;Nhơn Đức;Nhà Bè;La Vang Hạ;;Phêrô ;Hàn Quốc Hưng;0962466199;Phêrô ;Nguyễn Thị Hà;0933796096
@@ -847,6 +961,7 @@
 692;Cecilia;Trần Ngọc Thanh Trúc;Nữ;;2010-12-13;;2011-02-01;Mẫu Tâm;;;;;;;147A;Gò Công;phường 13;Quận 5;;;Gioan ;Kim Trần Thế Vịnh;01228080834;Gioan ;Trần Thị Thu Hà;0938801120
 358;GBt;Nguyễn Nhất Lãm;Nam;;2010-12-20;TP.HCM;2011-06-03;Mẫu Tâm;2019-12-06;Mẫu Tâm;;;;;75;đường 13;Tân Kiểng;Quận 7;Truyền Tin;;Andre ;Nguyễn Văn Hiệp;0909202340;Andre ;Nguyễn Mộng Thanh Trúc;0907800501
 577;Phêrô;Trần Hoàng Bảo Nghi;Nam;;2010-12-22;Đà Lạt;;;2019-12-06;;;;;;số 39, khu biệt thự Nam Phú;số 9;Tân Thuận Đông;Quận 7;;;Phêrô ;Trần Khải Hoàn;0919636533;Phêrô ;Trần Thị Hải Yến;0988434378
+1056;Maria;Phạm Thị Lysa;Nữ;;2010-12-29;Hà Tĩnh;2011-06-02;Trại Lô;;;;;;;;;;;;;Phero ;Phạm Văn Hùng;0122845534;Phero ;Trần Thị Long;0976951561
 808;Vinh Sơn;Nguyễn Minh Đức;Nam;;2011-01-03;TP.HCM;2011-06-03;Mẫu Tâm;;;;;;;64/2;đường 79;Tân Quy;Quận 7;Vô Nhiễm;0902883898;Hêrônimô ;Nguyễn Văn Hài;0918414209;Hêrônimô ;Đỗ Thị Lan;0985636161
 944;Têrêsa;Lê Li Li;Nữ;;2011-01-09;TP.HCM;2011-05-01;Mẫu Tâm;;;;;;;68;đường số 25;Tân Quy;Q.7;Mông Triệu;0909060012;Vincente ;Lê Thanh Quang;0903375705;Vincente ;Phan Ngọc Anh Thư;0902883898
 803;Maria;Trương Ngọc Gia Hân;Nữ;;2011-01-15;TP.HCM;2011-05-06;Mẫu Tâm;;;;;;;135;đường 79;Tân Quy;Quận 7;Vô Nhiễm;;Phêrô ;Trương Hữu Được;0909060012;Phêrô ;Lê Thị Thúy Trang;
@@ -866,14 +981,19 @@
 930;Raphael;Nguyễn Hoàng Khang;Nam;;2011-04-05;TP.HCM;2011-09-25;GX. Chợ đũi;;;;;;;79;đường số 9;Tân Kiểng;Q.7;;;;Nguyễn Thanh Tùng;;;Trần Thụy Như Hoàng;01222644852
 825;Vinh Sơn;Nguyễn Anh Duy;Nam;;2011-04-08;TP.HCM;;;;;;;;;91;Lê Văn Lương, ấp 3;Phước Kiển;Nhà Bè;;;Phêrô ;Nguyễn Văn Nam;01234894894;Phêrô ;Phạm Thị Tỉnh;09030990021
 940;Giuse;Nguyễn Quốc Anh;Nam;;2011-04-12;TP.HCM;2011-06-05;Mẫu Tâm;;;;;;;861/87;Trần Xuân Soạn;Tân Hưng;Q.7;;;Đaminh ;Nguyễn Vân Tích;0902705847;Đaminh ;Huỳnh Thị Phương;0937564296
+942;Catrina;Phạm Nguyễn Linh Đan;Nữ;;2011-04-15;;;;;;;;;;;;;;;;;;;;;
+1123;;Ngô Đặng Thuỳ Dương;Nữ;;2011-04-25;TP.HCM;;;;;;;;;;;;;;0932786461;Phero ;Ngô Văn Hải;0908333392;Phero ;Đặng Thị Nhung;0903026220
 943;Stêphanô;Lê Vỹ Hào;Nam;;2011-04-25;TP.HCM;2011-05-06;Phanxico Xavie Chợ Lớn;;;;;;;380/83;Lê Văn Lương;Tân Hưng;Q.7;;01685026310;Giuse ;Lê Huy;0932614498;Giuse ;Vũ Thị Kim Anh;0932786461
 946;Maria;Trần Phương Nhi;Nữ;;2011-04-26;TP.HCM;2011-06-05;Mẫu Tâm;;;;;;;61/2, Hẻm 380;Lê Văn Lương;Tân Hưng;Q.7;;;Gioan ;Trần Xuân Thịnh;0986892378;Gioan ;Nguyễn Thị Nhàn;01685026310
 832;Têrêsa;Huỳnh Như;Nữ;;2011-04-27;TP.HCM;2011-05-06;Mẫu Tâm;;;;;;;460/6/7;Lê Văn Lương;Tân Phong;Q.7;;;Phêrô ;Huỳnh Lê Tân;0941474949;Phêrô ;Nguyễn Thị Ngọc Thúy;0942277854
 1036;Phero;Hoàng Lê Gia Nguyên;Nam;;2011-05-01;Buôn Ma Thuột;2012-05-08;Kim Mai - TP BMT;;;;;;;48/2;Mai Văn Vinh;Tân Quy;Quận 7;;;Giuse ;Bùi Nguyễn Minh Đăng;01204731985;Giuse ;Lê Đoàn Bảo Trinh;0935099098
+1115;Giêrađô;Trần Thiên Phước;Nam;;2011-05-04;TP.HCM;2011-03-07;Tân Hoà;;;;;;;;;;;;0937353739;Phero ;Trần Công Lý;0908353739;Phero ;Trần Thị Xuân Lan;0937353739
 913;Giêrađô;Trần Thiên Phước;Nam;;2011-05-04;TP.HCM;2011-07-03;Tân Hòa;;;;;;;A301401;CC Hoàng Anh An Tiến;Tân kiểng;Q.7;La Vang Trung;;Phêrô ;Trần Công Lý;0908353739;Phêrô ;Trần Thị Xuân Lan;0937353739
+1114;Giêrađô;Trần Thiên Phước;Nam;;2011-05-04;TP.HCM;2011-07-03;Tân Hoà;;;;;;;;;;;;;Phero ;Trần Công Lý;0908353739;Phero ;Trần Thị Xuân Lan;0937353739
 1086;Micael;Phạm Minh Đức;Nam;;2011-05-11;TP.HCM;;;;;;;;;2/30;Lê Văn Lương;Nhơn Đức;Nhà Bè;La Vang Hạ;;Micael ;Phạm Văn Nguyên;0986073004;Micael ;Lưu Thị Huyền;0979050303
 799;Phêrô;Nguyễn Minh Hải;Nam;;2011-05-23;TP.HCM;;;;;;;;;140/7;Đào Sư Tích;ấp 3, Phước Kiển;Nhà Bè;La Vang Trung;;Phêrô ;Nguyễn Đoàn Hòa;0919798332;Phêrô ;Nguyễn Thị Xuân Nương;0909355862
 782;Maria;Nguyễn Trâm Anh;Nữ;;2011-05-27;TP.HCM;2011-02-07;Nhà Riêng;;;;;;;C2/27;đường 66, khu Tân Quy Đông;Tân Phong;Q.7;;;Gioan ;Nguyễn Quốc Hoàng;;Gioan ;Phạm Thị Mai;0918767779
+1107;Teresa;Trần Phương Vy;Nữ;;2011-06-03;TP.HCM;2011-03-07;Bạch Đằng;;;;;;;;;;;;;Phero ;Trần Tuấn Em;0973169468;Phero ;Võ Thanh Thuý;0983071303
 1087;Têrêsa;Trần Phương Vy;Nữ;;2011-06-03;TP.HCM;2011-07-03;Bạch Đằng;;;;;;;B35-05;Chung cư Hoàng Anh Gia Lai Thanh Bình;Tân Hưng;Q.7;La Vang Trung;0983071303;Phêrô ;Trần Tuấn Em;0973169468;Phêrô ;Võ Thanh Thúy;0983071303
 804;Têrêsa;Trần Phương Vy;Nữ;;2011-06-03;TP.HCM;2011-07-03;Bạch Đằng;;;;;;;B35-5;HAGL Thanh Bình;Tân Hưng;Q.7;;;Phêrô ;Trần Tuấn Em;0978050983;Phêrô ;Võ Thanh Thúy;0983071303
 1080;Giuse;Đặng Lâm Minh Huy;Nam;;2011-06-13;TP.HCM;2011-07-08;Mẫu Tâm;;;;;;;36/2;đường 33;Tân Kiểng;Quận 7;Hằng Cứu Giúp;;Phero ;Đặng Minh Hải;0909247083;Phero ;Phan Lâm Nhật Minh;0938164254
@@ -887,6 +1007,7 @@
 1035;Maria;Hồ Tường Lam;Nữ;;2011-07-25;Bình Phước;2012-11-03;Tắc Rỗi;;;;;;;59/37, hẻm Vườn Điều;đường số 10;Tân Quy;Quận 7;;;;Hồ Văn Hồng;;;Trần Thị Nga;0901420565
 798;Giuse;Trần Phạm Hiếu Thiện;Nam;;2011-08-04;TP.HCM;2011-02-10;Mẫu Tâm;;;;;;;27;đường 25;Tân Quy;Quận 7;Mông Triệu;0985250437;Giuse ;Trần Văn Thoại;01686832799;Giuse ;Phạm Thị Kim Anh;0938415707
 802;Maria;Nguyễn Hà Tuyết Phương;Nữ;;2011-08-06;TP.HCM;2011-04-09;Bình Xuyên;;;;;;;1465/46/10;Lê Văn Lương, ấp 2;Nhơn Đức;Nhà Bè;La Vang Hạ;;Phêrô ;Nguyễn Tiến Long;0985250437;Phêrô ;Hà Diễm Tuyết;0985248437
+999;Phero;Nguyễn Anh Khoa;Nam;;2011-08-07;Sài Gòn;2011-01-10;Bình Long;;;;;;;;;;;;0903706373;Giacobe ;Nguyễn Thành Sơn;0979713629;Giacobe ;Tạ Thị Dung;0917121082
 975;Maria;Hoàng Gia Thanh Nguyên;Nữ;;2011-08-07;TP.HCM;2011-10-30;Gx Chính Tòa Xuân Lộc;;;;;;;1874/5c;Lê Văn Lương;Nhơn Đức;Nhà Bè;La Vang Hạ;0903150344;Giuse ;Hoàng Văn Toản;0903706373;Giuse ;Nguyễn Thị Minh Giang;0907963862
 1019;Phero;Nguyễn Hoàng Gia Bảo;Nam;;2011-08-19;TP.HCM;;;;;;;;;110;Phan Huy Thực;;Quận 7;;0919677897;Phero ;Nguyễn Hoàng Hải;;Phero ;Châu Thị Ngọc Bích;
 911;Maria;Nguyễn Lê Bảo Châu;Nữ;;2011-08-19;TP.HCM;2011-09-29;Thuận Phát;;;;;;;928;Lê Văn Lương;Phước Kiển;Nhà Bè;La Vang Trung;;Phaolô ;Nguyễn Đức Huy;0913625597;Phaolô ;Lê Thị Ánh Nguyệt;0919677897
@@ -898,7 +1019,9 @@
 797;Antôn;Trần Thành Tiến;Nam;;2011-09-29;TP.HCM;2011-06-11;Mẫu Tâm;;;;;;;803/66/2;Huỳnh Tấn Phát;Phú Thuận;Quận 7;Hằng Cứu Giúp;01207674915;Gioakim ;Trần Văn Thiệu;0938232809;Gioakim ;Phan Thị Hằng;0909114794
 806;Têrêsa;Huỳnh Nguyễn Thiên Kim;Nữ;;2011-10-14;TP.HCM;2011-11-25;Mẫu Tâm;;;;;;;13/49;đường số 10;Tân Quy;Quận 7;Hằng Cứu Giúp;;Giuse ;Huỳnh Văn Phó;0917537784;Giuse ;Nguyễn Như Nguyện;0909576920
 1055;Anna;Nguyễn Ngọc Minh Anh;Nữ;;2011-10-16;TP.HCM;2012-05-04;Mẫu Tâm;;;;;;;54F;đường 31;Tân Kiểng;Quận 7;Hằng Cứu Giúp;;Tadeo ;Nguyễn Minh Đức;0908505693;Tadeo ;Phan Thị Lệ Hằng;0907445217
+1060;Maria;Đậu Mai Ka;Nữ;;2011-10-25;;2011-02-20;Nghi Sơn;;;;;;;;;;;;0932774737;;Đậu Văn Cường;0965169654;;Đậu Thị Hà;0978130735
 950;Phaolô;Nguyễn Hoàng Tôn;Nam;;2011-10-26;;2013-11-03;Mẫu Tâm;;;;;;;104/62/6/17;Trần Xuân Soạn;Tân Hưng;Q.7;;;Nicolas ;Nguyễn Hoàng Nam;0933769769;Nicolas ;Huỳnh Thanh Phương;0932774737
+1063;Phero;Nguyễn Trường Thắng;Nam;;2011-10-31;TP.HCM;2012-04-03;Mẫu Tâm;;;;;;;;Đào Sư Tích;ấp 3, Phước Lộc;Nhà Bè;La Vang Thượng;;Phero ;Nguyễn Văn Đảo;00919401511;Phero ;Nguyễn Thị Nhã;0349650753
 1014;Maria;Đặng Hoàng Ngọc Hân;Nữ;;2011-11-07;TP.HCM;2013-05-26;Cần Giuộc;;;;;;;hẻm 1959;Lê Văn Lương;ấp 4, Nhơn Đức;Nhà Bè;La Vang Hạ;;Giuse ;Đặng Anh Phương;0937993668;Giuse ;Trần Ngọc Hiền;01208949468
 1;Phêrô;Nguyễn Đức Huy;Nam;;2011-11-08;TP.HCM;2012-01-01;Mẫu Tâm;;;;;;;75;đường 13;Tân Kiểng;Quận 7;Truyền Tin;;Antôn ;Nguyễn Đức Trí;0936444877;Antôn ;Đinh Tuyết Vy;09022966591
 1047;Phaolo Phero;Phạm Nguyễn Minh Đức;Nam;;2011-11-14;TP.HCM;;;;;;;;;89;Lê Văn Lương;Phước Kiển;Nhà Bè;;;;;0986077928;;Nguyễn Thị Lụa;0976508929
@@ -910,14 +1033,18 @@
 919;Maria;Lại Gia Hân;Nữ;;2011-12-16;Bảo Lộc;2012-02-05;Bảo Lộc;;;;;;;1959/33/10/7;Lê Văn Lương;Nhơn Đức;Nhà Bè;;0902974177;GBt ;Lại Thế Lộc;01668355080;GBt ;Nguyễn Thị Phương Oanh;01659500161
 939;Anna;Huỳnh Thảo Anh;Nữ;;2012-01-01;TP.HCM;;;;;;;;;174/2;Lê Văn Lương;;Q.7;;01228054189;;Huỳnh Hữu Thảo;;;Trần Thị Nhã Uyên;0902974177
 916;Giuse;Trần Hải Nguyên;Nam;;2012-01-03;TP.HCM;2012-04-29;Vĩnh Hội;;;;;;;101/21/8A;Ấp 5, Lê Văn Lương;Phước Kiển;Nhà Bè;La Vang Thượng;0907190087;;;;;Nguyễn Thị Thanh Lam;01228054189
+947;Giuse;Nguyễn Đăng Quang;Nam;;2012-01-05;TP.HCM;;;;;;;;;;;;;;;Giuse ;Nguyễn Đăng Đại;0937190087;Giuse ;Phạm Thị Ngọc Thủy;0907190087
 1042;Cecilia;Lê Quỳnh Hương;Nữ;;2012-01-16;TP.HCM;2012-03-06;Mẫu Tâm;;;;;;;264/19/6;Lê Văn Lương;Tân Hưng;Quận 7;;;Gioan ;Lê Trọng Ngà;0913678952;Gioan ;Dương Thị Phương Thảo;0908333842
+909;Cecilia;Lê Quỳnh Hương;Nữ;;2012-01-16;;2012-06-03;Mẫu Tâm;;;;;;;;;;;;01217362919;Gioan ;Lê Trung Ngà;0913678952;Gioan ;Dương Thị Phương Thảo;0908333842
 922;Maria;Nguyễn Thanh Hòa;Nữ;;2012-01-17;;;;;;;;;;167/20;Lê Văn Lương;Tân Kiểng;Q.7;Lộ Đức;0909656344;Batôlômeô ;Nguyễn Đức Lập;0906396822;Batôlômeô ;Lưu Thị Lan Hương;01217362919
 987;;Nguyễn Trường Minh Trí;Nam;;2012-01-19;TP.HCM;;;;;;;;;5;đường số 61;Tân kiểng;Quận 7;Thánh Mẫu;;;Nguyễn Trường Trúc Lâm;0913914541;;Nguyễn Thị Phương Quỳnh;0909656344
 897;Andre;Bùi Ngọc Anh Khôi;Nam;;2012-01-21;TP.HCM;2013-03-03;Bình Phước;;;;;;;10A;đường số 61;Tân Kiểng;q7;Thánh Mẫu;;Giuse ;Bùi Ngọc Long;0979881819;Giuse ;Phạm Thị Ngọc Sương;0906601621
 1030;Abnes;Huỳnh Phạm Uyên Thy;Nữ;;2012-01-26;TP.HCM;2012-04-03;Tân Sa Châu;;;;;;;Khu cao ốc Phú Hoàng Anh;Nguyễn Hữu Thọ;Phước Kiển;Nhà Bè;;;Giuse ;Huỳnh Hữu Tâm;;Giuse ;Phạm Nguyễn Ý Uyên;0908379686
 996;GBt;Nguyễn Thành Long;Nam;;2012-02-05;Sài Gòn;2012-04-03;Mẫu Tâm;;;;;;;21;3;Tân Kiểng;Quận 7;Thánh Mẫu;0907721134;Phero ;Nguyễn Đô Thành;;Phero ;Nguyễn Thị Thanh Thảo;0932601124
 928;Têrêsa;Nguyễn Phúc Thùy Hân;Nữ;;2012-02-10;;;;;;;;;;1236/8/3;Lê Văn Lương;ấp 3;Phước Kiển, Nhà Bè;;;GB. ;Nguyễn Văn Hữa Quỳnh;0903050582;GB. ;Văn Thị Ánh Đào;0907721134
+1067;Giuse;Phạm Công Thiên Khang;Nam;;2012-02-10;TP.HCM;;;;;;;;;;;;;;0907669006;Giuse ;Phạm Công Thiên Vũ;09099539197;Giuse ;Lê Thị Hồng Ân;01206029919
 933;Maria;Dương Phương Phương;Nữ;;2012-02-20;;2012-06-03;Nhân Hòa;;;;;;;18/15;đường 25A;Tân Quy;Q7;;;Antôn ;Dương Bửu Lộc;0938388281;Antôn ;Nguyễn Thị Hồng Nhung;0907669006
+948;Maria;Nguyễn Châu Khánh Tâm;Nữ;;2012-03-01;;2012-05-06;;;;;;;;;;;;;0908173332;Giuse ;Nguyễn Trọng Huy;0903627355;Giuse ;Phạm Thị Châu;0909393485
 929;Maria;Nguyễn Gia Yên;Nữ;;2012-03-02;TP.HCM;2012-01-04;Thánh Nguyễn Duy Khang;;;;;;;44/12;đường 79;Tân Quy;Q.7;;0908388588;Phêrô ;Nguyễn Hoài Nam;0908172232;Phêrô ;Nguyễn Thị Mỹ Yến;0908173332
 903;Maria;Nguyễn Ngọc Minh Thư;Nữ;;2012-03-20;TP.HCM;2012-06-05;Mẫu Tâm;;;;;;;21;đường sô 23;Tân Qui;Q7;Mông Triệu;;Giuse ;Nguyễn Đức Thuận;0903355855;Giuse ;Nguyễn Minh Toàn;0908388588
 1081;Maria;Trần Thị Huyền Trân;Nữ;;2012-03-29;Vinh;;;;;;;;;1289;Lê Văn Lương;ấp 2, Phước Kiển;Nhà Bè;;;Phero ;Trần Quốc Trị;0934080002;Phero ;Trần Thị Liên;0978420419
@@ -938,11 +1065,14 @@
 899;Maria;Nguyễn Vũ Hoàng Lam;Nữ;;2012-08-02;TP.HCM;2012-09-02;Mẫu Tâm;;;;;;;106;Phan Huy Thực;Tân Kiểng;Q.7;Thánh Mẫu;0918304400;Giuse ;Nguyễn Hoàng Tú;0906644485;Giuse ;Vũ Thị Hương;0913114604
 925;Têrêsa;Phan Thanh Thảo;Nữ;;2012-08-08;TP.HCM;2017-01-04;Tân Phú;;;;;;;28/100;đường số 18;P.Bình Hưng Hòa;Bình Tân;Hằng Cứu Giúp;;Matthêu ;Phan Thái Vũ (mất);;Matthêu ;Trần Hữu Thùy Trang;0918304400
 994;Maria;Lê Hoàng Bảo Ngọc;Nữ;;2012-08-09;Sài Gòn;2012-07-10;Phú Xuân;;;;;;;791/27/3G3;Trần Xuân Soạn;Tân Hưng;Quận 7;Đức Mẹ Phù Hộ;;Stephano ;Lê Hoàng Hưng;0901861459;Stephano ;Nguyễn Ngọc Hồng Vân;0907596608
+906;Maria;Nguyễn Ngọc Luynh Lynh;Nữ;;2012-08-15;;2014-12-07;Mẫu Tâm;;;;;;;;;;;;01677400082;Inhasiô ;Nguyễn Công Liêm;0909090008;Inhasiô ;Bùi Thị Kiều Trang;0909113996
 935;Maria;Trịnh Thị Thanh;Nữ;;2012-08-17;;2012-09-17;Gx. Quần Xá;;;;;;;25/252 hẻm 29,;đường 17;Tân Quy;Q.7;Vô Nhiễm;;Giu-se ;Trịnh Đình Định;;Giu-se ;Lê Thị Tâm;01677400082
 1018;Giuse;Trần Đình Chí Gia;Nam;;2012-08-28;TP.HCM;2012-07-10;Mẫu Tâm;;;;;;;1289;Lê Văn Lương;ấp 2, Phước Kiển;Nhà Bè;La Vang Trung;0987712718;Phero ;Trần Đình Ngọc;0905555819;Phero ;Trần Thị Loan;0982977600
 931;Đaminh;Phạm Hoàng Bảo Long;Nam;;2012-09-05;;2012-10-06;Giáo họ Giuse;;;;;;;417;Lê Văn Lương;Tân Phong;Q.7;;;GBt ;Phạm Hoàng;;GBt ;Hoàng Thị Thu Trúc;0987712718
 927;Phaolô;Nguyễn Hoàng Phúc Đăng;Nam;;2012-09-05;;2012-12-25;Khánh Hội;;;;;;;675/100;Trần Xuân Soạn, PMH;Tân Hưng;;;;;Nguyễn Trường Thọ;01699954930;;Thái Hoàng Thùy Linh;0979588850
+937;;Nguyễn Phạm Ngọc Tuyền;Nữ;;2012-09-08;;;;;;;;;;;;;;;0913767528;;Nguyễn Hữu Nghĩa;;;Phạm Thu Thuận;0908969325
 924;Antôn Padova;Hà Thanh Phúc;Nam;;2012-09-12;;2012-04-11;Mẫu Tâm;;;;;;;52/16;đường số 10;Tân Quy;Q.7;Hằng Cứu Giúp;;Đaminh ;Hà Ngọc Hùng;01268959378;Đaminh ;Nguyễn Thị Liên;0913767528
+896;Gioakim;Nguyễn Minh Đăng;Nam;;2012-09-15;;;;;;;;;;;;;;;;Gioakim ;Nguyễn Duy Thiệu;0904258785;Gioakim ;Goretty Lê Huỳnh Thị Anh Thy;0916713285
 998;Anna;Trần Bảo Vân;Nữ;;2012-10-02;Hà Nam;2012-09-11;Tiêu Thượng;;;;;;;49;Nguyễn Thị Thập;Him Lam Tân Hưng;Quận 7;;;Phanxico ;Trần Trọng Phúc;;Phanxico ;Lê Thị Hồng;01684020570
 926;Gioan;Trần Đại Gia Bảo;Nam;;2012-10-05;TP.HCM;2012-02-12;Mẫu Tâm;;;;;;;81, Ấp 2;Phước Kiển;;Nhà Bè;;0904501767;Marcô ;Trần Văn Dũng;01234744266;Marcô ;Phạm Thị Phương;01689364969
 936;Têrêsa;Nguyễn Phạm Anh Thư;Nữ;;2012-10-15;Đồng Tháp;2012-01-12;Long Hưng;;;;;;;791/23/2A;Trần Xuân Soạn;Tân Hưng;Q.7;Đức Mẹ Phù Hộ;0938693429;GBt ;Nguyễn Hữu Hợp;0909347539;GBt ;Phạm Thị Hiền;0904501767
@@ -962,6 +1092,7 @@
 993;Teresa;Vũ Nguyễn Phương Nghi;Nữ;;2013-02-01;Sài Gòn;2013-07-04;Ngọc Đồng;;;;;;;A88;Phú Thuận;Phú Thuận;Quận 7;;;Martino ;Vũ Đức Thái;0913792134;Martino ;Nguyễn Thị Hải;0965814266
 1076;Phanxico Xavie;Nguyễn Lê Gia Hưng;Nam;;2013-03-23;TP.HCM;2013-04-22;Vĩnh Hòa;;;;;;;54/33/45;Lê Văn Lương;Tân Hưng;Quận 7;;;Giacobe ;Nguyễn Văn Tỏ;0932026479;Giacobe ;Lê Thị Phương Dung;0932850851
 1108;Anna;Nguyễn Ngọc Quỳnh Anh;Nữ;;2013-04-08;TP.HCM;2015-06-12;Thánh Giuse;;;;;;;185/14;Lý Thường Kiệt;phường 7;quận 11;Ngoài Xứ;;Louis ;Nguyễn Ngọc Thiện Sang;0903060775;Louis ;Madalena Võ Thị Tiếp;0764454722
+1082;Teresa;Nguyễn Ngọc Hạ;Nữ;;2013-04-18;TP.HCM;2013-04-08;Mẫu Tâm;;;;;;;;;;;;;Phero ;Nguyễn Phú Tráng;0983699630;Phero ;Nguyễn Thị Anh Thư;0987937552
 1084;Raphael;Lê Hoàng Hà;Nam;;2013-04-22;TP.HCM;;;;;;;;;380/85;Lê Văn Lương;Tân Hưng;Quận 7;;0777796916;Giuse ;Lê Hoàng;0908697663;Giuse ;Nguyễn Thị Mỹ Hạnh;0339324211
 1120;Maria;Nguyễn Ngọc Điệp;Nữ;;2013-04-24;TP.HCM;2013-07-07;Tây Ninh;;;;;;;18B;đường 23;Tân Quy;Quận 7;;;Phaolo ;Nguyễn Đông Lang;;Phaolo ;Phan Ngọc Trân;
 1090;Matta;Vũ Hồng Minh Tâm;Nữ;;2013-05-06;TP.HCM;2013-01-06;Bắc Hà;;;;;;;10/12A;đường 79;Tân Quy;Quận 7;Vô Nhiễm;;Phero ;Vũ Thanh Phong;0916189198;Phero ;Hồng Thị Quỳnh Giao;0934189198
@@ -977,6 +1108,7 @@
 1031;Anna;Lê Ngọc Tường Vy;Nữ;;2013-09-28;;2013-03-11;Nam Hải;;;;;;;873/4;Trần Xuân Soạn;Tân Hưng;Quận 7;;02837753538;Anton ;Lê Văn Chiến;0948534756;Anton ;Lê Thị Hiên;0909533989
 1089;Terasa Isave;Nguyễn Điền Ái Mi;Nữ;;2013-10-01;TP.HCM;2014-05-01;Mẫu Tâm;;;;;;;V2-2001-23 Sunrise City;Nguyễn Hữu Thọ;;Quận 7;;;;;;;Madalena Nguyễn Thị Thu Uyên;
 1066;Maria;Trần Trúc Linh;Nữ;;2013-11-02;TP.HCM;2014-01-26;Xóm Chiếu;;;;;;;27;Nguyễn Hữu Thọ;Tân Hưng;Quận 7;;;Andre ;Trần Anh Thế;0987799784;Andre ;Nguyễn Thị Hải;0908544559
+1095;Đaminh;Võ Vũ Phương Nam;Nam;;2014-01-13;;;;;;;;;;;;;;;;;;;;;
 1088;Micael;Phạm Gia Bảo;Nam;;2013-11-27;TP.HCM;;;;;;;;;2/30;Lê Văn Lương;Nhơn Đức;Nhà Bè;La Vang Hạ;;Micael ;Phạm Văn Nguyên;0986073004;Micael ;Lưu Thị Huyền;
 1029;Anna;Vũ Ngọc Thiên Vy;Nữ;;2013-12-19;TP.HCM;2014-02-03;Mẫu Tâm;;;;;;;Chung cư HAGL1;357 Lê Văn Lương;Tân Quy;Quận 7;Lộ Đức;;Phero ;Vũ Đô;0902808378;Phero ;La Thị Ngọc Mai;0938110981
 1113;Maria Teresa;Trần Hoàng Như Ý;Nữ;;2012-11-10;;;;;;;;;;A25-04 Dragon Hill, 15A1;Nguyễn Hữu Thọ;Phước Kiển;Nhà Bè;La Vang Trung;0916471939;Luca ;Trần Kiếm Quân;0938001660;Luca ;Hoàng Ngọc Phú Châu;0916471939
