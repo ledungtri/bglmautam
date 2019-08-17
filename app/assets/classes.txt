@@ -111,8 +111,8 @@
 18BĐ2A;2018;Bao Đồng;2A;
 18BĐ2B;2018;Bao Đồng;2B;
 18BĐ3A;2018;Bao Đồng;3A;
-18BĐ3B;2018;Bao Đồng;3B;
 18KTA;2018;Khai Tâm;A;Tầng Hầm
+18BĐ3B;2018;Bao Đồng;3B;
 18KTB;2018;Khai Tâm;B;Tầng Hầm
 18KT;2018;Kỹ Thuật;;Tầng Hầm
 18RL1A;2018;Rước Lễ;1A;
