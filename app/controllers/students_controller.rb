@@ -269,6 +269,9 @@ class StudentsController < ApplicationController
     if !params[:student_name].nil?
       @students = Student.where("full_name like ?", "%#{params[:student_name]}%")
     end
+    if !params[:teacher_name].nil?
+      @teachers = Teacher.where("full_name like ?", "%#{params[:teacher_name]}%")
+    end
   end
   
 

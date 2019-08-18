@@ -6,7 +6,7 @@ class CellsController < ApplicationController
   # GET /cells
   # GET /cells.json
   def index
-    @cells = Cell.where(year: @current_year).sort_by {|c| c.sort_param}
+    @cells = Cell.where(year: @current_year).where.not(grade: ["Kỹ Thuật", "Trưởng Ban"]).sort_by {|c| c.sort_param}
     # @cells = Cell.all.sort_by {|c| c.sort_param}.sort_by{|c| c.year}
     
     respond_to do |format|

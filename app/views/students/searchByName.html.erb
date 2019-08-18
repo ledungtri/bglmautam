@@ -35,3 +35,11 @@
     <br>
     <% end %>
 <% end %>
+
+<% unless @teachers.nil? %>
+    <h2>Count : <%= @teachers.count %></h2>
+    <% @teachers.each do |t| %>
+    <%= link_to t.full_name, t %>
+    <br>
+    <% end %>
+<% end %>
