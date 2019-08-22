@@ -61,7 +61,7 @@
     <% @cells.each do |cell| %>
     <% instruction = @teacher.instructions.select { |ins| ins.cell_id == cell.id }.first %>
     <% default_location = "Vô Gia Cư"; default_location = cell.location if cell.location? %>
-    <% default_position = "_"; default position = instruction.position if instruction.position? %>
+    <% default_position = "_"; default_position = instruction.position if instruction.position? %>
       <tr class="table-row">
         <td style='width: 200px'><%= cell.long_year %></td>
         <td style='width: 200px'><%= link_to cell.name, cell %></td>
