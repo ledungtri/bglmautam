@@ -5,35 +5,32 @@ class StudentsController < ApplicationController
   # GET /students
   # GET /students.json
   def index
-    @dang_hoc = Array.new
-    @len_lop = Array.new
-    @hoc_lai = Array.new
-    @nghi_luon = Array.new
-    @chuyen_xu = Array.new
+    dang_hoc = Array.new
+    len_lop = Array.new
+    hoc_lai = Array.new
+    nghi_luon = Array.new
+    chuyen_xu = Array.new
     
-    @students = Array.new
-    
-    Student.all.sort_by {|student| student.sort_param}.each do |student|
-      cell = student.cells.where(year: @current_year).take
-      if (cell != nil)
-        @students.push(student)
-        result = student.result(student.cells.where(year: @current_year).take)
-        case
-        when result == "Đang Học"
-          @dang_hoc.push(student)
-        when result == "Lên Lớp"
-          @len_lop.push(student)
-        when result == "Học Lại"
-          @hoc_lai.push(student)
-        when result == "Nghỉ Luôn"
-          @nghi_luon.push(student)
-        when result == "Chuyển Xứ"
-          @chuyen_xu.push(student)
-        end
+    cell_ids = Cell.where("year = ?", @current_year).pluck(:id)
+    attendances = Attendance.where(cell_id: cell_ids)
+    student_ids = attendances.pluck(:student_id)
+    @students = Student.where(id: student_ids).sort_by {|student| student.sort_param}.each do |student|
+      result = attendances.where(student_id: student.id).take.result
+      case
+      when result == "Đang Học"
+        dang_hoc.push(student)
+      when result == "Lên Lớp"
+        len_lop.push(student)
+      when result == "Học Lại"
+        hoc_lai.push(student)
+      when result == "Nghỉ Luôn"
+        nghi_luon.push(student)
+      when result == "Chuyển Xứ"
+        chuyen_xu.push(student)
       end
     end
 
-    @arrays = [@hoc_lai, @nghi_luon, @chuyen_xu, @dang_hoc, @len_lop]
+    @arrays = [hoc_lai, nghi_luon, chuyen_xu, dang_hoc, len_lop]
 
     respond_to do |format|
       format.html
