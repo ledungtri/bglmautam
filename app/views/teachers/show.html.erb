@@ -73,64 +73,43 @@
     
     
     
-    <tr class="table-row">
-    
-    
-    
-    <% @instruction = Instruction.new %>
-    <%= form_for(@instruction) do |f| %>
-      <% if @instruction.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@instruction.errors.count, "error") %> prohibited this instruction from being saved:</h2>
-    
-          <ul>
-          <% @instruction.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
+    <tr class="table-row">   
+      <td id="form" style="font-size: 14px; display: none" colspan="4">
+        <% @instruction = Instruction.new %>
+        <%= form_for(@instruction) do |f| %>
+          <% if @instruction.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(@instruction.errors.count, "error") %> prohibited this instruction from being saved:</h2>
+        
+              <ul>
+              <% @instruction.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+              </ul>
+            </div>
           <% end %>
-          </ul>
-        </div>
-      <% end %>
-    
-        <%= f.hidden_field :teacher_id, :value => @teacher.id %>
-    
-    
-      <td id="year" style="width: 100px; font-size: 14px; display: none">
-        <select id="year_combobox" onchange="changeCell()">
-          <% selected_year = @years[0] %>
-          <% @years.each do |year| %>
-            <option value="<%=year%>"><%= year.to_s + " - " + (year.to_i+1).to_s %></option>
-          <% end %>
-        </select>
+          <%= f.hidden_field :teacher_id, :value => @teacher.id %>
+          <select id="year_combobox" onchange="changeCell()">
+            <% selected_year = @years[0] %>
+            <% @years.each do |year| %>
+              <option value="<%=year%>"><%= year.to_s + " - " + (year.to_i+1).to_s %></option>
+            <% end %>
+          </select>
+          <%= f.select :cell_id, options_for_select(@opts), :id => 'cell_id' %>
+          <%= f.select :position, options_for_select(["GLV", "Phụ Tá"]), :style => "width: 98px"%>
+          <%= f.submit "Thêm Lớp Mới" %>
+        <% end %>
       </td>
-      <td id="cell" style="font-size: 14px; display: none">
-        <%= f.select :cell_id, options_for_select(@opts), :id => 'cell_id' %>
-      </td>
-      <td id="position" style="text-align: center, font-size: 14px; display: none">
-        <%= f.select :position, options_for_select(["GLV", "Phụ Tá"]), :style => "width: 98px"%>
-      </td>
-      <td id="createBtn" style="font-size: 14px; display: none">
-        <%= f.submit "Thêm Lớp Mới" %>
-      </td>
-      
-      
-    <% end %>
+    </tr>
   </tbody>
 </table>
 
-
-
-
 <center><button id="btn" onClick="showForm()" class="button" style="width:500px">Thêm Lớp Mới</button></center>
-
-
 
 <script>
   function showForm() {
     document.getElementById("btn").style.display = "none";
-    document.getElementById("year").style.display = "table-cell";
-    document.getElementById("cell").style.display = "table-cell";
-    document.getElementById("position").style.display = "table-cell";
-    document.getElementById("createBtn").style.display = "table-cell";
+    document.getElementById("form").style.display = "table-cell";
   }
   
   function changeCell() {
