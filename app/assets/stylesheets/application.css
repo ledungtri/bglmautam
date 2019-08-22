@@ -136,6 +136,25 @@ footer {
     text-decoration: none;
     color: white;
   }
+
+  .button-caution {
+    background-color: #b30000;
+    border-radius: 5px;
+    display: block;
+    width: 100%;
+    margin-top: 5px;
+    
+    line-height: 30px;
+    font-weight: 400;
+    font-size: 18px;
+    text-align: center;
+    color: white;
+  }
+  .button-caution:hover{
+    background-color: #8f0000;
+    text-decoration: none;
+    color: white;
+  }
       
       
       
