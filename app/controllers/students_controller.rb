@@ -36,7 +36,7 @@ class StudentsController < ApplicationController
       format.html
       format.pdf do
         pdf = StudentsPdf.new(@arrays, @current_year)
-        send_data pdf.render, filename: "Danh Sách Thiếu Nhi Năm Học #{@current_year.to_s + " - " + (@current_year+1).to_s}", type: "application/pdf", disposition: "inline"
+        send_data pdf.render, filename: "Danh Sách Thiếu Nhi Năm Học #{@current_year.to_s + " - " + (@current_year+1).to_s}.pdf", type: "application/pdf", disposition: "inline"
       end
     end
   end

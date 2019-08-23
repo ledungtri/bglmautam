@@ -55,7 +55,7 @@ class CellsController < ApplicationController
       format.html
       format.pdf do
         pdf = StudentsPdf.new(@arrays, @cell)
-       send_data pdf.render, filename: "Danh Sách Lớp #{@cell.name} Năm Học #{@cell.long_year}", type: "application/pdf", disposition: "inline"
+       send_data pdf.render, filename: "Danh Sách Lớp #{@cell.name} Năm Học #{@cell.long_year}.pdf", type: "application/pdf", disposition: "inline"
       end
     end
   end
@@ -118,7 +118,7 @@ class CellsController < ApplicationController
       
       format.pdf do
         pdf = AttendanceCheckPdf.new(@students)
-        send_data pdf.render, filename: "Điểm Danh Lớp #{@cell.name} Năm Học #{@cell.long_year}", type: "application/pdf", disposition: "inline"
+        send_data pdf.render, filename: "Điểm Danh Lớp #{@cell.name} Năm Học #{@cell.long_year}.pdf", type: "application/pdf", disposition: "inline"
       end
     end
     

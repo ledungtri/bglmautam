@@ -10,7 +10,6 @@ class CellsPdf < Prawn::Document
       })
       font "HongHa"
       
-      
       title
       move_down 20
       line_items
@@ -29,24 +28,26 @@ class CellsPdf < Prawn::Document
          self.row_colors = ['e5e3e3', 'FFFFFF']
 
          row(0).style(:align => :center, :font_style => :bold, :height => 35, :valign => :center)
-         
-         
-         
-         column(3..8).style(:align => :center, :width => 55)
+         column(0..7).style(:align => :center)
+         column(1..7).style(:width => 60)
       end
    end
    
    
    def line_item_rows
-       [["Năm Học", "Tên Lớp", "Vị Trí", "Tổng Số", "Đang Học", "Lên Lớp", "Nghỉ Luôn", "Học Lại", "Chuyển Xứ"]] + 
-       @cells.map do |cell|
-          [cell.long_year, cell.name, cell.location, cell.attendances.count, 
+      [["STT", "Tên Lớp", "Tổng Số", "Đang Học", "Lên Lớp", "Nghỉ Luôn", "Học Lại", "Chuyển Xứ"]] + 
+      @cells.map do |cell|
+         [
+            @cells.index(cell),
+            cell.name, 
+            cell.attendances.count, 
             cell.attendances.where(result: "Đang Học").count, 
             cell.attendances.where(result: "Lên Lớp").count,
             cell.attendances.where(result: "Nghỉ Luôn").count,
             cell.attendances.where(result: "Học Lại").count,
-            cell.attendances.where(result: "Chuyển Xứ").count] 
-       end
+            cell.attendances.where(result: "Chuyển Xứ").count
+         ] 
+      end
    end
    
    def footer
