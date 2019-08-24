@@ -38,13 +38,14 @@ class StudentsPdf < Prawn::Document
                         
                         row(0).style(:align => :center, :font_style => :bold, :height => 35, :valign => :center)
                         
-                        column(0).style(:width => 250)
-                        column(1).style(:width => 60, :align => :center)
-                        column(2).style(:width => 250)
-                        column(3).style(:width => 60, :align => :center)
+                        column(0).style(:align => :center)
+                        column(1).style(:width => 220)
+                        column(2).style(:width => 60, :align => :center)
+                        column(3).style(:width => 250)
                         column(4).style(:width => 60, :align => :center)
                         column(5).style(:width => 60, :align => :center)
                         column(6).style(:width => 60, :align => :center)
+                        column(7).style(:width => 60, :align => :center)
                    end
                    bounding_box([bounds.width-60, cursor], :width => 60) do
                        text "#{students.first.result(@cell)}: #{students.count}", :align => :center
@@ -56,9 +57,9 @@ class StudentsPdf < Prawn::Document
    end
    
    def line_item_rows
-        [["Họ và Tên", "Ngày Sinh", "Địa Chỉ", "ĐT Cha", "ĐT Mẹ", "Lớp", "Kết Quả"]] +
+        [["STT","Họ và Tên", "Ngày Sinh", "Địa Chỉ", "ĐT Cha", "ĐT Mẹ", "Lớp", "Kết Quả"]] +
         @students.map do |student|
-            [student.name, student.date_birth.strftime("%d/%m/%Y"), student.address, student.father_phone, student.mother_phone, @cell.name, student.result(@cell)] 
+            [@students.index(student) +1, student.name, student.date_birth.strftime("%d/%m/%Y"), student.address, student.father_phone, student.mother_phone, @cell.name, student.result(@cell)] 
         end
    end
    
