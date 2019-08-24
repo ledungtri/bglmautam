@@ -34,7 +34,7 @@ class Student < ActiveRecord::Base
     end
     
     def father_name
-        if father_christian_name?
+        if father_christian_name? && father_full_name?
             father_christian_name + " " + father_full_name
         elsif father_full_name?
             father_full_name
@@ -42,9 +42,9 @@ class Student < ActiveRecord::Base
     end
     
     def mother_name
-        if mother_christian_name?
+        if mother_christian_name? && mother_full_name?
             mother_christian_name + " " + mother_full_name
-        elsif mother_full_name?
+        else
             mother_full_name
         end
     end
