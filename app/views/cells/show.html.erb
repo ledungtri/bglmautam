@@ -74,6 +74,7 @@
       <table class="table table-striped">
         <thead>
           <tr>
+            <th style='width: 20px'>STT</th>
             <th style='width: 230px'>Tên Thánh - Họ và Tên</th>
             <th style='width:  80px'>Ngày Sinh</th>
             <th style='width: 340px'>Địa Chỉ</th>
@@ -87,6 +88,7 @@
         <tbody>
           <% arr.each do |student| %>
               <tr class = table-row>
+              <td style='width: 20px'><%= arr.index(student)+1 %></td>
               <td style='width: 230px'><div class ='btn-link'><%= link_to student.name, student %></div></td>
               <td style='width:  80px'><%= student.date_birth.strftime("%d-%m-%Y") %></td>
               <td style='width: 340px'><%= student.address %></td>
