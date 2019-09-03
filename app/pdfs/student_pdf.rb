@@ -91,7 +91,7 @@ class StudentPdf < Prawn::Document
       baptism = @student.date_baptism.strftime("%d-%m-%Y") if @student.date_baptism
       communion = @student.date_communion.strftime("%d-%m-%Y") if @student.date_communion
       confirmation = @student.date_confirmation.strftime("%d-%m-%Y") if @student.date_confirmation
-      declaration = @student..date_declaration.strftime("%d-%m-%Y") if @student.date_declaration
+      declaration = @student.date_declaration.strftime("%d-%m-%Y") if @student.date_declaration
       
       [["Rửa Tội", baptism, "Nơi Rửa Tội", @student.place_baptism]] +
       [["Rước Lễ", communion, "Nơi Rước Lễ", @student.place_communion]] +
