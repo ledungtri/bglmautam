@@ -23,7 +23,7 @@
 
   <tbody>
     <% @teachers.each do |teacher| %>
-    <% instruction = teacher.instructions.select { |ins| Cell.find(ins.cell_id).year == @current_year }.take %>
+    <% instruction = teacher.instructions.select { |ins| Cell.find(ins.cell_id).year == @current_year }.first %>
       <tr class="table-row">
         <td style='width:  30px'><%= @teachers.index(teacher)+1 %></td> 
         <td style='width:  80px'><%= link_to Cell.find(instruction.cell_id).name, Cell.find(instruction.cell_id) %></td> 
