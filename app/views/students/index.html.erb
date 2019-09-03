@@ -22,15 +22,16 @@
     
       <tbody>
         <% arr.each do |student| %>
-            <% cell = student.cells.where(year: @current_year).take %>
-            <tr class = table-row>
+          <% attendance = student.attendances.select { |att| Cell.find(att.cell_id).year == @current_year }.first %>
+          <% cell = Cell.find(attendance.cell_id) %>
+          <tr class = table-row>
             <td style='width: 230px'><div class ='btn-link'><%= link_to student.name, student %></div></td>
             <td style='width:  80px'><%= student.date_birth.strftime("%d-%m-%Y") %></td>
             <td style='width: 340px'><%= student.address %></td>
             <td style='width:  80px'><%= student.father_phone %></td>
             <td style='width:  80px'><%= student.mother_phone %></td>
             <td style='width:  73px'><%= link_to cell.name, cell %></td>
-            <td style='width:  73px'><%= student.result(cell) %></td>
+            <td style='width:  73px'><%= link_to attendance.result, edit_attendance_path(attendance) %></td>
           </tr>
         <% end %>
       </tbody>
