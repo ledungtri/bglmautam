@@ -12,13 +12,13 @@
   <% end %>
 
   <div class="block">
-    <div class="label">Cell:</div>
-    <%= Cell.find(@instruction.cell_id).name %>
+    <div class="label">GLV:</div>
+    <%= Teacher.find(@instruction.teacher_id).name %>
   </div>
 
   <div class="block">
-    <div class="label">Teacher:</div>
-    <%= Teacher.find(@instruction.teacher_id).name %>
+    <div class="label">Lớp:</div>
+    <%= Cell.find(@instruction.cell_id).name %>
   </div>
 
   <div class="block">

@@ -10,14 +10,21 @@
       </ul>
     </div>
   <% end %>
-  
-  <center>
-    <div class="block">
-      <div class="label">Kết Quả:</div>
-      <%= f.select :result, options_for_select(["Học Lại", "Nghỉ Luôn", "Lên Lớp", "Đang Học", "Chuyển Xứ"], @attendance.result) %>
-    </div>
-  </center>
 
+  <div class="block">
+    <div class="label">Thiếu Nhi:</div>
+    <%= Student.find(@attendance.student_id).name %>
+  </div>
+  
+  <div class="block">
+    <div class="label">Lớp:</div>
+    <%= Cell.find(@attendance.cell_id).name %>
+  </div>
+
+  <div class="block">
+    <div class="label">Kết Quả:</div>
+    <%= f.select :result, options_for_select(["Học Lại", "Nghỉ Luôn", "Lên Lớp", "Đang Học", "Chuyển Xứ"], @attendance.result) %>
+  </div>
 
   <div class="actions" style="padding-top:10px">
     <%= f.submit "Cập Nhật", :class =>"button" %>
