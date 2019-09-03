@@ -11,22 +11,20 @@
     </div>
   <% end %>
 
-  <center>
-    <div class="block">
-      <div class="label">Cell:</div>
-      <%= Cell.find(@instruction.cell_id).name %>
-    </div>
+  <div class="block">
+    <div class="label">Cell:</div>
+    <%= Cell.find(@instruction.cell_id).name %>
+  </div>
 
-    <div class="block">
-      <div class="label">Teacher:</div>
-      <%= Teacher.find(@instruction.teacher_id).name %>
-    </div>
+  <div class="block">
+    <div class="label">Teacher:</div>
+    <%= Teacher.find(@instruction.teacher_id).name %>
+  </div>
 
-    <div class="block">
-      <div class="label">Phụ Trách:</div>
-      <%= f.select :position, options_for_select(["GLV", "Phụ Tá"], @instruction.position) %>
-    </div>
-  </center>
+  <div class="block">
+    <div class="label">Phụ Trách:</div>
+    <%= f.select :position, options_for_select(["GLV", "Phụ Tá"], @instruction.position) %>
+  </div>
   
   <div class="actions" style="padding-top:10px">
     <%= f.submit "Cập Nhật", :class =>"button" %>
