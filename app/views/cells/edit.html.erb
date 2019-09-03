@@ -1,5 +1,5 @@
 <h1>Cập Nhật Thông Tin Lớp</h1>
 
 <%= render 'form' %>
-
 <%= link_to 'Quay Lại', cell_path, :class => "button" %>
+<%= link_to 'Xóa', @cell, method: :delete, data: { confirm: 'Are you sure?' }, :class => "button-caution" %>
