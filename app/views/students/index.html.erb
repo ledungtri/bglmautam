@@ -29,7 +29,7 @@
             <td style='width: 340px'><%= student.address %></td>
             <td style='width:  80px'><%= student.father_phone %></td>
             <td style='width:  80px'><%= student.mother_phone %></td>
-            <td style='width:  73px'><%= link_to cell.name, "/cells/" + cell.id.to_s %></td>
+            <td style='width:  73px'><%= link_to cell.name, cell %></td>
             <td style='width:  73px'><%= student.result(cell) %></td>
           </tr>
         <% end %>
