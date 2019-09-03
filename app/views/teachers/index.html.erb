@@ -27,7 +27,7 @@
       <tr class="table-row">
         <td style='width:  30px'><%= @teachers.index(teacher)+1 %></td> 
         <td style='width:  80px'><%= link_to Cell.find(instruction.cell_id).name, Cell.find(instruction.cell_id) %></td> 
-        <td style='width:  80px'><%= link_to instruction.position, edit_teacher_path(instruction) %></td>
+        <td style='width:  80px'><%= link_to instruction.position, edit_instruction_path(instruction) %></td>
         <td style='width: 280px'><%= link_to teacher.name, teacher %></td>
         <td style='width:  80px'><%= teacher.date_birth.strftime("%d-%m-%Y") %></td>
         <td style='width: 130px'><%= teacher.named_date %></td>
