@@ -13,6 +13,11 @@
 
   <center>
     <div class="block">
+      <div class="label">Teacher:</div>
+      <%= Teacher.find(@instruction.teacher_id).name %>
+    </div>
+
+    <div class="block">
       <div class="label">Phụ Trách:</div>
       <%= f.select :position, options_for_select(["GLV", "Phụ Tá"], @instruction.position) %>
     </div>
