@@ -96,12 +96,12 @@ class StudentPdf < Prawn::Document
       [["Rửa Tội", baptism, "Nơi Rửa Tội", @student.place_baptism]] +
       [["Rước Lễ", communion, "Nơi Rước Lễ", @student.place_communion]] +
       [["Thêm Sức", confirmation, "Nơi Thêm Sức", @student.place_confirmation]] +
-      [["Tuyên Xưng", declaration, "Nơi Tuyên Xưng", @student.place_declaration]]
+      [["Tuyên Hứa", declaration, "Nơi Tuyên Hứa", @student.place_declaration]]
    end
    
    def parents 
       [["Họ Tên Cha", @student.father_name, "Điện Thoại Cha", @student.father_phone]] +
-      [["Họ Tên Mẹ", @student.mother_name, "Địa Thoại Mẹ", @student.mother_phone]]
+      [["Họ Tên Mẹ", @student.mother_name, "Điện Thoại Mẹ", @student.mother_phone]]
    end
    
    def address
