@@ -21,8 +21,7 @@ class AttendanceCheckPdf < Prawn::Document
     end
     
     def title
-        text "Sơ Yếu Lý Lịch", :size => 20, :align => :center, :style => :bold
-        text @student.name, :size => 15, :align => :center, :style => :bold
+        text @student.name, :size => 20, :align => :center, :style => :bold
     end
     
     def body
