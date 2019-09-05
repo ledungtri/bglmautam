@@ -19,7 +19,7 @@ class TeachersPdf < Prawn::Document
    end
    
    def title
-       text "Danh Sách Giáo Lý Viên Năm Học #{@year.to_s + " - " + (@year+1).to_s}", :size => 15, :align => :center, :style => :bold
+       text "Nhân sự phụ trách Giáo dục Đức tin Năm Học #{@year.to_s + " - " + (@year+1).to_s}", :size => 15, :align => :center, :style => :bold
        text "Số Lượng: #{@teachers.count}",:size => 10, :align => :center
        
    end
