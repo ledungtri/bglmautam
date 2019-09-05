@@ -61,6 +61,9 @@
   <h4>Số Lượng : <%= @students.count %></h4>
   
   <div style="width: 100%; text-align: right">
+    <%= link_to "Số điện thoại GLV", "/cells/"+@cell.id.to_s+"/summary" %>
+  </div>
+  <div style="width: 100%; text-align: right">
     <%= link_to "In Danh Sách Lớp", cell_path(format: "pdf") %>
   </div>
   <div style="width: 100%; text-align: right">

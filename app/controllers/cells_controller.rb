@@ -119,7 +119,12 @@ class CellsController < ApplicationController
         send_data pdf.render, filename: "Điểm Danh Lớp #{@cell.name} Năm Học #{@cell.long_year}.pdf", type: "application/pdf", disposition: "inline"
       end
     end
-    
+
+  end
+
+  def summary
+    @cell = Cell.find(params[:cell_id])
+    @instructions = @cell.instructions.order(:position)
   end
   
   private

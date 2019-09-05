@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :teachers
   resources :cells do 
     get "/attendance_check" => 'cells#attendance_check'
+    get "/summary" => 'cells#summary'
   end
   resources :instructions
   resources :attendances

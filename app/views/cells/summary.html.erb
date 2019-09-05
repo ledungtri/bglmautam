@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%= @cell.name %></h1>
+
+<p style="margin:10px"></p>
+
+<% @instructions.each do |ins| %>
+    <% teacher = Teacher.find(ins.teacher_id) %>
+    <div>
+        <div> 
+            <%= ins.position + ": " %>
+            <%= teacher.name %>
+        </div>
+        <div>
+            SDT:
+            <%= teacher.phone %>
+        </div>
+    </div>
+<% end %>
