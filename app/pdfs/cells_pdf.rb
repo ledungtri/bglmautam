@@ -35,17 +35,17 @@ class CellsPdf < Prawn::Document
    
    
    def line_item_rows
-      [["STT", "Tên Lớp", "Tổng Số", "Đang Học", "Lên Lớp", "Nghỉ Luôn", "Học Lại", "Chuyển Xứ"]] + 
+      [["STT", "Tên Lớp", "Tổng Số", "Nghỉ Luôn", "Chuyển Xứ", "Đang Học", "Lên Lớp",  "Học Lại"]] + 
       @cells.map do |cell|
          [
             @cells.index(cell),
             cell.name, 
             cell.attendances.count, 
+            cell.attendances.where(result: "Nghỉ Luôn").count,
+            cell.attendances.where(result: "Chuyển Xứ").count,
             cell.attendances.where(result: "Đang Học").count, 
             cell.attendances.where(result: "Lên Lớp").count,
-            cell.attendances.where(result: "Nghỉ Luôn").count,
-            cell.attendances.where(result: "Học Lại").count,
-            cell.attendances.where(result: "Chuyển Xứ").count
+            cell.attendances.where(result: "Học Lại").count
          ] 
       end
    end
