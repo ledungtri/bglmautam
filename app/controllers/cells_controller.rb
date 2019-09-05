@@ -1,6 +1,5 @@
 class CellsController < ApplicationController
   before_action :set_cell, only: [:show, :edit, :update, :destroy]
-  # before_action :years_combobox, only: [:new, :edit]
   before_action :auth 
 
   # GET /cells
@@ -133,11 +132,5 @@ class CellsController < ApplicationController
     def cell_params
       params.require(:cell).permit(:year, :grade, :group, :location)
     end
-    
-    # def years_combobox
-    #   @years = []
-    #   (Time.new.year-5..Time.new.year+5).each do |year|
-    #     @years.push([year.to_s + " - " + (year+1).to_s, year.to_int])
-    #   end
-    # end
+
 end
