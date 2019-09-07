@@ -36,6 +36,11 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'prawn'
 gem 'prawn-table'
 
+# gem 'rubyzip', '>= 1.2.1'
+gem 'rubyzip', '< 1.0.0'
+gem 'axlsx'
+gem 'axlsx_rails'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'

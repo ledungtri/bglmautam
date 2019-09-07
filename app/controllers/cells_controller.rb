@@ -51,6 +51,10 @@ class CellsController < ApplicationController
     
     respond_to do |format|
       format.html
+      format.xlsx do
+        response.headers[
+          'Content-Disposition'
+        ] = "attachment; filename='items.xlsx'"
       format.pdf do
         pdf = StudentsPdf.new(@arrays, @cell)
        send_data pdf.render, filename: "Danh Sách Lớp #{@cell.name} Năm Học #{@cell.long_year}.pdf", type: "application/pdf", disposition: "inline"

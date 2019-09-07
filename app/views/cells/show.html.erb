@@ -66,6 +66,10 @@
   <div style="width: 100%; text-align: right">
     <%= link_to "In Danh Sách Lớp", cell_path(format: "pdf") %>
   </div>
+  </div>
+  <div style="width: 100%; text-align: right">
+    <%= link_to "In Danh Sách Lớp (Excel)", cell_path(format: "xlsx") %>
+  </div>
   <div style="width: 100%; text-align: right">
     <%= link_to "In Danh Sách Điểm Danh", "/cells/"+@cell.id.to_s+"/attendance_check.pdf" %>
   </div>
