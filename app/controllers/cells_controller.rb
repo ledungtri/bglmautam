@@ -54,7 +54,7 @@ class CellsController < ApplicationController
       format.xlsx do
         response.headers[
           'Content-Disposition'
-        ] = "attachment; filename='items.xlsx'"
+        ] = "attachment; filename=items.xlsx"
       end
       format.pdf do
         pdf = StudentsPdf.new(@arrays, @cell)
