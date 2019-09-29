@@ -106,7 +106,7 @@ class StudentPdf < Prawn::Document
    
    def address
       [["Địa Chỉ", {:content => @student.address, :colspan => 3}]] + 
-      [["Xóm Giáo", @student.area, "Điện Thoại Nhà", @student.phone]]
+      [["Xóm Giáo", @student.area, "", ""]]
    end
    
    def process 

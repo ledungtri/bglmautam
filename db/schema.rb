@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190810090155) do
+ActiveRecord::Schema.define(version: 20190929041124) do
 
   create_table "attendances", force: :cascade do |t|
     t.string   "result"
@@ -56,7 +56,6 @@ ActiveRecord::Schema.define(version: 20190810090155) do
     t.string   "street_name"
     t.string   "ward"
     t.string   "district"
-    t.string   "home_phone"
     t.string   "area"
     t.string   "father_christian_name"
     t.string   "father_full_name"
