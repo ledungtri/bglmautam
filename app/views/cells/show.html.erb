@@ -78,6 +78,7 @@
   
   <% arrays.each do |arr| %>
     <% if !arr.empty? %>
+      <div style="text-align: right; padding-top: 10px; font-size: 11px">Số Lượng: <%= arr.count %></div>
       <table class="table table-striped">
         <thead>
           <tr>
@@ -107,7 +108,6 @@
           <% end %>
         </tbody>
       </table>
-      <div style="text-align: right; padding-bottom: 10px; font-size: 11px">Số Lượng: <%= arr.count %></div>
     <% end %>
   <% end %>
 <% end %>
