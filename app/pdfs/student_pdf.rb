@@ -2,33 +2,17 @@ class StudentPdf < Prawn::Document
    def initialize(student)    
       super(:page_size => "A4")
       @student = student
-      self.font_size = 11
+      self.font_size = 14
       font_families.update("HongHa" => {
          :normal => Rails.root.join("app/assets/fonts/UVNHongHa_R.TTF"),
          :bold => Rails.root.join("app/assets/fonts/14_13787_UVNHongHa_B.TTF"),
       })
       font "HongHa"
       
-      
       text "Sơ Yếu Lý Lịch", :size => 20, :align => :center, :style => :bold
       text @student.name, :size => 15, :align => :center, :style => :bold
       move_down 10
       body
-      
-      move_down 30
-      
-      text "Hành Trình Thiêng Liêng", :size => 20, :align => :center, :style => :bold
-      move_down 10
-      
-      table process do 
-         self.position = :center 
-         row(0).style(:font_style => :bold, :height => 35, :valign => :center, :background_color => 'e5e3e3')
-         
-         column(0).style(:width => 100, :align => :center)
-         column(1).style(:width => 100, :align => :center)
-         column(2).style(:width => 100, :align => :center)
-      end
-      
       footer
    end
    
@@ -42,7 +26,6 @@ class StudentPdf < Prawn::Document
          column(1).style(:width => 100, :align => :center)
          column(3).style(:width => 220)
       end
-      move_down 20
       
       table dates do
          self.position = :center
@@ -54,8 +37,6 @@ class StudentPdf < Prawn::Document
          column(3).style(:width => 220)
       end
       
-      move_down 20
-      
       table parents do
          self.position = :center
          
@@ -65,19 +46,26 @@ class StudentPdf < Prawn::Document
          column(1).style(:width => 220)
          column(3).style(:width => 100, :align => :center)
       end
-      
-      move_down 20
-      
+
       table address do
          self.position = :center
          
          column(0).style(:width => 100, :align => :right, :font_style => :bold, :background_color => 'e5e3e3')
-         column(2).style(:width => 100, :align => :right, :font_style => :bold, :background_color => 'e5e3e3')
-
-         column(1).style(:width => 220)
-         column(3).style(:width => 100, :align => :center)
+         column(1).style(:width => 420)
       end
+
+      move_down 10
       
+      text "Hành Trình Thiêng Liêng", :size => 20, :align => :center, :style => :bold
+      
+      table process do 
+         self.position = :center 
+         row(0).style(:font_style => :bold, :height => 35, :valign => :center, :background_color => 'e5e3e3')
+         
+         column(0).style(:width => 100, :align => :center)
+         column(1).style(:width => 100, :align => :center)
+         column(2).style(:width => 100, :align => :center)
+      end
    end
    
    def basic 
@@ -100,18 +88,17 @@ class StudentPdf < Prawn::Document
    end
    
    def parents 
-      [["Họ Tên Cha", @student.father_name, "Điện Thoại Cha", @student.father_phone]] +
-      [["Họ Tên Mẹ", @student.mother_name, "Điện Thoại Mẹ", @student.mother_phone]]
+      [["Họ Tên Cha", @student.father_name, "Điện Thoại", @student.father_phone]] +
+      [["Họ Tên Mẹ", @student.mother_name, "Điện Thoại", @student.mother_phone]]
    end
    
    def address
-      [["Địa Chỉ", {:content => @student.address, :colspan => 3}]] + 
-      [["Xóm Giáo", @student.area, "", ""]]
+      [["Địa Chỉ", @student.address]] + 
+      [["Xóm Giáo", @student.area]]
    end
    
    def process 
       [["Năm Học", "Lớp", "Kết Quả"]] +
-      # (1..10).map { |i| ["2016 - 2017", "Rước Lễ 1A", "Lên Lớp"] }
       @student.attendances.sort_by{|a| a.cell.year}.map do |attendance|
          [attendance.cell.long_year, attendance.cell  .name, attendance.result]
       end
