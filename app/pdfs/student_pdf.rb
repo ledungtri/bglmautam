@@ -2,7 +2,7 @@ class StudentPdf < Prawn::Document
    def initialize(student)    
       super(:page_size => "A4")
       @student = student
-      self.font_size = 14
+      self.font_size = 13
       font_families.update("HongHa" => {
          :normal => Rails.root.join("app/assets/fonts/UVNHongHa_R.TTF"),
          :bold => Rails.root.join("app/assets/fonts/14_13787_UVNHongHa_B.TTF"),
