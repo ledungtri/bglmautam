@@ -14,8 +14,6 @@ Rails.application.routes.draw do
   root 'students#index'
   get '/' => 'students#index'
   # get '/migrate' => 'students#migrate'
-  # get "/tempPhoneNoMigrate", to: "application#temp_migrate_phone_number"
-  get "/tempMotherChristianNameMigrate", to: "application#delete_wrong_mother_christian_name"
   get '/login', to: 'sessions#new', as: 'login'
   get '/logout', to: 'sessions#destroy', as: 'logout'
   get '/search', to: 'students#searchByName'
