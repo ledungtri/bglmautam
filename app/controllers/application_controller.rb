@@ -29,6 +29,13 @@ class ApplicationController < ActionController::Base
 
   def delete_wrong_mother_christian_name
     @stu = Student.select { |s| s.father_christian_name? && s.mother_christian_name? && s.father_christian_name == s.mother_christian_name }
+    @stu.each do |student| 
+      f = student.father_christian_name 
+      m = student.mother_christian_name 
+  
+      student.mother_christian_name = "" 
+      student.save
+    end
   end
 
   def temp_migrate_phone_number
