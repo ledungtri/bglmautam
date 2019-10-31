@@ -1,9 +1,9 @@
 <% @stu = Student.select { |s| s.father_christian_name? && s.mother_christian_name? && s.father_christian_name == s.mother_christian_name } %>
 <% @stu.each do |student| %>
-    father:  <%= student.father_christian_name %>
-    mother:  <%= student.father_christian_name %>
+    father:  <%= student.father_christian_name %> <br>
+    mother:  <%= student.father_christian_name %><br>
 
-    ---------------------------
+    ---------------------------<br>
 <% end %>
 <%= puts Student.all.count %>
 <%= puts @stu.count %>
