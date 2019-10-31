@@ -27,21 +27,6 @@ class ApplicationController < ActionController::Base
     
   end
   
-  def temp_fix_mother_christian_name
-    @records = Array.new
-    File.open("#{Rails.root}/app/assets/student1.txt").each { |line| @records << line.strip.split(/,/) }
-    @records.each do |record| 
-      student_name = record[0]  
-      mother_name = record[1]
-      new_name = record[2]
-
-      stu = Student.find_by full_name: student_name, mother_full_name: mother_name
-      if stu != nil
-        stu.update(mother_christian_name: new_name)
-      end
-    end
-  end
-  
   def migrate 
     Student.delete_all
     @ids = Hash.new
