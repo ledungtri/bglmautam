@@ -27,6 +27,20 @@ class ApplicationController < ActionController::Base
     
   end
 
+  def delete_wrong_mother_christian_name
+    stu = Student.select { |s| s.father_christian_name? && s.mother_christian_name? && s.father_christian_name == s.mother_christian_name }
+    stu.each do |student|
+      f = student.father_christian_name 
+      m = student.mother_christian_name 
+      puts("father: " + f.to_s)
+      puts("mother: " + m.to_s)
+
+      puts("---------------------------")
+    end
+    puts Student.all.count
+    puts stu.count
+  end
+
   def temp_migrate_phone_number
     prefixes = {
       '0120' => '070',
