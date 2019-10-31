@@ -1,0 +1,43 @@
+<div>
+    UNSAVED STUDENTS:_
+</div>
+
+<% @unsaved.each do |id| %>
+    <%= id %>
+<% end %>
+
+
+<div>
+    UNSAVED TEACHERS:_
+</div>
+
+<% @teacher_unsaved.each do |id| %>
+    <%= id %>
+<% end %>
+
+
+<div>
+    UNSAVED CELLS:_
+</div>
+
+<% @class_unsaved.each do |id| %>
+    <%= id %>
+<% end %>
+
+
+<div>
+    UNSAVED ATTENDANCES:_
+</div>
+
+<% @att_unsaved.each do |id| %>
+    <%= id %><br>
+<% end %>
+
+
+<div>
+    UNSAVED INSTRUCTIONS:_
+</div>
+
+<% @ins_unsaved.each do |id| %>
+    <%= id %><br>
+<% end %>

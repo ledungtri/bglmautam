@@ -13,10 +13,10 @@ Rails.application.routes.draw do
   
   root 'students#index'
   get '/' => 'students#index'
-  # get '/migrate' => 'students#migrate'
+  # get '/migrate' => 'application#migrate'
   get '/login', to: 'sessions#new', as: 'login'
   get '/logout', to: 'sessions#destroy', as: 'logout'
-  get '/search', to: 'students#searchByName'
+  get '/search', to: 'application#searchByName'
   get "/new", to: "application#new"
   
   # The priority is based upon order of creation: first created -> highest priority.
