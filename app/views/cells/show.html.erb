@@ -73,6 +73,9 @@
   <div style="width: 100%; text-align: right">
     <%= link_to "In Danh Sách Điểm Danh", "/cells/"+@cell.id.to_s+"/attendance_check.pdf" %>
   </div>
+    <div style="width: 100%; text-align: right">
+    <%= link_to "In Thông Tin Liên Lạc", "/cells/"+@cell.id.to_s+"/contact_details.xlsx" %>
+  </div>
   
   <% arrays = [@hoc_lai, @nghi_luon, @chuyen_xu, @dang_hoc, @len_lop] %>
   
