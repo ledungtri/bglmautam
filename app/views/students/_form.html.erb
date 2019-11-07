@@ -49,7 +49,7 @@
       <div class="label">Giới Tính:</div>
       <%= f.select :gender, options_for_select(["Nam", "Nữ"]), {
         :include_blank => true, 
-        :default => nil
+        :selected => :gender
       }%>
     </div>
     
@@ -203,6 +203,10 @@
     <div class="block">
       <div class="label">Điện Thoại Mẹ:</div>
       <%= f.text_field :mother_phone %>
+    </div>
+    <div class="block">
+      <div class="label">Kiem:</div>
+      <%= f.check_box :checked %>
     </div>      
 </fieldset>
 

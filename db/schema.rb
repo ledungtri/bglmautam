@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190929052547) do
+ActiveRecord::Schema.define(version: 20191107050839) do
 
   create_table "attendances", force: :cascade do |t|
     t.string   "result"
@@ -65,6 +65,7 @@ ActiveRecord::Schema.define(version: 20190929052547) do
     t.string   "mother_phone"
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
+    t.boolean  "checked"
   end
 
   create_table "teachers", force: :cascade do |t|
