@@ -115,7 +115,7 @@ class StudentsController < ApplicationController
     student.checked = !student.checked
     student.save
     respond_to do |format|
-      format.html { redirect_to :back, notice: 'Student was successfully updated.' }
+      format.html { redirect_to :back}
     end
   end
 
