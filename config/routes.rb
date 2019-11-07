@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :students
+  resources :students do 
+    get "/check" => "students#check"
+  end
   resources :teachers
   resources :cells do 
     get "/attendance_check" => 'cells#attendance_check'

@@ -110,6 +110,15 @@ class StudentsController < ApplicationController
     end
   end
 
+  def check 
+    student = Student.find(params[:student_id])
+    student.checked = !student.checked
+    student.save
+    respond_to do |format|
+      format.html { redirect_to student, notice: 'Student was successfully updated.' }
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_student

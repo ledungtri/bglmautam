@@ -30,8 +30,8 @@
             <td style='width:  73px'><%= link_to cell.name, cell %></td>
             <td style='width:  73px'><%= link_to attendance.result, edit_attendance_path(attendance) %></td>
             <td style='width:  40px'>
-              <%= student.checked %>
-               
+              <% value = student.checked || "false"  %>
+              <%= link_to value, "/students/"+student.id.to_s+"/check" %>
             </td>
           </tr>
         <% end %>
