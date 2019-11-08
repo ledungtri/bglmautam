@@ -1,0 +1,270 @@
+@import url('https://fonts.googleapis.com/css?family=Amatic+SC|Pattaya|Nunito');
+@import url("notice_flash.css");
+
+h1 {
+  font-size: 25px;
+  text-align: center;
+  margin: 0px;
+}
+h4 {
+  text-align: center;
+  margin: 0px;
+}
+
+ 
+body {
+  font-size: 14px;
+  font-family: 'Nunito', sans-serif;
+  box-sizing: border-box;
+  box-shadow: 0px 0px 10px 5px rgb(10,10,10);
+  width: 1200px;
+  margin: auto;
+}
+
+/* Give all semantic body elements uniform layout style */
+header,
+main,
+footer,
+aside,
+section,
+article
+{
+  box-sizing: border-box;
+  margin: auto;
+}  
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+a:hover {
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+
+
+/* Give each semantic body element a different color */
+header
+{
+  font-family: 'Pattaya', serif;
+  font-size: 40px;
+  padding: 10px;
+  padding-top: 10px;
+}
+
+/* Header font */
+header a {
+  font-size: 25px;
+}
+
+header a:hover {
+  font-weight: normal;
+}
+
+article {
+ width: 972px;
+}
+
+main {
+  padding-top: 10px;
+}
+
+
+footer {
+  font-family: 'Pattaya', serif;
+}
+
+
+
+ 
+ 
+/* Navigation Bar */
+  nav a {
+      display:inline-block;
+      float: right;
+      padding: 0px 25px;
+      font-size: 20px;
+      text-align: center;
+      font-weight: bold;
+      font-family: 'Amatic SC', cursive;
+  }
+  
+  nav a:hover {
+      background-color: transparent;
+      font-weight: bold;
+      text-decoration: none;
+      border-bottom: solid 5px;
+  }
+  
+  /* Back To The Top Button */
+  #btt {
+      padding: 5px 10px 5px 10px;
+
+      height: 34px;
+      width: 28px;
+      
+      background-color: rgba(265 ,265 ,265 , 0.5);
+      
+      text-align: center;
+      font-size: 24px;
+      
+      position: fixed;
+      bottom: 20px;
+      right: 10px; 
+      border-radius: 50%;
+  }
+  #btt:hover {
+      background-color: white; 
+      color: black;
+  }
+  
+  .button {
+    background-color: #4776c1;
+    border-radius: 5px;
+    display: block;
+    width: 100%;
+    margin-top: 5px;
+    
+    line-height: 30px;
+    font-weight: 400;
+    font-size: 18px;
+    text-align: center;
+    color: white;
+  }
+  .button:hover{
+    background-color: #3a5e99;
+    text-decoration: none;
+    color: white;
+  }
+
+  .button-caution {
+    background-color: #b30000;
+    border-radius: 5px;
+    display: block;
+    width: 100%;
+    margin-top: 5px;
+    
+    line-height: 30px;
+    font-weight: 400;
+    font-size: 18px;
+    text-align: center;
+    color: white;
+  }
+  .button-caution:hover{
+    background-color: #8f0000;
+    text-decoration: none;
+    color: white;
+  }
+      
+      
+      
+  fieldset {
+    background-color: white;
+  }
+  
+  legend {
+    background-color: white;
+    line-height: 0px;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    border-top: 1px solid black;
+    margin-top: 50px;
+    width: 150px;
+    text-align: center;
+  }
+  
+  .label {
+    display: inline-block; 
+    width: 180px; 
+    text-align: right;
+    margin: 2px;
+  }
+  .block {
+    display: inline-block; 
+    width: 49%;
+  }
+  
+      
+/*Items for LISTS*/
+  table {
+    border-spacing: 0px;
+    margin: auto;
+  }
+  
+  /*Table Header Row*/
+  .table-row {
+    text-align: center;
+    border-style: none; 
+  }
+
+  /*Table Header Cell*/
+  th {
+    border: 1px solid; 
+    height: 20px;
+    font-size: 14px; 
+    font-weight: bold;
+    padding: 0px;
+    margin: 0px;
+    padding-top: 5px;
+  }
+  
+  /*Table Cell*/
+  td {
+    border: 1px solid; 
+    height: 20px;
+    font-size: 11px;
+    padding: 0px;
+    margin: 0px;
+    padding-top: 2px;
+  }
+
+.field {
+  display: inline-block;
+}
+
+
+
+
+
+/*COLOR*/
+html{ background-color: #4A5254; }
+    
+
+body {
+    color: #4A5254
+}
+
+header,footer  { 
+    background-color: #CFECF0; 
+    color: #4A5254;    
+}
+
+main { 
+    background-color: #E3EFF0; 
+}
+
+article { 
+    background-color: transparent; 
+}
+
+
+th {
+    background-color: #FFD6B2; 
+}
+
+.table-row {
+  background-color: white;
+}
+
+.table-row:hover {
+    background-color: #F9E4D1; 
+}
+
+input, select {
+  width: 200px;
+}
+
+.year, .month, .day{
+  width: 65px;
+}  

@@ -29,7 +29,8 @@ class AttendancesController < ApplicationController
 
     respond_to do |format|
       if @attendance.save
-        format.html { redirect_to @attendance, notice: 'Attendance was successfully created.' }
+        flash[:success] = 'Attendance was successfully created.'
+        format.html { redirect_to @attendance }
         format.json { render :show, status: :created, location: @attendance }
       else
         format.html { render :new }
@@ -43,7 +44,8 @@ class AttendancesController < ApplicationController
   def update
     respond_to do |format|
       if @attendance.update(attendance_params)
-        format.html { redirect_to "/students/"+@attendance.student_id.to_s, notice: 'Attendance was successfully updated.' }
+        flash[:success] = 'Attendance was successfully updated.'
+        format.html { redirect_to "/students/"+@attendance.student_id.to_s }
         format.json { render :show, status: :ok, location: @attendance }
       else
         format.html { render :edit }
@@ -57,7 +59,8 @@ class AttendancesController < ApplicationController
   def destroy
     @attendance.destroy
     respond_to do |format|
-      format.html { redirect_to attendances_url, notice: 'Attendance was successfully destroyed.' }
+      flash[:success] = 'Attendance was successfully destroyed.'
+      format.html { redirect_to attendances_url }
       format.json { head :no_content }
     end
   end
