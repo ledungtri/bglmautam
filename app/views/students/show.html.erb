@@ -131,7 +131,7 @@
     <% @student.cells.sort_by {|cell| cell.year}.each do |cell| %>
     <tr class="table-row">
       <td style="width: 200px; font-size: 14px"><%= cell.long_year %></td>
-      <td style="width: 200px; font-size: 14px"><%= link_to cell.name, "/cells/" + cell.id.to_s %></td>
+      <td style="width: 200px; font-size: 14px"><%= link_to cell.name, cell %></td>
       <td style="width: 200px; font-size: 14px"><%= link_to @student.result(cell), edit_attendance_path(Attendance.where(student_id: @student.id, cell_id: cell.id).take.id) %></td>
     </tr>
     <% end %>

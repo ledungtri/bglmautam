@@ -30,7 +30,7 @@ class AttendancesController < ApplicationController
     respond_to do |format|
       if @attendance.save
         flash[:success] = 'Attendance was successfully created.'
-        format.html { redirect_to @attendance }
+        format.html { redirect_to "/students/"+@attendance.student_id.to_s }
         format.json { render :show, status: :created, location: @attendance }
       else
         format.html { render :new }
@@ -60,7 +60,7 @@ class AttendancesController < ApplicationController
     @attendance.destroy
     respond_to do |format|
       flash[:success] = 'Attendance was successfully destroyed.'
-      format.html { redirect_to attendances_url }
+      format.html { redirect_to "/students/"+@attendance.student_id.to_s }
       format.json { head :no_content }
     end
   end

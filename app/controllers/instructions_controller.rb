@@ -30,7 +30,7 @@ class InstructionsController < ApplicationController
     respond_to do |format|
       if @instruction.save
         flash[:success] = 'Instruction was successfully created.'
-        format.html { redirect_to @instruction }
+        format.html { redirect_to "/teachers/"+@instruction.teacher_id.to_s }
         format.json { render :show, status: :created, location: @instruction }
       else
         format.html { render :new }
@@ -45,7 +45,7 @@ class InstructionsController < ApplicationController
     respond_to do |format|
       if @instruction.update(instruction_params)
         flash[:success] = 'Instruction was successfully updated.'
-        format.html { redirect_to @instruction }
+        format.html { redirect_to "/teachers/"+@instruction.teacher_id.to_s }
         format.json { render :show, status: :ok, location: @instruction }
       else
         format.html { render :edit }
@@ -60,7 +60,7 @@ class InstructionsController < ApplicationController
     @instruction.destroy
     respond_to do |format|
       flash[:success] = 'Instruction was successfully destroyed.'
-      format.html { redirect_to instructions_url }
+      format.html { redirect_to "/teachers/"+@instruction.teacher_id.to_s }
       format.json { head :no_content }
     end
   end

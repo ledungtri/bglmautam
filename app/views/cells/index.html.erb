@@ -25,7 +25,7 @@
     <% default_location = "Vô Gia Cư"; default_location = cell.location if cell.location? %>
       <tr class="table-row">
         <td style='width: 50px'><%= @cells.index(cell) + 1 %></td>
-        <td style='width: 100px'><%= link_to cell.name, "/cells/"+cell.id.to_s %></td>
+        <td style='width: 100px'><%= link_to cell.name, cell %></td>
         <td style='width:  94px'><%= cell.attendances.count %></td>
         <td style='width:  94px'><%= cell.attendances.where(result: 'Nghỉ Luôn').count %></td>
         <td style='width:  94px'><%= cell.attendances.where(result: 'Chuyển Xứ').count %></td>

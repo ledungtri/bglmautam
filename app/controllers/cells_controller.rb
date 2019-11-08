@@ -148,7 +148,7 @@ class CellsController < ApplicationController
   def destroy
     @cell.destroy
     respond_to do |format|
-      flash[:success] = 'Cell was successfully destroyedated.'
+      flash[:success] = 'Cell was successfully destroyed.'
       format.html { redirect_to cells_url }
       format.json { head :no_content }
     end
