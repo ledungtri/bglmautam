@@ -14,8 +14,8 @@ Rails.application.routes.draw do
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
   
-  root 'students#index'
-  get '/' => 'students#index'
+  root 'cells#index'
+  get '/' => 'cells#index'
   # get '/migrate' => 'application#migrate'
   get '/temp_fix_mother_christian_name' => 'application#temp_fix_mother_christian_name'
   get '/login', to: 'sessions#new', as: 'login'

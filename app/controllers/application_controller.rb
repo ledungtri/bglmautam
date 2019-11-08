@@ -1,11 +1,8 @@
 class ApplicationController < ActionController::Base
-  before_action :current_year, :subject
+  before_action :current_year
   
   def current_year
     @current_year = 2019
-  end
-  
-  def subject 
     @subject = "Học với Chúa Giêsu để sống sự thật"
   end
   
