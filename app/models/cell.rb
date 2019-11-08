@@ -25,19 +25,19 @@ class Cell < ActiveRecord::Base
     def sort_param 
        case
        when self.grade == "Trưởng Ban"
-           "0"
+            "0"
        when self.grade == "Kỹ Thuật"
             "1"
        when self.grade == "Khai Tâm"
-           "2" + self.group
+            "2" + self.group
        when self.grade == "Rước Lễ"
-           "3" + self.group
+            "3" + self.group
        when self.grade == "Thêm Sức"
-           "4" + self.group
+            "4" + self.group
        when self.grade == "Bao Đồng"
-           "5" + self.group
+            "5" + self.group
        else
-           "6"
+            "6"
        end
     end
 end
