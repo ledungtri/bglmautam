@@ -17,17 +17,19 @@
       </thead>
     
       <tbody>
-        <% arr.each do |student| %>
-            <% attendance = Attendance.where(cell_id: @cell.id, student_id: student.id).take %>
-            <tr class = table-row>
-            <td style='width: 20px'><%= arr.index(student)+1 %></td>
+        <% arr.each do |record| %>
+          <% student = record["student"] %>
+          <% cell = record["cell"] %>
+          <% result = record["result"] %>
+          <tr class = table-row>
+            <td style='width: 20px'><%= arr.index(record)+1 %></td>
             <td style='width: 230px'><div class ='btn-link'><%= link_to student.name, student %></div></td>
             <td style='width:  80px'><%= student.date_birth.strftime("%d-%m-%Y") %></td>
             <td style='width: 340px'><%= student.address %></td>
             <td style='width:  80px'><%= student.father_phone %></td>
             <td style='width:  80px'><%= student.mother_phone %></td>
-            <td style='width:  73px'><%= link_to @cell.name, @cell %></td>
-            <td style='width:  73px'><%= link_to attendance.result, edit_attendance_path(attendance) %></td>
+            <td style='width:  73px'><%= link_to cell.name, cell %></td>
+            <td style='width:  73px'><%= link_to result, edit_attendance_path(attendance) %></td>
             <td style='width:  40px'>
               <% value = student.checked ? "Yes" : "No"  %>
               <%= link_to value, "/students/"+student.id.to_s+"/check" %>
