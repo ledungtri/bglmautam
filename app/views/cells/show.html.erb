@@ -57,21 +57,12 @@
 
 <h4>Số Lượng : <%= @attendances.count %></h4>
 
-<div style="width: 100%; text-align: right">
-  <%= link_to "Số điện thoại GLV", cell_path(@cell)+"/summary" %>
-</div>
-<div style="width: 100%; text-align: right">
-  <%= link_to "In Danh Sách Lớp", cell_path(format: "pdf") %>
-</div>
-</div>
-<div style="width: 100%; text-align: right">
-  <%= link_to "In Danh Sách Lớp (Excel)", cell_path(format: "xlsx") %>
-</div>
-<div style="width: 100%; text-align: right">
-  <%= link_to "In Danh Sách Điểm Danh", cell_path(@cell)+"/attendance_check.pdf" %>
-</div>
-<div style="width: 100%; text-align: right">
-  <%= link_to "In Thông Tin Liên Lạc", cell_path(@cell)+"/contact_details.xlsx" %>
-</div>
-
 <%= render 'students/info_table' %>
+
+<p style="margin: 30px"></p>
+
+<%= link_to "In Danh Sách Lớp", cell_path(format: "pdf"), :class =>"button" %>
+<%= link_to "In Danh Sách Lớp (Excel)", cell_path(format: "xlsx"), :class =>"button" %>
+<%= link_to "In Danh Sách Điểm Danh", cell_path(@cell)+"/attendance_check.pdf", :class =>"button" %>
+<%= link_to "In Thông Tin Liên Lạc", cell_path(@cell)+"/contact_details.xlsx", :class =>"button" %>
+<%= link_to "Số điện thoại GLV", cell_path(@cell)+"/summary", :class =>"button" %>
