@@ -51,31 +51,27 @@
   </tbody>
 </table>
 
-<% if !@students.empty? %>
-  <p style="margin: 30px"></p>
-  
-  <h1>Danh Sách Thiếu Nhi</h1>
-  
-  <h4>Số Lượng : <%= @students.count %></h4>
-  
-  <div style="width: 100%; text-align: right">
-    <%= link_to "Số điện thoại GLV", "/cells/"+@cell.id.to_s+"/summary" %>
-  </div>
-  <div style="width: 100%; text-align: right">
-    <%= link_to "In Danh Sách Lớp", cell_path(format: "pdf") %>
-  </div>
-  </div>
-  <div style="width: 100%; text-align: right">
-    <%= link_to "In Danh Sách Lớp (Excel)", cell_path(format: "xlsx") %>
-  </div>
-  <div style="width: 100%; text-align: right">
-    <%= link_to "In Danh Sách Điểm Danh", "/cells/"+@cell.id.to_s+"/attendance_check.pdf" %>
-  </div>
-  <div style="width: 100%; text-align: right">
-    <%= link_to "In Thông Tin Liên Lạc", "/cells/"+@cell.id.to_s+"/contact_details.xlsx" %>
-  </div>
-  
-  <% arrays = [@hoc_lai, @nghi_luon, @chuyen_xu, @dang_hoc, @len_lop] %>
-  
-  <%= render 'students/info_table', arrays: arrays %>
-<% end %>
+<p style="margin: 30px"></p>
+
+<h1>Danh Sách Thiếu Nhi</h1>
+
+<h4>Số Lượng : <%= @attendances.count %></h4>
+
+<div style="width: 100%; text-align: right">
+  <%= link_to "Số điện thoại GLV", cell_path(@cell)+"/summary" %>
+</div>
+<div style="width: 100%; text-align: right">
+  <%= link_to "In Danh Sách Lớp", cell_path(format: "pdf") %>
+</div>
+</div>
+<div style="width: 100%; text-align: right">
+  <%= link_to "In Danh Sách Lớp (Excel)", cell_path(format: "xlsx") %>
+</div>
+<div style="width: 100%; text-align: right">
+  <%= link_to "In Danh Sách Điểm Danh", cell_path(@cell)+"/attendance_check.pdf" %>
+</div>
+<div style="width: 100%; text-align: right">
+  <%= link_to "In Thông Tin Liên Lạc", cell_path(@cell)+"/contact_details.xlsx" %>
+</div>
+
+<%= render 'students/info_table' %>

@@ -1,42 +1,40 @@
-<% arrays.each do |arr| %>
-  <% if !arr.empty? %>
-    <div style="text-align: right; padding-top: 10px; font-size: 11px">Số Lượng: <%= arr.count %></div>
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th style='width: 20px'>STT</th>
-          <th style='width: 230px'>Tên Thánh - Họ và Tên</th>
-          <th style='width:  80px'>Ngày Sinh</th>
-          <th style='width: 340px'>Địa Chỉ</th>
-          <th style='width:  80px'>ĐT Cha</th>
-          <th style='width:  80px'>ĐT Mẹ</th>
-          <th style='width:  73px'>Lớp</th>
-          <th style='width:  73px'>Kết Quả</th>
-          <th style='width:  40px'>Kiểm</th>
+<% groups = @attendances.sort_by{|a| a.student.sort_param}.group_by(&:result).sort.each do |key, group| %>
+  <div style="text-align: right; padding-top: 10px; font-size: 11px"><%= key + ": " + group.count.to_s %></div>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th style='width: 20px'>STT</th>
+        <th style='width: 230px'>Tên Thánh - Họ và Tên</th>
+        <th style='width:  80px'>Ngày Sinh</th>
+        <th style='width: 340px'>Địa Chỉ</th>
+        <th style='width:  80px'>ĐT Cha</th>
+        <th style='width:  80px'>ĐT Mẹ</th>
+        <th style='width:  73px'>Lớp</th>
+        <th style='width:  73px'>Kết Quả</th>
+        <th style='width:  40px'>Kiểm</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% group.each do |attendance| %>
+        <% student = attendance.student %>
+        <% cell = attendance.cell %>
+        <% result = attendance.result %>
+        
+        <tr class = table-row>
+          <td style='width: 20px'><%= group.index(attendance)+1 %></td>
+          <td style='width: 230px'><div class ='btn-link'><%= link_to student.name, student %></div></td>
+          <td style='width:  80px'><%= student.date_birth.strftime("%d-%m-%Y") %></td>
+          <td style='width: 340px'><%= student.address %></td>
+          <td style='width:  80px'><%= student.father_phone %></td>
+          <td style='width:  80px'><%= student.mother_phone %></td>
+          <td style='width:  73px'><%= link_to cell.name, cell %></td>
+          <td style='width:  73px'><%= link_to result, edit_attendance_path(attendance) %></td>
+          <td style='width:  40px'>
+            <% value = student.checked ? "Yes" : "No"  %>
+            <%= link_to value, student_path(student)+"/check" %>
+          </td>
         </tr>
-      </thead>
-    
-      <tbody>
-        <% arr.each do |record| %>
-          <% student = record["student"] %>
-          <% cell = record["cell"] %>
-          <% result = record["result"] %>
-          <tr class = table-row>
-            <td style='width: 20px'><%= arr.index(record)+1 %></td>
-            <td style='width: 230px'><div class ='btn-link'><%= link_to student.name, student %></div></td>
-            <td style='width:  80px'><%= student.date_birth.strftime("%d-%m-%Y") %></td>
-            <td style='width: 340px'><%= student.address %></td>
-            <td style='width:  80px'><%= student.father_phone %></td>
-            <td style='width:  80px'><%= student.mother_phone %></td>
-            <td style='width:  73px'><%= link_to cell.name, cell %></td>
-            <td style='width:  73px'><%= link_to result, edit_attendance_path(attendance) %></td>
-            <td style='width:  40px'>
-              <% value = student.checked ? "Yes" : "No"  %>
-              <%= link_to value, "/students/"+student.id.to_s+"/check" %>
-            </td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-  <% end %>
+      <% end %>
+    </tbody>
+  </table>
 <% end %>
