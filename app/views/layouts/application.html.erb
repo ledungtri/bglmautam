@@ -8,24 +8,24 @@
 </head>
 
 <header style="height: 89px">
-  <a href=<%=root_path%>>
-   <img src="/assets/logo.png" height='50px' width='50px' style="float: left"></img>
-   <div style="font-size: 15px; float: left; width: 120px; padding-top: 5px">Ban Giáo Lý<br>Giáo Xứ Mẫu Tâm</div>
+<div class="middle">
+  <a href=<%=root_path%> style="display:inline-block">
+   <img src="/assets/logo.png" height='50px' width='50px' style="display: inline-block">
+   <div style="font-size: 15px; display: inline-block; width: 120px">Ban Giáo Lý<br>Giáo Xứ Mẫu Tâm</div>
   </a>
-  <div style="text-align: center; font-size: 35px; float: left; width: 860px">
-   <%= @subject %> <br>
+  <div style="text-align: center; font-size: 35px; display: inline-block; width: 860px">
+   <%= @subject %>
   </div>
+</div>
 
  <body>
    <nav>
-      <center>
-        <a href="/logout">Đăng Xuất</a>
-        <a href="/new">Admin</a>
-        <a href="/search">Tìm Kiếm</a>
-        <a href="/teachers">Thông Tin Giáo Lý Viên</a>
-        <a href="/cells">Thông Tin Lớp</a>
-        <a href="/students">Thông Tin Thiếu Nhi</a>
-      </center>
+      <a href="/logout">Đăng Xuất</a>
+      <a href="/new">Admin</a>
+      <a href="/search">Tìm Kiếm</a>
+      <a href="/teachers">Thông Tin Giáo Lý Viên</a>
+      <a href="/cells">Thông Tin Lớp</a>
+      <a href="/students">Thông Tin Thiếu Nhi</a>
     </nav>
     
     <div id=btt onclick='window.scrollTo(0,0)'>&uarr;</div>

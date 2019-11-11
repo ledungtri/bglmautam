@@ -18,8 +18,7 @@
     
       <tbody>
         <% arr.each do |student| %>
-            <% attendance = student.attendances.select { |att| Cell.find(att.cell_id).year == @current_year }.first %>
-            <% cell = Cell.find(attendance.cell_id) %>
+            <% attendance = Attendance.where(cell_id: @cell.id, student_id: student.id).take %>
             <tr class = table-row>
             <td style='width: 20px'><%= arr.index(student)+1 %></td>
             <td style='width: 230px'><div class ='btn-link'><%= link_to student.name, student %></div></td>
@@ -27,7 +26,7 @@
             <td style='width: 340px'><%= student.address %></td>
             <td style='width:  80px'><%= student.father_phone %></td>
             <td style='width:  80px'><%= student.mother_phone %></td>
-            <td style='width:  73px'><%= link_to cell.name, cell %></td>
+            <td style='width:  73px'><%= link_to @cell.name, @cell %></td>
             <td style='width:  73px'><%= link_to attendance.result, edit_attendance_path(attendance) %></td>
             <td style='width:  40px'>
               <% value = student.checked ? "Yes" : "No"  %>
