@@ -6,13 +6,7 @@ class TeachersController < ApplicationController
   # GET /teachers
   # GET /teachers.json
   def index
-    @teachers = Array.new
-    
-    cells = Cell.where(year: @current_year).sort_by {|cell| cell.sort_param}
-    
-    cells.each do |cell|
-      @teachers = @teachers + cell.teachers
-    end
+    @instructions = Instruction.where(year: @current_year).sort_by {|ins| ins.cell.sort_param}
     
     respond_to do |format|
       format.html

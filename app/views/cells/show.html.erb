@@ -20,38 +20,12 @@
 </fieldset>  
 <%= link_to 'Chỉnh Sửa', edit_cell_path(@cell), :class =>"button" %>
 
-<p style="margin: 30px"></p>
+<div class="divider"></div>
 <h1>Giáo Lý Viên</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th style='width: 200px'>Tên Thánh - Họ và Tên</th>
-      <th style='width:  80px'>Ngày Sinh</th>
-      <th style='width: 130px'>Nghề Nghiệp</th>
-      <th style='width: 310px'>Địa Chỉ</th>
-      <th style='width:  80px'>Điện Thoại</th>
-      <th style='width:  80px'>Lớp</th>
-      <th style='width:  80px'>Phụ Trách</th>
-    </tr>
-  </thead>
+<%= render 'teachers/info_table' %>
 
-  <tbody>
-    <% @teachers.each do |teacher| %>
-      <tr class="table-row">
-        <td style='width: 200px'><%= link_to teacher.name, teacher %></td>
-        <td style='width:  80px'><%= teacher.date_birth.strftime("%d-%m-%Y") %></td>
-        <td style='width: 130px'><%= teacher.occupation %></td>
-        <td style='width: 310px'><%= teacher.address %></td>
-        <td style='width:  80px'><%= teacher.phone %></td>
-        <td style='width:  80px'><%= @cell.name %></td> 
-        <td style='width:  80px'><%= @cell.instructions.where(teacher_id: teacher.id).first.position %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<p style="margin: 30px"></p>
+<div class="divider"></div>
 
 <h1>Danh Sách Thiếu Nhi</h1>
 

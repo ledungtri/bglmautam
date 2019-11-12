@@ -21,7 +21,7 @@ class CellsController < ApplicationController
   # GET /cells/1
   # GET /cells/1.json
   def show
-    @teachers = @cell.teachers
+    @instructions = @cell.instructions
     @attendances = @cell.attendances
     
     respond_to do |format|
