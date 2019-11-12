@@ -1,6 +1,7 @@
 class CellsController < ApplicationController
   before_action :set_cell, only: [:show, :edit, :update, :destroy]
   before_action :auth 
+  before_action :isAdmin, only: [:new, :create, :edit, :update, :destroy]
 
   # GET /cells
   # GET /cells.json

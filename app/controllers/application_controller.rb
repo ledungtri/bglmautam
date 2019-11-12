@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :current_year
+  before_action :isAdmin, only: [:admin] 
   
   def current_year
     @current_year = 2019
@@ -17,6 +18,13 @@ class ApplicationController < ActionController::Base
   def auth 
     if !current_user
       redirect_to login_path
+    end
+  end
+
+  def isAdmin
+    if !current_user.isAdmin
+      flash[:warning] = 'Action not allowed. You are not an admin.'
+      redirect_to :back || root_path
     end
   end
   
