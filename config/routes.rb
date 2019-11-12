@@ -16,8 +16,6 @@ Rails.application.routes.draw do
   
   root 'cells#index'
   get '/' => 'cells#index'
-  # get '/migrate' => 'application#migrate'
-  get '/temp_fix_mother_christian_name' => 'application#temp_fix_mother_christian_name'
   get '/login', to: 'sessions#new', as: 'login'
   get '/logout', to: 'sessions#destroy', as: 'logout'
   get '/search', to: 'application#searchByName'
