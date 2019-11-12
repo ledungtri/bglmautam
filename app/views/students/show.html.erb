@@ -1,7 +1,4 @@
 <h1>Sơ Yếu Lý Lịch</h1>
-<div style= "width: 100%; text-align: right">
-  <%= link_to "In Sơ Yếu Lý Lịch", student_path(format: "pdf") %>
-</div>
 
 
 <p style="margin: 10px"></p>
@@ -114,8 +111,9 @@
     </div>      
 </fieldset>
 <%= link_to 'Chỉnh Sửa', edit_student_path(@student), :class => "button" %>
+<%= link_to "In Sơ Yếu Lý Lịch", student_path(format: "pdf"), :class => "button" %>
 
-<p style="margin: 10px"></p>
+<div class="divider"></div> 
 
 <h1><center>Hành Trình Thiêng Liêng</center></h1>
 
