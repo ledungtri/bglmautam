@@ -54,7 +54,6 @@ class ApplicationController < ActionController::Base
       student.ward = record[17]
       student.district = record[18]
       student.area = record[19]
-      student.home_phone = record[20]
       student.father_christian_name = record[21]
       student.father_full_name = record[22]
       student.father_phone = record[23]
