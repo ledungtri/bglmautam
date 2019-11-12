@@ -1,4 +1,4 @@
-<% groups = @attendances.sort_by{|a| a.student.sort_param}.group_by(&:result).sort.each do |key, group| %>
+<% groups = @attendances.group_by(&:result).sort.each do |key, group| %>
   <div style="text-align: right; padding-top: 10px; font-size: 11px"><%= key + ": " + group.count.to_s %></div>
   <table class="table table-striped">
     <thead>
@@ -15,13 +15,13 @@
       </tr>
     </thead>
     <tbody>
-      <% group.each do |attendance| %>
+      <% group.sort_by{|a| a.student.sort_param}.each_with_index do |attendance, index| %>
         <% student = attendance.student %>
         <% cell = attendance.cell %>
         <% result = attendance.result %>
         
         <tr class = table-row>
-          <td style='width: 20px'><%= group.index(attendance)+1 %></td>
+          <td style='width: 20px'><%= index+1 %></td>
           <td style='width: 230px'><div class ='btn-link'><%= link_to student.name, student %></div></td>
           <td style='width:  80px'><%= student.date_birth.strftime("%d-%m-%Y") %></td>
           <td style='width: 340px'><%= student.address %></td>
