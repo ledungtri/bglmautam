@@ -20,8 +20,7 @@ class ApplicationController < ActionController::Base
     end
   end
   
-  def new
-    
+  def admin
   end
   
   def searchByName
