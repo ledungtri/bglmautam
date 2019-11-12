@@ -5945,5 +5945,6 @@ Teacher.create!([
   {id: 4630, christian_name: "Maria", full_name: "Nguyễn Thị Thùy Linh", named_date: "25-03", date_birth: "2003-11-07", occupation: "Học Sinh", phone: "0939809475", email: "", street_number: "19", street_name: "số 13", ward: "Tân Kiểng", district: "Quận 7"}
 ])
 User.create!([
-  {id: 1, username: "bglmautam", password_digest: "$2a$12$nvLlH7iiPDVD5fxUVjSBqe0pWrj0wSWE47xzX8smm3cwrHgpjMl.K", isAdmin: true}
+  {id: 1, username: "bglmautam", password_digest: "$2a$12$nvLlH7iiPDVD5fxUVjSBqe0pWrj0wSWE47xzX8smm3cwrHgpjMl.K", isAdmin: true},
+  {id: 2, username: "user", password_digest: "$2a$12$Yx1aF6sTa5rgSoElfVRYsu2IkspOh69knmf1/A1hRLcIy.AD2K726", isAdmin: nil}
 ])
