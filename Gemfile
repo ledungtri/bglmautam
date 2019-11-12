@@ -41,6 +41,8 @@ gem 'rubyzip', '< 1.0.0'
 gem 'axlsx'
 gem 'axlsx_rails'
 
+gem 'seed_dump'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
