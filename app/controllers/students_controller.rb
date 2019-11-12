@@ -1,52 +1,7 @@
 class StudentsController < ApplicationController
   before_action :set_student, only: [:show, :edit, :update, :destroy]
   before_action :auth
-  before_action :current_year
   before_action :isAdmin, only: [:new, :create, :edit, :update, :destroy, :check]
-  
-  def current_year
-    @current_year = 2019
-    @subject = "Học với Chúa Giêsu để sống sự thật"
-  end
-  
-  def current_user
-    if session[:user_id]
-      @current_user ||= User.find(session[:user_id])
-    else
-      @current_user = nil
-    end
-  end
-  
-  def auth 
-    if !current_user
-      redirect_to login_path
-    end
-  end
-
-  def isAdmin
-    if !current_user.isAdmin
-      flash[:warning] = 'Action not allowed. You are not an admin.'
-      redirect_to :back || root_path
-    end
-  end
-  
-  def admin
-  end
-  
-  def searchByName
-    if !params[:student_name].nil?
-      @students = Student.where("full_name like ?", "%#{params[:student_name]}%")
-    end
-    if !params[:teacher_name].nil?
-      @teachers = Teacher.where("full_name like ?", "%#{params[:teacher_name]}%")
-    end
-  end
-
-  # Prevent CSRF attacks by raising an exception.
-  # For APIs, you may want to use :null_session instead.
-  protect_from_forgery with: :exception
-end
-nly: [:new, :create, :edit, :update, :destroy, :check]
   
   # GET /students
   # GET /students.json
