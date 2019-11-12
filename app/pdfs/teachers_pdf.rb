@@ -1,7 +1,7 @@
 class TeachersPdf < Prawn::Document
-   def initialize(teachers, year)
+   def initialize(instructions, year)
       super(:page_size => "A4", :page_layout => :landscape, :margin => 20) 
-      @teachers = teachers
+      @instructions = instructions
       @year = year
       self.font_size = 8
       
@@ -20,7 +20,7 @@ class TeachersPdf < Prawn::Document
    
    def title
        text "Nhân sự phụ trách Giáo dục Đức tin Năm Học #{@year.to_s + " - " + (@year+1).to_s}", :size => 15, :align => :center, :style => :bold
-       text "Số Lượng: #{@teachers.count}",:size => 10, :align => :center
+       text "Số Lượng: #{@instructions.count}",:size => 10, :align => :center
        
    end
    
@@ -44,11 +44,12 @@ class TeachersPdf < Prawn::Document
    
    def line_item_rows
         [["STT", "Lớp", "Phụ Trách", "Họ và Tên", "Ngày Sinh", "Bổn Mạng", "Email", "Điện Thoại"]] +
-        @teachers.map do |teacher|
+        @instructions.each_with_index.map do |instruction, index|
+            teacher = instruction.teacher
            [
-               @teachers.index(teacher)+1,
-               teacher.cells.where(year: @year).first.name,
-               teacher.cells.where(year: @year).first.instructions.where(teacher_id: teacher.id).first.position,
+               index+1,
+               instruction.cell.name,
+               instruction.position,
                teacher.name, 
                teacher.date_birth.strftime("%d/%m/%Y"), 
                teacher.named_date,

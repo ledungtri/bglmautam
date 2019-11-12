@@ -3,10 +3,10 @@
 <p style="margin:10px"></p>
 
 <% @instructions.each do |ins| %>
-    <% teacher = Teacher.find(ins.teacher_id) %>
+    <% teacher = ins.teacher %>
     <div>
         <div> 
-            <%= ins.position + ": " %>
+            <%= "%s: " % [ins.position] %>
             <%= teacher.name %>
         </div>
         <div>

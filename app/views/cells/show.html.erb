@@ -24,19 +24,17 @@
 <h1>Giáo Lý Viên</h1>
 
 <%= render 'teachers/info_table' %>
+<div class="divider"></div>
 
+<%= link_to "Số điện thoại GLV", cell_path(@cell)+"/summary", :class =>"button" %>
 <div class="divider"></div>
 
 <h1>Danh Sách Thiếu Nhi</h1>
-
 <h4>Số Lượng : <%= @attendances.count %></h4>
 
 <%= render 'students/info_table' %>
-
 <div class="divider"></div>
 
 <%= link_to "In Danh Sách Lớp", cell_path(format: "pdf"), :class =>"button" %>
 <%= link_to "In Danh Sách Lớp (Excel)", cell_path(format: "xlsx"), :class =>"button" %>
 <%= link_to "In Danh Sách Điểm Danh", cell_path(@cell)+"/attendance_check.pdf", :class =>"button" %>
-<%= link_to "In Thông Tin Liên Lạc", cell_path(@cell)+"/contact_details.xlsx", :class =>"button" %>
-<%= link_to "Số điện thoại GLV", cell_path(@cell)+"/summary", :class =>"button" %>

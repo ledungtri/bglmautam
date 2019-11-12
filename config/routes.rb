@@ -6,7 +6,6 @@ Rails.application.routes.draw do
   resources :cells do 
     get "/attendance_check" => 'cells#attendance_check'
     get "/summary" => 'cells#summary'
-    get "/contact_details" => 'cells#contact_details'
   end
   resources :instructions
   resources :attendances

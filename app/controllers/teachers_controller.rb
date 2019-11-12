@@ -11,8 +11,8 @@ class TeachersController < ApplicationController
     respond_to do |format|
       format.html
       format.pdf do
-        pdf = TeachersPdf.new(@teachers, @current_year)
-        send_data pdf.render, filename: "Danh Sách GLV Năm Học #{cells.first.long_year}.pdf", type: "application/pdf", disposition: "inline"
+        pdf = TeachersPdf.new(@instructions, @current_year)
+        send_data pdf.render, filename: "Danh Sách GLV Năm Học #{@current_year_long}.pdf", type: "application/pdf", disposition: "inline"
       end
     end
   end
