@@ -1,9 +1,8 @@
 class StudentsController < ApplicationController
   before_action :set_student, only: [:show, :edit, :update, :destroy]
   before_action :auth
-  before_action :isAdmin, oclass ApplicationController < ActionController::Base
   before_action :current_year
-  before_action :isAdmin, only: [:admin] 
+  before_action :isAdmin, only: [:new, :create, :edit, :update, :destroy, :check]
   
   def current_year
     @current_year = 2019
