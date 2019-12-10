@@ -11,7 +11,9 @@
         <th style='width:  80px'>ĐT Mẹ</th>
         <th style='width:  73px'>Lớp</th>
         <th style='width:  73px'>Kết Quả</th>
-        <th style='width:  40px'>Kiểm</th>
+        <% if @current_user.isAdmin %>
+          <th style='width:  40px'>Kiểm</th>
+        <% end %>
       </tr>
     </thead>
     <tbody>
@@ -29,10 +31,13 @@
           <td style='width:  80px'><%= student.mother_phone %></td>
           <td style='width:  73px'><%= link_to cell.name, cell %></td>
           <td style='width:  73px'><%= link_to result, edit_attendance_path(attendance) %></td>
-          <td style='width:  40px'>
-            <% value = student.checked ? "Yes" : "No"  %>
-            <%= link_to value, student_path(student)+"/check" %>
-          </td>
+          <% if @current_user.isAdmin %>
+            <td style='width:  40px'>
+              <% value = student.checked ? "Yes" : "No"  %>
+              <%= link_to value, student_path(student)+"/check" %>
+            </td>
+            <% end %>
+          
         </tr>
       <% end %>
     </tbody>
