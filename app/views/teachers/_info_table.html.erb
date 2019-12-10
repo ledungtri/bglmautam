@@ -7,6 +7,7 @@
       <th style='width: 280px'>Tên Thánh - Họ và Tên</th>
       <th style='width:  80px'>Ngày Sinh</th>
       <th style='width: 130px'>Bổn Mạng</th>
+      <th style='width: 220px'>Địa Chỉ</th>
       <th style='width: 220px'>Email</th>
       <th style='width:  90px'>Điện Thoại</th>
     </tr>
@@ -24,6 +25,7 @@
         <td style='width: 280px'><%= link_to teacher.name, teacher %></td>
         <td style='width:  80px'><%= teacher.date_birth.strftime("%d-%m-%Y") %></td>
         <td style='width: 130px'><%= teacher.named_date %></td>
+        <td style='width: 220px'><%= teacher.address %></td>
         <td style='width: 220px'><%= teacher.email %></td>
         <td style='width:  90px'><%= teacher.phone %></td>
       </tr>
