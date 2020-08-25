@@ -1,2 +1,102 @@
 style users/_form
 translate
+
+check attendance
+
+merge with gxmautam
+restructure data
+convert to mongodb?
+
+
+
+
+
+    Cell
+        year
+        grade
+        group
+        location
+        -------------
+        Denorm:
+            teachers: {
+                id
+                position
+            }
+            students: {
+                id
+                result
+            }
+
+
+    Address
+        number
+        street
+        ward (dict)
+        district (dict)
+        phone
+        area (rename) (dict)
+        is_deleted
+        --------------
+        Denorm:
+        father
+        mother
+        members
+
+    Person
+        common: {
+            christian_name 
+            named_date
+            name
+            gender (dict)
+            birth_date
+            birth_place
+        }
+
+
+        phone
+        email
+        address 
+        
+        education (dict)
+        occupation 
+        studying
+        married
+        passed_away
+
+        sacraments:
+            baptism {
+                _id 
+                date
+                location
+            }
+            communion
+            confirmation
+            declaration
+
+        sunday_school:
+            teaching: {
+                cell_id 
+                position
+            }
+            attending:{
+                
+            }
+            
+
+        note
+        is_deleted
+
+    Sacrament
+        type (dict)
+        date
+        location
+        officiator
+        is_deleted
+        --------------
+        Denorm:
+            recipients
+
+
+
+
+
