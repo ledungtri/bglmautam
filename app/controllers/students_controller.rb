@@ -132,8 +132,7 @@ class StudentsController < ApplicationController
         :father_phone, 
         :mother_christian_name,
         :mother_full_name, 
-        :mother_phone, 
-        :checked
+        :mother_phone
       )
     end
 end
