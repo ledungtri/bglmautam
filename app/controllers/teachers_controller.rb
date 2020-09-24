@@ -83,10 +83,18 @@ class TeachersController < ApplicationController
     end
   end
 
+  def change_password
+    get_teacher
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_teacher
       @teacher = Teacher.find(params[:id])
+    end
+
+    def get_teacher
+      @teacher = Teacher.find(params[:teacher_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
@@ -102,7 +110,10 @@ class TeachersController < ApplicationController
         :street_number, 
         :street_name, 
         :ward, 
-        :district
+        :district,
+        :password, 
+        :password_confirmation,
+        :is_admin
       )
     end
 end

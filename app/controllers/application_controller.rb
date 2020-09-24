@@ -15,6 +15,14 @@ class ApplicationController < ActionController::Base
       @current_user = nil
     end
   end
+
+  def current_teacher
+    if session[:teacher_id]
+      @current_teacher ||= Teacher.find(session[:teacher_id])
+    else
+      @current_teacher = nil
+    end
+  end
   
   def auth 
     if !current_user

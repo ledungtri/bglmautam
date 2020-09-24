@@ -14,6 +14,18 @@ class SessionsController < ApplicationController
     end
   end
 
+  def create_teacher_session
+    teacher = Teacher.find(params[:teacher_id])
+    if teacher && teacher.authenticate(params[:password])
+      session[:teacher_id] = teacher.id
+      flash[:success] = "Logged in"
+      redirect_to root_url
+    else
+      flash.now[:warning] = "Id or password is invalid"
+      render "new"
+    end
+  end
+
   def destroy
     session[:user_id] = nil
     flash[:success] = "Logged out"

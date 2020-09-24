@@ -2,11 +2,16 @@ Rails.application.routes.draw do
   resources :students do 
     get "/check" => "students#check"
   end
-  resources :teachers
+
+  resources :teachers do 
+    get "/change_password", to: "teachers#change_password"
+  end
+
   resources :cells do 
     get "/attendance_check" => 'cells#attendance_check'
     get "/summary" => 'cells#summary'
   end
+  
   resources :instructions
   resources :attendances
   
