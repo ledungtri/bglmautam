@@ -65,15 +65,6 @@ class AttendancesController < ApplicationController
     end
   end
 
-  def mass_process_end_of_year_result
-    attendances = Attendance.where(year: @current_year, result: "Đang Học")
-    attendances.each do |attendance| 
-      attendance.result = "Lên Lớp"
-      attendance.save
-    end
-    redirect_to root_url
-  end
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_attendance
