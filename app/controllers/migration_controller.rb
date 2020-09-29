@@ -1,11 +1,61 @@
 class MigrationController < ApplicationController
     before_action :auth, :isAdmin
 
-    def mass_process_end_of_year_result
+    def set_end_of_year_result
         attendances = Attendance.where(year: @current_year, result: "Đang Học")
         attendances.each do |attendance| 
         attendance.result = "Lên Lớp"
         attendance.save
+        end
+        redirect_to root_url
+    end
+
+    def create_new_cells
+        # todo: get from request data 
+        year = 2020
+        map = {
+            "Khai Tâm" => [
+                {"" => ["A", "B"]}
+            ],
+            "Rước Lễ" => [
+                {"1" => ["A", "B", "C", "D"]},
+                {"2" => ["A", "B", "C"]},
+                {"3" => ["A", "B", "C"]}
+            ],
+            "Thêm Sức" => [
+                {"1" => ["A", "B", "C"]},
+                {"2" => ["A", "B", "C"]},
+                {"3" => ["A", "B", "C"]}
+            ],
+            "Bao Đồng" => [
+                {"1" => ["A", "B"]},
+                {"2" => ["A", "B"]},
+                {"3" => ["A", "B"]}
+            ]
+        }
+
+        map.keys.each do |grade|
+            objs = map[grade]
+
+            objs.each do |obj|
+                obj.keys.each do |level|
+                    obj[level].each do |left|
+                        group = if level == ""
+                            left
+                        else 
+                            level + left
+                        end
+
+                        cell = Cell.new
+                        cell.year = year
+                        cell.grade = grade
+                        cell.group = group
+
+                        cell.save
+                    end
+                end
+            end
+
         end
         redirect_to root_url
     end
@@ -23,11 +73,13 @@ class MigrationController < ApplicationController
                 new_attendance.student_id = attendance.student_id
                 new_attendance.result = "Đang Học"
 
-                # new_attendance.save
+                new_attendance.save
             end
         end
+        redirect_to root_url
     end
 
+    private
     def new_class_mapping
         current_cells = Cell.where(year: @current_year)
         next_year_cells = Cell.where(year: @current_year+1)
@@ -77,53 +129,5 @@ class MigrationController < ApplicationController
         end
 
         mappings
-    end
-
-    def create_new_cells
-        year = 2020
-        map = {
-            "Khai Tâm" => [
-                {"" => ["A", "B"]}
-            ],
-            "Rước Lễ" => [
-                {"1" => ["A", "B", "C", "D"]},
-                {"2" => ["A", "B", "C"]},
-                {"3" => ["A", "B", "C"]}
-            ],
-            "Thêm Sức" => [
-                {"1" => ["A", "B", "C"]},
-                {"2" => ["A", "B", "C"]},
-                {"3" => ["A", "B", "C"]}
-            ],
-            "Bao Đồng" => [
-                {"1" => ["A", "B"]},
-                {"2" => ["A", "B"]},
-                {"3" => ["A", "B"]}
-            ]
-        }
-
-        map.keys.each do |grade|
-            objs = map[grade]
-
-            objs.each do |obj|
-                obj.keys.each do |level|
-                    obj[level].each do |left|
-                        group = if level == ""
-                            left
-                        else 
-                            level + left
-                        end
-
-                        cell = Cell.new
-                        cell.year = year
-                        cell.grade = grade
-                        cell.group = group
-
-                        # cell.save
-                    end
-                end
-            end
-
-        end
     end
 end
