@@ -47,9 +47,8 @@
     
     <div class="block">
       <div class="label">Giới Tính:</div>
-      <%= f.select :gender, options_for_select(["Nam", "Nữ"]), {
-        :include_blank => true, 
-        :selected => :gender
+      <%= f.select :gender, options_for_select(["Nam", "Nữ"], @student.gender), {
+        :include_blank => true 
       }%>
     </div>
     
