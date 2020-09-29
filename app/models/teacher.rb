@@ -1,5 +1,5 @@
 class Teacher < ActiveRecord::Base
-    has_secure_password
+    # has_secure_password
     has_many :instructions
     has_many :cells, through: :instructions
     
