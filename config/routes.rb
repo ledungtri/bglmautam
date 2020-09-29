@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     get "/attendance_check" => 'cells#attendance_check'
     get "/summary" => 'cells#summary'
   end
+  get "/cells/all", to: "cells#all"
   
   resources :instructions
   resources :attendances
@@ -28,7 +29,6 @@ Rails.application.routes.draw do
   # get "/set_end_of_year_result", to: "migration#set_end_of_year_result"
   # get "/create_new_cells", to: "migration#create_new_cells"
   # get "/assign_new_cells", to: "migration#assign_new_cells"
-  get "/cell_all", to: "cells#all"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
