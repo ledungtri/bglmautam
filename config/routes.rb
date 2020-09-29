@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     get "/attendance_check" => 'cells#attendance_check'
     get "/summary" => 'cells#summary'
   end
-  get "/cells/all", to: "cells#all"
+  get "/cells_all", to: "cells#all"
   
   resources :instructions
   resources :attendances
