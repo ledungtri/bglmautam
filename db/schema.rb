@@ -82,8 +82,8 @@ ActiveRecord::Schema.define(version: 20200907046000) do
     t.string   "street_name"
     t.string   "ward"
     t.string   "district"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.boolean  "is_admin"
     t.string   "password_digest"
   end
