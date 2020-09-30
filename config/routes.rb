@@ -11,7 +11,6 @@ Rails.application.routes.draw do
     get "/attendance_check" => 'cells#attendance_check'
     get "/summary" => 'cells#summary'
   end
-  get "/cells_all", to: "cells#all"
   
   resources :instructions
   resources :attendances
@@ -25,6 +24,7 @@ Rails.application.routes.draw do
   get '/logout', to: 'sessions#destroy', as: 'logout'
   get '/search', to: 'application#searchByName'
   get "/admin", to: "application#admin"
+  get "/cells_all", to: "cells#all"
 
   # get "/migration/set_end_of_year_result", to: "migration#set_end_of_year_result"
   # get "/migration/create_new_cells", to: "migration#create_new_cells"
