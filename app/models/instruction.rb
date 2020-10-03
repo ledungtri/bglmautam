@@ -7,6 +7,6 @@ class Instruction < ActiveRecord::Base
     # foreign key
 
     def year
-        Cell.find(cell_id).year
+        Cell.find(this.cell_id).year
     end
 end
