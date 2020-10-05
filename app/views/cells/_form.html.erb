@@ -14,31 +14,27 @@
   <p style="margin:10px"></p>
   
   <fieldset>
+
+    <div class="block">
+      <div class="label">Khối:</div>
+      <%= f.text_field :grade %>
+    </div>
+
+    <div class="block">
+      <div class="label">Lớp:</div>
+      <%= f.text_field :group %>
+    </div>
     
     <div class="block">
       <div class="label">Năm Học:</div>
       <strong><%= @cell.long_year %></strong>
     </div>
-  
-    <div class="block">
-      <div class="label">Tên Lớp:</div>
-      <strong><%= @cell.name %></strong>
-    </div>
-
-    <div class="block">
-    <div class="label">Khoi:</div>
-    <%= f.text_field :grade %>
-  </div>
-
-  <div class="block">
-  <div class="label">Lop:</div>
-  <%= f.text_field :group %>
-</div>
 
     <div class="block">
       <div class="label">Vị Trí Lớp:</div>
       <%= f.text_field :location %>
     </div>
+
   </fieldset>
   
   <div class="actions" style="padding-top:10px">

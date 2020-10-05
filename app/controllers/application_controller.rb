@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   before_action :isAdmin, only: [:admin] 
   
   def current_year
-    @current_year = 2019
+    @current_year = 2020
     @current_year_long = @current_year.to_s + " - " + (@current_year+1).to_s
     @subject = "Học với Chúa Giêsu để sống sự thật"
   end
