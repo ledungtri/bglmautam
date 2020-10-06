@@ -6,7 +6,7 @@ class StudentsController < ApplicationController
   # GET /students
   # GET /students.json
   def index
-    @attendances = Attendance.where("year = ?", @current_year)
+    @attendances = Attendance.joins(:cell).where("cells.year = ?", @current_year)
     
     respond_to do |format|
       format.html
