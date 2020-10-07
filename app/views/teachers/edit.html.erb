@@ -2,14 +2,4 @@
 
 <%= render 'form' %>
 <%= link_to 'Quay Lại', :back, :class => "button" %>
-<%= link_to 
-    'Xóa', 
-    @teacher, 
-    method: :delete, 
-    data: { confirm: 
-        'Xóa hết thông tin và Hành Trình Thiêng Liêng của giáo lý viên?
-        Nên cập nhật thông tin thay vì xóa.
-        Are you sure?' 
-    }, 
-    :class => "button-caution" 
-%>
+<%= link_to 'Xóa', @teacher, method: :delete, data: { confirm: 'Xóa hết thông tin và Hành Trình Thiêng Liêng của giáo lý viên? Nên cập nhật thông tin thay vì xóa. Are you sure?' }, :class => "button-caution" %>
