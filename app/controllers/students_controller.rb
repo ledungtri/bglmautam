@@ -81,20 +81,15 @@ class StudentsController < ApplicationController
   # DELETE /students/1
   # DELETE /students/1.json
   def destroy
+    @student.attendances.each do |att|
+      att.destroy
+    end
+
     @student.destroy
     respond_to do |format|
       flash[:success] = 'Student was successfully destroyed.'
       format.html { redirect_to students_url }
       format.json { head :no_content }
-    end
-  end
-
-  def check 
-    student = Student.find(params[:student_id])
-    student.checked = !student.checked
-    student.save
-    respond_to do |format|
-      format.html { redirect_to :back}
     end
   end
 

@@ -75,6 +75,10 @@ class TeachersController < ApplicationController
   # DELETE /teachers/1
   # DELETE /teachers/1.json
   def destroy
+    @teacher.instructions.each do |ins|
+      ins.destroy
+    end
+
     @teacher.destroy
     respond_to do |format|
       flash[:success] = 'Teacher was successfully destroyed.'

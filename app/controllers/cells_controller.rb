@@ -86,6 +86,14 @@ class CellsController < ApplicationController
   # DELETE /cells/1
   # DELETE /cells/1.json
   def destroy
+    @cell.instructions.each do |ins|
+      ins.destroy
+    end
+
+    @cell.attendances.each do |att|
+      att.destroy
+    end
+
     @cell.destroy
     respond_to do |format|
       flash[:success] = 'Cell was successfully destroyed.'
