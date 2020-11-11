@@ -102,7 +102,7 @@ class CellsController < ApplicationController
     end
   end
   
-  def attendance_check
+  def students_personal_details
     @cell = Cell.find(params[:cell_id])
     @students = @cell.students.sort_by{|student| student.sort_param}
     
@@ -110,8 +110,8 @@ class CellsController < ApplicationController
       format.html
       
       format.pdf do
-        pdf = AttendanceCheckPdf.new(@students)
-        send_data pdf.render, filename: "Điểm Danh Lớp #{@cell.name} Năm Học #{@cell.long_year}.pdf", type: "application/pdf", disposition: "inline"
+        pdf = StudentsPersonalDetailsPdf.new(@students)
+        send_data pdf.render, filename: "Sơ Yếu Lý Lịch Lớp #{@cell.name} Năm Học #{@cell.long_year}.pdf", type: "application/pdf", disposition: "inline"
       end
     end
 

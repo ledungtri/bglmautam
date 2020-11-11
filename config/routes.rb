@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   end
 
   resources :cells do 
-    get "/attendance_check" => 'cells#attendance_check'
+    get "/students_personal_details" => 'cells#students_personal_details'
     get "/summary" => 'cells#summary'
   end
   

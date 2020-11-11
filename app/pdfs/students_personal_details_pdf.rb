@@ -1,4 +1,4 @@
-class AttendanceCheckPdf < Prawn::Document
+class StudentsPersonalDetailsPdf < Prawn::Document
     def initialize(students)
         super(:page_size => "A4", :margin => 20)
         @students = students
@@ -21,6 +21,7 @@ class AttendanceCheckPdf < Prawn::Document
     end
     
     def title
+        text "Sơ Yếu Lý Lịch", :size => 20, :align => :center, :style => :bold
         text @student.name, :size => 20, :align => :center, :style => :bold
     end
     
