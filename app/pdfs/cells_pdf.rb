@@ -38,7 +38,7 @@ class CellsPdf < Prawn::Document
       [["STT", "Tên Lớp", "Tổng Số", "Nghỉ Luôn", "Chuyển Xứ", "Đang Học", "Lên Lớp",  "Học Lại"]] + 
       @cells.map do |cell|
          [
-            @cells.index(cell),
+            @cells.index(cell) + 1,
             cell.name, 
             cell.attendances.count, 
             cell.attendances.where(result: "Nghỉ Luôn").count,
