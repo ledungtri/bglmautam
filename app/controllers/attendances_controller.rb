@@ -1,7 +1,7 @@
 class AttendancesController < ApplicationController
-  before_action :set_attendance, only: [:show, :edit, :update, :destroy]
-  before_action :auth, :isAdmin
-  
+  before_action :set_attendance, only: %i[show edit update destroy]
+  before_action :auth, :admin?
+
   # GET /attendances
   # GET /attendances.json
   def index
@@ -30,7 +30,7 @@ class AttendancesController < ApplicationController
     respond_to do |format|
       if @attendance.save
         flash[:success] = 'Attendance was successfully created.'
-        format.html { redirect_to "/students/"+@attendance.student_id.to_s }
+        format.html { redirect_to "/students/#{@attendance.student_id}" }
         format.json { render :show, status: :created, location: @attendance }
       else
         format.html { render :new }
@@ -45,7 +45,7 @@ class AttendancesController < ApplicationController
     respond_to do |format|
       if @attendance.update(attendance_params)
         flash[:success] = 'Attendance was successfully updated.'
-        format.html { redirect_to "/students/"+@attendance.student_id.to_s }
+        format.html { redirect_to "/students/#{@attendance.student_id}" }
         format.json { render :show, status: :ok, location: @attendance }
       else
         format.html { render :edit }
@@ -60,19 +60,20 @@ class AttendancesController < ApplicationController
     @attendance.destroy
     respond_to do |format|
       flash[:success] = 'Attendance was successfully destroyed.'
-      format.html { redirect_to "/students/"+@attendance.student_id.to_s }
+      format.html { redirect_to "/students/#{@attendance.student_id}" }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_attendance
-      @attendance = Attendance.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def attendance_params
-      params.require(:attendance).permit(:result, :student_id, :cell_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_attendance
+    @attendance = Attendance.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def attendance_params
+    params.require(:attendance).permit(:result, :student_id, :cell_id)
+  end
 end

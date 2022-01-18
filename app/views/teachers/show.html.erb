@@ -102,7 +102,9 @@
   </tbody>
 </table>
 
-<center><button id="btn" onClick="showForm()" class="button" style="width:500px">Thêm Lớp Mới</button></center>
+<div style="text-align: center;">
+  <button id="btn" onClick="showForm()" class="button" style="width:500px">Thêm Lớp Mới</button>
+</div>
 
 <script>
   function showForm() {
@@ -111,29 +113,28 @@
   }
   
   function changeCell() {
-    var e = document.getElementById("year_combobox");
-    var selected = e.options[e.selectedIndex].value;
+    const e = document.getElementById("year_combobox");
+    const selected = e.options[e.selectedIndex].value;
 
-    
     //Create array of options to be added
-    var hash = {};
-    var keys = [];
-    
+    const hash = {};
+    const keys = [];
+
     <% Cell.all.sort_by{|c| c.sort_param}.each do |cell| %>
-    if(selected == "<%= cell.year %>") {
+    if(selected === "<%= cell.year %>") {
       hash[<%= cell.id %>] = "<%= cell.name %>";
       keys.push(<%= cell.id %>);
     }
     <% end %>
-    
-    
-    var list = document.getElementById("instruction_cell_id");
+
+
+    const list = document.getElementById("instruction_cell_id");
     list.options.length = 0;
     
     
     //Create and append the options
-    for (var i = 0; i < keys.length; i++) {
-        var option = document.createElement("option");
+    for (let i = 0; i < keys.length; i++) {
+        const option = document.createElement("option");
         option.value = keys[i];
         option.text = hash[keys[i]];
         list.appendChild(option); 

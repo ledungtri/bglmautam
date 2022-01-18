@@ -1,13 +1,14 @@
 class ApplicationController < ActionController::Base
   before_action :current_year
-  before_action :isAdmin, only: [:admin] 
-  
+  before_action :admin?, only: [:admin]
+  before_action :auth, only: [:search]
+
   def current_year
     @current_year = 2020
-    @current_year_long = @current_year.to_s + " - " + (@current_year+1).to_s
-    @subject = "Học với Chúa Giêsu xây dựng tương quan nối kết mọi người"
+    @current_year_long = "#{@current_year} - #{@current_year + 1}"
+    @subject = 'Học với Chúa Giêsu xây dựng tương quan nối kết mọi người'
   end
-  
+
   def current_user
     if session[:user_id]
       @current_user ||= User.find(session[:user_id])
@@ -23,30 +24,24 @@ class ApplicationController < ActionController::Base
       @current_teacher = nil
     end
   end
-  
-  def auth 
-    if !current_user
-      redirect_to login_path
-    end
+
+  def auth
+    redirect_to login_path unless current_user
   end
 
-  def isAdmin
-    if !current_user.isAdmin
-      flash[:warning] = 'Action not allowed. You are not an admin.'
-      redirect_to :back || root_path
-    end
+  def admin?
+    return if current_user.isAdmin
+
+    flash[:warning] = 'Action not allowed. You are not an admin.'
+    redirect_to :back || root_path
   end
-  
+
   def admin
   end
-  
-  def searchByName
-    if !params[:student_name].nil?
-      @students = Student.where("full_name like ?", "%#{params[:student_name]}%")
-    end
-    if !params[:teacher_name].nil?
-      @teachers = Teacher.where("full_name like ?", "%#{params[:teacher_name]}%")
-    end
+
+  def search
+    @students = Student.where('full_name like ?', "%#{params[:student_name]}%") unless params[:student_name].nil?
+    @teachers = Teacher.where('full_name like ?', "%#{params[:teacher_name]}%") unless params[:teacher_name].nil?
   end
 
   # Prevent CSRF attacks by raising an exception.

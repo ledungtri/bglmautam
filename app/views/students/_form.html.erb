@@ -47,7 +47,7 @@
     
     <div class="block">
       <div class="label">Giới Tính:</div>
-      <%= f.select :gender, options_for_select(["Nam", "Nữ"], @student.gender), {
+      <%= f.select :gender, options_for_select(%w[Nam Nữ], @student.gender), {
         :include_blank => true 
       }%>
     </div>
@@ -157,10 +157,10 @@
     <div class="label">Phường/Xã:</div>
     <%= f.text_field :ward %>
   </div>
-    <div class="label">Quận/Huyện:</div>
+  <div class="block">
+  <div class="label">Quận/Huyện:</div>
       <%= f.text_field :district %>
   </div>
-  
   <div class="block">
     <div class="label">Xóm Giáo:</div>
     <%= f.text_field :area %>

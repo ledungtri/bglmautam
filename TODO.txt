@@ -2,8 +2,16 @@ style users/_form
 translate
 
 check attendance
+Evaluation
+Rename Cell's 'grade' attribute to 'family'
+Split Cell's 'group' attribute to 'level' and 'group'
+Views for User
+Views for search
+Dynamic button base on permission
 
-merge with gxmautam
+DEPRECATION WARNING: `redirect_to :back` is deprecated and will be removed from Rails 5.1. Please use `redirect_back(fallback_location: fallback_location)` where `fallback_location` represents the location to use if the request has no HTTP referer information. (called from isAdminOrSelf at /Users/billle/projects/bglamutam/app/controllers/teachers_controller.rb:107)
+
+
 restructure data
 convert to mongodb?
 

@@ -1,6 +1,6 @@
 class InstructionsController < ApplicationController
-  before_action :set_instruction, only: [:show, :edit, :update, :destroy]
-  before_action :auth, :isAdmin
+  before_action :set_instruction, only: %i[show edit update destroy]
+  before_action :auth, :admin?
 
   # GET /instructions
   # GET /instructions.json
@@ -30,7 +30,7 @@ class InstructionsController < ApplicationController
     respond_to do |format|
       if @instruction.save
         flash[:success] = 'Instruction was successfully created.'
-        format.html { redirect_to "/teachers/"+@instruction.teacher_id.to_s }
+        format.html { redirect_to "/teachers/#{@instruction.teacher_id}" }
         format.json { render :show, status: :created, location: @instruction }
       else
         format.html { render :new }
@@ -45,7 +45,7 @@ class InstructionsController < ApplicationController
     respond_to do |format|
       if @instruction.update(instruction_params)
         flash[:success] = 'Instruction was successfully updated.'
-        format.html { redirect_to "/teachers/"+@instruction.teacher_id.to_s }
+        format.html { redirect_to "/teachers/#{@instruction.teacher_id}" }
         format.json { render :show, status: :ok, location: @instruction }
       else
         format.html { render :edit }
@@ -60,19 +60,20 @@ class InstructionsController < ApplicationController
     @instruction.destroy
     respond_to do |format|
       flash[:success] = 'Instruction was successfully destroyed.'
-      format.html { redirect_to "/teachers/"+@instruction.teacher_id.to_s }
+      format.html { redirect_to "/teachers/#{@instruction.teacher_id}" }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_instruction
-      @instruction = Instruction.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def instruction_params
-      params.require(:instruction).permit(:position, :teacher_id, :cell_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_instruction
+    @instruction = Instruction.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def instruction_params
+    params.require(:instruction).permit(:position, :teacher_id, :cell_id)
+  end
 end

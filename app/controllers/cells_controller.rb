@@ -1,19 +1,19 @@
 class CellsController < ApplicationController
-  before_action :set_cell, only: [:show, :edit, :update, :destroy]
-  before_action :auth 
-  before_action :isAdmin, only: [:new, :create, :edit, :update, :destroy]
+  before_action :set_cell, only: %i[show edit update destroy]
+  before_action :auth
+  before_action :admin?, only: %i[new create edit update destroy]
 
   # GET /cells
   # GET /cells.json
   def index
-    @cells = Cell.where(year: @current_year).where(grade: ["Khai Tâm", "Rước Lễ", "Thêm Sức", "Bao Đồng"]).sort_by {|c| c.sort_param}
+    @cells = Cell.where(year: @current_year).where(grade: ['Khai Tâm', 'Rước Lễ', 'Thêm Sức', 'Bao Đồng']).sort_by(&:sort_param)
     # TODO: add isClass field to cell
-    
+
     respond_to do |format|
       format.html
-      format.pdf do 
+      format.pdf do
         pdf = CellsPdf.new(@cells)
-        send_data pdf.render , filename: "Thống Kê Các Lớp Năm Học #{@cells.first.long_year}.pdf", type: "application/pdf", disposition: "inline"
+        send_data pdf.render, filename: "Thống Kê Các Lớp Năm Học #{@cells.first.long_year}.pdf", type: 'application/pdf', disposition: 'inline'
       end
     end
   end
@@ -27,7 +27,7 @@ class CellsController < ApplicationController
   def show
     @instructions = @cell.instructions
     @attendances = @cell.attendances
-    
+
     respond_to do |format|
       format.html
       format.xlsx do
@@ -37,7 +37,7 @@ class CellsController < ApplicationController
       end
       format.pdf do
         pdf = StudentsPdf.new(@attendances, @cell)
-       send_data pdf.render, filename: "Danh Sách Lớp #{@cell.name} Năm Học #{@cell.long_year}.pdf", type: "application/pdf", disposition: "inline"
+        send_data pdf.render, filename: "Danh Sách Lớp #{@cell.name} Năm Học #{@cell.long_year}.pdf", type: 'application/pdf', disposition: 'inline'
       end
     end
   end
@@ -86,13 +86,9 @@ class CellsController < ApplicationController
   # DELETE /cells/1
   # DELETE /cells/1.json
   def destroy
-    @cell.instructions.each do |ins|
-      ins.destroy
-    end
+    @cell.instructions.each(&:destroy)
 
-    @cell.attendances.each do |att|
-      att.destroy
-    end
+    @cell.attendances.each(&:destroy)
 
     @cell.destroy
     respond_to do |format|
@@ -101,36 +97,30 @@ class CellsController < ApplicationController
       format.json { head :no_content }
     end
   end
-  
+
   def students_personal_details
     @cell = Cell.find(params[:cell_id])
-    @students = @cell.students.sort_by{|student| student.sort_param}
-    
+    @students = @cell.students.sort_by(&:sort_param)
+
     respond_to do |format|
       format.html
-      
+
       format.pdf do
         pdf = StudentsPersonalDetailsPdf.new(@students)
-        send_data pdf.render, filename: "Sơ Yếu Lý Lịch Lớp #{@cell.name} Năm Học #{@cell.long_year}.pdf", type: "application/pdf", disposition: "inline"
+        send_data pdf.render, filename: "Sơ Yếu Lý Lịch Lớp #{@cell.name} Năm Học #{@cell.long_year}.pdf", type: 'application/pdf', disposition: 'inline'
       end
     end
-
   end
 
-  def summary
-    @cell = Cell.find(params[:cell_id])
-    @instructions = @cell.instructions.order(:position)
-  end
-  
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_cell
-      @cell = Cell.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def cell_params
-      params.require(:cell).permit(:year, :grade, :group, :location)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_cell
+    @cell = Cell.find(params[:id])
+  end
 
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def cell_params
+    params.require(:cell).permit(:year, :grade, :group, :location)
+  end
 end

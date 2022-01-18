@@ -1,8 +1,6 @@
-//TODO: Setup env
-
 To start rails application:
 $ rails server
 
 To backup database:
 Using seed_dump gem
-//TODO: How to create seed.rb file 
+rake db:seed:dump FILE=db/backups/2022-01-16.rb EXCLUDE=[]
