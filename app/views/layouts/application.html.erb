@@ -21,7 +21,9 @@
  <body>
    <nav>
       <a href="/logout">Đăng Xuất</a>
-      <a href="/admin">Admin</a>
+      <% unless @current_user.nil? || !@current_user.isAdmin %>
+        <a href="/admin">Admin</a>
+      <% end %>
       <a href="/search">Tìm Kiếm</a>
       <a href="/teachers">Thông Tin Giáo Lý Viên</a>
       <a href="/cells">Thông Tin Lớp</a>
