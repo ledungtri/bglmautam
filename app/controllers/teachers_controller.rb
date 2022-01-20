@@ -1,18 +1,18 @@
 class TeachersController < ApplicationController
-  before_action :set_teacher, only: [:show, :edit, :update, :destroy]
-  before_action :auth 
-  before_action :isAdmin, only: [:new, :create, :edit, :update, :destroy, :check]
+  before_action :set_teacher, only: %i[show edit update destroy]
+  before_action :auth
+  before_action :admin?, only: %i[new create destroy]
+  before_action :admin_or_self?, only: %i[edit update]
 
   # GET /teachers
   # GET /teachers.json
   def index
-    @instructions = Instruction.joins(:cell).where("cells.year = ?", @current_year).sort_by {|ins| ins.cell.sort_param}
-    
+    @instructions = Instruction.joins(:cell).where('cells.year = ?', @current_year).sort_by { |ins| ins.cell.sort_param }
     respond_to do |format|
       format.html
       format.pdf do
         pdf = TeachersPdf.new(@instructions, @current_year)
-        send_data pdf.render, filename: "Danh Sách GLV Năm Học #{@current_year_long}.pdf", type: "application/pdf", disposition: "inline"
+        send_data pdf.render, filename: "Danh Sách GLV Năm Học #{@current_year_long}.pdf", type: 'application/pdf', disposition: 'inline'
       end
     end
   end
@@ -21,13 +21,11 @@ class TeachersController < ApplicationController
   # GET /teachers/1.json
   def show
     @cells = @teacher.cells
-    
-    @years = Cell.all.map{|c| c.year}.uniq.sort{|x,y| -(x <=> y)}
-    @opts = Array.new
-    Cell.all.sort_by{|c| c.sort_param}.each do |cell|
-      if cell.year == @years[0]
-        @opts.push([cell.name, cell.id])
-      end
+
+    @years = Cell.all.map(&:year).uniq.sort { |x, y| -(x <=> y) }
+    @opts = []
+    Cell.all.sort_by(&:sort_param).each do |cell|
+      @opts.push([cell.name, cell.id]) if cell.year == @years[0]
     end
   end
 
@@ -75,9 +73,7 @@ class TeachersController < ApplicationController
   # DELETE /teachers/1
   # DELETE /teachers/1.json
   def destroy
-    @teacher.instructions.each do |ins|
-      ins.destroy
-    end
+    @teacher.instructions.each(&:destroy)
 
     @teacher.destroy
     respond_to do |format|
@@ -87,37 +83,37 @@ class TeachersController < ApplicationController
     end
   end
 
-  def change_password
-    get_teacher
+  private
+
+  # Use callbacks to share common setup or constraints between actions.
+  def set_teacher
+    @teacher = Teacher.find(params[:id])
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_teacher
-      @teacher = Teacher.find(params[:id])
-    end
+  def admin_or_self?
+    return if current_user.isAdmin || current_user.teacher_id == @teacher.id
 
-    def get_teacher
-      @teacher = Teacher.find(params[:teacher_id])
-    end
+    flash[:warning] = 'Action not allowed.'
+    redirect_to :back || root_path
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def teacher_params
-      params.require(:teacher).permit(
-        :christian_name, 
-        :full_name, 
-        :named_date, 
-        :date_birth, 
-        :occupation, 
-        :phone, 
-        :email, 
-        :street_number, 
-        :street_name, 
-        :ward, 
-        :district,
-        :password, 
-        :password_confirmation,
-        :is_admin
-      )
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def teacher_params
+    params.require(:teacher).permit(
+      :christian_name,
+      :full_name,
+      :named_date,
+      :date_birth,
+      :occupation,
+      :phone,
+      :email,
+      :street_number,
+      :street_name,
+      :ward,
+      :district,
+      :password,
+      :password_confirmation,
+      :is_admin
+    )
+  end
 end
