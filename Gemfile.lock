@@ -83,6 +83,7 @@ GEM
     nokogiri (1.10.10)
       mini_portile2 (~> 2.4.0)
     pdf-core (0.7.0)
+    pg (1.2.3)
     prawn (2.2.2)
       pdf-core (~> 0.7.0)
       ttfunk (~> 1.5)
@@ -178,6 +179,7 @@ DEPENDENCIES
   byebug
   jbuilder (~> 2.0)
   jquery-rails
+  pg
   prawn
   prawn-table
   rails (= 5.0.7.2)
