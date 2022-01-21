@@ -3,9 +3,10 @@ development:
   encoding: unicode
   database: bglmautam_development
   pool: 5
-  username:
-  password:
+  username: postgres
+  password: secret
   timeout: 5000
+  host: localhost
   port: 5432
  
 test:
