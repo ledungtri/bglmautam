@@ -99,8 +99,8 @@ class StudentsController < ApplicationController
   end
 
   def admin_or_teacher?
-    is_teacher = current_teacher.cells.any? { |cell| @student.cells.include? cell }
-    return if current_user.isAdmin || is_teacher
+    return if current_user.isAdmin
+    return if current_teacher&.cells.any? { |cell| @student.cells.include? cell }
 
     flash[:warning] = 'Action not allowed.'
     redirect_to :back || root_path
