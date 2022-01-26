@@ -16,3 +16,6 @@
 !/log/.keep
 /tmp
 /.idea/
+
+# Ignore gemfile.lock.
+Gemfile.lock
