@@ -1,24 +1,42 @@
+## Prerequisites
+* Install [ASDF Version Manager](https://asdf-vm.com) - Using as a version manager for Ruby
+* Install [ASDF Ruby plugin](https://github.com/asdf-vm/asdf-ruby)
+* Install [PostgreSQL](https://www.postgresql.org/download/)
 
-     ,-----.,--.                  ,--. ,---.   ,--.,------.  ,------.
-    '  .--./|  | ,---. ,--.,--. ,-|  || o   \  |  ||  .-.  \ |  .---'
-    |  |    |  || .-. ||  ||  |' .-. |`..'  |  |  ||  |  \  :|  `--, 
-    '  '--'\|  |' '-' ''  ''  '\ `-' | .'  /   |  ||  '--'  /|  `---.
-     `-----'`--' `---'  `----'  `---'  `--'    `--'`-------' `------'
-    ----------------------------------------------------------------- 
+## Editing tool
+* [RubyMine](https://www.jetbrains.com/ruby/) by Jetbrains is a good IDE for programming Ruby on Rails application. 
+But it is expensive.
+If you have a free licence or willing to pay, RubyMine is a recommended.
+* Alternatively, [VS Code](https://code.visualstudio.com/) is a powerful text editor. 
+It is free, and with the right extensions, you can do a lot with it. 
+Some useful extensions for this project:
+  * [VSCode Ruby](https://marketplace.visualstudio.com/items?itemName=wingrunr21.vscode-ruby)
+  * [Ruby](https://marketplace.visualstudio.com/items?itemName=rebornix.Ruby)
+  * [Ruby Solargraph](https://marketplace.visualstudio.com/items?itemName=castwide.solargraph)
+  * [GitLens](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens)
+  * [PostgreSQL](https://marketplace.visualstudio.com/items?itemName=ckolkman.vscode-postgres)
 
+## Get started
+When first setting up ruby you will have to run the following before bundling:
+```
+asdf install
+gem install bundler
+```
 
-Welcome to your Rails project on Cloud9 IDE!
+Install the rails dependencies:
+```
+bundle install
+```
 
-To get started, just do the following:
+Setup the database and seeding data:
+```
+rake db:create
+rake db:migrate
+rake db:seed
+```
 
-1. Run the project with the "Run Project" button in the menu bar on top of the IDE.
-2. Preview your new app by clicking on the URL that appears in the Run panel below (https://HOSTNAME/).
-
-Happy coding!
-The Cloud9 IDE team
-
-
-## Support & Documentation
-
-Visit http://docs.c9.io for support, or to learn more about using Cloud9 IDE. 
-To watch some training videos, visit http://www.youtube.com/user/c9ide
+Run the server locally:
+```
+rails s
+```
+Once the server is up and running, you can access the application at http://localhost:3000
