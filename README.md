@@ -67,3 +67,18 @@ The ```FILE=db/backups/2021-12-31.rb``` option is the specifythe path and the na
 
 The ```EXCLUDE=[]``` option is to make sure ```seed_dump``` includes the ```id```, ```created_at```, ```updated_at``` fields.
 
+## Development procedure
+When working on a new task or a new feature, it is good practice to follow these steps:
+* Checkout master branch
+* Pull the latest code
+* Create a new branch for that feature. Make sure the branch name is descriptive
+* Commit your changes frequently with a descriptive messages. 
+This will help managing code and keeping tracking on changes more easily.
+* Test carefully on your local environment
+* When the implementation is done push to remote branch
+* Then go to Github and create a Pull Request from your feature branch onto the ```master``` branch.
+* Another team member will review and test the your implementation. 
+* Once the PR is reviewed, it will be merged to ```master``` and deploy to production.
+
+
+
