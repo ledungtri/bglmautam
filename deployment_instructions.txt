@@ -1,7 +1,0 @@
-To start rails application:
-$ rails server
-server is served using apache. To restart the app, run: sudo service apache2 restart
-
-To backup database:
-Using seed_dump gem
-rake db:seed:dump FILE=db/backups/2022-01-16.rb EXCLUDE=[]

@@ -1,7 +1,7 @@
 ## Prerequisites
-* Install [ASDF Version Manager](https://asdf-vm.com) - Using as a version manager for Ruby
-* Install [ASDF Ruby plugin](https://github.com/asdf-vm/asdf-ruby)
-* Install [PostgreSQL](https://www.postgresql.org/download/)
+* Install [ASDF Version Manager](https://asdf-vm.com) - Using as a version manager for Ruby.
+* Install [ASDF Ruby plugin](https://github.com/asdf-vm/asdf-ruby).
+* Install [PostgreSQL](https://www.postgresql.org/download/).
 
 ## Editing tool
 * [RubyMine](https://www.jetbrains.com/ruby/) by Jetbrains is a good IDE for programming Ruby on Rails application. 
@@ -39,4 +39,31 @@ Run the server locally:
 ```
 rails s
 ```
-Once the server is up and running, you can access the application at http://localhost:3000
+Once the server is up and running, you can access the application at http://localhost:3000.
+
+## Production
+* The current domain is bglmautam.com.
+* The production server and domain are hosted on Hostinger and currently managed by ledungtri.2202@gmail.com.
+* The current charges are $190 quadrennially for the server, and $11 annually for the domain.
+* On this server, the application is served by Apache with the ability to host multiple domains in the same server. 
+(Something to consider when expanding to more websites)
+* In case the server is down or crashes, to restart the Rails application, we can restart Apache: 
+  ```
+  sudo service apache2 restart
+  ```
+
+## Backup database
+We use seed_dump gem to backup the database or to create a `seeds.rb` file.
+
+To create a seeds.rb file based on the current database, run:
+```
+rake db:seed:dump EXCLUDE=[]
+```
+To backup the current database for future uses, run:
+```
+rake db:seed:dump FILE=db/backups/2021-12-31.rb EXCLUDE=[]
+```
+The ```FILE=db/backups/2021-12-31.rb``` option is the specifythe path and the name of the backup file.
+
+The ```EXCLUDE=[]``` option is to make sure ```seed_dump``` includes the ```id```, ```created_at```, ```updated_at``` fields.
+
