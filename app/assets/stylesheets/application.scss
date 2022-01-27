@@ -228,20 +228,22 @@ footer {
 
 
 /*COLOR*/
-html{ background-color: #4A5254; }
+html {
+  background-color: slategrey;
+}
     
 
 body {
-    color: #4A5254
+  color: dimgray;
 }
 
-header,footer  { 
-    background-color: #CFECF0; 
-    color: #4A5254;    
+header, footer {
+  background-color: lightcyan;
+  color: dimgray;
 }
 
-main { 
-    background-color: #E3EFF0; 
+main {
+  background-color: azure;
 }
 
 article { 
@@ -250,7 +252,7 @@ article {
 
 
 th {
-    background-color: #FFD6B2; 
+  background-color: peachpuff;
 }
 
 .table-row {
@@ -258,7 +260,7 @@ th {
 }
 
 .table-row:hover {
-    background-color: #F9E4D1; 
+  background-color: antiquewhite;
 }
 
 input, select {
