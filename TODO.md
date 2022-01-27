@@ -4,11 +4,15 @@
 ### Tech debts:
 * Create a user friendly UI for creating User.
 * Create a user friendly UI for Search page.
-* Create a user friendly UI for creating User.
+* Use Vietnamese for the creating Teacher page.
+* Use Vietnamese for the creating Cell page.
+* Use Vietnamese for the Admin page.
+* Rename ```isAdmin``` column in User table to ```admin``` as per naming convention.
 * Rename Cell's ```grade``` attribute to ```family```.
 * Split Cell's ```group``` attribute to ```level``` and ```group```.
 * Dynamically show or hide buttons based on user permission.
 * Create ```deleted``` columns in database tables and use it instead of hard delete.
+* Upgrade to latest version for Ruby and Rails.
 ### New features:
 * Allow teachers to check students and teachers weekly attendances.
 * Allow teachers to write Evaluation for students at the end of the year.
