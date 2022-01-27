@@ -10,6 +10,7 @@
 * Rename ```isAdmin``` column in User table to ```admin``` as per naming convention.
 * Rename Cell's ```grade``` attribute to ```family```.
 * Split Cell's ```group``` attribute to ```level``` and ```group```.
+* Move migration methods in MigrationController to rake tasks.
 * Dynamically show or hide buttons based on user permission.
 * Create ```deleted``` columns in database tables and use it instead of hard delete.
 * Upgrade to latest version for Ruby and Rails.

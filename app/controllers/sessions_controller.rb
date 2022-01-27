@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
 
   def create
     user = User.find_by_username(params[:username])
-    if user && user.authenticate(params[:password])
+    if user&.authenticate(params[:password])
       session[:user_id] = user.id
       session[:teacher_id] = user.teacher_id unless user.teacher_id.nil?
       flash[:success] = 'Logged in'

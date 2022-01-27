@@ -17,15 +17,11 @@ class Student < ActiveRecord::Base
   validates :mother_phone, format: { with: /\A\d+\z/, message: 'only allows numbers' }, allow_blank: true
 
   def name
-    if christian_name?
-      christian_name + ' ' + full_name
-    else
-      full_name
-    end
+    "#{christian_name} #{full_name}".strip
   end
 
   def address
-    street_number + ' ' + street_name + ', ' + ward + ', ' + district if street_name?
+    "#{street_number} #{street_name}, #{ward}, #{district}" if street_name?
   end
 
   def result(cell)
@@ -33,19 +29,11 @@ class Student < ActiveRecord::Base
   end
 
   def father_name
-    if father_christian_name? && father_full_name?
-      father_christian_name + ' ' + father_full_name
-    elsif father_full_name?
-      father_full_name
-    end
+    "#{father_christian_name} #{father_full_name}".strip
   end
 
   def mother_name
-    if mother_christian_name? && mother_full_name?
-      mother_christian_name + ' ' + mother_full_name
-    else
-      mother_full_name
-    end
+    "#{mother_christian_name} #{mother_full_name}".strip
   end
 
   def sort_param

@@ -33,17 +33,17 @@ class MigrationController < ApplicationController
       ]
     }
 
-    map.keys.each do |grade|
+    map.each_key do |grade|
       objs = map[grade]
 
       objs.each do |obj|
-        obj.keys.each do |level|
+        obj.each_key do |level|
           obj[level].each do |left|
             group = if level == ''
                       left
                     else
                       level + left
-                end
+                    end
 
             cell = Cell.new
             cell.year = year
@@ -61,7 +61,7 @@ class MigrationController < ApplicationController
   def assign_new_cells
     mappings = new_class_mapping
 
-    mappings.keys.each do |old_cell_id|
+    mappings.each_key do |old_cell_id|
       new_cell_id = mappings[old_cell_id]
       attendances = Attendance.where(cell_id: old_cell_id, result: 'Lên Lớp')
       attendances.each do |attendance|
@@ -102,23 +102,23 @@ class MigrationController < ApplicationController
                                       'Bao Đồng'
                                     else
                                       ''
-                        end
+                                    end
                         new_group = new_level + group[1]
-                        new_grade + ' ' + new_group
+                        "#{new_grade} #{new_group}"
                       else
                         case grade
                         when 'Khai Tâm'
                           new_grade = 'Rước Lễ'
-                          new_group = '1' + group
-                          new_grade + ' ' + new_group
+                          new_group = "1#{group}"
+                          "#{new_grade} #{new_group}"
                         when 'Rước Lễ', 'Thêm Sức', 'Bao Đồng'
                           new_grade = grade
                           new_group = (level.to_i + 1).to_s + group[1]
-                          new_grade + ' ' + new_group
+                          "#{new_grade} #{new_group}"
                         else
                           ''
                         end
-      end
+                      end
       matching_cell = next_year_cells.select { |c| c.name == new_cell_name }[0]
       if !matching_cell.nil?
         mappings[current_cell.id] = matching_cell.id

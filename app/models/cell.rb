@@ -9,12 +9,12 @@ class Cell < ActiveRecord::Base
   validates :group, format: { with: /\A\d?[A-Z]?\z/, message: 'invalid input' }, allow_blank: true
 
   def long_year
-    year.to_s + ' - ' + (year + 1).to_s unless year.nil?
+    "#{year} - #{year + 1}" unless year.nil?
   end
 
   def name
     if group?
-      grade + ' ' + group
+      "#{grade} #{group}"
     else
       grade
     end
@@ -27,13 +27,13 @@ class Cell < ActiveRecord::Base
     when grade == 'Kỹ Thuật'
       '1'
     when grade == 'Khai Tâm'
-      '2' + group
+      "2#{group}"
     when grade == 'Rước Lễ'
-      '3' + group
+      "3#{group}"
     when grade == 'Thêm Sức'
-      '4' + group
+      "4#{group}"
     when grade == 'Bao Đồng'
-      '5' + group
+      "5#{group}"
     else
       '6'
     end
