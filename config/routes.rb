@@ -21,4 +21,9 @@ Rails.application.routes.draw do
   get '/search', to: 'application#search'
 
   get '/admin', to: 'application#admin'
+
+  # TODO: Move to rake tasks
+  # get '/migration/set_end_of_year_result', to: 'migration#set_end_of_year_result'
+  # get '/migration/create_new_cells', to: 'migration#create_new_cells'
+  # get '/migration/assign_new_cells', to: 'migration#assign_new_cells'
 end

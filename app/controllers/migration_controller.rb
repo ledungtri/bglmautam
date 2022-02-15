@@ -65,6 +65,11 @@ class MigrationController < ApplicationController
       new_cell_id = mappings[old_cell_id]
       attendances = Attendance.where(cell_id: old_cell_id, result: 'Lên Lớp')
       attendances.each do |attendance|
+        count = Attendance.joins(:cell)
+                          .where('cells.year = ? and attendances.student_id = ?', attendance.cell.year + 1, attendance.student_id)
+                          .count
+        next unless count.zero?
+
         new_attendance = Attendance.new
 
         new_attendance.cell_id = new_cell_id
