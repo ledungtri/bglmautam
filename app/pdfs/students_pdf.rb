@@ -1,7 +1,7 @@
 class StudentsPdf < Prawn::Document
   def initialize(attendances, cell)
     super(page_size: 'A4', page_layout: :landscape, margin: 20)
-    @attendances = attendances
+    @attendances = attendances.sort_by { |attendance| attendance.student.sort_param }
     @cell = cell
     self.font_size = 8
 
