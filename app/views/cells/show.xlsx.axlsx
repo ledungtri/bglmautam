@@ -1,24 +1,38 @@
 wb = xlsx_package.workbook
 
-wb.add_worksheet(name: "Students") do |sheet|
-  sheet.add_row ["STT", "Tên Thánh - Họ và Tên", "Ngày Sinh", "Số nhà", "Đường", "Phường/Xã", "Quận/Huyện", "Địa Chỉ", "Xóm giáo", "ĐT Cha", "ĐT Mẹ", "Lớp","Kết Quả"]
+wb.add_worksheet(name: 'Students') do |sheet|
+  sheet.add_row [
+    'STT',
+    'Tên Thánh - Họ và Tên',
+    'Ngày Sinh',
+    'Số nhà',
+    'Đường',
+    'Phường/Xã',
+    'Quận/Huyện',
+    'Địa Chỉ',
+    'Xóm giáo',
+    'ĐT Cha',
+    'ĐT Mẹ',
+    'Lớp',
+    'Kết Quả'
+  ]
+
   @attendances.each_with_index do |attendance, index|
     student = attendance.student
     sheet.add_row [
-        index+1, 
-        student.name, 
-        student.date_birth.strftime("%d-%m-%Y"), 
-        student.street_number,
-        student.street_name,
-        student.ward,
-        student.district,
-        student.address, 
-        student.area,
-        student.father_phone, 
-        student.mother_phone, 
-        @cell.name, 
-        attendance.result
-    ], 
-    :types => [:string,:string,:string,:string,:string,:string,:string,:string,:string]
+      index + 1,
+      student.name,
+      student.date_birth.strftime('%d-%m-%Y'),
+      student.street_number,
+      student.street_name,
+      student.ward,
+      student.district,
+      student.address,
+      student.area,
+      student.father_phone,
+      student.mother_phone,
+      @cell.name,
+      attendance.result
+    ], types: %i[string string string string string string string string string]
   end
 end
