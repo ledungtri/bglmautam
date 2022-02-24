@@ -24,7 +24,7 @@ class StudentsPdf < Prawn::Document
 
   def line_items
     bounding_box([0, cursor], width: bounds.width, height: bounds.height - 80) do
-      groups = @attendances.group_by(&:result).sort.each do |key, group|
+      @attendances.group_by(&:result).sort.each do |key, group|
         @group = group
         table line_item_rows do
           self.header = true

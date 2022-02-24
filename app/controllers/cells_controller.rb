@@ -7,7 +7,6 @@ class CellsController < ApplicationController
   # GET /cells.json
   def index
     @cells = Cell.where(year: @current_year).where(grade: ['Khai Tâm', 'Rước Lễ', 'Thêm Sức', 'Bao Đồng']).sort_by(&:sort_param)
-    # TODO: add isClass field to cell
 
     respond_to do |format|
       format.html

@@ -17,7 +17,7 @@ wb.add_worksheet(name: 'Students') do |sheet|
     'Kết Quả'
   ]
 
-  @attendances.each_with_index do |attendance, index|
+  @attendances.sort_by { |attendance| attendance.student.sort_param }.each_with_index do |attendance, index|
     student = attendance.student
     sheet.add_row [
       index + 1,
