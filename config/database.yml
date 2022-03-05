@@ -1,19 +1,17 @@
-development:
+default: &default
   adapter: postgresql
   encoding: unicode
-  database: bglmautam_development
-  pool: 5
   username: postgres
   password: secret
   timeout: 5000
   host: localhost
   port: 5432
- 
-test:
-  adapter: postgresql
-  encoding: unicode
-  database: bglmautam_test
   pool: 5
-  username: 
-  password:
-  timeout: 5000
+
+development:
+  <<: *default
+  database: bglmautam_development
+
+test:
+  <<: *default
+  database: bglmautam_test
