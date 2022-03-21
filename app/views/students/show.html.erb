@@ -5,17 +5,17 @@
 <fieldset>
   <legend><h3>Thông Tin Cá Nhân</h3></legend>
     <div class="block">
-      <div class="label">Tên Thánh - Họ và Tên:</div>
+      <div class="name_hs">Tên Thánh - Họ và Tên:</div>
       <strong><%= @student.name %></strong>
     </div>
     
     <div class="block">
-      <div class="label">Giới Tính:</div>
+      <div class="gender_hs">Giới Tính:</div>
       <strong><%= @student.gender %></strong>
     </div>
   
     <div class="block">
-      <div class="label">Ngày Sinh:</div>
+      <div class="date_hs">Ngày Sinh:</div>
       <strong><%= @student.date_birth.strftime("%d-%m-%Y") %></strong>
       <% if @student.place_birth? %>
         <div style="display: inline-block; width: 30px; text-align: center">tại</div>
@@ -24,7 +24,7 @@
     </div>
     
     <div class="block">
-      <div class="label">Điện Thoại Cá Nhân:</div>
+      <div class="phone_hs">Điện Thoại Cá Nhân:</div>
       <strong><%= @student.phone %></strong>
     </div>
 </fieldset>
@@ -35,7 +35,7 @@
   <legend><h3>Ngày Bí Tích</h3></legend>
 
     <div class="block">
-      <div class="label" style="width:80px">Rửa Tội:</div>
+      <div class="label1" >Rửa Tội:</div>
       <strong><%= @student.date_baptism.strftime("%d-%m-%Y") if @student.date_baptism? %></strong>
       <% if @student.place_baptism? %>
         <div style="display: inline-block; width: 30px; text-align: center">tại</div>
@@ -44,7 +44,7 @@
     </div>
     
     <div class="block">
-      <div class="label" style="width:80px">Rước Lễ:</div>
+      <div class="label1" >Rước Lễ:</div>
       <strong><%= @student.date_communion.strftime("%d-%m-%Y") if @student.date_communion? %></strong>
       <% if @student.place_communion? %>
         <div style="display: inline-block; width: 30px; text-align: center">tại</div>
@@ -53,7 +53,7 @@
     </div>
     
     <div class="block">
-      <div class="label" style="width:80px">Thêm Sức:</div>
+      <div class="label1" >Thêm Sức:</div>
       <strong><%= @student.date_confirmation.strftime("%d-%m-%Y") if @student.date_confirmation? %></strong>
       <% if @student.place_confirmation? %>
         <div style="display: inline-block; width: 30px; text-align: center">tại</div>
@@ -62,7 +62,7 @@
     </div>
     
     <div class="block">
-      <div class="label" style="width:80px">Tuyên Hứa:</div>
+      <div class="label1" >Tuyên Hứa:</div>
       <strong><%= @student.date_declaration.strftime("%d-%m-%Y") if @student.date_declaration? %></strong>
       <% if @student.place_declaration? %>
         <div style="display: inline-block; width: 30px; text-align: center">tại</div>
@@ -77,7 +77,7 @@
   <legend><h3>Địa Chỉ Nhà</h3></legend>
   
   <div>
-    <div class="label">Địa Chỉ:</div>
+    <div class="add_hs">Địa Chỉ:</div>
     <strong><%= @student.address %></strong>
   </div>
   <div class="block">
@@ -91,22 +91,22 @@
 <fieldset>
   <legend><h3>Thông Tin Cha Mẹ</h3></legend>
     <div class="block">
-      <div class="label">Tên Thánh - Họ và Tên Cha:</div>
+      <div class="label2">Tên Thánh - Họ và Tên Cha:</div>
       <strong><%= @student.father_name %></strong>
     </div>
 
     <div class="block">
-      <div class="label">Điện Thoại Cha:</div>
+      <div class="label3">Điện Thoại Cha:</div>
       <strong><%= @student.father_phone %></strong>
     </div>      
     
     <div class="block">
-      <div class="label">Tên Thánh - Họ và Tên Mẹ:</div>
+      <div class="label2">Tên Thánh - Họ và Tên Mẹ:</div>
       <strong><%= @student.mother_name %></strong>
     </div>
 
     <div class="block">
-      <div class="label">Điện Thoại Mẹ:</div>
+      <div class="label3">Điện Thoại Mẹ:</div>
       <strong><%= @student.mother_phone %></strong> 
     </div>      
 </fieldset>
@@ -115,7 +115,7 @@
 
 <div class="divider"></div> 
 
-<h1><center>Hành Trình Thiêng Liêng</center></h1>
+<div class = "httl"><center>Hành Trình Thiêng Liêng</center></div>
 
 <table>
   <thead>

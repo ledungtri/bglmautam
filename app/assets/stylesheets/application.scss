@@ -296,9 +296,7 @@ footer {
     text-decoration: none;
     color: white;
   }
-      
-      
-      
+          
   fieldset {
     background-color: white;
   }
@@ -322,6 +320,70 @@ footer {
 	font-weight: 500;
 	size: 50px;
   }
+.label1{
+    display: inline-block; 
+    width: 180px; 
+    text-align: right;
+    margin: 2px;
+	size: 50px;
+  	font-weight: 500;
+}
+.label2{
+    display: inline-block; 
+    width: 280px; 
+    text-align: right;
+    margin: 2px;
+	size: 50px;
+  	font-weight: 500;
+}
+.label3{
+    display: inline-block; 
+    width: 208px; 
+    text-align: right;
+    margin: 2px;
+	size: 50px;
+  	font-weight: 500;
+}
+.add_hs{
+	display: inline-block; 
+    width: 67px; 
+    text-align: right;
+    margin: 2px;
+	size: 50px;
+  	font-weight: 500;
+}
+.name_hs{
+	display: inline-block; 
+    width: 256px; 
+    text-align: right;
+    margin: 2px;
+	//font-weight: 500;
+	size: 50px;
+}
+.gender_hs{
+	display: inline-block; 
+    width: 170px; 
+    text-align: right;
+    margin: 2px;
+	//font-weight: 500;
+	size: 50px;
+}
+.date_hs{
+	display: inline-block; 
+    width: 180px; 
+    text-align: right;
+    margin: 2px;
+	font-weight: 500;
+	size: 50px;
+}
+.phone_hs{
+	display: inline-block; 
+    width: 240px; 
+    text-align: right;
+    margin: 2px;
+	font-weight: 500;
+	size: 50px;
+}
 .label_login {
     display: inline-block; 
     width: 180px; 
@@ -335,7 +397,44 @@ footer {
     width: 70%; 
 	transform: translate(-15%, -10%);  
   }
-  
+.name_glv{
+	display: inline-block; 
+    width: 256px; 
+    text-align: right;
+    margin: 2px;
+	//font-weight: 500;
+	size: 50px;
+}
+.job{
+	display: inline-block; 
+    width: 200px; 
+    text-align: right;
+    margin: 2px;
+	//font-weight: 500;
+	size: 50px;
+}
+.phone_glv{
+	display: inline-block; 
+    width: 206px; 
+    text-align: right;
+    margin: 2px;
+	//font-weight: 500;
+	size: 50px;
+}
+.email{
+	display: inline-block; 
+    width: 156px; 
+    text-align: right;
+    margin: 2px;
+	size: 50px;
+}
+.add_glv{
+	display: inline-block; 
+    width: 66px; 
+    text-align: right;
+    margin: 2px;
+	size: 50px;
+}
       
 /*Items for LISTS*/
   table {
@@ -429,4 +528,41 @@ input, select {
 
 .year, .month, .day{
   width: 65px;
+}
+.list_student{
+  font-size: 25px;
+  text-align: center;
+  margin: 3px;
+  width: 300px;
+  left: 48%;
+  top: 15%;
+  transform: translate(90%, -10%);
+  background-image: linear-gradient(90deg, #fcecfe, #fbf6e7, #e6fcf5);
+  border-radius: 11px;
+  padding: 12px 20px;
+  //position: relative;
+  line-height: 24px;
+  color: #14387e;
+  font-weight: 700;
+  font-family: "Times New Roman", Times, serif; 
+  -webkit-tap-highlight-color: transparent;
+}
+.httl{
+  font-size: 25px;
+  text-align: center;
+  margin: 3px;
+  width: 300px;
+  left: 48%;
+  top: 15%;
+  transform: translate(93%, -10%);
+  background-image: linear-gradient(90deg, #fcecfe, #fbf6e7, #e6fcf5);
+  border-radius: 11px;
+  padding: 12px 20px;
+  //position: relative;
+  line-height: 24px;
+  color: #14387e;
+  font-weight: 700;
+  font-family: "Times New Roman", Times, serif; 
+  -webkit-tap-highlight-color: transparent;
+
 }
