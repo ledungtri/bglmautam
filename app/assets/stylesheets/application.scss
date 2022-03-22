@@ -4,97 +4,34 @@
 h1 {
   font-size: 25px;
   text-align: center;
-  margin: 3px;
-  width: 200px;
-  //position: absolute;
-  left: 50%;
-  top: 15%;
-  transform: translate(150%, -10%);
+  line-height: 24px;
+  width: 80%;
+  margin: 10px auto;
+  padding: 12px 20px;
   background-image: linear-gradient(90deg, #fcecfe, #fbf6e7, #e6fcf5);
   border-radius: 11px;
-  padding: 12px 20px;
-  //position: relative;
-  line-height: 24px;
-  color: #14387e;
-  font-family: serif;
-}
-h2{
-	font-family: serif;
-	color: #14387e;
-}
-.Tag{
-  font-size: 25px;
-  text-align: center;
-  margin: 3px;
-  width: 600px;
-  left: 48%;
-  top: 15%;
-  transform: translate(30%, -10%);
-  background-image: linear-gradient(90deg, #fcecfe, #fbf6e7, #e6fcf5);
-  border-radius: 11px;
-  padding: 12px 20px;
-  //position: relative;
-  line-height: 24px;
-  color: #14387e;
-  font-weight: 700;
   -webkit-tap-highlight-color: transparent;
 }
-.Tag_login{
-  font-size: 25px;
-  text-align: center;
-  margin: 5px;
-  width: 200px;
-  left: 30%;
-  top: 15%;
-  margin-bottom: 2%;
-  transform: translate(150%, -10%);
-  background-image: linear-gradient(90deg, #fcecfe, #fbf6e7, #e6fcf5);
-  border-radius: 11px;
-  padding: 12px 20px;
-  line-height: 40px;
-  color: #14387e;
-  font-weight: 700;
-  -webkit-tap-highlight-color: transparent;
-}
-.Tag_Teacher_tile{
-  font-size: 25px;
-  text-align: center;
-  margin: 3px;
-  width: 700px;
-  left: 30%;
-  top: 15%;
-  transform: translate(20%, -10%);
-  background-image: linear-gradient(90deg, #fcecfe, #fbf6e7, #e6fcf5);
-  border-radius: 11px;
-  padding: 12px 20px;
-  //position: relative;
-  line-height: 24px;
-  color: #14387e;
-  font-weight: 700;
-  -webkit-tap-highlight-color: transparent;
-}
-.tile_bar{
-	color: #14387e;
-	
-}
+
 h4 {
   text-align: center;
-  margin: 0px;
+  margin: 0;
 }
 
 .middle > * {
   vertical-align: middle;
 }
 
- 
 body {
   font-size: 14px;
   font-family: 'Nunito', sans-serif;
   box-sizing: border-box;
-  box-shadow: 0px 0px 10px 5px rgb(10,10,10);
+  box-shadow: 0 0 10px 5px rgb(10,10,10);
   width: 1200px;
   margin: auto;
 }
+
+
 
 /* Give all semantic body elements uniform layout style */
 header,
@@ -151,327 +88,156 @@ footer {
  
  
 /* Navigation Bar */
-  nav a {
-      display:inline-block;
-      float: right;
-      padding: 0px 20px;
-      font-size: 18px;
-      text-align: center;
-      font-weight: bold;
-      font-family: 'Helvetica', cursive;
-  }
-  
-  nav a:hover {
-      background-color: transparent;
-      font-weight: bold;
-      text-decoration: none;
-      border-bottom: solid 5px;
-  }
-  
-  /* Back To The Top Button */
-  #btt {
-      padding: 5px 10px 5px 10px;
+nav a {
+    display:inline-block;
+    float: right;
+    padding: 0 20px;
+    font-size: 18px;
+    text-align: center;
+    font-weight: bold;
+    font-family: 'Helvetica', cursive;
+}
 
-      height: 34px;
-      width: 28px;
-      
-      background-color: rgba(265 ,265 ,265 , 0.5);
-      
-      text-align: center;
-      font-size: 24px;
-      
-      position: fixed;
-      bottom: 20px;
-      right: 10px; 
-      border-radius: 50%;
-  }
-  #btt:hover {
-      background-color: white; 
-      color: black;
-  }
+nav a:hover {
+    background-color: transparent;
+    font-weight: bold;
+    text-decoration: none;
+    border-bottom: solid 5px;
+}
   
-  .button_search {
-    background-image: linear-gradient(
+/* Back To The Top Button */
+#btt {
+    padding: 5px 10px 5px 10px;
+    height: 34px;
+    width: 28px;
+    background-color: rgba(265 ,265 ,265 , 0.5);
+    text-align: center;
+    font-size: 24px;
+    position: fixed;
+    bottom: 20px;
+    right: 10px;
+    border-radius: 50%;
+}
+
+#btt:hover {
+    background-color: white;
+    color: black;
+}
+
+button, .button {
+  background-image: linear-gradient(
     to right,
     #25aae1,
     #4481eb,
     #04befe,
     #3f86ed
- 	 );
+  );
   box-shadow: 0 4px 15px 0 rgba(65, 132, 234, 0.75);
-  transform: translate(150%, -10%); 
+  margin: 10px auto 0;
   width: 240px;
+  display: block;
   font-size: 16px;
   font-weight: 600;
   color: #fff;
   cursor: pointer;
-  margin: 20px;
   height: 40px;
   text-align:center;
-  border: none;	   
+  border: none;
   background-size: 300% 100%;
   border-radius: 50px;
   moz-transition: all .4s ease-in-out;
   -o-transition: all .4s ease-in-out;
   -webkit-transition: all .4s ease-in-out;
   transition: all .4s ease-in-out;
-	  
-  }
-  .button_search:hover{
+}
+
+button:hover, .button:hover{
   background-position: 100% 0;
   moz-transition: all .4s ease-in-out;
   -o-transition: all .4s ease-in-out;
   -webkit-transition: all .4s ease-in-out;
   transition: all .4s ease-in-out;
-  }
-.button_login{
-	  background-image: linear-gradient(
+}
+
+.button-caution {
+  background-image: linear-gradient(
     to right,
-    #25aae1,
-    #4481eb,
-    #04befe,
-    #3f86ed
- 	 );
-  box-shadow: 0 4px 15px 0 rgba(65, 132, 234, 0.75);
-  transform: translate(150%, -10%); 
-  width: 240px;
-  font-size: 16px;
-  font-weight: 600;
-  color: #fff;
-  cursor: pointer;
-  margin: 20px;
-  height: 40px;
-  padding: 12px 16px;	
-  text-align:center;
-  border: none;	   
-  background-size: 300% 100%;
-  border-radius: 50px;
-  moz-transition: all .4s ease-in-out;
-  -o-transition: all .4s ease-in-out;
-  -webkit-transition: all .4s ease-in-out;
-  transition: all .4s ease-in-out;
-  	
+    #ed5f3f,
+    #fe0c04,
+    #ed963f,
+    #ed3f3f
+  );
 }
-.button_login:hover{
-	 background-position: 100% 0;
-  moz-transition: all .4s ease-in-out;
-  -o-transition: all .4s ease-in-out;
-  -webkit-transition: all .4s ease-in-out;
-  transition: all .4s ease-in-out;
-}
-.button{
-	background-color: #4776c1;
-    border-radius: 5px;
-    display: block;
-    width: 100%;
-    margin-top: 5px;
-    
-    line-height: 30px;
-    font-weight: 400;
-    font-size: 18px;
-    text-align: center;
-    color: white;
-}
-  .button:hover{
-    background-color: #3a5e99;
-    text-decoration: none;
-    color: white;
-  }
 
-  .button-caution {
-    background-color: #b30000;
-    border-radius: 5px;
-    display: block;
-    width: 100%;
-    margin-top: 5px;
-    
-    line-height: 30px;
-    font-weight: 400;
-    font-size: 18px;
-    text-align: center;
-    color: white;
-  }
-  .button-caution:hover{
-    background-color: #8f0000;
-    text-decoration: none;
-    color: white;
-  }
-          
-  fieldset {
-    background-color: white;
-  }
+fieldset {
+  background-color: white;
+}
+
+legend {
+  background-color: white;
+  line-height: 0px;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  border-top: 1px solid black;
+  margin-top: 50px;
+  width: 150px;
+  text-align: center;
+}
   
-  legend {
-    background-color: white;
-    line-height: 0px;
-    border-left: 1px solid black;
-    border-right: 1px solid black;
-    border-top: 1px solid black;
-    margin-top: 50px;
-    width: 150px;
-    text-align: center;
-  }
-  
-  .label {
-    display: inline-block; 
-    width: 180px; 
-    text-align: right;
-    margin: 2px;
-	font-weight: 500;
-	size: 50px;
-  }
-.label1{
-    display: inline-block; 
-    width: 180px; 
-    text-align: right;
-    margin: 2px;
-	size: 50px;
-  	font-weight: 500;
+.label {
+  display: inline-block;
+  width: 180px;
+  text-align: right;
+  margin: 2px;
+  font-weight: 500;
+  size: 50px;
 }
-.label2{
-    display: inline-block; 
-    width: 280px; 
-    text-align: right;
-    margin: 2px;
-	size: 50px;
-  	font-weight: 500;
-}
-.label3{
-    display: inline-block; 
-    width: 208px; 
-    text-align: right;
-    margin: 2px;
-	size: 50px;
-  	font-weight: 500;
-}
-.add_hs{
-	display: inline-block; 
-    width: 67px; 
-    text-align: right;
-    margin: 2px;
-	size: 50px;
-  	font-weight: 500;
-}
-.name_hs{
-	display: inline-block; 
-    width: 256px; 
-    text-align: right;
-    margin: 2px;
-	//font-weight: 500;
-	size: 50px;
-}
-.gender_hs{
-	display: inline-block; 
-    width: 170px; 
-    text-align: right;
-    margin: 2px;
-	//font-weight: 500;
-	size: 50px;
-}
-.date_hs{
-	display: inline-block; 
-    width: 180px; 
-    text-align: right;
-    margin: 2px;
-	font-weight: 500;
-	size: 50px;
-}
-.phone_hs{
-	display: inline-block; 
-    width: 240px; 
-    text-align: right;
-    margin: 2px;
-	font-weight: 500;
-	size: 50px;
-}
+
 .label_login {
-    display: inline-block; 
-    width: 180px; 
-    text-align: right;
-    margin: 5px;
-	font-weight: 500;
-	size: 70px;
-  }
-  .block {
-    display: inline-block; 
-    width: 70%; 
-	transform: translate(-15%, -10%);  
-  }
-.name_glv{
-	display: inline-block; 
-    width: 256px; 
-    text-align: right;
-    margin: 2px;
-	//font-weight: 500;
-	size: 50px;
+  display: inline-block;
+  width: 180px;
+  text-align: right;
+  margin: 5px;
+  font-weight: 500;
+  size: 70px;
 }
-.job{
-	display: inline-block; 
-    width: 200px; 
-    text-align: right;
-    margin: 2px;
-	//font-weight: 500;
-	size: 50px;
-}
-.phone_glv{
-	display: inline-block; 
-    width: 206px; 
-    text-align: right;
-    margin: 2px;
-	//font-weight: 500;
-	size: 50px;
-}
-.email{
-	display: inline-block; 
-    width: 156px; 
-    text-align: right;
-    margin: 2px;
-	size: 50px;
-}
-.add_glv{
-	display: inline-block; 
-    width: 66px; 
-    text-align: right;
-    margin: 2px;
-	size: 50px;
-}
-      
-/*Items for LISTS*/
-  table {
-    border-spacing: 0px;
-    margin: auto;
-	
-  }
-  
-  /*Table Header Row*/
-  .table-row {
-    text-align: center;
-    border-style: none;
-	color:#14387e;  
-  }
 
-  /*Table Header Cell*/
-  th {
-    border: 1px solid; 
-    height: 20px;
-    font-size: 14px; 
-    font-weight: bold;
-    padding: 0px;
-    margin: 0px;
-    padding-top: 5px;
-	  
-  }
+.block {
+  display: inline-block;
+  width: 70%;
+  transform: translate(-15%, -10%);
+}
+
+/*Items for LISTS*/
+table {
+  border-spacing: 0;
+  margin: auto;
+}
   
-  /*Table Cell*/
-  td {
-    border: 1px solid; 
-    height: 20px;
-    font-size: 11px;
-    padding: 0px;
-    margin: 0px;
-    padding-top: 3px;
-	color: #14387e;;
-  }
+/*Table Header Row*/
+.table-row {
+  text-align: center;
+  border-style: none;
+}
+
+/*Table Header Cell*/
+th {
+  border: 1px solid;
+  height: 20px;
+  font-size: 14px;
+  font-weight: bold;
+  margin: 0;
+  padding: 5px 0 0;
+}
+
+/*Table Cell*/
+td {
+  border: 1px solid;
+  height: 20px;
+  font-size: 11px;
+  margin: 0;
+  padding: 3px 0 0;
+}
 
 .field {
   display: inline-block;
@@ -479,21 +245,17 @@ footer {
 
 
 
-
-
 /*COLOR*/
 html {
   background-color: slategrey;
 }
-    
 
-body {
-  color: dimgray;
+body, header, footer {
+  color:#14387e;
 }
 
 header, footer {
   background-color: lightcyan;
-  color: dimgray;
 }
 
 main {
@@ -504,14 +266,10 @@ article {
     background-color: transparent; 
 }
 
-
 th {
-    border-radius: 6px;
-	font-family: inherit;
-	background: #FFAFBD;  
-	background: -webkit-linear-gradient(to bottom, #ffc3a0, #FFAFBD);  
-	background: linear-gradient(to bottom, #ffc3a0, #FFAFBD); 
-	color: #14387e;
+  border-radius: 6px;
+  font-family: inherit;
+  background: linear-gradient(to bottom, #ffc3a0, #FFAFBD);
 }
 
 .table-row {
@@ -519,50 +277,13 @@ th {
 }
 
 .table-row:hover {
-  	background-image: linear-gradient(90deg, #fcecfe, #fbf6e7, #e6fcf5);
+  background-image: linear-gradient(90deg, #fcecfe, #fbf6e7, #e6fcf5);
 }
 
 input, select {
   width: 200px;
 }
 
-.year, .month, .day{
+.year, .month, .day {
   width: 65px;
-}
-.list_student{
-  font-size: 25px;
-  text-align: center;
-  margin: 3px;
-  width: 300px;
-  left: 48%;
-  top: 15%;
-  transform: translate(90%, -10%);
-  background-image: linear-gradient(90deg, #fcecfe, #fbf6e7, #e6fcf5);
-  border-radius: 11px;
-  padding: 12px 20px;
-  //position: relative;
-  line-height: 24px;
-  color: #14387e;
-  font-weight: 700;
-  font-family: "Times New Roman", Times, serif; 
-  -webkit-tap-highlight-color: transparent;
-}
-.httl{
-  font-size: 25px;
-  text-align: center;
-  margin: 3px;
-  width: 300px;
-  left: 48%;
-  top: 15%;
-  transform: translate(93%, -10%);
-  background-image: linear-gradient(90deg, #fcecfe, #fbf6e7, #e6fcf5);
-  border-radius: 11px;
-  padding: 12px 20px;
-  //position: relative;
-  line-height: 24px;
-  color: #14387e;
-  font-weight: 700;
-  font-family: "Times New Roman", Times, serif; 
-  -webkit-tap-highlight-color: transparent;
-
 }

@@ -1,10 +1,6 @@
-<div class = "Tag_Teacher_tile">
-	Nhân sự phụ trách Giáo dục Đức tin Năm Học <%= @current_year_long %>
-</div>
+<h1>Nhân sự phụ trách Giáo dục Đức tin Năm Học <%= @current_year_long %></h1>
 <h4>Số Lượng : <%= @instructions.count %></h4>
 
 <%= render 'info_table' %>
-
-<div class="divider"></div>
-<%= link_to "In Danh Sách GLV", teachers_path(format: "pdf"), :class => "button" %>
+<%= button_to "In Danh Sách GLV", teachers_path(format: "pdf"), method: :get, :class => "button" %>
 

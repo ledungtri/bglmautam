@@ -1,5 +1,6 @@
 <h1>Cập Nhật Thông Tin Giáo Lý Viên</h1>
 
 <%= render 'form' %>
-<%= link_to 'Quay Lại', :back, :class => "button" %>
-<%= link_to 'Xóa', @teacher, method: :delete, data: { confirm: 'Xóa hết thông tin và Hành Trình Thiêng Liêng của giáo lý viên? Nên cập nhật thông tin thay vì xóa. Are you sure?' }, :class => "button-caution" %>
+<%= button_to  'Quay Lại', :back, method: :get, :class => "button" %>
+
+<%= button_to 'Xóa', @teacher, method: :delete, data: { confirm: 'Xóa hết thông tin và Hành Trình Thiêng Liêng của giáo lý viên? Nên cập nhật thông tin thay vì xóa. Are you sure?' }, :class => "button button-caution" %>

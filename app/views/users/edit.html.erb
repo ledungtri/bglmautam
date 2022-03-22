@@ -2,5 +2,5 @@
 
 <%= render 'form', user: @user %>
 
-<%= link_to 'Show', @user %> |
-<%= link_to 'Quay Lại', :back %>
+<%= button_to 'Show', @user, method: :get, class: 'button' %>
+<%= button_to 'Quay Lại', :back, method: :get, class: 'button' %>
