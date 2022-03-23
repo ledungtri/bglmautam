@@ -13,5 +13,5 @@
   <%= @attendance.cell_id %>
 </p>
 
-<%= link_to 'Edit', edit_attendance_path(@attendance) %> |
-<%= link_to 'Quay Lại', :back %>
+<%= button_to 'Cập Nhật', edit_attendance_path(@attendance), method: :get, class: "button" %>
+<%= button_to 'Quay Lại', :back, method: :get, class: "button" %>

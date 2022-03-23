@@ -13,5 +13,5 @@
   <%= @instruction.cell_id %>
 </p>
 
-<%= link_to 'Edit', edit_instruction_path(@instruction) %> |
-<%= link_to 'Quay Lại', :back %>
+<%= button_to 'Cập Nhật', edit_instruction_path(@instruction), method: :get, class: "button" %>
+<%= button_to 'Quay Lại', :back, method: :get, class: "button" %>

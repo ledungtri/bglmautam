@@ -3,5 +3,5 @@
   <%= @user.username %>
 </p>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Quay Lại', :back %>
+<%= button_to 'Cập Nhật', edit_user_path(@user), method: :get, class: 'button' %> |
+<%= button_to 'Quay Lại', :back, method: :get, class: 'button' %>

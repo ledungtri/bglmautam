@@ -1,14 +1,14 @@
-<h1>Login</h1>
+<h1>Đăng Nhập</h1>
 <%= form_tag sessions_path do |form| %>
-  <div class="block">
-    <div class="label">Username:</div>
+  <div>
+    <div class="label ">Tên đăng nhập:</div>
     <%= text_field_tag :username %>
   </div>
-  <div class="block">
-    <div class="label">Password:</div>
+  <div>
+    <div class="label">Mật khẩu:</div>
     <%= password_field_tag :password %>
   </div>
-  <div class="actions" style="padding-top:10px">
-    <%= submit_tag "Login", :class => "button" %>
-  </div>
+  <button>
+    <i class="fa-solid fa-circle-right"></i> Đăng Nhập
+  </button>
 <% end %>

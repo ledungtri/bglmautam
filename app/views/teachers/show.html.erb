@@ -1,33 +1,32 @@
 <h1>Thông Tin Giáo Lý Viên</h1>
-<p style="margin: 10px"></p>
 
 <fieldset>
-  <div class="block">
+  <div>
     <div class="label">Tên Thánh - Họ và Tên:</div>
     <strong><%= @teacher.name %></strong>
   </div>
   
-  <div class="block">
+  <div>
     <div class="label">Ngày Sinh:</div>
     <strong><%= @teacher.date_birth %></strong>
   </div>
   
-  <div class="block">
+  <div>
     <div class="label">Nghề Nghiệp:</div>
     <strong><%= @teacher.occupation %></strong>
   </div>
   
-  <div class="block">
+  <div>
     <div class="label">Bổn Mạng:</div>
     <strong><%= @teacher.named_date %></strong>
   </div>
   
-  <div class="block">
+  <div>
     <div class="label">Số Điện Thoại:</div>
     <strong><%= @teacher.phone %></strong>
   </div>
   
-  <div class="block">
+  <div>
     <div class="label">Email:</div>
     <strong><%= @teacher.email %></strong>
   </div>
@@ -39,7 +38,7 @@
   
 </fieldset>
 
-<%= link_to 'Chỉnh Sửa', edit_teacher_path(@teacher), :class => "button" %>
+<%= button_to 'Chỉnh Sửa', edit_teacher_path(@teacher), method: :get, :class => "button" %>
 
 
 <div class="divider"></div>
@@ -88,7 +87,6 @@
           <% end %>
           <%= f.hidden_field :teacher_id, :value => @teacher.id %>
           <select id="year_combobox" onchange="changeCell()">
-            <% selected_year = @years[0] %>
             <% @years.each do |year| %>
               <option value="<%=year%>"><%= year.to_s + " - " + (year.to_i+1).to_s %></option>
             <% end %>
@@ -102,7 +100,7 @@
   </tbody>
 </table>
 
-<center><button id="btn" onClick="showForm()" class="button" style="width:600px">Thêm Lớp Mới</button></center>
+<button id="btn" onClick="showForm()" class="button">Thêm Lớp Mới</button>
 
 <script>
   function showForm() {

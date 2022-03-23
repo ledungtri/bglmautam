@@ -11,22 +11,20 @@
     </div>
   <% end %>
 
-<p style="margin:10px"></p>
-
   <fieldset>
-  <legend><h3>Thông Tin Cá Nhân</h3></legend>
-    <div class="block">
+    <legend><h3>Thông Tin Cá Nhân</h3></legend>
+    <div>
       <div class="label">Tên Thánh:</div>
       <%= f.text_field :christian_name %>
     </div>
-    
-    <div class="block">
+
+    <div>
       <div class="label">Họ và Tên:</div>
       <%= f.text_field :full_name %>
     </div>
-    
-    
-    <div class="block">
+
+
+    <div>
       <div class="label">Ngày Sinh:</div>
       <%= f.date_select :date_birth, {
         start_year: Date.today.year - 25,
@@ -38,30 +36,30 @@
       }%>
     </div>
 
-    <div class="block">
+    <div>
       <div class="label">Nơi Sinh:</div>
       <%= f.text_field :place_birth %>
     </div>
-    
-    <div class="block">
+
+    <div>
       <div class="label">Giới Tính:</div>
       <%= f.select :gender, options_for_select(%w[Nam Nữ], @student.gender), {
-        :include_blank => true 
+        :include_blank => true
       }%>
     </div>
-    
-    <div class="block">
+
+    <div>
       <div class="label">Điện Thoại Cá Nhân:</div>
       <%= f.text_field :phone %>
     </div>
-</fieldset>
+  </fieldset>
 
-<p style="margin:10px"></p>
+  <p style="margin:10px"></p>
 
-<fieldset>
-  <legend><h3>Ngày Bí Tích</h3></legend>
+  <fieldset>
+    <legend><h3>Ngày Bí Tích</h3></legend>
 
-    <div class="block">
+    <div>
       <div class="label">Rửa Tội:</div>
             <%= f.date_select :date_baptism, {
               start_year: Date.today.year - 25,
@@ -72,13 +70,13 @@
               prompt: { :day => "Ngày", :month => "Tháng", :year => "Năm" }
             } %>
     </div>
-    
-    <div class="block">
+
+    <div>
       <div class="label">Nơi Rửa Tội:</div>
         <%= f.text_field :place_baptism %>
     </div>
-    
-    <div class="block">
+
+    <div>
       <div class="label">Rước Lễ:</div>
         <%= f.date_select :date_communion, {
           start_year: Date.today.year - 25,
@@ -89,13 +87,13 @@
           prompt: { :day => "Ngày", :month => "Tháng", :year => "Năm" }
         }%>
     </div>
-      
-    <div class="block">
+
+    <div>
       <div class="label">Nơi Rước Lễ:</div>
       <%= f.text_field :place_communion %>
     </div>
-    
-    <div class="block">
+
+    <div>
       <div class="label">Thêm Sức:</div>
         <%= f.date_select :date_confirmation, {
           start_year: Date.today.year - 25,
@@ -107,12 +105,12 @@
         }%>
     </div>
 
-    <div class="block">
+    <div>
       <div class="label">Nơi Thêm Sức:</div>
       <%= f.text_field :place_confirmation %>
     </div>
-    
-    <div class="block">
+
+    <div>
       <div class="label">Tuyên Hứa:</div>
         <%= f.date_select :date_declaration, {
           start_year: Date.today.year - 25,
@@ -124,78 +122,76 @@
         }%>
     </div>
 
-    <div class="block">
+    <div>
       <div class="label">Nơi Tuyên Hứa:</div>
       <%= f.text_field :place_declaration %>
     </div>
-</fieldset>
+  </fieldset>
 
-<p style="margin:10px"></p>
+  <p style="margin:10px"></p>
 
-<fieldset>
-  <legend><h3>Địa Chỉ Nhà</h3></legend>
-  
-  <div class="block">
-    <div class="label">Số Nhà:</div>
-    <%= f.text_field :street_number %>
-  </div>
-  <div class="block">
-    <div class="label">Đường:</div>
-    <%= f.text_field :street_name %>
-  </div>
-  <div class="block">
-    <div class="label">Phường/Xã:</div>
-    <%= f.text_field :ward %>
-  </div>
-  <div class="block">
-  <div class="label">Quận/Huyện:</div>
-      <%= f.text_field :district %>
-  </div>
-  <div class="block">
-    <div class="label">Xóm Giáo:</div>
-    <%= f.text_field :area %>
-  </div>
-</fieldset>
+  <fieldset>
+    <legend><h3>Địa Chỉ Nhà</h3></legend>
 
-<p style="margin:10px"></p>
+    <div>
+      <div class="label">Số Nhà:</div>
+      <%= f.text_field :street_number %>
+    </div>
+    <div>
+      <div class="label">Đường:</div>
+      <%= f.text_field :street_name %>
+    </div>
+    <div>
+      <div class="label">Phường/Xã:</div>
+      <%= f.text_field :ward %>
+    </div>
+    <div>
+    <div class="label">Quận/Huyện:</div>
+        <%= f.text_field :district %>
+    </div>
+    <div>
+      <div class="label">Xóm Giáo:</div>
+      <%= f.text_field :area %>
+    </div>
+  </fieldset>
 
-<fieldset>
-  <legend><h3>Thông Tin Cha Mẹ</h3></legend>
-    <div class="block">
+  <p style="margin:10px"></p>
+
+  <fieldset>
+    <legend><h3>Thông Tin Cha Mẹ</h3></legend>
+    <div>
       <div class="label">Tên Thánh Cha:</div>
       <%= f.text_field :father_christian_name %>
     </div>
-    
-    <div class="block">
+
+    <div>
       <div class="label">Họ Tên Cha:</div>
       <%= f.text_field :father_full_name %>
     </div>
 
-    <div class="block">
+    <div>
       <div class="label">Điện Thoại Cha:</div>
       <%= f.text_field :father_phone %>
-    </div>      
+    </div>
 
-    <div class="block">
-    </div>      
-        
-    <div class="block">
+    <div>
+    </div>
+
+    <div>
       <div class="label">Tên Thánh Mẹ:</div>
       <%= f.text_field :mother_christian_name %>
     </div>
-    
-    <div class="block">
+
+    <div>
       <div class="label">Họ và Tên Mẹ:</div>
       <%= f.text_field :mother_full_name %>
     </div>
 
-    <div class="block">
+    <div>
       <div class="label">Điện Thoại Mẹ:</div>
       <%= f.text_field :mother_phone %>
     </div>
-</fieldset>
+  </fieldset>
 
-  <div class="actions" style="padding-top:10px">
-    <%= f.submit "Cập Nhật", :class =>"button" %>
-  </div>
+  <%= f.submit "Cập Nhật", :class =>"button" %>
 <% end %>

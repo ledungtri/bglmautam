@@ -1,12 +1,12 @@
 <h1>Thống Kê Số Lượng Thiếu Nhi Năm Học <%= @current_year_long %></h1>
-<h4>Số Lượng : <%= @cells.count %></h4>
+<h4>Số Lượng các lớp: <%= @cells.count %></h4>
 
 <table>
   <thead>
     <tr>
       <th stye="width: 50px">STT</th>
-      <th style='width: 100px'>Tên Lớp</th>
       <th style='width: 100px'>Năm Học</th>
+      <th style='width: 100px'>Tên Lớp</th>
       <th style='width:  94px'>Tổng Số</th>
       <th style='width:  94px'>Nghỉ Luôn</th>
       <th style='width:  94px'>Chuyển Xứ</th>
@@ -18,12 +18,11 @@
 
   <tbody>
     <% @cells.each do |cell| %>
-    <% default_location = "Vô Gia Cư"; default_location = cell.location if cell.location? %>
       <tr class="table-row">
         <td style='width: 50px'><%= @cells.index(cell) + 1 %></td>
+        <td style='width: 100px'><%= link_to cell.long_year, cell %></td>
         <td style='width: 100px'><%= link_to cell.name, cell %></td>
-	<td style='width: 100px'><%= link_to cell.long_year, cell %></td>
-	<td style='width:  94px'><%= cell.attendances.count %></td>
+        <td style='width:  94px'><%= cell.attendances.count %></td>
         <td style='width:  94px'><%= cell.attendances.where(result: 'Nghỉ Luôn').count %></td>
         <td style='width:  94px'><%= cell.attendances.where(result: 'Chuyển Xứ').count %></td>
         <td style='width:  94px'><%= cell.attendances.where(result: 'Đang Học').count %></td>
@@ -34,5 +33,4 @@
   </tbody>
 </table>
 
-<div class="divider"></div>
-<%= link_to "In Bảng Thống Kê", cells_path(format: "pdf"), :class => "button" %>
+<%= button_to "In Bảng Thống Kê", cells_path(format: "pdf"), method: :get, :class => "button" %>

@@ -1,24 +1,22 @@
 <h1>Thông Tin Lớp</h1>
 
-<p style="margin:10px"></p>
-  
-<fieldset>    
-  <div class="block">
+<fieldset>
+  <div>
     <div class="label">Năm Học:</div>
     <strong><%= @cell.long_year %></strong>
   </div>
 
-  <div class="block">
+  <div>
     <div class="label">Tên Lớp:</div>
     <strong><%= @cell.name %></strong>
   </div>
    
-  <div class="block">
+  <div>
     <div class="label">Vị Trí Lớp:</div>
     <strong><%= @cell.location %></strong>  
   </div>
 </fieldset>  
-<%= link_to 'Chỉnh Sửa', edit_cell_path(@cell), :class =>"button" %>
+<%= button_to 'Chỉnh Sửa', edit_cell_path(@cell), method: :get, :class =>"button" %>
 
 <div class="divider"></div>
 <h1>Giáo Lý Viên</h1>
@@ -30,8 +28,8 @@
 <h4>Số Lượng : <%= @attendances.count %></h4>
 
 <%= render 'students/info_table' %>
-<div class="divider"></div>
 
-<%= link_to "In Danh Sách Lớp", cell_path(format: "pdf"), :class =>"button" %>
-<%= link_to "In Danh Sách Lớp (Excel)", cell_path(format: "xlsx"), :class =>"button" %>
-<%= link_to "In Sơ Yếu Lý Lịch Lớp", cell_path(@cell)+"/students_personal_details.pdf", :class =>"button" %>
+
+<%= button_to "In Danh Sách Lớp", cell_path(format: "pdf"), method: :get, :class =>"button" %>
+<%= button_to "In Danh Sách Lớp (Excel)", cell_path(format: "xlsx"), method: :get, :class =>"button" %>
+<%= button_to "In Sơ Yếu Lý Lịch Lớp", cell_path(@cell)+"/students_personal_details.pdf", method: :get, :class =>"button" %>
