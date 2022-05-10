@@ -1,4 +1,6 @@
 class Teacher < ActiveRecord::Base
+  acts_as_paranoid
+
   has_many :instructions
   has_many :cells, through: :instructions
 

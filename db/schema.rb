@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20220120223903) do
+ActiveRecord::Schema.define(version: 20220510225726) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,8 @@ ActiveRecord::Schema.define(version: 20220120223903) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "year"
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_attendances_on_deleted_at", using: :btree
   end
 
   create_table "cells", force: :cascade do |t|
@@ -31,6 +33,8 @@ ActiveRecord::Schema.define(version: 20220120223903) do
     t.string   "location"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_cells_on_deleted_at", using: :btree
   end
 
   create_table "instructions", force: :cascade do |t|
@@ -40,6 +44,8 @@ ActiveRecord::Schema.define(version: 20220120223903) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "year"
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_instructions_on_deleted_at", using: :btree
   end
 
   create_table "students", force: :cascade do |t|
@@ -70,6 +76,8 @@ ActiveRecord::Schema.define(version: 20220120223903) do
     t.string   "mother_phone"
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_students_on_deleted_at", using: :btree
   end
 
   create_table "teachers", force: :cascade do |t|
@@ -86,6 +94,8 @@ ActiveRecord::Schema.define(version: 20220120223903) do
     t.string   "district"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_teachers_on_deleted_at", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -95,6 +105,8 @@ ActiveRecord::Schema.define(version: 20220120223903) do
     t.datetime "updated_at",      null: false
     t.boolean  "isAdmin"
     t.integer  "teacher_id"
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_users_on_deleted_at", using: :btree
   end
 
 end

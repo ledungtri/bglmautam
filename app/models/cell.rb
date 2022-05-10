@@ -1,4 +1,6 @@
 class Cell < ActiveRecord::Base
+  acts_as_paranoid
+
   has_many :attendances
   has_many :students, through: :attendances
 
