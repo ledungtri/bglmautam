@@ -10,19 +10,11 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user
-    if session[:user_id]
-      @current_user ||= User.find(session[:user_id])
-    else
-      @current_user = nil
-    end
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
 
   def current_teacher
-    if session[:teacher_id]
-      @current_teacher ||= Teacher.find(session[:teacher_id])
-    else
-      @current_teacher = nil
-    end
+    @current_teacher ||= Teacher.find(session[:teacher_id]) if session[:teacher_id]
   end
 
   def auth
