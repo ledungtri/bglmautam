@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
   end
 
   def admin?
-    return if current_user&.isAdmin
+    return if current_user&.admin?
 
     flash[:warning] = 'Action not allowed. You are not an admin.'
     redirect_to :back || root_path

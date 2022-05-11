@@ -5,7 +5,6 @@
 * Create a user friendly UI for creating User.
 * Create a user friendly UI for Search page.
 * Use Vietnamese for the creating Cell page.
-* Rename ```isAdmin``` column in User table to ```admin``` as per naming convention.
 * Rename Cell's ```grade``` attribute to ```family```.
 * Split Cell's ```group``` attribute to ```level``` and ```group```.
 * Move migration methods in MigrationController to rake tasks.

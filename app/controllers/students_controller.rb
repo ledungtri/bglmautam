@@ -91,7 +91,7 @@ class StudentsController < ApplicationController
   end
 
   def admin_or_teacher?
-    return if current_user&.isAdmin
+    return if current_user&.admin?
     return if current_teacher&.cells.any? { |cell| @student.cells.include? cell }
 
     flash[:warning] = 'Action not allowed.'

@@ -91,7 +91,7 @@ class TeachersController < ApplicationController
   end
 
   def admin_or_self?
-    return if current_user&.isAdmin || current_user&.teacher_id == @teacher.id
+    return if current_user&.admin? || current_user&.teacher_id == @teacher.id
 
     flash[:warning] = 'Action not allowed.'
     redirect_to :back || root_path
