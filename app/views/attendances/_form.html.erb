@@ -23,7 +23,7 @@
 
   <div>
     <div class="label">Kết Quả:</div>
-    <%= f.select :result, options_for_select(["Học Lại", "Nghỉ Luôn", "Lên Lớp", "Đang Học", "Chuyển Xứ"], @attendance.result) %>
+    <%= f.select :result, options_for_select(['Học Lại', 'Nghỉ Luôn', 'Lên Lớp', 'Đang Học', 'Dự Thính', 'Chuyển Xứ'], @attendance.result) %>
   </div>
 
   <%= f.submit "Cập Nhật", :class =>"button" %>

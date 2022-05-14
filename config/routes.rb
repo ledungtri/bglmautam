@@ -5,8 +5,7 @@ Rails.application.routes.draw do
   resources :students
   resources :teachers
 
-  get 'cells/all', to: 'cells#all'
-  resources :cells do 
+  resources :cells do
     get '/students_personal_details', to: 'cells#students_personal_details'
   end
 

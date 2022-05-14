@@ -14,7 +14,7 @@ class CellsPdf < Prawn::Document
     move_down 20
     line_items
     footer
-  end
+  ends
 
   def title
     text "Thống Kê Các Lớp Năm Học #{@cells.first.long_year}", align: :center, size: 15, style: :bold
@@ -28,13 +28,13 @@ class CellsPdf < Prawn::Document
       self.row_colors = %w[e5e3e3 FFFFFF]
 
       row(0).style(align: :center, font_style: :bold, height: 35, valign: :center)
-      column(0..7).style(align: :center)
-      column(1..7).style(width: 60)
+      column(0..8).style(align: :center)
+      column(1..8).style(width: 60)
     end
   end
 
   def line_item_rows
-    [['STT', 'Tên Lớp', 'Tổng Số', 'Nghỉ Luôn', 'Chuyển Xứ', 'Đang Học', 'Lên Lớp', 'Học Lại']] +
+    [['STT', 'Tên Lớp', 'Tổng Số', 'Nghỉ Luôn', 'Chuyển Xứ', 'Đang Học', 'Lên Lớp', 'Dự Thính', 'Học Lại']] +
       @cells.map do |cell|
         [
           @cells.index(cell) + 1,
@@ -44,6 +44,7 @@ class CellsPdf < Prawn::Document
           cell.attendances.where(result: 'Chuyển Xứ').count,
           cell.attendances.where(result: 'Đang Học').count,
           cell.attendances.where(result: 'Lên Lớp').count,
+          cell.attendances.where(result: 'Dự Thính').count,
           cell.attendances.where(result: 'Học Lại').count
         ]
       end

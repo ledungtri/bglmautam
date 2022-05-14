@@ -17,10 +17,6 @@ class CellsController < ApplicationController
     end
   end
 
-  def all
-    @cells = Cell.all
-  end
-
   # GET /cells/1
   # GET /cells/1.json
   def show

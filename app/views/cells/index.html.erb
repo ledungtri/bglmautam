@@ -10,6 +10,7 @@
       <th style='width:  94px'>Nghỉ Luôn</th>
       <th style='width:  94px'>Chuyển Xứ</th>
       <th style='width:  94px'>Đang Học</th>
+      <th style='width:  94px'>Dự Thính</th>
       <th style='width:  94px'>Lên Lớp</th>
       <th style='width:  94px'>Học Lại</th>
     </tr>
@@ -24,6 +25,7 @@
         <td style='width:  94px'><%= cell.attendances.where(result: 'Nghỉ Luôn').count %></td>
         <td style='width:  94px'><%= cell.attendances.where(result: 'Chuyển Xứ').count %></td>
         <td style='width:  94px'><%= cell.attendances.where(result: 'Đang Học').count %></td>
+        <td style='width:  94px'><%= cell.attendances.where(result: 'Dự Thính').count %></td>
         <td style='width:  94px'><%= cell.attendances.where(result: 'Lên Lớp').count %></td>
         <td style='width:  94px'><%= cell.attendances.where(result: 'Học Lại').count %></td>
       </tr>
