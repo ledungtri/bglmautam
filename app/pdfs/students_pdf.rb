@@ -1,7 +1,7 @@
 class StudentsPdf < Prawn::Document
   def initialize(attendances, cell)
     super(page_size: 'A4', page_layout: :landscape, margin: 20)
-    @attendances = attendances.sort_by { |attendance| attendance.student.sort_param }
+    @attendances = attendances
     @cell = cell
     self.font_size = 8
 
@@ -54,7 +54,16 @@ class StudentsPdf < Prawn::Document
     [['STT', 'Họ và Tên', 'Ngày Sinh', 'Địa Chỉ', 'ĐT Cha', 'ĐT Mẹ', 'Lớp', 'Kết Quả']] +
       @group.each_with_index.map do |attendance, index|
         student = attendance.student
-        [index + 1, student.name, student.date_birth.strftime('%d/%m/%Y'), student.address, student.father_phone, student.mother_phone, @cell.name, attendance.result]
+        [
+          index + 1,
+          student.name,
+          student.date_birth.strftime('%d/%m/%Y'),
+          student.address,
+          student.father_phone,
+          student.mother_phone,
+          @cell.name,
+          attendance.result
+        ]
       end
   end
 

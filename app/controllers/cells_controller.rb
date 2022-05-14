@@ -20,9 +20,8 @@ class CellsController < ApplicationController
   # GET /cells/1
   # GET /cells/1.json
   def show
-    @instructions = @cell.instructions
-    @attendances = @cell.attendances
-
+    @instructions = @cell.instructions.sort_by(&:sort_param)
+    @attendances = @cell.attendances.sort_by(&:sort_param)
     respond_to do |format|
       format.html
       format.xlsx do

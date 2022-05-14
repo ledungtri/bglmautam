@@ -14,7 +14,7 @@
       </tr>
     </thead>
     <tbody>
-      <% group.sort_by{|a| a.student.sort_param}.each_with_index do |attendance, index| %>
+      <% group.each_with_index do |attendance, index| %>
         <% student = attendance.student %>
         <% cell = attendance.cell %>
         <% result = attendance.result %>

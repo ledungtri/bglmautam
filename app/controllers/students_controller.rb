@@ -8,7 +8,7 @@ class StudentsController < ApplicationController
   # GET /students
   # GET /students.json
   def index
-    @attendances = Attendance.joins(:cell).where('cells.year = ?', @current_year)
+    @attendances = Attendance.joins(:cell).where('cells.year = ?', @current_year).sort_by(&:sort_param)
   end
 
   # GET /students/1

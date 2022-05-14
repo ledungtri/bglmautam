@@ -5,4 +5,8 @@ class Attendance < ActiveRecord::Base
   belongs_to :cell
 
   validates_presence_of :student_id, :cell_id, :result
+
+  def sort_param
+    student.sort_param
+  end
 end

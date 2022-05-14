@@ -116,7 +116,7 @@
     const hash = {};
     const keys = [];
 
-    <% Cell.all.sort_by{|c| c.sort_param}.each do |cell| %>
+    <% Cell.all.sort_by(&:sort_param).each do |cell| %>
     if(selected === "<%= cell.year %>") {
       hash[<%= cell.id %>] = "<%= cell.name %>";
       keys.push(<%= cell.id %>);
