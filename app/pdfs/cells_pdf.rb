@@ -14,7 +14,7 @@ class CellsPdf < Prawn::Document
     move_down 20
     line_items
     footer
-  ends
+  end
 
   def title
     text "Thống Kê Các Lớp Năm Học #{@cells.first.long_year}", align: :center, size: 15, style: :bold
