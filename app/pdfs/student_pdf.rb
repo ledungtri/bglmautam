@@ -69,32 +69,33 @@ class StudentPdf < Prawn::Document
   end
 
   def basic
-    birth = @student.date_birth.strftime('%d-%m-%Y') if @student.date_birth
-
-    [['Tên Thánh', @student.christian_name, 'Họ và Tên', @student.full_name]] +
-      [['Ngày Sinh', birth, 'Nơi Sinh', @student.place_birth]]
+    [
+      ['Tên Thánh', @student.christian_name, 'Họ và Tên', @student.full_name],
+      ['Ngày Sinh', @student.date_birth&.strftime('%d-%m-%Y'), 'Nơi Sinh', @student.place_birth]
+    ]
   end
 
   def dates
-    baptism = @student.date_baptism.strftime('%d-%m-%Y') if @student.date_baptism
-    communion = @student.date_communion.strftime('%d-%m-%Y') if @student.date_communion
-    confirmation = @student.date_confirmation.strftime('%d-%m-%Y') if @student.date_confirmation
-    declaration = @student.date_declaration.strftime('%d-%m-%Y') if @student.date_declaration
-
-    [['Rửa Tội', baptism, 'Nơi Rửa Tội', @student.place_baptism]] +
-      [['Rước Lễ', communion, 'Nơi Rước Lễ', @student.place_communion]] +
-      [['Thêm Sức', confirmation, 'Nơi Thêm Sức', @student.place_confirmation]] +
-      [['Tuyên Hứa', declaration, 'Nơi Tuyên Hứa', @student.place_declaration]]
+    [
+      ['Rửa Tội', @student.date_baptism&.strftime('%d-%m-%Y'), 'Nơi Rửa Tội', @student.place_baptism],
+      ['Rước Lễ', @student.date_communion&.strftime('%d-%m-%Y'), 'Nơi Rước Lễ', @student.place_communion],
+      ['Thêm Sức', @student.date_confirmation&.strftime('%d-%m-%Y'), 'Nơi Thêm Sức', @student.place_confirmation],
+      ['Tuyên Hứa', @student.date_declaration&.strftime('%d-%m-%Y'), 'Nơi Tuyên Hứa', @student.place_declaration]
+    ]
   end
 
   def parents
-    [['Họ Tên Cha', @student.father_name, 'Điện Thoại', @student.father_phone]] +
-      [['Họ Tên Mẹ', @student.mother_name, 'Điện Thoại', @student.mother_phone]]
+    [
+      ['Họ Tên Cha', @student.father_name, 'Điện Thoại', @student.father_phone],
+      ['Họ Tên Mẹ', @student.mother_name, 'Điện Thoại', @student.mother_phone]
+    ]
   end
 
   def address
-    [['Địa Chỉ', @student.address]] +
-      [['Xóm Giáo', @student.area]]
+    [
+      ['Địa Chỉ', @student.address],
+      ['Xóm Giáo', @student.area]
+    ]
   end
 
   def process
