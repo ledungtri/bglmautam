@@ -17,7 +17,4 @@
 /tmp
 /.idea/
 
-# Ignore gemfile.lock.
-Gemfile.lock
-
 goorm.manifest
