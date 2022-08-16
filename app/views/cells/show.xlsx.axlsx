@@ -49,10 +49,10 @@ wb.add_worksheet(name: 'Students') do |sheet|
       student.district,
       student.address,
       student.area,
-      student.father_phone,
       student.father_name,
-      student.mother_phone,
+      student.father_phone,
       student.mother_name,
+      student.mother_phone,
       @cell.name,
       attendance.result
     ],
