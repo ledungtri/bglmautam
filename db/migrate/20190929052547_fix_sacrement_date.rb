@@ -1,6 +1,6 @@
 class FixSacrementDate < ActiveRecord::Migration[5.0]
   def change
-    Student.all.each do |student| 
+    Student.with_deleted.each do |student|
       changed = false
 
       student.date_communion

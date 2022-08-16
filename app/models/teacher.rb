@@ -10,7 +10,7 @@ class Teacher < ActiveRecord::Base
   # email = right format, allow nil
 
   def name
-    "#{christian_name} #{full_name}".strip
+    "#{christian_name} #{full_name}".squish
   end
 
   def address

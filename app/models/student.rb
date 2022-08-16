@@ -19,7 +19,7 @@ class Student < ActiveRecord::Base
   validates :mother_phone, format: { with: /\A\d+\z/, message: 'only allows numbers' }, allow_blank: true
 
   def name
-    "#{christian_name} #{full_name}".strip
+    "#{christian_name} #{full_name}".squish
   end
 
   def address
@@ -31,11 +31,11 @@ class Student < ActiveRecord::Base
   end
 
   def father_name
-    "#{father_christian_name} #{father_full_name}".strip
+    "#{father_christian_name} #{father_full_name}".squish
   end
 
   def mother_name
-    "#{mother_christian_name} #{mother_full_name}".strip
+    "#{mother_christian_name} #{mother_full_name}".squish
   end
 
   def sort_param
