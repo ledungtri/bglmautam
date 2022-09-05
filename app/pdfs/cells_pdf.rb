@@ -47,7 +47,18 @@ class CellsPdf < Prawn::Document
           cell.attendances.where(result: 'Dự Thính').count,
           cell.attendances.where(result: 'Học Lại').count
         ]
-      end
+      end +
+      [[
+        '',
+        'Tổng Số',
+        @cells.inject(0) { |sum, cell| sum + cell.attendances.count },
+        @cells.inject(0) { |sum, cell| sum + cell.attendances.where(result: 'Nghỉ Luôn').count },
+        @cells.inject(0) { |sum, cell| sum + cell.attendances.where(result: 'Chuyển Xứ').count },
+        @cells.inject(0) { |sum, cell| sum + cell.attendances.where(result: 'Đang Học').count },
+        @cells.inject(0) { |sum, cell| sum + cell.attendances.where(result: 'Lên Lớp').count },
+        @cells.inject(0) { |sum, cell| sum + cell.attendances.where(result: 'Dự Thính').count },
+        @cells.inject(0) { |sum, cell| sum + cell.attendances.where(result: 'Học Lại').count }
+      ]]
   end
 
   def footer
