@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   before_action :auth, only: [:search]
 
   def current_year
-    @current_year = params[:year]&.to_i || 2021
+    @current_year = params[:year]&.to_i || 2022
     @current_year_long = "#{@current_year} - #{@current_year + 1}"
     @subject = 'Học với Chúa Giêsu để sống và hành động'
   end
