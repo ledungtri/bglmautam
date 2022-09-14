@@ -2,7 +2,7 @@ class MigrationController < ApplicationController
   before_action :auth, :admin?
 
   def set_end_of_year_result
-    attendances = Attendance.joins(:cell).where("cells.year = #{@current_year}").where(result: 'Đang Học').find_each do |attendance|
+    Attendance.joins(:cell).where("cells.year = #{@current_year}").where(result: 'Đang Học').find_each do |attendance|
       attendance.result = 'Lên Lớp'
       attendance.save
     end
@@ -60,9 +60,8 @@ class MigrationController < ApplicationController
   def assign_new_cells
     mappings = new_class_mapping
 
-    mappings.each_key do |old_cell_id|
-      new_cell_id = mappings[old_cell_id]
-      attendances = Attendance.where(cell_id: old_cell_id, result: 'Lên Lớp')
+    mappings.each do |old_cell_id, new_cell_id|
+      attendances = Attendance.where(cell_id: old_cell_id, result: ['Lên Lớp', 'Dự Thính'])
       attendances.each do |attendance|
         count = Attendance.joins(:cell)
                           .where('cells.year = ? and attendances.student_id = ?', attendance.cell.year + 1, attendance.student_id)
