@@ -2,8 +2,7 @@ class MigrationController < ApplicationController
   before_action :auth, :admin?
 
   def set_end_of_year_result
-    attendances = Attendance.where(year: @current_year, result: 'Đang Học')
-    attendances.each do |attendance|
+    attendances = Attendance.joins(:cell).where("cells.year == #{@current_year}").where(result: 'Đang Học').find_each do |attendance|
       attendance.result = 'Lên Lớp'
       attendance.save
     end
