@@ -32,4 +32,5 @@
 
 <%= button_to "In Danh Sách Lớp", cell_path(format: "pdf"), method: :get, :class =>"button" %>
 <%= button_to "In Danh Sách Lớp (Excel)", cell_path(format: "xlsx"), method: :get, :class =>"button" %>
+<%= button_to "In Danh Sách Lớp Dán Bảng", cell_path(format: "pdf"), method: :get, :class =>"button", params: {style: :compact} %>
 <%= button_to "In Sơ Yếu Lý Lịch Lớp", cell_path(@cell)+"/students_personal_details.pdf", method: :get, :class =>"button" %>
