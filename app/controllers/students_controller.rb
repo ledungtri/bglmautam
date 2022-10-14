@@ -9,6 +9,14 @@ class StudentsController < ApplicationController
   # GET /students.json
   def index
     @attendances = Attendance.joins(:cell).where('cells.year = ?', @current_year).sort_by(&:sort_param)
+
+    respond_to do |format|
+      format.html
+      format.pdf do
+        pdf = StudentsPdf.new(@attendances, "Danh Sách Thiếu Nhi\nNăm Học #{@current_year_long}")
+        send_data pdf.render, filename: "Danh Sách Thiếu Nhi Năm Học #{@current_year_long}.pdf", type: 'application/pdf', disposition: 'inline'
+      end
+    end
   end
 
   # GET /students/1

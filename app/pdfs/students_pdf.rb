@@ -1,8 +1,8 @@
 class StudentsPdf < Prawn::Document
-  def initialize(attendances, cell)
+  def initialize(attendances, title_text)
     super(page_size: 'A4', page_layout: :landscape, margin: 20)
     @attendances = attendances
-    @cell = cell
+    @title_text = title_text
     self.font_size = 8
 
     font_families.update('HongHa' => {
@@ -18,7 +18,7 @@ class StudentsPdf < Prawn::Document
   end
 
   def title
-    text format("Danh Sách Lớp %s\nNăm Học %s", @cell.name, @cell.long_year), size: 15, align: :center, style: :bold
+    text @title_text, size: 15, align: :center, style: :bold
     text "Số Lượng: #{@attendances.count}", size: 10, align: :center
   end
 
@@ -61,7 +61,7 @@ class StudentsPdf < Prawn::Document
           student.address,
           student.father_phone,
           student.mother_phone,
-          @cell.name,
+          attendance.cell.name,
           attendance.result
         ]
       end

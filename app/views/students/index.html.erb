@@ -1,4 +1,6 @@
 <h1>Danh Sách Thiếu Nhi Năm Học <%= @current_year_long %></h1>
 <h4>Số Lượng thiếu nhi : <%= @attendances.count %></h4>
 
-<%= render 'info_table' %> 
+<%= render 'info_table' %>
+
+<%= button_to "In Danh Sách Thiếu Nhi", students_path(format: "pdf"), method: :get, :class =>"button" %>
