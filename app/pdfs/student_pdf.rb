@@ -11,6 +11,7 @@ class StudentPdf < Prawn::Document
 
     text 'Sơ Yếu Lý Lịch', size: 20, align: :center, style: :bold
     text @student.name, size: 15, align: :center, style: :bold
+    text "Lớp: #{@student.attendances.last&.cell&.name || '__________________'}", size: 13, align: :center, style: :bold
     move_down 10
     body
     footer
@@ -55,6 +56,8 @@ class StudentPdf < Prawn::Document
     end
 
     move_down 10
+
+    return if @student.attendances.empty?
 
     text 'Hành Trình Thiêng Liêng', size: 20, align: :center, style: :bold
 

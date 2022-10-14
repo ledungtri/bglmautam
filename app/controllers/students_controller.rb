@@ -13,8 +13,14 @@ class StudentsController < ApplicationController
     respond_to do |format|
       format.html
       format.pdf do
-        pdf = StudentsPdf.new(@attendances, "Danh Sách Thiếu Nhi\nNăm Học #{@current_year_long}")
-        send_data pdf.render, filename: "Danh Sách Thiếu Nhi Năm Học #{@current_year_long}.pdf", type: 'application/pdf', disposition: 'inline'
+
+        if params[:style] == 'empty'
+          pdf = StudentPdf.new(Student.new)
+          send_data pdf.render, filename: "SYLL.pdf", type: 'application/pdf', disposition: 'inline'
+        else
+          pdf = StudentsPdf.new(@attendances, "Danh Sách Thiếu Nhi\nNăm Học #{@current_year_long}")
+          send_data pdf.render, filename: "Danh Sách Thiếu Nhi Năm Học #{@current_year_long}.pdf", type: 'application/pdf', disposition: 'inline'
+        end
       end
     end
   end
