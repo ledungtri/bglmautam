@@ -30,6 +30,11 @@ class CellsController < ApplicationController
         ] = "attachment; filename=#{@cell.name}.xlsx"
       end
       format.pdf do
+        if params[:style] == 'teachers_contact'
+          pdf = TeachersContactPdf.new(@cell)
+          return send_data pdf.render, filename: "Số điện toại GLV.pdf", type: 'application/pdf', disposition: 'inline'
+        end
+
         pdfClass = params[:style] == 'compact' ? CompactStudentsPdf : StudentsPdf
         pdf = pdfClass.new(@attendances, "Danh Sách Lớp #{@cell.name}\nNăm Học #{@cell.long_year}")
         send_data pdf.render, filename: "Danh Sách Lớp #{@cell.name} Năm Học #{@cell.long_year}.pdf", type: 'application/pdf', disposition: 'inline'
