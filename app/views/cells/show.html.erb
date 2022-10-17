@@ -29,9 +29,35 @@
 
 <%= render 'students/info_table' %>
 
-
-<%= button_to "In Danh Sách Lớp", cell_path(format: "pdf"), method: :get, :class =>"button" %>
-<%= button_to "In Danh Sách Lớp (Excel)", cell_path(format: "xlsx"), method: :get, :class =>"button" %>
-<%= button_to "In Danh Sách Lớp Dán Bảng", cell_path(format: "pdf"), method: :get, :class =>"button", params: {style: :compact} %>
-<%= button_to "In Số Điện Thoại GLV", cell_path(format: "pdf"), method: :get, :class =>"button", params: {style: :teachers_contact} %>
-<%= button_to "In Sơ Yếu Lý Lịch Lớp", cell_path(@cell)+"/students_personal_details.pdf", method: :get, :class =>"button" %>
+<%= button_to "In Danh Sách Lớp",
+              cell_path(format: :pdf),
+              method: :get,
+              class: :button
+%>
+<%= button_to "In Danh Sách Lớp (Excel)",
+              cell_path(format: :xlsx),
+              method: :get,
+              class: :button
+%>
+<%= button_to "In Danh Sách Lớp Dán Bảng",
+              cell_path(format: :pdf),
+              method: :get,
+              class: :button,
+              params: { style: :compact }
+%>
+<%= button_to "In Số Điện Thoại GLV",
+              cell_path(format: :pdf),
+              method: :get,
+              class: :button,
+              params: { style: :teachers_contact }
+%>
+<%= button_to "In Bảng Tự Tạo",
+              cell_custom_export_path(@cell),
+              method: :get,
+              class: :button
+%>
+<%= button_to "In Sơ Yếu Lý Lịch Lớp",
+              cell_students_personal_details_path(@cell, format: :pdf),
+              method: :get,
+              class: :button
+%>

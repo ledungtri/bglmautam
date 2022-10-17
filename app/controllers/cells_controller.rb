@@ -1,5 +1,5 @@
 class CellsController < ApplicationController
-  before_action :set_cell, only: %i[show edit update destroy]
+  before_action :set_cell, only: %i[show edit update destroy custom_export_view custom_export]
   before_action :auth
   before_action :admin?, only: %i[new create edit update destroy]
 
@@ -112,11 +112,19 @@ class CellsController < ApplicationController
     end
   end
 
+  def custom_export_view
+  end
+
+  def custom_export
+    pdf = CustomStudentsPdf.new(@cell, params[:title], params[:page_layout].to_sym, params[:columns].split(','))
+    send_data pdf.render, filename: "#{@cell} - #{params[:title]}.pdf", type: 'application/pdf', disposition: 'inline'
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
   def set_cell
-    @cell = Cell.find(params[:id])
+    @cell = Cell.find(params[:id] || params[:cell_id])
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.

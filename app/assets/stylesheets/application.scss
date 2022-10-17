@@ -284,6 +284,10 @@ input, select {
   width: 200px;
 }
 
+input[type="radio"] {
+  width: 10px;
+}
+
 .year, .month, .day {
   width: 65px;
 }

@@ -1,0 +1,25 @@
+<h1>In Bảng Tự Tạo</h1>
+
+<%= form_tag cell_custom_export_path(@cell), method: :post do %>
+  <fieldset>
+    <div>
+      <div class="label">Tiêu Đề:</div>
+      <%= text_field_tag :title, nil, required: true %>
+    </div>
+
+    <div>
+      <div class="label">Chiều Giấy:</div>
+        <%= radio_button_tag :page_layout, :landscape, true, width: '10px' %>
+        <%= label_tag :page_layout_landscape, 'Khổ Ngang' %>
+        <%= radio_button_tag :page_layout, :portrait %>
+        <%= label_tag :page_layout_portrait, 'Khổ Dọc' %>
+    </div>
+
+    <div>
+      <div class="label">Các Cột:</div>
+      <%= text_field_tag :columns, nil, required: true, placeholder: 'cột 1,cột 2,cột 3,...' %>
+    </div>
+
+    <%= submit_tag "Tạo", :class => :button %>
+  </fieldset>
+<% end %>

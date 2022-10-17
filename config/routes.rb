@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
   resources :cells do
     get '/students_personal_details', to: 'cells#students_personal_details'
+    get '/custom_export', to: 'cells#custom_export_view'
+    post '/custom_export', to: 'cells#custom_export'
   end
 
   resources :instructions
