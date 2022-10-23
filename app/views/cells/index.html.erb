@@ -45,3 +45,4 @@
 </table>
 
 <%= button_to "In Bảng Thống Kê", cells_path(format: "pdf"), method: :get, :class => "button", params: {year: @current_year} %>
+<%= button_to "In Bảng Tự Tạo", cells_custom_export_path, method: :get, :class => "button" %>

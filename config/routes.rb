@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   resources :students
   resources :teachers
 
+  get '/cells/custom_export', to: 'cells#cells_custom_export_view'
+  post '/cells/custom_export', to: 'cells#cells_custom_export'
+
   resources :cells do
     get '/students_personal_details', to: 'cells#students_personal_details'
     get '/custom_export', to: 'cells#custom_export_view'

@@ -112,11 +112,21 @@ class CellsController < ApplicationController
     end
   end
 
+  def cells_custom_export_view
+  end
+
+  def cells_custom_export
+    @cells = Cell.where(year: @current_year).where(grade: ['Khai Tâm', 'Rước Lễ', 'Thêm Sức', 'Bao Đồng', 'Vào Đời']).sort_by(&:sort_param)
+    pdf = CellsCustomPdf.new(@cells, params[:title], params[:page_layout].to_sym, params[:columns].split(','))
+    send_data pdf.render, filename: "#{params[:title]}.pdf", type: 'application/pdf', disposition: 'inline'
+  end
+
   def custom_export_view
   end
 
   def custom_export
-    pdf = CustomStudentsPdf.new(@cell, params[:title], params[:page_layout].to_sym, params[:columns].split(','))
+    Cell.
+    pdf = CustomStudentsPdf.new(params[:title], params[:page_layout].to_sym, params[:columns].split(','))
     send_data pdf.render, filename: "#{@cell} - #{params[:title]}.pdf", type: 'application/pdf', disposition: 'inline'
   end
 
