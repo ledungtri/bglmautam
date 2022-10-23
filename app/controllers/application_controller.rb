@@ -32,8 +32,8 @@ class ApplicationController < ActionController::Base
   end
 
   def search
-    @students = Student.where('full_name like ?', "%#{params[:student_name].strip.titleize}%") unless params[:student_name].nil?
-    @teachers = Teacher.where('full_name like ?', "%#{params[:teacher_name].strip.titleize}%") unless params[:teacher_name].nil?
+    @students = Student.where('full_name like ?', "%#{params[:student_name]}%") unless params[:student_name].nil?
+    @teachers = Teacher.where('full_name like ?', "%#{params[:teacher_name]}%") unless params[:teacher_name].nil?
   end
 
   # Prevent CSRF attacks by raising an exception.
