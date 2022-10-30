@@ -28,17 +28,18 @@ class CellsPdf < Prawn::Document
       self.row_colors = %w[e5e3e3 FFFFFF]
 
       row(0).style(align: :center, font_style: :bold, height: 35, valign: :center)
-      column(0..8).style(align: :center)
-      column(1..8).style(width: 60)
+      column(0..9).style(align: :center)
+      column(2..9).style(width: 55)
     end
   end
 
   def line_item_rows
-    [['STT', 'Tên Lớp', 'Tổng Số', 'Nghỉ Luôn', 'Chuyển Xứ', 'Đang Học', 'Lên Lớp', 'Dự Thính', 'Học Lại']] +
+    [['STT', 'Tên Lớp', 'Vị Trí', 'Tổng Số', 'Nghỉ Luôn', 'Chuyển Xứ', 'Đang Học', 'Lên Lớp', 'Dự Thính', 'Học Lại']] +
       @cells.map do |cell|
         [
           @cells.index(cell) + 1,
           cell.name,
+          cell.location,
           cell.attendances.count,
           cell.attendances.where(result: 'Nghỉ Luôn').count,
           cell.attendances.where(result: 'Chuyển Xứ').count,
@@ -51,6 +52,7 @@ class CellsPdf < Prawn::Document
       [[
         '',
         'Tổng Số',
+        '',
         @cells.inject(0) { |sum, cell| sum + cell.attendances.count },
         @cells.inject(0) { |sum, cell| sum + cell.attendances.where(result: 'Nghỉ Luôn').count },
         @cells.inject(0) { |sum, cell| sum + cell.attendances.where(result: 'Chuyển Xứ').count },

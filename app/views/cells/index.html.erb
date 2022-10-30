@@ -6,6 +6,7 @@
     <tr>
       <th style="width: 50px">STT</th>
       <th style='width: 100px'>Tên Lớp</th>
+      <th style='width: 100px'>Vị Trí</th>
       <th style='width:  94px'>Tổng Số</th>
       <th style='width:  94px'>Nghỉ Luôn</th>
       <th style='width:  94px'>Chuyển Xứ</th>
@@ -21,6 +22,7 @@
       <tr class="table-row">
         <td style='width: 50px'><%= @cells.index(cell) + 1 %></td>
         <td style='width: 100px'><%= link_to cell.name, cell %></td>
+        <td style='width: 100px'><%= cell.location %></td>
         <td style='width:  94px'><%= cell.attendances.count %></td>
         <td style='width:  94px'><%= cell.attendances.where(result: 'Nghỉ Luôn').count %></td>
         <td style='width:  94px'><%= cell.attendances.where(result: 'Chuyển Xứ').count %></td>
@@ -33,6 +35,7 @@
     <tr class="table-row">
       <td style='width: 50px'></td>
       <td style='width: 100px'>Tổng Số</td>
+      <td style='width: 100px'></td>
       <td style='width:  94px'><%= @cells.inject(0) { |sum, cell| sum + cell.attendances.count } %></td>
       <td style='width:  94px'><%= @cells.inject(0) { |sum, cell| sum + cell.attendances.where(result: 'Nghỉ Luôn').count } %></td>
       <td style='width:  94px'><%= @cells.inject(0) { |sum, cell| sum + cell.attendances.where(result: 'Chuyển Xứ').count } %></td>
