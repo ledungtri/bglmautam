@@ -125,7 +125,6 @@ class CellsController < ApplicationController
   end
 
   def custom_export
-    Cell.
     pdf = CustomStudentsPdf.new(@cell, params[:title], params[:page_layout].to_sym, params[:columns].split(','))
     send_data pdf.render, filename: "#{@cell} - #{params[:title]}.pdf", type: 'application/pdf', disposition: 'inline'
   end
