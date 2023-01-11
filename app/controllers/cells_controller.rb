@@ -20,7 +20,7 @@ class CellsController < ApplicationController
   # GET /cells/1
   # GET /cells/1.json
   def show
-    @instructions = @cell.instructions.sort_by(&:sort_param)
+    @guidances = @cell.guidances.sort_by(&:sort_param)
     @enrollments = @cell.enrollments.sort_by(&:sort_param)
     respond_to do |format|
       format.html
@@ -86,7 +86,7 @@ class CellsController < ApplicationController
   # DELETE /cells/1
   # DELETE /cells/1.json
   def destroy
-    @cell.instructions.each(&:destroy)
+    @cell.guidances.each(&:destroy)
 
     @cell.enrollments.each(&:destroy)
 

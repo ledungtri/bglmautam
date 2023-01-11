@@ -10,12 +10,12 @@ class TeachersContactPdf < Prawn::Document
 
     title = "<font size='18'><b>#{cell.name}</b></font>"
 
-    body = cell.instructions.reduce('') do |content, instruction|
-      content += "<b>#{instruction.position}</b>: #{instruction.teacher.full_name}\n<b>SĐT</b>: #{instruction.teacher.phone}\n"
+    body = cell.guidances.reduce('') do |content, guidance|
+      content += "<b>#{guidance.position}</b>: #{guidance.teacher.full_name}\n<b>SĐT</b>: #{guidance.teacher.phone}\n"
       content
     end
 
-    (cell.instructions.length >= 3 ? 4 : 5).times.each do
+    (cell.guidances.length >= 3 ? 4 : 5).times.each do
       table [[title, '', title]] + [[body, '', body]] do
         self.position = :center
         self.width = 550

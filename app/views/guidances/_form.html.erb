@@ -1,0 +1,30 @@
+<%= form_for(@guidance) do |f| %>
+  <% if @guidance.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@guidance.errors.count, "error") %> prohibited this guidance from being saved:</h2>
+
+      <ul>
+      <% @guidance.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <div class="label">GLV:</div>
+    <%= @guidance.teacher.name %>
+  </div>
+
+  <div>
+    <div class="label">Lớp:</div>
+    <%= @guidance.cell.name %>
+  </div>
+
+  <div>
+    <div class="label">Phụ Trách:</div>
+    <%= f.select :position, options_for_select(["Tu Sĩ", "GLV", "Tiền GLV", "Phụ Tá", "Kiến Tập"], @guidance.position) %>
+  </div>
+  
+  <%= f.submit "Cập Nhật", :class =>"button" %>
+<% end %>

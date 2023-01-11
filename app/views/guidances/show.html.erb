@@ -1,0 +1,17 @@
+<p>
+  <strong>Position:</strong>
+  <%= @guidance.position %>
+</p>
+
+<p>
+  <strong>Teacher:</strong>
+  <%= @guidance.teacher_id %>
+</p>
+
+<p>
+  <strong>Cell:</strong>
+  <%= @guidance.cell_id %>
+</p>
+
+<%= button_to 'Cập Nhật', edit_guidance_path(@guidance), method: :get, class: "button" %>
+<%= button_to 'Quay Lại', :back, method: :get, class: "button" %>

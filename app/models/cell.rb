@@ -4,8 +4,8 @@ class Cell < ActiveRecord::Base
   has_many :enrollments
   has_many :students, through: :enrollments
 
-  has_many :instructions
-  has_many :teachers, through: :instructions
+  has_many :guidances
+  has_many :teachers, through: :guidances
 
   validates_presence_of :year, :grade
   validates :group, format: { with: /\A\d?[A-Z]?\z/, message: 'invalid input' }, allow_blank: true

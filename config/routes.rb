@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     post '/custom_export', to: 'cells#custom_export'
   end
 
-  resources :instructions
+  resources :guidances
   resources :enrollments
 
   resources :users

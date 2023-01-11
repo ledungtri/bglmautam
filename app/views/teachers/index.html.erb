@@ -1,5 +1,5 @@
 <h1>Nhân sự phụ trách Giáo dục Đức tin Năm Học <%= @current_year_long %></h1>
-<h4>Số Lượng : <%= @instructions.count %></h4>
+<h4>Số Lượng : <%= @guidances.count %></h4>
 
 <%= render 'info_table' %>
 <%= button_to "In Danh Sách GLV", teachers_path(format: "pdf"), method: :get, :class => "button" %>

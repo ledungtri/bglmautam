@@ -5592,7 +5592,7 @@ Cell.create!([
   {id: 4883, year: 2021, grade: "Bao Đồng", group: "3A", location: "", created_at: "2022-01-21 02:29:52", updated_at: "2022-01-21 02:29:52"},
   {id: 4884, year: 2021, grade: "Bao Đồng", group: "3B", location: "", created_at: "2022-01-21 02:29:52", updated_at: "2022-01-21 02:29:52"}
 ])
-Instruction.create!([
+Guidance.create!([
   {id: 6421, position: nil, teacher_id: 4578, cell_id: 4765, created_at: "2022-01-21 02:29:52", updated_at: "2022-01-21 02:29:52", year: 2017},
   {id: 6422, position: nil, teacher_id: 4577, cell_id: 4764, created_at: "2022-01-21 02:29:52", updated_at: "2022-01-21 02:29:52", year: 2017},
   {id: 6423, position: nil, teacher_id: 4586, cell_id: 4764, created_at: "2022-01-21 02:29:52", updated_at: "2022-01-21 02:29:52", year: 2017},

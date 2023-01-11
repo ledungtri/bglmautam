@@ -56,13 +56,13 @@
 
   <tbody>
     <% @cells.each do |cell| %>
-    <% instruction = @teacher.instructions.select { |ins| ins.cell_id == cell.id }.first %>
+    <% guidance = @teacher.guidances.select { |ins| ins.cell_id == cell.id }.first %>
     <% default_location = "Vô Gia Cư"; default_location = cell.location if cell.location? %>
-    <% default_position = "_"; default_position = instruction.position if instruction.position? %>
+    <% default_position = "_"; default_position = guidance.position if guidance.position? %>
       <tr class="table-row">
         <td style='width: 200px'><%= cell.long_year %></td>
         <td style='width: 200px'><%= link_to cell.name, cell %></td>
-        <td style='width: 200px'><%= link_to default_position, edit_instruction_path(instruction.id) %></td>
+        <td style='width: 200px'><%= link_to default_position, edit_guidance_path(guidance.id) %></td>
         <td style='width: 200px'><%= default_location %></td>
       </tr>
     <% end %>
@@ -72,14 +72,14 @@
     
     <tr class="table-row">   
       <td id="form" style="font-size: 14px; display: none" colspan="4">
-        <% @instruction = Instruction.new %>
-        <%= form_for(@instruction) do |f| %>
-          <% if @instruction.errors.any? %>
+        <% @guidance = Guidance.new %>
+        <%= form_for(@guidance) do |f| %>
+          <% if @guidance.errors.any? %>
             <div id="error_explanation">
-              <h2><%= pluralize(@instruction.errors.count, "error") %> prohibited this instruction from being saved:</h2>
+              <h2><%= pluralize(@guidance.errors.count, "error") %> prohibited this guidance from being saved:</h2>
         
               <ul>
-              <% @instruction.errors.full_messages.each do |message| %>
+              <% @guidance.errors.full_messages.each do |message| %>
                 <li><%= message %></li>
               <% end %>
               </ul>
@@ -124,7 +124,7 @@
     <% end %>
 
 
-    const list = document.getElementById("instruction_cell_id");
+    const list = document.getElementById("guidance_cell_id");
     list.options.length = 0;
     
     

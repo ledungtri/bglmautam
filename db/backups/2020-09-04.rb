@@ -4253,7 +4253,7 @@ Cell.create!([
   {year: 2019, grade: "Ban Thư ký", group: "", location: "Tầng Hầm"},
   {year: 2019, grade: "Ban Tự nguyện", group: "", location: "Tầng Hầm"}
 ])
-Instruction.create!([
+Guidance.create!([
   {position: nil, teacher_id: 4578, cell_id: 4765, year: 2017},
   {position: nil, teacher_id: 4577, cell_id: 4764, year: 2017},
   {position: nil, teacher_id: 4586, cell_id: 4764, year: 2017},

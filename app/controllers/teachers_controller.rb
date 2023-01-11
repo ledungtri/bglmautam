@@ -7,11 +7,11 @@ class TeachersController < ApplicationController
   # GET /teachers
   # GET /teachers.json
   def index
-    @instructions = Instruction.joins(:cell).where('cells.year = ?', @current_year).sort_by(&:sort_param)
+    @guidances = Guidance.joins(:cell).where('cells.year = ?', @current_year).sort_by(&:sort_param)
     respond_to do |format|
       format.html
       format.pdf do
-        pdf = TeachersPdf.new(@instructions, @current_year)
+        pdf = TeachersPdf.new(@guidances, @current_year)
         send_data pdf.render, filename: "Danh Sách GLV Năm Học #{@current_year_long}.pdf", type: 'application/pdf', disposition: 'inline'
       end
     end
@@ -73,7 +73,7 @@ class TeachersController < ApplicationController
   # DELETE /teachers/1
   # DELETE /teachers/1.json
   def destroy
-    @teacher.instructions.each(&:destroy)
+    @teacher.guidances.each(&:destroy)
 
     @teacher.destroy
     respond_to do |format|

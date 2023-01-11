@@ -4955,7 +4955,7 @@ Cell.create!([
   {id: 4855, year: 2020, grade: "Ban Kỹ thuật", group: "", location: "Tầng Hầm"},
   {id: 4856, year: 2020, grade: "Ban Thư ký", group: "", location: "Tầng Hầm"}
 ])
-Instruction.create!([
+Guidance.create!([
   {id: 6421, position: nil, teacher_id: 4578, cell_id: 4765, year: 2017},
   {id: 6422, position: nil, teacher_id: 4577, cell_id: 4764, year: 2017},
   {id: 6423, position: nil, teacher_id: 4586, cell_id: 4764, year: 2017},

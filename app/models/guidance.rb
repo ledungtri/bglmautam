@@ -1,4 +1,4 @@
-class Instruction < ActiveRecord::Base
+class Guidance < ActiveRecord::Base
   acts_as_paranoid
 
   belongs_to :teacher
