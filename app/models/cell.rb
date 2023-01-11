@@ -7,7 +7,7 @@ class Cell < ActiveRecord::Base
   has_many :guidances
   has_many :teachers, through: :guidances
 
-  validates_presence_of :year, :grade
+  validates_presence_of :year, :family
   validates :group, format: { with: /\A\d?[A-Z]?\z/, message: 'invalid input' }, allow_blank: true
 
   def long_year
@@ -15,27 +15,23 @@ class Cell < ActiveRecord::Base
   end
 
   def name
-    if group?
-      "#{grade} #{group}"
-    else
-      grade
-    end
+    "#{family} #{level}#{group}".strip
   end
 
   def sort_param
     case
-    when grade == 'Trưởng Ban'
+    when family == 'Trưởng Ban'
       '0'
-    when grade == 'Kỹ Thuật'
+    when family == 'Kỹ Thuật'
       '1'
-    when grade == 'Khai Tâm'
-      "2#{group}"
-    when grade == 'Rước Lễ'
-      "3#{group}"
-    when grade == 'Thêm Sức'
-      "4#{group}"
-    when grade == 'Bao Đồng'
-      "5#{group}"
+    when family == 'Khai Tâm'
+      "2#{level}#{group}"
+    when family == 'Rước Lễ'
+      "3#{level}#{group}"
+    when family == 'Thêm Sức'
+      "4#{level}#{group}"
+    when family == 'Bao Đồng'
+      "5#{level}#{group}"
     else
       '6'
     end

@@ -5,8 +5,6 @@
 * Create a user friendly UI for creating User.
 * Create a user friendly UI for Search page.
 * Use Vietnamese for the creating Cell page.
-* Rename Cell's ```grade``` attribute to ```family```.
-* Split Cell's ```group``` attribute to ```level``` and ```group```.
 * Move migration methods in MigrationController to rake tasks.
 * Dynamically show or hide buttons based on user permission.
 * Upgrade to latest version for Ruby and Rails.
