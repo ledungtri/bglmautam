@@ -1,4 +1,4 @@
-class Attendance < ActiveRecord::Base
+class Enrollment < ActiveRecord::Base
   acts_as_paranoid
 
   belongs_to :student

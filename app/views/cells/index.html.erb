@@ -23,26 +23,26 @@
         <td style='width: 50px'><%= @cells.index(cell) + 1 %></td>
         <td style='width: 100px'><%= link_to cell.name, cell %></td>
         <td style='width: 100px'><%= cell.location %></td>
-        <td style='width:  94px'><%= cell.attendances.count %></td>
-        <td style='width:  94px'><%= cell.attendances.where(result: 'Nghỉ Luôn').count %></td>
-        <td style='width:  94px'><%= cell.attendances.where(result: 'Chuyển Xứ').count %></td>
-        <td style='width:  94px'><%= cell.attendances.where(result: 'Đang Học').count %></td>
-        <td style='width:  94px'><%= cell.attendances.where(result: 'Dự Thính').count %></td>
-        <td style='width:  94px'><%= cell.attendances.where(result: 'Lên Lớp').count %></td>
-        <td style='width:  94px'><%= cell.attendances.where(result: 'Học Lại').count %></td>
+        <td style='width:  94px'><%= cell.enrollments.count %></td>
+        <td style='width:  94px'><%= cell.enrollments.where(result: 'Nghỉ Luôn').count %></td>
+        <td style='width:  94px'><%= cell.enrollments.where(result: 'Chuyển Xứ').count %></td>
+        <td style='width:  94px'><%= cell.enrollments.where(result: 'Đang Học').count %></td>
+        <td style='width:  94px'><%= cell.enrollments.where(result: 'Dự Thính').count %></td>
+        <td style='width:  94px'><%= cell.enrollments.where(result: 'Lên Lớp').count %></td>
+        <td style='width:  94px'><%= cell.enrollments.where(result: 'Học Lại').count %></td>
       </tr>
     <% end %>
     <tr class="table-row">
       <td style='width: 50px'></td>
       <td style='width: 100px'>Tổng Số</td>
       <td style='width: 100px'></td>
-      <td style='width:  94px'><%= @cells.inject(0) { |sum, cell| sum + cell.attendances.count } %></td>
-      <td style='width:  94px'><%= @cells.inject(0) { |sum, cell| sum + cell.attendances.where(result: 'Nghỉ Luôn').count } %></td>
-      <td style='width:  94px'><%= @cells.inject(0) { |sum, cell| sum + cell.attendances.where(result: 'Chuyển Xứ').count } %></td>
-      <td style='width:  94px'><%= @cells.inject(0) { |sum, cell| sum + cell.attendances.where(result: 'Đang Học').count } %></td>
-      <td style='width:  94px'><%= @cells.inject(0) { |sum, cell| sum + cell.attendances.where(result: 'Dự Thính').count } %></td>
-      <td style='width:  94px'><%= @cells.inject(0) { |sum, cell| sum + cell.attendances.where(result: 'Lên Lớp').count } %></td>
-      <td style='width:  94px'><%= @cells.inject(0) { |sum, cell| sum + cell.attendances.where(result: 'Học Lại').count } %></td>
+      <td style='width:  94px'><%= @cells.inject(0) { |sum, cell| sum + cell.enrollments.count } %></td>
+      <td style='width:  94px'><%= @cells.inject(0) { |sum, cell| sum + cell.enrollments.where(result: 'Nghỉ Luôn').count } %></td>
+      <td style='width:  94px'><%= @cells.inject(0) { |sum, cell| sum + cell.enrollments.where(result: 'Chuyển Xứ').count } %></td>
+      <td style='width:  94px'><%= @cells.inject(0) { |sum, cell| sum + cell.enrollments.where(result: 'Đang Học').count } %></td>
+      <td style='width:  94px'><%= @cells.inject(0) { |sum, cell| sum + cell.enrollments.where(result: 'Dự Thính').count } %></td>
+      <td style='width:  94px'><%= @cells.inject(0) { |sum, cell| sum + cell.enrollments.where(result: 'Lên Lớp').count } %></td>
+      <td style='width:  94px'><%= @cells.inject(0) { |sum, cell| sum + cell.enrollments.where(result: 'Học Lại').count } %></td>
     </tr>
   </tbody>
 </table>

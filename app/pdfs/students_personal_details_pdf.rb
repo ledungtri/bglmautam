@@ -117,8 +117,8 @@ class StudentsPersonalDetailsPdf < Prawn::Document
 
   def process
     [['Năm Học', 'Lớp', 'Kết Quả']] +
-      @student.attendances.sort_by { |a| a.cell.year }.map do |attendance|
-        [attendance.cell.long_year, attendance.cell .name, attendance.result]
+      @student.enrollments.sort_by { |a| a.cell.year }.map do |enrollment|
+        [enrollment.cell.long_year, enrollment.cell .name, enrollment.result]
       end
   end
 

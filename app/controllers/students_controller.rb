@@ -8,7 +8,7 @@ class StudentsController < ApplicationController
   # GET /students
   # GET /students.json
   def index
-    @attendances = Attendance.joins(:cell).where('cells.year = ?', @current_year).sort_by(&:sort_param)
+    @enrollments = Enrollment.joins(:cell).where('cells.year = ?', @current_year).sort_by(&:sort_param)
 
     respond_to do |format|
       format.html
@@ -18,7 +18,7 @@ class StudentsController < ApplicationController
           pdf = StudentPdf.new(Student.new)
           send_data pdf.render, filename: "SYLL.pdf", type: 'application/pdf', disposition: 'inline'
         else
-          pdf = StudentsPdf.new(@attendances, "Danh Sách Thiếu Nhi\nNăm Học #{@current_year_long}")
+          pdf = StudentsPdf.new(@enrollments, "Danh Sách Thiếu Nhi\nNăm Học #{@current_year_long}")
           send_data pdf.render, filename: "Danh Sách Thiếu Nhi Năm Học #{@current_year_long}.pdf", type: 'application/pdf', disposition: 'inline'
         end
       end
@@ -87,7 +87,7 @@ class StudentsController < ApplicationController
   # DELETE /students/1
   # DELETE /students/1.json
   def destroy
-    @student.attendances.each(&:destroy)
+    @student.enrollments.each(&:destroy)
 
     @student.destroy
     respond_to do |format|

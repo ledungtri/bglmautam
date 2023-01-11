@@ -40,26 +40,26 @@ class CellsPdf < Prawn::Document
           @cells.index(cell) + 1,
           cell.name,
           cell.location,
-          cell.attendances.count,
-          cell.attendances.where(result: 'Nghỉ Luôn').count,
-          cell.attendances.where(result: 'Chuyển Xứ').count,
-          cell.attendances.where(result: 'Đang Học').count,
-          cell.attendances.where(result: 'Lên Lớp').count,
-          cell.attendances.where(result: 'Dự Thính').count,
-          cell.attendances.where(result: 'Học Lại').count
+          cell.enrollments.count,
+          cell.enrollments.where(result: 'Nghỉ Luôn').count,
+          cell.enrollments.where(result: 'Chuyển Xứ').count,
+          cell.enrollments.where(result: 'Đang Học').count,
+          cell.enrollments.where(result: 'Lên Lớp').count,
+          cell.enrollments.where(result: 'Dự Thính').count,
+          cell.enrollments.where(result: 'Học Lại').count
         ]
       end +
       [[
         '',
         'Tổng Số',
         '',
-        @cells.inject(0) { |sum, cell| sum + cell.attendances.count },
-        @cells.inject(0) { |sum, cell| sum + cell.attendances.where(result: 'Nghỉ Luôn').count },
-        @cells.inject(0) { |sum, cell| sum + cell.attendances.where(result: 'Chuyển Xứ').count },
-        @cells.inject(0) { |sum, cell| sum + cell.attendances.where(result: 'Đang Học').count },
-        @cells.inject(0) { |sum, cell| sum + cell.attendances.where(result: 'Lên Lớp').count },
-        @cells.inject(0) { |sum, cell| sum + cell.attendances.where(result: 'Dự Thính').count },
-        @cells.inject(0) { |sum, cell| sum + cell.attendances.where(result: 'Học Lại').count }
+        @cells.inject(0) { |sum, cell| sum + cell.enrollments.count },
+        @cells.inject(0) { |sum, cell| sum + cell.enrollments.where(result: 'Nghỉ Luôn').count },
+        @cells.inject(0) { |sum, cell| sum + cell.enrollments.where(result: 'Chuyển Xứ').count },
+        @cells.inject(0) { |sum, cell| sum + cell.enrollments.where(result: 'Đang Học').count },
+        @cells.inject(0) { |sum, cell| sum + cell.enrollments.where(result: 'Lên Lớp').count },
+        @cells.inject(0) { |sum, cell| sum + cell.enrollments.where(result: 'Dự Thính').count },
+        @cells.inject(0) { |sum, cell| sum + cell.enrollments.where(result: 'Học Lại').count }
       ]]
   end
 

@@ -1,4 +1,4 @@
-<% @attendances.group_by(&:result).sort.each do |key, group| %>
+<% @enrollments.group_by(&:result).sort.each do |key, group| %>
   <div style="text-align: right; padding-top: 10px; font-size: 11px"><%= key + ": " + group.count.to_s %></div>
   <table class="table table-striped">
     <thead>
@@ -14,10 +14,10 @@
       </tr>
     </thead>
     <tbody>
-      <% group.each_with_index do |attendance, index| %>
-        <% student = attendance.student %>
-        <% cell = attendance.cell %>
-        <% result = attendance.result %>
+      <% group.each_with_index do |enrollment, index| %>
+        <% student = enrollment.student %>
+        <% cell = enrollment.cell %>
+        <% result = enrollment.result %>
         
         <tr class = table-row>
           <td style='width: 20px'><%= index+1 %></td>
@@ -27,7 +27,7 @@
           <td style='width:  80px'><%= student.father_phone %></td>
           <td style='width:  80px'><%= student.mother_phone %></td>
           <td style='width:  73px'><%= link_to cell.name, cell %></td>
-          <td style='width:  73px'><%= link_to result, edit_attendance_path(attendance) %></td> 
+          <td style='width:  73px'><%= link_to result, edit_enrollment_path(enrollment) %></td>
         </tr>
       <% end %>
     </tbody>

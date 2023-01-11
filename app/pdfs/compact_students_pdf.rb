@@ -1,7 +1,7 @@
 class CompactStudentsPdf < Prawn::Document
-  def initialize(attendances, title_text)
+  def initialize(enrollments, title_text)
     super(page_size: 'A4', page_layout: :portrait, margin: 20)
-    @attendances = attendances
+    @enrollments = enrollments
     @title_text = title_text
     self.font_size = 8
 
@@ -19,12 +19,12 @@ class CompactStudentsPdf < Prawn::Document
 
   def title
     text @title_text, size: 15, align: :center, style: :bold
-    text "Số Lượng: #{@attendances.count}", size: 10, align: :center
+    text "Số Lượng: #{@enrollments.count}", size: 10, align: :center
   end
 
   def line_items
     bounding_box([0, cursor], width: bounds.width, height: bounds.height - 80) do
-      @attendances.group_by(&:result).sort.each do |key, group|
+      @enrollments.group_by(&:result).sort.each do |key, group|
         @group = group
         table line_item_rows do
           self.header = true
@@ -49,14 +49,14 @@ class CompactStudentsPdf < Prawn::Document
 
   def line_item_rows
     [['STT', 'Tên Thánh - Họ và Tên', 'Ngày Sinh', 'Lớp', 'Kết Quả']] +
-      @group.each_with_index.map do |attendance, index|
-        student = attendance.student
+      @group.each_with_index.map do |enrollment, index|
+        student = enrollment.student
         [
           index + 1,
           student.name,
           student.date_birth.strftime('%d/%m/%Y'),
-          attendance.cell.name,
-          attendance.result
+          enrollment.cell.name,
+          enrollment.result
         ]
       end
   end

@@ -1,0 +1,17 @@
+<p>
+  <strong>Result:</strong>
+  <%= @enrollment.result %>
+</p>
+
+<p>
+  <strong>Student:</strong>
+  <%= @enrollment.student_id %>
+</p>
+
+<p>
+  <strong>Cell:</strong>
+  <%= @enrollment.cell_id %>
+</p>
+
+<%= button_to 'Cập Nhật', edit_enrollment_path(@enrollment), method: :get, class: "button" %>
+<%= button_to 'Quay Lại', :back, method: :get, class: "button" %>

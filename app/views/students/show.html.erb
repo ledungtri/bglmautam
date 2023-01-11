@@ -130,20 +130,20 @@
     <tr class="table-row">
       <td style="width: 200px; font-size: 14px"><%= cell.long_year %></td>
       <td style="width: 200px; font-size: 14px"><%= link_to cell.name, cell %></td>
-      <td style="width: 200px; font-size: 14px"><%= link_to @student.result(cell), edit_attendance_path(Attendance.where(student_id: @student.id, cell_id: cell.id).take.id) %></td>
+      <td style="width: 200px; font-size: 14px"><%= link_to @student.result(cell), edit_enrollment_path(Enrollment.where(student_id: @student.id, cell_id: cell.id).take.id) %></td>
     </tr>
     <% end %>
     
     <tr class="table-row">
       <td id="form" style="display: none" colspan="3">
-        <% @attendance = Attendance.new %>
-        <%= form_for(@attendance) do |f| %>
-          <% if @attendance.errors.any? %>
+        <% @enrollment = Enrollment.new %>
+        <%= form_for(@enrollment) do |f| %>
+          <% if @enrollment.errors.any? %>
             <div id="error_explanation">
-              <h2><%= pluralize(@attendance.errors.count, "error") %> prohibited this attendance from being saved:</h2>
+              <h2><%= pluralize(@enrollment.errors.count, "error") %> prohibited this enrollment from being saved:</h2>
 
               <ul>
-              <% @attendance.errors.full_messages.each do |message| %>
+              <% @enrollment.errors.full_messages.each do |message| %>
                 <li><%= message %></li>
               <% end %>
               </ul>
@@ -188,7 +188,7 @@
     }
     <% end %>
 
-    const list = document.getElementById("attendance_cell_id");
+    const list = document.getElementById("enrollment_cell_id");
     list.options.length = 0;
     
     //Create and append the options

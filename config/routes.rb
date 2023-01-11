@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   end
 
   resources :instructions
-  resources :attendances
+  resources :enrollments
 
   resources :users
   resources :sessions, only: [:create]

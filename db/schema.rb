@@ -10,21 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20220511005654) do
+ActiveRecord::Schema.define(version: 20230110160010) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "attendances", force: :cascade do |t|
-    t.string   "result"
-    t.integer  "student_id"
-    t.integer  "cell_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer  "year"
-    t.datetime "deleted_at"
-    t.index ["deleted_at"], name: "index_attendances_on_deleted_at", using: :btree
-  end
 
   create_table "cells", force: :cascade do |t|
     t.integer  "year"
@@ -37,13 +26,22 @@ ActiveRecord::Schema.define(version: 20220511005654) do
     t.index ["deleted_at"], name: "index_cells_on_deleted_at", using: :btree
   end
 
+  create_table "enrollments", force: :cascade do |t|
+    t.string   "result"
+    t.integer  "student_id"
+    t.integer  "cell_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_enrollments_on_deleted_at", using: :btree
+  end
+
   create_table "instructions", force: :cascade do |t|
     t.string   "position"
     t.integer  "teacher_id"
     t.integer  "cell_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "year"
     t.datetime "deleted_at"
     t.index ["deleted_at"], name: "index_instructions_on_deleted_at", using: :btree
   end

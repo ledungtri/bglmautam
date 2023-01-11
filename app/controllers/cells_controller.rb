@@ -21,7 +21,7 @@ class CellsController < ApplicationController
   # GET /cells/1.json
   def show
     @instructions = @cell.instructions.sort_by(&:sort_param)
-    @attendances = @cell.attendances.sort_by(&:sort_param)
+    @enrollments = @cell.enrollments.sort_by(&:sort_param)
     respond_to do |format|
       format.html
       format.xlsx do
@@ -36,7 +36,7 @@ class CellsController < ApplicationController
         end
 
         pdfClass = params[:style] == 'compact' ? CompactStudentsPdf : StudentsPdf
-        pdf = pdfClass.new(@attendances, "Danh Sách Lớp #{@cell.name}\nNăm Học #{@cell.long_year}")
+        pdf = pdfClass.new(@enrollments, "Danh Sách Lớp #{@cell.name}\nNăm Học #{@cell.long_year}")
         send_data pdf.render, filename: "Danh Sách Lớp #{@cell.name} Năm Học #{@cell.long_year}.pdf", type: 'application/pdf', disposition: 'inline'
       end
     end
@@ -88,7 +88,7 @@ class CellsController < ApplicationController
   def destroy
     @cell.instructions.each(&:destroy)
 
-    @cell.attendances.each(&:destroy)
+    @cell.enrollments.each(&:destroy)
 
     @cell.destroy
     respond_to do |format|

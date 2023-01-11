@@ -2,9 +2,9 @@ class MigrationController < ApplicationController
   before_action :auth, :admin?
 
   def set_end_of_year_result
-    Attendance.joins(:cell).where("cells.year = #{@current_year}").where(result: 'Đang Học').find_each do |attendance|
-      attendance.result = 'Lên Lớp'
-      attendance.save
+    Enrollment.joins(:cell).where("cells.year = #{@current_year}").where(result: 'Đang Học').find_each do |enrollment|
+      enrollment.result = 'Lên Lớp'
+      enrollment.save
     end
     redirect_to root_url
   end
@@ -61,20 +61,20 @@ class MigrationController < ApplicationController
     mappings = new_class_mapping
 
     mappings.each do |old_cell_id, new_cell_id|
-      attendances = Attendance.where(cell_id: old_cell_id, result: ['Lên Lớp', 'Dự Thính'])
-      attendances.each do |attendance|
-        count = Attendance.joins(:cell)
-                          .where('cells.year = ? and attendances.student_id = ?', attendance.cell.year + 1, attendance.student_id)
+      enrollments = Enrollment.where(cell_id: old_cell_id, result: ['Lên Lớp', 'Dự Thính'])
+      enrollments.each do |enrollment|
+        count = Enrollment.joins(:cell)
+                          .where('cells.year = ? and enrollments.student_id = ?', enrollment.cell.year + 1, enrollment.student_id)
                           .count
         next unless count.zero?
 
-        new_attendance = Attendance.new
+        new_enrollment = Enrollment.new
 
-        new_attendance.cell_id = new_cell_id
-        new_attendance.student_id = attendance.student_id
-        new_attendance.result = 'Đang Học'
+        new_enrollment.cell_id = new_cell_id
+        new_enrollment.student_id = enrollment.student_id
+        new_enrollment.result = 'Đang Học'
 
-        new_attendance.save
+        new_enrollment.save
       end
     end
     redirect_to root_url

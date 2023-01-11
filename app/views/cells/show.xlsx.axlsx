@@ -28,8 +28,8 @@ wb.add_worksheet(name: 'Students') do |sheet|
     'Kết Quả'
   ]
 
-  @attendances.sort_by { |attendance| attendance.student.sort_param }.each_with_index do |attendance, index|
-    student = attendance.student
+  @enrollments.sort_by { |enrollment| enrollment.student.sort_param }.each_with_index do |enrollment, index|
+    student = enrollment.student
     sheet.add_row [
       index + 1,
       student.name,
@@ -54,7 +54,7 @@ wb.add_worksheet(name: 'Students') do |sheet|
       student.mother_name,
       student.mother_phone,
       @cell.name,
-      attendance.result
+      enrollment.result
     ],
     types: %i[
       string

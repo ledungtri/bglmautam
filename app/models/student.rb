@@ -1,8 +1,8 @@
 class Student < ActiveRecord::Base
   acts_as_paranoid
 
-  has_many :attendances
-  has_many :cells, through: :attendances
+  has_many :enrollments
+  has_many :cells, through: :enrollments
 
   validates_presence_of :full_name, :gender, :date_birth
   validates :gender, inclusion: { in: %w[Nam Nữ], message: 'have to be either Nam or Nữ' }
@@ -27,7 +27,7 @@ class Student < ActiveRecord::Base
   end
 
   def result(cell)
-    attendances.where(student_id: id, cell_id: cell.id).take.result
+    enrollments.where(student_id: id, cell_id: cell.id).take.result
   end
 
   def father_name
