@@ -6,7 +6,7 @@ class CellsController < ApplicationController
   # GET /cells
   # GET /cells.json
   def index
-    @cells = Cell.where(year: @current_year).where(grade: ['Khai Tâm', 'Rước Lễ', 'Thêm Sức', 'Bao Đồng', 'Vào Đời']).sort_by(&:sort_param)
+    @cells = Cell.where(year: @current_year).where(family: ['Khai Tâm', 'Rước Lễ', 'Thêm Sức', 'Bao Đồng', 'Vào Đời']).sort_by(&:sort_param)
 
     respond_to do |format|
       format.html
@@ -116,7 +116,7 @@ class CellsController < ApplicationController
   end
 
   def cells_custom_export
-    @cells = Cell.where(year: @current_year).where(grade: ['Khai Tâm', 'Rước Lễ', 'Thêm Sức', 'Bao Đồng', 'Vào Đời']).sort_by(&:sort_param)
+    @cells = Cell.where(year: @current_year).where(family: ['Khai Tâm', 'Rước Lễ', 'Thêm Sức', 'Bao Đồng', 'Vào Đời']).sort_by(&:sort_param)
     pdf = CellsCustomPdf.new(@cells, params[:title], params[:page_layout].to_sym, params[:columns].split(','))
     send_data pdf.render, filename: "#{params[:title]}.pdf", type: 'application/pdf', disposition: 'inline'
   end
@@ -138,6 +138,6 @@ class CellsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def cell_params
-    params.require(:cell).permit(:year, :grade, :group, :location)
+    params.require(:cell).permit(:year, :family, :group, :location)
   end
 end
