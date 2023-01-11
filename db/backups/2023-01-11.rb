@@ -1,4 +1,4 @@
-Cell.create!([
+Classroom.create!([
   {id: 4663, year: 2014, family: "Khai Tâm", group: "A", location: "Hầm Nhà Thờ", created_at: "2022-01-21 02:29:52", updated_at: "2022-01-21 02:29:52", deleted_at: nil, level: nil},
   {id: 4664, year: 2014, family: "Khai Tâm", group: "B", location: "Hầm Nhà Thờ", created_at: "2022-01-21 02:29:52", updated_at: "2022-01-21 02:29:52", deleted_at: nil, level: nil},
   {id: 4665, year: 2014, family: "Kỹ Thuật", group: "", location: "Tầng Hầm", created_at: "2022-01-21 02:29:52", updated_at: "2022-01-21 02:29:52", deleted_at: nil, level: nil},

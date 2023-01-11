@@ -10,21 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20230111054814) do
+ActiveRecord::Schema.define(version: 20230111092211) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "cells", force: :cascade do |t|
+  create_table "classrooms", force: :cascade do |t|
     t.integer  "year"
-    t.string   "grade"
+    t.string   "family"
     t.string   "group"
     t.string   "location"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "deleted_at"
     t.integer  "level"
-    t.index ["deleted_at"], name: "index_cells_on_deleted_at", using: :btree
+    t.index ["deleted_at"], name: "index_classrooms_on_deleted_at", using: :btree
   end
 
   create_table "enrollments", force: :cascade do |t|

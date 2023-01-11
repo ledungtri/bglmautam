@@ -5418,7 +5418,7 @@ Attendance.create!([
   {id: 113514, result: "Đang Học", student_id: 35382, cell_id: 4859, created_at: "2022-03-17 14:20:03", updated_at: "2022-03-17 14:20:03", year: nil},
   {id: 113515, result: "Đang Học", student_id: 35383, cell_id: 4859, created_at: "2022-03-18 14:09:51", updated_at: "2022-03-18 14:09:51", year: nil}
 ])
-Cell.create!([
+Classroom.create!([
   {id: 4659, year: 2014, grade: "Bao Đồng", group: "1A", location: "Hội Trường Lầu 5", created_at: "2022-01-21 02:29:52", updated_at: "2022-01-21 02:29:52"},
   {id: 4660, year: 2014, grade: "Bao Đồng", group: "1B", location: "Hội Trường Lầu 5", created_at: "2022-01-21 02:29:52", updated_at: "2022-01-21 02:29:52"},
   {id: 4661, year: 2014, grade: "Bao Đồng", group: "2", location: "Sảng Lầu 6", created_at: "2022-01-21 02:29:52", updated_at: "2022-01-21 02:29:52"},

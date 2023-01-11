@@ -55,7 +55,7 @@ class CompactStudentsPdf < Prawn::Document
           index + 1,
           student.name,
           student.date_birth.strftime('%d/%m/%Y'),
-          enrollment.cell.name,
+          enrollment.classroom.name,
           enrollment.result
         ]
       end

@@ -4782,7 +4782,7 @@ Attendance.create!([
   {id: 112859, result: "Lên Lớp", student_id: 35329, cell_id: 4827, year: nil},
   {id: 112860, result: "Lên Lớp", student_id: 35330, cell_id: 4831, year: nil}
 ])
-Cell.create!([
+Classroom.create!([
   {id: 4659, year: 2014, grade: "Bao Đồng", group: "1A", location: "Hội Trường Lầu 5"},
   {id: 4660, year: 2014, grade: "Bao Đồng", group: "1B", location: "Hội Trường Lầu 5"},
   {id: 4661, year: 2014, grade: "Bao Đồng", group: "2", location: "Sảng Lầu 6"},

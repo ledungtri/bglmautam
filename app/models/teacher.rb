@@ -2,7 +2,7 @@ class Teacher < ActiveRecord::Base
   acts_as_paranoid
 
   has_many :guidances
-  has_many :cells, through: :guidances
+  has_many :classrooms, through: :guidances
 
   validates_presence_of :full_name, :date_birth
   validates_presence_of(:street_name, if: :street_number?) || :ward? || :district?

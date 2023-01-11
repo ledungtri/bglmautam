@@ -61,7 +61,7 @@ class StudentsPdf < Prawn::Document
           student.address,
           student.father_phone,
           student.mother_phone,
-          enrollment.cell.name,
+          enrollment.classroom.name,
           enrollment.result
         ]
       end

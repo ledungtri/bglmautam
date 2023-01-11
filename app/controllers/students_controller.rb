@@ -8,7 +8,7 @@ class StudentsController < ApplicationController
   # GET /students
   # GET /students.json
   def index
-    @enrollments = Enrollment.joins(:cell).where('cells.year = ?', @current_year).sort_by(&:sort_param)
+    @enrollments = Enrollment.joins(:classroom).where('classrooms.year = ?', @current_year).sort_by(&:sort_param)
 
     respond_to do |format|
       format.html
@@ -28,10 +28,10 @@ class StudentsController < ApplicationController
   # GET /students/1
   # GET /students/1.json
   def show
-    @years = Cell.all.map(&:year).uniq.sort { |x, y| -(x <=> y) }
+    @years = Classroom.all.map(&:year).uniq.sort { |x, y| -(x <=> y) }
     @opts = []
-    Cell.all.sort_by(&:sort_param).each do |cell|
-      @opts.push([cell.name, cell.id]) if cell.year == @years[0] && cell.name != 'Trưởng Ban' && cell.name != 'Kỹ Thuật'
+    Classroom.all.sort_by(&:sort_param).each do |classroom|
+      @opts.push([classroom.name, classroom.id]) if classroom.year == @years[0] && classroom.name != 'Trưởng Ban' && classroom.name != 'Kỹ Thuật'
     end
 
     respond_to do |format|
@@ -106,7 +106,7 @@ class StudentsController < ApplicationController
 
   def admin_or_teacher?
     return if current_user&.admin?
-    return if current_teacher&.cells.any? { |cell| @student.cells.include? cell }
+    return if current_teacher&.classrooms.any? { |classroom| @student.classrooms.include? classroom }
 
     flash[:warning] = 'Action not allowed.'
     redirect_to :back || root_path

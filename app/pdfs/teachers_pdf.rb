@@ -46,7 +46,7 @@ class TeachersPdf < Prawn::Document
         teacher = guidance.teacher
         [
           index + 1,
-          guidance.cell.name,
+          guidance.classroom.name,
           guidance.position,
           teacher.name,
           teacher.date_birth.strftime('%d/%m/%Y'),

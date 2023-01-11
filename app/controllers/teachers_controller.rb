@@ -7,7 +7,7 @@ class TeachersController < ApplicationController
   # GET /teachers
   # GET /teachers.json
   def index
-    @guidances = Guidance.joins(:cell).where('cells.year = ?', @current_year).sort_by(&:sort_param)
+    @guidances = Guidance.joins(:classroom).where('classrooms.year = ?', @current_year).sort_by(&:sort_param)
     respond_to do |format|
       format.html
       format.pdf do
@@ -20,12 +20,12 @@ class TeachersController < ApplicationController
   # GET /teachers/1
   # GET /teachers/1.json
   def show
-    @cells = @teacher.cells
+    @classrooms = @teacher.classrooms
 
-    @years = Cell.all.map(&:year).uniq.sort { |x, y| -(x <=> y) }
+    @years = Classroom.all.map(&:year).uniq.sort { |x, y| -(x <=> y) }
     @opts = []
-    Cell.all.sort_by(&:sort_param).each do |cell|
-      @opts.push([cell.name, cell.id]) if cell.year == @years[0]
+    Classroom.all.sort_by(&:sort_param).each do |classroom|
+      @opts.push([classroom.name, classroom.id]) if classroom.year == @years[0]
     end
   end
 

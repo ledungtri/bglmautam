@@ -2,7 +2,7 @@ class MigrationController < ApplicationController
   before_action :auth, :admin?
 
   def set_end_of_year_result
-    Enrollment.joins(:cell).where("cells.year = #{@current_year}").where(result: 'Đang Học').find_each do |enrollment|
+    Enrollment.joins(:classroom).where("classrooms.year = #{@current_year}").where(result: 'Đang Học').find_each do |enrollment|
       enrollment.result = 'Lên Lớp'
       enrollment.save
     end
@@ -44,7 +44,7 @@ class MigrationController < ApplicationController
                       level + left
                     end
 
-            cell = Cell.new
+            cell = Classroom.new
             cell.year = year
             cell.grade = grade
             cell.group = group
@@ -63,8 +63,8 @@ class MigrationController < ApplicationController
     mappings.each do |old_cell_id, new_cell_id|
       enrollments = Enrollment.where(cell_id: old_cell_id, result: ['Lên Lớp', 'Dự Thính'])
       enrollments.each do |enrollment|
-        count = Enrollment.joins(:cell)
-                          .where('cells.year = ? and enrollments.student_id = ?', enrollment.cell.year + 1, enrollment.student_id)
+        count = Enrollment.joins(:classroom)
+                          .where('classrooms.year = ? and enrollments.student_id = ?', enrollment.classroom.year + 1, enrollment.student_id)
                           .count
         next unless count.zero?
 
@@ -83,8 +83,8 @@ class MigrationController < ApplicationController
   private
 
   def new_class_mapping
-    current_cells = Cell.where(year: @current_year)
-    next_year_cells = Cell.where(year: @current_year + 1)
+    current_cells = Classroom.where(year: @current_year)
+    next_year_cells = Classroom.where(year: @current_year + 1)
 
     mappings = {}
     @non_matching_cells = []

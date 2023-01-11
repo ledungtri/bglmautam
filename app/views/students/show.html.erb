@@ -170,7 +170,7 @@
 <script>
   function showForm() {
     document.getElementById("btn").style.display = "none";
-    document.getElementById("form").style.display = "table-cell";
+    document.getElementById("form").style.display = "table-classroom";
   }
   
   function changeCell() {
@@ -181,7 +181,7 @@
     const hash = {};
     const keys = [];
 
-    <% Cell.where.not(grade: ['Trưởng Ban', 'Kỹ Thuật']).sort_by(&:sort_param).each do |cell| %>
+    <% Classroom.where.not(grade: ['Trưởng Ban', 'Kỹ Thuật']).sort_by(&:sort_param).each do |cell| %>
     if(selected === "<%= cell.year %>") {
       hash[<%= cell.id %>] = "<%= cell.name %>";
       keys.push(<%= cell.id %>);

@@ -1,5 +1,5 @@
 class TeachersContactPdf < Prawn::Document
-  def initialize(cell)
+  def initialize(classroom)
     super(page_size: 'A4')
     self.font_size = 14
     font_families.update('HongHa' => {
@@ -8,14 +8,14 @@ class TeachersContactPdf < Prawn::Document
     })
     font 'HongHa'
 
-    title = "<font size='18'><b>#{cell.name}</b></font>"
+    title = "<font size='18'><b>#{classroom.name}</b></font>"
 
-    body = cell.guidances.reduce('') do |content, guidance|
+    body = classroom.guidances.reduce('') do |content, guidance|
       content += "<b>#{guidance.position}</b>: #{guidance.teacher.full_name}\n<b>SĐT</b>: #{guidance.teacher.phone}\n"
       content
     end
 
-    (cell.guidances.length >= 3 ? 4 : 5).times.each do
+    (classroom.guidances.length >= 3 ? 4 : 5).times.each do
       table [[title, '', title]] + [[body, '', body]] do
         self.position = :center
         self.width = 550

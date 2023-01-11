@@ -1,17 +1,17 @@
 Rails.application.routes.draw do
-  root 'cells#index'
-  get '/', to: 'cells#index'
+  root 'classrooms#index'
+  get '/', to: 'classrooms#index'
 
   resources :students
   resources :teachers
 
-  get '/cells/custom_export', to: 'cells#cells_custom_export_view'
-  post '/cells/custom_export', to: 'cells#cells_custom_export'
+  get '/classrooms/custom_export', to: 'classrooms#classrooms_custom_export_view'
+  post '/classrooms/custom_export', to: 'classrooms#classrooms_custom_export'
 
-  resources :cells do
-    get '/students_personal_details', to: 'cells#students_personal_details'
-    get '/custom_export', to: 'cells#custom_export_view'
-    post '/custom_export', to: 'cells#custom_export'
+  resources :classrooms do
+    get '/students_personal_details', to: 'classrooms#students_personal_details'
+    get '/custom_export', to: 'classrooms#custom_export_view'
+    post '/custom_export', to: 'classrooms#custom_export'
   end
 
   resources :guidances

@@ -2,12 +2,12 @@ class Guidance < ActiveRecord::Base
   acts_as_paranoid
 
   belongs_to :teacher
-  belongs_to :cell
+  belongs_to :classroom
 
   validates_presence_of :teacher_id, :cell_id
 
   def sort_param
-    "#{cell.sort_param} #{position_sort_param}"
+    "#{classroom.sort_param} #{position_sort_param}"
   end
 
   def position_sort_param

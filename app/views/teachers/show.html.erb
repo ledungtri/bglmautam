@@ -55,7 +55,7 @@
   </thead>
 
   <tbody>
-    <% @cells.each do |cell| %>
+    <% @classrooms.each do |cell| %>
     <% guidance = @teacher.guidances.select { |ins| ins.cell_id == cell.id }.first %>
     <% default_location = "Vô Gia Cư"; default_location = cell.location if cell.location? %>
     <% default_position = "_"; default_position = guidance.position if guidance.position? %>
@@ -105,7 +105,7 @@
 <script>
   function showForm() {
     document.getElementById("btn").style.display = "none";
-    document.getElementById("form").style.display = "table-cell";
+    document.getElementById("form").style.display = "table-classroom";
   }
   
   function changeCell() {
@@ -116,7 +116,7 @@
     const hash = {};
     const keys = [];
 
-    <% Cell.all.sort_by(&:sort_param).each do |cell| %>
+    <% Classroom.all.sort_by(&:sort_param).each do |cell| %>
     if(selected === "<%= cell.year %>") {
       hash[<%= cell.id %>] = "<%= cell.name %>";
       keys.push(<%= cell.id %>);

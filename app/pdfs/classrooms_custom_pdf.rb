@@ -1,7 +1,7 @@
-class CellsCustomPdf < Prawn::Document
-  def initialize(cells, title_text, page_layout, columns)
+class ClassroomsCustomPdf < Prawn::Document
+  def initialize(classrooms, title_text, page_layout, columns)
     super(page_size: 'A4', page_layout: page_layout, margin: 20)
-    @cells = cells
+    @classrooms = classrooms
     @title_text = title_text
     @columns = columns
     @width = page_layout == :landscape ? 800 : 550
@@ -20,7 +20,7 @@ class CellsCustomPdf < Prawn::Document
   end
 
   def title
-    text "#{@title_text}\nNăm Học #{@cells[0].long_year}", size: 15, align: :center, style: :bold
+    text "#{@title_text}\nNăm Học #{@classrooms[0].long_year}", size: 15, align: :center, style: :bold
   end
 
   def line_items
@@ -41,8 +41,8 @@ class CellsCustomPdf < Prawn::Document
 
   def line_item_rows
     [['STT', 'Lớp'] + @columns] +
-    @cells.each_with_index.map do |cell, index|
-        [index + 1,cell.name] + [""] * @columns.length
+    @classrooms.each_with_index.map do |classroom, index|
+        [index + 1,classroom.name] + [""] * @columns.length
       end
   end
 

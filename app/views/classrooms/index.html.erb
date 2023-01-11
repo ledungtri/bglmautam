@@ -1,0 +1,51 @@
+<h1>Thống Kê Số Lượng Thiếu Nhi Năm Học <%= @current_year_long %></h1>
+<h4>Số Lượng các lớp: <%= @classrooms.count %></h4>
+
+<table>
+  <thead>
+    <tr>
+      <th style="width: 50px">STT</th>
+      <th style='width: 100px'>Tên Lớp</th>
+      <th style='width: 100px'>Vị Trí</th>
+      <th style='width:  94px'>Tổng Số</th>
+      <th style='width:  94px'>Nghỉ Luôn</th>
+      <th style='width:  94px'>Chuyển Xứ</th>
+      <th style='width:  94px'>Đang Học</th>
+      <th style='width:  94px'>Dự Thính</th>
+      <th style='width:  94px'>Lên Lớp</th>
+      <th style='width:  94px'>Học Lại</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @classrooms.each do |classroom| %>
+      <tr class="table-row">
+        <td style='width: 50px'><%= @classrooms.index(classroom) + 1 %></td>
+        <td style='width: 100px'><%= link_to classroom.name, classroom %></td>
+        <td style='width: 100px'><%= classroom.location %></td>
+        <td style='width:  94px'><%= classroom.enrollments.count %></td>
+        <td style='width:  94px'><%= classroom.enrollments.where(result: 'Nghỉ Luôn').count %></td>
+        <td style='width:  94px'><%= classroom.enrollments.where(result: 'Chuyển Xứ').count %></td>
+        <td style='width:  94px'><%= classroom.enrollments.where(result: 'Đang Học').count %></td>
+        <td style='width:  94px'><%= classroom.enrollments.where(result: 'Dự Thính').count %></td>
+        <td style='width:  94px'><%= classroom.enrollments.where(result: 'Lên Lớp').count %></td>
+        <td style='width:  94px'><%= classroom.enrollments.where(result: 'Học Lại').count %></td>
+      </tr>
+    <% end %>
+    <tr class="table-row">
+      <td style='width: 50px'></td>
+      <td style='width: 100px'>Tổng Số</td>
+      <td style='width: 100px'></td>
+      <td style='width:  94px'><%= @classrooms.inject(0) { |sum, classroom| sum + classroom.enrollments.count } %></td>
+      <td style='width:  94px'><%= @classrooms.inject(0) { |sum, classroom| sum + classroom.enrollments.where(result: 'Nghỉ Luôn').count } %></td>
+      <td style='width:  94px'><%= @classrooms.inject(0) { |sum, classroom| sum + classroom.enrollments.where(result: 'Chuyển Xứ').count } %></td>
+      <td style='width:  94px'><%= @classrooms.inject(0) { |sum, classroom| sum + classroom.enrollments.where(result: 'Đang Học').count } %></td>
+      <td style='width:  94px'><%= @classrooms.inject(0) { |sum, classroom| sum + classroom.enrollments.where(result: 'Dự Thính').count } %></td>
+      <td style='width:  94px'><%= @classrooms.inject(0) { |sum, classroom| sum + classroom.enrollments.where(result: 'Lên Lớp').count } %></td>
+      <td style='width:  94px'><%= @classrooms.inject(0) { |sum, classroom| sum + classroom.enrollments.where(result: 'Học Lại').count } %></td>
+    </tr>
+  </tbody>
+</table>
+
+<%= button_to "In Bảng Thống Kê", classrooms_path(format: "pdf"), method: :get, :class => "button", params: { year: @current_year} %>
+<%= button_to "In Bảng Tự Tạo", classrooms_custom_export_path, method: :get, :class => "button" %>
