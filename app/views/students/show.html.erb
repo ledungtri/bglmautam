@@ -181,7 +181,7 @@
     const hash = {};
     const keys = [];
 
-    <% Classroom.where.not(grade: ['Trưởng Ban', 'Kỹ Thuật']).sort_by(&:sort_param).each do |classroom| %>
+    <% Classroom.where.not(family: ['Trưởng Ban', 'Kỹ Thuật']).sort_by(&:sort_param).each do |classroom| %>
     if(selected === "<%= classroom.year %>") {
       hash[<%= classroom.id %>] = "<%= classroom.name %>";
       keys.push(<%= classroom.id %>);
