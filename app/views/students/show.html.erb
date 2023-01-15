@@ -126,11 +126,11 @@
     </tr>
   </thead>
   <tbody>
-    <% @student.cells.sort_by {|cell| cell.year}.each do |cell| %>
+    <% @student.classrooms.sort_by {|classroom| classroom.year}.each do |classroom| %>
     <tr class="table-row">
-      <td style="width: 200px; font-size: 14px"><%= cell.long_year %></td>
-      <td style="width: 200px; font-size: 14px"><%= link_to cell.name, cell %></td>
-      <td style="width: 200px; font-size: 14px"><%= link_to @student.result(cell), edit_enrollment_path(Enrollment.where(student_id: @student.id, cell_id: cell.id).take.id) %></td>
+      <td style="width: 200px; font-size: 14px"><%= classroom.long_year %></td>
+      <td style="width: 200px; font-size: 14px"><%= link_to classroom.name, classroom %></td>
+      <td style="width: 200px; font-size: 14px"><%= link_to @student.result(classroom), edit_enrollment_path(Enrollment.where(student_id: @student.id, classroom_id: classroom.id).take.id) %></td>
     </tr>
     <% end %>
     
@@ -149,7 +149,7 @@
               </ul>
             </div>
           <% end %>
-          <select id="year_combobox" onchange="changeCell()">
+          <select id="year_combobox" onchange="changeClassroom()">
             <% selected_year = @years[0] %>
             <% @years.each do |year| %>
               <option value="<%=year%>"><%= year.to_s + " - " + (year.to_i+1).to_s %></option>
@@ -157,7 +157,7 @@
           </select>
           <%= f.hidden_field :student_id, :value => @student.id %>
           <%= f.hidden_field :result, :value => "Đang Học" %>
-          <%= f.select :cell_id, options_for_select(@opts), :id => 'cell_id' %>
+          <%= f.select :classroom_id, options_for_select(@opts), :id => 'classroom_id' %>
           <%= f.submit "Thêm Lớp Mới" %>
         <% end %>
       </td>
@@ -173,7 +173,7 @@
     document.getElementById("form").style.display = "table-classroom";
   }
   
-  function changeCell() {
+  function changeClassroom() {
     const e = document.getElementById("year_combobox");
     const selected = e.options[e.selectedIndex].value;
 
@@ -181,14 +181,14 @@
     const hash = {};
     const keys = [];
 
-    <% Classroom.where.not(grade: ['Trưởng Ban', 'Kỹ Thuật']).sort_by(&:sort_param).each do |cell| %>
-    if(selected === "<%= cell.year %>") {
-      hash[<%= cell.id %>] = "<%= cell.name %>";
-      keys.push(<%= cell.id %>);
+    <% Classroom.where.not(grade: ['Trưởng Ban', 'Kỹ Thuật']).sort_by(&:sort_param).each do |classroom| %>
+    if(selected === "<%= classroom.year %>") {
+      hash[<%= classroom.id %>] = "<%= classroom.name %>";
+      keys.push(<%= classroom.id %>);
     }
     <% end %>
 
-    const list = document.getElementById("enrollment_cell_id");
+    const list = document.getElementById("enrollment_classroom_id");
     list.options.length = 0;
     
     //Create and append the options

@@ -56,6 +56,6 @@ class GuidancesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def guidance_params
-    params.require(:guidance).permit(:position, :teacher_id, :cell_id)
+    params.require(:guidance).permit(:position, :teacher_id, :classroom_id)
   end
 end

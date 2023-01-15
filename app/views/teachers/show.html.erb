@@ -55,13 +55,13 @@
   </thead>
 
   <tbody>
-    <% @classrooms.each do |cell| %>
-    <% guidance = @teacher.guidances.select { |ins| ins.cell_id == cell.id }.first %>
-    <% default_location = "Vô Gia Cư"; default_location = cell.location if cell.location? %>
+    <% @classrooms.each do |classroom| %>
+    <% guidance = @teacher.guidances.select { |guidance| guidance.classroom_id == classroom.id }.first %>
+    <% default_location = "Vô Gia Cư"; default_location = classroom.location if classroom.location? %>
     <% default_position = "_"; default_position = guidance.position if guidance.position? %>
       <tr class="table-row">
-        <td style='width: 200px'><%= cell.long_year %></td>
-        <td style='width: 200px'><%= link_to cell.name, cell %></td>
+        <td style='width: 200px'><%= classroom.long_year %></td>
+        <td style='width: 200px'><%= link_to classroom.name, classroom %></td>
         <td style='width: 200px'><%= link_to default_position, edit_guidance_path(guidance.id) %></td>
         <td style='width: 200px'><%= default_location %></td>
       </tr>
@@ -86,12 +86,12 @@
             </div>
           <% end %>
           <%= f.hidden_field :teacher_id, :value => @teacher.id %>
-          <select id="year_combobox" onchange="changeCell()">
+          <select id="year_combobox" onchange="changeClassroom()">
             <% @years.each do |year| %>
               <option value="<%=year%>"><%= year.to_s + " - " + (year.to_i+1).to_s %></option>
             <% end %>
           </select>
-          <%= f.select :cell_id, options_for_select(@opts), :id => 'cell_id' %>
+          <%= f.select :classroom_id, options_for_select(@opts), :id => 'classroom_id' %>
           <%= f.select :position, options_for_select(["Tu Sĩ", "GLV", "Tiền GLV", "Phụ Tá", "Kiến Tập"]), :style => "width: 98px"%>
           <%= f.submit "Thêm Lớp Mới" %>
         <% end %>
@@ -108,7 +108,7 @@
     document.getElementById("form").style.display = "table-classroom";
   }
   
-  function changeCell() {
+  function changeClassroom() {
     const e = document.getElementById("year_combobox");
     const selected = e.options[e.selectedIndex].value;
 
@@ -116,15 +116,15 @@
     const hash = {};
     const keys = [];
 
-    <% Classroom.all.sort_by(&:sort_param).each do |cell| %>
-    if(selected === "<%= cell.year %>") {
-      hash[<%= cell.id %>] = "<%= cell.name %>";
-      keys.push(<%= cell.id %>);
+    <% Classroom.all.sort_by(&:sort_param).each do |classroom| %>
+    if(selected === "<%= classroom.year %>") {
+      hash[<%= classroom.id %>] = "<%= classroom.name %>";
+      keys.push(<%= classroom.id %>);
     }
     <% end %>
 
 
-    const list = document.getElementById("guidance_cell_id");
+    const list = document.getElementById("guidance_classroom_id");
     list.options.length = 0;
     
     

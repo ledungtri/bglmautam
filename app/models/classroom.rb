@@ -1,6 +1,4 @@
-class Classroom < ActiveRecord::Base
-  acts_as_paranoid
-
+class Classroom < ApplicationRecord
   has_many :enrollments
   has_many :students, through: :enrollments
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20230111092211) do
+ActiveRecord::Schema.define(version: 20230111095929) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,9 +30,9 @@ ActiveRecord::Schema.define(version: 20230111092211) do
   create_table "enrollments", force: :cascade do |t|
     t.string   "result"
     t.integer  "student_id"
-    t.integer  "cell_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "classroom_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
     t.datetime "deleted_at"
     t.index ["deleted_at"], name: "index_enrollments_on_deleted_at", using: :btree
   end
@@ -40,9 +40,9 @@ ActiveRecord::Schema.define(version: 20230111092211) do
   create_table "guidances", force: :cascade do |t|
     t.string   "position"
     t.integer  "teacher_id"
-    t.integer  "cell_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "classroom_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
     t.datetime "deleted_at"
     t.index ["deleted_at"], name: "index_guidances_on_deleted_at", using: :btree
   end

@@ -1,6 +1,4 @@
-class Student < ActiveRecord::Base
-  acts_as_paranoid
-
+class Student < ApplicationRecord
   has_many :enrollments
   has_many :classrooms, through: :enrollments
 
@@ -27,7 +25,7 @@ class Student < ActiveRecord::Base
   end
 
   def result(classroom)
-    enrollments.where(student_id: id, cell_id: classroom.id).take.result
+    enrollments.where(student_id: id, classroom_id: classroom.id).take.result
   end
 
   def father_name

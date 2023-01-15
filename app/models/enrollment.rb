@@ -1,10 +1,8 @@
-class Enrollment < ActiveRecord::Base
-  acts_as_paranoid
-
+class Enrollment < ApplicationRecord
   belongs_to :student
   belongs_to :classroom
 
-  validates_presence_of :student_id, :cell_id, :result
+  validates_presence_of :student_id, :classroom_id, :result
 
   def sort_param
     student.sort_param

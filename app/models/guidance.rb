@@ -1,10 +1,8 @@
-class Guidance < ActiveRecord::Base
-  acts_as_paranoid
-
+class Guidance < ApplicationRecord
   belongs_to :teacher
   belongs_to :classroom
 
-  validates_presence_of :teacher_id, :cell_id
+  validates_presence_of :teacher_id, :classroom_id
 
   def sort_param
     "#{classroom.sort_param} #{position_sort_param}"

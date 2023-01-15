@@ -1,6 +1,4 @@
-class Teacher < ActiveRecord::Base
-  acts_as_paranoid
-
+class Teacher < ApplicationRecord
   has_many :guidances
   has_many :classrooms, through: :guidances
 
