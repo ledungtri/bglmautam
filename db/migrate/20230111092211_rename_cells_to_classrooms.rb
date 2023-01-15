@@ -1,5 +1,5 @@
 class RenameCellsToClassrooms < ActiveRecord::Migration[5.0]
   def change
-    rename_table :classrooms, :classrooms
+    rename_table :cells, :classrooms
   end
 end
