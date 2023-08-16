@@ -9,7 +9,7 @@ class MigrationController < ApplicationController
     redirect_to root_url
   end
 
-  def create_new_cells
+  def create_new_classrooms
     year = 2020
     map = {
       'Khai Tâm' => [
@@ -46,7 +46,7 @@ class MigrationController < ApplicationController
     redirect_to root_url
   end
 
-  def assign_new_cells
+  def assign_new_classrooms
     mappings = new_classroom_mapping
 
     mappings.each do |old_classroom_id, new_classroom_id|
