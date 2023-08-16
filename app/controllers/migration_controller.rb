@@ -50,7 +50,7 @@ class MigrationController < ApplicationController
     mappings = new_classroom_mapping
 
     mappings.each do |old_classroom_id, new_classroom_id|
-      enrollments = Enrollment.where(cell_id: old_classroom_id, result: ['Lên Lớp', 'Dự Thính'])
+      enrollments = Enrollment.where(classroom_id: old_classroom_id, result: ['Lên Lớp', 'Dự Thính'])
       enrollments.each do |enrollment|
         count = Enrollment.joins(:classroom)
                           .where('classrooms.year = ? and enrollments.student_id = ?', enrollment.classroom.year + 1, enrollment.student_id)
