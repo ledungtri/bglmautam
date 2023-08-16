@@ -13,7 +13,7 @@ class MigrationController < ApplicationController
     year = 2020
     map = {
       'Khai Tâm' => [
-        { '' => %w[A B] }
+        { '' => [''] }
       ],
       'Rước Lễ' => [
         { '1' => %w[A B C D] },
@@ -32,24 +32,13 @@ class MigrationController < ApplicationController
       ]
     }
 
-    map.each_key do |grade|
-      objs = map[grade]
+    map.each_key do |family|
+      objs = map[family]
 
       objs.each do |obj|
         obj.each_key do |level|
-          obj[level].each do |left|
-            group = if level == ''
-                      left
-                    else
-                      level + left
-                    end
-
-            cell = Classroom.new
-            cell.year = year
-            cell.grade = grade
-            cell.group = group
-
-            cell.save
+          obj[level].each do |group|
+            Classroom.create(year: year, family: family, level: level, group: group)
           end
         end
       end
@@ -58,10 +47,10 @@ class MigrationController < ApplicationController
   end
 
   def assign_new_cells
-    mappings = new_class_mapping
+    mappings = new_classroom_mapping
 
-    mappings.each do |old_cell_id, new_cell_id|
-      enrollments = Enrollment.where(cell_id: old_cell_id, result: ['Lên Lớp', 'Dự Thính'])
+    mappings.each do |old_classroom_id, new_classroom_id|
+      enrollments = Enrollment.where(cell_id: old_classroom_id, result: ['Lên Lớp', 'Dự Thính'])
       enrollments.each do |enrollment|
         count = Enrollment.joins(:classroom)
                           .where('classrooms.year = ? and enrollments.student_id = ?', enrollment.classroom.year + 1, enrollment.student_id)
@@ -70,7 +59,7 @@ class MigrationController < ApplicationController
 
         new_enrollment = Enrollment.new
 
-        new_enrollment.cell_id = new_cell_id
+        new_enrollment.classroom_id = new_classroom_id
         new_enrollment.student_id = enrollment.student_id
         new_enrollment.result = 'Đang Học'
 
@@ -82,23 +71,22 @@ class MigrationController < ApplicationController
 
   private
 
-  def new_class_mapping
-    current_cells = Classroom.where(year: @current_year)
-    next_year_cells = Classroom.where(year: @current_year + 1)
+  def new_classroom_mapping
+    current_classrooms = Classroom.where(year: @current_year)
+    next_year_classrooms = Classroom.where(year: @current_year + 1)
 
     mappings = {}
-    @non_matching_cells = []
+    @non_matching_classrooms = []
 
-    current_cells.each do |current_cell|
-      grade = current_cell.grade
-      group = current_cell.group
+    current_classrooms.each do |current_classroom|
+      family = current_classroom.family
+      level = current_classroom.level
+      group = current_classroom.group
 
-      level = group[0]
-
-      new_cell_name = case level
+      new_classroom_name = case level
                       when '3'
                         new_level = '1'
-                        new_grade = case grade
+                        new_family = case family
                                     when 'Rước Lễ'
                                       'Thêm Sức'
                                     when 'Thêm Sức'
@@ -106,27 +94,24 @@ class MigrationController < ApplicationController
                                     else
                                       ''
                                     end
-                        new_group = new_level + group[1]
-                        "#{new_grade} #{new_group}"
+                        "#{new_family} #{new_level}#{group}"
                       else
-                        case grade
+                        case family
                         when 'Khai Tâm'
-                          new_grade = 'Rước Lễ'
-                          new_group = "1#{group}"
-                          "#{new_grade} #{new_group}"
+                          new_family = 'Rước Lễ'
+                          "#{new_family} 1#{group}"
                         when 'Rước Lễ', 'Thêm Sức', 'Bao Đồng'
-                          new_grade = grade
-                          new_group = (level.to_i + 1).to_s + group[1]
-                          "#{new_grade} #{new_group}"
+                          new_level = level + 1
+                          "#{family} #{new_level}#{group}"
                         else
                           ''
                         end
                       end
-      matching_cell = next_year_cells.select { |c| c.name == new_cell_name }[0]
-      if !matching_cell.nil?
-        mappings[current_cell.id] = matching_cell.id
+      matching_classroom = next_year_classrooms.select { |c| c.name == new_classroom_name }[0]
+      if !matching_classroom.nil?
+        mappings[current_classroom.id] = matching_classroom.id
       else
-        @non_matching_cells.push(current_cell.name)
+        @non_matching_classrooms.push(current_classroom.name)
       end
     end
 
