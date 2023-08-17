@@ -47,74 +47,63 @@ class MigrationController < ApplicationController
   end
 
   def assign_new_classrooms
-    mappings = new_classroom_mapping
+    mappings = new_classroom_mappings
+    same_classroom_mapping = mappings[:same_classroom_mapping]
+    next_classroom_mapping = mappings[:next_classroom_mapping]
 
-    mappings.each do |old_classroom_id, new_classroom_id|
-      enrollments = Enrollment.where(classroom_id: old_classroom_id, result: ['Lên Lớp', 'Dự Thính'])
-      enrollments.each do |enrollment|
-        count = Enrollment.joins(:classroom)
-                          .where('classrooms.year = ? and enrollments.student_id = ?', enrollment.classroom.year + 1, enrollment.student_id)
-                          .count
-        next unless count.zero?
+    Enrollment.where(classroom_id: same_classroom_mapping.keys, result: ['Lên Lớp', 'Học Lại', 'Dự Thính']).find_each do |enrollment|
+      existing_enrollment = Enrollment.joins(:classroom)
+        .where('classrooms.year = ? and enrollments.student_id = ?', enrollment.classroom.year + 1, enrollment.student_id)
+        .first
+      next if existing_enrollment
 
-        new_enrollment = Enrollment.new
-
-        new_enrollment.classroom_id = new_classroom_id
-        new_enrollment.student_id = enrollment.student_id
-        new_enrollment.result = 'Đang Học'
-
-        new_enrollment.save
-      end
+      mapping = enrollment.result == 'Lên Lớp' ? next_classroom_mapping : same_classroom_mapping
+      Enrollment.create(classroom_id: mapping[enrollment.classroom_id], student_id: enrollment.student_id, result: 'Đang Học')
     end
     redirect_to root_url
   end
 
   private
 
-  def new_classroom_mapping
+  def new_classroom_mappings
     current_classrooms = Classroom.where(year: @current_year)
     next_year_classrooms = Classroom.where(year: @current_year + 1)
 
-    mappings = {}
-    @non_matching_classrooms = []
+    same_classroom_mapping = {}
+    next_classroom_mapping = {}
 
     current_classrooms.each do |current_classroom|
-      family = current_classroom.family
-      level = current_classroom.level
-      group = current_classroom.group
+      matching_same_classroom = next_year_classrooms.find { |c| c.name == current_classroom.name }
+      same_classroom_mapping[current_classroom.id] = matching_same_classroom.id if matching_same_classroom
 
-      new_classroom_name = case level
-                      when '3'
-                        new_level = '1'
-                        new_family = case family
-                                    when 'Rước Lễ'
-                                      'Thêm Sức'
-                                    when 'Thêm Sức'
-                                      'Bao Đồng'
-                                    else
-                                      ''
-                                    end
-                        "#{new_family} #{new_level}#{group}"
-                      else
-                        case family
-                        when 'Khai Tâm'
-                          new_family = 'Rước Lễ'
-                          "#{new_family} 1#{group}"
-                        when 'Rước Lễ', 'Thêm Sức', 'Bao Đồng'
-                          new_level = level + 1
-                          "#{family} #{new_level}#{group}"
-                        else
-                          ''
-                        end
-                      end
-      matching_classroom = next_year_classrooms.select { |c| c.name == new_classroom_name }[0]
-      if !matching_classroom.nil?
-        mappings[current_classroom.id] = matching_classroom.id
-      else
-        @non_matching_classrooms.push(current_classroom.name)
-      end
+      matching_next_classroom = next_year_classrooms.find { |c| c.name == next_classroom_name(current_classroom) }
+      next_classroom_mapping[current_classroom.id] = matching_next_classroom.id if matching_next_classroom
     end
 
-    mappings
+    { same_classroom_mapping: same_classroom_mapping, next_classroom_mapping: next_classroom_mapping }
+  end
+
+  def next_classroom_name(classroom)
+    family = classroom.family
+    level = classroom.level
+    group = classroom.group
+
+    new_family = family
+    if level == 3
+      new_family = case family
+        when 'Khai Tâm'
+          'Rước Lễ'
+        when 'Rước Lễ'
+          'Thêm Sức'
+        when 'Thêm Sức'
+          'Bao Đồng'
+        else
+          ''
+        end
+    end
+    new_level = (level.presence || 0) + 1
+    new_level = 1 if new_level == 4
+
+    "#{new_family} #{new_level}#{group}".strip
   end
 end
