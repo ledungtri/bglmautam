@@ -103,6 +103,7 @@ class ApplicationController < ActionController::Base
         'ỵ': 'Ỵ'
       }
 
+      return nil unless string
       return string unless string.class == String
       index = 0
       string.each_char.with_index do |char, i|
