@@ -107,7 +107,7 @@ class ApplicationController < ActionController::Base
       return string unless string.class == String
       index = 0
       string.each_char.with_index do |char, i|
-        string[i] = mapping[char] if i == index
+        string[i] = mapping[char] if i == index && mapping[char]
         index = i + 1 if char == ' '
       end
     end
