@@ -103,11 +103,12 @@ class ApplicationController < ActionController::Base
         'ỵ': 'Ỵ'
       }
 
-      return nil unless string
       return string unless string.class == String
       index = 0
       string.each_char.with_index do |char, i|
-        string[i] = mapping[char] if i == index && mapping[char]
+        replacement = mapping[char]
+        replacement ||= char.capitalize
+        string[i] = replacement if i == index && replacement
         index = i + 1 if char == ' '
       end
     end
