@@ -32,8 +32,87 @@ class ApplicationController < ActionController::Base
   end
 
   def search
-    @students = Student.where('full_name like ?', "%#{params[:student_name]}%") unless params[:student_name].nil?
-    @teachers = Teacher.where('full_name like ?', "%#{params[:teacher_name]}%") unless params[:teacher_name].nil?
+    def titleize(string)
+      mapping = {
+        'á': 'Á',
+        'à': 'À',
+        'ả': 'Ả',
+        'ã': 'Ã',
+        'ạ': 'Ạ',
+        'ă': 'Ă',
+        'ắ': 'Ắ',
+        'ặ': 'Ặ',
+        'ằ': 'Ằ',
+        'ẳ': 'Ẳ',
+        'ẵ': 'Ẵ',
+        'â': 'Â',
+        'ấ': 'Ấ',
+        'ầ': 'Ầ',
+        'ẩ': 'Ẩ',
+        'ẫ': 'Ẫ',
+        'ậ': 'Ậ',
+        'í': 'Í',
+        'ì': 'Ì',
+        'ỉ': 'Ỉ',
+        'ĩ': 'Ĩ',
+        'ị': 'Ị',
+        'ú': 'Ú',
+        'ù': 'Ù',
+        'ủ': 'Ủ',
+        'ũ': 'Ũ',
+        'ụ': 'Ụ',
+        'ư': 'Ư',
+        'ứ': 'Ứ',
+        'ừ': 'Ừ',
+        'ử': 'Ử',
+        'ữ': 'Ữ',
+        'ự': 'Ự',
+        'é': 'É',
+        'è': 'È',
+        'ẻ': 'Ẻ',
+        'ẽ': 'Ẽ',
+        'ẹ': 'Ẹ',
+        'ê': 'Ê',
+        'ế': 'Ế',
+        'ề': 'Ề',
+        'ể': 'Ể',
+        'ễ': 'Ễ',
+        'ệ': 'Ệ',
+        'ó': 'Ó',
+        'ò': 'Ò',
+        'ỏ': 'Ỏ',
+        'õ': 'Õ',
+        'ọ': 'Ọ',
+        'ô': 'Ô',
+        'ố': 'Ố',
+        'ồ': 'Ồ',
+        'ổ': 'Ổ',
+        'ỗ': 'Ỗ',
+        'ộ': 'Ộ',
+        'ơ': 'Ơ',
+        'ớ': 'Ớ',
+        'ờ': 'Ờ',
+        'ở': 'Ở',
+        'ỡ': 'Ỡ',
+        'ợ': 'Ợ',
+        'đ': 'Đ',
+        'ý': 'Ý',
+        'ỳ': 'Ỳ',
+        'ỷ': 'Ỷ',
+        'ỹ': 'Ỹ',
+        'ỵ': 'Ỵ'
+      }
+
+      return string unless string.class == String
+      index = 0
+      string.each_with_index do |char, i|
+        string[i] = mapping[char] if i == index
+        index = i + 1 if char == ' '
+      end
+    end
+
+    @students = Student.where('full_name like ?', "%#{titleize(params[:student_name].strip)}%") unless params[:student_name].nil?
+    @teachers = Teacher.where('full_name like ?', "%#{titleize(params[:teacher_name].strip)}%") unless params[:teacher_name].nil?
   end
 
   # Prevent CSRF attacks by raising an exception.
