@@ -83,6 +83,15 @@ class TeachersController < ApplicationController
     end
   end
 
+  def teachers_custom_export_view
+  end
+
+  def teachers_custom_export
+    @guidances = Guidance.joins(:classroom).where('classrooms.year = ?', @current_year).sort_by(&:sort_param)
+    pdf = TeachersCustomPdf.new(@guidances, params[:title], params[:page_layout].to_sym, params[:columns].split(','))
+    send_data pdf.render, filename: "#{params[:title]}.pdf", type: 'application/pdf', disposition: 'inline'
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.

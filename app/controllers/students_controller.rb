@@ -7,23 +7,23 @@ class StudentsController < ApplicationController
 
   # GET /students
   # GET /students.json
-  def index
-    @enrollments = Enrollment.joins(:classroom).where('classrooms.year = ?', @current_year).sort_by(&:sort_param)
-
-    respond_to do |format|
-      format.html
-      format.pdf do
-
-        if params[:style] == 'empty'
-          pdf = StudentPdf.new(Student.new)
-          send_data pdf.render, filename: "SYLL.pdf", type: 'application/pdf', disposition: 'inline'
-        else
-          pdf = StudentsPdf.new(@enrollments, "Danh Sách Thiếu Nhi\nNăm Học #{@current_year_long}")
-          send_data pdf.render, filename: "Danh Sách Thiếu Nhi Năm Học #{@current_year_long}.pdf", type: 'application/pdf', disposition: 'inline'
-        end
-      end
-    end
-  end
+  # def index
+  #   @enrollments = Enrollment.joins(:classroom).where('classrooms.year = ?', @current_year).sort_by(&:sort_param)
+  #
+  #   respond_to do |format|
+  #     format.html
+  #     format.pdf do
+  #
+  #       if params[:style] == 'empty'
+  #         pdf = StudentPdf.new(Student.new)
+  #         send_data pdf.render, filename: "SYLL.pdf", type: 'application/pdf', disposition: 'inline'
+  #       else
+  #         pdf = StudentsPdf.new(@enrollments, "Danh Sách Thiếu Nhi\nNăm Học #{@current_year_long}")
+  #         send_data pdf.render, filename: "Danh Sách Thiếu Nhi Năm Học #{@current_year_long}.pdf", type: 'application/pdf', disposition: 'inline'
+  #       end
+  #     end
+  #   end
+  # end
 
   # GET /students/1
   # GET /students/1.json

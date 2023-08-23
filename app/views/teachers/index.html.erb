@@ -3,4 +3,5 @@
 
 <%= render 'info_table' %>
 <%= button_to "In Danh Sách GLV", teachers_path(format: "pdf"), method: :get, :class => "button" %>
+<%= button_to "In Bảng Tự Tạo", teachers_custom_export_path, method: :get, :class => "button" %>
 
