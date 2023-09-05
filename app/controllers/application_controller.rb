@@ -50,6 +50,7 @@ class ApplicationController < ActionController::Base
 
       return string unless string.class == String
       index = 0
+      string = string.strip
       string.each_char.with_index do |char, i|
         replacement = mapping[char] || char.capitalize || char
         string[i] = replacement if i == index
@@ -57,8 +58,11 @@ class ApplicationController < ActionController::Base
       end
     end
 
-    @students = Student.where('full_name like ?', "%#{titleize(params[:student_name].strip)}%") unless params[:student_name].nil?
-    @teachers = Teacher.where('full_name like ?', "%#{titleize(params[:teacher_name].strip)}%") unless params[:teacher_name].nil?
+    @students = params[:query] ? Student.where('full_name like ?', "%#{titleize(params[:query])}%") : []
+    @enrollments = @students&.map { |s| s.enrollments.last }
+
+    @teachers = params[:query] ? Teacher.where('full_name like ?', "%#{titleize(params[:query])}%") : []
+    @guidances = @teachers&.map { |t| t.guidances.last }
   end
 
   # Prevent CSRF attacks by raising an exception.

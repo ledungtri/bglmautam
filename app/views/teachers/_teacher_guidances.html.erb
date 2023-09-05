@@ -18,7 +18,7 @@
   <% classrooms.each do |classroom| %>
     <% guidance = @teacher.guidances.select { |guidance| guidance.classroom_id == classroom.id }.first %>
     <% default_location = "Vô Gia Cư"; default_location = classroom.location if classroom.location? %>
-    <% default_position = "_"; default_position = guidance.position if guidance.position? %>
+    <% default_position = "---"; default_position = guidance.position if guidance.position? %>
     <tr class="table-row">
       <td style='width: 200px'><%= classroom.long_year %></td>
       <td style='width: 200px'><%= link_to classroom.name, classroom %></td>

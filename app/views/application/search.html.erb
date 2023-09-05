@@ -1,40 +1,21 @@
-<h1>Tìm Kiếm</h1>
+<h1>Tìm kiếm Thiếu Nhi / Giáo Lý Viên</h1>
 
-<h2>Tìm kiếm Thiếu Nhi:</h2>
 <form action="/search" method="get">
     <div style="display: block; margin: auto; width: 55%">
       <div class="label">Họ và tên:</div>
-      <input type="text" name="student_name"/>
+      <input type="text" name="query"/>
     </div>
     <button type="submit" class="button" value="Tìm Kiếm">
         <i class="fa-solid fa-magnifying-glass"></i> Tìm Kiếm
     </button>
 </form>
 
-<h2>Tìm kiếm Giáo Lý Viên:</h2>
-<form action="/search" method="get">
-    <div style="display: block; margin: auto; width: 55%">
-        <div class="label">Họ và tên:</div>
-        <input type="text" name="teacher_name"/>
-    </div>
-    <button type="submit" class="button" value="Tìm Kiếm">
-        <i class="fa-solid fa-magnifying-glass"></i> Tìm Kiếm
-    </button>
-</form>
-
-
-<% unless @students.nil? %>
-    <h2>Count : <%= @students.count %></h2>
-    <% @students.each do |s| %>
-    <%= link_to s.full_name, s %>
-    <br>
-    <% end %>
+<% unless @enrollments.empty? %>
+  <h1>Thiếu Nhi</h1>
+  <%= render 'students/info_table' %>
 <% end %>
 
-<% unless @teachers.nil? %>
-    <h2>Count : <%= @teachers.count %></h2>
-    <% @teachers.each do |t| %>
-    <%= link_to t.full_name, t %>
-    <br>
-    <% end %>
+<% unless @guidances.empty? %>
+  <h1>Giáo Lý Viên</h1>
+  <%= render 'teachers/info_table' %>
 <% end %>
