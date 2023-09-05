@@ -1,0 +1,41 @@
+<h1>Thông Tin Giáo Lý Viên</h1>
+
+<fieldset>
+  <div>
+    <div class="label">Tên Thánh - Họ và Tên:</div>
+    <strong><%= @teacher.name %></strong>
+  </div>
+
+  <div>
+    <div class="label">Ngày Sinh:</div>
+    <strong><%= @teacher.date_birth %></strong>
+  </div>
+
+  <div>
+    <div class="label">Nghề Nghiệp:</div>
+    <strong><%= @teacher.occupation %></strong>
+  </div>
+
+  <div>
+    <div class="label">Bổn Mạng:</div>
+    <strong><%= @teacher.named_date %></strong>
+  </div>
+
+  <div>
+    <div class="label">Số Điện Thoại:</div>
+    <strong><%= @teacher.phone %></strong>
+  </div>
+
+  <div>
+    <div class="label">Email:</div>
+    <strong><%= @teacher.email %></strong>
+  </div>
+
+  <div>
+    <div class="label">Địa Chỉ:</div>
+    <strong><%= @teacher.address %></strong>
+  </div>
+
+</fieldset>
+
+<%= button_to 'Chỉnh Sửa', edit_teacher_path(@teacher), method: :get, :class => "button" %>

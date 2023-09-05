@@ -21,13 +21,16 @@
  <body>
    <nav>
       <a href="/logout">Đăng Xuất</a>
+     <% if @current_user %>
+       <a href="/users/<%= @current_user.id %>">Người dùng</a>
+     <% end %>
       <% if @current_user&.admin? %>
         <a href="/admin">Admin</a>
       <% end %>
       <a href="/search">Tìm Kiếm</a>
       <a href="/teachers">Thông Tin Giáo Lý Viên</a>
       <a href="/classrooms">Thông Tin Lớp Học</a>
-      <!--<a href="/students">Thông Tin Thiếu Nhi</a>-->
+      <!-- <a href="/students">Thông Tin Thiếu Nhi</a> -->
     </nav>
     
     <div id=btt onclick='window.scrollTo(0,0)'>&uarr;</div>

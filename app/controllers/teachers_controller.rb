@@ -20,13 +20,6 @@ class TeachersController < ApplicationController
   # GET /teachers/1
   # GET /teachers/1.json
   def show
-    @classrooms = @teacher.classrooms
-
-    @years = Classroom.all.map(&:year).uniq.sort { |x, y| -(x <=> y) }
-    @opts = []
-    Classroom.all.sort_by(&:sort_param).each do |classroom|
-      @opts.push([classroom.name, classroom.id]) if classroom.year == @years[0]
-    end
   end
 
   # GET /teachers/new

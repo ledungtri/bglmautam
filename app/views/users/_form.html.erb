@@ -26,10 +26,12 @@
     <%= f.password_field :password_confirmation %>
   </div>
 
-  <div class="field">
-    <%= f.label :teacher_id %>
-    <%= f.number_field :teacher_id %>
-  </div>
+  <% if @current_user&.admin? %>
+    <div class="field">
+      <%= f.label :teacher_id %>
+      <%= f.number_field :teacher_id %>
+    </div>
+  <% end %>
 
   <%= f.submit "Cập Nhật", :class => "button"%>
 <% end %>

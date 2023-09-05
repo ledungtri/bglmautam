@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[show edit update destroy]
-  before_action :auth, :admin?
+  before_action :auth
+  before_action :admin_or_self?, only: %i[show edit update]
+  before_action :admin, except: %i[show edit update]
 
   # GET /users
   # GET /users.json
@@ -11,6 +13,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    @teacher = @user.teacher
   end
 
   # GET /users/new
@@ -66,6 +69,14 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def admin_or_self?
+    return if @current_user&.admin?
+    return if @current_user.id == @user.id
+
+    flash[:warning] = 'Action not allowed. You are not an admin.'
+    redirect_to :back || root_path
+  end
 
   # Use callbacks to share common setup or constraints between actions.
   def set_user
