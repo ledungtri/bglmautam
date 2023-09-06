@@ -23,6 +23,7 @@
 #  index_teachers_on_deleted_at  (deleted_at)
 #
 class Teacher < ApplicationRecord
+  has_one :user
   has_many :guidances
   has_many :classrooms, through: :guidances
 
