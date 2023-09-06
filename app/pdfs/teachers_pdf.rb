@@ -49,7 +49,7 @@ class TeachersPdf < Prawn::Document
           guidance.classroom.name,
           guidance.position,
           teacher.name,
-          teacher.date_birth.strftime('%d/%m/%Y'),
+          teacher.date_birth&.strftime('%d/%m/%Y'),
           teacher.named_date,
           teacher.email,
           teacher.phone
