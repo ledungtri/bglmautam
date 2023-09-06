@@ -3,7 +3,6 @@
 ## TODO:
 ### Tech debts:
 * Create a user friendly UI for creating User.
-* Create a user friendly UI for Search page.
 * Use Vietnamese for the creating Cell page.
 * Move migration methods in MigrationController to rake tasks.
 * Dynamically show or hide buttons based on user permission.
