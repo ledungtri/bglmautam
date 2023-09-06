@@ -49,7 +49,7 @@
           <% end %>
         </select>
         <%= f.select :classroom_id, options_for_select(opts), :id => 'classroom_id' %>
-        <%= f.select :position, options_for_select(["Tu Sĩ", "GLV", "Tiền GLV", "Phụ Tá", "Kiến Tập"]), :style => "width: 98px"%>
+        <%= f.select :position, options_for_select(["Tu Sĩ", "Huynh Trưởng", "Dự Trưởng", "Hiệp Sĩ", "GLV", "Tiền GLV", "Phụ Tá", "Kiến Tập"]), :style => "width: 98px"%>
         <%= f.submit "Thêm Lớp Mới" %>
       <% end %>
     </td>
