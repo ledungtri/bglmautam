@@ -57,7 +57,7 @@ class StudentsPdf < Prawn::Document
         [
           index + 1,
           student.name,
-          student.date_birth.strftime('%d/%m/%Y'),
+          student.date_birth&.strftime('%d/%m/%Y'),
           student.address,
           student.father_phone,
           student.mother_phone,
