@@ -16,7 +16,7 @@
   
     <div>
       <div class="label">Ngày Sinh:</div>
-      <strong><%= @student.date_birth.strftime("%d-%m-%Y") %></strong>
+      <strong><%= @student.date_birth&.strftime("%d-%m-%Y") %></strong>
       <% if @student.place_birth? %>
         <div style="display: inline-block; width: 30px; text-align: center">tại</div>
         <strong><%= @student.place_birth %></strong>

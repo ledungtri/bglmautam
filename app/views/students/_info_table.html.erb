@@ -22,7 +22,7 @@
         <tr class = table-row>
           <td style='width: 20px'><%= index+1 %></td>
           <td style='width: 230px'><div class ='btn-link'><%= link_to student.name, student %></div></td>
-          <td style='width:  80px'><%= student.date_birth.strftime("%d-%m-%Y") %></td>
+          <td style='width:  80px'><%= student.date_birth&.strftime("%d-%m-%Y") %></td>
           <td style='width: 340px'><%= student.address %></td>
           <td style='width:  80px'><%= student.father_phone %></td>
           <td style='width:  80px'><%= student.mother_phone %></td>

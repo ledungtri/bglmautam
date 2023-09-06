@@ -87,7 +87,7 @@ class StudentsPersonalDetailsPdf < Prawn::Document
   end
 
   def basic
-    birth = @student.date_birth.strftime('%d-%m-%Y') if @student.date_birth
+    birth = @student.date_birth&.strftime('%d-%m-%Y') if @student.date_birth
 
     [['Tên Thánh', @student.christian_name, 'Họ và Tên', @student.full_name]] +
       [['Ngày Sinh', birth, 'Nơi Sinh', @student.place_birth]]
