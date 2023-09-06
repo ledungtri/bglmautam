@@ -25,19 +25,7 @@ class Guidance < ApplicationRecord
   end
 
   def position_sort_param
-    case position
-    when 'Tu Sĩ'
-      1
-    when 'GLV'
-      2
-    when 'Tiền GLV'
-      3
-    when 'Phụ Tá'
-      4
-    when 'Kiến Tập'
-      5
-    else
-      6
-    end
+    positions = ["Tu Sĩ", "Huynh Trưởng", "Dự Trưởng", "Hiệp Sĩ", "GLV", "Tiền GLV", "Phụ Tá", "Kiến Tập"]
+    positions.find_index(position) || positions.count
   end
 end
