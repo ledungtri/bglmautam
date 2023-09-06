@@ -26,7 +26,7 @@ class Teacher < ApplicationRecord
   has_many :guidances
   has_many :classrooms, through: :guidances
 
-  validates_presence_of :full_name, :date_birth
+  validates_presence_of :full_name
   validates_presence_of(:street_name, if: :street_number?) || :ward? || :district?
   validates :phone, format: { with: /\A\d+\z/, message: 'only allows numbers' }, allow_blank: true
   # email = right format, allow nil
