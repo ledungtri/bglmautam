@@ -57,7 +57,7 @@ class ApplicationController < ActionController::Base
 
 private
   def set_current_year
-    @current_year = params[:year]&.to_i || 2021
+    @current_year = params[:year]&.to_i || 2023
     @current_year_long = "#{@current_year} - #{@current_year + 1}"
     @subject = 'Học với Chúa Giêsu để nối kết tình thương'
   end
