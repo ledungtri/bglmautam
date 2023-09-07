@@ -5,5 +5,14 @@
   <div class="divider"></div>
 <% end %>
 
+<% if @current_user.admin? %>
+  <h1>Chức năng Admin</h1>
+  <fieldset>
+    <%= button_to "Tạo Lớp Học Mới", new_classroom_path, method: :get, :class => "button" %>
+    <%= button_to "Tạo Thiếu Nhi Mới", new_student_path, method: :get, :class => "button" %>
+    <%= button_to "Tạo Giáo Lý Viên Mới", new_teacher_path, method: :get, :class => "button" %>
+  </fieldset>
+  <div class="divider"></div>
+<% end %>
+
 <%= button_to 'Thay đổi thông tin đăng nhập', edit_user_path(@user), method: :get, class: 'button button-caution' %>
-<%= button_to 'Quay Lại', :back, method: :get, class: 'button' %>

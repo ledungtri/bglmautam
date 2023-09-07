@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::Base
   before_action :set_current_year, :set_current_user
-  before_action :admin?, only: [:admin]
   before_action :auth, only: [:search]
 
   def auth
@@ -12,9 +11,6 @@ class ApplicationController < ActionController::Base
 
     flash[:warning] = 'Action not allowed. You are not an admin.'
     redirect_to :back || root_path
-  end
-
-  def admin
   end
 
   def search

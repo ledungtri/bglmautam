@@ -24,9 +24,6 @@
      <% if @current_user %>
        <a href="/users/<%= @current_user.id %>">Người dùng</a>
      <% end %>
-      <% if @current_user&.admin? %>
-        <a href="/admin">Admin</a>
-      <% end %>
       <a href="/search">Tìm Kiếm</a>
       <a href="/teachers">Thông Tin Giáo Lý Viên</a>
       <a href="/classrooms">Thông Tin Lớp Học</a>
