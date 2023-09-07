@@ -20,6 +20,8 @@ class Enrollment < ApplicationRecord
 
   validates_presence_of :student_id, :classroom_id, :result
 
+  scope :for_year, -> (year) { joins(:classroom).where('classrooms.year = ?', year) }
+
   def sort_param
     student.sort_param
   end

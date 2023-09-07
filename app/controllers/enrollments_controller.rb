@@ -1,6 +1,8 @@
 class EnrollmentsController < ApplicationController
-  before_action :set_enrollment, only: %i[show edit update destroy]
-  before_action :auth, :admin?
+  before_action :set_enrollment, only: %i[show edit update destroy, admin_or_teacher_of?]
+  before_action :auth
+  before_action :admin?, except: %i[show edit update]
+  before_action :admin_or_teacher_of?, only: %i[show edit update]
 
   # GET /enrollments/1
   # GET /enrollments/1.json
@@ -48,6 +50,13 @@ class EnrollmentsController < ApplicationController
   end
 
   private
+
+  def admin_or_teacher_of?
+    return if @current_user&.admin_or_teacher_of_enrollment?(@enrollment)
+
+    flash[:warning] = 'Action not allowed.'
+    redirect_to :back || root_path
+  end
 
   # Use callbacks to share common setup or constraints between actions.
   def set_enrollment

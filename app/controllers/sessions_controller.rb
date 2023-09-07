@@ -6,7 +6,6 @@ class SessionsController < ApplicationController
     user = User.find_by_username(params[:username])
     if user&.authenticate(params[:password])
       session[:user_id] = user.id
-      session[:teacher_id] = user.teacher_id unless user.teacher_id.nil?
       flash[:success] = 'Logged in'
       redirect_to root_url
     else

@@ -1,5 +1,5 @@
 class StudentsController < ApplicationController
-  before_action :set_student, only: %i[show edit update destroy]
+  before_action :set_student, only: %i[show edit update destroy admin_or_teacher?]
   before_action :auth
   before_action :admin?, only: %i[new create destroy]
   before_action :admin_or_teacher?, only: %i[edit update]
@@ -105,8 +105,7 @@ class StudentsController < ApplicationController
   end
 
   def admin_or_teacher?
-    return if current_user&.admin?
-    return if current_teacher&.classrooms.any? { |classroom| @student.classrooms.include? classroom }
+    return if @current_user&.admin_or_teacher_of_student?(@student)
 
     flash[:warning] = 'Action not allowed.'
     redirect_to :back || root_path

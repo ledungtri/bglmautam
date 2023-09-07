@@ -57,7 +57,9 @@
   </tbody>
 </table>
 
-<button id="btn" onClick="showForm()" class="button">Thêm Lớp Mới</button>
+<% if @current_user&.admin? %>
+  <button id="btn" onClick="showForm()" class="button">Thêm Lớp Mới</button>
+<% end %>
 
 <script>
   function showForm() {

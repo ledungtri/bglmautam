@@ -110,7 +110,10 @@
       <strong><%= @student.mother_phone %></strong> 
     </div>
 </fieldset>
-<%= button_to 'Chỉnh Sửa', edit_student_path(@student), method: :get, :class => "button" %>
+
+<% if @current_user&.admin_or_teacher_of_student?(@student) %>
+  <%= button_to 'Chỉnh Sửa', edit_student_path(@student), method: :get, :class => "button" %>
+<% end %>
 <%= button_to "In Sơ Yếu Lý Lịch", student_path(format: "pdf"), method: :get, :class => "button" %>
 
 <div class="divider"></div> 
@@ -150,7 +153,6 @@
             </div>
           <% end %>
           <select id="year_combobox" onchange="changeClassroom()">
-            <% selected_year = @years[0] %>
             <% @years.each do |year| %>
               <option value="<%=year%>"><%= year.to_s + " - " + (year.to_i+1).to_s %></option>
             <% end %>
@@ -165,7 +167,9 @@
   </tbody>
 </table>
 
-<button id="btn" onClick="showForm()" class="button">Thêm Lớp Mới</button>
+<% if @current_user&.admin? %>
+  <button id="btn" onClick="showForm()" class="button">Thêm Lớp Mới</button>
+<% end %>
 
 <script>
   function showForm() {

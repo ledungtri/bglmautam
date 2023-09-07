@@ -20,6 +20,8 @@ class Guidance < ApplicationRecord
 
   validates_presence_of :teacher_id, :classroom_id
 
+  scope :for_year, -> (year) { joins(:classroom).where('classrooms.year = ?', year) }
+
   def sort_param
     "#{classroom.sort_param} #{position_sort_param}"
   end

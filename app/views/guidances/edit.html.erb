@@ -2,4 +2,6 @@
 
 <%= render 'form' %>
 <%= button_to 'Quay Lại', :back, method: :get, class: "button" %>
-<%= button_to 'Xóa', @guidance, method: :delete, data: { confirm: 'Are you sure?'}, class: "button button-caution" %>
+<% if @current_user&.admin? %>
+  <%= button_to 'Xóa', @guidance, method: :delete, data: { confirm: 'Are you sure?'}, class: "button button-caution" %>
+<% end %>

@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[show edit update destroy]
+  before_action :set_user, only: %i[show edit update destroy admin_or_self?]
   before_action :auth
-  before_action :admin_or_self?, only: %i[show edit update]
   before_action :admin, except: %i[show edit update]
+  before_action :admin_or_self?, only: %i[show edit update]
 
   # GET /users
   # GET /users.json
@@ -71,8 +71,7 @@ class UsersController < ApplicationController
   private
 
   def admin_or_self?
-    return if @current_user&.admin?
-    return if @current_user.id == @user.id
+    return if @current_user&.admin_or_self?(@user)
 
     flash[:warning] = 'Action not allowed. You are not an admin.'
     redirect_to :back || root_path

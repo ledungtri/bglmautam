@@ -13,5 +13,7 @@
   <%= @guidance.classroom_id %>
 </p>
 
-<%= button_to 'Cập Nhật', edit_guidance_path(@guidance), method: :get, class: "button" %>
+<% if @current_user&.admin? %>
+  <%= button_to 'Cập Nhật', edit_guidance_path(@guidance), method: :get, class: "button" %>
+<% end %>
 <%= button_to 'Quay Lại', :back, method: :get, class: "button" %>

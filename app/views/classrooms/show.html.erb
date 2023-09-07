@@ -15,8 +15,11 @@
     <div class="label">Vị Trí Lớp:</div>
     <strong><%= @classroom.location %></strong>
   </div>
-</fieldset>  
+</fieldset>
+
+<% if @current_user&.admin? %>
 <%= button_to 'Chỉnh Sửa', edit_classroom_path(@classroom), method: :get, :class =>"button" %>
+<% end %>
 
 <div class="divider"></div>
 <h1>Giáo Lý Viên</h1>
@@ -29,12 +32,12 @@
 
 <%= render 'students/info_table' %>
 
-<%= button_to "In Danh Sách Lớp",
+<%= button_to "In PDF Danh Sách Lớp",
               classroom_path(format: :pdf),
               method: :get,
               class: :button
 %>
-<%= button_to "In Danh Sách Lớp (Excel)",
+<%= button_to "Xuất Excel Danh Sách Lớp",
               classroom_path(format: :xlsx),
               method: :get,
               class: :button
