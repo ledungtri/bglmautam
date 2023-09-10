@@ -41,7 +41,7 @@ class ApplicationController < ActionController::Base
     end
 
     @students = params[:query] ? Student.where('full_name like ?', "%#{titleize(params[:query])}%") : []
-    @enrollments = @students&.map { |s| s.enrollments.last }
+    @enrollments = @students&.map { |s| s.enrollments.last }.compact
 
     @teachers = params[:query] ? Teacher.where('full_name like ?', "%#{titleize(params[:query])}%") : []
     @guidances = @teachers&.map { |t| t.guidances.last }
