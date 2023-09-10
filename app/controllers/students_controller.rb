@@ -7,7 +7,7 @@ class StudentsController < ApplicationController
 
   # GET /students
   # GET /students.json
-  # def index
+   def index
      @enrollments = Enrollment.joins(:classroom).where('classrooms.year = ?', @current_year).sort_by(&:sort_param)
   
      respond_to do |format|
