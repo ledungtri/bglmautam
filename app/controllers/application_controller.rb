@@ -44,7 +44,7 @@ class ApplicationController < ActionController::Base
     @enrollments = @students&.map { |s| s.enrollments.last }.compact
 
     @teachers = params[:query] ? Teacher.where('full_name like ?', "%#{titleize(params[:query])}%") : []
-    @guidances = @teachers&.map { |t| t.guidances.last }
+    @guidances = @teachers&.map { |t| t.guidances.last }.compact
   end
 
   # Prevent CSRF attacks by raising an exception.
