@@ -40,9 +40,9 @@ class TeachersCustomPdf < Prawn::Document
   end
 
   def line_item_rows
-    [['STT', 'GLV'] + @columns] +
+    [['STT', 'Lớp', 'Phụ Trách', 'GLV'] + @columns] +
       @guidances.each_with_index.map do |guidance, index|
-        [index + 1,guidance.teacher.name] + [""] * @columns.length
+        [index + 1, guidance.classroom.name, guidance.position, guidance.teacher.name] + [""] * @columns.length
       end
   end
 
