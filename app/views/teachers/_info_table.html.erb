@@ -20,7 +20,7 @@
 
       <tr class="table-row">
         <td style='width:  30px'><%= index+1 %></td> 
-        <td style='width:  80px'><%= link_to classroom.name, classroom %></td>
+        <td style='width:  80px'><%= classroom ? link_to classroom.name, classroom : '' %></td>
         <td style='width:  80px'><%= link_to guidance.position || '---', edit_guidance_path(guidance) %></td>
         <td style='width: 280px'><%= link_to teacher.name, teacher %></td>
         <td style='width: 100px'><%= teacher.date_birth&.strftime("%d-%m-%Y") %></td>

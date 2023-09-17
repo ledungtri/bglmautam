@@ -26,8 +26,8 @@
           <td style='width: 340px'><%= student.address %></td>
           <td style='width:  80px'><%= student.father_phone %></td>
           <td style='width:  80px'><%= student.mother_phone %></td>
-          <td style='width:  73px'><%= link_to classroom.name, classroom %></td>
-          <td style='width:  73px'><%= link_to result, edit_enrollment_path(enrollment) %></td>
+          <td style='width:  73px'><%= classroom ? link_to classroom.name, classroom : '' %></td>
+          <td style='width:  73px'><%= result ? link_to result, edit_enrollment_path(enrollment) : '' %></td>
         </tr>
       <% end %>
     </tbody>
