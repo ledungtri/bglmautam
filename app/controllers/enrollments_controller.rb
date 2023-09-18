@@ -1,5 +1,5 @@
 class EnrollmentsController < ApplicationController
-  before_action :set_enrollment, only: %i[show edit update destroy, admin_or_teacher_of?]
+  before_action :set_enrollment, only: %i[show edit update destroy admin_or_teacher_of?]
   before_action :auth
   before_action :admin?, except: %i[show edit update]
   before_action :admin_or_teacher_of?, only: %i[show edit update]
