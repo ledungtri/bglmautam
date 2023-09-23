@@ -2,7 +2,7 @@ class CustomStudentsPdf < Prawn::Document
   def initialize(classroom, title_text, page_layout, columns)
     super(page_size: 'A4', page_layout: page_layout, margin: 20)
     @classroom = classroom
-    @students = classroom.students
+    @enrollments = classroom.enrollments.sort_by(&:sort_param)
     @title_text = title_text
     @columns = columns
     @width = page_layout == :landscape ? 800 : 550
@@ -42,8 +42,8 @@ class CustomStudentsPdf < Prawn::Document
 
   def line_item_rows
     [['STT', 'Tên Thánh - Họ và Tên'] + @columns] +
-      @students.each_with_index.map do |student, index|
-        [index + 1,student.name] + [""] * @columns.length
+      @enrollments.each_with_index.map do |enrollment, index|
+        [index + 1, enrollment.student.name] + [""] * @columns.length
       end
   end
 
