@@ -16,6 +16,14 @@
     </div>
 
     <div>
+      <div class="label">Sắp Xếp:</div>
+      <%= radio_button_tag :sort, :classroom, true, width: '10px' %>
+      <%= label_tag :sort_classroom, 'Theo lớp' %>
+      <%= radio_button_tag :sort, :name %>
+      <%= label_tag :sort_name, 'Theo tên' %>
+    </div>
+
+    <div>
       <div class="label">Các Cột:</div>
       <%= text_field_tag :columns, nil, required: true, placeholder: 'cột 1,cột 2,cột 3,...' %>
     </div>

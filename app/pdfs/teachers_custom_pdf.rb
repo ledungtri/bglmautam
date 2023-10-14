@@ -34,15 +34,17 @@ class TeachersCustomPdf < Prawn::Document
 
         column(0).style(align: :center)
         column(0).style(width: 30)
-        column(3).style(width: 220)
+        column(1).style(width: 150)
+        column(2).style(width: 60, align: :center)
+        column(3).style(width: 60, align: :center)
       end
     end
   end
 
   def line_item_rows
-    [['STT', 'Lớp', 'Phụ Trách', 'GLV'] + @columns] +
+    [['STT', 'GLV', 'Lớp', 'Phụ Trách'] + @columns] +
       @guidances.each_with_index.map do |guidance, index|
-        [index + 1, guidance.classroom.name, guidance.position, guidance.teacher.name] + [""] * @columns.length
+        [index + 1, guidance.teacher.name, guidance.classroom.name, guidance.position] + [""] * @columns.length
       end
   end
 

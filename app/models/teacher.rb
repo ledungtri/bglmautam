@@ -39,4 +39,22 @@ class Teacher < ApplicationRecord
   def address
     "#{street_number} #{street_name}, #{ward}, #{district}" if street_name?
   end
+
+  def sort_param
+    name.split(/\s+/).reverse!.join(' ')
+        .gsub(/[áàảãạăắặằẳẵâấầẩẫậ]/, 'a')
+        .gsub(/[íìỉĩị]/, 'i')
+        .gsub(/[úùủũụưứừửữự]/, 'u')
+        .gsub(/[éèẻẽẹêếềểễệ]/, 'e')
+        .gsub(/[óòỏõọôốồổỗộơớờởỡợ]/, 'o')
+        .gsub(/[đ]/, 'd')
+        .gsub(/[ýỳỷỹỵ]/, 'y')
+        .gsub(/[ÁÀẢÃẠĂẮẶẰẲẴÂẤẦẨẪẬ]/, 'A')
+        .gsub(/[ÍÌỈĨỊ]/, 'I')
+        .gsub(/[ÚÙỦŨỤƯỨỪỬỮỰ]/, 'U')
+        .gsub(/[ÉÈẺẼẸÊẾỀỂỄỆ]/, 'E')
+        .gsub(/[ÓÒỎÕỌÔỐỒỔỖỘƠỚỜỞỠỢ]/, 'O')
+        .gsub(/[Đ]/, 'D')
+        .gsub(/[ÝỲỶỸỴ]/, 'Y')
+  end
 end
