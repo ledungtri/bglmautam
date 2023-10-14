@@ -34,7 +34,7 @@ class TeachersCustomPdf < Prawn::Document
 
         column(0).style(align: :center)
         column(0).style(width: 30)
-        column(1).style(width: 150)
+        column(1).style(width: 160)
         column(2).style(width: 60, align: :center)
         column(3).style(width: 60, align: :center)
       end
