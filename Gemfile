@@ -43,6 +43,10 @@ gem 'seed_dump'
 # For soft delete
 gem 'paranoia', '~> 2.2'
 
+# For tracking changes to the models, for auditing or versioning
+# https://github.com/paper-trail-gem/paper_trail
+gem "paper_trail", "~> 10.3"
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'

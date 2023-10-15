@@ -95,6 +95,9 @@ GEM
       racc (~> 1.4)
     nokogiri (1.12.5-x86_64-linux)
       racc (~> 1.4)
+    paper_trail (10.3.1)
+      activerecord (>= 4.2)
+      request_store (~> 1.1)
     paranoia (2.4.3)
       activerecord (>= 4.0, < 6.2)
     pdf-core (0.9.0)
@@ -133,6 +136,8 @@ GEM
       thor (>= 0.18.1, < 2.0)
     rake (13.0.6)
     rdoc (4.3.0)
+    request_store (1.5.1)
+      rack (>= 1.4)
     rubyzip (0.9.9)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
@@ -190,6 +195,7 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   jbuilder (~> 2.0)
   jquery-rails
+  paper_trail (~> 10.3)
   paranoia (~> 2.2)
   pg
   prawn
