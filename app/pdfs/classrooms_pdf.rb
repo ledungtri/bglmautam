@@ -29,7 +29,7 @@ class ClassroomsPdf < Prawn::Document
 
       row(0).style(align: :center, font_style: :bold, height: 35, valign: :center)
       column(0..9).style(align: :center)
-      column(2..9).style(width: 55)
+      column(3..9).style(width: 55)
     end
   end
 
