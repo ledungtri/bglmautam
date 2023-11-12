@@ -1,8 +1,13 @@
-<h1>Cập Nhật Kết Quả</h1>
+<h1>Kết Quả Học Tập</h1>
 
 <%= render 'form' %>
+<div class="divider"></div>
+
+<%= render 'evaluations/form', evaluation: @enrollment.evaluations.first_or_initialize %>
+<div class="divider"></div>
+
 <%= button_to 'Quay Lại', :back, method: :get, :class => "button"  %>
 
 <% if @current_user&.admin? %>
-  <%= button_to 'Xóa', @enrollment, method: :delete, data: { confirm: 'Are you sure?' }, class: "button button-caution" %>
+  <%= button_to 'Xóa Khỏi Lớp', @enrollment, method: :delete, data: { confirm: 'Are you sure?' }, class: "button button-caution" %>
 <% end %>

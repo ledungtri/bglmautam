@@ -19,6 +19,7 @@
 class Classroom < ApplicationRecord
   has_many :enrollments
   has_many :students, through: :enrollments
+  has_many :evaluations, through: :enrollments
 
   has_many :guidances
   has_many :teachers, through: :guidances

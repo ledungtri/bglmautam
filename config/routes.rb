@@ -11,13 +11,19 @@ Rails.application.routes.draw do
   get '/classrooms/custom_export', to: 'classrooms#classrooms_custom_export_view'
   post '/classrooms/custom_export', to: 'classrooms#classrooms_custom_export'
   resources :classrooms do
+    resources :evaluations, only: [:index]
+
     get '/students_personal_details', to: 'classrooms#students_personal_details'
     get '/custom_export', to: 'classrooms#custom_export_view'
     post '/custom_export', to: 'classrooms#custom_export'
   end
 
   resources :guidances
-  resources :enrollments
+  resources :enrollments do
+    resources :evaluations, except: [:index]
+  end
+  resources :evaluations
+
 
   resources :users
   resources :sessions, only: [:create]

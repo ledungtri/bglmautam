@@ -18,6 +18,8 @@ class Enrollment < ApplicationRecord
   belongs_to :student
   belongs_to :classroom
 
+  has_many :evaluations, as: :evaluable
+
   validates_presence_of :student_id, :classroom_id, :result
 
   scope :for_year, -> (year) { joins(:classroom).where('classrooms.year = ?', year) }

@@ -1,0 +1,24 @@
+<%= form_for(evaluation) do |f| %>
+  <% if evaluation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(evaluation.errors.count, "error") %> prohibited this evaluation from being saved:</h2>
+
+      <ul>
+      <% evaluation.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <fieldset>
+    <legend><h3>Nhận Xét Quá Trình</h3></legend>
+
+    <%= f.text_area :content, size: '115x10' %>
+    <%= f.hidden_field :evaluable_type %>
+    <%= f.hidden_field :evaluable_id %>
+
+    <%= f.submit "Cập Nhật", :class =>"button" %>
+  </fieldset>
+
+<% end %>

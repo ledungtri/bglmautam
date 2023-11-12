@@ -11,20 +11,25 @@
     </div>
   <% end %>
 
-  <div>
-    <div class="label">Thiếu Nhi:</div>
-    <%= @enrollment.student.name %>
-  </div>
-  
-  <div>
-    <div class="label">Lớp:</div>
-    <%= @enrollment.classroom.name %>
-  </div>
+  <fieldset>
+    <legend><h3>Cập Nhật Kết Quả</h3></legend>
 
-  <div>
-    <div class="label">Kết Quả:</div>
-    <%= f.select :result, options_for_select(['Học Lại', 'Nghỉ Luôn', 'Lên Lớp', 'Đang Học', 'Dự Thính', 'Chuyển Xứ'], @enrollment.result) %>
-  </div>
+    <div>
+      <div class="label">Thiếu Nhi:</div>
+      <%= @enrollment.student.name %>
+    </div>
 
-  <%= f.submit "Cập Nhật", :class =>"button" %>
+    <div>
+      <div class="label">Lớp:</div>
+      <%= @enrollment.classroom.name %>
+    </div>
+
+    <div>
+      <div class="label">Kết Quả:</div>
+      <%= f.select :result, options_for_select(['Học Lại', 'Nghỉ Luôn', 'Lên Lớp', 'Đang Học', 'Dự Thính', 'Chuyển Xứ'], @enrollment.result) %>
+    </div>
+
+    <%= f.submit "Cập Nhật", :class =>"button" %>
+  </fieldset>
+
 <% end %>
