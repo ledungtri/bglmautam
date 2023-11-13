@@ -58,7 +58,7 @@ private
   end
 
   def teacher_of_classroom?(classroom)
-    classroom == self.teacher&.guidances&.for_year(2021)&.first&.classroom
+    classroom == self.teacher&.guidances&.for_year(@current_year)&.first&.classroom
   end
 
   def teacher_of_enrollment?(enrollment)
