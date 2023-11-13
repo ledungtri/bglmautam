@@ -111,7 +111,7 @@
     </div>
 </fieldset>
 
-<% if @current_user&.admin_or_teacher_of_student?(@student) %>
+<% if @current_user&.admin_or_teacher_of_student?(@student, @current_year) %>
   <%= button_to 'Chỉnh Sửa', edit_student_path(@student), method: :get, :class => "button" %>
 <% end %>
 <%= button_to "In Sơ Yếu Lý Lịch", student_path(format: "pdf"), method: :get, :class => "button" %>

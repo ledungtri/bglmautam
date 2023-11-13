@@ -42,7 +42,7 @@ class EvaluationsController < ApplicationController
 private
 
   def admin_or_teacher_of?
-    return if @current_user&.admin_or_teacher_of_enrollment?(@evaluation.evaluable)
+    return if @current_user&.admin_or_teacher_of_enrollment?(@evaluation.evaluable, @current_year)
 
     flash[:warning] = 'Action not allowed.'
     redirect_to :back || root_path

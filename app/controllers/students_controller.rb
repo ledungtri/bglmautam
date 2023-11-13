@@ -105,7 +105,7 @@ class StudentsController < ApplicationController
   end
 
   def admin_or_teacher?
-    return if @current_user&.admin_or_teacher_of_student?(@student)
+    return if @current_user&.admin_or_teacher_of_student?(@student, @current_year)
 
     flash[:warning] = 'Action not allowed.'
     redirect_to :back || root_path

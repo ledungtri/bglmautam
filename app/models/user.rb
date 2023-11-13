@@ -23,8 +23,8 @@ class User < ApplicationRecord
     admin? || self?(user)
   end
 
-  def admin_or_teacher_of_classroom?(classroom)
-    admin? || teacher_of_classroom?(classroom)
+  def admin_or_teacher_of_classroom?(classroom, year)
+    admin? || teacher_of_classroom?(classroom, year)
   end
 
   def admin_or_self_teacher?(teacher)
@@ -35,12 +35,12 @@ class User < ApplicationRecord
     admin? || self_guidance?(guidance)
   end
 
-  def admin_or_teacher_of_enrollment?(enrollment)
-    admin? || teacher_of_enrollment?(enrollment)
+  def admin_or_teacher_of_enrollment?(enrollment, year)
+    admin? || teacher_of_enrollment?(enrollment, year)
   end
 
-  def admin_or_teacher_of_student?(student)
-    admin? || teacher_of_student?(student)
+  def admin_or_teacher_of_student?(student, year)
+    admin? || teacher_of_student?(student, year)
   end
 
 private
@@ -57,15 +57,15 @@ private
     self_teacher?(guidance.teacher)
   end
 
-  def teacher_of_classroom?(classroom)
-    classroom == self.teacher&.guidances&.for_year(@current_year)&.first&.classroom
+  def teacher_of_classroom?(classroom, year)
+    classroom == self.teacher&.guidances&.for_year(year)&.first&.classroom
   end
 
-  def teacher_of_enrollment?(enrollment)
-    teacher_of_classroom?(enrollment&.classroom)
+  def teacher_of_enrollment?(enrollment, year)
+    teacher_of_classroom?(enrollment&.classroom, year)
   end
 
-  def teacher_of_student?(student)
-    teacher_of_enrollment?(student.enrollments.for_year(@current_year)&.first)
+  def teacher_of_student?(student, year)
+    teacher_of_enrollment?(student.enrollments.for_year(year)&.first, year)
   end
 end
