@@ -1,11 +1,10 @@
-#This file is a note to self on what can be improve in this project.
+# This file is a note to self on what can be improve in this project.
 
 ## TODO:
 ### Tech debts:
 * Create a user friendly UI for creating User.
 * Use Vietnamese for the creating Cell page.
 * Move migration methods in MigrationController to rake tasks.
-* Dynamically show or hide buttons based on user permission.
 * Upgrade to latest version for Ruby and Rails.
 ### New features:
 * Allow teachers to check students and teachers weekly attendances.

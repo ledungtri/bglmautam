@@ -4,11 +4,10 @@ class StudentsController < ApplicationController
   before_action :admin?, only: %i[new create destroy]
   before_action :admin_or_teacher?, only: %i[edit update]
 
-
   # GET /students
   # GET /students.json
    def index
-     @enrollments = Enrollment.joins(:classroom).where('classrooms.year = ?', @current_year).sort_by(&:sort_param)
+     @enrollments = Enrollment.where('classrooms.year = ?', @current_year).sort_by(&:sort_param)
   
      respond_to do |format|
        format.html

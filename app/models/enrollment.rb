@@ -22,7 +22,9 @@ class Enrollment < ApplicationRecord
 
   validates_presence_of :student_id, :classroom_id, :result
 
-  scope :for_year, -> (year) { joins(:classroom).where('classrooms.year = ?', year) }
+  default_scope { includes(:classroom) }
+  default_scope { order('classrooms.year') }
+  scope :for_year, -> (year) { where('classrooms.year' => year) }
 
   def sort_param
     student.sort_param

@@ -129,14 +129,15 @@
     </tr>
   </thead>
   <tbody>
-    <% @student.classrooms.sort_by {|classroom| classroom.year}.each do |classroom| %>
-    <tr class="table-row">
-      <td style="width: 200px; font-size: 14px"><%= classroom.long_year %></td>
-      <td style="width: 200px; font-size: 14px"><%= link_to classroom.name, classroom %></td>
-      <td style="width: 200px; font-size: 14px"><%= link_to @student.result(classroom), edit_enrollment_path(Enrollment.where(student_id: @student.id, classroom_id: classroom.id).take.id) %></td>
-    </tr>
+    <% @student.enrollments.each do |enrollment| %>
+      <% classroom = enrollment.classroom %>
+      <tr class="table-row">
+        <td style="width: 200px; font-size: 14px"><%= classroom.long_year %></td>
+        <td style="width: 200px; font-size: 14px"><%= link_to classroom.name, classroom %></td>
+        <td style="width: 200px; font-size: 14px"><%= link_to enrollment.result, edit_enrollment_path(enrollment) %></td>
+      </tr>
     <% end %>
-    
+
     <tr class="table-row">
       <td id="form" style="display: none" colspan="3">
         <% @enrollment = Enrollment.new %>
