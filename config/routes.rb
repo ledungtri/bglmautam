@@ -20,16 +20,10 @@ Rails.application.routes.draw do
   resources :enrollments
   resources :evaluations
 
-
   resources :users
   resources :sessions, only: [:create]
   get '/login', to: 'sessions#new', as: 'login'
   get '/logout', to: 'sessions#destroy', as: 'logout'
 
   get '/search', to: 'application#search'
-
-  # TODO: Move to rake tasks
-  # get '/migration/set_end_of_year_result', to: 'migration#set_end_of_year_result'
-  # get '/migration/create_new_classrooms', to: 'migration#create_new_classrooms'
-  # get '/migration/assign_new_classrooms', to: 'migration#assign_new_classrooms'
 end

@@ -47,6 +47,9 @@ gem 'paranoia', '~> 2.2'
 # https://github.com/paper-trail-gem/paper_trail
 gem "paper_trail", "~> 10.3"
 
+# For command line prompt
+gem "tty-prompt"
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
