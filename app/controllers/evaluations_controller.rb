@@ -35,7 +35,6 @@ class EvaluationsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to evaluations_url, notice: "Evaluation was successfully destroyed." }
-      format.json { head :no_content }
     end
   end
 

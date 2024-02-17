@@ -40,10 +40,8 @@ class TeachersController < ApplicationController
       if @teacher.save
         flash[:success] = 'Teacher was successfully created.'
         format.html { redirect_to @teacher }
-        format.json { render :show, status: :created, location: @teacher }
       else
         format.html { render :new }
-        format.json { render json: @teacher.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -55,10 +53,8 @@ class TeachersController < ApplicationController
       if @teacher.update(teacher_params)
         flash[:success] = 'Teacher was successfully updated.'
         format.html { redirect_to @teacher }
-        format.json { render :show, status: :ok, location: @teacher }
       else
         format.html { render :edit }
-        format.json { render json: @teacher.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -72,7 +68,6 @@ class TeachersController < ApplicationController
     respond_to do |format|
       flash[:success] = 'Teacher was successfully destroyed.'
       format.html { redirect_to teachers_url }
-      format.json { head :no_content }
     end
   end
 

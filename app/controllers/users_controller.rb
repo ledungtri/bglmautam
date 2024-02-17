@@ -34,10 +34,8 @@ class UsersController < ApplicationController
       if @user.save
         flash[:success] = 'User was successfully created.'
         format.html { redirect_to @user }
-        format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -49,10 +47,8 @@ class UsersController < ApplicationController
       if @user.update(user_params)
         flash[:success] = 'User was successfully updated.'
         format.html { redirect_to @user }
-        format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -64,7 +60,6 @@ class UsersController < ApplicationController
     respond_to do |format|
       flash[:success] = 'User was successfully destroyed.'
       format.html { redirect_to users_url }
-      format.json { head :no_content }
     end
   end
 

@@ -60,10 +60,8 @@ class StudentsController < ApplicationController
       if @student.save
         flash[:success] = 'Student was successfully created.'
         format.html { redirect_to @student }
-        format.json { render :show, status: :created, location: @student }
       else
         format.html { render :new }
-        format.json { render json: @student.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -75,10 +73,8 @@ class StudentsController < ApplicationController
       if @student.update(student_params)
         flash[:success] = 'Student was successfully updated.'
         format.html { redirect_to @student }
-        format.json { render :show, status: :ok, location: @student }
       else
         format.html { render :edit }
-        format.json { render json: @student.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -92,7 +88,6 @@ class StudentsController < ApplicationController
     respond_to do |format|
       flash[:success] = 'Student was successfully destroyed.'
       format.html { redirect_to students_url }
-      format.json { head :no_content }
     end
   end
 
