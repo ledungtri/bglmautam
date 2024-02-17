@@ -15,16 +15,12 @@
 #  index_enrollments_on_deleted_at  (deleted_at)
 #
 class Enrollment < ApplicationRecord
-  belongs_to :student
-  belongs_to :classroom
+  include ClassroomRelationship
 
+  belongs_to :student
   has_many :evaluations, as: :evaluable
 
-  validates_presence_of :student_id, :classroom_id, :result
-
-  default_scope { includes(:classroom) }
-  default_scope { order('classrooms.year') }
-  scope :for_year, -> (year) { where('classrooms.year' => year) }
+  validates_presence_of :student_id, :result
 
   def sort_param
     student.sort_param

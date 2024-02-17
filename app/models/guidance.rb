@@ -15,14 +15,11 @@
 #  index_guidances_on_deleted_at  (deleted_at)
 #
 class Guidance < ApplicationRecord
+  include ClassroomRelationship
+
   belongs_to :teacher
-  belongs_to :classroom
 
-  validates_presence_of :teacher_id, :classroom_id
-
-  default_scope { includes(:classroom) }
-  default_scope { order('classrooms.year') }
-  scope :for_year, -> (year) { where('classrooms.year' => year) }
+  validates_presence_of :teacher_id
 
   def sort_param
     "#{classroom.sort_param} #{position_sort_param}"
