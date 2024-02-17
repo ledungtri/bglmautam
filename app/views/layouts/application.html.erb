@@ -36,19 +36,19 @@
 
 <body>
   <main>
-      <% flash.each do |name, msg| %>
-        <%= content_tag :div, msg, class: "notify top-left do-show", :data => {:status => name}  %>
-      <% end %>
-      <article>
-        <%= yield %>
-      </article>
+    <% flash.each do |name, msg| %>
+      <%= content_tag :div, msg, class: "notify top-left do-show", :data => {:status => name}  %>
+    <% end %>
+    <article>
+      <%= yield %>
+    </article>
   </main>
 </body>
 
 <footer>
     <div style="text-align: center;">
-      Địa Chỉ: 102 Phan Huy Thực, phường Tân Kiểng, Quận 7 <br>
-      Điện Thoại: (028)-3771-1090 <br>
+      Địa Chỉ: 102 Phan Huy Thực, phường Tân Kiểng, Quận 7<br>
+      Điện Thoại: (028)-3771-1090<br>
       Email: gx.mautam@gmail.com<br>
     </div>
 </footer>
