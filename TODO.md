@@ -3,7 +3,6 @@
 ## TODO:
 ### Tech debts:
 * Create a user friendly UI for creating User.
-* Use Vietnamese for the creating Cell page.
 * Use Production env.
 ### New features:
 * Allow teachers to check students and teachers weekly attendances.
