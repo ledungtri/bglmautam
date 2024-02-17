@@ -107,7 +107,7 @@ class StudentsController < ApplicationController
     return if @current_user&.admin_or_teacher_of_student?(@student, @current_year)
 
     flash[:warning] = 'Action not allowed.'
-    redirect_to :back || root_path
+    redirect_back(fallback_location: root_path)
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.

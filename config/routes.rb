@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   post '/teachers/custom_export', to: 'teachers#teachers_custom_export'
   resources :teachers
 
+  get '/search', to: 'application#search'
+
   get '/classrooms/custom_export', to: 'classrooms#classrooms_custom_export_view'
   post '/classrooms/custom_export', to: 'classrooms#classrooms_custom_export'
   resources :classrooms do
@@ -24,6 +26,4 @@ Rails.application.routes.draw do
   resources :sessions, only: [:create]
   get '/login', to: 'sessions#new', as: 'login'
   get '/logout', to: 'sessions#destroy', as: 'logout'
-
-  get '/search', to: 'application#search'
 end

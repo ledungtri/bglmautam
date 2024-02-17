@@ -55,7 +55,7 @@ class EnrollmentsController < ApplicationController
     return if @current_user&.admin_or_teacher_of_enrollment?(@enrollment, @current_year)
 
     flash[:warning] = 'Action not allowed.'
-    redirect_to :back || root_path
+    redirect_back(fallback_location: root_path)
   end
 
   # Use callbacks to share common setup or constraints between actions.

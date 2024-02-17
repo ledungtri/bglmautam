@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
     return if @current_user&.admin?
 
     flash[:warning] = 'Action not allowed. You are not an admin.'
-    redirect_to :back || root_path
+    redirect_back(fallback_location: root_path)
   end
 
   def search

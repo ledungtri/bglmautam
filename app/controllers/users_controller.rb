@@ -74,7 +74,7 @@ class UsersController < ApplicationController
     return if @current_user&.admin_or_self?(@user)
 
     flash[:warning] = 'Action not allowed. You are not an admin.'
-    redirect_to :back || root_path
+    redirect_back(fallback_location: root_path)
   end
 
   # Use callbacks to share common setup or constraints between actions.
