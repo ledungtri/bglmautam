@@ -1,28 +1,13 @@
-class ClassroomsPdf < Prawn::Document
+class ClassroomsPdf < AbstractPdf
   def initialize(classrooms)
-    super(page_size: 'A4', margin: 20)
     @classrooms = classrooms
-    self.font_size = 8
-
-    font_families.update('HongHa' => {
-      normal: Rails.root.join('app/assets/fonts/UVNHongHa_R.TTF'),
-      bold: Rails.root.join('app/assets/fonts/14_13787_UVNHongHa_B.TTF')
-    })
-    font 'HongHa'
-
-    title
-    move_down 20
-    line_items
-    footer
+    title_text = "Thống Kê Các Lớp Năm Học #{@classrooms.first.long_year}"
+    sub_title_text = "Số Lượng: #{@classrooms.count}"
+    super(:portrait, title_text, sub_title_text)
   end
 
-  def title
-    text "Thống Kê Các Lớp Năm Học #{@classrooms.first.long_year}", align: :center, size: 15, style: :bold
-    text "Số Lượng: #{@classrooms.count}", align: :center, size: 10
-  end
-
-  def line_items
-    table line_item_rows do
+  def body
+    table line_items do
       self.header = true
       self.position = :center
       self.row_colors = %w[e5e3e3 FFFFFF]
@@ -33,7 +18,7 @@ class ClassroomsPdf < Prawn::Document
     end
   end
 
-  def line_item_rows
+  def line_items
     [['STT', 'Tên Lớp', 'Vị Trí', 'Tổng Số', 'Nghỉ Luôn', 'Chuyển Xứ', 'Đang Học', 'Lên Lớp', 'Dự Thính', 'Học Lại']] +
       @classrooms.map do |classroom|
         [
@@ -61,14 +46,5 @@ class ClassroomsPdf < Prawn::Document
          @classrooms.inject(0) { |sum, classroom| sum + classroom.enrollments.where(result: 'Dự Thính').count },
          @classrooms.inject(0) { |sum, classroom| sum + classroom.enrollments.where(result: 'Học Lại').count }
       ]]
-  end
-
-  def footer
-    bounding_box [bounds.left, bounds.bottom + 10], width: bounds.width do
-      text 'Ban Giáo Lý Giáo Xứ  Mẫu Tâm', size: 6, align: :right
-    end
-    bounding_box [bounds.left, bounds.bottom + 10], width: bounds.width do
-      text "In ngày: #{Time.zone.now.strftime('%d/%m/%Y')}", size: 6, align: :left
-    end
   end
 end

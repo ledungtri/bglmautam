@@ -1,32 +1,16 @@
-class CompactStudentsPdf < Prawn::Document
+class CompactStudentsPdf < AbstractPdf
+
   def initialize(enrollments, title_text)
-    super(page_size: 'A4', page_layout: :portrait, margin: 20)
     @enrollments = enrollments
-    @title_text = title_text
-    self.font_size = 8
-
-    font_families.update('HongHa' => {
-      normal: Rails.root.join('app/assets/fonts/UVNHongHa_R.TTF'),
-      bold: Rails.root.join('app/assets/fonts/14_13787_UVNHongHa_B.TTF')
-    })
-    font 'HongHa'
-
-    title
-    move_down 20
-    line_items
-    footer
+    sub_title_text = "Số Lượng: #{@enrollments.count}"
+    super(:portrait, title_text, sub_title_text)
   end
 
-  def title
-    text @title_text, size: 15, align: :center, style: :bold
-    text "Số Lượng: #{@enrollments.count}", size: 10, align: :center
-  end
-
-  def line_items
+  def body
     bounding_box([0, cursor], width: bounds.width, height: bounds.height - 80) do
       @enrollments.group_by(&:result).sort.each do |key, group|
         @group = group
-        table line_item_rows do
+        table line_items do
           self.header = true
           self.position = :center
           self.row_colors = %w[e5e3e3 FFFFFF]
@@ -47,7 +31,7 @@ class CompactStudentsPdf < Prawn::Document
     end
   end
 
-  def line_item_rows
+  def line_items
     [['STT', 'Tên Thánh - Họ và Tên', 'Ngày Sinh', 'Lớp', 'Kết Quả']] +
       @group.each_with_index.map do |enrollment, index|
         student = enrollment.student
@@ -59,20 +43,5 @@ class CompactStudentsPdf < Prawn::Document
           enrollment.result
         ]
       end
-  end
-
-  def footer
-    page_count.times do |i|
-      go_to_page(i + 1)
-      bounding_box [bounds.left, bounds.bottom + 10], width: bounds.width do
-        text 'Ban Giáo Lý Giáo Xứ  Mẫu Tâm', size: 6, align: :right
-      end
-      bounding_box [bounds.left, bounds.bottom + 10], width: bounds.width do
-        text "In ngày: #{Time.zone.now.strftime('%d/%m/%Y')}", size: 6, align: :left
-      end
-      bounding_box [bounds.left, bounds.bottom + 10], width: bounds.width do
-        text "Trang #{i + 1}/#{page_count}", size: 6, align: :center
-      end
-    end
   end
 end

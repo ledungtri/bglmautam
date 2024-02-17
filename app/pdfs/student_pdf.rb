@@ -61,7 +61,7 @@ class StudentPdf < Prawn::Document
 
     text 'Hành Trình Thiêng Liêng', size: 20, align: :center, style: :bold
 
-    table process do
+    table progress do
       self.position = :center
       row(0).style(font_style: :bold, height: 35, valign: :center, background_color: 'e5e3e3')
 
@@ -101,19 +101,10 @@ class StudentPdf < Prawn::Document
     ]
   end
 
-  def process
+  def progress
     [['Năm Học', 'Lớp', 'Kết Quả']] +
       @student.enrollments.map do |enrollment|
         [enrollment.classroom.long_year, enrollment.classroom.name, enrollment.result]
       end
-  end
-
-  def footer
-    bounding_box [bounds.left, bounds.bottom + 8], width: bounds.width do
-      text 'Ban Giáo Lý Giáo Xứ  Mẫu Tâm', size: 6, align: :right
-    end
-    bounding_box [bounds.left, bounds.bottom + 8], width: bounds.width do
-      text "In ngày: #{Time.zone.now.strftime('%d/%m/%Y')}", size: 6, align: :left
-    end
   end
 end
