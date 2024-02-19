@@ -1,4 +1,4 @@
-<h1>Danh Sách Account</h1>
+<h1>Danh Sách Người Dùng</h1>
 
 <table>
   <thead>
@@ -15,7 +15,7 @@
     <% teacher = user.teacher %>
 
     <tr class="table-row">
-      <td style='width: 280px'><%= link_to teacher&.name || user.username, teacher %></td>
+      <td style='width: 280px'><%= link_to teacher&.name || '', teacher %></td>
       <td style='width: 100px'><%= teacher&.date_birth&.strftime("%d-%m-%Y") %></td>
       <td style='width:  90px'><%= teacher&.phone %></td>
       <td style='width:  90px'><%= link_to user.username, user %></td>

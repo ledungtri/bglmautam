@@ -11,27 +11,28 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :username %>
-    <%= f.text_field :username %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <%= f.password_field :password %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation %>
-  </div>
-
-  <% if @current_user&.admin? %>
-    <div class="field">
-      <%= f.label :teacher_id %>
-      <%= f.number_field :teacher_id %>
+  <fieldset>
+    <div>
+      <div class="label">Tên Đăng Nhập:</div>
+      <%= f.text_field :username %>
     </div>
-  <% end %>
 
-  <%= f.submit "Cập Nhật", :class => "button"%>
+    <div>
+      <div class="label">Mật Khẩu:</div>
+      <%= f.text_field :password %>
+    </div>
+
+    <div>
+      <div class="label">Nhập Lại Mật Khẩu:</div>
+      <%= f.text_field :password_confirmation %>
+    </div>
+
+    <% if @current_user&.admin? %>
+      <div>
+        <div class="label">ID của GLV:</div>
+        <%= f.text_field :teacher_id %>
+      </div>
+    <% end %>
+  </fieldset>
+  <%= f.submit "Cập Nhật", :class => "button" %>
 <% end %>
