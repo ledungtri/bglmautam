@@ -2,15 +2,6 @@ class GuidancesController < ApplicationController
   before_action :set_guidance, only: %i[show edit update destroy]
   before_action :auth, :admin?
 
-  # GET /guidances/1
-  # GET /guidances/1.json
-  def show
-  end
-
-  # GET /guidances/1/edit
-  def edit
-  end
-
   # POST /guidances
   # POST /guidances.json
   def create
@@ -22,6 +13,10 @@ class GuidancesController < ApplicationController
         format.html { redirect_to "/teachers/#{@guidance.teacher_id}" }
       end
     end
+  end
+
+  # GET /guidances/1/edit
+  def edit
   end
 
   # PATCH/PUT /guidances/1

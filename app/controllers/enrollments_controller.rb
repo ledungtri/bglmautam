@@ -4,15 +4,6 @@ class EnrollmentsController < ApplicationController
   before_action :admin?, except: %i[show edit update]
   before_action :admin_or_teacher_of?, only: %i[show edit update]
 
-  # GET /enrollments/1
-  # GET /enrollments/1.json
-  def show
-  end
-
-  # GET /enrollments/1/edit
-  def edit
-  end
-
   # POST /enrollments
   # POST /enrollments.json
   def create
@@ -24,6 +15,10 @@ class EnrollmentsController < ApplicationController
         format.html { redirect_to "/students/#{@enrollment.student_id}" }
       end
     end
+  end
+
+  # GET /enrollments/1/edit
+  def edit
   end
 
   # PATCH/PUT /enrollments/1

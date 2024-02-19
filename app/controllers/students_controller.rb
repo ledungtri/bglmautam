@@ -12,7 +12,6 @@ class StudentsController < ApplicationController
      respond_to do |format|
        format.html
        format.pdf do
-  
          if params[:style] == 'empty'
            pdf = StudentPdf.new(Student.new)
            send_data pdf.render, filename: "SYLL.pdf", type: 'application/pdf', disposition: 'inline'
