@@ -20,13 +20,16 @@
     </fieldset>
     <div class="divider"></div>
   <% end %>
-  <%= f.submit "Cập Nhật", :class => "button"%>
+  <fieldset style="display: flex; justify-content: space-between">
+    <div style="display: inline-block">
+      <%= button_to  'Quay Lại', :back, method: :get, :class => "button" %>
+    </div>
+    <div style="display: inline-block">
+      <%= f.submit "Cập Nhật", :class => "button"%>
+    </div>
+    <div style="display: inline-block">
+      <%= button_to 'Xóa', object, method: :delete, data: { confirm: 'Xóa hết thông tin và Hành Trình Thiêng Liêng của giáo lý viên? Nên cập nhật thông tin thay vì xóa. Are you sure?' }, :class => "button button-caution" %>
+    </div>
+  </fieldset>
+  <div class="divider"></div>
 <% end %>
-
-<div class="divider"></div>
-<% child ||= {} %>
-<%= render child[:path] || '', *(child[:opts] || {}) if child[:path] %>
-<div class="divider"></div>
-
-<%= button_to  'Quay Lại', :back, method: :get, :class => "button" %>
-<%= button_to 'Xóa', object, method: :delete, data: { confirm: 'Xóa hết thông tin và Hành Trình Thiêng Liêng của giáo lý viên? Nên cập nhật thông tin thay vì xóa. Are you sure?' }, :class => "button button-caution" %>
