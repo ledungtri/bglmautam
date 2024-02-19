@@ -18,11 +18,11 @@ Rails.application.routes.draw do
     post '/custom_export', to: 'classrooms#custom_export'
   end
 
-  resources :guidances
-  resources :enrollments
-  resources :evaluations
+  resources :guidances, only: [:create, :edit, :update, :destroy]
+  resources :enrollments, only: [:create, :edit, :update, :destroy]
+  resources :evaluations, only: [:create, :update, :destroy]
 
-  resources :users
+  resources :users, except: [:edit]
   resources :sessions, only: [:create]
   get '/login', to: 'sessions#new', as: 'login'
   get '/logout', to: 'sessions#destroy', as: 'logout'
