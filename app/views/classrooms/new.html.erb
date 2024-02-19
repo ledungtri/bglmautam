@@ -1,5 +1,2 @@
-<h1>Tạo Lớp Học Mới</h1>
-
-<%= render 'form' %>
-
-<%= button_to 'Quay Lại', :back, method: :get, :class => "button" %>
+<%= render 'components/form/form', object: @classroom, heading: 'Cập Nhật Thông Tin Lớp' %>
+<%#= button_to 'Xóa', @classroom, method: :delete, data: { confirm: 'Xóa Hành Trình Thiêng Liêng của thiếu nhi và giáo lý viên trong lớp này? Nên cập nhật thông tin thay vì xóa. Are you sure?' }, :class => "button button-caution" %>

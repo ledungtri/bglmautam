@@ -27,6 +27,18 @@ class Classroom < ApplicationRecord
   validates_presence_of :year, :family
   validates :group, format: { with: /\A\d?[A-Z]?\z/, message: 'invalid input' }, allow_blank: true
 
+  FIELD_SETS = [
+    {
+      fields: [
+        { field: :year, label: 'Năm Học', field_type: :number_field },
+        { field: :family, label: 'Khối' },
+        { field: :level, label: 'Lớp' },
+        { field: :group, label: 'Nhóm' },
+        { field: :location, label: 'Vị Trí Lớp' }
+      ]
+    }
+  ]
+
   def long_year
     "#{year} - #{year + 1}" unless year.nil?
   end

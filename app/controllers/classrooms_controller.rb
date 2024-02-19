@@ -49,6 +49,7 @@ class ClassroomsController < ApplicationController
 
   # GET /classrooms/1/edit
   def edit
+    render :new
   end
 
   # POST /classrooms

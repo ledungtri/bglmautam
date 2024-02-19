@@ -1,29 +1,7 @@
-<h1>Thông Tin Lớp</h1>
-
-<fieldset>
-  <div>
-    <div class="label">Năm Học:</div>
-    <strong><%= @classroom.long_year %></strong>
-  </div>
-
-  <div>
-    <div class="label">Tên Lớp:</div>
-    <strong><%= @classroom.name %></strong>
-  </div>
-   
-  <div>
-    <div class="label">Vị Trí Lớp:</div>
-    <strong><%= @classroom.location %></strong>
-  </div>
-</fieldset>
-
-<% if @current_user&.admin? %>
-<%= button_to 'Chỉnh Sửa', edit_classroom_path(@classroom), method: :get, :class =>"button" %>
-<% end %>
-
+<%= render 'components/form/form', object: @classroom, heading: 'Thông Tin Lớp' %>
 <div class="divider"></div>
-<h1>Giáo Lý Viên</h1>
 
+<h1>Giáo Lý Viên</h1>
 <%= render 'teachers/info_table' %>
 <div class="divider"></div>
 
