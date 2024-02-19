@@ -68,7 +68,9 @@ class TeachersController < ApplicationController
     end
   end
 
-  def teachers_custom_export_view
+  def teachers_custom_export_form
+    @path = teachers_custom_export_path
+    render 'custom_export/form'
   end
 
   def teachers_custom_export

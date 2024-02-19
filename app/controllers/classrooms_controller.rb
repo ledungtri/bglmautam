@@ -108,7 +108,9 @@ class ClassroomsController < ApplicationController
     end
   end
 
-  def classrooms_custom_export_view
+  def classrooms_custom_export_form
+    @path = classrooms_custom_export_path
+    render 'custom_export/form'
   end
 
   def classrooms_custom_export
@@ -121,7 +123,9 @@ class ClassroomsController < ApplicationController
     send_data pdf.render, filename: "#{params[:title]}.pdf", type: 'application/pdf', disposition: 'inline'
   end
 
-  def custom_export_view
+  def custom_export_form
+    @path = classroom_custom_export_path(@classroom)
+    render 'custom_export/form'
   end
 
   def custom_export
