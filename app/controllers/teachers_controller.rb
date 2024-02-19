@@ -76,9 +76,9 @@ class TeachersController < ApplicationController
 
   def teachers_custom_export
     if params[:sort] == 'classroom'
-      @guidances = Guidance.joins(:classroom).where('classrooms.year = ?', @current_year).sort_by(&:sort_param)
+      @guidances = Guidance.for_year(@current_year).sort_by(&:sort_param)
     else
-      @guidances = Guidance.joins(:classroom).where('classrooms.year = ?', @current_year).sort_by { |g| g.teacher.sort_param }
+      @guidances = Guidance.for_year(@current_year).sort_by { |g| g.teacher.sort_param }
     end
 
     pdf = TeachersCustomPdf.new(@guidances, params[:title], params[:page_layout].to_sym, params[:columns].split(','))
@@ -112,10 +112,7 @@ class TeachersController < ApplicationController
       :street_number,
       :street_name,
       :ward,
-      :district,
-      :password,
-      :password_confirmation,
-      :is_admin
+      :district
     )
   end
 end
