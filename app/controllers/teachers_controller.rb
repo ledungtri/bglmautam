@@ -25,7 +25,7 @@ class TeachersController < ApplicationController
   # GET /teachers/new
   def new
     @teacher = Teacher.new
-    render 'show'
+    render :show
   end
 
   # POST /teachers
@@ -38,7 +38,7 @@ class TeachersController < ApplicationController
         flash[:success] = 'Teacher was successfully created.'
         format.html { redirect_to @teacher }
       else
-        format.html { render :new }
+        format.html { render :show }
       end
     end
   end
@@ -51,7 +51,7 @@ class TeachersController < ApplicationController
         flash[:success] = 'Teacher was successfully updated.'
         format.html { redirect_to @teacher }
       else
-        format.html { render :edit }
+        format.html { render :show }
       end
     end
   end

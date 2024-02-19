@@ -24,17 +24,8 @@
   <tr id="form" class="table-row" style="display: none">
     <% @enrollment = Enrollment.new %>
     <%= form_for(@enrollment) do |f| %>
-      <% if @enrollment.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@enrollment.errors.count, "error") %> prohibited this enrollment from being saved:</h2>
+      <%= render 'components/form/error_notification', object: @enrollment %>
 
-          <ul>
-            <% @enrollment.errors.full_messages.each do |message| %>
-              <li><%= message %></li>
-            <% end %>
-          </ul>
-        </div>
-      <% end %>
       <%= f.hidden_field :student_id, :value => @student.id %>
       <%= f.hidden_field :result, :value => "Đang Học" %>
       <td style='width: 200px'>

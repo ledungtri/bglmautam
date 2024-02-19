@@ -29,17 +29,8 @@
   <tr id="form" class="table-row" style="display: none">
     <% @guidance = Guidance.new %>
     <%= form_for(@guidance) do |f| %>
-      <% if @guidance.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@guidance.errors.count, "error") %> prohibited this guidance from being saved:</h2>
+      <%= render 'components/form/error_notification', object: @guidance %>
 
-          <ul>
-            <% @guidance.errors.full_messages.each do |message| %>
-              <li><%= message %></li>
-            <% end %>
-          </ul>
-        </div>
-      <% end %>
       <%= f.hidden_field :teacher_id, :value => @teacher.id %>
       <td style='width: 200px'>
         <select id="year_combobox" onchange="changeClassroom()">

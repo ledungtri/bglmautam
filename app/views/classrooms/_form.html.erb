@@ -1,16 +1,6 @@
 <%= form_for(@classroom) do |f| %>
-  <% if @classroom.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@classroom.errors.count, "error") %> prohibited this classroom from being saved:</h2>
+  <%= render 'components/form/error_notification', object: @classroom %>
 
-      <ul>
-      <% @classroom.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-  
   <fieldset>
     <div>
       <div class="label">Khối:</div>

@@ -1,17 +1,7 @@
 <h1><%= heading %></h1>
 
 <%= form_for(object) do |f| %>
-  <% if object.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(object.errors.count, "error") %> prohibited this <%= object.class.to_s %> from being saved:</h2>
-
-      <ul>
-        <% object.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= render 'components/form/error_notification', object: object %>
 
   <% (object.class::FIELD_SETS || []).each do |set| %>
     <fieldset>
