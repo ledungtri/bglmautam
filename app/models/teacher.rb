@@ -28,5 +28,29 @@ class Teacher < ApplicationRecord
   has_one :user
   has_many :guidances
   has_many :classrooms, through: :guidances
-  # email = right format, allow nil
+  # TODO: email = right format, allow nil
+
+  FIELD_SETS = [
+    {
+      fields: [
+        { field: :christian_name, label:'Tên Thánh' },
+        { field: :full_name, label:'Họ và Tên' },
+        { field: :date_birth, label:'Ngày Sinh', field_type: :date_select, opts: {
+          start_year: Date.today.year - 80,
+          end_year: Date.today.year,
+          use_two_digit_numbers: true,
+          order: [:day, :month, :year],
+          with_css_classes: true,
+          prompt: { :day => "Ngày", :month => "Tháng", :year => "Năm" }
+        } },
+        {field: :named_date, label:'Bổn Mạng'},
+        {field: :phone, label:'Số Điện Thoại'},
+        {field: :email, label:'Email'},
+        {field: :street_number, label:'Số Nhà'},
+        {field: :street_name, label:'Đường'},
+        {field: :ward, label:'Phường/Xã'},
+        {field: :district, label:'Quận/Huyện'}
+      ]
+    }
+  ]
 end

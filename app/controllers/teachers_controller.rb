@@ -25,10 +25,7 @@ class TeachersController < ApplicationController
   # GET /teachers/new
   def new
     @teacher = Teacher.new
-  end
-
-  # GET /teachers/1/edit
-  def edit
+    render 'show'
   end
 
   # POST /teachers

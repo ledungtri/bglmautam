@@ -2,11 +2,11 @@ Rails.application.routes.draw do
   root 'classrooms#index'
   get '/', to: 'classrooms#index'
 
-  resources :students
+  resources :students, except: [:edit]
 
   get '/teachers/custom_export', to: 'teachers#teachers_custom_export_view'
   post '/teachers/custom_export', to: 'teachers#teachers_custom_export'
-  resources :teachers
+  resources :teachers, except: [:edit]
 
   get '/search', to: 'application#search'
 

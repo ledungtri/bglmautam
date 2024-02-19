@@ -26,7 +26,7 @@
 
     <div>
       <div class="label">Kết Quả:</div>
-      <%= f.select :result, options_for_select(['Học Lại', 'Nghỉ Luôn', 'Lên Lớp', 'Đang Học', 'Dự Thính', 'Chuyển Xứ'], @enrollment.result) %>
+      <%= f.select :result, options_for_select(Enrollment::RESULT_OPTIONS, @enrollment.result) %>
     </div>
 
     <%= f.submit "Cập Nhật", :class =>"button" %>

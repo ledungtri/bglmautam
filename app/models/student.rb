@@ -53,9 +53,88 @@ class Student < ApplicationRecord
   validates :father_phone, format: { with: /\A\d+\z/, message: 'only allows numbers' }, allow_blank: true
   validates :mother_phone, format: { with: /\A\d+\z/, message: 'only allows numbers' }, allow_blank: true
 
-  def name
-    "#{christian_name} #{full_name}".squish
-  end
+  FIELD_SETS = [
+    {
+      legend: 'Thông Tin Cá Nhân',
+      fields: [
+        { field: :christian_name, label:'Tên Thánh' },
+        { field: :full_name, label:'Họ và Tên' },
+        { field: :date_birth, label:'Ngày Sinh', field_type: :date_select, opts: {
+          start_year: Date.today.year - 80,
+          end_year: Date.today.year,
+          use_two_digit_numbers: true,
+          order: [:day, :month, :year],
+          with_css_classes: true,
+          prompt: { :day => "Ngày", :month => "Tháng", :year => "Năm" }
+        } },
+        {field: :place_birth, label:'Nơi Sinh' },
+        # {field: :gender, label:'Giới Tính', field_type: :select, opts: options_for_select(%w[Nam Nữ], @student.gender), },
+        {field: :phone, label:'Điện Thoại Cá Nhân' },
+      ]
+    },
+    {
+      legend: 'Ngày Bí Tích',
+      fields: [
+        { field: :date_baptism, label:'Rửa Tội', field_type: :date_select, opts: {
+          start_year: Date.today.year - 25,
+          end_year: Date.today.year,
+          use_two_digit_numbers: true,
+          order: [:day, :month, :year],
+          with_css_classes: true,
+          prompt: { :day => "Ngày", :month => "Tháng", :year => "Năm" }
+        } },
+        {field: :place_baptism, label:'Nơi Rửa Tội' },
+        { field: :date_communion, label:'Rước Lễ', field_type: :date_select, opts: {
+          start_year: Date.today.year - 25,
+          end_year: Date.today.year,
+          use_two_digit_numbers: true,
+          order: [:day, :month, :year],
+          with_css_classes: true,
+          prompt: { :day => "Ngày", :month => "Tháng", :year => "Năm" }
+        } },
+        {field: :place_communion, label:'Nơi Rước Lễ' },
+        { field: :date_confirmation, label:'Thêm Sức', field_type: :date_select, opts: {
+          start_year: Date.today.year - 25,
+          end_year: Date.today.year,
+          use_two_digit_numbers: true,
+          order: [:day, :month, :year],
+          with_css_classes: true,
+          prompt: { :day => "Ngày", :month => "Tháng", :year => "Năm" }
+        } },
+        {field: :date_confirmation, label:'Nơi Thêm Sức' },
+        { field: :date_declaration, label:'Tuyên Hứa', field_type: :date_select, opts: {
+          start_year: Date.today.year - 25,
+          end_year: Date.today.year,
+          use_two_digit_numbers: true,
+          order: [:day, :month, :year],
+          with_css_classes: true,
+          prompt: { :day => "Ngày", :month => "Tháng", :year => "Năm" }
+        } },
+        {field: :date_declaration, label:'Nơi Tuyên Hứa' },
+      ]
+    },
+    {
+      legend: 'Địa Chỉ Nhà',
+      fields: [
+        { field: :street_number, label:'Số Nhà' },
+        { field: :street_name, label:'Đường' },
+        { field: :ward, label:'Phường/Xã' },
+        { field: :district, label:'Quận/Huyện' },
+        { field: :area, label:'Xóm Giáo' },
+      ]
+    },
+    {
+      legend: 'Thông Tin Cha Mẹ',
+      fields: [
+        { field: :father_christian_name, label:'Tên Thánh Cha' },
+        { field: :father_full_name, label:'Họ Tên Cha' },
+        { field: :father_phone, label:'Điện Thoại Cha' },
+        { field: :mother_christian_name, label:'Tên Thánh Mẹ' },
+        { field: :mother_full_name, label:'Họ và Tên Mẹ' },
+        { field: :mother_phone, label:'Điện Thoại Mẹ' },
+      ]
+    },
+  ]
 
   def result(classroom)
     enrollments.where(student_id: id, classroom_id: classroom.id).take.result

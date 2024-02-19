@@ -1,0 +1,42 @@
+<h1><%= heading %></h1>
+
+<%= form_for(object) do |f| %>
+  <% if object.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(object.errors.count, "error") %> prohibited this <%= object.class.to_s %> from being saved:</h2>
+
+      <ul>
+        <% object.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <% (object.class::FIELD_SETS || []).each do |set| %>
+    <fieldset>
+      <% if set[:legend] %>
+        <legend><h3><%= set[:legend] %></h3></legend>
+      <% end %>
+      <% set[:fields].each do |field| %>
+        <%= render 'components/form/input_field',
+                   f: f,
+                   field_type: field[:field_type] || :text_field,
+                   field: field[:field],
+                   label: field[:label],
+                   opts: field[:opts] || {}
+        %>
+      <% end %>
+    </fieldset>
+    <div class="divider"></div>
+  <% end %>
+  <%= f.submit "Cập Nhật", :class => "button"%>
+<% end %>
+
+<div class="divider"></div>
+<% child ||= {} %>
+<%= render child[:path] || '', *(child[:opts] || {}) if child[:path] %>
+<div class="divider"></div>
+
+<%= button_to  'Quay Lại', :back, method: :get, :class => "button" %>
+<%= button_to 'Xóa', object, method: :delete, data: { confirm: 'Xóa hết thông tin và Hành Trình Thiêng Liêng của giáo lý viên? Nên cập nhật thông tin thay vì xóa. Are you sure?' }, :class => "button button-caution" %>

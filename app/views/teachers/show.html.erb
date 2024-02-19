@@ -1,3 +1,5 @@
-<%= render 'teacher_detail' %>
-<div class="divider"></div>
-<%= render 'teacher_guidances' %>
+<%= render 'components/form/form',
+           object: @teacher,
+           heading: 'Thông Tin Giáo Lý Viên',
+           child: { path: 'guidances/index' }
+%>

@@ -21,6 +21,8 @@ class Guidance < ApplicationRecord
 
   validates_presence_of :teacher_id
 
+  POSITION_OPTIONS = ["Tu Sĩ", "Huynh Trưởng", "Dự Trưởng", "Hiệp Sĩ", "GLV", "Tiền GLV", "Phụ Tá", "Kiến Tập"]
+
   def sort_param
     "#{classroom.sort_param} #{position_sort_param}"
   end

@@ -1,0 +1,95 @@
+<% years = Classroom.uniq.order(year: :desc).pluck(:year) %>
+<% opts = Classroom.where(year: years[0]).sort_by(&:sort_param).map { |c| [c.name, c.id] } %>
+
+<h1>Hành Trình Thiêng Liêng</h1>
+
+<table>
+  <thead>
+  <tr>
+    <th style="width: 200px; font-size: 18px">Năm Học</th>
+    <th style="width: 200px; font-size: 18px">Lớp</th>
+    <th style="width: 200px; font-size: 18px">Kết Quả</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% (@student&.enrollments || []).each do |enrollment| %>
+    <% classroom = enrollment.classroom %>
+    <tr class="table-row">
+      <td style="width: 200px; font-size: 14px"><%= classroom.long_year %></td>
+      <td style="width: 200px; font-size: 14px"><%= link_to classroom.name, classroom %></td>
+      <td style="width: 200px; font-size: 14px"><%= link_to enrollment.result, edit_enrollment_path(enrollment) %></td>
+    </tr>
+  <% end %>
+
+  <tr id="form" class="table-row" style="display: none">
+    <% @enrollment = Enrollment.new %>
+    <%= form_for(@enrollment) do |f| %>
+      <% if @enrollment.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@enrollment.errors.count, "error") %> prohibited this enrollment from being saved:</h2>
+
+          <ul>
+            <% @enrollment.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <%= f.hidden_field :student_id, :value => @student.id %>
+      <%= f.hidden_field :result, :value => "Đang Học" %>
+      <td style='width: 200px'>
+        <select id="year_combobox" onchange="changeClassroom()">
+          <% years.each do |year| %>
+            <option value="<%=year%>"><%= year.to_s + " - " + (year.to_i+1).to_s %></option>
+          <% end %>
+        </select>
+      </td>
+      <td style='width: 200px'>
+        <%= f.select :classroom_id, options_for_select(opts), :id => 'classroom_id' %>
+      </td>
+      <td style='width: 200px'>
+        <%= f.submit "Thêm Lớp Mới" %>
+      </td>
+      <% end %>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<% if @current_user&.admin? %>
+  <button id="btn" onClick="showForm()" class="button">Thêm Lớp Mới</button>
+<% end %>
+
+<script>
+  function showForm() {
+    document.getElementById("btn").style.display = "none";
+    document.getElementById("form").style.display = "";
+  }
+
+  function changeClassroom() {
+    const e = document.getElementById("year_combobox");
+    const selected = e.options[e.selectedIndex].value;
+
+    //Create array of options to be added
+    const hash = {};
+    const keys = [];
+
+    <% Classroom.where.not(family: ['Trưởng Ban', 'Kỹ Thuật']).sort_by(&:sort_param).each do |classroom| %>
+    if(selected === "<%= classroom.year %>") {
+      hash[<%= classroom.id %>] = "<%= classroom.name %>";
+      keys.push(<%= classroom.id %>);
+    }
+    <% end %>
+
+    const list = document.getElementById("enrollment_classroom_id");
+    list.options.length = 0;
+
+    //Create and append the options
+    for (let i = 0; i < keys.length; i++) {
+      const option = document.createElement("option");
+      option.value = keys[i];
+      option.text = hash[keys[i]];
+      list.appendChild(option);
+    }
+  }
+</script>

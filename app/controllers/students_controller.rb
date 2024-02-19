@@ -45,10 +45,7 @@ class StudentsController < ApplicationController
   # GET /students/new
   def new
     @student = Student.new
-  end
-
-  # GET /students/1/edit
-  def edit
+    render 'show'
   end
 
   # POST /students
