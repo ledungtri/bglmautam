@@ -19,6 +19,17 @@ class User < ApplicationRecord
   has_secure_password
   belongs_to :teacher
 
+  FIELD_SETS = [
+    {
+      fields: [
+        { field: :teacher_id, label: 'ID của GLV' },
+        { field: :username, label: 'Tên Đăng Nhập' },
+        { field: :password, label: 'Mật Khẩu' },
+        { field: :password_confirmation, label: 'Nhập Lại Mật Khẩu' }
+      ]
+    }
+  ]
+
   def admin_or_self?(user)
     admin? || self?(user)
   end

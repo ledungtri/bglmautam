@@ -1,6 +1,1 @@
-<h1>Thông tin đăng nhập</h1>
-
-<%= render 'form', user: @user %>
-
-<%= button_to 'Show', @user, method: :get, class: 'button' %>
-<%= button_to 'Quay Lại', :back, method: :get, class: 'button' %>
+<%= render 'components/form/form', object: @user, heading: 'Thông tin đăng nhập' %>
