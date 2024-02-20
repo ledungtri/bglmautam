@@ -89,40 +89,19 @@ footer {
 
 /* Navigation Bar */
 nav a {
-  display:inline-block;
-  float: right;
   padding: 0 20px;
   font-size: 18px;
-  text-align: center;
   text-decoration: none;
   font-weight: bold;
   font-family: 'Helvetica', cursive;
 }
 
 nav a:hover {
-  background-color: transparent;
   font-weight: bold;
   text-decoration: underline;
 }
 
-/* Back To The Top Button */
-#btt {
-  padding: 5px 10px 5px 10px;
-  height: 34px;
-  width: 28px;
-  background-color: rgba(265 ,265 ,265 , 0.5);
-  text-align: center;
-  font-size: 24px;
-  position: fixed;
-  bottom: 20px;
-  right: 10px;
-  border-radius: 50%;
-}
 
-#btt:hover {
-  background-color: white;
-  color: black;
-}
 
 button, .button {
   background-image: linear-gradient(
