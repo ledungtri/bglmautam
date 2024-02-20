@@ -4,22 +4,32 @@
   <fieldset>
     <legend><h3>Cập Nhật Kết Quả</h3></legend>
 
-    <div>
+    <div style="display: inline-block">
       <div class="label">Thiếu Nhi:</div>
       <%= @enrollment.student.name %>
     </div>
 
-    <div>
+    <div style="display: inline-block">
       <div class="label">Lớp:</div>
       <%= @enrollment.classroom.name %>
     </div>
 
-    <div>
+    <div style="display: inline-block">
       <div class="label">Kết Quả:</div>
       <%= f.select :result, options_for_select(Enrollment::RESULT_OPTIONS, @enrollment.result) %>
     </div>
-
-    <%= f.submit "Cập Nhật", :class =>"button" %>
   </fieldset>
 
+  <div class="divider"></div>
+
+  <fieldset style="display: flex; justify-content: space-between">
+    <div style="display: inline-block">
+      <%= f.submit "Cập Nhật", :class => "button"%>
+    </div>
+    <% if @current_user&.admin? %>
+      <div style="display: inline-block">
+        <%= button_to 'Xóa', @enrollment, method: :delete, data: { confirm: 'Are you sure?'}, class: "button button-caution" %>
+      </div>
+    <% end %>
+  </fieldset>
 <% end %>

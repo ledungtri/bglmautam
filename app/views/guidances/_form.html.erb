@@ -1,20 +1,33 @@
 <%= form_for(@guidance) do |f| %>
   <%= render 'components/form/error_notification', object: @guidance %>
 
-  <div>
-    <div class="label">GLV:</div>
-    <%= @guidance.teacher.name %>
-  </div>
+  <fieldset>
+    <div style="display: inline-block">
+      <div class="label">GLV:</div>
+      <%= @guidance.teacher.name %>
+    </div>
 
-  <div>
-    <div class="label">Lớp:</div>
-    <%= @guidance.classroom.name %>
-  </div>
+    <div style="display: inline-block">
+      <div class="label">Lớp:</div>
+      <%= @guidance.classroom.name %>
+    </div>
 
-  <div>
-    <div class="label">Phụ Trách:</div>
-    <%= f.select :position, options_for_select(Guidance::POSITION_OPTIONS, @guidance.position) %>
-  </div>
-  
-  <%= f.submit "Cập Nhật", :class =>"button" %>
+    <div style="display: inline-block">
+      <div class="label">Phụ Trách:</div>
+      <%= f.select :position, options_for_select(Guidance::POSITION_OPTIONS, @guidance.position) %>
+    </div>
+  </fieldset>
+
+  <div class="divider"></div>
+
+  <fieldset style="display: flex; justify-content: space-between">
+    <div style="display: inline-block">
+      <%= f.submit "Cập Nhật", :class => "button"%>
+    </div>
+    <% if @current_user&.admin? %>
+      <div style="display: inline-block">
+        <%= button_to 'Xóa', @guidance, method: :delete, data: { confirm: 'Are you sure?'}, class: "button button-caution" %>
+      </div>
+    <% end %>
+  </fieldset>
 <% end %>
