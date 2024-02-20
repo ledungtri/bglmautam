@@ -1,5 +1,5 @@
 class ClassroomsCustomPdf < AbstractPdf
-  def initialize(classrooms, title_text, page_layout)
+  def initialize(classrooms, title_text, page_layout, columns)
     @classrooms = classrooms
     @columns = columns
     @width = page_layout == :landscape ? 800 : 550
