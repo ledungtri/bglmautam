@@ -1,0 +1,14 @@
+<header style="height: 60px; display: flex; justify-content: space-between; align-items: baseline">
+  <a style="display: inline-block; text-decoration: none" href=<%=root_path%>>
+    <img src="/assets/logo.png" height='50px' width='50px' style="display: inline-block">
+    <div style="font-size: 15px; display: inline-block; width: 120px">Ban Giáo Lý<br>Giáo Xứ Mẫu Tâm</div>
+    <nav style="display: inline-block">
+      <a href="/classrooms">Thông Tin Lớp Học</a>
+      <a href="/teachers">Thông Tin Giáo Lý Viên</a>
+      <a href="/search">Tìm Kiếm</a>
+      <% if @current_user %>
+        <a href="/users/<%= @current_user.id %>">Người dùng</a>
+      <% end %>
+    </nav>
+  </a>
+</header>

@@ -6,42 +6,14 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-
-<header style="height: 60px; display: flex; justify-content: space-between; align-items: baseline">
-  <a style="display: inline-block; text-decoration: none" href=<%=root_path%>>
-   <img src="/assets/logo.png" height='50px' width='50px' style="display: inline-block">
-   <div style="font-size: 15px; display: inline-block; width: 120px">Ban Giáo Lý<br>Giáo Xứ Mẫu Tâm</div>
-    <nav style="display: inline-block">
-      <% if @current_user %>
-        <a href="/users/<%= @current_user.id %>">Người dùng</a>
-      <% end %>
-      <a href="/search">Tìm Kiếm</a>
-      <a href="/teachers">Thông Tin Giáo Lý Viên</a>
-      <a href="/classrooms">Thông Tin Lớp Học</a>
-    </nav>
-  </a>
-
- <body>
-    <div id=btt onclick='window.scrollTo(0,0)'>&uarr;</div>
- </body>
-</header>
-
+<%= render 'layouts/header' %>
 <body>
   <main>
-    <% flash.each do |name, msg| %>
-      <%= content_tag :div, msg, class: "notify top-left do-show", :data => {:status => name}  %>
-    <% end %>
+    <%= render 'layouts/flash', flash: flash %>
     <article>
       <%= yield %>
     </article>
   </main>
 </body>
-
-<footer>
-    <div style="text-align: center;">
-      Địa Chỉ: 102 Phan Huy Thực, phường Tân Kiểng, Quận 7<br>
-      Điện Thoại: (028)-3771-1090<br>
-      Email: gx.mautam@gmail.com<br>
-    </div>
-</footer>
+<%= render 'layouts/footer' %>
 </html>
