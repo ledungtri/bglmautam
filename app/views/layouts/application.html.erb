@@ -7,27 +7,21 @@
   <%= csrf_meta_tags %>
 </head>
 
-<header style="height: 89px">
-<div class="middle">
+<header style="height: 60px; display: flex; justify-content: space-between; align-items: baseline">
   <a style="display: inline-block; text-decoration: none" href=<%=root_path%>>
    <img src="/assets/logo.png" height='50px' width='50px' style="display: inline-block">
    <div style="font-size: 15px; display: inline-block; width: 120px">Ban Giáo Lý<br>Giáo Xứ Mẫu Tâm</div>
-  </a>
-  <div style="text-align: center; font-size: 35px; display: inline-block; width: 860px">
-   <%= @subject %>
-  </div>
-</div>
-
- <body>
-   <nav>
-     <% if @current_user %>
-       <a href="/users/<%= @current_user.id %>">Người dùng</a>
-     <% end %>
+    <nav style="display: inline-block">
+      <% if @current_user %>
+        <a href="/users/<%= @current_user.id %>">Người dùng</a>
+      <% end %>
       <a href="/search">Tìm Kiếm</a>
       <a href="/teachers">Thông Tin Giáo Lý Viên</a>
       <a href="/classrooms">Thông Tin Lớp Học</a>
     </nav>
-    
+  </a>
+
+ <body>
     <div id=btt onclick='window.scrollTo(0,0)'>&uarr;</div>
  </body>
 </header>

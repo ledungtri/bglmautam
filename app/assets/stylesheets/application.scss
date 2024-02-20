@@ -68,6 +68,7 @@ header a:hover {
 
 article {
  width: 972px;
+  padding: 5px;
 }
 
 main {
@@ -101,8 +102,7 @@ nav a {
 nav a:hover {
   background-color: transparent;
   font-weight: bold;
-  text-decoration: none;
-  border-bottom: solid 5px;
+  text-decoration: underline;
 }
 
 /* Back To The Top Button */
