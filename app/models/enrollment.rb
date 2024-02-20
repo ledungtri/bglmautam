@@ -22,6 +22,8 @@ class Enrollment < ApplicationRecord
 
   validates_presence_of :student_id, :result
 
+  default_scope { includes(:student) }
+
   FIELD_SETS = [
     {
       fields: [

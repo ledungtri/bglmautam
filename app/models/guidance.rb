@@ -21,6 +21,8 @@ class Guidance < ApplicationRecord
 
   validates_presence_of :teacher_id
 
+  default_scope { includes(:teacher) }
+
   FIELD_SETS = [
     {
       fields: [
