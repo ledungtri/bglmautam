@@ -1,8 +1,8 @@
 class TeachersController < ApplicationController
-  before_action :set_teacher, only: %i[show edit update destroy admin_or_self?]
+  before_action :set_teacher, only: %i[show update destroy admin_or_self?]
   before_action :auth
   before_action :admin?, only: %i[new create destroy]
-  before_action :admin_or_self?, only: %i[edit update]
+  before_action :admin_or_self?, only: %i[update]
 
   # GET /teachers
   # GET /teachers.json

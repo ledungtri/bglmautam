@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   resources :enrollments, only: [:create, :show, :update, :destroy]
   resources :evaluations, only: [:create, :update, :destroy]
 
-  resources :users, except: [:edit]
+  resources :users, except: [:index, :edit]
   resources :sessions, only: [:create]
   get '/login', to: 'sessions#new', as: 'login'
   get '/logout', to: 'sessions#destroy', as: 'logout'

@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[show edit update destroy admin_or_self?]
+  before_action :set_user, only: %i[show update destroy admin_or_self?]
   before_action :auth
-  before_action :admin?, except: %i[show edit update]
+  before_action :admin?, except: %i[show update]
   before_action :admin_or_self?, only: %i[show edit update]
 
   # GET /users/1
