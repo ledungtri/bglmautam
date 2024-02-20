@@ -1,8 +1,4 @@
-<%= render 'components/form/form',
-           object: @student,
-           heading: 'Thông Tin Thiếu Nhi',
-           child: { path: 'enrollments/index' }
-%>
+<%= render 'components/form/form', object: @student, heading: 'Thông Tin Thiếu Nhi' %>
 <%= button_to "In Sơ Yếu Lý Lịch", student_path(format: "pdf"), method: :get, :class => "button" if @student.id %>
 
 <%= render 'enrollments/index' %>

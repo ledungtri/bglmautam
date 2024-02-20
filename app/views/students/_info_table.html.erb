@@ -1,4 +1,6 @@
-<% @enrollments.group_by(&:result).sort.each do |key, group| %>
+<h1>Danh Sách Thiếu Nhi</h1>
+<h4>Số Lượng : <%= enrollments.count %></h4>
+<% enrollments.group_by(&:result).sort.each do |key, group| %>
   <div style="text-align: right; padding-top: 10px; font-size: 11px"><%= key + ": " + group.count.to_s %></div>
   <table class="table table-striped">
     <thead>
@@ -33,3 +35,4 @@
     </tbody>
   </table>
 <% end %>
+<div class="divider"></div>

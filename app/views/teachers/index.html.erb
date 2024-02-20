@@ -1,7 +1,3 @@
-<h1>Nhân sự phụ trách Giáo dục Đức tin Năm Học <%= @current_year_long %></h1>
-<h4>Số Lượng : <%= @guidances.count %></h4>
-
-<%= render 'info_table' %>
+<%= render 'info_table', guidances: @guidances %>
 <%= button_to "In Danh Sách GLV", teachers_path(format: "pdf"), method: :get, :class => "button" %>
 <%= button_to "In Bảng Tự Tạo", teachers_custom_export_path, method: :get, :class => "button" %>
-

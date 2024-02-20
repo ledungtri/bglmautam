@@ -1,38 +1,32 @@
 <%= render 'components/form/form', object: @classroom, heading: 'Thông Tin Lớp' %>
 <div class="divider"></div>
 
-<h1>Giáo Lý Viên</h1>
-<%= render 'teachers/info_table' %>
-<div class="divider"></div>
+<%= render 'teachers/info_table', guidances: @classroom.guidances unless @classroom.guidances.empty? %>
+<%= render 'students/info_table', enrollments: @classroom.enrollments unless @classroom.enrollments.empty? %>
 
-<h1>Danh Sách Thiếu Nhi</h1>
-<h4>Số Lượng : <%= @enrollments.count %></h4>
-
-<%= render 'students/info_table' %>
-<div class="divider"></div>
-
-<fieldset>
-  <div style="display: flex; justify-content: space-between">
-    <div style="display: inline-block">
-      <%= button_to "In Danh Sách", classroom_path(format: :pdf), method: :get, class: :button %>
+<% if @classroom.id %>
+  <fieldset>
+    <div style="display: flex; justify-content: space-between">
+      <div style="display: inline-block">
+        <%= button_to "In Danh Sách", classroom_path(format: :pdf), method: :get, class: :button %>
+      </div>
+      <div style="display: inline-block">
+        <%= button_to "Xuất Excel", classroom_path(format: :xlsx), method: :get, class: :button %>
+      </div>
+      <div style="display: inline-block">
+        <%= button_to "In Sơ Yếu Lý Lịch", classroom_students_personal_details_path(@classroom, format: :pdf), method: :get, class: :button %>
+      </div>
     </div>
-    <div style="display: inline-block">
-      <%= button_to "Xuất Excel", classroom_path(format: :xlsx), method: :get, class: :button %>
+    <div style="display: flex; justify-content: space-between">
+      <div style="display: inline-block">
+        <%= button_to "In Bảng Tự Tạo", classroom_custom_export_path(@classroom), method: :get, class: :button %>
+      </div>
+      <div style="display: inline-block">
+        <%= button_to "In Danh Sách Lớp Dán Bảng", classroom_path(format: :pdf), method: :get, class: :button, params: { style: :compact } %>
+      </div>
+      <div style="display: inline-block">
+        <%= button_to "In Số Điện Thoại GLV", classroom_path(format: :pdf), method: :get, class: :button, params: { style: :teachers_contact } %>
+      </div>
     </div>
-    <div style="display: inline-block">
-      <%= button_to "In Sơ Yếu Lý Lịch", classroom_students_personal_details_path(@classroom, format: :pdf), method: :get, class: :button %>
-    </div>
-  </div>
-  <div style="display: flex; justify-content: space-between">
-
-    <div style="display: inline-block">
-      <%= button_to "In Bảng Tự Tạo", classroom_custom_export_path(@classroom), method: :get, class: :button %>
-    </div>
-    <div style="display: inline-block">
-      <%= button_to "In Danh Sách Lớp Dán Bảng", classroom_path(format: :pdf), method: :get, class: :button, params: { style: :compact } %>
-    </div>
-    <div style="display: inline-block">
-      <%= button_to "In Số Điện Thoại GLV", classroom_path(format: :pdf), method: :get, class: :button, params: { style: :teachers_contact } %>
-    </div>
-  </div>
-</fieldset>
+  </fieldset>
+<% end %>

@@ -1,3 +1,5 @@
+<h1>Giáo Lý Viên</h1>
+<h4>Số Lượng : <%= guidances.count %></h4>
 <table>
   <thead>
     <tr>
@@ -14,7 +16,7 @@
   </thead>
 
   <tbody>
-    <% @guidances.each_with_index do |guidance, index| %>
+    <% guidances.each_with_index do |guidance, index| %>
     <% classroom = guidance.classroom %>
     <% teacher = guidance.teacher %>
 
@@ -32,3 +34,4 @@
     <% end %>
   </tbody>
 </table>
+<div class="divider"></div>

@@ -10,12 +10,5 @@
   </button>
 </form>
 
-<% unless @enrollments.empty? %>
-  <h1>Thiếu Nhi</h1>
-  <%= render 'students/info_table' %>
-<% end %>
-
-<% unless @guidances.empty? %>
-  <h1>Giáo Lý Viên</h1>
-  <%= render 'teachers/info_table' %>
-<% end %>
+<%= render 'students/info_table', enrollments: @enrollments unless @enrollments.empty? %>
+<%= render 'teachers/info_table', guidances: @guidances unless @guidances.empty? %>
