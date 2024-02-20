@@ -7,7 +7,7 @@
 %>
 
 <% if @teacher %>
-  <%= render 'teachers/teacher_detail' %>
+  <%= render 'components/form/form', object: @teacher, heading: 'Thông Tin Giáo Lý Viên' %>
   <%= render 'guidances/index' %>
 <% end %>
 
