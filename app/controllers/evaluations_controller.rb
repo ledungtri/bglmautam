@@ -34,7 +34,8 @@ class EvaluationsController < ApplicationController
     @evaluation.destroy
 
     respond_to do |format|
-      format.html { redirect_to evaluations_url, notice: "Evaluation was successfully destroyed." }
+      path = send("edit_#{@evaluation.evaluable_type.downcase}_url", @evaluation.evaluable_id)
+      format.html { redirect_to path, notice: "Evaluation was successfully destroyed." }
     end
   end
 

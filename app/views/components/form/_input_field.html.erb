@@ -1,2 +1,4 @@
-<div class="label"><%= label %>:</div>
+<% if label %>
+  <div class="label"><%= label %>:</div>
+<% end %>
 <%= f.send(field_type, field, opts) %>
