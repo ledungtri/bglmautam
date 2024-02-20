@@ -1,8 +1,8 @@
 class EnrollmentsController < ApplicationController
-  before_action :set_enrollment, only: %i[show edit update destroy admin_or_teacher_of?]
+  before_action :set_enrollment, only: %i[show update destroy admin_or_teacher_of?]
   before_action :auth
-  before_action :admin?, except: %i[show edit update]
-  before_action :admin_or_teacher_of?, only: %i[show edit update]
+  before_action :admin?, except: %i[show update]
+  before_action :admin_or_teacher_of?, only: %i[show update]
 
   # POST /enrollments
   # POST /enrollments.json
@@ -17,8 +17,8 @@ class EnrollmentsController < ApplicationController
     end
   end
 
-  # GET /enrollments/1/edit
-  def edit
+  # GET /enrollments/1
+  def show
   end
 
   # PATCH/PUT /enrollments/1
@@ -29,7 +29,7 @@ class EnrollmentsController < ApplicationController
         flash[:success] = 'Enrollment was successfully updated.'
         format.html { redirect_to "/students/#{@enrollment.student_id}" }
       else
-        format.html { render :edit }
+        format.html { render :show }
       end
     end
   end

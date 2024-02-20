@@ -1,5 +1,5 @@
 class GuidancesController < ApplicationController
-  before_action :set_guidance, only: %i[show edit update destroy]
+  before_action :set_guidance, only: %i[show update destroy]
   before_action :auth, :admin?
 
   # POST /guidances
@@ -15,8 +15,8 @@ class GuidancesController < ApplicationController
     end
   end
 
-  # GET /guidances/1/edit
-  def edit
+  # GET /guidances/1
+  def show
   end
 
   # PATCH/PUT /guidances/1
@@ -27,7 +27,7 @@ class GuidancesController < ApplicationController
         flash[:success] = 'Guidance was successfully updated.'
         format.html { redirect_to "/teachers/#{@guidance.teacher_id}" }
       else
-        format.html { render :edit }
+        format.html { render :show }
       end
     end
   end

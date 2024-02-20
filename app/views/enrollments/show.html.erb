@@ -1,3 +1,5 @@
+<h1>Kết Quả Học Tập</h1>
+
 <%= form_for(@enrollment) do |f| %>
   <%= render 'components/form/error_notification', object: @enrollment %>
 
@@ -27,3 +29,5 @@
   </fieldset>
   <%= render 'components/divider' %>
 <% end %>
+
+<%= render 'components/form/form', object: @enrollment.evaluations.first_or_initialize, heading: 'Nhận Xét Quá Trình' %>
