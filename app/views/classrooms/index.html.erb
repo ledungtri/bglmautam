@@ -8,12 +8,9 @@
       <th style='width: 100px'>Tên Lớp</th>
       <th style='width: 100px'>Vị Trí</th>
       <th style='width:  94px'>Tổng Số</th>
-      <th style='width:  94px'>Nghỉ Luôn</th>
-      <th style='width:  94px'>Chuyển Xứ</th>
-      <th style='width:  94px'>Đang Học</th>
-      <th style='width:  94px'>Dự Thính</th>
-      <th style='width:  94px'>Lên Lớp</th>
-      <th style='width:  94px'>Học Lại</th>
+      <% Enrollment::RESULT_OPTIONS.each do |result| %>
+        <th style='width:  94px'><%= result %></th>
+      <% end %>
     </tr>
   </thead>
 
@@ -24,12 +21,9 @@
         <td style='width: 100px'><%= link_to classroom.name, classroom %></td>
         <td style='width: 100px'><%= classroom.location %></td>
         <td style='width:  94px'><%= classroom.enrollments.count %></td>
-        <td style='width:  94px'><%= classroom.enrollments.where(result: 'Nghỉ Luôn').count %></td>
-        <td style='width:  94px'><%= classroom.enrollments.where(result: 'Chuyển Xứ').count %></td>
-        <td style='width:  94px'><%= classroom.enrollments.where(result: 'Đang Học').count %></td>
-        <td style='width:  94px'><%= classroom.enrollments.where(result: 'Dự Thính').count %></td>
-        <td style='width:  94px'><%= classroom.enrollments.where(result: 'Lên Lớp').count %></td>
-        <td style='width:  94px'><%= classroom.enrollments.where(result: 'Học Lại').count %></td>
+        <% Enrollment::RESULT_OPTIONS.each do |result| %>
+          <td style='width:  94px'><%= classroom.enrollments.where(result: result).count %></td>
+        <% end %>
       </tr>
     <% end %>
     <tr class="table-row">
@@ -37,12 +31,9 @@
       <td style='width: 100px'>Tổng Số</td>
       <td style='width: 100px'></td>
       <td style='width:  94px'><%= @classrooms.inject(0) { |sum, classroom| sum + classroom.enrollments.count } %></td>
-      <td style='width:  94px'><%= @classrooms.inject(0) { |sum, classroom| sum + classroom.enrollments.where(result: 'Nghỉ Luôn').count } %></td>
-      <td style='width:  94px'><%= @classrooms.inject(0) { |sum, classroom| sum + classroom.enrollments.where(result: 'Chuyển Xứ').count } %></td>
-      <td style='width:  94px'><%= @classrooms.inject(0) { |sum, classroom| sum + classroom.enrollments.where(result: 'Đang Học').count } %></td>
-      <td style='width:  94px'><%= @classrooms.inject(0) { |sum, classroom| sum + classroom.enrollments.where(result: 'Dự Thính').count } %></td>
-      <td style='width:  94px'><%= @classrooms.inject(0) { |sum, classroom| sum + classroom.enrollments.where(result: 'Lên Lớp').count } %></td>
-      <td style='width:  94px'><%= @classrooms.inject(0) { |sum, classroom| sum + classroom.enrollments.where(result: 'Học Lại').count } %></td>
+      <% Enrollment::RESULT_OPTIONS.each do |result| %>
+        <td style='width:  94px'><%= Enrollment.where(classroom: @classrooms).where(result: result).count %></td>
+      <% end %>
     </tr>
   </tbody>
 </table>

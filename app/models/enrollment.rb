@@ -22,7 +22,7 @@ class Enrollment < ApplicationRecord
 
   validates_presence_of :student_id, :result
 
-  RESULT_OPTIONS = ['Học Lại', 'Nghỉ Luôn', 'Lên Lớp', 'Đang Học', 'Dự Thính', 'Chuyển Xứ']
+  RESULT_OPTIONS = ['Đang Học', 'Lên Lớp', 'Dự Thính', 'Học Lại', 'Nghỉ Luôn', 'Chuyển Xứ']
 
   def sort_param
     student.sort_param
