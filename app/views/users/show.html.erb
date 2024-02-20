@@ -1,8 +1,6 @@
 <% if @teacher %>
   <%= render 'teachers/teacher_detail' %>
-  <div class="divider"></div>
   <%= render 'guidances/index' %>
-  <div class="divider"></div>
 <% end %>
 
 <% if @current_user.admin? %>
@@ -18,10 +16,8 @@
       <%= button_to "Tạo Giáo Lý Viên Mới", new_teacher_path, method: :get, :class => "button" %>
     </div>
   </fieldset>
-  <div class="divider"></div>
+  <%= render 'components/divider' %>
 <% end %>
 
 <%= render 'components/form/form', object: @user, heading: 'Thông tin đăng nhập' %>
-<div class="divider"></div>
-
 <%= button_to 'Đăng Xuất', '/logout', method: :get, class: 'button' %>

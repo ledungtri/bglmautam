@@ -1,4 +1,3 @@
 <%= render 'info_table', enrollments: @enrollments %>
-
 <%= button_to "In Danh Sách Thiếu Nhi", students_path(format: "pdf"), method: :get, :class =>"button" %>
 <%= button_to "In SYLL Trống", students_path(format: "pdf"), method: :get, :class =>"button", params: { style: :empty } %>
