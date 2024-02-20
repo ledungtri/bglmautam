@@ -21,6 +21,16 @@ class Guidance < ApplicationRecord
 
   validates_presence_of :teacher_id
 
+  FIELD_SETS = [
+    {
+      fields: [
+        { label: 'GLV', field_type: :display, value_method: -> (g) { g.teacher.name } },
+        { label: 'Lớp', field_type: :display, value_method: -> (g) { g.classroom.name } },
+        { label: 'Phụ Trách', field: :position, field_type: :select }
+      ]
+    }
+  ]
+
   POSITION_OPTIONS = ["Tu Sĩ", "Huynh Trưởng", "Dự Trưởng", "Hiệp Sĩ", "GLV", "Tiền GLV", "Phụ Tá", "Kiến Tập"]
 
   def sort_param

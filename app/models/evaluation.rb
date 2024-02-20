@@ -20,7 +20,7 @@ class Evaluation < ApplicationRecord
   FIELD_SETS = [
     {
       fields: [
-        { field: :content, label: 'Nhận xét', field_type: :text_area, opts: { size: '115x10' } },
+        { field: :content, label: 'Nhận xét', field_type: :text_area, opts: { size: '110x10' } },
         { field: :evaluable_type, field_type: :hidden_field },
         { field: :evaluable_id, field_type: :hidden_field },
       ]

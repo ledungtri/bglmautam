@@ -1,4 +1,26 @@
-<% if label %>
-  <div class="label"><%= label %>:</div>
-<% end %>
-<%= f.send(field_type, field, opts) %>
+<%
+  label = data[:label]
+  field = data[:field]
+  field_type = data[:field_type] || :text_field
+  value_method = data[:value_method]
+  value = value_method ? value_method.call(object) : object.send(field)
+  opts = data[:opts] || {}
+%>
+
+<div>
+  <% if label %>
+    <div class="label"><%= "#{label}:" %></div>
+  <% end %>
+
+  <% if field_type == :display %>
+    <strong><%= value %></strong>
+  <% else %>
+    <%=
+      if field_type == :select
+        select_opts = object.class.const_get("#{field.upcase}_OPTIONS")
+        opts = options_for_select(select_opts, object.send(field))
+      end
+      f.send(field_type, field, opts)
+    %>
+  <% end %>
+</div>

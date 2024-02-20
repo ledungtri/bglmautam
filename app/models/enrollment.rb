@@ -22,6 +22,16 @@ class Enrollment < ApplicationRecord
 
   validates_presence_of :student_id, :result
 
+  FIELD_SETS = [
+    {
+      fields: [
+        { label: 'Thiếu Nhi', field_type: :display, value_method: -> (e) { e.student.name } },
+        { label: 'Lớp', field_type: :display, value_method: -> (e) { e.classroom.name } },
+        { label: 'Kết Quả', field: :result, field_type: :select }
+      ]
+    }
+  ]
+
   RESULT_OPTIONS = ['Đang Học', 'Lên Lớp', 'Dự Thính', 'Học Lại', 'Nghỉ Luôn', 'Chuyển Xứ']
 
   def sort_param

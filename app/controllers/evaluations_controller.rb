@@ -13,7 +13,7 @@ class EvaluationsController < ApplicationController
       else
         flash[:error] = 'Evaluation was not successfully created.'
       end
-      format.html { redirect_to edit_enrollment_url(@evaluation.evaluable) }
+      format.html { redirect_to enrollment_url(@evaluation.evaluable) }
     end
   end
 
@@ -25,7 +25,7 @@ class EvaluationsController < ApplicationController
       else
         flash[:error] = 'Evaluation was not successfully updated.'
       end
-      format.html { redirect_to edit_enrollment_url(@evaluation.evaluable) }
+      format.html { redirect_to enrollment_url(@evaluation.evaluable) }
     end
   end
 
@@ -34,7 +34,7 @@ class EvaluationsController < ApplicationController
     @evaluation.destroy
 
     respond_to do |format|
-      path = send("edit_#{@evaluation.evaluable_type.downcase}_url", @evaluation.evaluable_id)
+      path = send("#{@evaluation.evaluable_type.downcase}_url", @evaluation.evaluable_id)
       format.html { redirect_to path, notice: "Evaluation was successfully destroyed." }
     end
   end

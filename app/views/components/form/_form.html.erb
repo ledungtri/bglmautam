@@ -1,21 +1,13 @@
 <h1><%= heading %></h1>
-
 <%= form_for(object) do |f| %>
   <%= render 'components/form/error_notification', object: object %>
-
   <% (object.class::FIELD_SETS || []).each do |set| %>
-    <fieldset>
+    <fieldset style="display: grid; grid-template-columns: repeat(2, 1fr)">
       <% if set[:legend] %>
         <legend><h3><%= set[:legend] %></h3></legend>
       <% end %>
-      <% set[:fields].each do |field| %>
-        <%= render 'components/form/input_field',
-                   f: f,
-                   field_type: field[:field_type] || :text_field,
-                   field: field[:field],
-                   label: field[:label],
-                   opts: field[:opts] || {}
-        %>
+      <% set[:fields].each do |data| %>
+        <%= render 'components/form/input_field', f: f, object: object, data: data %>
       <% end %>
     </fieldset>
     <%= render 'components/divider' %>
