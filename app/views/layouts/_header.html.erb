@@ -7,7 +7,7 @@
       <a href="/teachers">Thông Tin Giáo Lý Viên</a>
       <a href="/search">Tìm Kiếm</a>
       <% if @current_user %>
-        <a href="/users/<%= @current_user.id %>">Người dùng</a>
+        <a href=<%= user_url(@current_user) %>>Người dùng</a>
       <% end %>
     </nav>
   </a>

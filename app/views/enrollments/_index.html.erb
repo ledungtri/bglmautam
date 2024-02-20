@@ -22,9 +22,9 @@
   <% end %>
 
   <tr id="form" class="table-row" style="display: none">
-    <% @enrollment = Enrollment.new %>
-    <%= form_for(@enrollment) do |f| %>
-      <%= render 'components/form/error_notification', object: @enrollment %>
+    <% enrollment = Enrollment.new %>
+    <%= form_for(enrollment) do |f| %>
+      <%= render 'components/form/error_notification', object: enrollment %>
 
       <%= f.hidden_field :student_id, :value => @student.id %>
       <%= f.hidden_field :result, :value => "Đang Học" %>
