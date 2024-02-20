@@ -23,6 +23,6 @@
   <fieldset style="display: grid; grid-template-columns: repeat(2, 1fr)">
     <%= f.submit "Cập Nhật", :class => "button" %>
 <% end %>
-    <%= button_to 'Xóa', object, method: :delete, data: { confirm: 'Are you sure?' }, :class => "button button-caution" if @current_user.admin? %>
+    <%= render 'components/button_delete', object: object if @current_user.admin? %>
   </fieldset>
 <%= render 'components/divider' %>
