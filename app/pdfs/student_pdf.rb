@@ -14,7 +14,6 @@ class StudentPdf < Prawn::Document
     text "Lớp: #{@student.enrollments.last&.classroom&.name || '__________________'}", size: 13, align: :center, style: :bold
     move_down 10
     body
-    footer
   end
 
   def body

@@ -59,7 +59,6 @@ a:hover{
 header
 {
   font-family: 'Pattaya', serif;
-  font-size: 40px;
 }
 
 header a:hover {
@@ -67,7 +66,7 @@ header a:hover {
 }
 
 article {
- width: 972px;
+  width: 972px;
   padding: 5px;
 }
 
@@ -90,7 +89,7 @@ footer {
 /* Navigation Bar */
 nav a {
   padding: 0 20px;
-  font-size: 18px;
+  font-size: 14px;
   text-decoration: none;
   font-weight: bold;
   font-family: 'Helvetica', cursive;
@@ -170,15 +169,6 @@ legend {
   margin: 2px;
   font-weight: 500;
   size: 50px;
-}
-
-.label_login {
-  display: inline-block;
-  width: 180px;
-  text-align: right;
-  margin: 5px;
-  font-weight: 500;
-  size: 70px;
 }
 
 .block {
