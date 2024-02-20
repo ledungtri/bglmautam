@@ -1,3 +1,11 @@
+<%
+  actions = [
+    { label: 'Tạo Lớp Học Mới', path: new_classroom_path },
+    { label: 'Tạo Thiếu Nhi Mới', path: new_student_path },
+    { label: 'Tạo Giáo Lý Viên Mới', path: new_teacher_path },
+  ]
+%>
+
 <% if @teacher %>
   <%= render 'teachers/teacher_detail' %>
   <%= render 'guidances/index' %>
@@ -5,13 +13,8 @@
 
 <% if @current_user.admin? %>
   <h1>Chức năng Admin</h1>
-  <fieldset style="display: grid; grid-template-columns: repeat(3, 1fr)">
-    <%= button_to "Tạo Lớp Học Mới", new_classroom_path, method: :get, :class => "button" %>
-    <%= button_to "Tạo Thiếu Nhi Mới", new_student_path, method: :get, :class => "button" %>
-    <%= button_to "Tạo Giáo Lý Viên Mới", new_teacher_path, method: :get, :class => "button" %>
-  </fieldset>
-  <%= render 'components/divider' %>
+  <%= render 'components/button_group', actions: actions %>
 <% end %>
 
 <%= render 'components/form/form', object: @user, heading: 'Thông tin đăng nhập' %>
-<%= button_to 'Đăng Xuất', '/logout', method: :get, class: 'button' %>
+<%= render 'components/button', button: { label: 'Đăng Xuất', path: '/logout' } %>

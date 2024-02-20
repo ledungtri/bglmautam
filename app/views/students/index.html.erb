@@ -1,3 +1,9 @@
+<%
+  actions = [
+    { label: 'In Danh Sách Thiếu Nhi', path: students_path(format: "pdf") },
+    { label: 'In SYLL Trống', path: students_path(format: "pdf"), params: { style: :empty } }
+  ]
+%>
+
 <%= render 'info_table', enrollments: @enrollments %>
-<%= button_to "In Danh Sách Thiếu Nhi", students_path(format: "pdf"), method: :get, :class =>"button" %>
-<%= button_to "In SYLL Trống", students_path(format: "pdf"), method: :get, :class =>"button", params: { style: :empty } %>
+<%= render 'components/button_group', actions: actions %>

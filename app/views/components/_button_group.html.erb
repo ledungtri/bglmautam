@@ -1,0 +1,7 @@
+<% columns = actions.count > 3 ? 3 : actions.count %>
+<fieldset style="display: grid; grid-template-columns: repeat(<%= columns %>, 1fr)">
+  <% actions.each do |action| %>
+    <%= render 'components/button', button: action %>
+  <% end %>
+</fieldset>
+<%= render 'components/divider' %>

@@ -1,0 +1,6 @@
+<%=
+  button[:method] ||= :get
+  button[:class] ||= :button
+  button[:params] ||= {}
+  button_to(button[:label], button[:path], method: button[:method], class: button[:class], params: button[:params])
+%>

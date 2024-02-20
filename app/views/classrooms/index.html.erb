@@ -1,3 +1,10 @@
+<%
+  actions = [
+    { label: 'In Bảng Thống Kê', path: classrooms_path(format: :pdf), params: { year: @current_year } },
+    { label: 'In Bảng Tự Tạo', path: classrooms_custom_export_path },
+  ]
+%>
+
 <h1>Thống Kê Số Lượng Thiếu Nhi Năm Học <%= @current_year_long %></h1>
 <h4>Số Lượng các lớp: <%= @classrooms.count %></h4>
 
@@ -37,6 +44,5 @@
     </tr>
   </tbody>
 </table>
-
-<%= button_to "In Bảng Thống Kê", classrooms_path(format: "pdf"), method: :get, :class => "button", params: { year: @current_year} %>
-<%= button_to "In Bảng Tự Tạo", classrooms_custom_export_path, method: :get, :class => "button" %>
+<%= render 'components/divider' %>
+<%= render 'components/button_group', actions: actions %>
