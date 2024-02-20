@@ -53,6 +53,8 @@ class Student < ApplicationRecord
   validates :father_phone, format: { with: /\A\d+\z/, message: 'only allows numbers' }, allow_blank: true
   validates :mother_phone, format: { with: /\A\d+\z/, message: 'only allows numbers' }, allow_blank: true
 
+  scope :in_classroom, -> (classroom) { joins(:enrollments).where('enrollments.classroom_id': classroom.id) }
+
   FIELD_SETS = [
     {
       legend: 'Thông Tin Cá Nhân',

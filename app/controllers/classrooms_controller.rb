@@ -92,14 +92,17 @@ class ClassroomsController < ApplicationController
 
   def students_personal_details
     @classroom = Classroom.find(params[:classroom_id])
-    @students = @classroom.students.sort_by(&:sort_param)
+    @students = Student.in_classroom(@classroom).sort_by(&:sort_param)
 
     respond_to do |format|
       format.html
 
       format.pdf do
         pdf = StudentsPersonalDetailsPdf.new(@students)
-        send_data pdf.render, filename: "Sơ Yếu Lý Lịch Lớp #{@classroom.name} Năm Học #{@classroom.long_year}.pdf", type: 'application/pdf', disposition: 'inline'
+        send_data pdf.render,
+                  filename: "Sơ Yếu Lý Lịch Lớp #{@classroom.name} Năm Học #{@classroom.long_year}.pdf",
+                  type: 'application/pdf',
+                  disposition: 'inline'
       end
     end
   end
@@ -112,7 +115,10 @@ class ClassroomsController < ApplicationController
   def classrooms_custom_export
     @classrooms = Classroom.where(year: @current_year).where(family: ['Khai Tâm', 'Rước Lễ', 'Thêm Sức', 'Bao Đồng', 'Vào Đời']).sort_by(&:sort_param)
     pdf = ClassroomsCustomPdf.new(@classrooms, params[:title], params[:page_layout].to_sym, params[:columns].split(','))
-    send_data pdf.render, filename: "#{params[:title]}.pdf", type: 'application/pdf', disposition: 'inline'
+    send_data pdf.render,
+              filename: "#{params[:title]}.pdf",
+              type: 'application/pdf',
+              disposition: 'inline'
   end
 
   def custom_export_form

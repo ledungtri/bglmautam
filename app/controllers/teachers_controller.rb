@@ -12,7 +12,10 @@ class TeachersController < ApplicationController
       format.html
       format.pdf do
         pdf = TeachersPdf.new(@guidances, @current_year)
-        send_data pdf.render, filename: "Danh Sách GLV Năm Học #{@current_year_long}.pdf", type: 'application/pdf', disposition: 'inline'
+        send_data pdf.render,
+                  filename: "Danh Sách GLV Năm Học #{@current_year_long}.pdf",
+                  type: 'application/pdf',
+                  disposition: 'inline'
       end
     end
   end
