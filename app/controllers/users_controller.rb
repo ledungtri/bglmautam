@@ -4,12 +4,6 @@ class UsersController < ApplicationController
   before_action :admin?, except: %i[show edit update]
   before_action :admin_or_self?, only: %i[show edit update]
 
-  # GET /users
-  # GET /users.json
-  def index
-    @users = User.all
-  end
-
   # GET /users/1
   # GET /users/1.json
   def show
