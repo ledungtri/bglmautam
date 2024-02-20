@@ -5,16 +5,10 @@
 
 <% if @current_user.admin? %>
   <h1>Chức năng Admin</h1>
-  <fieldset style="display: flex; justify-content: space-between">
-    <div style="display: inline-block">
-      <%= button_to "Tạo Lớp Học Mới", new_classroom_path, method: :get, :class => "button" %>
-    </div>
-    <div style="display: inline-block">
-      <%= button_to "Tạo Thiếu Nhi Mới", new_student_path, method: :get, :class => "button" %>
-    </div>
-    <div style="display: inline-block">
-      <%= button_to "Tạo Giáo Lý Viên Mới", new_teacher_path, method: :get, :class => "button" %>
-    </div>
+  <fieldset style="display: grid; grid-template-columns: repeat(3, 1fr)">
+    <%= button_to "Tạo Lớp Học Mới", new_classroom_path, method: :get, :class => "button" %>
+    <%= button_to "Tạo Thiếu Nhi Mới", new_student_path, method: :get, :class => "button" %>
+    <%= button_to "Tạo Giáo Lý Viên Mới", new_teacher_path, method: :get, :class => "button" %>
   </fieldset>
   <%= render 'components/divider' %>
 <% end %>

@@ -20,12 +20,10 @@
     </fieldset>
     <%= render 'components/divider' %>
   <% end %>
-  <fieldset style="display: flex; justify-content: space-between">
-    <div style="display: inline-block">
-      <%= f.submit "Cập Nhật", :class => "button"%>
-    </div>
-    <div style="display: inline-block">
-      <%= button_to 'Xóa', object, method: :delete, data: { confirm: 'Xóa hết thông tin và Hành Trình Thiêng Liêng của giáo lý viên? Nên cập nhật thông tin thay vì xóa. Are you sure?' }, :class => "button button-caution" %>
-    </div>
+  <fieldset style="display: grid; grid-template-columns: repeat(3, 1fr)">
+    <div></div>
+    <%= f.submit "Cập Nhật", :class => "button" %>
+<% end %>
+    <%= button_to 'Xóa', object, method: :delete, data: { confirm: 'Are you sure?' }, :class => "button button-caution" if @current_user.admin? %>
   </fieldset>
 <%= render 'components/divider' %>

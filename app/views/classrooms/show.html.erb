@@ -4,27 +4,15 @@
 
 <% if @classroom.id %>
   <fieldset>
-    <div style="display: flex; justify-content: space-between">
-      <div style="display: inline-block">
-        <%= button_to "In Danh Sách", classroom_path(format: :pdf), method: :get, class: :button %>
-      </div>
-      <div style="display: inline-block">
-        <%= button_to "Xuất Excel", classroom_path(format: :xlsx), method: :get, class: :button %>
-      </div>
-      <div style="display: inline-block">
-        <%= button_to "In Sơ Yếu Lý Lịch", classroom_students_personal_details_path(@classroom, format: :pdf), method: :get, class: :button %>
-      </div>
-    </div>
-    <div style="display: flex; justify-content: space-between">
-      <div style="display: inline-block">
-        <%= button_to "In Bảng Tự Tạo", classroom_custom_export_path(@classroom), method: :get, class: :button %>
-      </div>
-      <div style="display: inline-block">
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr)">
+      <%= button_to "In Danh Sách", classroom_path(format: :pdf), method: :get, class: :button %>
+      <%= button_to "Xuất Excel", classroom_path(format: :xlsx), method: :get, class: :button %>
+      <%= button_to "In Sơ Yếu Lý Lịch", classroom_students_personal_details_path(@classroom, format: :pdf), method: :get, class: :button %>
+      <%= button_to "In Bảng Tự Tạo", classroom_custom_export_path(@classroom), method: :get, class: :button %>
+      <% if @current_user.admin? %>
         <%= button_to "In Danh Sách Lớp Dán Bảng", classroom_path(format: :pdf), method: :get, class: :button, params: { style: :compact } %>
-      </div>
-      <div style="display: inline-block">
         <%= button_to "In Số Điện Thoại GLV", classroom_path(format: :pdf), method: :get, class: :button, params: { style: :teachers_contact } %>
-      </div>
+      <% end %>
     </div>
   </fieldset>
 <% end %>

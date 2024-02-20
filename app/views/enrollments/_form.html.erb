@@ -22,15 +22,9 @@
 
   <%= render 'components/divider' %>
 
-  <fieldset style="display: flex; justify-content: space-between">
-    <div style="display: inline-block">
-      <%= f.submit "Cập Nhật", :class => "button"%>
-    </div>
-    <% if @current_user&.admin? %>
-      <div style="display: inline-block">
-        <%= button_to 'Xóa', @enrollment, method: :delete, data: { confirm: 'Are you sure?'}, class: "button button-caution" %>
-      </div>
-    <% end %>
+  <fieldset style="display: grid; grid-template-columns: repeat(3, 1fr)">
+    <%= f.submit "Cập Nhật", :class => "button"%>
+    <%= button_to 'Xóa', @enrollment, method: :delete, data: { confirm: 'Are you sure?'}, class: "button button-caution" if @current_user&.admin? %>
   </fieldset>
   <%= render 'components/divider' %>
 <% end %>
