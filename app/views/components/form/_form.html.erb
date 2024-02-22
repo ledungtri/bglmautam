@@ -7,14 +7,22 @@
         <legend><h3><%= set[:legend] %></h3></legend>
       <% end %>
       <% set[:fields].each do |data| %>
+        <%
+            data[:opts] ||= {}
+            data[:opts][:disabled] = !editable
+        %>
         <%= render 'components/form/input_field', f: f, object: object, data: data %>
       <% end %>
     </fieldset>
     <%= render 'components/divider' %>
   <% end %>
-  <fieldset style="display: grid; grid-template-columns: repeat(2, 1fr)">
-    <%= f.submit "Cập Nhật", :class => "button" %>
+  <% if editable %>
+    <fieldset style="display: grid; grid-template-columns: repeat(2, 1fr)">
+  <% end %>
+    <%= f.submit "Cập Nhật", :class => "button" if editable %>
 <% end %>
-    <%= render 'components/button_delete', object: object if @current_user.admin? %>
+    <%= render 'components/button_delete', object: object if editable %>
+<% if editable %>
   </fieldset>
+<% end %>
 <%= render 'components/divider' %>

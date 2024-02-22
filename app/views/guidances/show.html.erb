@@ -1,1 +1,5 @@
-<%= render 'components/form/form', object: @guidance, heading: 'Phụ Trách Lớp' %>
+<%= render 'components/form/form',
+           heading: 'Phụ Trách Lớp',
+           object: @guidance,
+           editable: @current_user.admin_or_self_guidance?(@guidance)
+%>

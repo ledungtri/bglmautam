@@ -1,2 +1,10 @@
-<%= render 'components/form/form', object: @enrollment, heading: 'Kết Quả Học Tập' %>
-<%= render 'components/form/form', object: @enrollment.evaluations.first_or_initialize, heading: 'Nhận Xét Quá Trình' %>
+<%= render 'components/form/form',
+           heading: 'Kết Quả Học Tập',
+           object: @enrollment,
+           editable: @current_user.admin_or_teacher_of_enrollment?(@enrollment, @current_year)
+%>
+<%= render 'components/form/form',
+           heading: 'Nhận Xét Quá Trình',
+           object: @enrollment.evaluations.first_or_initialize,
+           editable: @current_user.admin_or_teacher_of_enrollment?(@enrollment, @current_year)
+%>

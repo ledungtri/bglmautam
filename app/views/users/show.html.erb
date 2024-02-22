@@ -7,7 +7,11 @@
 %>
 
 <% if @teacher %>
-  <%= render 'components/form/form', object: @teacher, heading: 'Thông Tin Giáo Lý Viên' %>
+  <%= render 'components/form/form',
+             heading: 'Thông Tin Giáo Lý Viên',
+             object: @teacher,
+             editable: @current_user.admin_or_self_teacher?(@teacher)
+  %>
   <%= render 'guidances/index' %>
 <% end %>
 
@@ -16,5 +20,9 @@
   <%= render 'components/button_group', actions: actions %>
 <% end %>
 
-<%= render 'components/form/form', object: @user, heading: 'Thông tin đăng nhập' %>
+<%= render 'components/form/form',
+           heading: 'Thông tin đăng nhập',
+           object: @user,
+           editable: @current_user.admin_or_self?(@user)
+%>
 <%= render 'components/button', button: { label: 'Đăng Xuất', path: '/logout' } %>

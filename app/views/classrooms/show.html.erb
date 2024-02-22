@@ -12,7 +12,11 @@
   ]
 %>
 
-<%= render 'components/form/form', object: @classroom, heading: 'Thông Tin Lớp' %>
+<%= render 'components/form/form',
+           heading: 'Thông Tin Lớp',
+           object: @classroom,
+           editable: @current_user.admin?
+%>
 <%= render 'teachers/info_table', guidances: @classroom.guidances unless @classroom.guidances.empty? %>
 <%= render 'students/info_table', enrollments: @classroom.enrollments unless @classroom.enrollments.empty? %>
 

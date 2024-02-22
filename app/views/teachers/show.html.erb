@@ -1,2 +1,11 @@
-<%= render 'components/form/form', object: @teacher, heading: 'Thông Tin Giáo Lý Viên' %>
+<%= render 'components/form/form',
+           heading: 'Thông Tin Giáo Lý Viên',
+           object: @teacher,
+           editable: @current_user.admin_or_self_teacher?(@teacher)
+%>
 <%= render 'guidances/index' %>
+<%= render 'components/form/form',
+           heading: 'Thông tin đăng nhập',
+           object: @teacher.user,
+           editable: @current_user.admin_or_self_teacher?(@teacher) if @teacher.user
+%>
