@@ -11,7 +11,7 @@ th {
   margin: 0;
   padding: 5px 0 0;
   font-family: inherit;
-  background: linear-gradient(to bottom, #ffc3a0, #FFAFBD);
+  background: bisque;
 }
 
 td {
@@ -29,5 +29,5 @@ td {
 }
 
 .table-row:hover {
-  background-image: linear-gradient(90deg, #fcecfe, #fbf6e7, #e6fcf5);
+  background: ghostwhite;
 }
