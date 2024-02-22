@@ -1,6 +1,28 @@
 @import url('https://fonts.googleapis.com/css?family=Amatic+SC|Pattaya|Nunito');
+@import url("header.css");
 @import url("notice_flash.css");
+@import url("table.css");
+@import url("form.css");
+@import url("buttons.css");
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css');
+
+html {
+  background-color: azure;
+  color:#14387e;
+  //background-color: slategrey;
+}
+
+header, footer {
+  background-color: lightcyan;
+}
+
+body {
+  font-size: 14px;
+  font-family: 'Nunito', sans-serif;
+  min-width: 1200px;
+  margin: auto;
+}
+
 h1 {
   font-size: 25px;
   text-align: center;
@@ -18,22 +40,6 @@ h4 {
   margin: 0;
 }
 
-.middle > * {
-  vertical-align: middle;
-}
-
-body {
-  font-size: 14px;
-  font-family: 'Nunito', sans-serif;
-  box-sizing: border-box;
-  box-shadow: 0 0 10px 5px rgb(10,10,10);
-  width: 1200px;
-  margin: auto;
-}
-
-
-
-/* Give all semantic body elements uniform layout style */
 header,
 main,
 footer,
@@ -43,7 +49,7 @@ article
 {
   box-sizing: border-box;
   margin: auto;
-}  
+}
 
 a {
   color: inherit;
@@ -53,214 +59,11 @@ a:hover{
   font-weight: bold;
 }
 
-
-
-/* Give each semantic body element a different color */
-header
-{
-  font-family: 'Pattaya', serif;
-}
-
-header a:hover {
-  font-weight: normal;
-}
-
 article {
   width: 972px;
   padding: 5px;
 }
 
-main {
-  padding-top: 10px;
-}
-
-
-footer {
-  font-family: 'Pattaya', serif;
-}
-
-
 .divider {
   margin: 30px;
-}
-
-
-
-/* Navigation Bar */
-nav a {
-  padding: 0 20px;
-  font-size: 14px;
-  text-decoration: none;
-  font-weight: bold;
-  font-family: 'Helvetica', cursive;
-}
-
-nav a:hover {
-  font-weight: bold;
-  text-decoration: underline;
-}
-
-
-
-button, .button {
-  background-image: linear-gradient(
-    to right,
-    #25aae1,
-    #4481eb,
-    #04befe,
-    #3f86ed
-  );
-  box-shadow: 0 4px 15px 0 rgba(65, 132, 234, 0.75);
-  margin: 10px auto 0;
-  width: 240px;
-  display: block;
-  font-size: 16px;
-  font-weight: 600;
-  color: #fff;
-  cursor: pointer;
-  height: 40px;
-  text-align:center;
-  border: none;
-  background-size: 300% 100%;
-  border-radius: 50px;
-  moz-transition: all .4s ease-in-out;
-  -o-transition: all .4s ease-in-out;
-  -webkit-transition: all .4s ease-in-out;
-  transition: all .4s ease-in-out;
-}
-
-button:hover, .button:hover{
-  background-position: 100% 0;
-  moz-transition: all .4s ease-in-out;
-  -o-transition: all .4s ease-in-out;
-  -webkit-transition: all .4s ease-in-out;
-  transition: all .4s ease-in-out;
-}
-
-.button-caution {
-  background-image: linear-gradient(
-    to right,
-    #ed5f3f,
-    #fe0c04,
-    #ed963f,
-    #ed3f3f
-  );
-}
-
-fieldset {
-  background-color: white;
-}
-
-legend {
-  background-color: white;
-  line-height: 0px;
-  border-left: 1px solid black;
-  border-right: 1px solid black;
-  border-top: 1px solid black;
-  margin-top: 50px;
-  width: 150px;
-  text-align: center;
-}
-
-.label {
-  display: inline-block;
-  width: 180px;
-  text-align: right;
-  margin: 2px;
-  font-weight: 500;
-  size: 50px;
-}
-
-.block {
-  display: inline-block;
-  width: 70%;
-  transform: translate(-15%, -10%);
-}
-
-/*Items for LISTS*/
-table {
-  border-spacing: 0;
-  margin: auto;
-}
-
-/*Table Header Row*/
-.table-row {
-  text-align: center;
-  border-style: none;
-}
-
-/*Table Header Classroom*/
-th {
-  border: 1px solid;
-  height: 20px;
-  font-size: 14px;
-  font-weight: bold;
-  margin: 0;
-  padding: 5px 0 0;
-}
-
-/*Table Classroom*/
-td {
-  border: 1px solid;
-  height: 20px;
-  font-size: 11px;
-  margin: 0;
-  padding: 3px 0 0;
-}
-
-.field {
-  display: inline-block;
-}
-
-
-
-/*COLOR*/
-html {
-  background-color: slategrey;
-}
-
-body, header, footer {
-  color:#14387e;
-}
-
-header, footer {
-  background-color: lightcyan;
-}
-
-main {
-  background-color: azure;
-}
-
-article { 
-  background-color: transparent;
-}
-
-th {
-  border-radius: 6px;
-  font-family: inherit;
-  background: linear-gradient(to bottom, #ffc3a0, #FFAFBD);
-}
-
-.table-row {
-  background-color: white;
-}
-
-.table-row:hover {
-  background-image: linear-gradient(90deg, #fcecfe, #fbf6e7, #e6fcf5);
-}
-
-input, select {
-  width: 200px;
-}
-
-input[type="radio"] {
-  width: 10px;
-}
-
-textarea {
-  vertical-align: top;
-}
-
-.year, .month, .day {
-  width: 65px;
 }

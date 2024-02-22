@@ -1,0 +1,43 @@
+fieldset {
+  background-color: white;
+}
+
+legend {
+  background-color: white;
+  line-height: 0px;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  border-top: 1px solid black;
+  margin-top: 50px;
+  width: 150px;
+  text-align: center;
+}
+
+.label {
+  display: inline-block;
+  width: 180px;
+  text-align: right;
+  margin: 2px;
+  font-weight: 500;
+  size: 50px;
+}
+
+input, select {
+  width: 200px;
+}
+
+input[type="radio"] {
+  width: 10px;
+}
+
+textarea {
+  vertical-align: top;
+}
+
+.field {
+  display: inline-block;
+}
+
+.year, .month, .day {
+  width: 65px;
+}

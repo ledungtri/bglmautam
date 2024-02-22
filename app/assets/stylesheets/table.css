@@ -1,0 +1,33 @@
+table {
+  border-spacing: 0;
+  margin: auto;
+}
+
+th {
+  border: 1px solid;
+  height: 20px;
+  font-size: 14px;
+  font-weight: bold;
+  margin: 0;
+  padding: 5px 0 0;
+  font-family: inherit;
+  background: linear-gradient(to bottom, #ffc3a0, #FFAFBD);
+}
+
+td {
+  border: 1px solid;
+  height: 20px;
+  font-size: 11px;
+  margin: 0;
+  padding: 3px 0 0;
+}
+
+.table-row {
+  text-align: center;
+  border-style: none;
+  background-color: white;
+}
+
+.table-row:hover {
+  background-image: linear-gradient(90deg, #fcecfe, #fbf6e7, #e6fcf5);
+}

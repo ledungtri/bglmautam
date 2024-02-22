@@ -1,19 +1,18 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Giáo Lý Gx Mẫu Tâm</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<%= render 'layouts/header' %>
-<body>
-  <main>
-    <%= render 'layouts/flash', flash: flash %>
-    <article>
-      <%= yield %>
-    </article>
-  </main>
-</body>
-<%= render 'layouts/footer' %>
+  <head>
+    <title>Giáo Lý Gx Mẫu Tâm</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <%= render 'layouts/header' %>
+  <body>
+    <main>
+      <%= render 'layouts/flash', flash: flash %>
+      <article>
+        <%= yield %>
+      </article>
+    </main>
+  </body>
 </html>
