@@ -9,16 +9,22 @@ header
 }
 
 nav {
-  display: inline-block;
+  display: flex;
+  align-items: center;
   padding: 5px;
-}
 
-nav a {
-  padding: 0 20px;
-  font-size: 18px;
-  text-decoration: none;
-}
+  form {
+    display: flex;
+    align-items: center;
+  }
 
-nav a:hover {
-  text-decoration: underline;
+  a {
+    padding: 0 20px;
+    font-size: 18px;
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
 }

@@ -5,12 +5,17 @@
       <div style="font-size: 12px">Ban Giáo Lý<br>Giáo Xứ Mẫu Tâm</div>
     </div>
   </a>
+
   <nav>
-      <a href="/classrooms">Lớp Học</a>
-      <a href="/teachers">Giáo Lý Viên</a>
-      <a href="/search">Tìm Kiếm</a>
-      <% if @current_user %>
-        <a href=<%= user_url(@current_user) %>>Người dùng</a>
-      <% end %>
-    </nav>
+    <form action="/search" method="get">
+      <input type="text" name="query"/>
+      <button type="submit"><i class="fa fa-search"></i></button>
+    </form>
+    <a href="/classrooms">Lớp Học</a>
+    <a href="/teachers">Giáo Lý Viên</a>
+    <% if @current_user %>
+      <a href=<%= teacher_url(@current_user.teacher) %>>Người dùng</a>
+    <% end %>
+    <a href="/logout">Đăng Xuất</a>
+  </nav>
 </header>

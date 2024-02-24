@@ -1,14 +1,2 @@
-<h1>Tìm kiếm Thiếu Nhi / Giáo Lý Viên</h1>
-
-<form action="/search" method="get">
-  <div style="display: block; margin: auto; width: 55%">
-    <div class="label">Họ và tên:</div>
-    <input type="text" name="query"/>
-  </div>
-  <button type="submit" class="button" value="Tìm Kiếm">
-    <i class="fa-solid fa-magnifying-glass"></i> Tìm Kiếm
-  </button>
-</form>
-
 <%= render 'students/info_table', enrollments: @enrollments unless @enrollments.empty? %>
 <%= render 'teachers/info_table', guidances: @guidances unless @guidances.empty? %>
