@@ -1,19 +1,8 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[show update destroy admin_or_self?]
+  before_action :set_user, only: %i[update destroy admin_or_self?]
   before_action :auth
-  before_action :admin?, except: %i[show update]
-  before_action :admin_or_self?, only: %i[show edit update]
-
-  # GET /users/1
-  # GET /users/1.json
-  def show
-    @teacher = @user.teacher
-  end
-
-  # GET /users/new
-  def new
-    @user = User.new
-  end
+  before_action :admin?, except: %i[update]
+  before_action :admin_or_self?, only: %i[update]
 
   # POST /users
   # POST /users.json
@@ -25,7 +14,7 @@ class UsersController < ApplicationController
         flash[:success] = 'User was successfully created.'
         format.html { redirect_to @user }
       else
-        format.html { render :new }
+        format.html { render @user.teacher }
       end
     end
   end
@@ -36,10 +25,8 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.update(user_params)
         flash[:success] = 'User was successfully updated.'
-        format.html { redirect_to @user }
-      else
-        format.html { render :edit }
       end
+      format.html { redirect_to @user }
     end
   end
 
@@ -49,7 +36,7 @@ class UsersController < ApplicationController
     @user.destroy
     respond_to do |format|
       flash[:success] = 'User was successfully destroyed.'
-      format.html { redirect_to users_url }
+      format.html { redirect_to @user }
     end
   end
 

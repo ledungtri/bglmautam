@@ -1,3 +1,11 @@
+<%
+  admin_actions = [
+    { label: 'Tạo Lớp Học', path: new_classroom_path },
+    { label: 'Tạo Thiếu Nhi', path: new_student_path },
+    { label: 'Tạo Giáo Lý Viên', path: new_teacher_path },
+  ]
+%>
+
 <%= render 'components/form/form',
            heading: 'Thông Tin Giáo Lý Viên',
            object: @teacher,
@@ -9,3 +17,8 @@
            object: @teacher.user,
            editable: @current_user.admin_or_self_teacher?(@teacher) if @teacher.user
 %>
+
+<% if @current_user.admin? && @current_user.self_teacher?(@teacher) %>
+  <h1>Chức năng Admin</h1>
+  <%= render 'components/button_group', actions: admin_actions %>
+<% end %>
