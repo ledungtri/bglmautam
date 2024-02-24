@@ -17,10 +17,12 @@
   <% else %>
     <%=
       if field_type == :select
-        select_opts = object.class.const_get("#{field.upcase}_OPTIONS")
-        opts = options_for_select(select_opts, object.send(field))
+        field_opts = object.class.const_get("#{field.upcase}_OPTIONS")
+        select_opts = options_for_select(field_opts, object.send(field))
+        f.send(field_type, field, select_opts, opts)
+      else
+        f.send(field_type, field, opts)
       end
-      f.send(field_type, field, opts)
     %>
   <% end %>
 </div>

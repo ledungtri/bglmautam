@@ -70,7 +70,7 @@ class Student < ApplicationRecord
           prompt: { :day => "Ngày", :month => "Tháng", :year => "Năm" }
         } },
         {field: :place_birth, label:'Nơi Sinh' },
-        # {field: :gender, label:'Giới Tính', field_type: :select, opts: options_for_select(%w[Nam Nữ], @student.gender), },
+        {field: :gender, label:'Giới Tính', field_type: :select },
         {field: :phone, label:'Điện Thoại Cá Nhân' },
       ]
     },
@@ -137,6 +137,9 @@ class Student < ApplicationRecord
       ]
     },
   ]
+
+  GENDER_OPTIONS = ["Nam", "Nữ"]
+
 
   def result(classroom)
     enrollments.where(student_id: id, classroom_id: classroom.id).take.result

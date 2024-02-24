@@ -54,8 +54,6 @@ class User < ApplicationRecord
     admin? || teacher_of_student?(student, year)
   end
 
-private
-
   def self?(user)
     self == user
   end
