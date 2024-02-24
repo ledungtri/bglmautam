@@ -7,9 +7,11 @@
   ]
 
   admin_actions = [
-    { label: 'In Danh Sách Lớp Dán Bảng', path: classroom_path(format: :pdf), params: { style: :compact } },
-    { label: 'In Số Điện Thoại GLV', path: classroom_path(format: :pdf), params: { style: :teachers_contact } }
+    { label: 'In DS Dán Bảng', path: classroom_path(format: :pdf), params: { style: :compact } },
+    { label: 'In SĐT GLV', path: classroom_path(format: :pdf), params: { style: :teachers_contact } }
   ]
+
+  actions += admin_actions if @current_user.admin?
 %>
 
 <%= render 'components/form/form',
@@ -17,11 +19,6 @@
            object: @classroom,
            editable: @current_user.admin?
 %>
+<%= render 'components/button_group', actions: actions if @classroom.id %>
 <%= render 'teachers/info_table', guidances: @classroom.guidances unless @classroom.guidances.empty? %>
 <%= render 'students/info_table', enrollments: @classroom.enrollments unless @classroom.enrollments.empty? %>
-
-<% if @classroom.id %>
-  <%= render 'components/button_group', actions: actions %>
-  <%= render 'components/button_group', actions: admin_actions if @current_user.admin? %>
-  </fieldset>
-<% end %>

@@ -32,7 +32,7 @@ class ClassroomsController < ApplicationController
       format.pdf do
         if params[:style] == 'teachers_contact'
           pdf = TeachersContactPdf.new(@classroom)
-          return send_data pdf.render, filename: "Số điện toại GLV.pdf", type: 'application/pdf', disposition: 'inline'
+          return send_data pdf.render, filename: "SĐT GLV.pdf", type: 'application/pdf', disposition: 'inline'
         end
 
         pdfClass = params[:style] == 'compact' ? CompactStudentsPdf : StudentsPdf

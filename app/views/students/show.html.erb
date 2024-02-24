@@ -1,7 +1,13 @@
+<%
+  actions = [
+    { label: 'In Sơ Yếu Lý Lịch', path: student_path(format: "pdf") }
+  ]
+%>
+
 <%= render 'components/form/form',
            heading: 'Thông Tin Thiếu Nhi',
            object: @student,
            editable: @current_user.admin_or_teacher_of_student?(@student, @current_year)
 %>
-<%= render 'components/button', button: { label: 'In Sơ Yếu Lý Lịch', path: student_path(format: "pdf") } if @student.id %>
+<%= render 'components/button_group', actions: actions if @student.id %>
 <%= render 'enrollments/index' %>
