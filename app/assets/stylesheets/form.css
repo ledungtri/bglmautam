@@ -41,3 +41,8 @@ textarea {
 .year, .month, .day {
   width: 65px;
 }
+
+*:disabled {
+  color: #14387e;
+  opacity: 1;
+}
