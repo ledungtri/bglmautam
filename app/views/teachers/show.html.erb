@@ -12,13 +12,15 @@
            editable: @current_user.admin_or_self_teacher?(@teacher)
 %>
 <%= render 'guidances/index' %>
+<% user = @teacher.user %>
+<% user = User.new(teacher: @teacher) if !user && @current_user.admin? %>
 <%= render 'components/form/form',
            heading: 'Thông tin đăng nhập',
-           object: @teacher.user,
-           editable: @current_user.admin_or_self_teacher?(@teacher) if @teacher.user
+           object: user,
+           editable: @current_user.admin_or_self_teacher?(@teacher) if user
 %>
 
-<% if @current_user.admin? && @current_user.self_teacher?(@teacher) %>
+<% if @current_user.admin? %>
   <h1>Chức năng Admin</h1>
   <%= render 'components/button_group', actions: admin_actions %>
 <% end %>
