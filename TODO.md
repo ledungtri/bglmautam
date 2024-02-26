@@ -2,6 +2,7 @@
 
 ## Tech debts
 * Use Production env.
+* https://medium.com/@yassimortensen/simple-search-form-in-rails-8483739e4042
 ## New features
 * Allow teachers to check students and teachers weekly attendances.
 * Allow teachers to write Evaluation for students at the end of the year.
