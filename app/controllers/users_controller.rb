@@ -26,7 +26,7 @@ class UsersController < ApplicationController
       if @user.update(user_params)
         flash[:success] = 'User was successfully updated.'
       end
-      format.html { redirect_to @user }
+      format.html { redirect_to @user.teacher }
     end
   end
 
@@ -36,7 +36,7 @@ class UsersController < ApplicationController
     @user.destroy
     respond_to do |format|
       flash[:success] = 'User was successfully destroyed.'
-      format.html { redirect_to @user }
+      format.html { redirect_to @user.teacher }
     end
   end
 

@@ -22,8 +22,8 @@ class User < ApplicationRecord
   FIELD_SETS = [
     {
       fields: [
-        { field: :teacher_id, label: 'ID của GLV' },
         { field: :username, label: 'Tên Đăng Nhập' },
+        { field: :teacher_id, field_type: :hidden_field },
         { field: :password, label: 'Mật Khẩu' },
         { field: :password_confirmation, label: 'Nhập Lại Mật Khẩu' }
       ]
