@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         flash[:success] = 'User was successfully created.'
-        format.html { redirect_to @user }
+        format.html { redirect_to @user.teacher }
       else
         format.html { render @user.teacher }
       end
