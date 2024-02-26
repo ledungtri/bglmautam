@@ -24,11 +24,6 @@ class ClassroomsController < ApplicationController
     @enrollments = @classroom.enrollments.sort_by(&:sort_param)
     respond_to do |format|
       format.html
-      format.xlsx do
-        response.headers[
-          'Content-Disposition'
-        ] = "attachment; filename=#{@classroom.name}.xlsx"
-      end
       format.pdf do
         if params[:style] == 'teachers_contact'
           pdf = TeachersContactPdf.new(@classroom)
@@ -128,7 +123,7 @@ class ClassroomsController < ApplicationController
 
   def custom_export
     pdf = CustomStudentsPdf.new(@classroom, params[:title], params[:page_layout].to_sym, params[:columns].split(','))
-    send_data pdf.render, filename: "#{@classroom} - #{params[:title]}.pdf", type: 'application/pdf', disposition: 'inline'
+    send_data pdf.render, filename: "#{@classroom.name} - #{params[:title]}.pdf", type: 'application/pdf', disposition: 'inline'
   end
 
   private

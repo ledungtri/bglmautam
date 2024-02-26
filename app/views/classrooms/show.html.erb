@@ -1,7 +1,6 @@
 <%
   actions = [
     { label: 'In Danh Sách', path: classroom_path(format: :pdf) },
-    { label: 'Xuất Excel', path: classroom_path(format: :xlsx) },
     { label: 'In Sơ Yếu Lý Lịch', path: classroom_students_personal_details_path(@classroom, format: :pdf) },
     { label: 'In Bảng Tự Tạo', path: classroom_custom_export_path(@classroom) }
   ]
