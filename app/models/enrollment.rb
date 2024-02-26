@@ -34,7 +34,7 @@ class Enrollment < ApplicationRecord
     }
   ]
 
-  RESULT_OPTIONS = ['Đang Học', 'Lên Lớp', 'Dự Thính', 'Học Lại', 'Nghỉ Luôn', 'Chuyển Xứ']
+  RESULT_OPTIONS = ['Đang Học', 'Dự Thính', 'Lên Lớp', 'Học Lại', 'Nghỉ Luôn', 'Chuyển Xứ']
 
   def sort_param
     student.sort_param
