@@ -95,9 +95,9 @@ class Student < ApplicationRecord
       fields: [
         { field: :father_christian_name, label:'Tên Thánh Cha' },
         { field: :father_full_name, label:'Họ Tên Cha' },
-        { field: :father_phone, label:'Điện Thoại Cha' },
         { field: :mother_christian_name, label:'Tên Thánh Mẹ' },
         { field: :mother_full_name, label:'Họ và Tên Mẹ' },
+        { field: :father_phone, label:'Điện Thoại Cha' },
         { field: :mother_phone, label:'Điện Thoại Mẹ' },
       ]
     },
