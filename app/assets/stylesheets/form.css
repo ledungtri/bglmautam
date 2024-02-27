@@ -46,3 +46,11 @@ textarea {
   color: #14387e;
   opacity: 1;
 }
+
+select.no-arrow:disabled {
+  padding: 2px;
+  /* for Firefox */
+  -moz-appearance: none;
+  /* for Chrome */
+  -webkit-appearance: none;
+}

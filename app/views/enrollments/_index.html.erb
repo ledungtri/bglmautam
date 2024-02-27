@@ -1,9 +1,14 @@
+<h1>Hành Trình Thiêng Liêng</h1>
+<% @student.enrollments.each do |enrollment| %>
+  <%= render 'enrollments/detail', enrollment: enrollment, editable: @current_user.admin_or_teacher_of_enrollment?(enrollment, @current_year) %>
+<% end %>
+
+
 <% years = Classroom.uniq.order(year: :desc).pluck(:year) %>
 <% opts = Classroom.where(year: years[0]).sort_by(&:sort_param).map { |c| [c.name, c.id] } %>
 
-<h1>Hành Trình Thiêng Liêng</h1>
 
-<table>
+<table id="form" style="display: none">
   <thead>
   <tr>
     <th style="width: 200px; font-size: 18px">Năm Học</th>
@@ -12,22 +17,14 @@
   </tr>
   </thead>
   <tbody>
-  <% (@student&.enrollments || []).each do |enrollment| %>
-    <% classroom = enrollment.classroom %>
-    <tr class="table-row">
-      <td style="width: 200px; font-size: 14px"><%= classroom.long_year %></td>
-      <td style="width: 200px; font-size: 14px"><%= link_to classroom.name, classroom %></td>
-      <td style="width: 200px; font-size: 14px"><%= link_to enrollment.result, enrollment %></td>
-    </tr>
-  <% end %>
 
-  <tr id="form" class="table-row" style="display: none">
+  <tr class="table-row">
     <% enrollment = Enrollment.new %>
     <%= form_for(enrollment) do |f| %>
       <%= render 'components/form/error_notification', object: enrollment %>
 
-      <%= f.hidden_field :student_id, :value => @student.id %>
-      <%= f.hidden_field :result, :value => "Đang Học" %>
+      <%= f.hidden_field :student_id, value: @student.id %>
+      <%= f.hidden_field :result, value: "Đang Học" %>
       <td style='width: 200px'>
         <select id="year_combobox" onchange="changeClassroom()">
           <% years.each do |year| %>

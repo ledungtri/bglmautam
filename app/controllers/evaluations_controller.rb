@@ -13,7 +13,7 @@ class EvaluationsController < ApplicationController
       else
         flash[:error] = 'Evaluation was not successfully created.'
       end
-      format.html { redirect_to enrollment_url(@evaluation.evaluable) }
+      format.html { redirect_to student_url(@evaluation.evaluable&.student) }
     end
   end
 
@@ -25,7 +25,7 @@ class EvaluationsController < ApplicationController
       else
         flash[:error] = 'Evaluation was not successfully updated.'
       end
-      format.html { redirect_to enrollment_url(@evaluation.evaluable) }
+      format.html { redirect_to student_url(@evaluation.evaluable&.student) }
     end
   end
 
@@ -34,8 +34,7 @@ class EvaluationsController < ApplicationController
     @evaluation.destroy
 
     respond_to do |format|
-      path = send("#{@evaluation.evaluable_type.downcase}_url", @evaluation.evaluable_id)
-      format.html { redirect_to path, notice: "Evaluation was successfully destroyed." }
+      format.html { redirect_to student_url(@evaluation.evaluable&.student), notice: "Evaluation was successfully destroyed." }
     end
   end
 
@@ -46,16 +45,6 @@ private
 
     flash[:warning] = 'Action not allowed.'
     redirect_back(fallback_location: root_path)
-  end
-
-  def evaluations_scope
-    parent = if params[:classroom_id].present?
-               Classroom.find(params[:classroom_id]).evaluations
-             elsif params[:enrollment_id].present?
-               Enrollment.find(params[:enrollment_id]).evaluations
-             end
-
-    parent ? parent.evaluations : Evaluation.all
   end
 
   # Use callbacks to share common setup or constraints between actions.

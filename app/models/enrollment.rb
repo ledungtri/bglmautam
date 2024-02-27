@@ -18,7 +18,7 @@ class Enrollment < ApplicationRecord
   include ClassroomRelationship
 
   belongs_to :student
-  has_many :evaluations, as: :evaluable
+  has_one :evaluation, as: :evaluable
 
   validates_presence_of :student_id, :result
 

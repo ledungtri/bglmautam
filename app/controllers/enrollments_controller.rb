@@ -17,10 +17,6 @@ class EnrollmentsController < ApplicationController
     end
   end
 
-  # GET /enrollments/1
-  def show
-  end
-
   # PATCH/PUT /enrollments/1
   # PATCH/PUT /enrollments/1.json
   def update

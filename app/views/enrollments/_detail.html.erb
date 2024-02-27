@@ -1,0 +1,36 @@
+<div class="e-card">
+  <div class="e-info_grid_cell">
+    <div class="e-classroom_year"><%= enrollment.classroom.long_year %></div>
+    <%= render 'components/button', button: { label: enrollment.classroom.name, path: classroom_path(enrollment.classroom) } %>
+    <%= form_for(enrollment) do |f| %>
+      <%= f.select(:result, Enrollment::RESULT_OPTIONS, {}, class: 'e-result no-arrow', onchange: 'this.form.submit()', disabled: !editable) %>
+    <% end %>
+  </div>
+
+  <div class="e-eval_grid_cell">
+    <% evaluation = enrollment.evaluation || Evaluation.new(evaluable: enrollment) %>
+    <%= form_for(evaluation) do |f| %>
+      <div style="display: flex; justify-content: center; position: relative">
+        <div style="text-decoration: underline">Nhận xét của giáo lý viên</div>
+        <% if editable %>
+          <div id='edit-icon-<%= enrollment.id %>' class="e-icon" onclick="showTextArea(<%= enrollment.id %>)"><i class="fa fa-edit"></i></div>
+        <% end %>
+        <button id='save-icon-<%= enrollment.id %>' style="display: none" class="e-icon"><i class="fa fa-save"></i></button>
+      </div>
+
+      <div id="eval-content-<%= enrollment.id %>" class="e-eval_content"><%= evaluation&.content %></div>
+      <%= f.hidden_field :evaluable_id %>
+      <%= f.hidden_field :evaluable_type %>
+      <%= f.text_area :content, id: "eval-textarea-#{enrollment.id}", class: "e-eval_textarea", style: 'display: none', rows: 3 %>
+    <% end %>
+  </div>
+</div>
+
+<script>
+  function showTextArea(id) {
+    document.getElementById(`edit-icon-${id}`).style.display = "none";
+    document.getElementById(`eval-content-${id}`).style.display = "none";
+    document.getElementById(`save-icon-${id}`).style.display = "";
+    document.getElementById(`eval-textarea-${id}`).style.display = "";
+  }
+</script>

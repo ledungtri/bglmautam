@@ -6,7 +6,7 @@ module ClassroomRelationship
 
     validates_presence_of :classroom_id
 
-    default_scope { includes(:classroom).order('classrooms.year') }
+    default_scope { includes(:classroom).order('classrooms.year desc') }
     scope :for_year, -> (year) { where('classrooms.year' => year) }
 
     delegate :year, to: :classroom

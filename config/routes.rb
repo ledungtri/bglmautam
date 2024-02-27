@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   end
 
   resources :guidances, only: [:show, :create, :update, :destroy]
-  resources :enrollments, only: [:show, :create, :update, :destroy]
+  resources :enrollments, only: [:create, :update, :destroy]
   resources :evaluations, only: [:create, :update, :destroy]
 
   resources :users, only: [:create, :update, :destroy]
