@@ -20,7 +20,7 @@
            editable: @current_user.admin_or_self_teacher?(@teacher) if user
 %>
 
-<% if @current_user.admin? %>
+<% if @current_user.admin? && @current_user.self_teacher?(@teacher) %>
   <h1>Chức năng Admin</h1>
   <%= render 'components/button_group', actions: admin_actions %>
 <% end %>
