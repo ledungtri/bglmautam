@@ -40,7 +40,6 @@ class Guidance < ApplicationRecord
   end
 
   def position_sort_param
-    positions = ["Tu Sĩ", "Huynh Trưởng", "Dự Trưởng", "Hiệp Sĩ", "GLV", "Tiền GLV", "Phụ Tá", "Kiến Tập"]
-    positions.find_index(position) || positions.count
+    POSITION_OPTIONS.find_index(position) || POSITION_OPTIONS.count
   end
 end

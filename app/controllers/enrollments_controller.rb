@@ -1,61 +1,21 @@
-class EnrollmentsController < ApplicationController
-  before_action :set_enrollment, only: %i[show update destroy admin_or_teacher_of?]
-  before_action :auth
-  before_action :admin?, except: %i[show update]
-  before_action :admin_or_teacher_of?, only: %i[show update]
+class EnrollmentsController < SecondaryResourcesController
+  before_action :set_record, only: %i[admin_or_teacher_of?]
+  before_action :admin?, except: %i[update]
+  before_action :admin_or_teacher_of?, only: %i[update]
 
-  # POST /enrollments
-  # POST /enrollments.json
-  def create
-    @enrollment = Enrollment.new(enrollment_params)
-
-    respond_to do |format|
-      if @enrollment.save
-        flash[:success] = 'Enrollment was successfully created.'
-        format.html { redirect_to "/students/#{@enrollment.student_id}" }
-      end
-    end
+  def model_klass
+    Enrollment
   end
 
-  # PATCH/PUT /enrollments/1
-  # PATCH/PUT /enrollments/1.json
-  def update
-    respond_to do |format|
-      if @enrollment.update(enrollment_params)
-        flash[:success] = 'Enrollment was successfully updated.'
-        format.html { redirect_to "/students/#{@enrollment.student_id}" }
-      else
-        format.html { render :show }
-      end
-    end
-  end
-
-  # DELETE /enrollments/1
-  # DELETE /enrollments/1.json
-  def destroy
-    @enrollment.destroy
-    respond_to do |format|
-      flash[:success] = 'Enrollment was successfully destroyed.'
-      format.html { redirect_to "/students/#{@enrollment.student_id}" }
-    end
+  def permit_params
+    [:result, :student_id, :classroom_id]
   end
 
   private
 
   def admin_or_teacher_of?
-    return if @current_user&.admin_or_teacher_of_enrollment?(@enrollment, @current_year)
-
+    return if @current_user&.admin_or_teacher_of_enrollment?(@record, @current_year)
     flash[:warning] = 'Action not allowed.'
     redirect_back(fallback_location: root_path)
-  end
-
-  # Use callbacks to share common setup or constraints between actions.
-  def set_enrollment
-    @enrollment = Enrollment.find(params[:id])
-  end
-
-  # Never trust parameters from the scary internet, only allow the white list through.
-  def enrollment_params
-    params.require(:enrollment).permit(:result, :student_id, :classroom_id)
   end
 end
