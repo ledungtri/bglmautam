@@ -1,0 +1,37 @@
+<div class="e-card">
+  <div class="e-info_grid_cell">
+    <% if editable %>
+      <%= button_to guidance_url(guidance), class: 'tr-icon red-hover', method: :delete do %>
+        <i class='fa fa-delete-left'></i>
+      <% end %>
+    <% end %>
+    <div class="e-classroom_year"><%= guidance.classroom.long_year %></div>
+    <%= render 'components/button', button: { label: guidance.classroom.name, path: classroom_path(guidance.classroom) } %>
+    <div class="e-classroom_year"><%= guidance.classroom.location %></div>
+    <%= form_for(guidance) do |f| %>
+      <%= f.select(:position, Guidance::POSITION_OPTIONS, {}, class: 'e-result no-arrow', onchange: 'this.form.submit()', disabled: !editable) %>
+    <% end %>
+  </div>
+
+  <div class="e-eval_grid_cell" style="display: grid; align-content: center;  grid-template-columns: repeat(<%= Enrollment::RESULT_OPTIONS.count %>, 1fr)">
+    <% Enrollment::RESULT_OPTIONS.each do |result| %>
+      <div>
+        <div style="background: bisque; border: 1px solid; border-radius: 5px 5px 0 0; margin: 5px 5px 0; padding: 2px 5px">
+          <%= result %>
+        </div>
+        <div style="border: 1px solid; border-top: none; border-radius: 0 0 5px 5px; margin: 0 5px 5px; padding: 2px 5px">
+          <%= Enrollment.where(classroom: guidance.classroom).where(result: result).count %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<script>
+  function showTextArea(id) {
+    document.getElementById(`edit-icon-${id}`).style.display = "none";
+    document.getElementById(`eval-content-${id}`).style.display = "none";
+    document.getElementById(`save-icon-${id}`).style.display = "";
+    document.getElementById(`eval-textarea-${id}`).style.display = "";
+  }
+</script>
