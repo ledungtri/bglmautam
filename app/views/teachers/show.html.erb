@@ -1,4 +1,5 @@
 <%
+  heading = @teacher.id ? @teacher.name : 'Tạo Giáo Lý Viên'
   admin_actions = [
     { label: 'Tạo Lớp Học', path: new_classroom_path },
     { label: 'Tạo Thiếu Nhi', path: new_student_path },
@@ -6,6 +7,7 @@
   ]
 %>
 
+<h1><%= heading %></h1>
 <%= render 'components/form/form',
            heading: 'Thông Tin Giáo Lý Viên',
            object: @teacher,
@@ -21,6 +23,5 @@
 %>
 
 <% if @current_user.admin? && @current_user.self_teacher?(@teacher) %>
-  <h1>Chức năng Admin</h1>
-  <%= render 'components/button_group', actions: admin_actions %>
+  <%= render 'components/button_group', heading: 'Chức năng Admin', actions: admin_actions %>
 <% end %>

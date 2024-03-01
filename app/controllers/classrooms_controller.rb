@@ -103,8 +103,7 @@ class ClassroomsController < ApplicationController
   end
 
   def classrooms_custom_export_form
-    @path = classrooms_custom_export_path
-    render 'custom_export/form'
+    render 'custom_export/form', locals: { title: 'Lớp Học', path: classrooms_custom_export_path }
   end
 
   def classrooms_custom_export
@@ -117,8 +116,7 @@ class ClassroomsController < ApplicationController
   end
 
   def custom_export_form
-    @path = classroom_custom_export_path(@classroom)
-    render 'custom_export/form'
+    render 'custom_export/form', locals: { title: @classroom.name, path: classroom_custom_export_path(@classroom) }
   end
 
   def custom_export

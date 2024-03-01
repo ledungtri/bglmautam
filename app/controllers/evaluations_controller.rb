@@ -1,5 +1,4 @@
 class EvaluationsController < SecondaryResourcesController
-  before_action :set_record, only: %i[admin_or_teacher_of?]
   before_action :admin_or_teacher_of?, only: %i[update destroy]
 
   def model_klass
@@ -13,7 +12,7 @@ class EvaluationsController < SecondaryResourcesController
 private
 
   def admin_or_teacher_of?
-    return if @current_user&.admin_or_teacher_of_enrollment?(@record.evaluable, @current_year)
+    return if @current_user&.admin_or_teacher_of_enrollment?(model_klass.find(params[:id]).evaluable, @current_year)
     flash[:warning] = 'Action not allowed.'
     redirect_back(fallback_location: root_path)
   end

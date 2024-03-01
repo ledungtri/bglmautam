@@ -72,8 +72,7 @@ class TeachersController < ApplicationController
   end
 
   def teachers_custom_export_form
-    @path = teachers_custom_export_path
-    render 'custom_export/form'
+    render 'custom_export/form', locals: { title: 'Giáo Lý Viên', path: teachers_custom_export_path }
   end
 
   def teachers_custom_export

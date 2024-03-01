@@ -1,23 +1,26 @@
-<%
-  actions = [
-    { label: 'In Danh Sách', path: classroom_path(format: :pdf) },
-    { label: 'In Sơ Yếu Lý Lịch', path: classroom_students_personal_details_path(@classroom, format: :pdf) },
-    { label: 'In Bảng Tự Tạo', path: classroom_custom_export_path(@classroom) }
-  ]
+<% heading = @classroom.id ? "#{@classroom.name} #{@classroom.long_year}": "Tạo Lớp Học" %>
 
-  admin_actions = [
-    { label: 'In DS Dán Bảng', path: classroom_path(format: :pdf), params: { style: :compact } },
-    { label: 'In SĐT GLV', path: classroom_path(format: :pdf), params: { style: :teachers_contact } }
-  ]
-
-  actions += admin_actions if @current_user.admin?
-%>
-
+<h1><%= heading %></h1>
 <%= render 'components/form/form',
            heading: 'Thông Tin Lớp',
            object: @classroom,
            editable: @current_user.admin?
 %>
-<%= render 'components/button_group', actions: actions if @classroom.id %>
+<%=
+  if @classroom.id
+    actions = [
+      { label: 'In Danh Sách', path: classroom_path(format: :pdf) },
+      { label: 'In Sơ Yếu Lý Lịch', path: classroom_students_personal_details_path(@classroom, format: :pdf) },
+      { label: 'In Bảng Tự Tạo', path: classroom_custom_export_path(@classroom) }
+    ]
+
+    admin_actions = [
+      { label: 'In DS Dán Bảng', path: classroom_path(format: :pdf), params: { style: :compact } },
+      { label: 'In SĐT GLV', path: classroom_path(format: :pdf), params: { style: :teachers_contact } }
+    ]
+    actions += admin_actions if @current_user.admin?
+    render 'components/button_group', heading: 'In Ấn', actions: actions
+  end
+%>
 <%= render 'teachers/info_table', guidances: @classroom.guidances unless @classroom.guidances.empty? %>
 <%= render 'students/info_table', enrollments: @classroom.enrollments unless @classroom.enrollments.empty? %>

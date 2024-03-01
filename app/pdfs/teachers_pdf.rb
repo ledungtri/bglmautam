@@ -20,13 +20,13 @@ class TeachersPdf < AbstractPdf
         column(1).style(align: :center, width: 60)
         column(2).style(align: :center, width: 60)
         column(5).style(align: :center)
-        column(7).style(align: :center)
+        column(6).style(align: :center)
       end
     end
   end
 
   def line_items
-    [['STT', 'Lớp', 'Phụ Trách', 'Họ và Tên', 'Ngày Sinh', 'Bổn Mạng', 'Email', 'Điện Thoại']] +
+    [['STT', 'Lớp', 'Phụ Trách', 'Họ và Tên', 'Ngày Sinh', 'Bổn Mạng', 'Điện Thoại']] +
     @guidances.each_with_index.map do |guidance, index|
         teacher = guidance.teacher
         [
@@ -36,7 +36,6 @@ class TeachersPdf < AbstractPdf
           teacher.name,
           teacher.date_birth&.strftime('%d/%m/%Y'),
           teacher.named_date,
-          teacher.email,
           teacher.phone
         ]
       end

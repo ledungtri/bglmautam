@@ -1,0 +1,23 @@
+.collapsible {
+  border: solid 1px;
+  border-radius: 10px;
+  background: white;
+  margin: 20px 0;
+}
+
+.collapsible-header {
+  border-radius: 10px 10px;
+  display: flex;
+  position: relative;
+  padding: 5px 25px;
+  font-size: x-large;
+}
+
+.collapsible-content {
+  border-top: solid 1px;
+  padding: 10px;
+  transition: display 1s ease-out;
+  background: aliceblue;
+  border-radius: 0 0 10px 10px;
+
+}

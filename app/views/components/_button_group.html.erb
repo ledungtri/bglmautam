@@ -1,7 +1,8 @@
-<% columns = actions.count > 6 ? 6 : actions.count %>
-<fieldset style="display: grid; grid-template-columns: repeat(<%= columns %>, 1fr)">
-  <% actions.each do |action| %>
-    <%= render 'components/button', button: action %>
-  <% end %>
-</fieldset>
-<%= render 'components/divider' %>
+<%= render 'components/collapsible', heading: heading do %>
+  <% columns = actions.count > 6 ? 6 : actions.count %>
+  <fieldset style="grid-template-columns: repeat(<%= columns %>, 1fr)">
+    <% actions.each do |action| %>
+      <%= render 'components/button', button: action %>
+    <% end %>
+  </fieldset>
+<% end %>

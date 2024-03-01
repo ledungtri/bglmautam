@@ -16,6 +16,8 @@
     <strong><%= value %></strong>
   <% else %>
     <%=
+      opts ||= {}
+      opts[:class] = 'form-input'
       if field_type == :select
         field_opts = object.class.const_get("#{field.upcase}_OPTIONS")
         select_opts = options_for_select(field_opts, object.send(field))

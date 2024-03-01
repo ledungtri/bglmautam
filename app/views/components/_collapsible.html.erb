@@ -1,0 +1,26 @@
+<%
+  id = heading.parameterize
+  always_open ||= false
+  onclick_func = always_open ? '' : "collapsibleToggle('#{id}')"
+%>
+
+<div class="collapsible">
+  <div class="collapsible-header">
+    <div><%= heading %></div>
+    <% unless always_open %>
+      <i id="arrow-icon-<%= id %>" class="fa fa-chevron-down tr-icon fill-hover" onclick="<%= onclick_func %>"></i>
+    <% end %>
+  </div>
+  <div id="collapsible-content-<%= id %>" class="collapsible-content">
+    <%= yield %>
+  </div>
+</div>
+
+<script>
+  function collapsibleToggle(id) {
+    const display = document.getElementById(`collapsible-content-${id}`).style.display;
+    document.getElementById(`collapsible-content-${id}`).style.display = display === '' ? 'none' : '';
+    document.getElementById(`arrow-icon-${id}`).classList.toggle('fa-chevron-down');
+    document.getElementById(`arrow-icon-${id}`).classList.toggle('fa-chevron-up');
+  }
+</script>

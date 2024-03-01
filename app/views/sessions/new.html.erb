@@ -1,16 +1,15 @@
-<h1>Đăng Nhập</h1>
-<%= form_tag sessions_path do %>
-  <fieldset>
-    <div style='display: inline-block'>
-      <div class="label">Tên Đăng Nhập:</div>
-      <%= text_field_tag :username %>
-    </div>
-    <div style='display: inline-block'>
-      <div class="label">Mật Khẩu:</div>
-      <%= password_field_tag :password %>
-    </div>
-  </fieldset>
-  <button class="button">
-    <i class="fa-solid fa-circle-right"></i> Đăng Nhập
-  </button>
+<%= render 'components/collapsible', heading: 'Đăng Nhập', always_open: true do %>
+  <%= form_tag sessions_path do %>
+    <fieldset>
+      <div style='display: inline-block'>
+        <div class="label">Tên Đăng Nhập:</div>
+        <%= text_field_tag :username, nil, class: 'form-input' %>
+      </div>
+      <div style='display: inline-block'>
+        <div class="label">Mật Khẩu:</div>
+        <%= password_field_tag :password, nil, class: 'form-input' %>
+      </div>
+    </fieldset>
+    <button class="button"><i class="fa-solid fa-circle-right"></i> Đăng Nhập</button>
+  <% end %>
 <% end %>

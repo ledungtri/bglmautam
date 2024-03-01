@@ -1,5 +1,10 @@
 <div class="e-card">
   <div class="e-info_grid_cell">
+    <% if editable %>
+      <%= button_to enrollment_url(enrollment), class: 'tr-icon red-hover', method: :delete do %>
+        <i class='fa fa-delete-left'></i>
+      <% end %>
+    <% end %>
     <div class="e-classroom_year"><%= enrollment.classroom.long_year %></div>
     <%= render 'components/button', button: { label: enrollment.classroom.name, path: classroom_path(enrollment.classroom) } %>
     <%= form_for(enrollment) do |f| %>
@@ -10,12 +15,12 @@
   <div class="e-eval_grid_cell">
     <% evaluation = enrollment.evaluation || Evaluation.new(evaluable: enrollment) %>
     <%= form_for(evaluation) do |f| %>
-      <div style="display: flex; justify-content: center; position: relative">
+      <div style="display: flex; justify-content: center">
         <div style="text-decoration: underline">Nhận xét của giáo lý viên</div>
         <% if editable %>
-          <div id='edit-icon-<%= enrollment.id %>' class="e-icon" onclick="showTextArea(<%= enrollment.id %>)"><i class="fa fa-edit"></i></div>
+          <div id='edit-icon-<%= enrollment.id %>' class="tr-icon fill-hover" onclick="showTextArea(<%= enrollment.id %>)"><i class="fa fa-edit"></i></div>
         <% end %>
-        <button id='save-icon-<%= enrollment.id %>' style="display: none" class="e-icon"><i class="fa fa-save"></i></button>
+        <button id='save-icon-<%= enrollment.id %>' style="display: none" class="tr-icon fill-hover"><i class="fa fa-save"></i></button>
       </div>
 
       <div id="eval-content-<%= enrollment.id %>" class="e-eval_content"><%= evaluation&.content %></div>

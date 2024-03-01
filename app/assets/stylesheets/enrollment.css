@@ -21,6 +21,7 @@
   border-radius: 5px;
   margin: 5px;
   padding: 5px;
+  position: relative;
 }
 
 .e-classroom_year {
@@ -50,18 +51,24 @@
   resize: none;
 }
 
-.e-icon {
+.tr-icon {
+  color: #14387e;
   cursor: pointer;
   padding: 2px 5px;
   position: absolute;
-  right: 5%;
+  right: 5px;
+  top: 5px;
   background: none;
   border: none;
   transition-duration: 0s;
 }
 
-.e-icon:hover {
+.fill-hover:hover {
   border-radius: 5px;
   color: white;
   background: #14387e;
+}
+
+.red-hover:hover {
+  color: red;
 }

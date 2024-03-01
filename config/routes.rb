@@ -4,15 +4,15 @@ Rails.application.routes.draw do
 
   get '/search', to: 'application#search'
 
-  resources :students, only: [:index, :show, :create, :update, :destroy]
+  resources :students, only: [:index, :show, :new, :create, :update, :destroy]
 
   get '/teachers/custom_export', to: 'teachers#teachers_custom_export_form'
   post '/teachers/custom_export', to: 'teachers#teachers_custom_export'
-  resources :teachers, only: [:index, :show, :create, :update, :destroy]
+  resources :teachers, only: [:index, :show, :new, :create, :update, :destroy]
 
   get '/classrooms/custom_export', to: 'classrooms#classrooms_custom_export_form'
   post '/classrooms/custom_export', to: 'classrooms#classrooms_custom_export'
-  resources :classrooms, only: [:index, :show, :create, :update, :destroy] do
+  resources :classrooms, only: [:index, :show, :new, :create, :update, :destroy] do
     get '/students_personal_details', to: 'classrooms#students_personal_details'
     get '/custom_export', to: 'classrooms#custom_export_form'
     post '/custom_export', to: 'classrooms#custom_export'

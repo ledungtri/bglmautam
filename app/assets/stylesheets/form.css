@@ -1,5 +1,7 @@
 fieldset {
   background-color: white;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
 }
 
 legend {
@@ -15,19 +17,15 @@ legend {
 
 .label {
   display: inline-block;
-  width: 180px;
+  width: 130px;
   text-align: right;
   margin: 2px;
   font-weight: 500;
   size: 50px;
 }
 
-input, select {
-  width: 200px;
-}
-
-input[type="radio"] {
-  width: 10px;
+.form-input {
+  width: 300px;
 }
 
 textarea {
@@ -48,7 +46,7 @@ textarea {
 }
 
 select.no-arrow:disabled {
-  padding: 2px;
+  padding: 2px 10px;
   /* for Firefox */
   -moz-appearance: none;
   /* for Chrome */

@@ -1,38 +1,44 @@
-<h1>Danh Sách Thiếu Nhi</h1>
-<h4>Số Lượng : <%= enrollments.count %></h4>
-<% enrollments.group_by(&:result).sort.each do |key, group| %>
-  <div style="text-align: right; padding-top: 10px; font-size: 11px"><%= key + ": " + group.count.to_s %></div>
-  <table>
-    <thead>
-      <tr>
-        <th style='width: 20px'>STT</th>
-        <th style='width: 230px'>Tên Thánh - Họ và Tên</th>
-        <th style='width:  80px'>Ngày Sinh</th>
-        <th style='width: 340px'>Địa Chỉ</th>
-        <th style='width:  80px'>ĐT Cha</th>
-        <th style='width:  80px'>ĐT Mẹ</th>
-        <th style='width:  73px'>Lớp</th>
-        <th style='width:  73px'>Kết Quả</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% group.each_with_index do |enrollment, index| %>
-        <% student = enrollment.student %>
-        <% classroom = enrollment.classroom %>
-        <% result = enrollment.result %>
-        
-        <tr class = table-row>
-          <td style='width: 20px'><%= index + 1 %></td>
-          <td style='width: 230px'><%= link_to student.name, student %></td>
-          <td style='width:  80px'><%= student.date_birth&.strftime("%d-%m-%Y") %></td>
-          <td style='width: 340px'><%= student.address %></td>
-          <td style='width:  80px'><%= student.father_phone %></td>
-          <td style='width:  80px'><%= student.mother_phone %></td>
-          <td style='width:  73px'><%= classroom ? (link_to classroom.name, classroom) : '' %></td>
-          <td style='width:  73px'><%= enrollment.id ? (link_to result, enrollment) : '' %></td>
+<%= render 'components/collapsible', heading: 'Danh Sách Thiếu Nhi' do %>
+  <h4>Số Lượng : <%= enrollments.count %></h4>
+  <% enrollments.group_by(&:result).sort.each do |key, group| %>
+    <div style="text-align: right; padding-top: 10px; font-size: 11px"><%= key + ": " + group.count.to_s %></div>
+    <table>
+      <thead>
+        <tr>
+          <th style='width: 20px'>STT</th>
+          <th style='width: 230px'>Tên Thánh - Họ và Tên</th>
+          <th style='width:  80px'>Ngày Sinh</th>
+          <th style='width: 340px'>Địa Chỉ</th>
+          <th style='width:  80px'>ĐT Cha</th>
+          <th style='width:  80px'>ĐT Mẹ</th>
+          <th style='width:  73px'>Lớp</th>
+          <th style='width:  73px'>Kết Quả</th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+        <% group.each_with_index do |enrollment, index| %>
+          <% student = enrollment.student %>
+          <% classroom = enrollment.classroom %>
+
+          <tr class = table-row>
+            <td style='width: 20px'><%= index + 1 %></td>
+            <td style='width: 230px'><%= link_to student.name, student %></td>
+            <td style='width:  80px'><%= student.date_birth&.strftime("%d-%m-%Y") %></td>
+            <td style='width: 340px'><%= student.address %></td>
+            <td style='width:  80px'><%= student.father_phone %></td>
+            <td style='width:  80px'><%= student.mother_phone %></td>
+            <td style='width:  73px'><%= classroom ? (link_to classroom.name, classroom) : '' %></td>
+            <td style='width:  73px'>
+              <%=
+                editable = @current_user.admin_or_teacher_of_enrollment?(enrollment, @current_year)
+                form_for(enrollment) do |f|
+                  f.select(:result, Enrollment::RESULT_OPTIONS, {}, class: 'e-result no-arrow', onchange: 'this.form.submit()', disabled: !editable)
+                end if enrollment.id
+              %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
 <% end %>
-<%= render 'components/divider' %>
