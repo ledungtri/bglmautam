@@ -1,0 +1,73 @@
+<table id="form" style="display: none">
+  <thead>
+  <tr>
+    <th style="width: 200px; font-size: 18px">Năm Học</th>
+    <th style="width: 200px; font-size: 18px">Lớp</th>
+    <th style="width: 200px; font-size: 18px">Kết Quả</th>
+  </tr>
+  </thead>
+  <tbody>
+
+  <tr class="table-row">
+    <% enrollment = Enrollment.new %>
+    <%= form_for(enrollment) do |f| %>
+      <%= render 'components/form/error_notification', object: enrollment %>
+
+      <% years = Classroom.uniq.order(year: :desc).pluck(:year) %>
+      <% opts = Classroom.where(year: years[0]).sort_by(&:sort_param).map { |c| [c.name, c.id] } %>
+
+      <%= f.hidden_field :student_id, value: @student.id %>
+      <%= f.hidden_field :result, value: "Đang Học" %>
+      <td>
+        <select id="year_combobox" onchange="changeClassroom()" style="width: 100%">
+          <% years.each do |year| %>
+            <option value="<%=year%>"><%= year.to_s + " - " + (year.to_i+1).to_s %></option>
+          <% end %>
+        </select>
+      </td>
+      <td>
+        <%= f.select :classroom_id, options_for_select(opts), {}, {id: 'classroom_id', style: 'width: 100%'} %>
+      </td>
+      <td><%= f.submit "Thêm Lớp Mới" %></td>
+    <% end %>
+  </tr>
+  </tbody>
+</table>
+
+<% if @current_user&.admin? %>
+  <button id="btn" onClick="showForm()" class="button">Thêm Lớp Mới</button>
+<% end %>
+
+<script>
+  function showForm() {
+    document.getElementById("btn").style.display = "none";
+    document.getElementById("form").style.display = "";
+  }
+
+  function changeClassroom() {
+    const e = document.getElementById("year_combobox");
+    const selected = e.options[e.selectedIndex].value;
+
+    //Create array of options to be added
+    const hash = {};
+    const keys = [];
+
+    <% Classroom.where.not(family: ['Trưởng Ban', 'Kỹ Thuật']).sort_by(&:sort_param).each do |classroom| %>
+    if(selected === "<%= classroom.year %>") {
+      hash[<%= classroom.id %>] = "<%= classroom.name %>";
+      keys.push(<%= classroom.id %>);
+    }
+    <% end %>
+
+    const list = document.getElementById("enrollment_classroom_id");
+    list.options.length = 0;
+
+    //Create and append the options
+    for (let i = 0; i < keys.length; i++) {
+      const option = document.createElement("option");
+      option.value = keys[i];
+      option.text = hash[keys[i]];
+      list.appendChild(option);
+    }
+  }
+</script>
