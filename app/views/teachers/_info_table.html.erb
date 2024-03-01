@@ -26,7 +26,12 @@
           <%=
             editable = @current_user.admin?
             form_for(guidance) do |f|
-              f.select(:position, Guidance::POSITION_OPTIONS, {}, class: 'e-result no-arrow', onchange: 'this.form.submit()', disabled: !editable)
+              f.select(
+                :position,
+                Guidance::POSITION_OPTIONS,
+                { include_blank: true },
+                { class: 'e-result no-arrow', onchange: 'this.form.submit()', disabled: !editable }
+              )
             end if guidance.id
           %>
         </td>

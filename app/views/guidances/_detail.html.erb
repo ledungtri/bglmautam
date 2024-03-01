@@ -9,19 +9,25 @@
     <%= render 'components/button', button: { label: guidance.classroom.name, path: classroom_path(guidance.classroom) } %>
     <div class="e-classroom_year"><%= guidance.classroom.location %></div>
     <%= form_for(guidance) do |f| %>
-      <%= f.select(:position, Guidance::POSITION_OPTIONS, {}, class: 'e-result no-arrow', onchange: 'this.form.submit()', disabled: !editable) %>
+      <%= f.select(
+            :position,
+            Guidance::POSITION_OPTIONS,
+            { include_blank: true },
+            { class: 'e-result no-arrow', onchange: 'this.form.submit()', disabled: !editable }
+          )
+      %>
     <% end %>
   </div>
 
-  <div class="e-eval_grid_cell" style="display: grid; align-content: center;  grid-template-columns: repeat(<%= Enrollment::RESULT_OPTIONS.count %>, 1fr)">
+  <div class="e-eval_grid_cell" style="display: grid; align-content: center;  grid-template-columns: repeat(<%= Enrollment::RESULT_OPTIONS.count + 1 %>, 1fr)">
+    <div>
+      <div style="background: bisque; border: 1px solid; border-radius: 5px 5px 0 0; margin: 5px 5px 0; padding: 2px 5px">Tổng Số</div>
+      <div style="border: 1px solid; border-top: none; border-radius: 0 0 5px 5px; margin: 0 5px 5px; padding: 2px 5px"><%= guidance.classroom.enrollments.count %></div>
+    </div>
     <% Enrollment::RESULT_OPTIONS.each do |result| %>
       <div>
-        <div style="background: bisque; border: 1px solid; border-radius: 5px 5px 0 0; margin: 5px 5px 0; padding: 2px 5px">
-          <%= result %>
-        </div>
-        <div style="border: 1px solid; border-top: none; border-radius: 0 0 5px 5px; margin: 0 5px 5px; padding: 2px 5px">
-          <%= Enrollment.where(classroom: guidance.classroom).where(result: result).count %>
-        </div>
+        <div style="background: bisque; border: 1px solid; border-radius: 5px 5px 0 0; margin: 5px 5px 0; padding: 2px 5px"><%= result %></div>
+        <div style="border: 1px solid; border-top: none; border-radius: 0 0 5px 5px; margin: 0 5px 5px; padding: 2px 5px"><%= Enrollment.where(classroom: guidance.classroom).where(result: result).count %></div>
       </div>
     <% end %>
   </div>
