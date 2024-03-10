@@ -76,11 +76,7 @@ class TeachersController < ApplicationController
   end
 
   def teachers_custom_export
-    if params[:sort] == 'classroom'
-      @guidances = Guidance.for_year(@current_year).sort_by(&:sort_param)
-    else
-      @guidances = Guidance.for_year(@current_year).sort_by { |g| g.teacher.sort_param }
-    end
+    @guidances = Guidance.for_year(@current_year).sort_by(&:sort_param)
 
     pdf = TeachersCustomPdf.new(@guidances, params[:title], params[:page_layout].to_sym, params[:columns].split(','))
     send_data pdf.render, filename: "#{params[:title]}.pdf", type: 'application/pdf', disposition: 'inline'
