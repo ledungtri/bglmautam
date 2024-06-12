@@ -1,0 +1,11 @@
+<%= form_for(object, remote: true, authenticity_token: true) do |f| %>
+  <% object.attribute_names.each do |attribute| %>
+    <%= f.hidden_field attribute %>
+  <% end %>
+  <%= f.select(
+        field,
+        object.class.const_get("#{field.upcase}_OPTIONS"),
+        { include_blank: true },
+        { class: 'inline', onchange: 'this.form.submit()', disabled: !enabled }
+      ) %>
+<% end %>

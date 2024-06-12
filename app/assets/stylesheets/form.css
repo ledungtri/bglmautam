@@ -45,7 +45,17 @@ textarea {
   opacity: 1;
 }
 
-select.no-arrow:disabled {
+select.inline {
+  color: #14387e;
+  border: none;
+  padding: 2px 0 2px 10px;
+  box-shadow: 0 0 2px;
+  border-radius: 50px;
+  margin: 5px;
+  text-align: center;
+}
+
+select.inline:disabled {
   padding: 2px 10px;
   /* for Firefox */
   -moz-appearance: none;

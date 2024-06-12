@@ -31,9 +31,7 @@
             <td style='width:  73px'>
               <%=
                 editable = @current_user.admin_or_teacher_of_enrollment?(enrollment, @current_year)
-                form_for(enrollment) do |f|
-                  f.select(:result, Enrollment::RESULT_OPTIONS, {}, class: 'e-result no-arrow', onchange: 'this.form.submit()', disabled: !editable)
-                end if enrollment.id
+                render 'components/form/inline_select', object: enrollment, field: :result, enabled: editable if enrollment.id
               %>
             </td>
           </tr>

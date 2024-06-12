@@ -7,9 +7,7 @@
     <% end %>
     <div class="e-classroom_year"><%= enrollment.classroom.long_year %></div>
     <%= render 'components/button', button: { label: enrollment.classroom.name, path: classroom_path(enrollment.classroom) } %>
-    <%= form_for(enrollment) do |f| %>
-      <%= f.select(:result, Enrollment::RESULT_OPTIONS, {}, class: 'e-result no-arrow', onchange: 'this.form.submit()', disabled: !editable) %>
-    <% end %>
+    <%= render 'components/form/inline_select', object: enrollment, field: :result, enabled: editable %>
   </div>
 
   <div class="e-eval_grid_cell">

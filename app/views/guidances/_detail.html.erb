@@ -1,3 +1,4 @@
+<% classroom = guidance.classroom %>
 <div class="e-card">
   <div class="e-info_grid_cell">
     <% if editable %>
@@ -5,18 +6,10 @@
         <i class='fa fa-delete-left'></i>
       <% end %>
     <% end %>
-    <div class="e-classroom_year"><%= guidance.classroom.long_year %></div>
-    <%= render 'components/button', button: { label: guidance.classroom.name, path: classroom_path(guidance.classroom) } %>
-    <div class="e-classroom_year"><%= guidance.classroom.location %></div>
-    <%= form_for(guidance) do |f| %>
-      <%= f.select(
-            :position,
-            Guidance::POSITION_OPTIONS,
-            { include_blank: true },
-            { class: 'e-result no-arrow', onchange: 'this.form.submit()', disabled: !editable }
-          )
-      %>
-    <% end %>
+    <div class="e-classroom_year"><%= classroom.long_year %></div>
+    <%= render 'components/button', button: { label: classroom.name, path: classroom_path(classroom) } %>
+    <div class="e-classroom_year"><%= classroom.location %></div>
+    <%= render 'components/form/inline_select', object: guidance, field: :position, enabled: editable %>
   </div>
 
   <div class="e-eval_grid_cell" style="display: grid; align-content: center;  grid-template-columns: repeat(<%= Enrollment::RESULT_OPTIONS.count + 1 %>, 1fr)">
