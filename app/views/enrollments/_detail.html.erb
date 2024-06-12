@@ -1,30 +1,24 @@
 <div class="e-card">
   <div class="e-info_grid_cell">
-    <% if editable %>
-      <%= button_to enrollment_url(enrollment), class: 'tr-icon red-hover', method: :delete do %>
-        <i class='fa fa-delete-left'></i>
-      <% end %>
-    <% end %>
+    <%= render 'components/icon_delete', path: enrollment_url(enrollment), enabled: editable %>
     <div class="e-classroom_year"><%= enrollment.classroom.long_year %></div>
     <%= render 'components/button', button: { label: enrollment.classroom.name, path: classroom_path(enrollment.classroom) } %>
     <%= render 'components/form/inline_select', object: enrollment, field: :result, enabled: editable %>
   </div>
 
-  <div class="e-eval_grid_cell">
+  <div class="e-info_grid_cell">
+    <div class="e-classroom_year">Nhận xét của giáo lý viên</div>
+    <% if editable %>
+      <div id='edit-icon-<%= enrollment.id %>' class="tr-icon fill-hover" onclick="showTextArea(<%= enrollment.id %>)"><i class="fa fa-edit"></i></div>
+    <% end %>
+
     <% evaluation = enrollment.evaluation || Evaluation.new(evaluable: enrollment) %>
     <%= form_for(evaluation) do |f| %>
-      <div style="display: flex; justify-content: center">
-        <div style="text-decoration: underline">Nhận xét của giáo lý viên</div>
-        <% if editable %>
-          <div id='edit-icon-<%= enrollment.id %>' class="tr-icon fill-hover" onclick="showTextArea(<%= enrollment.id %>)"><i class="fa fa-edit"></i></div>
-        <% end %>
-        <button id='save-icon-<%= enrollment.id %>' style="display: none" class="tr-icon fill-hover"><i class="fa fa-save"></i></button>
-      </div>
-
-      <div id="eval-content-<%= enrollment.id %>" class="e-eval_content"><%= evaluation&.content %></div>
+      <button id='save-icon-<%= enrollment.id %>' style="display: none" class="tr-icon fill-hover"><i class="fa fa-save"></i></button>
+      <div id="eval-content-<%= enrollment.id %>" class="quote-block"><%= evaluation&.content %></div>
       <%= f.hidden_field :evaluable_id %>
       <%= f.hidden_field :evaluable_type %>
-      <%= f.text_area :content, id: "eval-textarea-#{enrollment.id}", class: "e-eval_textarea", style: 'display: none', rows: 3 %>
+      <%= f.text_area :content, id: "eval-textarea-#{enrollment.id}", class: "e-eval_textarea", style: 'display: none', rows: 4 %>
     <% end %>
   </div>
 </div>

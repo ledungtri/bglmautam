@@ -10,13 +10,6 @@
 }
 
 .e-info_grid_cell {
-  align-items: center;
-  justify-content: center;
-  display: flex;
-  flex-direction: column;
-}
-
-.e-info_grid_cell, .e-eval_grid_cell {
   box-shadow: 0 0 2px;
   border-radius: 5px;
   margin: 5px;
@@ -28,26 +21,8 @@
   font-size: xx-small;
 }
 
-.e-result {
-  color: #14387e;
-  border: none;
-  padding: 2px 0 2px 10px;
-  box-shadow: 0 0 2px;
-  border-radius: 50px;
-  margin: 5px;
-  text-align: center;
-}
-
-.e-eval_content {
-  width: 90%;
-  white-space: pre-wrap;
-  text-align: left;
-  padding: 0 20px;
-  font-style: italic
-}
-
 .e-eval_textarea {
-  width: 95%;
+  width: 90%;
   resize: none;
 }
 

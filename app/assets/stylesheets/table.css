@@ -1,6 +1,7 @@
 table {
   border-spacing: 0;
   margin: auto;
+  background: white;
 }
 
 th {
@@ -18,12 +19,11 @@ td {
   border: 1px solid;
   height: 20px;
   font-size: 11px;
-  margin: 0;
-  padding: 3px 0 0;
+  padding: 3px 5px 0 5px;
+  text-align: center;
 }
 
 .table-row {
-  text-align: center;
   border-style: none;
   background-color: white;
 }
