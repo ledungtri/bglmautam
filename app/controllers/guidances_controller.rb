@@ -1,6 +1,13 @@
 class GuidancesController < SecondaryResourcesController
   before_action :auth, :admin?
 
+  def update
+    skip_redirect
+    super
+  end
+
+private
+
   def model_klass
     Guidance
   end
