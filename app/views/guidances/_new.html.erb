@@ -4,7 +4,7 @@
     <th style='width: 100px'>Năm Học</th>
     <th style='width: 100px'>Tên Lớp</th>
     <th style='width: 100px'>Phụ Trách</th>
-    <th style='width: 200px'>Vị Trí</th>
+    <th style='width: 200px'></th>
   </tr>
   </thead>
   <tbody>
@@ -18,14 +18,14 @@
 
       <%= f.hidden_field :teacher_id, :value => @teacher.id %>
       <td style='width: 200px'>
-        <select id="year_combobox" onchange="changeClassroom()">
+        <select id="year_combobox" onchange="changeClassroom()" style="width: 100%">
           <% years.each do |year| %>
             <option value="<%=year%>"><%= year.to_s + " - " + (year.to_i+1).to_s %></option>
           <% end %>
         </select>
       </td>
-      <td style='width: 200px'><%= f.select :classroom_id, options_for_select(opts), :id => 'classroom_id' %></td>
-      <td style='width: 200px'><%= f.select :position, options_for_select(Guidance::POSITION_OPTIONS) %></td>
+      <td style='width: 200px'><%= f.select :classroom_id, options_for_select(opts), {}, {id: 'classroom_select', style: 'width: 100%'} %></td>
+      <td style='width: 200px'><%= f.select :position, options_for_select(Guidance::POSITION_OPTIONS), {}, {style: 'width: 100%'} %></td>
       <td style='width: 200px'><%= f.submit "Thêm Lớp Mới" %></td>
     <% end %>
   </tr>
@@ -57,7 +57,8 @@
     }
     <% end %>
 
-    const list = document.getElementById("guidance_classroom_id");
+    const list = document.getElementById("classroom_select");
+    console.log(list)
     list.options.length = 0;
 
     //Create and append the options

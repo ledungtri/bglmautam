@@ -3,7 +3,7 @@
   <tr>
     <th style="width: 200px; font-size: 18px">Năm Học</th>
     <th style="width: 200px; font-size: 18px">Lớp</th>
-    <th style="width: 200px; font-size: 18px">Kết Quả</th>
+    <th style="width: 200px; font-size: 18px"></th>
   </tr>
   </thead>
   <tbody>
@@ -26,7 +26,7 @@
         </select>
       </td>
       <td>
-        <%= f.select :classroom_id, options_for_select(opts), {}, {id: 'classroom_id', style: 'width: 100%'} %>
+        <%= f.select :classroom_id, options_for_select(opts), {}, {id: 'classroom_select', style: 'width: 100%'} %>
       </td>
       <td><%= f.submit "Thêm Lớp Mới" %></td>
     <% end %>
@@ -59,7 +59,7 @@
     }
     <% end %>
 
-    const list = document.getElementById("enrollment_classroom_id");
+    const list = document.getElementById("classroom_select");
     list.options.length = 0;
 
     //Create and append the options
