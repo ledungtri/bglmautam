@@ -9,6 +9,7 @@
 #  district       :string
 #  email          :string
 #  full_name      :string
+#  gender         :string
 #  named_date     :string
 #  occupation     :string
 #  phone          :string
@@ -17,6 +18,7 @@
 #  ward           :string
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
+#  person_id      :integer
 #
 # Indexes
 #
