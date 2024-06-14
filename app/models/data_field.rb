@@ -16,6 +16,10 @@
 #  index_data_fields_on_data_fieldable_type_and_data_fieldable_id  (data_fieldable_type,data_fieldable_id)
 #  index_data_fields_on_data_schema_id                             (data_schema_id)
 #
+# Foreign Keys
+#
+#  fk_rails_...  (data_schema_id => data_schemas.id)
+#
 class DataField < ApplicationRecord
   belongs_to :data_fieldable, polymorphic: true
   belongs_to :data_schema

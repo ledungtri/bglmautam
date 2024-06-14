@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20240614191521) do
+ActiveRecord::Schema.define(version: 20240614195213) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -97,7 +97,9 @@ ActiveRecord::Schema.define(version: 20240614191521) do
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.datetime "deleted_at"
+    t.integer  "person_id"
     t.index ["deleted_at"], name: "index_enrollments_on_deleted_at", using: :btree
+    t.index ["person_id"], name: "index_enrollments_on_person_id", using: :btree
   end
 
   create_table "evaluations", force: :cascade do |t|
@@ -117,7 +119,9 @@ ActiveRecord::Schema.define(version: 20240614191521) do
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.datetime "deleted_at"
+    t.integer  "person_id"
     t.index ["deleted_at"], name: "index_guidances_on_deleted_at", using: :btree
+    t.index ["person_id"], name: "index_guidances_on_person_id", using: :btree
   end
 
   create_table "people", force: :cascade do |t|
@@ -171,6 +175,7 @@ ActiveRecord::Schema.define(version: 20240614191521) do
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
     t.datetime "deleted_at"
+    t.integer  "person_id"
     t.index ["deleted_at"], name: "index_students_on_deleted_at", using: :btree
   end
 
@@ -205,4 +210,9 @@ ActiveRecord::Schema.define(version: 20240614191521) do
     t.index ["deleted_at"], name: "index_users_on_deleted_at", using: :btree
   end
 
+  add_foreign_key "data_fields", "data_schemas"
+  add_foreign_key "enrollments", "classrooms"
+  add_foreign_key "enrollments", "people"
+  add_foreign_key "guidances", "classrooms"
+  add_foreign_key "guidances", "people"
 end

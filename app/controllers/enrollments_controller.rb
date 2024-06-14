@@ -8,11 +8,18 @@
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #  classroom_id :integer
+#  person_id    :integer
 #  student_id   :integer
 #
 # Indexes
 #
 #  index_enrollments_on_deleted_at  (deleted_at)
+#  index_enrollments_on_person_id   (person_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (classroom_id => classrooms.id)
+#  fk_rails_...  (person_id => people.id)
 #
 class EnrollmentsController < SecondaryResourcesController
   before_action :admin?, except: %i[update]

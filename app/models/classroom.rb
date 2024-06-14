@@ -23,6 +23,7 @@ class Classroom < ApplicationRecord
 
   has_many :guidances
   has_many :teachers, through: :guidances
+  has_many :people, through: :guidances
 
   validates_presence_of :year, :family
   validates :group, format: { with: /\A\d?[A-Z]?\z/, message: 'invalid input' }, allow_blank: true
