@@ -17,6 +17,7 @@
 class Guidance < ApplicationRecord
   include ClassroomRelationship
 
+  has_many :attendances, as: :attendable
   belongs_to :teacher
 
   validates_presence_of :teacher_id

@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :students, only: [:index, :show, :new, :create, :update, :destroy]
 
   get '/teachers/custom_export', to: 'teachers#teachers_custom_export_form'
+  get '/teachers/attendances', to: 'teachers#attendances'
   post '/teachers/custom_export', to: 'teachers#teachers_custom_export'
   resources :teachers, only: [:index, :show, :new, :create, :update, :destroy]
 
@@ -18,7 +19,7 @@ Rails.application.routes.draw do
     post '/custom_export', to: 'classrooms#custom_export'
   end
 
-  secondary_resources = [:guidances, :enrollments, :evaluations, :users]
+  secondary_resources = [:guidances, :enrollments, :evaluations, :users, :attendances]
   secondary_resources.each do |resource|
     resources resource, only: [:create, :update, :destroy]
   end

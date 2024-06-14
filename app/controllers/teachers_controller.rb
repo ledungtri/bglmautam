@@ -82,6 +82,10 @@ class TeachersController < ApplicationController
     send_data pdf.render, filename: "#{params[:title]}.pdf", type: 'application/pdf', disposition: 'inline'
   end
 
+  def attendances
+
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
