@@ -15,19 +15,6 @@ ActiveRecord::Schema.define(version: 20231109072545) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "attendances", force: :cascade do |t|
-    t.datetime "date"
-    t.string   "status"
-    t.datetime "notice_date"
-    t.string   "note"
-    t.string   "attendable_type"
-    t.integer  "attendable_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.datetime "deleted_at"
-    t.index ["attendable_type", "attendable_id"], name: "index_attendances_on_attendable_type_and_attendable_id", using: :btree
-  end
-
   create_table "classrooms", force: :cascade do |t|
     t.integer  "year"
     t.string   "family"

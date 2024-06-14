@@ -20,6 +20,7 @@ header, footer {
 body {
   font-size: 14px;
   font-family: 'Nunito', sans-serif;
+  min-width: 1200px;
   margin: auto;
 }
 
@@ -60,7 +61,7 @@ a:hover{
 }
 
 article {
-  max-width: 1200px;
+  width: 972px;
   padding: 5px;
 }
 

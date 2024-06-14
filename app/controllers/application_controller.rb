@@ -29,8 +29,6 @@ private
   def set_current_year
     @current_year = params[:year]&.to_i || 2023
     @current_year_long = "#{@current_year} - #{@current_year + 1}"
-    @current_year_start_date = '20223.09.10'
-    @current_year_end_date = '2024.06.09'
   end
 
   def set_current_user
