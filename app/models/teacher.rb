@@ -23,7 +23,7 @@
 #  index_teachers_on_deleted_at  (deleted_at)
 #
 class Teacher < ApplicationRecord
-  include Person
+  include PersonConcern
 
   has_one :user
   has_many :guidances

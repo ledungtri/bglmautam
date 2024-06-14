@@ -37,7 +37,7 @@
 #  index_students_on_deleted_at  (deleted_at)
 #
 class Student < ApplicationRecord
-  include Person
+  include PersonConcern
 
   has_many :enrollments
   has_many :classrooms, through: :enrollments
@@ -120,36 +120,36 @@ class Student < ApplicationRecord
 
 private
 
-  def sync_person
-    Person.create(student: self) unless person
-
-    data_field = person.data || {}
-    data_field[:student] = attributes.except(
-      'id',
-      'christian_name',
-      'full_name',
-      'gender',
-      'date_birth',
-      'place_birth',
-      'phone',
-      'street_number',
-      'street_name',
-      'ward',
-      'district',
-      'area',
-      'created_at',
-      'updated_at',
-      'deleted_at',
-      'person_id'
-    )
-
-    person.update(
-      christian_name: christian_name,
-      name: full_name,
-      gender: gender,
-      birth_date: date_birth,
-      birth_place: place_birth,
-      data: data_field
-    )
-  end
+  # def sync_person
+  #   Person.create(student: self) unless person
+  #
+  #   data_field = person.data || {}
+  #   data_field[:student] = attributes.except(
+  #     'id',
+  #     'christian_name',
+  #     'full_name',
+  #     'gender',
+  #     'date_birth',
+  #     'place_birth',
+  #     'phone',
+  #     'street_number',
+  #     'street_name',
+  #     'ward',
+  #     'district',
+  #     'area',
+  #     'created_at',
+  #     'updated_at',
+  #     'deleted_at',
+  #     'person_id'
+  #   )
+  #
+  #   person.update(
+  #     christian_name: christian_name,
+  #     name: full_name,
+  #     gender: gender,
+  #     birth_date: date_birth,
+  #     birth_place: place_birth,
+  #     data: data_field
+  #   )
+  # end
 end

@@ -1,4 +1,4 @@
-module Person
+module PersonConcern
   extend ActiveSupport::Concern
 
   included do
