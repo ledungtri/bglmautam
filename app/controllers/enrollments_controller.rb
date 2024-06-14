@@ -1,3 +1,19 @@
+# == Schema Information
+#
+# Table name: enrollments
+#
+#  id           :integer          not null, primary key
+#  deleted_at   :datetime
+#  result       :string           not null
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  classroom_id :integer
+#  student_id   :integer
+#
+# Indexes
+#
+#  index_enrollments_on_deleted_at  (deleted_at)
+#
 class EnrollmentsController < SecondaryResourcesController
   before_action :admin?, except: %i[update]
   before_action :admin_or_teacher_of?, only: %i[update]

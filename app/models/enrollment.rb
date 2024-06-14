@@ -4,7 +4,7 @@
 #
 #  id           :integer          not null, primary key
 #  deleted_at   :datetime
-#  result       :string
+#  result       :string           not null
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #  classroom_id :integer

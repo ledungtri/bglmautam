@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20240614155455) do
+ActiveRecord::Schema.define(version: 20240614180429) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,9 +32,9 @@ ActiveRecord::Schema.define(version: 20240614155455) do
   end
 
   create_table "attendances", force: :cascade do |t|
-    t.datetime "date"
-    t.string   "status"
-    t.datetime "notice_date"
+    t.date     "date",            null: false
+    t.string   "status",          null: false
+    t.date     "notice_date"
     t.string   "note"
     t.string   "attendable_type"
     t.integer  "attendable_id"
@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 20240614155455) do
   end
 
   create_table "classrooms", force: :cascade do |t|
-    t.integer  "year"
+    t.integer  "year",       null: false
     t.string   "family"
     t.string   "group"
     t.string   "location"
@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 20240614155455) do
   end
 
   create_table "data_fields", force: :cascade do |t|
-    t.jsonb    "data"
+    t.jsonb    "data",                null: false
     t.string   "data_fieldable_type"
     t.integer  "data_fieldable_id"
     t.integer  "data_schema_id"
@@ -69,18 +69,18 @@ ActiveRecord::Schema.define(version: 20240614155455) do
   end
 
   create_table "data_schemas", force: :cascade do |t|
-    t.string   "key"
+    t.string   "key",                    null: false
     t.string   "title"
-    t.string   "entity"
-    t.jsonb    "fields"
-    t.integer  "weight"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "entity",                 null: false
+    t.jsonb    "fields",                 null: false
+    t.integer  "weight",     default: 0, null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
     t.datetime "deleted_at"
   end
 
   create_table "emails", force: :cascade do |t|
-    t.string   "address"
+    t.string   "address",                        null: false
     t.boolean  "primary",        default: false
     t.string   "emailable_type"
     t.integer  "emailable_id"
@@ -91,7 +91,7 @@ ActiveRecord::Schema.define(version: 20240614155455) do
   end
 
   create_table "enrollments", force: :cascade do |t|
-    t.string   "result"
+    t.string   "result",       null: false
     t.integer  "student_id"
     t.integer  "classroom_id"
     t.datetime "created_at",   null: false
@@ -101,7 +101,7 @@ ActiveRecord::Schema.define(version: 20240614155455) do
   end
 
   create_table "evaluations", force: :cascade do |t|
-    t.string   "content"
+    t.string   "content",        null: false
     t.string   "evaluable_type"
     t.integer  "evaluable_id"
     t.datetime "deleted_at"
@@ -122,9 +122,9 @@ ActiveRecord::Schema.define(version: 20240614155455) do
 
   create_table "people", force: :cascade do |t|
     t.string   "christian_name"
-    t.string   "name"
-    t.string   "gender"
-    t.date     "birth_date"
+    t.string   "name",           null: false
+    t.string   "gender",         null: false
+    t.date     "birth_date",     null: false
     t.string   "birth_place"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
@@ -132,7 +132,7 @@ ActiveRecord::Schema.define(version: 20240614155455) do
   end
 
   create_table "phones", force: :cascade do |t|
-    t.string   "number"
+    t.string   "number",                         null: false
     t.boolean  "primary",        default: false
     t.string   "phoneable_type"
     t.integer  "phoneable_id"
@@ -193,11 +193,11 @@ ActiveRecord::Schema.define(version: 20240614155455) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "username"
-    t.string   "password_digest"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.boolean  "admin"
+    t.string   "username",                        null: false
+    t.string   "password_digest",                 null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.boolean  "admin",           default: false, null: false
     t.integer  "teacher_id"
     t.datetime "deleted_at"
     t.index ["deleted_at"], name: "index_users_on_deleted_at", using: :btree

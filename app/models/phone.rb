@@ -4,7 +4,7 @@
 #
 #  id             :integer          not null, primary key
 #  deleted_at     :datetime
-#  number         :string
+#  number         :string           not null
 #  phoneable_type :string
 #  primary        :boolean          default(FALSE)
 #  created_at     :datetime         not null

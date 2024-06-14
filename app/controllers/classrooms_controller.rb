@@ -1,3 +1,21 @@
+# == Schema Information
+#
+# Table name: classrooms
+#
+#  id         :integer          not null, primary key
+#  deleted_at :datetime
+#  family     :string
+#  group      :string
+#  level      :integer
+#  location   :string
+#  year       :integer          not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+# Indexes
+#
+#  index_classrooms_on_deleted_at  (deleted_at)
+#
 class ClassroomsController < ApplicationController
   before_action :set_classroom, only: %i[show update destroy custom_export_form custom_export]
   before_action :auth

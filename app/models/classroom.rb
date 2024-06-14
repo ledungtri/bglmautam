@@ -8,7 +8,7 @@
 #  group      :string
 #  level      :integer
 #  location   :string
-#  year       :integer
+#  year       :integer          not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #

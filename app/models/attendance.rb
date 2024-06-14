@@ -4,11 +4,11 @@
 #
 #  id              :integer          not null, primary key
 #  attendable_type :string
-#  date            :datetime
+#  date            :date             not null
 #  deleted_at      :datetime
 #  note            :string
-#  notice_date     :datetime
-#  status          :string
+#  notice_date     :date
+#  status          :string           not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  attendable_id   :integer

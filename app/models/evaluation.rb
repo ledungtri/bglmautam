@@ -3,7 +3,7 @@
 # Table name: evaluations
 #
 #  id             :integer          not null, primary key
-#  content        :string
+#  content        :string           not null
 #  deleted_at     :datetime
 #  evaluable_type :string
 #  created_at     :datetime         not null

@@ -3,12 +3,12 @@
 # Table name: people
 #
 #  id             :integer          not null, primary key
-#  birth_date     :date
+#  birth_date     :date             not null
 #  birth_place    :string
 #  christian_name :string
 #  deleted_at     :datetime
-#  gender         :string
-#  name           :string
+#  gender         :string           not null
+#  name           :string           not null
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #

@@ -1,3 +1,41 @@
+# == Schema Information
+#
+# Table name: students
+#
+#  id                    :integer          not null, primary key
+#  area                  :string
+#  christian_name        :string
+#  date_baptism          :date
+#  date_birth            :date
+#  date_communion        :date
+#  date_confirmation     :date
+#  date_declaration      :date
+#  deleted_at            :datetime
+#  district              :string
+#  father_christian_name :string
+#  father_full_name      :string
+#  father_phone          :string
+#  full_name             :string
+#  gender                :string
+#  mother_christian_name :string
+#  mother_full_name      :string
+#  mother_phone          :string
+#  phone                 :string
+#  place_baptism         :string
+#  place_birth           :string
+#  place_communion       :string
+#  place_confirmation    :string
+#  place_declaration     :string
+#  street_name           :string
+#  street_number         :string
+#  ward                  :string
+#  created_at            :datetime         not null
+#  updated_at            :datetime         not null
+#
+# Indexes
+#
+#  index_students_on_deleted_at  (deleted_at)
+#
 class StudentsController < ApplicationController
   before_action :set_student, only: %i[show update destroy admin_or_teacher?]
   before_action :auth

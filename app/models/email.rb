@@ -3,7 +3,7 @@
 # Table name: emails
 #
 #  id             :integer          not null, primary key
-#  address        :string
+#  address        :string           not null
 #  deleted_at     :datetime
 #  emailable_type :string
 #  primary        :boolean          default(FALSE)

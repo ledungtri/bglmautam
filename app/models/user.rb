@@ -3,10 +3,10 @@
 # Table name: users
 #
 #  id              :integer          not null, primary key
-#  admin           :boolean
+#  admin           :boolean          default(FALSE), not null
 #  deleted_at      :datetime
-#  password_digest :string
-#  username        :string
+#  password_digest :string           not null
+#  username        :string           not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  teacher_id      :integer

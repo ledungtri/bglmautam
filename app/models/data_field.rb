@@ -3,7 +3,7 @@
 # Table name: data_fields
 #
 #  id                  :integer          not null, primary key
-#  data                :jsonb
+#  data                :jsonb            not null
 #  data_fieldable_type :string
 #  deleted_at          :datetime
 #  created_at          :datetime         not null

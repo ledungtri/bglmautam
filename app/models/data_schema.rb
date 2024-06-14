@@ -4,11 +4,11 @@
 #
 #  id         :integer          not null, primary key
 #  deleted_at :datetime
-#  entity     :string
-#  fields     :jsonb
-#  key        :string
+#  entity     :string           not null
+#  fields     :jsonb            not null
+#  key        :string           not null
 #  title      :string
-#  weight     :integer
+#  weight     :integer          default(0), not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
