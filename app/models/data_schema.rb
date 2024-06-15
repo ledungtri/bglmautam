@@ -15,5 +15,5 @@
 class DataSchema < ApplicationRecord
   has_many :data_fields
 
-  validates_presence_of :key, :entity, fields, :weight
+  validates_presence_of :key, :entity, :fields, :weight
 end
