@@ -32,7 +32,7 @@ class Teacher < ApplicationRecord
   has_many :classrooms, through: :guidances
   # TODO: email = right format, allow nil
 
-  after_save :sync_person
+  before_save :sync_person
 
   FIELD_SETS = [
     {
@@ -60,11 +60,7 @@ private
     person.gender = gender
     person.birth_date = date_birth
     person.save
-
-    unless person_id
-      self.person_id = person.id
-      save
-    end
+    self.person_id = person.id unless person_id
 
     person.phones.where(primary: true).first_or_initialize(number: phone).save unless phone.blank?
     person.emails.where(primary: true).first_or_initialize(address: email).save unless email.blank?

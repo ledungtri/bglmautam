@@ -56,7 +56,7 @@ class Student < ApplicationRecord
 
   scope :in_classroom, -> (classroom) { joins(:enrollments).where('enrollments.classroom_id': classroom.id) }
 
-  after_save :sync_person
+  before_save :sync_person
 
   FIELD_SETS = [
     {
@@ -131,11 +131,7 @@ private
     person.birth_date = date_birth
     person.birth_place = place_birth
     person.save
-
-    unless person_id
-      self.person_id = person.id
-      save
-    end
+    self.person_id = person.id unless person_id
 
     person.phones.where(primary: true).first_or_initialize(number: phone).save unless phone.blank?
     person.addresses.where(primary: true).first_or_initialize(
