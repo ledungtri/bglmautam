@@ -28,6 +28,8 @@ class User < ApplicationRecord
 
   validates_presence_of :username, :password_digest
 
+  before_save :sync_person
+
   FIELD_SETS = [
     {
       fields: [
@@ -85,5 +87,11 @@ class User < ApplicationRecord
 
   def teacher_of_student?(student, year)
     teacher_of_enrollment?(student.enrollments.for_year(year)&.first, year)
+  end
+
+private
+
+  def sync_person
+    self.person_id = teacher.person_id
   end
 end

@@ -32,6 +32,8 @@ class Teacher < ApplicationRecord
   has_many :classrooms, through: :guidances
   # TODO: email = right format, allow nil
 
+  after_save :sync_person
+
   FIELD_SETS = [
     {
       fields: [
@@ -48,4 +50,32 @@ class Teacher < ApplicationRecord
       ]
     }
   ]
+
+private
+
+  def sync_person
+    person = person_id ? Person.find(person_id) : Person.new
+    person.christian_name = christian_name
+    person.name = full_name
+    person.gender = gender
+    person.birth_date = date_birth
+    person.save
+
+    unless person_id
+      self.person_id = person.id
+      save
+    end
+
+    person.phones.where(primary: true).first_or_initialize(number: phone).save unless phone.blank?
+    person.emails.where(primary: true).first_or_initialize(address: email).save unless email.blank?
+    person.addresses.where(primary: true).first_or_initialize(
+      street_number: street_number,
+      street_name: street_name,
+      ward: ward,
+      district: district
+    ).save unless street_name.blank?
+    person.data_fields.where(data_schema_id: DataSchema.find_by(key: 'additional_info').id).first_or_initialize(
+      data: {named_date: named_date, occupation: occupation}
+    ).save unless named_date.blank? && occupation.blank?
+  end
 end

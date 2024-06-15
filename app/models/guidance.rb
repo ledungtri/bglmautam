@@ -32,6 +32,8 @@ class Guidance < ApplicationRecord
 
   default_scope { includes(:teacher) }
 
+  before_save :sync_person
+
   FIELD_SETS = [
     {
       fields: [
@@ -50,5 +52,11 @@ class Guidance < ApplicationRecord
 
   def position_sort_param
     POSITION_OPTIONS.find_index(position) || POSITION_OPTIONS.count
+  end
+
+private
+
+  def sync_person
+    self.person_id = teacher.person_id
   end
 end

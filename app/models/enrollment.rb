@@ -32,6 +32,8 @@ class Enrollment < ApplicationRecord
 
   default_scope { includes(:student) }
 
+  before_save :sync_person
+
   FIELD_SETS = [
     {
       fields: [
@@ -46,5 +48,11 @@ class Enrollment < ApplicationRecord
 
   def sort_param
     student.sort_param
+  end
+
+private
+
+  def sync_person
+    self.person_id = student.person_id
   end
 end
