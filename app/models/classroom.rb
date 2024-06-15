@@ -19,11 +19,12 @@
 class Classroom < ApplicationRecord
   has_many :enrollments
   has_many :students, through: :enrollments
+  # has_many :people, through: :guidances
   has_many :evaluations, through: :enrollments
 
   has_many :guidances
   has_many :teachers, through: :guidances
-  has_many :people, through: :guidances
+  # has_many :people, through: :guidances
 
   validates_presence_of :year, :family
   validates :group, format: { with: /\A\d?[A-Z]?\z/, message: 'invalid input' }, allow_blank: true

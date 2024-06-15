@@ -20,6 +20,8 @@
 class Attendance < ApplicationRecord
   belongs_to :attendable, polymorphic: true
 
+  validates_presence_of :date, :status, :attendable_type, :attendable_id
+
   before_save :reconcile_status
 
   STATUS_OPTIONS = ['Hiện Diện', 'Có Phép', 'Báo Trễ', 'Không Phép']

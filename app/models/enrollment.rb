@@ -28,7 +28,7 @@ class Enrollment < ApplicationRecord
   belongs_to :person
   has_one :evaluation, as: :evaluable
 
-  validates_presence_of :student_id, :result
+  validates_presence_of :student_id, :person_id, :classroom_id, :result
 
   default_scope { includes(:student) }
 

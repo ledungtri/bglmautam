@@ -15,10 +15,17 @@
 class Person < ApplicationRecord
   include VnTextUtils
 
+  has_one :user
   has_many :phones, as: :phoneable
   has_many :emails, as: :emailable
   has_many :addresses, as: :addressable
   has_many :data_fields, as: :data_fieldable
+
+  has_many :enrollments
+  # has_many :classrooms, through: :enrollments
+
+  has_many :guidances
+  # has_many :classrooms, through: :guidances
 
   validates_presence_of :name, :gender, :birth_date
   validates :gender, inclusion: { in: %w[Nam Nữ], message: 'have to be either Nam or Nữ' }

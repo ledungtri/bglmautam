@@ -23,6 +23,8 @@
 class Address < ApplicationRecord
   belongs_to :addressable, polymorphic: true
 
+  validates_presence_of :primary, :addressable_type, :addressable_id
+
   def full_address
     street_address = [street_number, street_name].reject(&:empty?).join(" ")
     [street_address, ward, district, city].reject(&:empty?).join(", ")

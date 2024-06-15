@@ -19,4 +19,5 @@ class Email < ApplicationRecord
   belongs_to :emailable, polymorphic: true
   # TODO: email = right format, allow nil
 
+  validates_presence_of :address, :primary, :emailable_type, :emailable_id
 end

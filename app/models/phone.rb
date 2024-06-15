@@ -18,5 +18,6 @@
 class Phone < ApplicationRecord
   belongs_to :phoneable, polymorphic: true
 
+  validates_presence_of :number, :primary, :phoneable_type, :phoneable_id
   validates :number, format: { with: /\A\d+\z/, message: 'only allows numbers' }, allow_blank: true
 end

@@ -23,4 +23,6 @@
 class DataField < ApplicationRecord
   belongs_to :data_fieldable, polymorphic: true
   belongs_to :data_schema
+
+    validates_presence_of :data, :data_fieldable_type, :data_fieldable_id, :data_schema_id
 end

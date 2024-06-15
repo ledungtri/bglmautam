@@ -24,6 +24,9 @@
 class User < ApplicationRecord
   has_secure_password
   belongs_to :teacher
+  belongs_to :person
+
+  validates_presence_of :username, :password_digest
 
   FIELD_SETS = [
     {
