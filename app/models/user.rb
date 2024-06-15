@@ -9,11 +9,17 @@
 #  username        :string           not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  person_id       :integer
 #  teacher_id      :integer
 #
 # Indexes
 #
 #  index_users_on_deleted_at  (deleted_at)
+#  index_users_on_person_id   (person_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (person_id => people.id)
 #
 class User < ApplicationRecord
   has_secure_password

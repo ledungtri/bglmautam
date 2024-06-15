@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20240614195213) do
+ActiveRecord::Schema.define(version: 20240615055721) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -207,7 +207,9 @@ ActiveRecord::Schema.define(version: 20240614195213) do
     t.boolean  "admin",           default: false, null: false
     t.integer  "teacher_id"
     t.datetime "deleted_at"
+    t.integer  "person_id"
     t.index ["deleted_at"], name: "index_users_on_deleted_at", using: :btree
+    t.index ["person_id"], name: "index_users_on_person_id", using: :btree
   end
 
   add_foreign_key "data_fields", "data_schemas"
@@ -215,4 +217,5 @@ ActiveRecord::Schema.define(version: 20240614195213) do
   add_foreign_key "enrollments", "people"
   add_foreign_key "guidances", "classrooms"
   add_foreign_key "guidances", "people"
+  add_foreign_key "users", "people"
 end

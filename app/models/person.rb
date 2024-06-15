@@ -18,8 +18,9 @@ class Person < ApplicationRecord
   has_many :phones, as: :phoneable
   has_many :emails, as: :emailable
   has_many :addresses, as: :addressable
+  has_many :data_fields, as: :data_fieldable
 
-  validates_presence_of :name, :gender, :date_birth
+  validates_presence_of :name, :gender, :birth_date
   validates :gender, inclusion: { in: %w[Nam Nữ], message: 'have to be either Nam or Nữ' }
 
   def full_name
