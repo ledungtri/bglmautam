@@ -17,8 +17,8 @@ class ApplicationController < ActionController::Base
     @students = params[:query] ? Student.where('full_name ILIKE ?', "%#{params[:query]}%") : []
     @enrollments = @students&.map { |s| s.enrollments.last || s.enrollments.new(result: '') }.compact
 
-    @teachers = params[:query] ? Teacher.where('full_name ILIKE ?', "%#{params[:query]}%") : []
-    @guidances = @teachers&.map { |t| t.guidances.last || t.guidances.new(position: '') }.compact
+    @teachers = params[:query] ? Teacher.where('full_name ILIKE ?', "%#{params[:query]}%") : [] # TODO: teacher
+    @guidances = @teachers&.map { |t| t.guidances.last || t.guidances.new(position: '') }.compact # TODO: teacher
   end
 
   # Prevent CSRF attacks by raising an exception.

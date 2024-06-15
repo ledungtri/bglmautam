@@ -53,14 +53,14 @@ class TeachersController < ApplicationController
 
   # GET /teachers/new
   def new
-    @teacher = Teacher.new
+    @teacher = Teacher.new # TODO: teacher
     render :show
   end
 
   # POST /teachers
   # POST /teachers.json
   def create
-    @teacher = Teacher.new(teacher_params)
+    @teacher = Teacher.new(teacher_params) # TODO: teacher
 
     respond_to do |format|
       if @teacher.save
