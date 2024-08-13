@@ -84,16 +84,6 @@ class Student < ApplicationRecord
       ]
     },
     {
-      legend: 'Địa Chỉ Nhà',
-      fields: [
-        { field: :street_number, label:'Số Nhà' },
-        { field: :street_name, label:'Đường' },
-        { field: :ward, label:'Phường/Xã' },
-        { field: :district, label:'Quận/Huyện' },
-        { field: :area, label:'Xóm Giáo' },
-      ]
-    },
-    {
       legend: 'Thông Tin Cha Mẹ',
       fields: [
         { field: :father_christian_name, label:'Tên Thánh Cha' },
@@ -104,6 +94,16 @@ class Student < ApplicationRecord
         { field: :mother_phone, label:'Điện Thoại Mẹ' },
       ]
     },
+    {
+      legend: 'Địa Chỉ Nhà',
+      fields: [
+        { field: :street_number, label:'Số Nhà' },
+        { field: :street_name, label:'Đường' },
+        { field: :ward, label:'Phường/Xã' },
+        { field: :district, label:'Quận/Huyện' },
+        { field: :area, label:'Xóm Giáo' },
+      ]
+    }
   ]
 
   GENDER_OPTIONS = ["Nam", "Nữ"]
