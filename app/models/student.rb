@@ -56,7 +56,7 @@ class Student < ApplicationRecord
 
   scope :in_classroom, -> (classroom) { joins(:enrollments).where('enrollments.classroom_id': classroom.id) }
 
-  before_save :sync_person
+  before_validation :sync_person
 
   FIELD_SETS = [
     {

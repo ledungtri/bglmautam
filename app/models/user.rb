@@ -28,7 +28,7 @@ class User < ApplicationRecord
 
   validates_presence_of :username, :password_digest
 
-  before_save :sync_person
+  before_validation :sync_person
 
   FIELD_SETS = [
     {

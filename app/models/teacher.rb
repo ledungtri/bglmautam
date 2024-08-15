@@ -32,7 +32,7 @@ class Teacher < ApplicationRecord
   has_many :classrooms, through: :guidances
   # TODO: email = right format, allow nil
 
-  before_save :sync_person
+  before_validation :sync_person
 
   FIELD_SETS = [
     {

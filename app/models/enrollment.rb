@@ -28,11 +28,11 @@ class Enrollment < ApplicationRecord
   belongs_to :person
   has_one :evaluation, as: :evaluable
 
+  before_validation :sync_person
+
   validates_presence_of :student_id, :person_id, :classroom_id, :result
 
   default_scope { includes(:student) }
-
-  before_save :sync_person
 
   FIELD_SETS = [
     {
@@ -53,6 +53,6 @@ class Enrollment < ApplicationRecord
 private
 
   def sync_person
-    self.person_id = student.person_id
+    self.person_id = Student.find(student_id).person_id
   end
 end

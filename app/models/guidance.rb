@@ -28,11 +28,11 @@ class Guidance < ApplicationRecord
   belongs_to :teacher
   belongs_to :person
 
+  before_validation :sync_person
+
   validates_presence_of :teacher_id, :person_id, :classroom_id
 
   default_scope { includes(:teacher) }
-
-  before_save :sync_person
 
   FIELD_SETS = [
     {
