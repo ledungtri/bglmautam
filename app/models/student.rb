@@ -65,22 +65,22 @@ class Student < ApplicationRecord
         { field: :christian_name, label:'Tên Thánh' },
         { field: :full_name, label:'Họ và Tên' },
         { field: :date_birth, label:'Ngày Sinh', field_type: :date_field },
-        {field: :place_birth, label:'Nơi Sinh' },
-        {field: :gender, label:'Giới Tính', field_type: :select },
-        {field: :phone, label:'Điện Thoại Cá Nhân' },
+        { field: :place_birth, label:'Nơi Sinh' },
+        { field: :gender, label:'Giới Tính', field_type: :select },
+        { field: :phone, label:'Điện Thoại Cá Nhân' },
       ]
     },
     {
       legend: 'Ngày Bí Tích',
       fields: [
         { field: :date_baptism, label:'Rửa Tội', field_type: :date_field },
-        {field: :place_baptism, label:'Nơi Rửa Tội' },
+        { field: :place_baptism, label:'Nơi Rửa Tội' },
         { field: :date_communion, label:'Rước Lễ', field_type: :date_field },
-        {field: :place_communion, label:'Nơi Rước Lễ' },
+        { field: :place_communion, label:'Nơi Rước Lễ' },
         { field: :date_confirmation, label:'Thêm Sức', field_type: :date_field },
-        {field: :date_confirmation, label:'Nơi Thêm Sức' },
+        { field: :place_confirmation, label:'Nơi Thêm Sức' },
         { field: :date_declaration, label:'Tuyên Hứa', field_type: :date_field },
-        {field: :date_declaration, label:'Nơi Tuyên Hứa' },
+        { field: :place_declaration, label:'Nơi Tuyên Hứa' },
       ]
     },
     {
