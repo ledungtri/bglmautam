@@ -1,4 +1,5 @@
 <%= render 'components/collapsible', heading: 'Danh Sách Thiếu Nhi' do %>
+  <% enrollments ||= [] %>
   <h4>Số Lượng : <%= enrollments.count %></h4>
   <% enrollments.group_by(&:result).sort.each do |key, group| %>
     <div style="text-align: right; padding-top: 10px; font-size: 11px"><%= key + ": " + group.count.to_s %></div>
