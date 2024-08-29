@@ -22,5 +22,5 @@
     render 'components/button_group', heading: 'In Ấn', actions: actions
   end
 %>
-<%= render 'teachers/info_table', guidances: @guidances unless @guidances.empty? %>
-<%= render 'students/info_table', enrollments: @enrollments unless @enrollments.empty? %>
+<%= render 'teachers/info_table', guidances: @guidances unless @guidances&.empty? %>
+<%= render 'students/info_table', enrollments: @enrollments unless @enrollments&.empty? %>
