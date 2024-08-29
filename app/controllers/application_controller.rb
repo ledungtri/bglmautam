@@ -27,10 +27,10 @@ class ApplicationController < ActionController::Base
 
 private
   def set_current_year
-    @current_year = params[:year]&.to_i || 2023
+    @current_year = params[:year]&.to_i || 2024
     @current_year_long = "#{@current_year} - #{@current_year + 1}"
-    @current_year_start_date = '2023.09.10'
-    @current_year_end_date = '2024.06.09'
+    @current_year_start_date = '2024.09.15'
+    @current_year_end_date = '2025.06.15'
   end
 
   def set_current_user
