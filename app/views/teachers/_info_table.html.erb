@@ -1,4 +1,5 @@
 <%= render 'components/collapsible', heading: 'Giáo Lý Viên' do %>
+  <% guidances ||= [] %>
   <h4>Số Lượng : <%= guidances.count %></h4>
   <table>
     <thead>
