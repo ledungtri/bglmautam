@@ -40,7 +40,7 @@ namespace :admin do
 
   task assign_new_classrooms: :environment do
     def next_classroom_name(classroom)
-      family = level == 3 ?
+      family = classroom.level == 3 ?
                      case classroom.family
                      when 'Khai Tâm'
                        'Rước Lễ'
