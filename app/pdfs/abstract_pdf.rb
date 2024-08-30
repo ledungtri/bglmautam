@@ -14,7 +14,7 @@ class AbstractPdf < Prawn::Document
 
     title
     sub_title
-    move_down 20
+    move_down 5
     body
     footer
   end
@@ -24,7 +24,7 @@ class AbstractPdf < Prawn::Document
   end
 
   def sub_title
-    text @sub_title_text, size: 10, align: :center
+    text @sub_title_text, size: 8, align: :center
   end
 
   def body
