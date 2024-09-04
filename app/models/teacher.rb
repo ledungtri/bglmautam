@@ -70,8 +70,8 @@ private
       ward: ward,
       district: district
     ).save unless street_name.blank?
-    person.data_fields.where(data_schema_id: DataSchema.find_by(key: 'additional_info').id).first_or_initialize(
-      data: {named_date: named_date, occupation: occupation}
-    ).save unless named_date.blank? && occupation.blank?
+    # person.data_fields.where(data_schema_id: DataSchema.find_by(key: 'additional_info').id).first_or_initialize(
+    #   data: {named_date: named_date, occupation: occupation}
+    # ).save unless named_date.blank? && occupation.blank?
   end
 end
