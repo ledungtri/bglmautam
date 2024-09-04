@@ -4,7 +4,7 @@ class TeachersPdf < AbstractPdf
     @year = year
     title_text = "Nhân sự phụ trách Giáo dục Đức tin Năm Học #{@year.to_s + ' - ' + (@year + 1).to_s}"
     sub_title_text = "Số Lượng: #{@guidances.count}"
-    super(:portrait, title_text, sub_title_text)
+    super(:landscape, title_text, sub_title_text)
   end
 
   def body
@@ -16,8 +16,8 @@ class TeachersPdf < AbstractPdf
 
         row(0).style(align: :center, font_style: :bold, height: 35, valign: :center)
 
-        column(0).style(align: :center, width: 60)
-        column(1).style(align: :center, width: 60)
+        column(0).style(align: :center)
+        column(1).style(align: :center)
         column(4).style(align: :center)
         column(5).style(align: :center)
         column(6).style(align: :center)
