@@ -30,7 +30,7 @@ class Guidance < ApplicationRecord
 
   before_validation :sync_person
 
-  validates_presence_of :teacher_id, :person_id, :classroom_id
+  validates_presence_of :teacher_id, :classroom_id
 
   default_scope { includes(:teacher) }
 
