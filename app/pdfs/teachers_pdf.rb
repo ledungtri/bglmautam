@@ -16,12 +16,11 @@ class TeachersPdf < AbstractPdf
 
         row(0).style(align: :center, font_style: :bold, height: 35, valign: :center)
 
-        column(0).style(align: :center)
+        column(0).style(align: :center, width: 60)
         column(1).style(align: :center, width: 60)
-        column(2).style(align: :center, width: 60)
+        column(4).style(align: :center)
         column(5).style(align: :center)
         column(6).style(align: :center)
-        column(7).style(align: :center)
       end
     end
   end
