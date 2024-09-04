@@ -21,22 +21,23 @@ class TeachersPdf < AbstractPdf
         column(2).style(align: :center, width: 60)
         column(5).style(align: :center)
         column(6).style(align: :center)
+        column(7).style(align: :center)
       end
     end
   end
 
   def line_items
-    [['STT', 'Lớp', 'Phụ Trách', 'Họ và Tên', 'Ngày Sinh', 'Bổn Mạng', 'Điện Thoại']] +
-    @guidances.each_with_index.map do |guidance, index|
+    [['Lớp', 'Phụ Trách', 'Họ và Tên', 'Ngày Sinh', 'Bổn Mạng', 'Điện Thoại', 'Email']] +
+    @guidances.map do |guidance|
         teacher = guidance.teacher
         [
-          index + 1,
           guidance.classroom.name,
           guidance.position,
           teacher.name,
           teacher.date_birth&.strftime('%d/%m/%Y'),
           teacher.named_date,
-          teacher.phone
+          teacher.phone,
+          teacher.email
         ]
       end
   end
