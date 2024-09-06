@@ -11,7 +11,7 @@ class StudentPdf < Prawn::Document
 
     text 'Sơ Yếu Lý Lịch', size: 20, align: :center, style: :bold
     text @student.name, size: 15, align: :center, style: :bold
-    text "Lớp: #{@student.enrollments.last&.classroom&.name || '__________________'}", size: 13, align: :center, style: :bold
+    text "Lớp: #{@student.enrollments.first&.classroom&.name || '__________________'}", size: 13, align: :center, style: :bold
     move_down 10
     body
   end
