@@ -64,7 +64,7 @@ class Classroom < ApplicationRecord
     when family == 'Bao Đồng'
       "5#{level}#{group}"
     else
-      '6'
+      "6#{level}#{group}"
     end
   end
 end
