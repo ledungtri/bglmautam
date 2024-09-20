@@ -24,8 +24,6 @@ class Attendance < ApplicationRecord
 
   before_save :reconcile_status
 
-  STATUS_OPTIONS = ['Hiện Diện', 'Có Phép', 'Báo Trễ', 'Không Phép']
-
 private
 
   def reconcile_status

@@ -25,7 +25,7 @@
         </select>
       </td>
       <td style='width: 200px'><%= f.select :classroom_id, options_for_select(opts), {}, {id: 'classroom_select', style: 'width: 100%'} %></td>
-      <td style='width: 200px'><%= f.select :position, options_for_select(Guidance::POSITION_OPTIONS), {}, {style: 'width: 100%'} %></td>
+      <td style='width: 200px'><%= f.select :position, options_for_select(ResourceType.for_key('guidance_position').pluck(:value)), {}, {style: 'width: 100%'} %></td>
       <td style='width: 200px'><%= f.submit "Thêm Lớp Mới" %></td>
     <% end %>
   </tr>

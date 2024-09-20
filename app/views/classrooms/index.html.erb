@@ -5,6 +5,8 @@
   ]
 %>
 
+<% results = ResourceType.for_key('enrollment_result').pluck(:value) %>
+
 <%= render 'components/collapsible',
            heading: "Thống Kê Số Lượng Thiếu Nhi Năm Học #{@current_year_long}",
            always_open: true do %>
@@ -17,7 +19,7 @@
         <th style='width: 100px'>Tên Lớp</th>
         <th style='width: 100px'>Vị Trí</th>
         <th style='width:  94px'>Tổng Số</th>
-        <% Enrollment::RESULT_OPTIONS.each do |result| %>
+        <% results.each do |result| %>
           <th style='width:  94px'><%= result %></th>
         <% end %>
       </tr>
@@ -30,7 +32,7 @@
           <td style='width: 100px'><%= link_to classroom.name, classroom %></td>
           <td style='width: 100px'><%= classroom.location %></td>
           <td style='width:  94px'><%= classroom.enrollments.count %></td>
-          <% Enrollment::RESULT_OPTIONS.each do |result| %>
+          <% results.each do |result| %>
             <td style='width:  94px'><%= classroom.enrollments.where(result: result).count %></td>
           <% end %>
         </tr>
@@ -40,7 +42,7 @@
         <td style='width: 100px'>Tổng Số</td>
         <td style='width: 100px'></td>
         <td style='width:  94px'><%= @classrooms.inject(0) { |sum, classroom| sum + classroom.enrollments.count } %></td>
-        <% Enrollment::RESULT_OPTIONS.each do |result| %>
+        <% results.each do |result| %>
           <td style='width:  94px'><%= Enrollment.where(classroom: @classrooms).where(result: result).count %></td>
         <% end %>
       </tr>

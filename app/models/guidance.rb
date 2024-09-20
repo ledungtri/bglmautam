@@ -44,14 +44,13 @@ class Guidance < ApplicationRecord
     }
   ]
 
-  POSITION_OPTIONS = ["Tu Sĩ", "Huynh Trưởng", "Dự Trưởng", "Hiệp Sĩ", "GLV", "Tiền GLV", "Phụ Tá", "Kiến Tập"]
-
   def sort_param
     "#{classroom.sort_param} #{position_sort_param}"
   end
 
   def position_sort_param
-    POSITION_OPTIONS.find_index(position) || POSITION_OPTIONS.count
+    positions = ResourceType.for_key('guidance_position').pluck(:value)
+    positions.find_index(position) || positions.count
   end
 
 private

@@ -1,0 +1,5 @@
+attendance_status: ['Hiện Diện', 'Có Phép', 'Báo Trễ', 'Không Phép']
+enrollment_result: ['Đang Học', 'Dự Thính', 'Lên Lớp', 'Học Lại', 'Nghỉ Luôn', 'Chuyển Xứ']
+guidance_position: ["Tu Sĩ", "Huynh Trưởng", "Dự Trưởng", "Vào Đời 2", "Vào Đời 1", "Hiệp Sĩ", "GLV", "Tiền GLV", "Phụ Tá", "Kiến Tập"]
+person_gender: ['Nam', 'Nữ']
+student_gender: ['Nam', 'Nữ']
