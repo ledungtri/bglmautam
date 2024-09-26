@@ -24,8 +24,8 @@
   <div class="e-info_grid_cell">
     <div class="e-classroom_year">Điểm số</div>
     <div style="display: grid; justify-content: center">
-      <%= render 'grades/detail', grade: enrollment.grades.where(name: "Học Kỳ 1").first_or_initialize %>
-      <%= render 'grades/detail', grade: enrollment.grades.where(name: "Học Kỳ 2").first_or_initialize %>
+      <%= render 'grades/detail', grade: enrollment.grades.where(name: "Học Kỳ 1").first_or_initialize, editable: editable %>
+      <%= render 'grades/detail', grade: enrollment.grades.where(name: "Học Kỳ 2").first_or_initialize, editable: editable %>
     </div>
   </div>
 </div>
