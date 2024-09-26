@@ -17,7 +17,7 @@
 class Evaluation < ApplicationRecord
   belongs_to :evaluable, polymorphic: true
 
-  validates_presence_of :content, :evaluable_type, :evaluable_id
+  validates_presence_of :evaluable_type, :evaluable_id
 
   FIELD_SETS = [
     {

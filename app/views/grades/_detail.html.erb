@@ -1,0 +1,9 @@
+<div style="display: flex; margin-top: 10px; align-items: center">
+  <div><%=grade.name %></div>
+  <%= form_for(grade) do |f| %>
+    <%= f.hidden_field :name %>
+    <%= f.hidden_field :enrollment_id %>
+    <%= f.number_field :value, step: 0.1, min: 0, max: 10, style: 'width: 40px; margin-left: 5px' %>
+    <button class="icon fill-hover"><i class="fa fa-save"></i></button>
+  <% end %>
+</div>
