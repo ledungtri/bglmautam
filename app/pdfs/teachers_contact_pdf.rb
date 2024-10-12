@@ -10,7 +10,7 @@ class TeachersContactPdf < Prawn::Document
 
     title = "<font size='18'><b>#{classroom.name}</b></font>"
 
-    body = classroom.guidances.reduce('') do |content, guidance|
+    body = classroom.guidances.sort_by(&:sort_param).reduce('') do |content, guidance|
       content += "<b>#{guidance.position}</b>: #{guidance.teacher.full_name}\n<b>SĐT</b>: #{guidance.teacher.phone}\n"
       content
     end
