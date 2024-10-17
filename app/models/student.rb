@@ -141,34 +141,34 @@ private
       district: district,
       area: area
     ).save unless street_name.blank?
-    person.data_fields.where(data_schema_id: DataSchema.find_by(key: 'sacraments').id).first_or_initialize(
-      data: {
-        baptism_date: date_baptism,
-        baptism_place: place_baptism,
-        communion_date: date_communion,
-        communion_place: place_communion,
-        confirmation_date: date_confirmation,
-        confirmation_place: place_confirmation,
-        declaration_date: date_confirmation,
-        declaration_place: place_confirmation
-      }
-    ).save unless [:date_baptism, :date_communion, :date_confirmation, :date_declaration].all? { |field| send(field).blank? }
-    person.data_fields.where(data_schema_id: DataSchema.find_by(key: 'parents_info').id).first_or_initialize(
-      data: {
-        father_christian_name: date_baptism,
-        father_name: father_full_name,
-        father_phone: father_phone,
-        mother_christian_name: mother_christian_name,
-        mother_name: mother_full_name,
-        mother_phone: mother_phone
-      }
-    ).save unless [
-      :father_christian_name,
-      :father_name,
-      :father_phone,
-      :mother_christian_name,
-      :mother_name,
-      :mother_phone
-    ].all? { |field| send(field).blank? }
+    # person.data_fields.where(data_schema_id: DataSchema.find_by(key: 'sacraments').id).first_or_initialize(
+    #   data: {
+    #     baptism_date: date_baptism,
+    #     baptism_place: place_baptism,
+    #     communion_date: date_communion,
+    #     communion_place: place_communion,
+    #     confirmation_date: date_confirmation,
+    #     confirmation_place: place_confirmation,
+    #     declaration_date: date_confirmation,
+    #     declaration_place: place_confirmation
+    #   }
+    # ).save unless [:date_baptism, :date_communion, :date_confirmation, :date_declaration].all? { |field| send(field).blank? }
+    # person.data_fields.where(data_schema_id: DataSchema.find_by(key: 'parents_info').id).first_or_initialize(
+    #   data: {
+    #     father_christian_name: date_baptism,
+    #     father_name: father_full_name,
+    #     father_phone: father_phone,
+    #     mother_christian_name: mother_christian_name,
+    #     mother_name: mother_full_name,
+    #     mother_phone: mother_phone
+    #   }
+    # ).save unless [
+    #   :father_christian_name,
+    #   :father_name,
+    #   :father_phone,
+    #   :mother_christian_name,
+    #   :mother_name,
+    #   :mother_phone
+    # ].all? { |field| send(field).blank? }
   end
 end

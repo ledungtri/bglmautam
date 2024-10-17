@@ -6,6 +6,7 @@
 #  birth_date     :date             not null
 #  birth_place    :string
 #  christian_name :string
+#  data           :jsonb
 #  deleted_at     :datetime
 #  gender         :string           not null
 #  name           :string           not null

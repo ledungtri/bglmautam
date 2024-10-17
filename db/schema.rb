@@ -56,18 +56,6 @@ ActiveRecord::Schema.define(version: 20240926204508) do
     t.index ["deleted_at"], name: "index_classrooms_on_deleted_at", using: :btree
   end
 
-  create_table "data_fields", force: :cascade do |t|
-    t.jsonb    "data",                null: false
-    t.string   "data_fieldable_type"
-    t.integer  "data_fieldable_id"
-    t.integer  "data_schema_id"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
-    t.datetime "deleted_at"
-    t.index ["data_fieldable_type", "data_fieldable_id"], name: "index_data_fields_on_data_fieldable_type_and_data_fieldable_id", using: :btree
-    t.index ["data_schema_id"], name: "index_data_fields_on_data_schema_id", using: :btree
-  end
-
   create_table "data_schemas", force: :cascade do |t|
     t.string   "key",                    null: false
     t.string   "title"
@@ -143,6 +131,7 @@ ActiveRecord::Schema.define(version: 20240926204508) do
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
     t.datetime "deleted_at"
+    t.jsonb    "data"
   end
 
   create_table "phones", force: :cascade do |t|
@@ -231,7 +220,6 @@ ActiveRecord::Schema.define(version: 20240926204508) do
     t.index ["person_id"], name: "index_users_on_person_id", using: :btree
   end
 
-  add_foreign_key "data_fields", "data_schemas"
   add_foreign_key "enrollments", "classrooms"
   add_foreign_key "enrollments", "people"
   add_foreign_key "guidances", "classrooms"
