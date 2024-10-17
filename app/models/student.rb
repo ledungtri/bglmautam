@@ -60,6 +60,7 @@ class Student < ApplicationRecord
 
   FIELD_SETS = [
     {
+      key: 'personal_info',
       legend: 'Thông Tin Cá Nhân',
       fields: [
         { field: :christian_name, label:'Tên Thánh' },
@@ -71,6 +72,7 @@ class Student < ApplicationRecord
       ]
     },
     {
+      key: 'sacraments',
       legend: 'Ngày Bí Tích',
       fields: [
         { field: :date_baptism, label:'Rửa Tội', field_type: :date_field },
@@ -84,6 +86,7 @@ class Student < ApplicationRecord
       ]
     },
     {
+      key: 'parents_info',
       legend: 'Thông Tin Cha Mẹ',
       fields: [
         { field: :father_christian_name, label:'Tên Thánh Cha' },
@@ -95,6 +98,7 @@ class Student < ApplicationRecord
       ]
     },
     {
+      key: 'address',
       legend: 'Địa Chỉ Nhà',
       fields: [
         { field: :street_number, label:'Số Nhà' },

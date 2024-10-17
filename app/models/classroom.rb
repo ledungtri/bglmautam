@@ -31,6 +31,7 @@ class Classroom < ApplicationRecord
 
   FIELD_SETS = [
     {
+      key: 'classroom',
       fields: [
         { field: :year, label: 'Năm Học', field_type: :number_field },
         { field: :family, label: 'Khối' },

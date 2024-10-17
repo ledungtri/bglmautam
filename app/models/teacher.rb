@@ -36,6 +36,7 @@ class Teacher < ApplicationRecord
 
   FIELD_SETS = [
     {
+      key: 'teacher',
       fields: [
         { field: :christian_name, label:'Tên Thánh' },
         { field: :full_name, label:'Họ và Tên' },

@@ -1,0 +1,73 @@
+Student:
+  - personal_info:
+      title: 'Thông Tin Cá Nhân'
+      weight: 1
+      fields:
+        - field: christian_name
+          label: 'Tên Thánh'
+        - field: full_name
+          label: 'Họ và Tên'
+        - field: date_birth
+          label: 'Ngày Sinh'
+          field_type: date_field
+        - field: place_birth
+          label: 'Nơi Sinh'
+        - field: gender
+          label: 'Giới Tính'
+          field_type: select
+        - field: phone
+          label: 'Điện Thoại Cá Nhân'
+  - sacraments:
+      title: 'Ngày Bí Tích'
+      weight: 2
+      fields:
+        - field: date_baptism
+          label: 'Ngày Rửa Tội'
+          field_type: date_field
+        - field: place_baptism
+          label: 'Nơi Rửa Tội'
+        - field: date_communion
+          label: 'Ngày Rước Lễ'
+          field_type: date_field
+        - field: place_communion
+          label: 'Nơi Rước Lễ'
+        - field: date_confirmation
+          label: 'Ngày Thêm Sức'
+          field_type: date_field
+        - field: place_confirmation
+          label: 'Nơi Thêm Sức'
+        - field: date_declaration
+          label: 'Ngày Tuyên Hứa'
+          field_type: date_field
+        - field: place_declaration
+          label: 'Nơi Tuyên Hứa'
+  - parents_info:
+      title: 'Thông Tin Cha Mẹ'
+      weight: 3
+      fields:
+        - field: father_christian_name
+          label: 'Tên Thánh Cha'
+        - field: father_full_name
+          label: 'Họ và Tên Cha'
+        - field: mother_christian_name
+          label: 'Tên Thánh Mẹ'
+        - field: mother_full_name
+          label: 'Họ và Tên Mẹ'
+        - field: father_phone
+          label: 'Điện Thoại Cha'
+        - field: mother_phone
+          label: 'Điện Thoại Mẹ'
+  - address:
+      title: 'Địa Chỉ Nhà'
+      weight: 4
+      fields:
+        - field: street_number
+          label: 'Số Nhà'
+        - field: street_name
+          label: 'Đường'
+        - field: ward
+          label: 'Phường/Xã'
+        - field: district
+          label: 'Quận/Huyện'
+        - field: area
+          label: 'Xóm Giáo'

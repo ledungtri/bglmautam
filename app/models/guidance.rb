@@ -36,6 +36,7 @@ class Guidance < ApplicationRecord
 
   FIELD_SETS = [
     {
+      key: 'guidance',
       fields: [
         { label: 'GLV', field_type: :display, value_method: -> (g) { g.teacher.name } },
         { label: 'Lớp', field_type: :display, value_method: -> (g) { g.classroom.name } },

@@ -37,6 +37,7 @@ class Enrollment < ApplicationRecord
 
   FIELD_SETS = [
     {
+      key: 'enrollment',
       fields: [
         { label: 'Thiếu Nhi', field_type: :display, value_method: -> (e) { e.student.name } },
         { label: 'Lớp', field_type: :display, value_method: -> (e) { e.classroom.name } },

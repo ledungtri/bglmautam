@@ -32,6 +32,7 @@ class User < ApplicationRecord
 
   FIELD_SETS = [
     {
+      key: 'user',
       fields: [
         { field: :username, label: 'Tên Đăng Nhập' },
         { field: :teacher_id, field_type: :hidden_field },
