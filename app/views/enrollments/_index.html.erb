@@ -1,6 +1,8 @@
+<% enrollments ||= [] %>
 <%= render 'components/collapsible', heading: 'Hành Trình Thiêng Liêng' do %>
-  <% @student.enrollments.each do |enrollment| %>
+  <% enrollments ||= [] %>
+  <% enrollments.each do |enrollment| %>
     <%= render 'enrollments/detail', enrollment: enrollment, editable: @current_user.admin_or_teacher_of_enrollment?(enrollment, @current_year) %>
   <% end %>
-  <%= render 'enrollments/new' %>
-<% end %>
+  <%= render('enrollments/new') if @student %>
+<% end unless enrollments.empty? && !@student %>

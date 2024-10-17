@@ -6,7 +6,7 @@
            object: @student,
            editable: @current_user.admin_or_teacher_of_student?(@student, @current_year)
 %>
-<%= render 'enrollments/index' %>
+<%= render 'enrollments/index', enrollments: @student.enrollments %>
 <%=
   if @student.id
     actions = [

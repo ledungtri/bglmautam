@@ -1,6 +1,7 @@
+<% guidances ||= [] %>
 <%= render 'components/collapsible', heading: 'Hành Trình Thiêng Liêng' do %>
-  <% @teacher.guidances.each do |guidance| %>
+  <% guidances.each do |guidance| %>
     <%= render 'guidances/detail', guidance: guidance, editable: @current_user.admin? %>
   <% end %>
-  <%= render 'guidances/new' %>
-<% end %>
+  <%= render 'guidances/new' if @teacher %>
+<% end unless guidances.empty? && !@teacher %>
