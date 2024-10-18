@@ -49,3 +49,5 @@ group :development do
   # https://github.com/ctran/annotate_models
   gem 'annotate'
 end
+
+gem "pundit", "~> 2.3"
