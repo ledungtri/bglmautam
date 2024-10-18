@@ -131,15 +131,16 @@ class TeachersController < ApplicationController
     params.require(:teacher).permit(
       :christian_name,
       :full_name,
-      :named_date,
       :date_birth,
-      :occupation,
+      :gender,
       :phone,
       :email,
       :street_number,
       :street_name,
       :ward,
-      :district
+      :district,
+      :named_date,
+      :occupation
     )
   end
 end

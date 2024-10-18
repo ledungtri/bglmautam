@@ -41,13 +41,14 @@ class Teacher < ApplicationRecord
         { field: :christian_name, label:'Tên Thánh' },
         { field: :full_name, label:'Họ và Tên' },
         { field: :date_birth, label:'Ngày Sinh', field_type: :date_field },
-        {field: :named_date, label:'Bổn Mạng'},
+        { field: :gender, label:'Giới Tính', field_type: :select },
         {field: :phone, label:'Số Điện Thoại'},
         {field: :email, label:'Email'},
         {field: :street_number, label:'Số Nhà'},
         {field: :street_name, label:'Đường'},
         {field: :ward, label:'Phường/Xã'},
-        {field: :district, label:'Quận/Huyện'}
+        {field: :district, label:'Quận/Huyện'},
+        {field: :named_date, label:'Bổn Mạng'}
       ]
     }
   ]
@@ -60,19 +61,26 @@ private
     person.name = full_name
     person.gender = gender
     person.birth_date = date_birth
-    person.save
-    self.person_id = person.id unless person_id
+    person.data = [
+      {
+        key: 'additional',
+        values: {
+          named_date: named_date,
+          occupation: occupation
+        }
+      }
+    ]
+    person.save!
 
-    # person.phones.where(primary: true).first_or_initialize(number: phone).save unless phone.blank?
-    # person.emails.where(primary: true).first_or_initialize(address: email).save unless email.blank?
-    # person.addresses.where(primary: true).first_or_initialize(
-    #   street_number: street_number,
-    #   street_name: street_name,
-    #   ward: ward,
-    #   district: district
-    # ).save unless street_name.blank?
-    # person.data_fields.where(data_schema_id: DataSchema.find_by(key: 'additional_info').id).first_or_initialize(
-    #   data: {named_date: named_date, occupation: occupation}
-    # ).save unless named_date.blank? && occupation.blank?
+    person.phones.where(primary: true).first_or_create(number: phone) unless phone.blank?
+    person.emails.where(primary: true).first_or_create(address: email) unless email.blank?
+    person.addresses.where(primary: true).first_or_create(
+      street_number: street_number,
+      street_name: street_name,
+      ward: ward,
+      district: district
+    ) unless street_name.blank?
+
+    self.person_id = person.id unless person_id
   end
 end
