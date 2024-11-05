@@ -1,0 +1,14 @@
+<%
+  attendances = Attendance.where(attendable: enrollment)
+  attended_count = attendances.select { |att| att.status == 'Hiện Diện' }.count
+  absence_count = attendances.count - attended_count
+%>
+
+<div style="display: flex; margin: 5px auto; justify-content: center">
+  <div style="width: 70px; text-align: right">Hiện Diện</div>
+  <input type="text" style="width: 30px; margin: 0 5px; text-align: center" value="<%= attended_count %>" disabled>
+</div>
+<div style="display: flex; margin: 5px auto; justify-content: center">
+  <div style="width: 70px; text-align: right">Buổi Vắng</div>
+  <input type="text" style="width: 30px; margin: 0 5px; text-align: center" value="<%= absence_count %>" disabled>
+</div>

@@ -9,6 +9,7 @@
 <%=
   if @classroom.id
     actions = [
+      { label: 'Điểm Danh', path: classroom_attendances_path(@classroom) },
       { label: 'In Danh Sách', path: classroom_path(format: :pdf) },
       { label: 'In Sơ Yếu Lý Lịch', path: classroom_students_personal_details_path(@classroom, format: :pdf) },
       { label: 'In Bảng Tự Tạo', path: classroom_custom_export_path(@classroom) }

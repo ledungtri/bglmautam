@@ -18,6 +18,15 @@
 #  index_attendances_on_attendable_type_and_attendable_id  (attendable_type,attendable_id)
 #
 class AttendancesController < SecondaryResourcesController
+  def create
+    skip_redirect
+    super
+  end
+
+  def update
+    skip_redirect
+    super
+  end
 
 private
 

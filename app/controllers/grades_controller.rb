@@ -15,6 +15,11 @@
 #  index_grades_on_enrollment_id  (enrollment_id)
 #
 class GradesController < SecondaryResourcesController
+  def create
+    skip_redirect
+    super
+  end
+
   def update
     skip_redirect
     super

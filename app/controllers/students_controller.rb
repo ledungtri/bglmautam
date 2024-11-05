@@ -126,6 +126,12 @@ class StudentsController < ApplicationController
     end
   end
 
+  def attendances
+    authorize @student, :show?
+    @enrollment = Enrollment.find(params[:enrollment_id]) || Enrollment.for_year(@current_year)
+    @attendances = Attendance.where(attendable: @enrollment)
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.

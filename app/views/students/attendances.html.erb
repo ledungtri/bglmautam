@@ -1,0 +1,15 @@
+<%
+  sundays = (@current_year_start_date.to_date..@current_year_end_date.to_date).to_a.select {|k| k.wday == 0}
+%>
+
+<table>
+  <thead>
+  <tr>
+    <% sundays.each do |sunday| %>
+      <th><%= sunday.strftime('%d-%m-%Y') %></th>
+    <% end %>
+  </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>

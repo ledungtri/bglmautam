@@ -28,6 +28,7 @@ class Enrollment < ApplicationRecord
   belongs_to :person
   has_one :evaluation, as: :evaluable
   has_many :grades
+  has_many :attendances, as: :attendable
 
   before_validation :sync_person
 
