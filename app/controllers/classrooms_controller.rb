@@ -17,7 +17,7 @@
 #  index_classrooms_on_deleted_at  (deleted_at)
 #
 class ClassroomsController < ApplicationController
-  before_action :set_classroom, only: %i[show update destroy custom_export_form custom_export]
+  before_action :set_classroom, except: %i[index new create]
   before_action :auth
   before_action :admin?, only: %i[new create update destroy]
 
