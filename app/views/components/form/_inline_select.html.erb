@@ -4,7 +4,7 @@
   <% end %>
   <%= f.select(
         field,
-        ResourceType.for_key("#{object.class.to_s.downcase}_#{field.to_s}").pluck(:value),
+        (ResourceType.for_key("#{object.class.to_s.downcase}_#{field.to_s}").pluck(:value) << object.send(field)).uniq,
         { include_blank: true },
         { class: 'inline', onchange: 'this.form.submit()', disabled: !enabled }
       ) %>

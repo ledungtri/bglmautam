@@ -19,7 +19,7 @@
       opts ||= {}
       opts[:class] = 'form-input'
       if field_type == :select
-        field_opts = ResourceType.for_key("#{object.class.to_s.downcase}_#{field.to_s}").pluck(:value)
+        field_opts = (ResourceType.for_key("#{object.class.to_s.downcase}_#{field.to_s}").pluck(:value) << object.send(field)).uniq
         select_opts = options_for_select(field_opts, object.send(field))
         f.send(field_type, field, select_opts, {}, opts)
       else
