@@ -2,6 +2,7 @@ class CustomStudentsPdf < AbstractPdf
   def initialize(classroom, title_text, page_layout, columns, current_students_only)
     @classroom = classroom
     @enrollments = classroom.enrollments
+    current_students_only = ActiveModel::Type::Boolean.new.cast(current_students_only)
     @enrollments = @enrollments.where(result: 'Đang Học') if current_students_only
     @enrollments = @enrollments.sort_by(&:sort_param)
     @columns = columns
