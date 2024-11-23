@@ -9,11 +9,11 @@
   end_date = Date.new(year,month).end_of_month
   sundays = (start_date..end_date).to_a.select {|k| k.wday == 0}
 
-  enrollments = @classroom.enrollments.reorder(nil)
+  enrollments = @classroom.enrollments.where(result: 'Đang Học').reorder(nil).sort_by(&:sort_param)
   attendances = Attendance.where(attendable: enrollments)
 %>
 
-<h1>Điểm danh Giáo Lý Viên</h1>
+<h1><%= "Điểm danh Lớp #{@classroom.name}" %></h1>
 <%= render 'components/button_group', heading: 'Ngày Điểm Danh', actions: actions %>
 <%= render 'components/collapsible', heading: "Điểm danh Lớp #{@classroom.name} - Tháng #{month}.#{year}", always_open:true do %>
   <table>
