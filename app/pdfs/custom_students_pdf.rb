@@ -1,7 +1,9 @@
 class CustomStudentsPdf < AbstractPdf
-  def initialize(classroom, title_text, page_layout, columns)
+  def initialize(classroom, title_text, page_layout, columns, current_students_only)
     @classroom = classroom
-    @enrollments = classroom.enrollments.sort_by(&:sort_param)
+    @enrollments = classroom.enrollments
+    @enrollments = @enrollments.where(result: 'Đang Học') if current_students_only
+    @enrollments = @enrollments.sort_by(&:sort_param)
     @columns = columns
     @width = page_layout == :landscape ? 800 : 550
     title_text = "#{@classroom.name} - #{title_text}\nNăm Học #{@classroom.long_year}"

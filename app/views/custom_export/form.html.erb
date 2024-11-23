@@ -18,6 +18,14 @@
         <%= radio_button_tag :page_layout, :portrait %>
         <%= label_tag :page_layout_portrait, 'Khổ Dọc' %>
       </div>
+
+      <div>
+        <div class="label">Bao Gồm Thiếu Nhi:</div>
+        <%= radio_button_tag :current_students_only, true, true, width: '10px' %>
+        <%= label_tag :current_students_only_true, 'Chỉ Các Em Đang Học' %>
+        <%= radio_button_tag :current_students_only, false %>
+        <%= label_tag :current_students_only_false, 'Tất Cả' %>
+      </div>
     </fieldset>
     <%= submit_tag "Tạo", :class => :button %>
   <% end %>

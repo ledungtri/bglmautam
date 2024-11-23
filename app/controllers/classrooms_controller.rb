@@ -138,7 +138,7 @@ class ClassroomsController < ApplicationController
   end
 
   def custom_export
-    pdf = CustomStudentsPdf.new(@classroom, params[:title], params[:page_layout].to_sym, params[:columns].split(','))
+    pdf = CustomStudentsPdf.new(@classroom, params[:title], params[:page_layout].to_sym, params[:columns].split(','), params[:current_students_only])
     send_data pdf.render, filename: "#{@classroom.name} - #{params[:title]}.pdf", type: 'application/pdf', disposition: 'inline'
   end
 
