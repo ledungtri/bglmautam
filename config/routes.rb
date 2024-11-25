@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   resources :classrooms, only: [:index, :show, :new, :create, :update, :destroy] do
     get '/students_personal_details', to: 'classrooms#students_personal_details'
     get '/attendances', to: 'classrooms#attendances'
+    get '/evaluation', to: 'classrooms#evaluation'
     get '/custom_export', to: 'classrooms#custom_export_form'
     post '/custom_export', to: 'classrooms#custom_export'
   end
