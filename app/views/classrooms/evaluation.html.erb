@@ -1,64 +1,63 @@
-<%
-  enrollments = @classroom.enrollments.reorder(nil).sort_by(&:sort_param)
-%>
-
 <%= render 'components/collapsible', heading: "Nhận Xét & Điểm Số Lớp #{@classroom.name}", always_open: true do %>
-  <table>
-    <thead>
-    <tr>
-      <th style='width: 230px'>Tên Thánh - Họ và Tên</th>
-      <th style='width:  80px'>Kết Quả</th>
-      <th style='width:  80px'>Giữa HK 1</th>
-      <th style='width:  80px'>Cuối HK 1</th>
-      <th style='width:  80px'>Giữa HK 2</th>
-      <th style='width:  80px'>Cuối HK 2</th>
-      <th style='width: 300px'>Nhận Xét</th>
-    </tr>
-    </thead>
-    <tbody>
-    <% enrollments.each do |en| %>
+  <% @classroom.enrollments.reorder(nil).sort_by(&:sort_param).group_by(&:result).sort.each do |key, group| %>
+    <div style="text-align: right; padding-top: 10px; font-size: 11px"><%= key + ": " + group.count.to_s %></div>
+    <table>
+      <thead>
       <tr>
-        <td style='width: 230px'><%= link_to en.student.name, en.student %></td>
-        <td style='width:  80px'>
-          <%= render 'components/form/inline_select', object: en, field: :result, enabled: true %>
-        </td>
-        <td style='width:  80px'>
-          <%= form_for(en.grades.where(name: 'Giữa HK 1').first_or_initialize, remote: true, authenticity_token: true) do |f| %>
-            <%= f.hidden_field :name %>
-            <%= f.hidden_field :enrollment_id %>
-            <%= f.number_field :value, step: 0.1, min: 0, max: 10, style: 'width: 30px; margin: 0 5px; text-align: center', onchange: 'this.form.submit()' %>
-          <% end %>
-        </td>
-        <td style='width:  80px'>
-          <%= form_for(en.grades.where(name: 'Cuối HK 1').first_or_initialize, remote: true, authenticity_token: true) do |f| %>
-            <%= f.hidden_field :name %>
-            <%= f.hidden_field :enrollment_id %>
-            <%= f.number_field :value, step: 0.1, min: 0, max: 10, style: 'width: 30px; margin: 0 5px; text-align: center', onchange: 'this.form.submit()' %>
-          <% end %>
-        </td>
-        <td style='width:  80px'>
-          <%= form_for(en.grades.where(name: 'Giữa HK 2').first_or_initialize, remote: true, authenticity_token: true) do |f| %>
-            <%= f.hidden_field :name %>
-            <%= f.hidden_field :enrollment_id %>
-            <%= f.number_field :value, step: 0.1, min: 0, max: 10, style: 'width: 30px; margin: 0 5px; text-align: center', onchange: 'this.form.submit()' %>
-          <% end %>
-        </td>
-        <td style='width:  80px'>
-          <%= form_for(en.grades.where(name: 'Cuối HK 2').first_or_initialize, remote: true, authenticity_token: true) do |f| %>
-            <%= f.hidden_field :name %>
-            <%= f.hidden_field :enrollment_id %>
-            <%= f.number_field :value, step: 0.1, min: 0, max: 10, style: 'width: 30px; margin: 0 5px; text-align: center', onchange: 'this.form.submit()' %>
-          <% end %>
-        </td>
-        <td style='width: 430px'>
-          <%= form_for(en.evaluation || Evaluation.new(evaluable: en)) do |f| %>
-            <%= f.hidden_field :evaluable_id %>
-            <%= f.hidden_field :evaluable_type %>
-            <%= f.text_area :content, class: "e-eval_textarea", rows: 5, onblur: 'this.form.submit()' %>
-          <% end %>
-        </td>
+        <th style='width: 230px'>Tên Thánh - Họ và Tên</th>
+        <th style='width:  80px'>Kết Quả</th>
+        <th style='width:  80px'>Giữa HK 1</th>
+        <th style='width:  80px'>Cuối HK 1</th>
+        <th style='width:  80px'>Giữa HK 2</th>
+        <th style='width:  80px'>Cuối HK 2</th>
+        <th style='width: 300px'>Nhận Xét</th>
       </tr>
-    <% end %>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+      <% group.each do |en| %>
+        <tr>
+          <td style='width: 230px'><%= link_to en.student.name, en.student %></td>
+          <td style='width:  80px'>
+            <%= render 'components/form/inline_select', object: en, field: :result, enabled: true %>
+          </td>
+          <td style='width:  80px'>
+            <%= form_for(en.grades.where(name: 'Giữa HK 1').first_or_initialize, remote: true, authenticity_token: true) do |f| %>
+              <%= f.hidden_field :name %>
+              <%= f.hidden_field :enrollment_id %>
+              <%= f.number_field :value, step: 0.1, min: 0, max: 10, style: 'width: 30px; margin: 0 5px; text-align: center', onchange: 'this.form.submit()' %>
+            <% end %>
+          </td>
+          <td style='width:  80px'>
+            <%= form_for(en.grades.where(name: 'Cuối HK 1').first_or_initialize, remote: true, authenticity_token: true) do |f| %>
+              <%= f.hidden_field :name %>
+              <%= f.hidden_field :enrollment_id %>
+              <%= f.number_field :value, step: 0.1, min: 0, max: 10, style: 'width: 30px; margin: 0 5px; text-align: center', onchange: 'this.form.submit()' %>
+            <% end %>
+          </td>
+          <td style='width:  80px'>
+            <%= form_for(en.grades.where(name: 'Giữa HK 2').first_or_initialize, remote: true, authenticity_token: true) do |f| %>
+              <%= f.hidden_field :name %>
+              <%= f.hidden_field :enrollment_id %>
+              <%= f.number_field :value, step: 0.1, min: 0, max: 10, style: 'width: 30px; margin: 0 5px; text-align: center', onchange: 'this.form.submit()' %>
+            <% end %>
+          </td>
+          <td style='width:  80px'>
+            <%= form_for(en.grades.where(name: 'Cuối HK 2').first_or_initialize, remote: true, authenticity_token: true) do |f| %>
+              <%= f.hidden_field :name %>
+              <%= f.hidden_field :enrollment_id %>
+              <%= f.number_field :value, step: 0.1, min: 0, max: 10, style: 'width: 30px; margin: 0 5px; text-align: center', onchange: 'this.form.submit()' %>
+            <% end %>
+          </td>
+          <td style='width: 430px'>
+            <%= form_for(en.evaluation || Evaluation.new(evaluable: en)) do |f| %>
+              <%= f.hidden_field :evaluable_id %>
+              <%= f.hidden_field :evaluable_type %>
+              <%= f.text_area :content, class: "e-eval_textarea", rows: 5, onblur: 'this.form.submit()' %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  <% end %>
 <% end %>
