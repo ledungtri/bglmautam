@@ -1,15 +1,20 @@
 <% heading = @classroom.id ? "#{@classroom.name} #{@classroom.long_year}": "Tạo Lớp Học" %>
 
 <h1><%= heading %></h1>
-<%= render 'components/form/form',
-           heading: 'Thông Tin Lớp',
-           object: @classroom,
-           editable: @current_user.admin?
+
+<%=
+  if @current_user.admin?
+    render 'components/form/form',
+         heading: 'Thông Tin Lớp',
+         object: @classroom,
+         editable: @current_user.admin?
+  end
 %>
 <%=
   if @classroom.id
     actions = [
       { label: 'Điểm Danh', path: classroom_attendances_path(@classroom) },
+      { label: 'Nhận Xét & Điểm Số', path: classroom_evaluation_path(@classroom) },
       { label: 'In Danh Sách', path: classroom_path(format: :pdf) },
       { label: 'In Sơ Yếu Lý Lịch', path: classroom_students_personal_details_path(@classroom, format: :pdf) },
       { label: 'In Bảng Tự Tạo', path: classroom_custom_export_path(@classroom) }

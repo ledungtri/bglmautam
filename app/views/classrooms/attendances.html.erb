@@ -15,7 +15,7 @@
 
 <h1><%= "Điểm danh Lớp #{@classroom.name}" %></h1>
 <%= render 'components/button_group', heading: 'Ngày Điểm Danh', actions: actions %>
-<%= render 'components/collapsible', heading: "Điểm danh Lớp #{@classroom.name} - Tháng #{month}.#{year}", always_open:true do %>
+<%= render 'components/collapsible', heading: "Điểm danh Lớp #{@classroom.name} - Tháng #{month}.#{year}", always_open: true do %>
   <table>
     <thead>
     <tr>
