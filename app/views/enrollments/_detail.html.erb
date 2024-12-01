@@ -14,11 +14,9 @@
 
     <% evaluation = enrollment.evaluation || Evaluation.new(evaluable: enrollment) %>
     <%= form_for(evaluation) do |f| %>
-      <button id='save-icon-<%= enrollment.id %>' style="display: none" class="tr icon fill-hover"><i class="fa fa-save"></i></button>
-      <div id="eval-content-<%= enrollment.id %>" class="quote-block"><%= evaluation&.content %></div>
       <%= f.hidden_field :evaluable_id %>
       <%= f.hidden_field :evaluable_type %>
-      <%= f.text_area :content, id: "eval-textarea-#{enrollment.id}", class: "e-eval_textarea", style: 'display: none', rows: 4 %>
+      <%= f.text_area :content, id: "eval-textarea-#{enrollment.id}", class: "e-eval_textarea", style: 'display: none', rows: 4, onblur: 'this.form.submit()' %>
     <% end %>
   </div>
   <div class="e-info_grid_cell">
