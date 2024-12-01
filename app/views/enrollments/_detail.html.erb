@@ -14,6 +14,7 @@
 
     <% evaluation = enrollment.evaluation || Evaluation.new(evaluable: enrollment) %>
     <%= form_for(evaluation) do |f| %>
+      <div id="eval-content-<%= enrollment.id %>" class="quote-block"><%= evaluation&.content %></div>
       <%= f.hidden_field :evaluable_id %>
       <%= f.hidden_field :evaluable_type %>
       <%= f.text_area :content, id: "eval-textarea-#{enrollment.id}", class: "e-eval_textarea", style: 'display: none', rows: 4, onblur: 'this.form.submit()' %>
