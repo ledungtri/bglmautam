@@ -17,6 +17,16 @@
 class EvaluationsController < SecondaryResourcesController
   before_action :admin_or_teacher_of?, only: %i[update destroy]
 
+  def create
+    skip_redirect
+    super
+  end
+
+  def update
+    skip_redirect
+    super
+  end
+
 private
 
   def model_klass
