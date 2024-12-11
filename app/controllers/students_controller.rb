@@ -38,14 +38,13 @@
 #  index_students_on_deleted_at  (deleted_at)
 #
 class StudentsController < ApplicationController
-  before_action :set_student, only: %i[show update destroy admin_or_teacher?]
-  before_action :auth
-  before_action :admin?, only: %i[new create destroy]
-  before_action :admin_or_teacher?, only: %i[update]
+  before_action :set_student, only: %i[show update destroy attendances]
 
   # GET /students
   # GET /students.json
    def index
+     authorize Student
+
      @enrollments = Enrollment.where('classrooms.year = ?', @current_year).sort_by(&:sort_param)
   
      respond_to do |format|
@@ -65,6 +64,8 @@ class StudentsController < ApplicationController
   # GET /students/1
   # GET /students/1.json
   def show
+    authorize @student
+
     @years = Classroom.all.map(&:year).uniq.sort { |x, y| -(x <=> y) }
     @opts = []
     Classroom.all.sort_by(&:sort_param).each do |classroom|
@@ -82,6 +83,8 @@ class StudentsController < ApplicationController
 
   # GET /students/new
   def new
+    authorize Student
+
     @student = Student.new
     render :show
   end
@@ -89,6 +92,8 @@ class StudentsController < ApplicationController
   # POST /students
   # POST /students.json
   def create
+    authorize Student
+
     @student = Student.new(student_params)
 
     respond_to do |format|
@@ -104,6 +109,8 @@ class StudentsController < ApplicationController
   # PATCH/PUT /students/1
   # PATCH/PUT /students/1.json
   def update
+    authorize @student
+
     respond_to do |format|
       if @student.update(student_params)
         flash[:success] = 'Student was successfully updated.'
@@ -117,6 +124,8 @@ class StudentsController < ApplicationController
   # DELETE /students/1
   # DELETE /students/1.json
   def destroy
+    authorize @student
+
     @student.enrollments.each(&:destroy)
 
     @student.destroy
@@ -132,18 +141,11 @@ class StudentsController < ApplicationController
     @attendances = Attendance.where(attendable: @enrollment)
   end
 
-  private
+private
 
   # Use callbacks to share common setup or constraints between actions.
   def set_student
     @student = Student.find(params[:id])
-  end
-
-  def admin_or_teacher?
-    return if @current_user&.admin_or_teacher_of_student?(@student, @current_year)
-
-    flash[:warning] = 'Action not allowed.'
-    redirect_back(fallback_location: root_path)
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.

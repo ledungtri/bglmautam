@@ -1,17 +1,12 @@
 class ApplicationController < ActionController::Base
-  before_action :set_current_year, :set_current_user
-  before_action :auth, only: [:search]
+  include Pundit::Authorization
 
-  def auth
-    redirect_to login_path unless @current_user
-  end
+  before_action :set_current_year, :set_current_user, :auth
+  # after_action :verify_authorized
 
-  def admin?
-    return if @current_user&.admin?
+  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
-    flash[:warning] = 'Action not allowed. You are not an admin.'
-    redirect_back(fallback_location: root_path)
-  end
+  attr_reader :current_user
 
   def search
     @students = params[:query] ? Student.where('full_name ILIKE ?', "%#{params[:query]}%") : []
@@ -35,5 +30,14 @@ private
 
   def set_current_user
     @current_user = User.find(session[:user_id]) if session[:user_id]
+  end
+
+  def auth
+    redirect_to login_path unless current_user
+  end
+
+  def user_not_authorized
+    flash[:warning] = "You are not authorized to perform this action."
+    redirect_back(fallback_location: root_path)
   end
 end

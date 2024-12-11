@@ -1,9 +1,10 @@
 class SecondaryResourcesController < ApplicationController
-  before_action :auth
   before_action :set_record, only: [:update, :destroy]
 
   # POST /records
   def create
+    authorize controller_name.classify.constantize
+
     @record = model_klass.new(record_params)
     saved = @record.save
     return if @skip_redirect && saved
@@ -14,6 +15,8 @@ class SecondaryResourcesController < ApplicationController
 
   # PATCH/PUT /records/1
   def update
+    authorize @record
+
     updated = @record.update(record_params)
     return if @skip_redirect && updated
 
@@ -23,6 +26,8 @@ class SecondaryResourcesController < ApplicationController
 
   # DELETE /records/1
   def destroy
+    authorize @record
+
     @record.destroy
     return if @skip_redirect
 
@@ -53,5 +58,4 @@ private
   def skip_redirect
     @skip_redirect = true
   end
-
 end

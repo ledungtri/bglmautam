@@ -22,8 +22,6 @@
 #  fk_rails_...  (person_id => people.id)
 #
 class GuidancesController < SecondaryResourcesController
-  before_action :auth, :admin?
-
   def update
     skip_redirect
     super

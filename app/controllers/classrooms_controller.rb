@@ -17,13 +17,13 @@
 #  index_classrooms_on_deleted_at  (deleted_at)
 #
 class ClassroomsController < ApplicationController
-  before_action :set_classroom, except: %i[index new create]
-  before_action :auth
-  before_action :admin?, only: %i[new create update destroy]
+  before_action :set_classroom, except: %i[index new create classrooms_custom_export_form classrooms_custom_export]
 
   # GET /classrooms
   # GET /classrooms.json
   def index
+    authorize Classroom
+
     @classrooms = Classroom.where(year: @current_year).where(family: ['Khai Tâm', 'Rước Lễ', 'Thêm Sức', 'Bao Đồng', 'Vào Đời']).sort_by(&:sort_param)
 
     respond_to do |format|
@@ -38,6 +38,8 @@ class ClassroomsController < ApplicationController
   # GET /classrooms/1
   # GET /classrooms/1.json
   def show
+    authorize @classroom
+
     @guidances = @classroom.guidances.sort_by(&:sort_param)
     @enrollments = @classroom.enrollments.sort_by(&:sort_param)
     respond_to do |format|
@@ -57,6 +59,8 @@ class ClassroomsController < ApplicationController
 
   # GET /classrooms/new
   def new
+    authorize Classroom
+
     @classroom = Classroom.new
     render :show
   end
@@ -64,6 +68,8 @@ class ClassroomsController < ApplicationController
   # POST /classrooms
   # POST /classrooms.json
   def create
+    authorize Classroom
+
     @classroom = Classroom.new(classroom_params)
 
     respond_to do |format|
@@ -79,6 +85,8 @@ class ClassroomsController < ApplicationController
   # PATCH/PUT /classrooms/1
   # PATCH/PUT /classrooms/1.json
   def update
+    authorize @classroom
+
     respond_to do |format|
       if @classroom.update(classroom_params)
         flash[:success] = 'Classroom was successfully updated.'
@@ -92,6 +100,8 @@ class ClassroomsController < ApplicationController
   # DELETE /classrooms/1
   # DELETE /classrooms/1.json
   def destroy
+    authorize @classroom
+
     @classroom.guidances.each(&:destroy)
 
     @classroom.enrollments.each(&:destroy)
@@ -104,7 +114,8 @@ class ClassroomsController < ApplicationController
   end
 
   def students_personal_details
-    @classroom = Classroom.find(params[:classroom_id])
+    authorize @classroom, :show?
+
     @students = Student.in_classroom(@classroom).sort_by(&:sort_param)
 
     respond_to do |format|
@@ -121,10 +132,14 @@ class ClassroomsController < ApplicationController
   end
 
   def classrooms_custom_export_form
+    authorize Classroom, :index?
+
     render 'custom_export/form', locals: { title: 'Lớp Học', path: classrooms_custom_export_path }
   end
 
   def classrooms_custom_export
+    authorize Classroom, :index?
+
     @classrooms = Classroom.where(year: @current_year).where(family: ['Khai Tâm', 'Rước Lễ', 'Thêm Sức', 'Bao Đồng', 'Vào Đời']).sort_by(&:sort_param)
     pdf = ClassroomsCustomPdf.new(@classrooms, params[:title], params[:page_layout].to_sym, params[:columns].split(','))
     send_data pdf.render,
@@ -134,10 +149,14 @@ class ClassroomsController < ApplicationController
   end
 
   def custom_export_form
+    authorize @classroom, :show?
+
     render 'custom_export/form', locals: { title: @classroom.name, path: classroom_custom_export_path(@classroom) }
   end
 
   def custom_export
+    authorize @classroom, :show?
+
     pdf = CustomStudentsPdf.new(@classroom, params[:title], params[:page_layout].to_sym, params[:columns].split(','), params[:current_students_only])
     send_data pdf.render, filename: "#{@classroom.name} - #{params[:title]}.pdf", type: 'application/pdf', disposition: 'inline'
   end

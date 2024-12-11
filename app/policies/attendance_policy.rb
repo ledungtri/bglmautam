@@ -1,5 +1,5 @@
 class AttendancePolicy < ApplicationPolicy
-  def update?
+  def create?
     case record.attendable_type
     when 'Enrollment'
       admin_or_teacher_of_enrollment?(record.attendable)
@@ -7,4 +7,7 @@ class AttendancePolicy < ApplicationPolicy
       super
     end
   end
+
+  alias update? create?
+  alias destroy? create?
 end

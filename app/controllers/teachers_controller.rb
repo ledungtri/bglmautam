@@ -26,13 +26,11 @@
 #
 class TeachersController < ApplicationController
   before_action :set_teacher, only: %i[show update destroy admin_or_self?]
-  before_action :auth
-  before_action :admin?, only: %i[new create destroy]
-  before_action :admin_or_self?, only: %i[update]
 
   # GET /teachers
   # GET /teachers.json
   def index
+    authorize Teacher
     @guidances = Guidance.joins(:classroom).where('classrooms.year = ?', @current_year).sort_by(&:sort_param)
     respond_to do |format|
       format.html
@@ -49,18 +47,23 @@ class TeachersController < ApplicationController
   # GET /teachers/1
   # GET /teachers/1.json
   def show
+    authorize @teacher
   end
 
   # GET /teachers/new
   def new
-    @teacher = Teacher.new # TODO: teacher
+    authorize Teacher
+
+    @teacher = Teacher.new
     render :show
   end
 
   # POST /teachers
   # POST /teachers.json
   def create
-    @teacher = Teacher.new(teacher_params) # TODO: teacher
+    authorize Teacher
+
+    @teacher = Teacher.new(teacher_params)
 
     respond_to do |format|
       if @teacher.save
@@ -75,6 +78,8 @@ class TeachersController < ApplicationController
   # PATCH/PUT /teachers/1
   # PATCH/PUT /teachers/1.json
   def update
+    authorize @teacher
+
     respond_to do |format|
       if @teacher.update(teacher_params)
         flash[:success] = 'Teacher was successfully updated.'
@@ -88,6 +93,8 @@ class TeachersController < ApplicationController
   # DELETE /teachers/1
   # DELETE /teachers/1.json
   def destroy
+    authorize @teacher
+
     @teacher.guidances.each(&:destroy)
 
     @teacher.destroy
@@ -98,10 +105,14 @@ class TeachersController < ApplicationController
   end
 
   def teachers_custom_export_form
+    authorize Teacher, :index?
+
     render 'custom_export/form', locals: { title: 'Giáo Lý Viên', path: teachers_custom_export_path }
   end
 
   def teachers_custom_export
+    authorize Teacher, :index?
+
     @guidances = Guidance.for_year(@current_year).sort_by(&:sort_param)
 
     pdf = TeachersCustomPdf.new(@guidances, params[:title], params[:page_layout].to_sym, params[:columns].split(','))
@@ -109,21 +120,14 @@ class TeachersController < ApplicationController
   end
 
   def attendances
-
+    authorize Guidance, :update?
   end
 
-  private
+private
 
   # Use callbacks to share common setup or constraints between actions.
   def set_teacher
     @teacher = Teacher.find(params[:id])
-  end
-
-  def admin_or_self?
-    return if @current_user&.admin_or_self_teacher?(@teacher)
-
-    flash[:warning] = 'Action not allowed.'
-    redirect_back(fallback_location: root_path)
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.

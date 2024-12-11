@@ -1,5 +1,5 @@
 class EvaluationPolicy < ApplicationPolicy
-  def update?
+  def create?
     case record.evaluable
     when 'Enrollment'
       admin_or_teacher_of_enrollment?(record.evaluable)
@@ -8,12 +8,6 @@ class EvaluationPolicy < ApplicationPolicy
     end
   end
 
-  def destroy?
-    case record.evaluable
-    when 'Enrollment'
-      admin_or_teacher_of_enrollment?(record.evaluable)
-    else
-      super
-    end
-  end
+  alias update? create?
+  alias destroy? create?
 end
