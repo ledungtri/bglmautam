@@ -161,7 +161,15 @@ class ClassroomsController < ApplicationController
     send_data pdf.render, filename: "#{@classroom.name} - #{params[:title]}.pdf", type: 'application/pdf', disposition: 'inline'
   end
 
-  private
+  def attendances
+    authorize @classroom, :show?
+  end
+
+  def evaluation
+    authorize @classroom, :update?
+  end
+
+private
 
   # Use callbacks to share common setup or constraints between actions.
   def set_classroom

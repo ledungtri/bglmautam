@@ -30,6 +30,7 @@ class Teacher < ApplicationRecord
   has_one :user
   has_many :guidances
   has_many :classrooms, through: :guidances
+  belongs_to :person
   # TODO: email = right format, allow nil
 
   before_validation :sync_person
