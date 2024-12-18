@@ -4,6 +4,7 @@ class ApplicationPolicy
   def initialize(user, record)
     @user = user
     @record = record
+    @current_year = 2023
   end
 
   def index?
@@ -53,6 +54,6 @@ private
   end
 
   def teacher_of_enrollment?(enrollment, year = @current_year)
-    enrollment&.classroom == user.teacher&.guidances&.for_year(year)&.first&.classroom
+    enrollment.classroom == user.teacher&.guidances&.for_year(year)&.first&.classroom
   end
 end

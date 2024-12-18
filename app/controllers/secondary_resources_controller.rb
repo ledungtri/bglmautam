@@ -3,9 +3,9 @@ class SecondaryResourcesController < ApplicationController
 
   # POST /records
   def create
-    authorize controller_name.classify.constantize
-
     @record = model_klass.new(record_params)
+    authorize @record
+
     saved = @record.save
     return if @skip_redirect && saved
 
