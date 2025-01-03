@@ -4,7 +4,7 @@ class ApplicationPolicy
   def initialize(user, record)
     @user = user
     @record = record
-    @current_year = 2023
+    @current_year = 2024
   end
 
   def index?
