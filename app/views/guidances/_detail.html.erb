@@ -12,7 +12,7 @@
     <%= render 'components/form/inline_select', object: guidance, field: :position, enabled: editable %>
   </div>
 
-  <div class="e-info_grid_cell">
+  <div class="e-info_grid_cell" style="grid-column: 2 / span 2">
     <div class="e-classroom_year">Giáo lý viên cùng lớp</div>
 
     <% classroom.guidances.where.not(teacher: guidance.teacher).sort_by { |g| g.position_sort_param }.each do |g| %>

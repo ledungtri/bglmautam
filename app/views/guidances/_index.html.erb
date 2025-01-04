@@ -1,5 +1,5 @@
 <% guidances ||= [] %>
-<%= render 'components/collapsible', heading: 'Hành Trình Thiêng Liêng' do %>
+<%= render 'components/collapsible', heading: 'Hành Trình Tông Đồ' do %>
   <% guidances.each do |guidance| %>
     <%= render 'guidances/detail', guidance: guidance, editable: @current_user.admin? %>
   <% end %>

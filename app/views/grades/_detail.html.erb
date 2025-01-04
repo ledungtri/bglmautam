@@ -1,4 +1,4 @@
-<div style="display: flex; margin: 5px auto; justify-content: center">
+<div style="display: flex; margin: 1px auto; justify-content: center">
   <div style="width: 70px; text-align: right"><%= grade.name %></div>
   <%= form_for(grade, remote: true, authenticity_token: true) do |f| %>
     <%= f.hidden_field :name %>

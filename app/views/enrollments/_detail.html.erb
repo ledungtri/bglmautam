@@ -2,8 +2,10 @@
   <div class="e-info_grid_cell">
     <%= render 'components/icon_delete', path: enrollment_url(enrollment), enabled: editable %>
     <div class="e-classroom_year"><%= enrollment.classroom.long_year %></div>
-    <%= render 'components/button', button: { label: enrollment.classroom.name, path: classroom_path(enrollment.classroom) } %>
-    <%= render 'components/form/inline_select', object: enrollment, field: :result, enabled: editable %>
+    <div style="margin-top: 15px">
+      <%= render 'components/button', button: { label: enrollment.classroom.name, path: classroom_path(enrollment.classroom) } %>
+      <%= render 'components/form/inline_select', object: enrollment, field: :result, enabled: editable %>
+    </div>
   </div>
 
   <div class="e-info_grid_cell">
