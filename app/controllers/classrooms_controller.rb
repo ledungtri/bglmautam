@@ -166,7 +166,7 @@ class ClassroomsController < ApplicationController
   end
 
   def evaluation
-    authorize @classroom, :update?
+    authorize @classroom, :update_evaluation?
   end
 
 private
