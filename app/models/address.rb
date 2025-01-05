@@ -25,6 +25,19 @@ class Address < ApplicationRecord
 
   validates_presence_of :primary, :addressable_type, :addressable_id
 
+  FIELD_SETS = [
+    {
+      key: 'address',
+      fields: [
+        { field: :street_number, label: 'Số Nhà' },
+        { field: :street_name, label: 'Đường' },
+        { field: :ward, label: 'Phường/Xã' },
+        { field: :district, label: 'Quận/Huyện' },
+        { field: :area, label: 'Xóm Giáo' },
+      ]
+    }
+  ]
+
   def full_address
     street_address = [street_number, street_name].reject(&:empty?).join(" ")
     [street_address, ward, district, city].reject(&:empty?).join(", ")

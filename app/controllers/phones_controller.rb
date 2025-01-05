@@ -15,19 +15,16 @@
 #
 #  index_phones_on_phoneable_type_and_phoneable_id  (phoneable_type,phoneable_id)
 #
-class Phone < ApplicationRecord
-  belongs_to :phoneable, polymorphic: true
+class PhonesController < SecondaryResourcesController
 
-  validates_presence_of :number, :primary, :phoneable_type, :phoneable_id
-  validates :number, format: { with: /\A\d+\z/, message: 'only allows numbers' }, allow_blank: true
+  private
 
-  FIELD_SETS = [
-    {
-      key: 'phone',
-      fields: [
-        { field: :number, label: 'Số Điện Thoại' }
-      ]
-    }
-  ]
+  def model_klass
+    Phone
+  end
 
+  def permit_params
+    [:number, :primary, :phoneable_type, :phoneable_id]
+  end
 end
+

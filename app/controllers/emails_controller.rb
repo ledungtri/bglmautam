@@ -15,18 +15,15 @@
 #
 #  index_emails_on_emailable_type_and_emailable_id  (emailable_type,emailable_id)
 #
-class Email < ApplicationRecord
-  belongs_to :emailable, polymorphic: true
-  # TODO: email = right format, allow nil
+class EmailsController < SecondaryResourcesController
 
-  validates_presence_of :address, :primary, :emailable_type, :emailable_id
+  private
 
-  FIELD_SETS = [
-    {
-      key: 'email',
-      fields: [
-        { field: :address, label: 'Email' }
-      ]
-    }
-  ]
+  def model_klass
+    Email
+  end
+
+  def permit_params
+    [:address, :primary, :emailable_type, :emailable_id]
+  end
 end

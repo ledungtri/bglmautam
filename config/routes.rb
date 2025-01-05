@@ -21,7 +21,17 @@ Rails.application.routes.draw do
     post '/custom_export', to: 'classrooms#custom_export'
   end
 
-  secondary_resources = [:guidances, :enrollments, :evaluations, :grades, :users, :attendances]
+  secondary_resources = [
+    :guidances,
+    :enrollments,
+    :evaluations,
+    :grades,
+    :users,
+    :attendances,
+    :phones,
+    :emails,
+    :addresses
+  ]
   secondary_resources.each do |resource|
     resources resource, only: [:create, :update, :destroy]
   end
