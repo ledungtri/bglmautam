@@ -39,4 +39,12 @@ Rails.application.routes.draw do
   resources :sessions, only: [:create]
   get '/login', to: 'sessions#new', as: 'login'
   get '/logout', to: 'sessions#destroy', as: 'logout'
+
+  namespace :api do
+    resources :classrooms, only: [:index]
+    resources :guidances, only: [:index] do
+      resources :attendances, only: [:index]
+    end
+    resources :attendances, only: [:index, :update]
+  end
 end
