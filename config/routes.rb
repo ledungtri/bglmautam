@@ -42,7 +42,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     resources :classrooms, only: [:index]
-    resources :guidances, only: [:index] do
+    resources :guidances, only: [:index, :show] do
       resources :attendances, only: [:index]
     end
     resources :attendances, only: [:index, :update]
