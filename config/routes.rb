@@ -46,5 +46,7 @@ Rails.application.routes.draw do
       resources :attendances, only: [:index]
     end
     resources :attendances, only: [:index, :update]
+    get '/resource_types/:key', to: 'resource_types#index'
+
   end
 end
