@@ -1,4 +1,4 @@
-class Api::RéourceTypesController < ApplicationController
+class Api::ResourceTypesController < ApplicationController
   skip_before_action :auth
 
   def index
