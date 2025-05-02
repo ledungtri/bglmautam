@@ -41,6 +41,10 @@ private
     user&.admin?
   end
 
+  def admin_or_self?(user_record)
+    admin? || user == user_record
+  end
+
   def admin_or_teacher_of_classroom?(classroom, year = @current_year)
     admin? || teacher_of_classroom?(classroom, year)
   end
