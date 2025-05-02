@@ -1,15 +1,16 @@
 <%
   actions = (@current_year_start_date.to_date..@current_year_end_date.to_date).to_a.select {|k| k.wday == 0}.map do |day|
-    { label: day.strftime('%m-%Y'), path: 'attendances', params: { month: day.month, year: day.year } }
+    { label: day.strftime('%m-%Y'), path: 'attendances', params: { form_month: day.month, form_year: day.year } }
   end.uniq
 
-  month = params[:month]&.to_i || Date.today.month
-  year = params[:year]&.to_i || Date.today.year
+  month = params[:form_month]&.to_i || Date.today.month
+  year = params[:form_year]&.to_i || Date.today.year
   start_date = Date.new(year,month).beginning_of_month
   end_date = Date.new(year,month).end_of_month
   sundays = (start_date..end_date).to_a.select {|k| k.wday == 0}
 
   enrollments = @classroom.enrollments.where(result: 'Đang Học').reorder(nil).sort_by(&:sort_param)
+  editable =  @current_user.admin_or_teacher_of_classroom?(@classroom, @current_year)
   attendances = Attendance.where(attendable: enrollments)
 %>
 
@@ -45,7 +46,7 @@
             <%= render 'components/form/inline_select',
                          object: attendance,
                          field: :status,
-                         enabled: @current_user.admin_or_teacher_of_enrollment?(en, @current_year) %>
+                         enabled: editable %>
           </td>
         <% end %>
       </tr>
