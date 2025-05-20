@@ -25,7 +25,7 @@
       { label: 'In SĐT GLV', path: classroom_path(format: :pdf), params: { style: :teachers_contact } }
     ]
     actions += admin_actions if @current_user.admin?
-    render 'components/button_group', heading: 'In Ấn', actions: actions
+    render 'components/button_group', heading: 'Tác Vụ', actions: actions
   end
 %>
 <%= render 'teachers/info_table', guidances: @guidances unless @guidances&.empty? %>
