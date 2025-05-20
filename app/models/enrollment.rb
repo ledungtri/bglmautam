@@ -60,7 +60,7 @@ class Enrollment < ApplicationRecord
         total_weight += grade.weight
       end
     end
-    total_weight ? (total_grade/total_weight).round(2) : 0.0
+    total_weight > 0 ? (total_grade/total_weight).round(2) : 0.0
   end
 
 private
