@@ -51,6 +51,16 @@ class Enrollment < ApplicationRecord
     student.sort_param
   end
 
+  def average_grade
+    total_grade = 0
+    total_weight = 0
+    grades.each do |grade|
+      total_grade += grade.value * grade.weight
+      total_weight += grade.weight
+    end
+    total_weight ? (total_grade/total_weight).round(2) : 0.0
+  end
+
 private
 
   def sync_person

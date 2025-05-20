@@ -6,46 +6,76 @@
       <tr>
         <th style='width: 230px'>Tên Thánh - Họ và Tên</th>
         <th style='width:  80px'>Kết Quả</th>
-        <th style='width:  80px'>Giữa HK 1</th>
-        <th style='width:  80px'>Cuối HK 1</th>
-        <th style='width:  80px'>Giữa HK 2</th>
-        <th style='width:  80px'>Cuối HK 2</th>
+        <th style='width:  40px'>Giữa HK 1</th>
+        <th style='width:  40px'>Cuối HK 1</th>
+        <th style='width:  40px'>Giữa HK 2</th>
+        <th style='width:  40px'>Cuối HK 2</th>
+        <th style='width:  40px'>TB Năm</th>
+        <th style='width:  40px'>Hiện Diện</th>
+        <th style='width:  40px'>Vắng Lễ</th>
+        <th style='width:  40px'>Vắng Lớp</th>
         <th style='width: 300px'>Nhận Xét</th>
       </tr>
       </thead>
       <tbody>
       <% group.each do |en| %>
+        <%
+          attendances = Attendance.where(attendable: en)
+          attended_count = attendances.select { |att| att.status == 'Hiện Diện' }.count
+          mass_absence_count = attendances.select { |att| att.status == 'Vắng Lễ' }.count
+          absence_count = attendances.count - mass_absence_count - attended_count
+        %>
         <tr>
           <td style='width: 230px'><%= link_to en.student.name, en.student %></td>
           <td style='width:  80px'>
             <%= render 'components/form/inline_select', object: en, field: :result, enabled: true %>
           </td>
-          <td style='width:  80px'>
+          <td style='width:  40px'>
             <%= form_for(en.grades.where(name: 'Giữa HK 1').first_or_initialize, remote: true, authenticity_token: true) do |f| %>
               <%= f.hidden_field :name %>
               <%= f.hidden_field :enrollment_id %>
               <%= f.number_field :value, step: 0.1, min: 0, max: 10, style: 'width: 30px; margin: 0 5px; text-align: center', onchange: 'this.form.submit()' %>
             <% end %>
           </td>
-          <td style='width:  80px'>
+          <td style='width:  40px'>
             <%= form_for(en.grades.where(name: 'Cuối HK 1').first_or_initialize, remote: true, authenticity_token: true) do |f| %>
               <%= f.hidden_field :name %>
               <%= f.hidden_field :enrollment_id %>
               <%= f.number_field :value, step: 0.1, min: 0, max: 10, style: 'width: 30px; margin: 0 5px; text-align: center', onchange: 'this.form.submit()' %>
             <% end %>
           </td>
-          <td style='width:  80px'>
+          <td style='width:  40px'>
             <%= form_for(en.grades.where(name: 'Giữa HK 2').first_or_initialize, remote: true, authenticity_token: true) do |f| %>
               <%= f.hidden_field :name %>
               <%= f.hidden_field :enrollment_id %>
               <%= f.number_field :value, step: 0.1, min: 0, max: 10, style: 'width: 30px; margin: 0 5px; text-align: center', onchange: 'this.form.submit()' %>
             <% end %>
           </td>
-          <td style='width:  80px'>
+          <td style='width:  40px'>
             <%= form_for(en.grades.where(name: 'Cuối HK 2').first_or_initialize, remote: true, authenticity_token: true) do |f| %>
               <%= f.hidden_field :name %>
               <%= f.hidden_field :enrollment_id %>
               <%= f.number_field :value, step: 0.1, min: 0, max: 10, style: 'width: 30px; margin: 0 5px; text-align: center', onchange: 'this.form.submit()' %>
+            <% end %>
+          </td>
+          <td style='width:  40px'>
+            <%= form_for(Grade.new(value: en.average_grade), remote: true, authenticity_token: true) do |f| %>
+              <%= f.number_field :value, step: 0.1, min: 0, max: 10, style: 'width: 30px; margin: 0 5px; text-align: center', onchange: 'this.form.submit()', disabled: true %>
+            <% end %>
+          </td>
+          <td style='width:  40px'>
+            <%= form_for(Grade.new(value: attended_count), remote: true, authenticity_token: true) do |f| %>
+              <%= f.number_field :value, step: 0.1, min: 0, max: 10, style: 'width: 30px; margin: 0 5px; text-align: center', onchange: 'this.form.submit()', disabled: true %>
+            <% end %>
+          </td>
+          <td style='width:  40px'>
+            <%= form_for(Grade.new(value: mass_absence_count), remote: true, authenticity_token: true) do |f| %>
+              <%= f.number_field :value, step: 0.1, min: 0, max: 10, style: 'width: 30px; margin: 0 5px; text-align: center', onchange: 'this.form.submit()', disabled: true %>
+            <% end %>
+          </td>
+          <td style='width:  40px'>
+            <%= form_for(Grade.new(value: absence_count), remote: true, authenticity_token: true) do |f| %>
+              <%= f.number_field :value, step: 0.1, min: 0, max: 10, style: 'width: 30px; margin: 0 5px; text-align: center', onchange: 'this.form.submit()', disabled: true %>
             <% end %>
           </td>
           <td style='width: 430px'>

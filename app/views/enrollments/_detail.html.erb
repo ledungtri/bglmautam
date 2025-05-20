@@ -20,10 +20,11 @@
   <div class="e-info_grid_cell">
     <div class="e-classroom_year">Điểm số</div>
     <div style="display: grid; grid-template-columns: 1fr 1fr">
-      <%= render 'grades/detail', grade: enrollment.grades.where(name: "Giữa HK 1").first_or_initialize, editable: editable %>
-      <%= render 'grades/detail', grade: enrollment.grades.where(name: "Cuối HK 1").first_or_initialize, editable: editable %>
-      <%= render 'grades/detail', grade: enrollment.grades.where(name: "Giữa HK 2").first_or_initialize, editable: editable %>
-      <%= render 'grades/detail', grade: enrollment.grades.where(name: "Cuối HK 2").first_or_initialize, editable: editable %>
+      <%= render 'grades/detail', grade: enrollment.grades.where(name: 'Giữa HK 1').first_or_initialize, editable: editable %>
+      <%= render 'grades/detail', grade: enrollment.grades.where(name: 'Cuối HK 1').first_or_initialize, editable: editable %>
+      <%= render 'grades/detail', grade: enrollment.grades.where(name: 'Giữa HK 2').first_or_initialize, editable: editable %>
+      <%= render 'grades/detail', grade: enrollment.grades.where(name: 'Cuối HK 2').first_or_initialize, editable: editable %>
+      <%= render 'grades/detail', grade: Grade.new(name: 'TB Năm', value: enrollment.average_grade), editable: false %>
       <%= render 'attendances/details', enrollment: enrollment %>
     </div>
   </div>
