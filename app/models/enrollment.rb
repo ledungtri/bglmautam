@@ -56,8 +56,9 @@ class Enrollment < ApplicationRecord
     total_weight = 0
     grades.each do |grade|
       if grade.id
-        total_grade += grade.value * grade.weight
-        total_weight += grade.weight
+        weight = grade.weight || 1
+        total_grade += (grade.value || 0) * weight
+        total_weight += weight
       end
     end
     total_weight > 0 ? (total_grade/total_weight).round(2) : 0.0

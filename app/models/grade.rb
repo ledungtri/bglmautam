@@ -17,12 +17,4 @@
 #
 class Grade < ApplicationRecord
   belongs_to :enrollment
-
-  def value
-    self.value || 0
-  end
-
-  def weight
-    self.weight || 1
-  end
 end
