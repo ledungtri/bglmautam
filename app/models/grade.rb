@@ -19,10 +19,10 @@ class Grade < ApplicationRecord
   belongs_to :enrollment
 
   def value
-    super || 0
+    self.value || 0
   end
 
   def weight
-    super || 1
+    self.weight || 1
   end
 end
