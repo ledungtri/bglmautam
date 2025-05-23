@@ -211,7 +211,7 @@ DEPENDENCIES
   prawn-table
   pundit (~> 2.3)
   rack-cors
-  rails (= 5.2.3)
+  rails (= 5.0.7.2)
   sass-rails
   sassc
   seed_dump
