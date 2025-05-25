@@ -123,8 +123,6 @@ class Student < ApplicationRecord
     "#{mother_christian_name} #{mother_full_name}".squish
   end
 
-private
-
   def sync_person
     person = person_id ? Person.find(person_id) : Person.new
     person.christian_name = christian_name
@@ -160,14 +158,15 @@ private
     ]
     person.save
 
-    person.phones.where(primary: true).first_or_create(number: phone) unless phone.blank?
-    person.addresses.where(primary: true).first_or_create(
+    person.phones.where(primary: true).first_or_create.update(number: phone) if phone
+
+    person.addresses.where(primary: true).first_or_initialize.update(
       street_number: street_number,
       street_name: street_name,
       ward: ward,
       district: district,
       area: area
-    ) unless street_name.blank?
+    ) if street_name
 
     self.person_id = person.id unless person_id
   end

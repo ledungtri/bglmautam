@@ -18,6 +18,8 @@ class Person < ApplicationRecord
   include DataFieldable
 
   has_one :user
+  has_one :teacher
+  has_one :student
   has_many :phones, as: :phoneable
   has_many :emails, as: :emailable
   has_many :addresses, as: :addressable

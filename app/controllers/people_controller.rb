@@ -29,12 +29,8 @@ class PeopleController < ApplicationController
   end
 
   def update
-    respond_to do |format|
-      if @person.update(person_params)
-        flash[:success] = 'Person was successfully updated.'
-      end
-      format.html { redirect_to @person }
-    end
+    flash[:success] = 'Person was successfully updated.' if @person.update(person_params)
+    redirect_back(fallback_location: root_path)
   end
 
   private

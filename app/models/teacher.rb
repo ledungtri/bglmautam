@@ -54,8 +54,6 @@ class Teacher < ApplicationRecord
     }
   ]
 
-private
-
   def sync_person
     person = person_id ? Person.find(person_id) : Person.new
     person.christian_name = christian_name
@@ -64,23 +62,23 @@ private
     person.birth_date = date_birth
     person.data = [
       {
-        key: 'additional',
+        key: 'additional_info',
         values: {
           named_date: named_date,
           occupation: occupation
         }
       }
     ]
-    person.save!
+    person.save
 
-    person.phones.where(primary: true).first_or_create(number: phone) unless phone.blank?
-    person.emails.where(primary: true).first_or_create(address: email) unless email.blank?
-    person.addresses.where(primary: true).first_or_create(
+    person.phones.where(primary: true).first_or_create.update(number: phone) if phone
+    person.emails.where(primary: true).first_or_create.update(address: email) if email
+    person.addresses.where(primary: true).first_or_initialize.update(
       street_number: street_number,
       street_name: street_name,
       ward: ward,
       district: district
-    ) unless street_name.blank?
+    ) if street_name
 
     self.person_id = person.id unless person_id
   end
