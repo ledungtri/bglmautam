@@ -25,7 +25,7 @@ class Email < ApplicationRecord
     {
       key: 'email',
       fields: [
-        { field: :address, label: 'Email' }
+        { field_name: :address, label: 'Email' }
       ]
     }
   ]

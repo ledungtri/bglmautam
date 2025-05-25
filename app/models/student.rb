@@ -42,6 +42,7 @@ class Student < ApplicationRecord
 
   has_many :enrollments
   has_many :classrooms, through: :enrollments
+  belongs_to :person
 
   validates_presence_of :gender, :date_birth
   validates :gender, inclusion: { in: %w[Nam Nữ], message: 'have to be either Nam or Nữ' }
@@ -63,49 +64,49 @@ class Student < ApplicationRecord
       key: 'personal_info',
       legend: 'Thông Tin Cá Nhân',
       fields: [
-        { field: :christian_name, label:'Tên Thánh' },
-        { field: :full_name, label:'Họ và Tên' },
-        { field: :date_birth, label:'Ngày Sinh', field_type: :date_field },
-        { field: :place_birth, label:'Nơi Sinh' },
-        { field: :gender, label:'Giới Tính', field_type: :select },
-        { field: :phone, label:'Điện Thoại Cá Nhân' },
+        { field_name: :christian_name, label:'Tên Thánh' },
+        { field_name: :full_name, label:'Họ và Tên' },
+        { field_name: :date_birth, label:'Ngày Sinh', field_type: :date_field },
+        { field_name: :place_birth, label:'Nơi Sinh' },
+        { field_name: :gender, label:'Giới Tính', field_type: :select },
+        { field_name: :phone, label:'Điện Thoại Cá Nhân' },
       ]
     },
     {
       key: 'sacraments',
       legend: 'Ngày Bí Tích',
       fields: [
-        { field: :date_baptism, label:'Rửa Tội', field_type: :date_field },
-        { field: :place_baptism, label:'Nơi Rửa Tội' },
-        { field: :date_communion, label:'Rước Lễ', field_type: :date_field },
-        { field: :place_communion, label:'Nơi Rước Lễ' },
-        { field: :date_confirmation, label:'Thêm Sức', field_type: :date_field },
-        { field: :place_confirmation, label:'Nơi Thêm Sức' },
-        { field: :date_declaration, label:'Tuyên Hứa', field_type: :date_field },
-        { field: :place_declaration, label:'Nơi Tuyên Hứa' },
+        { field_name: :date_baptism, label:'Rửa Tội', field_type: :date_field },
+        { field_name: :place_baptism, label:'Nơi Rửa Tội' },
+        { field_name: :date_communion, label:'Rước Lễ', field_type: :date_field },
+        { field_name: :place_communion, label:'Nơi Rước Lễ' },
+        { field_name: :date_confirmation, label:'Thêm Sức', field_type: :date_field },
+        { field_name: :place_confirmation, label:'Nơi Thêm Sức' },
+        { field_name: :date_declaration, label:'Tuyên Hứa', field_type: :date_field },
+        { field_name: :place_declaration, label:'Nơi Tuyên Hứa' },
       ]
     },
     {
       key: 'parents_info',
       legend: 'Thông Tin Cha Mẹ',
       fields: [
-        { field: :father_christian_name, label:'Tên Thánh Cha' },
-        { field: :father_full_name, label:'Họ và Tên Cha' },
-        { field: :mother_christian_name, label:'Tên Thánh Mẹ' },
-        { field: :mother_full_name, label:'Họ và Tên Mẹ' },
-        { field: :father_phone, label:'Điện Thoại Cha' },
-        { field: :mother_phone, label:'Điện Thoại Mẹ' },
+        { field_name: :father_christian_name, label:'Tên Thánh Cha' },
+        { field_name: :father_full_name, label:'Họ và Tên Cha' },
+        { field_name: :mother_christian_name, label:'Tên Thánh Mẹ' },
+        { field_name: :mother_full_name, label:'Họ và Tên Mẹ' },
+        { field_name: :father_phone, label:'Điện Thoại Cha' },
+        { field_name: :mother_phone, label:'Điện Thoại Mẹ' },
       ]
     },
     {
       key: 'address',
       legend: 'Địa Chỉ Nhà',
       fields: [
-        { field: :street_number, label:'Số Nhà' },
-        { field: :street_name, label:'Đường' },
-        { field: :ward, label:'Phường/Xã' },
-        { field: :district, label:'Quận/Huyện' },
-        { field: :area, label:'Xóm Giáo' },
+        { field_name: :street_number, label:'Số Nhà' },
+        { field_name: :street_name, label:'Đường' },
+        { field_name: :ward, label:'Phường/Xã' },
+        { field_name: :district, label:'Quận/Huyện' },
+        { field_name: :area, label:'Xóm Giáo' },
       ]
     }
   ]

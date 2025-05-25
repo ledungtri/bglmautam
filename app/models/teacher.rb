@@ -39,17 +39,17 @@ class Teacher < ApplicationRecord
     {
       key: 'teacher',
       fields: [
-        { field: :christian_name, label:'Tên Thánh' },
-        { field: :full_name, label:'Họ và Tên' },
-        { field: :date_birth, label:'Ngày Sinh', field_type: :date_field },
-        { field: :gender, label:'Giới Tính', field_type: :select },
-        {field: :phone, label:'Số Điện Thoại'},
-        {field: :email, label:'Email'},
-        {field: :street_number, label:'Số Nhà'},
-        {field: :street_name, label:'Đường'},
-        {field: :ward, label:'Phường/Xã'},
-        {field: :district, label:'Quận/Huyện'},
-        {field: :named_date, label:'Bổn Mạng'}
+        { field_name: :christian_name, label:'Tên Thánh' },
+        { field_name: :full_name, label:'Họ và Tên' },
+        { field_name: :date_birth, label:'Ngày Sinh', field_type: :date_field },
+        { field_name: :gender, label:'Giới Tính', field_type: :select },
+        { field_name: :phone, label:'Số Điện Thoại'},
+        { field_name: :email, label:'Email'},
+        { field_name: :street_number, label:'Số Nhà'},
+        { field_name: :street_name, label:'Đường'},
+        { field_name: :ward, label:'Phường/Xã'},
+        { field_name: :district, label:'Quận/Huyện'},
+        { field_name: :named_date, label:'Bổn Mạng'}
       ]
     }
   ]

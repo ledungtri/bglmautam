@@ -42,7 +42,7 @@ class Enrollment < ApplicationRecord
       fields: [
         { label: 'Thiếu Nhi', field_type: :display, value_method: -> (e) { e.student.name } },
         { label: 'Lớp', field_type: :display, value_method: -> (e) { e.classroom.name } },
-        { label: 'Kết Quả', field: :result, field_type: :select }
+        { label: 'Kết Quả', field_name: :result, field_type: :select }
       ]
     }
   ]

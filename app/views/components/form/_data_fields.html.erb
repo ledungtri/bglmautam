@@ -1,0 +1,31 @@
+<%
+  schema = DataSchema.find_by_key(schema_key)
+  title = schema.title
+  fields = schema.fields
+  key = schema.key
+  url = "/#{object.class.to_s.downcase.pluralize}/#{object.id}/data_fields/#{key}"
+%>
+
+<%= render 'components/collapsible', heading: title, always_open: true do %>
+  <%= form_with url: url, method: :post do |form| %>
+    <fieldset>
+      <% fields.each do |data| %>
+        <%
+          data[:opts] ||= {}
+          data[:opts][:disabled] = !editable
+          data[:value] = object.data_field_value(key, data['field_name'])
+        %>
+        <%= render 'components/form/input_field', f: form, object: object, data: data %>
+      <% end %>
+    </fieldset>
+
+    <% if editable %>
+      <div style="display: grid; grid-template-columns: repeat(2, 1fr);">
+    <% end %>
+    <%= form.submit "Cập Nhật", :class => "button" if editable %>
+  <% end %>
+  <%= render 'components/button_delete', object: object if editable %>
+  <% if editable %>
+    </div>
+  <% end %>
+<% end %>

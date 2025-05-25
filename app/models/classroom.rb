@@ -33,11 +33,11 @@ class Classroom < ApplicationRecord
     {
       key: 'classroom',
       fields: [
-        { field: :year, label: 'Năm Học', field_type: :number_field },
-        { field: :family, label: 'Khối' },
-        { field: :level, label: 'Lớp' },
-        { field: :group, label: 'Nhóm' },
-        { field: :location, label: 'Vị Trí Lớp' }
+        { field_name: :year, label: 'Năm Học', field_type: :number_field },
+        { field_name: :family, label: 'Khối' },
+        { field_name: :level, label: 'Lớp' },
+        { field_name: :group, label: 'Nhóm' },
+        { field_name: :location, label: 'Vị Trí Lớp' }
       ]
     }
   ]

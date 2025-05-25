@@ -1,10 +1,18 @@
 <%
+  data = data.with_indifferent_access
   label = data[:label]
-  field = data[:field]
+  field = data[:field_name]
   field_type = data[:field_type] || :text_field
+  value = data[:value]
   value_method = data[:value_method]
-  value = value_method ? value_method.call(object) : object.send(field)
+  value ||= if value_method
+            value_method.call(object)
+          else
+            object.respond_to?(field) ? object.send(field) : ''
+          end
   opts = data[:opts] || {}
+  opts[:value] = value if value
+  opts[:class] = 'form-input'
 %>
 
 <div>
@@ -16,11 +24,11 @@
     <strong><%= value %></strong>
   <% else %>
     <%=
-      opts ||= {}
-      opts[:class] = 'form-input'
       if field_type == :select
-        field_opts = (ResourceType.for_key("#{object.class.to_s.downcase}_#{field.to_s}").pluck(:value) << object.send(field)).uniq
-        select_opts = options_for_select(field_opts, object.send(field))
+        field_opts = (
+          ResourceType.for_key("#{object.class.to_s.downcase}_#{field}").pluck(:value) << value
+        ).uniq
+        select_opts = options_for_select(field_opts, value)
         f.send(field_type, field, select_opts, {}, opts)
       else
         f.send(field_type, field, opts)

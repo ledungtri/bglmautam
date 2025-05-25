@@ -11,6 +11,10 @@ Rails.application.routes.draw do
   post '/teachers/custom_export', to: 'teachers#teachers_custom_export'
   resources :teachers, only: [:index, :show, :new, :create, :update, :destroy]
 
+  resources :people, only: [:index, :show, :new, :create, :update, :destroy] do
+    post '/data_fields/:key', to: 'data_fields#update'
+  end
+
   get '/classrooms/custom_export', to: 'classrooms#classrooms_custom_export_form'
   post '/classrooms/custom_export', to: 'classrooms#classrooms_custom_export'
   resources :classrooms, only: [:index, :show, :new, :create, :update, :destroy] do

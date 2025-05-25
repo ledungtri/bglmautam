@@ -29,11 +29,11 @@ class Address < ApplicationRecord
     {
       key: 'address',
       fields: [
-        { field: :street_number, label: 'Số Nhà' },
-        { field: :street_name, label: 'Đường' },
-        { field: :ward, label: 'Phường/Xã' },
-        { field: :district, label: 'Quận/Huyện' },
-        { field: :area, label: 'Xóm Giáo' },
+        { field_name: :street_number, label: 'Số Nhà' },
+        { field_name: :street_name, label: 'Đường' },
+        { field_name: :ward, label: 'Phường/Xã' },
+        { field_name: :district, label: 'Quận/Huyện' },
+        { field_name: :area, label: 'Xóm Giáo' },
       ]
     }
   ]

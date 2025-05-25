@@ -15,12 +15,12 @@
 #
 class Person < ApplicationRecord
   include VnTextUtils
+  include DataFieldable
 
   has_one :user
   has_many :phones, as: :phoneable
   has_many :emails, as: :emailable
   has_many :addresses, as: :addressable
-  has_many :data_fields, as: :data_fieldable
 
   has_many :enrollments
   # has_many :classrooms, through: :enrollments
@@ -30,6 +30,21 @@ class Person < ApplicationRecord
 
   validates_presence_of :name, :gender, :birth_date
   validates :gender, inclusion: { in: %w[Nam Nữ], message: 'have to be either Nam or Nữ' }
+
+  scope :in_classroom, -> (classroom) { joins(:enrollments).where('enrollments.classroom_id': classroom.id) }
+
+  FIELD_SETS = [
+    {
+      key: 'person',
+      fields: [
+        { field_name: :christian_name, label: 'Tên Thánh' },
+        { field_name: :name, label: 'Họ và Tên' },
+        { field_name: :birth_date, label:'Ngày Sinh', field_type: :date_field },
+        { field_name: :birth_place, label:'Nơi Sinh' },
+        { field_name: :gender, label:'Giới Tính', field_type: :select },
+      ]
+    }
+  ]
 
   def full_name
     "#{christian_name} #{name}".squish

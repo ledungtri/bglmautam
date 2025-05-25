@@ -34,10 +34,10 @@ class User < ApplicationRecord
     {
       key: 'user',
       fields: [
-        { field: :username, label: 'Tên Đăng Nhập' },
-        { field: :teacher_id, field_type: :hidden_field },
-        { field: :password, label: 'Mật Khẩu', field_type: :password_field },
-        { field: :password_confirmation, label: 'Nhập Lại Mật Khẩu', field_type: :password_field }
+        { field_name: :username, label: 'Tên Đăng Nhập' },
+        { field_name: :teacher_id, field_type: :hidden_field },
+        { field_name: :password, label: 'Mật Khẩu', field_type: :password_field },
+        { field_name: :password_confirmation, label: 'Nhập Lại Mật Khẩu', field_type: :password_field }
       ]
     }
   ]

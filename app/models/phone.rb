@@ -25,7 +25,7 @@ class Phone < ApplicationRecord
     {
       key: 'phone',
       fields: [
-        { field: :number, label: 'Số Điện Thoại' }
+        { field_name: :number, label: 'Số Điện Thoại' }
       ]
     }
   ]

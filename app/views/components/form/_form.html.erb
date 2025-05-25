@@ -1,6 +1,9 @@
 <%= render 'components/collapsible', heading: heading, always_open: true do %>
   <%= form_for(object) do |f| %>
     <%= render 'components/form/error_notification', object: object %>
+    <% object.attribute_names.each do |attribute| %>
+      <%= f.hidden_field attribute %>
+    <% end %>
     <% (object.class::FIELD_SETS || []).each do |set| %>
       <fieldset>
         <% if set[:legend] %>
@@ -14,15 +17,15 @@
           <%= render 'components/form/input_field', f: f, object: object, data: data %>
         <% end %>
       </fieldset>
-      <div class="divider"></div>
     <% end %>
+
     <% if editable %>
-      <fieldset>
+      <div style="display: grid; grid-template-columns: repeat(2, 1fr);">
     <% end %>
     <%= f.submit "Cập Nhật", :class => "button" if editable %>
   <% end %>
   <%= render 'components/button_delete', object: object if editable %>
   <% if editable %>
-    </fieldset>
+    </div>
   <% end %>
 <% end %>

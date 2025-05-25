@@ -40,7 +40,7 @@ class Guidance < ApplicationRecord
       fields: [
         { label: 'GLV', field_type: :display, value_method: -> (g) { g.teacher.name } },
         { label: 'Lớp', field_type: :display, value_method: -> (g) { g.classroom.name } },
-        { label: 'Phụ Trách', field: :position, field_type: :select }
+        { label: 'Phụ Trách', field_name: :position, field_type: :select }
       ]
     }
   ]
