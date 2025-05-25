@@ -111,9 +111,6 @@ class Student < ApplicationRecord
     }
   ]
 
-  GENDER_OPTIONS = ["Nam", "Nữ"]
-
-
   def result(classroom)
     enrollments.where(student_id: id, classroom_id: classroom.id).take.result
   end
