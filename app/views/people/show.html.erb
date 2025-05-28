@@ -1,1 +1,65 @@
-<h1><%= @person.full_name %></h1>
+<%
+  heading = @person.full_name
+  student = @person.student
+  teacher = @person.teacher
+  user = @person.user
+  user ||= User.new(teacher: teacher, person: @person) if @current_user.admin?
+  editable = @current_user.admin?
+%>
+
+<h1><%= heading %></h1>
+<%= render 'components/form/form',
+           heading: 'Thông Tin Cá Nhân',
+           object: @person,
+           editable: editable
+%>
+<%= render 'components/form/form',
+           heading: 'Số Điện Thoại',
+           object: @person.phones.first_or_initialize(primary: true),
+           editable: editable
+%>
+<%= render 'components/form/form',
+           heading: 'Email',
+           object: @person.emails.first_or_initialize(primary: true),
+           editable: editable
+%>
+<%= render 'components/form/form',
+           heading: 'Địa Chỉ Nhà',
+           object: @person.addresses.first_or_initialize(primary: true),
+           editable: editable
+%>
+
+<%= render 'components/form/data_fields',
+           object: @person,
+           schema_key: 'sacraments',
+           editable: editable
+%>
+
+<%= render 'components/form/data_fields',
+           object: @person,
+           schema_key: 'parents_info',
+           editable: editable
+%>
+
+<%= render 'components/form/data_fields',
+           object: @person,
+           schema_key: 'additional_info',
+           editable: editable
+%>
+
+<%= render 'enrollments/index', enrollments: student.enrollments if student %>
+<%= render 'guidances/index', guidances: teacher.guidances if teacher %>
+<%= render 'components/form/form',
+           heading: 'Thông tin đăng nhập',
+           object: user,
+           editable: user && @current_user.admin_or_self_teacher?(teacher) if teacher
+%>
+
+<%= render 'components/button_group', heading: 'In Ấn', actions: [{ label: 'In Sơ Yếu Lý Lịch', path: student_path(format: "pdf") }] if student %>
+<% if @current_user.admin? && @current_user.person == @person %>
+  <%= render 'components/button_group', heading: 'Chức năng Admin', actions: [
+    { label: 'Tạo Lớp Học', path: new_classroom_path },
+    { label: 'Tạo Thiếu Nhi', path: new_student_path },
+    { label: 'Tạo Giáo Lý Viên', path: new_teacher_path },
+  ] %>
+<% end %>

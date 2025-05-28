@@ -25,3 +25,7 @@
 <% if @current_user.admin? && @current_user.self_teacher?(@teacher) %>
   <%= render 'components/button_group', heading: 'Chức năng Admin', actions: admin_actions %>
 <% end %>
+
+<% if @current_user.username == 'ldt' %>
+  <%= render 'components/button_group', heading: 'Person', actions: [{ label: 'Person', path: person_path(@teacher.person) }] %>
+<% end %>

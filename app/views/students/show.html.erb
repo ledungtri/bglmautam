@@ -15,3 +15,7 @@
     render 'components/button_group', heading: 'In Ấn', actions: actions
   end
 %>
+
+<% if @current_user.username == 'ldt' %>
+  <%= render 'components/button_group', heading: 'Person', actions: [{ label: 'Person', path: person_path(@student.person) }] %>
+<% end %>
