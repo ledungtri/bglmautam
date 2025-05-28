@@ -45,12 +45,9 @@ Rails.application.routes.draw do
   get '/logout', to: 'sessions#destroy', as: 'logout'
 
   namespace :api do
-    resources :classrooms, only: [:index]
-    resources :guidances, only: [:index, :show] do
-      resources :attendances, only: [:index]
-    end
-    resources :attendances, only: [:index, :update]
     get '/resource_types/:key', to: 'resource_types#index'
 
+    resources :classrooms, only: [:index, :show]
+    resources :people, only: [:index, :show]
   end
 end

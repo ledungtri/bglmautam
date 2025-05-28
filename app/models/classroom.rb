@@ -51,23 +51,16 @@ class Classroom < ApplicationRecord
   end
 
   def sort_param
-    case
-    when family == 'Trưởng Ban'
-      '0'
-    when family == 'Kỹ Thuật'
-      '1'
-    when family == 'Khai Tâm'
-      "2#{level}#{group}"
-    when family == 'Rước Lễ'
-      "3#{level}#{group}"
-    when family == 'Thêm Sức'
-      "4#{level}#{group}"
-    when family == 'Bao Đồng'
-      "5#{level}#{group}"
-    when family == 'Vào Đời'
-      "6#{level}#{group}"
-    else
-      "7#{level}#{group}"
-    end
+    families_order = [
+      'Trưởng Ban',
+      'Kỹ Thuật',
+      'Khai Tâm',
+      'Rước Lễ',
+      'Thêm Sức',
+      'Bao Đồng',
+      'Vào Đời'
+    ]
+
+    "#{year}#{families_order.index(family) || families_order.count}#{level || 0}#{group || 0}#{}"
   end
 end
