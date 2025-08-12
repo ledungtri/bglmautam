@@ -49,5 +49,41 @@ Rails.application.routes.draw do
 
     resources :classrooms, only: [:index, :show]
     resources :people, only: [:index, :show]
+
+
+
+    # Create Get List Update Delete
+
+    # contact_resources = [:phones, :emails, :addresses]
+    #
+    # resources :resource_types, only: [:index], param: :key # TODO: Simplified Resource Types. Expose :index and :update
+    resources :data_schemas, only: [:index, :show, :create, :update, :destroy]
+    # # Grade Schemas
+    #
+    # resources :classrooms, only: [:index, :show, :create, :update, :destroy] do
+    #   resources :guidances, only: [:index, :create]
+    #   resources :enrollments, only: [:index, :create]
+    # end
+    #
+    # resources :guidances, only: [:index, :show, :update, :destroy] do
+    #   resources :attendances, only: [:index, :create]
+    # end
+    #
+    # resources :enrollments, only: [:index, :show, :update, :destroy] do
+    #   resources :attendances, only: [:index, :create]
+    #   resources :evaluations, only: [:index, :create]
+    #   resources :grades, only: [:index, :create]
+    # end
+    #
+    # resources :attendances, only: [:show, :update, :destroy]
+    # resources :evaluations, only: [:show, :update, :destroy]
+    # resources :grades, only: [:show, :update, :destroy]
+    #
+    # resources :people, only: [:index, :show, :create, :update, :destroy] do
+    #   resources :users, only: [:index, :create]
+    #   contact_resources.each { |r| resources r, only: [:index, :create] }
+    # end
+    # resources :users, only: [:show, :update, :destroy]
+    # contact_resources.each { |r| resources r, only: [:show, :update, :destroy] }
   end
 end

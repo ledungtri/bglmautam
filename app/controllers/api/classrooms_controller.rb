@@ -1,15 +1,19 @@
 class Api::ClassroomsController < ApplicationController
-  skip_before_action :auth
+  skip_before_action :auth # TODO: authorize
   before_action :set_classroom, except: %i[index]
 
   def index
+    # authorize Classroom
     @classrooms = scope.result.sort_by(&:sort_param)
-
     render json: @classrooms
   end
 
   def show
     render json: @classroom
+  end
+
+  def create
+
   end
 
 private
@@ -20,5 +24,15 @@ private
 
   def set_classroom
     @classroom = Classroom.find(params[:id] || params[:classroom_id])
+  end
+
+  def classroom_params
+    params.require(:classroom).permit(
+      :year,
+      :family,
+      :level,
+      :group,
+      :location
+    )
   end
 end

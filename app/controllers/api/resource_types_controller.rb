@@ -1,5 +1,5 @@
 class Api::ResourceTypesController < ApplicationController
-  skip_before_action :auth
+  skip_before_action :auth # TODO: authorize
 
   def index
     @resource_types = ResourceType.for_key(params[:key])

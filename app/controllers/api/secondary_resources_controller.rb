@@ -1,5 +1,5 @@
 class Api::SecondaryResourcesController < ActionController::Base
-  # skip_before_action :auth
+  # skip_before_action :auth # TODO: authorize
   before_action :set_record, only: [:update, :destroy]
 
   # POST /records

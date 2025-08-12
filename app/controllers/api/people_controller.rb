@@ -1,5 +1,5 @@
 class Api::PeopleController < ApplicationController
-  skip_before_action :auth
+  skip_before_action :auth # TODO: authorize
   before_action :set_person, except: %i[index]
 
   def index
