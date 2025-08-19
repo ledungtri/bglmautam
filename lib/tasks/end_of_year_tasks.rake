@@ -40,17 +40,18 @@ namespace :admin do
 
   task assign_new_classrooms: :environment do
     def next_classroom_name(classroom)
-      family = classroom.level == 3 ?
-                     case classroom.family
-                     when 'Khai Tâm'
-                       'Rước Lễ'
-                     when 'Rước Lễ'
-                       'Thêm Sức'
-                     when 'Thêm Sức'
-                       'Bao Đồng'
-                     else
-                       ''
-                     end : classroom.family
+      family = 'Rước Lễ' if classroom.family == 'Khai Tâm'
+      if !family && classroom.level == 3
+        family = case classroom.family
+                 when 'Rước Lễ'
+                   'Thêm Sức'
+                 when 'Thêm Sức'
+                   'Bao Đồng'
+                 else
+                   ''
+                 end
+      end
+      family ||= classroom.family
       level = (classroom.level.presence || 0) + 1
       level = level - 3 if level > 3
 
