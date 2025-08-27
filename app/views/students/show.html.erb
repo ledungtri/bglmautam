@@ -16,6 +16,6 @@
   end
 %>
 
-<% if @current_user.username == 'ldt' && @student.person.id %>
+<% if @current_user.username == 'ldt' && @student.person&.id %>
   <%= render 'components/button_group', heading: 'Person', actions: [{ label: 'Person', path: person_path(@student.person) }] %>
 <% end %>
