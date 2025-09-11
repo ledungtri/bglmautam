@@ -52,6 +52,8 @@ Rails.application.routes.draw do
       get '/teachers', to: 'classrooms#teachers'
     end
     resources :people, only: [:index, :show]
+    resources :enrollments, only: [:index]
+    resources :guidances, only: [:index]
 
 
 
