@@ -1,6 +1,6 @@
 class Api::ClassroomsController < ApplicationController
   skip_before_action :auth # TODO: authorize
-  before_action :set_classroom, except: %i[index]
+  before_action :set_classroom, except: %i[index create]
 
   def index
     # authorize Classroom
@@ -10,6 +10,14 @@ class Api::ClassroomsController < ApplicationController
 
   def show
     render json: @classroom
+  end
+
+  def students
+    render json: @classroom.enrollments
+  end
+
+  def teachers
+    render json: @classroom.guidances
   end
 
   def create

@@ -47,7 +47,10 @@ Rails.application.routes.draw do
   namespace :api do
     get '/resource_types/:key', to: 'resource_types#index'
 
-    resources :classrooms, only: [:index, :show]
+    resources :classrooms, only: [:index, :show] do
+      get '/students', to: 'classrooms#students'
+      get '/teachers', to: 'classrooms#teachers'
+    end
     resources :people, only: [:index, :show]
 
 
