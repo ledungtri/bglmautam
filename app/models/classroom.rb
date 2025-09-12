@@ -55,6 +55,7 @@ class Classroom < ApplicationRecord
     types = ResourceType.for_key('enrollment_result').pluck(:value)
     enrollments_by_result = enrollments.group_by(&:result)
     types.each { |type| stats[type] = enrollments_by_result[type] || [] }
+    stats
   end
 
   def sort_param
