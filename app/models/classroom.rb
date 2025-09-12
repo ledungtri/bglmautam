@@ -54,7 +54,7 @@ class Classroom < ApplicationRecord
     stats = {}
     types = ResourceType.for_key('enrollment_result').pluck(:value)
     enrollments_by_result = enrollments.group_by(&:result)
-    types.each { |type| stats[type] = enrollments_by_result[type] || [] }
+    types.each { |type| stats[type] = enrollments_by_result[type]&.count || 0 }
     stats
   end
 
