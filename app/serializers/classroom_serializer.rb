@@ -17,5 +17,5 @@
 #  index_classrooms_on_deleted_at  (deleted_at)
 #
 class ClassroomSerializer < ApplicationSerializer
-  attributes :year, :long_year, :name, :family, :group, :level, :location
+  attributes :year, :long_year, :name, :family, :group, :level, :location, :enrollments_overview
 end

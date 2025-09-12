@@ -50,6 +50,12 @@ class Classroom < ApplicationRecord
     "#{family} #{level}#{group}".strip
   end
 
+  def enrollments_overview
+    types = ResourceType.for_key('enrollment_result').pluck(:value)
+    enrollments_by_result = enrollments.group_by(&:result)
+    types.map { |type| {type => enrollments_by_result[type] || [] } }
+  end
+
   def sort_param
     families_order = [
       'Trưởng Ban',
