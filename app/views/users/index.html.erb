@@ -1,7 +1,5 @@
-<% guidances = @guidances || [] %>
-
 <%= render 'components/collapsible', heading: 'Thông Tin Đăng Nhập Giáo Lý Viên' do %>
-  <h4>Số Lượng : <%= guidances.count %></h4>
+  <h4>Số Lượng : <%= @guidances.count %></h4>
   <table>
     <thead>
     <tr>
@@ -16,7 +14,7 @@
     </thead>
 
     <tbody>
-    <% guidances.each_with_index do |guidance, index| %>
+    <% @guidances.each_with_index do |guidance, index| %>
       <% classroom = guidance.classroom %>
       <% teacher = guidance.teacher %>
 

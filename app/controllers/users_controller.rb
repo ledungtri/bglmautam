@@ -22,12 +22,12 @@
 #  fk_rails_...  (person_id => people.id)
 #
 class UsersController < SecondaryResourcesController
-
-private
-  def index
+   def index
     authorize User
     @guidances = Guidance.joins(:classroom).where('classrooms.year = ?', @current_year).sort_by(&:sort_param)
   end
+
+private
 
   def model_klass
     User
