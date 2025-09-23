@@ -36,6 +36,8 @@ Rails.application.routes.draw do
     :emails,
     :addresses
   ]
+  resources :users, only: [:index]
+
   secondary_resources.each do |resource|
     resources resource, only: [:create, :update, :destroy]
   end
