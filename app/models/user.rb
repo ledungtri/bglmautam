@@ -79,7 +79,7 @@ class User < ApplicationRecord
   end
 
   def teacher_of_classroom?(classroom, year)
-    classroom == self.teacher&.guidances&.for_year(year)&.first&.classroom
+    self.teacher&.guidances&.for_year(year)&.map(&:classroom)&.include?(classroom)
   end
 
   def teacher_of_enrollment?(enrollment, year)
