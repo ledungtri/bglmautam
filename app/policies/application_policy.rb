@@ -66,6 +66,6 @@ private
   end
 
   def teacher_of_enrollment?(enrollment, year = @current_year)
-    enrollment.classroom == user.teacher&.guidances&.for_year(year)&.first&.classroom
+    user.teacher&.guidances&.for_year(year)&.map(&:classroom)&.include?(enrollment.classroom)
   end
 end
