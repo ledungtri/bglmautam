@@ -11,6 +11,7 @@
 #  full_name      :string
 #  gender         :string
 #  named_date     :string
+#  nickname       :string
 #  occupation     :string
 #  phone          :string
 #  street_name    :string

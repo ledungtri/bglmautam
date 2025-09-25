@@ -11,6 +11,7 @@
 #  full_name      :string
 #  gender         :string
 #  named_date     :string
+#  nickname       :string
 #  occupation     :string
 #  phone          :string
 #  street_name    :string
@@ -39,17 +40,18 @@ class Teacher < ApplicationRecord
     {
       key: 'teacher',
       fields: [
-        { field_name: :christian_name, label:'Tên Thánh' },
-        { field_name: :full_name, label:'Họ và Tên' },
-        { field_name: :date_birth, label:'Ngày Sinh', field_type: :date_field },
-        { field_name: :gender, label:'Giới Tính', field_type: :select },
-        { field_name: :phone, label:'Số Điện Thoại'},
-        { field_name: :email, label:'Email'},
-        { field_name: :street_number, label:'Số Nhà'},
-        { field_name: :street_name, label:'Đường'},
-        { field_name: :ward, label:'Phường/Xã'},
-        { field_name: :district, label:'Quận/Huyện'},
-        { field_name: :named_date, label:'Bổn Mạng'}
+        { field_name: :christian_name, label: 'Tên Thánh' },
+        { field_name: :full_name, label: 'Họ và Tên' },
+        { field_name: :gender, label: 'Giới Tính', field_type: :select },
+        { field_name: :nickname, label: 'Tên Ngắn', display_permission: -> (user) { user.admin? } },
+        { field_name: :date_birth, label: 'Ngày Sinh', field_type: :date_field },
+        { field_name: :named_date, label: 'Bổn Mạng' },
+        { field_name: :phone, label: 'Số Điện Thoại' },
+        { field_name: :email, label: 'Email' },
+        { field_name: :street_number, label: 'Số Nhà' },
+        { field_name: :street_name, label: 'Đường' },
+        { field_name: :ward, label: 'Phường/Xã' },
+        { field_name: :district, label: 'Quận/Huyện' }
       ]
     }
   ]

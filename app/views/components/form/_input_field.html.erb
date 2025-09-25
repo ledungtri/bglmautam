@@ -12,6 +12,13 @@
           end
   opts = data[:opts] || {}
   opts[:value] = value if value
+
+  if (display_permission = data[:display_permission])
+    visible = display_permission.call(@current_user)
+    opts[:hidden] = !visible
+    label = nil unless visible
+  end
+
   opts[:class] = 'form-input'
 %>
 

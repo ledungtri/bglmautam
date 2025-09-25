@@ -16,7 +16,7 @@
       <% years = Classroom.order(year: :desc).distinct.pluck(:year) %>
       <% opts = Classroom.where(year: years[0]).sort_by(&:sort_param).map { |c| [c.name, c.id] } %>
 
-      <%= f.hidden_field :teacher_id, :value => @teacher.id %>
+      <%= f.hidden_field :teacher_id, :value => teacher.id %>
       <td style='width: 200px'>
         <select id="year_combobox" onchange="changeClassroom()" style="width: 100%">
           <% years.each do |year| %>

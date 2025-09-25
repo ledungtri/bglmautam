@@ -11,6 +11,7 @@
 #  full_name      :string
 #  gender         :string
 #  named_date     :string
+#  nickname       :string
 #  occupation     :string
 #  phone          :string
 #  street_name    :string
@@ -135,6 +136,7 @@ private
     params.require(:teacher).permit(
       :christian_name,
       :full_name,
+      :nickname,
       :date_birth,
       :gender,
       :phone,

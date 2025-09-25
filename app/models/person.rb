@@ -10,6 +10,7 @@
 #  deleted_at     :datetime
 #  gender         :string           not null
 #  name           :string           not null
+#  nickname       :string
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #
@@ -41,9 +42,10 @@ class Person < ApplicationRecord
       fields: [
         { field_name: :christian_name, label: 'Tên Thánh' },
         { field_name: :name, label: 'Họ và Tên' },
-        { field_name: :birth_date, label:'Ngày Sinh', field_type: :date_field },
-        { field_name: :birth_place, label:'Nơi Sinh' },
-        { field_name: :gender, label:'Giới Tính', field_type: :select },
+        { field_name: :gender, label: 'Giới Tính', field_type: :select },
+        { field_name: :nickname, label: 'Tên Ngắn', display_permission: -> (user) { user.admin? } },
+        { field_name: :birth_date, label: 'Ngày Sinh', field_type: :date_field },
+        { field_name: :birth_place, label: 'Nơi Sinh' },
       ]
     }
   ]

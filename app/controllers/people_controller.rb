@@ -10,6 +10,7 @@
 #  deleted_at     :datetime
 #  gender         :string           not null
 #  name           :string           not null
+#  nickname       :string
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #
@@ -43,6 +44,7 @@ class PeopleController < ApplicationController
     params.require(:person).permit(
       :christian_name,
       :name,
+      :nickname,
       :birth_date,
       :birth_place,
       :gender

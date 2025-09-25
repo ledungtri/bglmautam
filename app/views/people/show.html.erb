@@ -48,7 +48,8 @@
 %>
 
 <%= render 'enrollments/index', enrollments: student.enrollments if student %>
-<%= render 'guidances/index', guidances: teacher.guidances if teacher %>
+<%= render 'guidances/index', guidances: teacher.guidances, teacher: teacher %>
+
 <%= render 'components/form/form',
            heading: 'Thông tin đăng nhập',
            object: user,
