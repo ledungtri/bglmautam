@@ -60,6 +60,7 @@ class Teacher < ApplicationRecord
     person = person_id ? Person.find(person_id) : Person.new
     person.christian_name = christian_name
     person.name = full_name
+    person.nickname = nickname
     person.gender = gender
     person.birth_date = date_birth
     person.data = [

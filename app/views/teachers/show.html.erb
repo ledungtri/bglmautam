@@ -13,7 +13,7 @@
            object: @teacher,
            editable: @current_user.admin_or_self_teacher?(@teacher)
 %>
-<%= render 'guidances/index', guidances: @teacher.guidances %>
+<%= render 'guidances/index', guidances: @teacher.guidances, teacher: @teacher %>
 <% user = @teacher.user %>
 <% user = User.new(teacher: @teacher) if !user && @current_user.admin? %>
 <%= render 'components/form/form',
