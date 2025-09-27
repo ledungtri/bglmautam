@@ -157,12 +157,35 @@ class ClassroomsController < ApplicationController
   def custom_export
     authorize @classroom, :show?
 
-    pdf = CustomStudentsPdf.new(@classroom, params[:title], params[:page_layout].to_sym, params[:columns].split(','), params[:current_students_only])
-    send_data pdf.render, filename: "#{@classroom.name} - #{params[:title]}.pdf", type: 'application/pdf', disposition: 'inline'
+    pdf = CustomStudentsPdf.new(
+      @classroom,
+      "#{@classroom.name} - #{params[:title]}\nNăm Học #{@classroom.long_year}",
+      params[:page_layout].to_sym,
+      params[:columns].split(','),
+      params[:current_students_only]
+    )
+    send_data pdf.render,
+              filename: "#{@classroom.name} - #{params[:title]}.pdf",
+              type: 'application/pdf',
+              disposition: 'inline'
   end
 
   def attendances
     authorize @classroom, :show?
+
+    respond_to do |format|
+      format.html
+      format.pdf do
+        month = params[:month]
+        columns = params[:columns]&.split(',') || []
+        title = "#{@classroom.name} - Điểm Danh Tháng #{month}\nNăm Học #{@classroom.long_year}"
+        pdf = CustomStudentsPdf.new(@classroom, title, :portrait, columns, true)
+        send_data pdf.render,
+                  filename: title,
+                  type: 'application/pdf',
+                  disposition: 'inline'
+      end
+    end
   end
 
   def evaluation

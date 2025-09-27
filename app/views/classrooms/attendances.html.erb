@@ -53,4 +53,19 @@
     <% end %>
     </tbody>
   </table>
+
+  <% if @current_user.admin? %>
+  <%
+    columns = sundays.map { |sunday| ["Lễ #{sunday.strftime('%d.%m')}", "Lớp #{sunday.strftime('%d.%m')}"] }
+    action = {
+      label: 'In Bảng Điểm Danh',
+      path: classroom_attendances_path(format: :pdf),
+      params: {
+        month: "#{month}.#{year}",
+        columns: columns.flatten.join(',')
+      }
+    }
+  %>
+  <%= render 'components/button', button: action %>
+  <% end %>
 <% end %>

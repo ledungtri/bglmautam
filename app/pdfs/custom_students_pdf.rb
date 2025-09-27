@@ -7,7 +7,6 @@ class CustomStudentsPdf < AbstractPdf
     @enrollments = @enrollments.sort_by(&:sort_param)
     @columns = columns
     @width = page_layout == :landscape ? 800 : 550
-    title_text = "#{@classroom.name} - #{title_text}\nNăm Học #{@classroom.long_year}"
     super(page_layout, title_text, '')
   end
 
