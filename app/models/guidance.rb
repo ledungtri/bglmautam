@@ -46,7 +46,7 @@ class Guidance < ApplicationRecord
   ]
 
   def sort_param
-    "#{classroom.sort_param} #{position_sort_param}"
+    "#{classroom.sort_param} #{position_sort_param} #{teacher.date_birth}"
   end
 
   def position_sort_param
