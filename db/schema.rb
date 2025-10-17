@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2025_10_12_143754) do
+ActiveRecord::Schema.define(version: 2025_10_17_193948) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -134,6 +134,7 @@ ActiveRecord::Schema.define(version: 2025_10_12_143754) do
     t.datetime "deleted_at"
     t.jsonb "data"
     t.string "nickname"
+    t.string "avatar_url"
   end
 
   create_table "phones", id: :serial, force: :cascade do |t|

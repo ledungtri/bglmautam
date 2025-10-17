@@ -3,6 +3,7 @@
 # Table name: people
 #
 #  id             :integer          not null, primary key
+#  avatar_url     :string
 #  birth_date     :date             not null
 #  birth_place    :string
 #  christian_name :string
@@ -46,6 +47,7 @@ class Person < ApplicationRecord
         { field_name: :nickname, label: 'Tên Ngắn', display_permission: -> (user) { user.admin? } },
         { field_name: :birth_date, label: 'Ngày Sinh', field_type: :date_field },
         { field_name: :birth_place, label: 'Nơi Sinh' },
+        { field_name: :avatar_url, label: 'Ảnh Đại Diện' },
       ]
     }
   ]

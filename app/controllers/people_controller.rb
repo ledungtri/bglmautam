@@ -3,6 +3,7 @@
 # Table name: people
 #
 #  id             :integer          not null, primary key
+#  avatar_url     :string
 #  birth_date     :date             not null
 #  birth_place    :string
 #  christian_name :string
@@ -47,7 +48,8 @@ class PeopleController < ApplicationController
       :nickname,
       :birth_date,
       :birth_place,
-      :gender
+      :gender,
+      :avatar_url
     )
   end
 end
