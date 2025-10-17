@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2025_09_23_185152) do
+ActiveRecord::Schema.define(version: 2025_10_12_143754) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -221,6 +221,17 @@ ActiveRecord::Schema.define(version: 2025_09_23_185152) do
     t.integer "person_id"
     t.index ["deleted_at"], name: "index_users_on_deleted_at"
     t.index ["person_id"], name: "index_users_on_person_id"
+  end
+
+  create_table "versions", force: :cascade do |t|
+    t.string "item_type", null: false
+    t.bigint "item_id", null: false
+    t.string "event", null: false
+    t.string "whodunnit"
+    t.text "object"
+    t.datetime "created_at"
+    t.text "object_changes"
+    t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"
   end
 
   add_foreign_key "enrollments", "classrooms"
