@@ -2,7 +2,7 @@
 #
 # Table name: teachers
 #
-#  id             :integer          not null, primary key
+#  id             :bigint           not null, primary key
 #  christian_name :string
 #  date_birth     :date
 #  deleted_at     :datetime

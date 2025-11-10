@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 2025_10_17_193948) do
     t.index ["attendable_type", "attendable_id"], name: "index_attendances_on_attendable_type_and_attendable_id"
   end
 
-  create_table "classrooms", id: :serial, force: :cascade do |t|
+  create_table "classrooms", force: :cascade do |t|
     t.integer "year", null: false
     t.string "family"
     t.string "group"
@@ -78,7 +78,7 @@ ActiveRecord::Schema.define(version: 2025_10_17_193948) do
     t.index ["emailable_type", "emailable_id"], name: "index_emails_on_emailable_type_and_emailable_id"
   end
 
-  create_table "enrollments", id: :serial, force: :cascade do |t|
+  create_table "enrollments", force: :cascade do |t|
     t.string "result", null: false
     t.integer "student_id"
     t.integer "classroom_id"
@@ -111,7 +111,7 @@ ActiveRecord::Schema.define(version: 2025_10_17_193948) do
     t.index ["enrollment_id"], name: "index_grades_on_enrollment_id"
   end
 
-  create_table "guidances", id: :serial, force: :cascade do |t|
+  create_table "guidances", force: :cascade do |t|
     t.string "position"
     t.integer "teacher_id"
     t.integer "classroom_id"
@@ -157,7 +157,7 @@ ActiveRecord::Schema.define(version: 2025_10_17_193948) do
     t.datetime "deleted_at"
   end
 
-  create_table "students", id: :serial, force: :cascade do |t|
+  create_table "students", force: :cascade do |t|
     t.string "christian_name"
     t.string "full_name"
     t.string "gender"
@@ -190,7 +190,7 @@ ActiveRecord::Schema.define(version: 2025_10_17_193948) do
     t.index ["deleted_at"], name: "index_students_on_deleted_at"
   end
 
-  create_table "teachers", id: :serial, force: :cascade do |t|
+  create_table "teachers", force: :cascade do |t|
     t.string "christian_name"
     t.string "full_name"
     t.string "named_date"

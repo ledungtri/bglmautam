@@ -2,7 +2,7 @@
 #
 # Table name: students
 #
-#  id                    :integer          not null, primary key
+#  id                    :bigint           not null, primary key
 #  area                  :string
 #  christian_name        :string
 #  date_baptism          :date
