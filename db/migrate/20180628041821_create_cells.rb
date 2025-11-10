@@ -1,4 +1,4 @@
-class CreateCells < ActiveRecord::Migration
+class CreateCells < ActiveRecord::Migration[5.2]
   def change
     create_table :cells do |t|
       t.integer :year

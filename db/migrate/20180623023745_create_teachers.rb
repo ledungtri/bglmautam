@@ -1,5 +1,5 @@
-class CreateTeachers < ActiveRecord::Migration
-  def change
+class CreateTeachers < ActiveRecord::Migration[5.2]
+def change
     create_table :teachers do |t|
       t.string :christian_name
       t.string :full_name

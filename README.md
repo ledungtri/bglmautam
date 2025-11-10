@@ -61,11 +61,20 @@ rake db:seed:dump EXCLUDE=[]
 ```
 To backup the current database for future uses, run:
 ```
-rake db:seed:dump FILE=db/backups/2025-07-01.rb EXCLUDE=[]
+rake db:seed:dump FILE=db/backups/2025-11-09.rb EXCLUDE=[]
 ```
 The ```FILE=db/backups/2021-12-31.rb``` option is the specify the path and the name of the backup file.
 
 The ```EXCLUDE=[]``` option is to make sure ```seed_dump``` includes the ```id```, ```created_at```, ```updated_at``` fields.
+
+---
+```
+  pg_dump bglmautam_development > 2025
+```
+
+```
+  psql -p 5433 -U bglmautam bglmautam_development < pg_backup_11-11-2025
+  ```
 
 ## Development procedure
 When working on a new task or a new feature, it is good practice to follow these steps:
