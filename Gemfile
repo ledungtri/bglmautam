@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 ruby '3.3.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 7.0.0'
+gem 'rails', '~> 7.2.0'
 
 # Required for Ruby 3.3 compatibility
 gem 'logger'
@@ -18,7 +18,7 @@ gem 'drb'
 gem 'pg'
 
 # Use Puma as the web server
-gem 'puma', '~> 5.0'
+gem 'puma', '~> 6.0'
 
 # Use SCSS for stylesheets
 gem 'sassc'
