@@ -5,7 +5,7 @@ default: &default
   password: admin@bglmautam
   timeout: 5000
   host: localhost
-  port: 5433
+  port: 5432
   pool: 5
 
 development:
