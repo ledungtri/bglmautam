@@ -4,8 +4,17 @@ class Api::ClassroomsController < ApplicationController
 
   def index
     # authorize Classroom
-    @classrooms = scope.result.sort_by(&:sort_param)
-    render json: @classrooms
+    @classrooms = scope.result.where(family: ['Khai Tâm', 'Rước Lễ', 'Thêm Sức', 'Bao Đồng', 'Vào Đời']).sort_by(&:sort_param)
+
+    respond_to do |format|
+      format.json { render json: @classrooms }
+      format.pdf do
+        send_data ClassroomsPdf.new(@classrooms).render,
+                  filename: "Thống Kê Các Lớp Năm Học #{@classrooms.first.long_year}.pdf",
+                  type: 'application/pdf',
+                  disposition: 'inline'
+      end
+    end
   end
 
   def show
