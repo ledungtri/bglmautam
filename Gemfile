@@ -1,9 +1,18 @@
 source 'https://rubygems.org'
 
-ruby '2.7.8'
+ruby '3.3.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '5.2.3'
+gem 'rails', '~> 7.0.0'
+
+# Required for Ruby 3.3 compatibility
+gem 'logger'
+gem 'ostruct'
+gem 'mutex_m'
+gem 'base64'
+gem 'bigdecimal'
+gem 'matrix'
+gem 'drb'
 
 # Use Postgres as the database for Active Record
 gem 'pg'
@@ -27,7 +36,7 @@ gem 'prawn-table'
 gem 'seed_dump'
 
 # For soft delete
-gem 'paranoia'
+gem 'paranoia', '~> 3.0'
 
 # For tracking changes to the models, for auditing or versioning
 # https://github.com/paper-trail-gem/paper_trail
