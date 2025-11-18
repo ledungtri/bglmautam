@@ -17,6 +17,9 @@ gem 'drb'
 # Use Postgres as the database for Active Record
 gem 'pg'
 
+# Use Puma as the web server
+gem 'puma', '~> 5.0'
+
 # Use SCSS for stylesheets
 gem 'sassc'
 gem 'sass-rails'
@@ -40,7 +43,7 @@ gem 'paranoia', '~> 3.0'
 
 # For tracking changes to the models, for auditing or versioning
 # https://github.com/paper-trail-gem/paper_trail
-gem "paper_trail"
+gem "paper_trail", "~> 15.0"
 
 # For command line prompt
 gem "tty-prompt"
@@ -52,7 +55,7 @@ gem "active_model_serializers"
 gem "rack-cors"
 
 # Use for searching
-gem 'ransack'
+gem 'ransack', '~> 4.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
