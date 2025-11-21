@@ -26,5 +26,5 @@
 #  index_teachers_on_deleted_at  (deleted_at)
 #
 class TeacherSerializer < ApplicationSerializer
-  attributes :christian_name, :full_name, :name, :date_birth, :phone
+  attributes :christian_name, :full_name, :name, :date_birth, :phone, :person_id
 end
