@@ -29,6 +29,14 @@ class Classroom < ApplicationRecord
   validates_presence_of :year, :family
   validates :group, format: { with: /\A\d?[A-Z]?\z/, message: 'invalid input' }, allow_blank: true
 
+  def self.ransackable_attributes(auth_object = nil)
+    %w[year family level group location]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    %w[enrollments students teachers guidances]
+  end
+
   FIELD_SETS = [
     {
       key: 'classroom',

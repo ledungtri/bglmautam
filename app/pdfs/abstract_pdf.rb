@@ -34,7 +34,7 @@ class AbstractPdf < Prawn::Document
     page_count.times do |i|
       go_to_page(i + 1)
       bounding_box [bounds.left, bounds.bottom + 10], width: bounds.width do
-        text 'Ban Giáo Lý Giáo Xứ  Mẫu Tâm', size: 6, align: :right
+        text 'Ban Giáo Lý Giáo Xứ Mẫu Tâm', size: 6, align: :right
       end
       bounding_box [bounds.left, bounds.bottom + 10], width: bounds.width do
         text "In ngày: #{Time.zone.now.strftime('%d/%m/%Y')}", size: 6, align: :left
