@@ -1,73 +1,50 @@
-<table id="form" style="display: none">
-  <thead>
-  <tr>
-    <th style="width: 200px; font-size: 18px">Năm Học</th>
-    <th style="width: 200px; font-size: 18px">Lớp</th>
-    <th style="width: 200px; font-size: 18px"></th>
-  </tr>
-  </thead>
-  <tbody>
+<%
+  # Prepare classroom data for JavaScript
+  years = Classroom.order(year: :desc).distinct.pluck(:year)
+  classrooms_by_year = {}
+  Classroom.where.not(family: ['Trưởng Ban', 'Kỹ Thuật']).sort_by(&:sort_param).each do |classroom|
+    classrooms_by_year[classroom.year.to_s] ||= []
+    classrooms_by_year[classroom.year.to_s] << { id: classroom.id, name: classroom.name }
+  end
+  opts = Classroom.where(year: years[0]).sort_by(&:sort_param).map { |c| [c.name, c.id] }
+  enrollment = Enrollment.new
+%>
 
-  <tr class="table-row">
-    <% enrollment = Enrollment.new %>
-    <%= form_for(enrollment) do |f| %>
-      <%= render 'components/form/error_notification', object: enrollment %>
+<%= form_for(enrollment) do |f| %>
+  <%= render 'components/form/error_notification', object: enrollment %>
+  <%= f.hidden_field :student_id, value: @student.id %>
+  <%= f.hidden_field :result, value: "Đang Học" %>
 
-      <% years = Classroom.order(year: :desc).distinct.pluck(:year) %>
-      <% opts = Classroom.where(year: years[0]).sort_by(&:sort_param).map { |c| [c.name, c.id] } %>
-
-      <%= f.hidden_field :student_id, value: @student.id %>
-      <%= f.hidden_field :result, value: "Đang Học" %>
+  <table id="enrollment-form" style="display: none" data-turbolinks-permanent>
+    <thead>
+    <tr>
+      <th style="width: 200px; font-size: 18px">Năm Học</th>
+      <th style="width: 200px; font-size: 18px">Lớp</th>
+      <th style="width: 200px; font-size: 18px"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr class="table-row">
       <td>
-        <select id="year_combobox" onchange="changeClassroom()" style="width: 100%">
+        <select id="enrollment-year-combobox" style="width: 100%">
           <% years.each do |year| %>
-            <option value="<%=year%>"><%= year.to_s + " - " + (year.to_i+1).to_s %></option>
+            <option value="<%= year %>"><%= year.to_s + " - " + (year.to_i+1).to_s %></option>
           <% end %>
         </select>
       </td>
       <td>
-        <%= f.select :classroom_id, options_for_select(opts), {}, {id: 'classroom_select', style: 'width: 100%'} %>
+        <%= f.select :classroom_id, options_for_select(opts), {}, {
+          id: 'enrollment-classroom-select',
+          style: 'width: 100%',
+          data: { classrooms: classrooms_by_year.to_json }
+        } %>
       </td>
       <td><%= f.submit "Thêm Lớp Mới" %></td>
-    <% end %>
-  </tr>
-  </tbody>
-</table>
-
-<% if @current_user&.admin? %>
-  <button id="btn" onClick="showForm()" class="button">Thêm Lớp Mới</button>
+    </tr>
+    </tbody>
+  </table>
 <% end %>
 
-<script>
-  function showForm() {
-    document.getElementById("btn").style.display = "none";
-    document.getElementById("form").style.display = "";
-  }
-
-  function changeClassroom() {
-    const e = document.getElementById("year_combobox");
-    const selected = e.options[e.selectedIndex].value;
-
-    //Create array of options to be added
-    const hash = {};
-    const keys = [];
-
-    <% Classroom.where.not(family: ['Trưởng Ban', 'Kỹ Thuật']).sort_by(&:sort_param).each do |classroom| %>
-    if(selected === "<%= classroom.year %>") {
-      hash[<%= classroom.id %>] = "<%= classroom.name %>";
-      keys.push(<%= classroom.id %>);
-    }
-    <% end %>
-
-    const list = document.getElementById("classroom_select");
-    list.options.length = 0;
-
-    //Create and append the options
-    for (let i = 0; i < keys.length; i++) {
-      const option = document.createElement("option");
-      option.value = keys[i];
-      option.text = hash[keys[i]];
-      list.appendChild(option);
-    }
-  }
-</script>
+<% if @current_user&.admin? %>
+  <button id="enrollment-show-form-btn" class="button">Thêm Lớp Mới</button>
+<% end %>

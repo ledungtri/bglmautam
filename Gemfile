@@ -64,7 +64,7 @@ end
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
-  gem 'web-console'
+  gem 'web-console', '>= 4.2.0'
 
   # Use for adding annotations to the models
   # https://github.com/ctran/annotate_models
