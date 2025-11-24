@@ -23,14 +23,14 @@
         </tr>
       </thead>
       <tbody>
-        <% guidances = Guidance.for_year(@current_year).sort_by { |g| g.sort_param } %>
-        <% attendances = Attendance.where(attendable: guidances, date: date) %>
-        <% guidances.each do |guidance| %>
+        <% teaching_assignments = TeachingAssignment.for_year(@current_year).sort_by { |g| g.sort_param } %>
+        <% attendances = Attendance.where(attendable: teaching_assignments, date: date) %>
+        <% teaching_assignments.each do |teaching_assignment| %>
           <tr>
-            <% attendance = attendances.find { |attendance| attendance.attendable == guidance } || Attendance.new(attendable: guidance, date: date) %>
-            <td><%= guidance.classroom.name %></td>
-            <td><%= guidance.position %></td>
-            <td><%= guidance.teacher.name %></td>
+            <% attendance = attendances.find { |attendance| attendance.attendable == teaching_assignment } || Attendance.new(attendable: teaching_assignment, date: date) %>
+            <td><%= teaching_assignment.classroom.name %></td>
+            <td><%= teaching_assignment.position %></td>
+            <td><%= teaching_assignment.teacher.name %></td>
             <td>
               <%= render 'components/form/inline_select', object: attendance, field: :status, enabled: @current_user.admin? %>
             </td>

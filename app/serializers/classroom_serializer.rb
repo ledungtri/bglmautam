@@ -2,7 +2,7 @@
 #
 # Table name: classrooms
 #
-#  id         :bigint           not null, primary key
+#  id         :integer          not null, primary key
 #  deleted_at :datetime
 #  family     :string
 #  group      :string

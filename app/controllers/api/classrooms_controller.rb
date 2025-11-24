@@ -17,7 +17,7 @@ class Api::ClassroomsController < ApplicationController
   end
 
   def teachers
-    render json: @classroom.guidances
+    render json: @classroom.teaching_assignments
   end
 
   def create

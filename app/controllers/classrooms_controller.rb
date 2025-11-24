@@ -2,7 +2,7 @@
 #
 # Table name: classrooms
 #
-#  id         :bigint           not null, primary key
+#  id         :integer          not null, primary key
 #  deleted_at :datetime
 #  family     :string
 #  group      :string
@@ -40,7 +40,7 @@ class ClassroomsController < ApplicationController
   def show
     authorize @classroom
 
-    @guidances = @classroom.guidances.sort_by(&:sort_param)
+    @teaching_assignments = @classroom.teaching_assignments.sort_by(&:sort_param)
     @enrollments = @classroom.enrollments.sort_by(&:sort_param)
     respond_to do |format|
       format.html
@@ -102,7 +102,7 @@ class ClassroomsController < ApplicationController
   def destroy
     authorize @classroom
 
-    @classroom.guidances.each(&:destroy)
+    @classroom.teaching_assignments.each(&:destroy)
 
     @classroom.enrollments.each(&:destroy)
 

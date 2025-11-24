@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
     @enrollments = @students&.map { |s| s.enrollments.for_year(@current_year).first || s.enrollments.new(result: '') }.compact
 
     @teachers = params[:query] ? Teacher.where('full_name ILIKE ?', "%#{params[:query]}%") : []
-    @guidances = @teachers&.map { |t| t.guidances.for_year(@current_year).first || t.guidances.new(position: '') }.compact
+    @teaching_assignments = @teachers&.map { |t| t.teaching_assignments.for_year(@current_year).first || t.teaching_assignments.new(position: '') }.compact
   end
 
   # Prevent CSRF attacks by raising an exception.

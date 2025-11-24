@@ -10,12 +10,12 @@ class TeachersContactPdf < Prawn::Document
 
     title = "<font size='18'><b>#{classroom.name}</b></font>"
 
-    body = classroom.guidances.sort_by(&:sort_param).reduce('') do |content, guidance|
-      content += "<b>#{guidance.position}</b>: #{guidance.teacher.name}\n<b>SĐT</b>: #{guidance.teacher.phone}\n"
+    body = classroom.teaching_assignments.sort_by(&:sort_param).reduce('') do |content, teaching_assignment|
+      content += "<b>#{teaching_assignment.position}</b>: #{teaching_assignment.teacher.name}\n<b>SĐT</b>: #{teaching_assignment.teacher.phone}\n"
       content
     end
 
-    (classroom.guidances.length >= 3 ? 4 : 5).times.each do
+    (classroom.teaching_assignments.length >= 3 ? 4 : 5).times.each do
       table [[title, '', title]] + [[body, '', body]] do
         self.position = :center
         self.width = 550

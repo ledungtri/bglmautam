@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
     session[:user_id] = user&.id
     flash[:success] = 'Logged in'
     if user&.teacher
-      classroom_id = Guidance.for_year(@current_year).where(teacher: user.teacher).pluck(:classroom_id).first
+      classroom_id = TeachingAssignment.for_year(@current_year).where(teacher: user.teacher).pluck(:classroom_id).first
       return redirect_to classroom_url(classroom_id) if classroom_id
     end
 

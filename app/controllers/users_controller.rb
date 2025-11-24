@@ -24,7 +24,7 @@
 class UsersController < SecondaryResourcesController
    def index
     authorize User
-    @guidances = Guidance.joins(:classroom).where('classrooms.year = ?', @current_year).sort_by(&:sort_param)
+    @teaching_assignments = TeachingAssignment.joins(:classroom).where('classrooms.year = ?', @current_year).sort_by(&:sort_param)
   end
 
 private

@@ -26,7 +26,7 @@ Rails.application.routes.draw do
   end
 
   secondary_resources = [
-    :guidances,
+    :teaching_assignments,
     :enrollments,
     :evaluations,
     :grades,
@@ -55,7 +55,7 @@ Rails.application.routes.draw do
     end
     resources :people, only: [:index, :show]
     resources :enrollments, only: [:index]
-    resources :guidances, only: [:index]
+    resources :teaching_assignments, only: [:index]
 
 
 

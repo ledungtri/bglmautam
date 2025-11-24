@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: guidances
+# Table name: teaching_assignments
 #
 #  id           :bigint           not null, primary key
 #  deleted_at   :datetime
@@ -13,27 +13,16 @@
 #
 # Indexes
 #
-#  index_guidances_on_deleted_at  (deleted_at)
-#  index_guidances_on_person_id   (person_id)
+#  index_teaching_assignments_on_deleted_at  (deleted_at)
+#  index_teaching_assignments_on_person_id   (person_id)
 #
 # Foreign Keys
 #
 #  fk_rails_...  (classroom_id => classrooms.id)
 #  fk_rails_...  (person_id => people.id)
 #
-class GuidancesController < SecondaryResourcesController
-  def update
-    skip_redirect
-    super
-  end
-
-private
-
-  def model_klass
-    Guidance
-  end
-
-  def permit_params
-    [:position, :teacher_id, :classroom_id]
-  end
+class TeachingAssignmentSerializer < ApplicationSerializer
+  attributes :position
+  belongs_to :teacher
+  belongs_to :classroom
 end

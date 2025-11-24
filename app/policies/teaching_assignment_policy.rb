@@ -1,0 +1,2 @@
+class TeachingAssignmentPolicy < ApplicationPolicy
+end

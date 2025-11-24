@@ -2,7 +2,7 @@
 #
 # Table name: classrooms
 #
-#  id         :bigint           not null, primary key
+#  id         :integer          not null, primary key
 #  deleted_at :datetime
 #  family     :string
 #  group      :string
@@ -22,9 +22,9 @@ class Classroom < ApplicationRecord
   # has_many :people, through: :guidances
   has_many :evaluations, through: :enrollments
 
-  has_many :guidances
-  has_many :teachers, through: :guidances
-  # has_many :people, through: :guidances
+  has_many :teaching_assignments
+  has_many :teachers, through: :teaching_assignments
+  # has_many :people, through: :teaching_assignments
 
   validates_presence_of :year, :family
   validates :group, format: { with: /\A\d?[A-Z]?\z/, message: 'invalid input' }, allow_blank: true
@@ -34,7 +34,7 @@ class Classroom < ApplicationRecord
   end
 
   def self.ransackable_associations(auth_object = nil)
-    %w[enrollments students teachers guidances]
+    %w[enrollments students teachers teaching_assignments]
   end
 
   FIELD_SETS = [

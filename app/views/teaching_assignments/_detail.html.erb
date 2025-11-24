@@ -1,21 +1,21 @@
-<% classroom = guidance.classroom %>
+<% classroom = teaching_assignment.classroom %>
 <div class="e-card">
   <div class="e-info_grid_cell">
     <% if editable %>
-      <%= button_to guidance_url(guidance), class: 'tr icon red-hover', method: :delete do %>
+      <%= button_to teaching_assignment_url(teaching_assignment), class: 'tr icon red-hover', method: :delete do %>
         <i class='fa fa-delete-left'></i>
       <% end %>
     <% end %>
     <div class="e-classroom_year"><%= classroom.long_year %></div>
     <%= render 'components/button', button: { label: classroom.name, path: classroom_path(classroom) } %>
     <div class="e-classroom_year"><%= classroom.location %></div>
-    <%= render 'components/form/inline_select', object: guidance, field: :position, enabled: editable %>
+    <%= render 'components/form/inline_select', object: teaching_assignment, field: :position, enabled: editable %>
   </div>
 
   <div class="e-info_grid_cell" style="grid-column: 2 / span 2">
     <div class="e-classroom_year">Giáo lý viên cùng lớp</div>
 
-    <% classroom.guidances.where.not(teacher: guidance.teacher).sort_by { |g| g.position_sort_param }.each do |g| %>
+    <% classroom.teaching_assignments.where.not(teacher: teaching_assignment.teacher).sort_by { |g| g.position_sort_param }.each do |g| %>
       <div style="display: grid; grid-template-columns: 1fr 3fr 1fr; margin: 5px; box-shadow: 0 0 2px;">
         <div style="padding: 2px 10px; background: bisque"><%= g.position %></div>
         <div style="padding: 2px 10px; text-align: left"><%= g.teacher.name %></div>

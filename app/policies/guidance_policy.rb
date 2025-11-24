@@ -1,2 +1,0 @@
-class GuidancePolicy < ApplicationPolicy
-end

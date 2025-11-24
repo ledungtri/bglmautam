@@ -50,7 +50,7 @@ private
   end
 
   def teacher_of_classroom?(classroom, year = @current_year)
-    classroom == user.teacher&.guidances&.for_year(year)&.first&.classroom
+    classroom == user.teacher&.teaching_assignments&.for_year(year)&.first&.classroom
   end
 
   def admin_or_self_teacher?(teacher)
@@ -66,6 +66,6 @@ private
   end
 
   def teacher_of_enrollment?(enrollment, year = @current_year)
-    user.teacher&.guidances&.for_year(year)&.map(&:classroom)&.include?(enrollment.classroom)
+    user.teacher&.teaching_assignments&.for_year(year)&.map(&:classroom)&.include?(enrollment.classroom)
   end
 end

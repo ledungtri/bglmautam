@@ -2,7 +2,7 @@
 #
 # Table name: teachers
 #
-#  id             :bigint           not null, primary key
+#  id             :integer          not null, primary key
 #  christian_name :string
 #  date_birth     :date
 #  deleted_at     :datetime
@@ -32,11 +32,11 @@ class TeachersController < ApplicationController
   # GET /teachers.json
   def index
     authorize Teacher
-    @guidances = Guidance.joins(:classroom).where('classrooms.year = ?', @current_year).sort_by(&:sort_param)
+    @teaching_assignments = TeachingAssignment.joins(:classroom).where('classrooms.year = ?', @current_year).sort_by(&:sort_param)
     respond_to do |format|
       format.html
       format.pdf do
-        pdf = TeachersPdf.new(@guidances, @current_year)
+        pdf = TeachersPdf.new(@teaching_assignments, @current_year)
         send_data pdf.render,
                   filename: "Danh Sách GLV Năm Học #{@current_year_long}.pdf",
                   type: 'application/pdf',
@@ -96,7 +96,7 @@ class TeachersController < ApplicationController
   def destroy
     authorize @teacher
 
-    @teacher.guidances.each(&:destroy)
+    @teacher.teaching_assignments.each(&:destroy)
 
     @teacher.destroy
     respond_to do |format|
@@ -114,14 +114,14 @@ class TeachersController < ApplicationController
   def teachers_custom_export
     authorize Teacher, :index?
 
-    @guidances = Guidance.for_year(@current_year).sort_by(&:sort_param)
+    @teaching_assignments = TeachingAssignment.for_year(@current_year).sort_by(&:sort_param)
 
-    pdf = TeachersCustomPdf.new(@guidances, params[:title], params[:page_layout].to_sym, params[:columns].split(','))
+    pdf = TeachersCustomPdf.new(@teaching_assignments, params[:title], params[:page_layout].to_sym, params[:columns].split(','))
     send_data pdf.render, filename: "#{params[:title]}.pdf", type: 'application/pdf', disposition: 'inline'
   end
 
   def attendances
-    authorize Guidance, :update?
+    authorize TeachingAssignment, :update?
   end
 
 private

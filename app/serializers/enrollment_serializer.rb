@@ -2,7 +2,7 @@
 #
 # Table name: enrollments
 #
-#  id           :bigint           not null, primary key
+#  id           :integer          not null, primary key
 #  deleted_at   :datetime
 #  result       :string           not null
 #  created_at   :datetime         not null

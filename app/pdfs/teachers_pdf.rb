@@ -1,9 +1,9 @@
 class TeachersPdf < AbstractPdf
-  def initialize(guidances, year)
-    @guidances = guidances
+  def initialize(teaching_assignments, year)
+    @teaching_assignments = teaching_assignments
     @year = year
     title_text = "Nhân sự phụ trách Giáo dục Đức tin Năm Học #{@year.to_s + ' - ' + (@year + 1).to_s}"
-    sub_title_text = "Số Lượng: #{@guidances.count}"
+    sub_title_text = "Số Lượng: #{@teaching_assignments.count}"
     super(:landscape, title_text, sub_title_text)
   end
 
@@ -27,11 +27,11 @@ class TeachersPdf < AbstractPdf
 
   def line_items
     [['Lớp', 'Phụ Trách', 'Họ và Tên', 'Ngày Sinh', 'Bổn Mạng', 'Điện Thoại', 'Email']] +
-    @guidances.map do |guidance|
-        teacher = guidance.teacher
+    @teaching_assignments.map do |teaching_assignment|
+        teacher = teaching_assignment.teacher
         [
-          guidance.classroom.name,
-          guidance.position,
+          teaching_assignment.classroom.name,
+          teaching_assignment.position,
           teacher.name,
           teacher.date_birth&.strftime('%d/%m/%Y'),
           teacher.named_date,

@@ -32,7 +32,7 @@ namespace :admin do
       puts "Migrating #{count += 1}/#{total}..."
       puts "Teacher Id: #{teacher.id}"
       User.where(teacher_id: teacher.id).update_all(person_id: teacher.person_id)
-      Guidance.where(teacher_id: teacher.id).update_all(person_id: teacher.person_id)
+      TeachingAssignment.where(teacher_id: teacher.id).update_all(person_id: teacher.person_id)
     end
   end
 

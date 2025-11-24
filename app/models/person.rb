@@ -29,8 +29,8 @@ class Person < ApplicationRecord
   has_many :enrollments
   # has_many :classrooms, through: :enrollments
 
-  has_many :guidances
-  # has_many :classrooms, through: :guidances
+  has_many :teaching_assignments
+  # has_many :classrooms, through: :teaching_assignments
 
   validates_presence_of :name, :gender, :birth_date
   validates :gender, inclusion: { in: %w[Nam Nữ], message: 'have to be either Nam or Nữ' }

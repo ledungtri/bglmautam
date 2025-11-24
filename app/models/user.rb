@@ -54,8 +54,8 @@ class User < ApplicationRecord
     admin? || self_teacher?(teacher)
   end
 
-  def admin_or_self_guidance?(guidance)
-    admin? || self_guidance?(guidance)
+  def admin_or_self_teaching_assignment?(teaching_assignment)
+    admin? || self_teaching_assignment?(teaching_assignment)
   end
 
   def admin_or_teacher_of_enrollment?(enrollment, year)
@@ -74,12 +74,12 @@ class User < ApplicationRecord
     self?(teacher.user)
   end
 
-  def self_guidance?(guidance)
-    self_teacher?(guidance.teacher)
+  def self_teaching_assignment?(teaching_assignment)
+    self_teacher?(teaching_assignment.teacher)
   end
 
   def teacher_of_classroom?(classroom, year)
-    self.teacher&.guidances&.for_year(year)&.map(&:classroom)&.include?(classroom)
+    self.teacher&.teaching_assignments&.for_year(year)&.map(&:classroom)&.include?(classroom)
   end
 
   def teacher_of_enrollment?(enrollment, year)

@@ -1,0 +1,7 @@
+<% teaching_assignments ||= [] %>
+<%= render 'components/collapsible', heading: 'Hành Trình Tông Đồ' do %>
+  <% teaching_assignments.each do |teaching_assignment| %>
+    <%= render 'teaching_assignments/detail', teaching_assignment: teaching_assignment, editable: @current_user.admin? %>
+  <% end %>
+  <%= render 'teaching_assignments/new', teacher: teacher if teacher %>
+<% end unless teaching_assignments.empty? && !teacher %>

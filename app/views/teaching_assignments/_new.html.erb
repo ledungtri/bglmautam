@@ -9,9 +9,9 @@
   </thead>
   <tbody>
   <tr class="table-row">
-    <% guidance = Guidance.new %>
-    <%= form_for(guidance) do |f| %>
-      <%= render 'components/form/error_notification', object: guidance %>
+    <% teaching_assignment = TeachingAssignment.new %>
+    <%= form_for(teaching_assignment) do |f| %>
+      <%= render 'components/form/error_notification', object: teaching_assignment %>
 
       <% years = Classroom.order(year: :desc).distinct.pluck(:year) %>
       <% opts = Classroom.where(year: years[0]).sort_by(&:sort_param).map { |c| [c.name, c.id] } %>
@@ -25,7 +25,7 @@
         </select>
       </td>
       <td style='width: 200px'><%= f.select :classroom_id, options_for_select(opts), {}, {id: 'classroom_select', style: 'width: 100%'} %></td>
-      <td style='width: 200px'><%= f.select :position, options_for_select(ResourceType.for_key('guidance_position').pluck(:value)), {}, {style: 'width: 100%'} %></td>
+      <td style='width: 200px'><%= f.select :position, options_for_select(ResourceType.for_key('teaching_assignment_position').pluck(:value)), {}, {style: 'width: 100%'} %></td>
       <td style='width: 200px'><%= f.submit "Thêm Lớp Mới" %></td>
     <% end %>
   </tr>

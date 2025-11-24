@@ -1,7 +1,7 @@
 class Api::AttendancesController < Api::SecondaryResourcesController
   def index
-    scope = Attendance.order(date: :desc).where(attendable_type: :Guidance)
-    scope = scope.where(attendable_id: params[:guidance_id]) if params[:guidance_id]
+    scope = Attendance.order(date: :desc).where(attendable_type: :TeachingAssignment)
+    scope = scope.where(attendable_id: params[:teaching_assignment_id]) if params[:teaching_assignment_id]
     render json: scope
   end
 

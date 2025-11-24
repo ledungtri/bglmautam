@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: guidances
+# Table name: teaching_assignments
 #
 #  id           :bigint           not null, primary key
 #  deleted_at   :datetime
@@ -13,15 +13,15 @@
 #
 # Indexes
 #
-#  index_guidances_on_deleted_at  (deleted_at)
-#  index_guidances_on_person_id   (person_id)
+#  index_teaching_assignments_on_deleted_at  (deleted_at)
+#  index_teaching_assignments_on_person_id   (person_id)
 #
 # Foreign Keys
 #
 #  fk_rails_...  (classroom_id => classrooms.id)
 #  fk_rails_...  (person_id => people.id)
 #
-class Guidance < ApplicationRecord
+class TeachingAssignment < ApplicationRecord
   include ClassroomRelationship
 
   has_many :attendances, as: :attendable
@@ -36,7 +36,7 @@ class Guidance < ApplicationRecord
 
   FIELD_SETS = [
     {
-      key: 'guidance',
+      key: 'teaching_assignment',
       fields: [
         { label: 'GLV', field_type: :display, value_method: -> (g) { g.teacher.name } },
         { label: 'Lớp', field_type: :display, value_method: -> (g) { g.classroom.name } },
@@ -50,7 +50,7 @@ class Guidance < ApplicationRecord
   end
 
   def position_sort_param
-    positions = ResourceType.for_key('guidance_position').pluck(:value)
+    positions = ResourceType.for_key('teaching_assignment_position').pluck(:value)
     positions.find_index(position) || positions.count
   end
 

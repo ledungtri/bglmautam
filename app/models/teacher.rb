@@ -2,7 +2,7 @@
 #
 # Table name: teachers
 #
-#  id             :bigint           not null, primary key
+#  id             :integer          not null, primary key
 #  christian_name :string
 #  date_birth     :date
 #  deleted_at     :datetime
@@ -29,8 +29,8 @@ class Teacher < ApplicationRecord
   include PersonConcern
 
   has_one :user
-  has_many :guidances
-  has_many :classrooms, through: :guidances
+  has_many :teaching_assignments
+  has_many :classrooms, through: :teaching_assignments
   belongs_to :person
   # TODO: email = right format, allow nil
 
