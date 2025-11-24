@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   include Pundit::Authorization
 
-  before_action :set_current_year, :set_current_user, :auth
+  before_action :set_current_year, :set_current_user, :auth, :set_paper_trail_whodunnit
   # after_action :verify_authorized
 
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
@@ -39,5 +39,9 @@ private
   def user_not_authorized
     flash[:warning] = "You are not authorized to perform this action."
     redirect_back(fallback_location: root_path)
+  end
+
+  def set_paper_trail_whodunnit
+    PaperTrail.request.whodunnit = current_user&.id
   end
 end
