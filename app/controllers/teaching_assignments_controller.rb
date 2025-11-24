@@ -2,7 +2,7 @@
 #
 # Table name: teaching_assignments
 #
-#  id           :bigint           not null, primary key
+#  id           :integer          not null, primary key
 #  deleted_at   :datetime
 #  position     :string
 #  created_at   :datetime         not null
