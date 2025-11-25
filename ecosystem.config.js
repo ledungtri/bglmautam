@@ -4,7 +4,7 @@ module.exports = {
       name: 'bglmautam',
       script: 'bundle',
       args: 'exec puma -C config/puma.rb',
-      cwd: '/Users/billle/projects/personal/bglmautam',
+      cwd: '/root/bglmautam',
       interpreter: 'none',
       instances: 1,
       autorestart: true,
