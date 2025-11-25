@@ -12,6 +12,10 @@ development:
   <<: *default
   database: bglmautam_development
 
+production:
+  <<: *default
+  database: bglmautam_development
+
 test:
   <<: *default
   database: bglmautam_test
