@@ -27,7 +27,7 @@ private
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def record_params
-    params.require(model_klass.to_s.parameterize).permit(permit_params)
+    params.require(model_klass.to_s.underscore).permit(permit_params)
   end
 
   def model_klass
