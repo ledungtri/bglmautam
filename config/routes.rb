@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   resources :classrooms, only: [:index, :show, :new, :create, :update, :destroy] do
     get '/students_personal_details', to: 'classrooms#students_personal_details'
     get '/attendances', to: 'classrooms#attendances'
-    get '/evaluation', to: 'classrooms#evaluation'
+    get '/evaluations', to: 'classrooms#evaluations'
     get '/custom_export', to: 'classrooms#custom_export_form'
     post '/custom_export', to: 'classrooms#custom_export'
   end
@@ -47,50 +47,37 @@ Rails.application.routes.draw do
   get '/logout', to: 'sessions#destroy', as: 'logout'
 
   namespace :api do
-    get '/resource_types/:key', to: 'resource_types#index'
+    # API v1 - JWT authenticated
+    namespace :v1 do
+      # Authentication
+      post '/auth/login', to: 'auth#login'
+      post '/auth/logout', to: 'auth#logout'
+      post '/auth/refresh', to: 'auth#refresh'
+      get '/auth/me', to: 'auth#me'
 
-    resources :classrooms, only: [:index, :show] do
-      get '/students', to: 'classrooms#students'
-      get '/teachers', to: 'classrooms#teachers'
+      # Resource types
+      get '/resource_types/:key', to: 'resource_types#index'
+
+      # Main resources (full CRUD)
+      resources :classrooms do
+        member do
+          get :students
+          get :teachers
+          get :attendances
+          get :evaluations
+        end
+      end
+
+      resources :people, only: [:index, :show, :update]
+      resources :users, only: [:index, :show, :create, :update, :destroy]
+
+      # Secondary resources
+      resources :enrollments
+      resources :teaching_assignments
+      resources :attendances, only: [:index, :show, :create, :update, :destroy]
+
+      # Search
+      get '/search', to: 'search#index'
     end
-    resources :people, only: [:index, :show]
-    resources :enrollments, only: [:index]
-    resources :teaching_assignments, only: [:index]
-
-
-
-    # Create Get List Update Delete
-
-    # contact_resources = [:phones, :emails, :addresses]
-    #
-    # resources :resource_types, only: [:index], param: :key # TODO: Simplified Resource Types. Expose :index and :update
-    resources :data_schemas, only: [:index, :show, :create, :update, :destroy]
-    # # Grade Schemas
-    #
-    # resources :classrooms, only: [:index, :show, :create, :update, :destroy] do
-    #   resources :guidances, only: [:index, :create]
-    #   resources :enrollments, only: [:index, :create]
-    # end
-    #
-    # resources :guidances, only: [:index, :show, :update, :destroy] do
-    #   resources :attendances, only: [:index, :create]
-    # end
-    #
-    # resources :enrollments, only: [:index, :show, :update, :destroy] do
-    #   resources :attendances, only: [:index, :create]
-    #   resources :evaluations, only: [:index, :create]
-    #   resources :grades, only: [:index, :create]
-    # end
-    #
-    # resources :attendances, only: [:show, :update, :destroy]
-    # resources :evaluations, only: [:show, :update, :destroy]
-    # resources :grades, only: [:show, :update, :destroy]
-    #
-    # resources :people, only: [:index, :show, :create, :update, :destroy] do
-    #   resources :users, only: [:index, :create]
-    #   contact_resources.each { |r| resources r, only: [:index, :create] }
-    # end
-    # resources :users, only: [:show, :update, :destroy]
-    # contact_resources.each { |r| resources r, only: [:show, :update, :destroy] }
   end
 end

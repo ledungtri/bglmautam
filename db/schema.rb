@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_11_23_201005) do
+ActiveRecord::Schema[7.2].define(version: 2026_01_25_170325) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -40,6 +40,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_11_23_201005) do
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.datetime "deleted_at", precision: nil
+    t.index ["attendable_type", "attendable_id", "date"], name: "idx_on_attendable_type_attendable_id_date_7297b26825"
     t.index ["attendable_type", "attendable_id"], name: "index_attendances_on_attendable_type_and_attendable_id"
   end
 
@@ -85,8 +86,11 @@ ActiveRecord::Schema[7.2].define(version: 2025_11_23_201005) do
     t.datetime "updated_at", precision: nil, null: false
     t.datetime "deleted_at", precision: nil
     t.integer "person_id"
+    t.index ["classroom_id"], name: "index_enrollments_on_classroom_id"
     t.index ["deleted_at"], name: "index_enrollments_on_deleted_at"
     t.index ["person_id"], name: "index_enrollments_on_person_id"
+    t.index ["student_id", "classroom_id"], name: "index_enrollments_unique_student_classroom", unique: true, where: "(deleted_at IS NULL)"
+    t.index ["student_id"], name: "index_enrollments_on_student_id"
   end
 
   create_table "evaluations", id: :serial, force: :cascade do |t|
@@ -114,7 +118,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_11_23_201005) do
     t.string "christian_name"
     t.string "name", null: false
     t.string "gender", null: false
-    t.date "birth_date", null: false
+    t.date "birth_date"
     t.string "birth_place"
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
@@ -206,8 +210,11 @@ ActiveRecord::Schema[7.2].define(version: 2025_11_23_201005) do
     t.datetime "updated_at", precision: nil, null: false
     t.datetime "deleted_at", precision: nil
     t.integer "person_id"
+    t.index ["classroom_id"], name: "index_teaching_assignments_on_classroom_id"
     t.index ["deleted_at"], name: "index_teaching_assignments_on_deleted_at"
     t.index ["person_id"], name: "index_teaching_assignments_on_person_id"
+    t.index ["teacher_id", "classroom_id"], name: "index_teaching_assignments_unique_teacher_classroom", unique: true, where: "(deleted_at IS NULL)"
+    t.index ["teacher_id"], name: "index_teaching_assignments_on_teacher_id"
   end
 
   create_table "users", id: :serial, force: :cascade do |t|

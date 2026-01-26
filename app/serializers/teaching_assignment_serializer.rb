@@ -13,8 +13,11 @@
 #
 # Indexes
 #
-#  index_teaching_assignments_on_deleted_at  (deleted_at)
-#  index_teaching_assignments_on_person_id   (person_id)
+#  index_teaching_assignments_on_classroom_id           (classroom_id)
+#  index_teaching_assignments_on_deleted_at             (deleted_at)
+#  index_teaching_assignments_on_person_id              (person_id)
+#  index_teaching_assignments_on_teacher_id             (teacher_id)
+#  index_teaching_assignments_unique_teacher_classroom  (teacher_id,classroom_id) UNIQUE WHERE (deleted_at IS NULL)
 #
 # Foreign Keys
 #

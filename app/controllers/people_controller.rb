@@ -4,7 +4,7 @@
 #
 #  id             :integer          not null, primary key
 #  avatar_url     :string
-#  birth_date     :date             not null
+#  birth_date     :date
 #  birth_place    :string
 #  christian_name :string
 #  data           :jsonb

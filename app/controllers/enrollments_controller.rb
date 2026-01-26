@@ -13,8 +13,11 @@
 #
 # Indexes
 #
-#  index_enrollments_on_deleted_at  (deleted_at)
-#  index_enrollments_on_person_id   (person_id)
+#  index_enrollments_on_classroom_id           (classroom_id)
+#  index_enrollments_on_deleted_at             (deleted_at)
+#  index_enrollments_on_person_id              (person_id)
+#  index_enrollments_on_student_id             (student_id)
+#  index_enrollments_unique_student_classroom  (student_id,classroom_id) UNIQUE WHERE (deleted_at IS NULL)
 #
 # Foreign Keys
 #

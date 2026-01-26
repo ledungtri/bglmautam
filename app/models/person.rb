@@ -4,7 +4,7 @@
 #
 #  id             :integer          not null, primary key
 #  avatar_url     :string
-#  birth_date     :date             not null
+#  birth_date     :date
 #  birth_place    :string
 #  christian_name :string
 #  data           :jsonb
@@ -18,6 +18,14 @@
 class Person < ApplicationRecord
   include VnTextUtils
   include DataFieldable
+
+  def self.ransackable_attributes(auth_object = nil)
+    %w[christian_name name gender birth_date birth_place nickname created_at updated_at]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    %w[enrollments teaching_assignments]
+  end
 
   has_one :user
   has_one :teacher

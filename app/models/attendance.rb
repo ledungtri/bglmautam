@@ -15,6 +15,7 @@
 #
 # Indexes
 #
+#  idx_on_attendable_type_attendable_id_date_7297b26825    (attendable_type,attendable_id,date)
 #  index_attendances_on_attendable_type_and_attendable_id  (attendable_type,attendable_id)
 #
 class Attendance < ApplicationRecord

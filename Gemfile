@@ -57,6 +57,12 @@ gem "rack-cors"
 # Use for searching
 gem 'ransack', '~> 4.0'
 
+# JWT for API authentication
+gem 'jwt'
+
+# Pagination
+gem 'kaminari'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
