@@ -8,12 +8,12 @@ module Api
       # GET /api/v1/classrooms
       def index
         @classrooms = scope.result.page(params[:page]).per(params[:per_page] || 50)
-        render json: @classrooms.sort_by(&:sort_param), meta: pagination_meta(@classrooms)
+        render_collection @classrooms.sort_by(&:sort_param), meta: pagination_meta(@classrooms)
       end
 
       # GET /api/v1/classrooms/:id
       def show
-        render json: @classroom
+        render_resource @classroom
       end
 
       # POST /api/v1/classrooms
@@ -22,7 +22,7 @@ module Api
         @classroom = Classroom.new(classroom_params)
 
         if @classroom.save
-          render json: @classroom, status: :created
+          render_resource @classroom, status: :created
         else
           render json: { errors: @classroom.errors.full_messages }, status: :unprocessable_entity
         end
@@ -33,7 +33,7 @@ module Api
         authorize @classroom
 
         if @classroom.update(classroom_params)
-          render json: @classroom
+          render_resource @classroom
         else
           render json: { errors: @classroom.errors.full_messages }, status: :unprocessable_entity
         end
@@ -48,12 +48,12 @@ module Api
 
       # GET /api/v1/classrooms/:id/students
       def students
-        render json: @classroom.enrollments
+        render_collection @classroom.enrollments
       end
 
       # GET /api/v1/classrooms/:id/teachers
       def teachers
-        render json: @classroom.teaching_assignments
+        render_collection @classroom.teaching_assignments
       end
 
       # GET /api/v1/classrooms/:id/attendances
@@ -69,12 +69,12 @@ module Api
           attendances = attendances.where(date: start_date..end_date)
         end
 
-        render json: attendances
+        render_collection attendances
       end
 
       # GET /api/v1/classrooms/:id/evaluations
       def evaluations
-        render json: @classroom.evaluations
+        render_collection @classroom.evaluations
       end
 
       private

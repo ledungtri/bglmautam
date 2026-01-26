@@ -8,15 +8,12 @@ module Api
       # GET /api/v1/people
       def index
         @people = scope.result.page(params[:page]).per(params[:per_page] || 50)
-        render json: {
-          data: ActiveModelSerializers::SerializableResource.new(@people),
-          meta: pagination_meta(@people)
-        }
+        render_collection @people, meta: pagination_meta(@people)
       end
 
       # GET /api/v1/people/:id
       def show
-        render json: @person
+        render_resource @person
       end
 
       # PATCH/PUT /api/v1/people/:id
@@ -24,7 +21,7 @@ module Api
         authorize @person
 
         if @person.update(person_params)
-          render json: @person
+          render_resource @person
         else
           render json: { errors: @person.errors.full_messages }, status: :unprocessable_entity
         end

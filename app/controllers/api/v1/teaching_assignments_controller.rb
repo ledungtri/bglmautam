@@ -8,12 +8,12 @@ module Api
       # GET /api/v1/teaching_assignments
       def index
         @teaching_assignments = scope.result.page(params[:page]).per(params[:per_page] || 50)
-        render json: @teaching_assignments, meta: pagination_meta(@teaching_assignments)
+        render_collection @teaching_assignments, meta: pagination_meta(@teaching_assignments)
       end
 
       # GET /api/v1/teaching_assignments/:id
       def show
-        render json: @teaching_assignment
+        render_resource @teaching_assignment
       end
 
       # POST /api/v1/teaching_assignments
@@ -22,7 +22,7 @@ module Api
         authorize @teaching_assignment
 
         if @teaching_assignment.save
-          render json: @teaching_assignment, status: :created
+          render_resource @teaching_assignment, status: :created
         else
           render json: { errors: @teaching_assignment.errors.full_messages }, status: :unprocessable_entity
         end
@@ -33,7 +33,7 @@ module Api
         authorize @teaching_assignment
 
         if @teaching_assignment.update(teaching_assignment_params)
-          render json: @teaching_assignment
+          render_resource @teaching_assignment
         else
           render json: { errors: @teaching_assignment.errors.full_messages }, status: :unprocessable_entity
         end

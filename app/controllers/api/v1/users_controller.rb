@@ -9,12 +9,12 @@ module Api
       # GET /api/v1/users
       def index
         @users = User.page(params[:page]).per(params[:per_page] || 50)
-        render json: @users.map { |u| user_json(u) }, meta: pagination_meta(@users)
+        render_collection @users.map { |u| user_json(u) }, meta: pagination_meta(@users)
       end
 
       # GET /api/v1/users/:id
       def show
-        render json: user_json(@user)
+        render_resource user_json(@user)
       end
 
       # POST /api/v1/users
@@ -22,7 +22,7 @@ module Api
         @user = User.new(user_params)
 
         if @user.save
-          render json: user_json(@user), status: :created
+          render_resource user_json(@user), status: :created
         else
           render json: { errors: @user.errors.full_messages }, status: :unprocessable_entity
         end
@@ -31,7 +31,7 @@ module Api
       # PATCH/PUT /api/v1/users/:id
       def update
         if @user.update(user_params)
-          render json: user_json(@user)
+          render_resource user_json(@user)
         else
           render json: { errors: @user.errors.full_messages }, status: :unprocessable_entity
         end

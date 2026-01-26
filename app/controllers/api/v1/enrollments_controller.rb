@@ -8,12 +8,12 @@ module Api
       # GET /api/v1/enrollments
       def index
         @enrollments = scope.result.page(params[:page]).per(params[:per_page] || 50)
-        render json: @enrollments, meta: pagination_meta(@enrollments)
+        render_collection @enrollments, meta: pagination_meta(@enrollments)
       end
 
       # GET /api/v1/enrollments/:id
       def show
-        render json: @enrollment
+        render_resource @enrollment
       end
 
       # POST /api/v1/enrollments
@@ -22,7 +22,7 @@ module Api
         authorize @enrollment
 
         if @enrollment.save
-          render json: @enrollment, status: :created
+          render_resource @enrollment, status: :created
         else
           render json: { errors: @enrollment.errors.full_messages }, status: :unprocessable_entity
         end
@@ -33,7 +33,7 @@ module Api
         authorize @enrollment
 
         if @enrollment.update(enrollment_params)
-          render json: @enrollment
+          render_resource @enrollment
         else
           render json: { errors: @enrollment.errors.full_messages }, status: :unprocessable_entity
         end

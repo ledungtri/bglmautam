@@ -42,6 +42,16 @@ module Api
         }
       end
 
+      def render_resource(resource, status: :ok)
+        render json: { data: resource }, status: status
+      end
+
+      def render_collection(collection, meta: nil)
+        response = { data: collection }
+        response[:meta] = meta if meta
+        render json: response
+      end
+
       private
 
       def not_found

@@ -15,7 +15,7 @@ module Api
         if user&.authenticate(params[:password])
           tokens = JwtService.generate_tokens(user)
           set_auth_cookies(tokens)
-          render json: { user: user_json(user) }, status: :ok
+          render json: { data: user_json(user) }, status: :ok
         else
           render json: { error: 'Invalid username or password' }, status: :unauthorized
         end
@@ -42,7 +42,7 @@ module Api
 
       # GET /api/v1/auth/me
       def me
-        render json: { user: user_json(current_user) }, status: :ok
+        render json: { data: user_json(current_user) }, status: :ok
       end
 
       private

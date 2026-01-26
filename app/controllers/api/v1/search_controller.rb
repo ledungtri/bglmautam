@@ -60,7 +60,7 @@ module Api
           end
         end
 
-        render json: results
+        render_resource results
       end
     end
   end

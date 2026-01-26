@@ -6,7 +6,7 @@ module Api
       # GET /api/v1/resource_types/:key
       def index
         @resource_types = ResourceType.for_key(params[:key])
-        render json: @resource_types
+        render_collection @resource_types
       end
     end
   end

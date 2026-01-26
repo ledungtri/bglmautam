@@ -20,12 +20,12 @@ module Api
           @attendances = @attendances.where(attendable_type: 'Enrollment', attendable_id: enrollment_ids)
         end
 
-        render json: @attendances, meta: pagination_meta(@attendances)
+        render_collection @attendances, meta: pagination_meta(@attendances)
       end
 
       # GET /api/v1/attendances/:id
       def show
-        render json: @attendance
+        render_resource @attendance
       end
 
       # POST /api/v1/attendances
@@ -34,7 +34,7 @@ module Api
         authorize_attendance
 
         if @attendance.save
-          render json: @attendance, status: :created
+          render_resource @attendance, status: :created
         else
           render json: { errors: @attendance.errors.full_messages }, status: :unprocessable_entity
         end
@@ -45,7 +45,7 @@ module Api
         authorize_attendance
 
         if @attendance.update(attendance_params)
-          render json: @attendance
+          render_resource @attendance
         else
           render json: { errors: @attendance.errors.full_messages }, status: :unprocessable_entity
         end
