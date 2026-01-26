@@ -3,7 +3,7 @@ class DataFieldsController < ApplicationController
 
   def update
     if @schema
-      @parent.data ||= []
+      @parent.data ||= {}
       updated = @parent.update_data_field(key, data_field_params)
     end
 

@@ -63,15 +63,12 @@ class Teacher < ApplicationRecord
     person.nickname = nickname
     person.gender = gender
     person.birth_date = date_birth
-    person.data = [
-      {
-        key: 'additional_info',
-        values: {
-          named_date: named_date,
-          occupation: occupation
-        }
+    person.data = {
+      'additional_info' => {
+        'named_date' => named_date,
+        'occupation' => occupation
       }
-    ]
+    }
     person.save
 
     person.phones.where(primary: true).first_or_create.update(number: phone) if phone

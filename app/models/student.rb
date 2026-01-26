@@ -130,32 +130,26 @@ class Student < ApplicationRecord
     person.gender = gender
     person.birth_date = date_birth
     person.birth_place = place_birth
-    person.data = [
-      {
-        key: 'sacraments',
-        values: {
-          baptism_date: date_baptism,
-          baptism_place: place_baptism,
-          communion_date: date_communion,
-          communion_place: place_communion,
-          confirmation_date: date_confirmation,
-          confirmation_place: place_confirmation,
-          declaration_date: date_confirmation,
-          declaration_place: place_confirmation
-        }
+    person.data = {
+      'sacraments' => {
+        'baptism_date' => date_baptism,
+        'baptism_place' => place_baptism,
+        'communion_date' => date_communion,
+        'communion_place' => place_communion,
+        'confirmation_date' => date_confirmation,
+        'confirmation_place' => place_confirmation,
+        'declaration_date' => date_confirmation,
+        'declaration_place' => place_confirmation
       },
-      {
-        key: 'parents_info',
-        values: {
-          father_christian_name: father_christian_name,
-          father_name: father_full_name,
-          father_phone: father_phone,
-          mother_christian_name: mother_christian_name,
-          mother_name: mother_full_name,
-          mother_phone: mother_phone
-        }
+      'parents_info' => {
+        'father_christian_name' => father_christian_name,
+        'father_name' => father_full_name,
+        'father_phone' => father_phone,
+        'mother_christian_name' => mother_christian_name,
+        'mother_name' => mother_full_name,
+        'mother_phone' => mother_phone
       }
-    ]
+    }
     person.save
 
     person.phones.where(primary: true).first_or_create.update(number: phone) if phone
