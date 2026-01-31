@@ -42,17 +42,25 @@ module Api
         }
       end
 
-      def render_resource(resource, status: :ok)
-        render json: { data: resource }, status: status
+      def render_resource(resource, status: :ok, serializer: nil)
+        opts = {}
+        opts[:serializer] = serializer if serializer
+        render json: { data: serialize(resource, opts) }, status: status
       end
 
-      def render_collection(collection, meta: nil)
-        response = { data: collection }
+      def render_collection(collection, meta: nil, each_serializer: nil)
+        opts = {}
+        opts[:each_serializer] = each_serializer if each_serializer
+        response = { data: serialize(collection, opts) }
         response[:meta] = meta if meta
         render json: response
       end
 
       private
+
+      def serialize(resource, opts = {})
+        ActiveModelSerializers::SerializableResource.new(resource, opts).as_json
+      end
 
       def not_found
         render json: { error: 'Not found' }, status: :not_found
