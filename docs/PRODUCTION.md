@@ -16,7 +16,7 @@ Complete guide for deploying, managing, and debugging the bglmautam.com producti
 ## Server Information
 
 ### Infrastructure
-- **Domain**: bglmautam.com
+- **Domain**: bglmautam.com (Rails API), acadex.bglmautam.com (React frontend)
 - **Hosting**: Hostinger VPS
 - **Server IP**: 72.61.116.204
 - **OS**: Ubuntu
@@ -30,13 +30,17 @@ Complete guide for deploying, managing, and debugging the bglmautam.com producti
 # SSH into production server
 ssh root@72.61.116.204
 
-# Application directory
+# Rails API directory
 cd /root/bglmautam
+
+# React frontend directory
+cd /root/bglmautam-react
 ```
 
 ### Architecture
 ```
-User → Cloudflare CDN (SSL) → Nginx (443) → Rails/Puma (3000) → PostgreSQL (5432)
+bglmautam.com     → Cloudflare → Nginx (443) → Rails/Puma (3000) → PostgreSQL (5432)
+acadex.bglmautam.com → Cloudflare → Nginx (443) → Static files (/root/bglmautam-react/build)
 ```
 
 ---
@@ -142,6 +146,126 @@ chmod +x deploy.sh
 Run deployment:
 ```bash
 ./deploy.sh
+```
+
+### React Frontend Deployment (acadex.bglmautam.com)
+
+#### First-Time Setup
+
+##### 1. Clone the React repository on the server
+
+```bash
+ssh root@72.61.116.204
+cd /root
+git clone <your-react-repo-url> bglmautam-react
+cd bglmautam-react
+npm install
+npm run build
+```
+
+##### 2. Add DNS record in Cloudflare
+
+1. Go to Cloudflare Dashboard → DNS → Records
+2. Add a new **A record**:
+   - **Name**: `acadex`
+   - **IPv4 address**: `72.61.116.204`
+   - **Proxy status**: Proxied (orange cloud)
+
+##### 3. Update Cloudflare Origin Certificate (if needed)
+
+If the existing origin certificate only covers `bglmautam.com`, generate a new one that also covers `*.bglmautam.com`:
+
+1. Go to Cloudflare Dashboard → SSL/TLS → Origin Server
+2. Create a new Origin Certificate with hostnames: `bglmautam.com`, `*.bglmautam.com`
+3. Replace the certificate files on the server (see [SSL/TLS Management](#ssltls-management))
+
+##### 4. Create Nginx server block for the React app
+
+```bash
+sudo nano /etc/nginx/sites-available/acadex.bglmautam.com
+```
+
+Paste the following configuration:
+
+```nginx
+server {
+    listen 443 ssl;
+    server_name acadex.bglmautam.com;
+
+    ssl_certificate /etc/ssl/cloudflare/cert.pem;
+    ssl_certificate_key /etc/ssl/cloudflare/key.pem;
+
+    root /root/bglmautam-react/build;
+    index index.html;
+
+    location / {
+        try_files $uri $uri/ /index.html;
+    }
+
+    # Cache static assets
+    location /static/ {
+        expires 1y;
+        add_header Cache-Control "public, immutable";
+    }
+
+    access_log /var/log/nginx/acadex_bglmautam_access.log;
+    error_log /var/log/nginx/acadex_bglmautam_error.log;
+}
+```
+
+Enable the site and reload Nginx:
+
+```bash
+sudo ln -s /etc/nginx/sites-available/acadex.bglmautam.com /etc/nginx/sites-enabled/
+sudo nginx -t && sudo systemctl reload nginx
+```
+
+##### 5. Verify
+
+```bash
+curl -I https://acadex.bglmautam.com
+```
+
+#### Standard React Deployment Process
+
+```bash
+ssh root@72.61.116.204
+cd /root/bglmautam-react
+git pull origin master
+npm install
+npm run build
+# No restart needed — Nginx serves the new static files immediately
+```
+
+#### Quick React Deployment Script
+
+Save as `deploy-react.sh` on the production server:
+
+```bash
+#!/bin/bash
+set -e
+
+echo "Starting React deployment..."
+
+cd /root/bglmautam-react
+
+echo "Pulling latest code..."
+git pull origin master
+
+echo "Installing dependencies..."
+npm install
+
+echo "Building production bundle..."
+npm run build
+
+echo "React deployment complete!"
+curl -s -o /dev/null -w "acadex.bglmautam.com HTTP Status: %{http_code}\n" https://acadex.bglmautam.com
+```
+
+Make it executable and run:
+```bash
+chmod +x deploy-react.sh
+./deploy-react.sh
 ```
 
 ---
@@ -311,11 +435,13 @@ pm2 logs bglmautam --err --lines 50
 
 #### Nginx Logs
 ```bash
-# Access log (all requests)
+# Rails API logs
 tail -f /var/log/nginx/bglmautam_access.log
-
-# Error log
 tail -f /var/log/nginx/bglmautam_error.log
+
+# React frontend logs
+tail -f /var/log/nginx/acadex_bglmautam_access.log
+tail -f /var/log/nginx/acadex_bglmautam_error.log
 
 # Find 5xx errors
 grep " 50[0-9] " /var/log/nginx/bglmautam_access.log
@@ -492,9 +618,10 @@ echo "🌐 Nginx Status:"
 sudo systemctl status nginx --no-pager | head -3
 echo ""
 
-# Check if application is responding
+# Check if applications are responding
 echo "🔍 Application Response:"
-curl -s -o /dev/null -w "HTTP Status: %{http_code}\n" https://bglmautam.com
+curl -s -o /dev/null -w "bglmautam.com HTTP Status: %{http_code}\n" https://bglmautam.com
+curl -s -o /dev/null -w "acadex.bglmautam.com HTTP Status: %{http_code}\n" https://acadex.bglmautam.com
 echo ""
 
 # Check database connection
@@ -784,6 +911,10 @@ Add these to `/root/.bashrc` for convenience:
 alias prod-logs='tail -f /root/bglmautam/log/production.log'
 alias prod-console='cd /root/bglmautam && RAILS_ENV=production bundle exec rails console'
 alias prod-restart='cd /root/bglmautam && pm2 restart bglmautam'
+
+# React aliases
+alias react-deploy='bash /root/deploy-react.sh'
+alias react-logs='sudo tail -f /var/log/nginx/acadex_bglmautam_error.log'
 
 # Nginx aliases
 alias nginx-reload='sudo systemctl reload nginx'
