@@ -3,7 +3,7 @@ module.exports = {
     {
       name: 'bglmautam',
       script: 'bundle',
-      args: 'exec puma -C config/puma.rb',
+      args: 'exec rails s -e production -b 127.0.0.1 -p 3000',
       cwd: '/root/bglmautam',
       interpreter: 'none',
       instances: 1,
