@@ -14,7 +14,8 @@ module.exports = {
         RAILS_ENV: 'production',
         RAILS_SERVE_STATIC_FILES: 'true',
         RAILS_LOG_TO_STDOUT: 'true',
-        NODE_ENV: 'production'
+        NODE_ENV: 'production',
+        CORS_ORIGINS: 'https://acadex.bglmautam.com'
       },
       error_file: './log/pm2-error.log',
       out_file: './log/pm2-out.log',
