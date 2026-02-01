@@ -26,6 +26,6 @@
 #
 class TeachingAssignmentSerializer < ApplicationSerializer
   attributes :position
-  belongs_to :teacher
+  belongs_to :person
   belongs_to :classroom
 end

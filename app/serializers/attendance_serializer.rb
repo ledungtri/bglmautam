@@ -19,6 +19,6 @@
 #  index_attendances_on_attendable_type_and_attendable_id  (attendable_type,attendable_id)
 #
 class AttendanceSerializer < ApplicationSerializer
-  attributes :date, :status, :note, :attendable_type
+  attributes :date, :status, :note, :attendable_type, :attendable_id
   belongs_to :attendable
 end

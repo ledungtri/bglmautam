@@ -26,6 +26,6 @@
 #
 class EnrollmentSerializer < ApplicationSerializer
   attributes :result
-  belongs_to :student
+  belongs_to :person
   belongs_to :classroom
 end

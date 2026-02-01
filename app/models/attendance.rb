@@ -23,6 +23,10 @@ class Attendance < ApplicationRecord
 
   validates_presence_of :date, :status, :attendable_type, :attendable_id
 
+  def self.ransackable_attributes(auth_object = nil)
+    %w[date status attendable_type attendable_id note notice_date]
+  end
+
   before_save :reconcile_status
 
 private

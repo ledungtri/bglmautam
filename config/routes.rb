@@ -61,8 +61,8 @@ Rails.application.routes.draw do
       # Main resources (full CRUD)
       resources :classrooms do
         member do
-          get :students
-          get :teachers
+          get :enrollments
+          get :teaching_assignments
           get :attendances
           get :evaluations
         end

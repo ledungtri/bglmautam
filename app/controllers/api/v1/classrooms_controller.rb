@@ -46,13 +46,13 @@ module Api
         head :no_content
       end
 
-      # GET /api/v1/classrooms/:id/students
-      def students
+      # GET /api/v1/classrooms/:id/enrollments
+      def enrollments
         render_collection @classroom.enrollments
       end
 
-      # GET /api/v1/classrooms/:id/teachers
-      def teachers
+      # GET /api/v1/classrooms/:id/teaching_assignments
+      def teaching_assignments
         render_collection @classroom.teaching_assignments
       end
 

@@ -35,6 +35,14 @@ class TeachingAssignment < ApplicationRecord
 
   validates_presence_of :teacher_id, :classroom_id
 
+  def self.ransackable_attributes(auth_object = nil)
+    %w[position teacher_id classroom_id person_id]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    %w[classroom teacher attendances]
+  end
+
   default_scope { includes(:teacher) }
 
   FIELD_SETS = [
