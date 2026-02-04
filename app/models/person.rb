@@ -64,6 +64,14 @@ class Person < ApplicationRecord
     "#{christian_name} #{name}".squish
   end
 
+  def primary_phone
+    phones.where(primary: true).take&.number
+  end
+
+  def primary_email
+    emails.where(primary: true).take&.address
+  end
+
   def sort_param
     normalize(reverse(name))
   end

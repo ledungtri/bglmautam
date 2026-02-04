@@ -19,7 +19,7 @@
 #
 class PersonSerializer < ApplicationSerializer
   attributes :christian_name, :name, :gender, :birth_date, :birth_place,
-             :data, :nickname, :avatar_url
+             :data, :nickname, :avatar_url, :primary_phone
 
   has_many :enrollments
   has_many :teaching_assignments

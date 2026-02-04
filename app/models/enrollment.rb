@@ -39,6 +39,14 @@ class Enrollment < ApplicationRecord
 
   default_scope { includes(:student) }
 
+  def self.ransackable_attributes(auth_object = nil)
+    %w[classroom_id created_at deleted_at id person_id result student_id updated_at]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    %w[classroom person student]
+  end
+
   FIELD_SETS = [
     {
       key: 'enrollment',
