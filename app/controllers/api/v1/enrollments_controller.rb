@@ -7,8 +7,8 @@ module Api
 
       # GET /api/v1/enrollments
       def index
-        @enrollments = scope.result.page(params[:page]).per(params[:per_page] || 50)
-        render_collection @enrollments, meta: pagination_meta(@enrollments)
+        @enrollments = scope.result.sort_by(&:sort_param)
+        render_collection @enrollments
       end
 
       # GET /api/v1/enrollments/:id

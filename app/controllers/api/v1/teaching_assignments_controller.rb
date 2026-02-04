@@ -7,8 +7,8 @@ module Api
 
       # GET /api/v1/teaching_assignments
       def index
-        @teaching_assignments = scope.result.page(params[:page]).per(params[:per_page] || 50)
-        render_collection @teaching_assignments, meta: pagination_meta(@teaching_assignments)
+        @teaching_assignments = scope.result.sort_by(&:sort_param)
+        render_collection @teaching_assignments
       end
 
       # GET /api/v1/teaching_assignments/:id

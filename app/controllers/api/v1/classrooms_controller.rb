@@ -48,12 +48,12 @@ module Api
 
       # GET /api/v1/classrooms/:id/enrollments
       def enrollments
-        render_collection @classroom.enrollments
+        render_collection @classroom.enrollments.sort_by(&:sort_param)
       end
 
       # GET /api/v1/classrooms/:id/teaching_assignments
       def teaching_assignments
-        render_collection @classroom.teaching_assignments
+        render_collection @classroom.teaching_assignments.sort_by(&:sort_param)
       end
 
       # GET /api/v1/classrooms/:id/attendances
