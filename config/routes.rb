@@ -70,6 +70,11 @@ Rails.application.routes.draw do
 
       resources :people, only: [:index, :show, :update]
       resources :users, only: [:index, :show, :create, :update, :destroy]
+      resources :data_schemas do
+        collection do
+          get :options
+        end
+      end
 
       # Secondary resources
       resources :enrollments
