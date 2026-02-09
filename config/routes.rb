@@ -60,6 +60,9 @@ Rails.application.routes.draw do
 
       # Main resources (full CRUD)
       resources :classrooms do
+        collection do
+          get :statistics_pdf
+        end
         member do
           get :enrollments
           get :teaching_assignments

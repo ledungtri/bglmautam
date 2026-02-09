@@ -3,7 +3,7 @@
 module Api
   module V1
     class ClassroomsController < BaseController
-      before_action :set_classroom, except: [:index, :create]
+      before_action :set_classroom, except: [:index, :create, :statistics_pdf]
 
       # GET /api/v1/classrooms
       def index
@@ -75,6 +75,24 @@ module Api
       # GET /api/v1/classrooms/:id/evaluations
       def evaluations
         render_collection @classroom.evaluations
+      end
+
+      # GET /api/v1/classrooms/statistics_pdf
+      def statistics_pdf
+        year = params[:year] || Date.current.year
+        classrooms = Classroom.where(year: year)
+                              .where(family: ['Khai Tâm', 'Rước Lễ', 'Thêm Sức', 'Bao Đồng', 'Vào Đời'])
+                              .sort_by(&:sort_param)
+
+        if classrooms.empty?
+          return render json: { error: 'No classrooms found' }, status: :not_found
+        end
+
+        pdf = ClassroomsPdf.new(classrooms)
+        send_data pdf.render,
+                  filename: "Thống Kê Các Lớp Năm Học #{classrooms.first.long_year}.pdf",
+                  type: 'application/pdf',
+                  disposition: 'inline'
       end
 
       private

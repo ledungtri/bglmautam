@@ -1,6 +1,6 @@
 class TeachersContactPdf < Prawn::Document
   def initialize(classroom)
-    super(page_size: 'A4')
+    super(page_size: 'A4', info: { Title: "SĐT GLV #{classroom.name}" })
     self.font_size = 11
     font_families.update('HongHa' => {
       normal: Rails.root.join('app/assets/fonts/UVNHongHa_R.TTF'),

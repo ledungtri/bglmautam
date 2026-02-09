@@ -3,7 +3,7 @@ class AbstractPdf < Prawn::Document
     @title_text = title_text
     @sub_title_text = sub_title_text
 
-    super(page_size: 'A4', page_layout: page_layout, margin: 20)
+    super(page_size: 'A4', page_layout: page_layout, margin: 20, info: { Title: title_text })
     self.font_size = 8
 
     font_families.update('HongHa' => {

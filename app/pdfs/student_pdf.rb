@@ -1,6 +1,6 @@
 class StudentPdf < Prawn::Document
   def initialize(student)
-    super(page_size: 'A4')
+    super(page_size: 'A4', info: { Title: "Sơ Yếu Lý Lịch - #{student.name}" })
     @student = student
     self.font_size = 13
     font_families.update('HongHa' => {
