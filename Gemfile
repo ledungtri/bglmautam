@@ -35,6 +35,9 @@ gem 'bcrypt'
 gem 'prawn'
 gem 'prawn-table'
 
+# For exporting xlsx file
+gem 'caxlsx'
+
 # For backups, generate seeds.rb file
 gem 'seed_dump'
 

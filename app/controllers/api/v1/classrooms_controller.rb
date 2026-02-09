@@ -3,7 +3,7 @@
 module Api
   module V1
     class ClassroomsController < BaseController
-      before_action :set_classroom, except: [:index, :create, :statistics_pdf]
+      before_action :set_classroom, except: [:index, :create, :custom_export, :statistics_pdf]
 
       # GET /api/v1/classrooms
       def index
@@ -75,6 +75,68 @@ module Api
       # GET /api/v1/classrooms/:id/evaluations
       def evaluations
         render_collection @classroom.evaluations
+      end
+
+      # GET /api/v1/classrooms/:id/students_pdf
+      def students_pdf
+        enrollments = @classroom.enrollments.sort_by(&:sort_param)
+        pdf = StudentsPdf.new(enrollments, "Danh Sách Lớp #{@classroom.name}\nNăm Học #{@classroom.long_year}")
+        send_data pdf.render,
+                  filename: "Danh Sách Lớp #{@classroom.name} Năm Học #{@classroom.long_year}.pdf",
+                  type: 'application/pdf',
+                  disposition: 'inline'
+      end
+
+      # GET /api/v1/classrooms/:id/personal_details_pdf
+      def personal_details_pdf
+        students = Student.in_classroom(@classroom).sort_by(&:sort_param)
+        pdf = StudentsPersonalDetailsPdf.new(students)
+        send_data pdf.render,
+                  filename: "Sơ Yếu Lý Lịch Lớp #{@classroom.name} Năm Học #{@classroom.long_year}.pdf",
+                  type: 'application/pdf',
+                  disposition: 'inline'
+      end
+
+      # GET /api/v1/classrooms/:id/students_xlsx
+      def students_xlsx
+        xlsx = StudentsExcelExport.new(@classroom).generate
+        send_data xlsx,
+                  filename: "#{@classroom.name} Năm Học #{@classroom.long_year}.xlsx",
+                  type: 'application/xlsx',
+                  disposition: 'attachment'
+      end
+
+      # GET /api/v1/classrooms/:id/classroom_custom_export
+      def classroom_custom_export
+        pdf = CustomStudentsPdf.new(
+          @classroom,
+          "#{@classroom.name} - #{params[:title]}\nNăm Học #{@classroom.long_year}",
+          params[:page_layout].to_sym,
+          params[:columns].split(','),
+          params[:current_students_only]
+        )
+        send_data pdf.render,
+                  filename: "#{@classroom.name} - #{params[:title]}.pdf",
+                  type: 'application/pdf',
+                  disposition: 'inline'
+      end
+
+      # GET /api/v1/classrooms/custom_export
+      def custom_export
+        year = params[:year] || Date.current.year
+        classrooms = Classroom.where(year: year)
+                              .where(family: ['Khai Tâm', 'Rước Lễ', 'Thêm Sức', 'Bao Đồng', 'Vào Đời'])
+                              .sort_by(&:sort_param)
+
+        if classrooms.empty?
+          return render json: { error: 'No classrooms found' }, status: :not_found
+        end
+
+        pdf = ClassroomsCustomPdf.new(classrooms, params[:title], params[:page_layout].to_sym, params[:columns].split(','))
+        send_data pdf.render,
+                  filename: "#{params[:title]}.pdf",
+                  type: 'application/pdf',
+                  disposition: 'inline'
       end
 
       # GET /api/v1/classrooms/statistics_pdf
