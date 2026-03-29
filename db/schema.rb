@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2026_01_26_165924) do
+ActiveRecord::Schema[7.2].define(version: 2026_03_29_082951) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "unaccent"
@@ -41,6 +41,9 @@ ActiveRecord::Schema[7.2].define(version: 2026_01_26_165924) do
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.datetime "deleted_at", precision: nil
+    t.string "reason"
+    t.integer "substitute_teacher_id"
+    t.string "substitute_lesson"
     t.index ["attendable_type", "attendable_id", "date"], name: "idx_on_attendable_type_attendable_id_date_7297b26825"
     t.index ["attendable_type", "attendable_id"], name: "index_attendances_on_attendable_type_and_attendable_id"
   end

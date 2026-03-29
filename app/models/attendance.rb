@@ -2,16 +2,19 @@
 #
 # Table name: attendances
 #
-#  id              :integer          not null, primary key
-#  attendable_type :string
-#  date            :date             not null
-#  deleted_at      :datetime
-#  note            :string
-#  notice_date     :date
-#  status          :string           not null
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
-#  attendable_id   :integer
+#  id                    :integer          not null, primary key
+#  attendable_type       :string
+#  date                  :date             not null
+#  deleted_at            :datetime
+#  note                  :string
+#  notice_date           :date
+#  reason                :string
+#  status                :string           not null
+#  substitute_lesson     :string
+#  created_at            :datetime         not null
+#  updated_at            :datetime         not null
+#  attendable_id         :integer
+#  substitute_teacher_id :integer
 #
 # Indexes
 #
@@ -20,11 +23,12 @@
 #
 class Attendance < ApplicationRecord
   belongs_to :attendable, polymorphic: true
+  belongs_to :substitute_teacher, class_name: 'Teacher', optional: true
 
   validates_presence_of :date, :status, :attendable_type, :attendable_id
 
   def self.ransackable_attributes(auth_object = nil)
-    %w[date status attendable_type attendable_id note notice_date]
+    %w[date status reason substitute_teacher_id substitute_lesson attendable_type attendable_id note notice_date]
   end
 
   before_save :reconcile_status

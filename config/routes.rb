@@ -88,6 +88,8 @@ Rails.application.routes.draw do
       resources :enrollments
       resources :teaching_assignments
       resources :attendances, only: [:index, :show, :create, :update, :destroy]
+      resources :evaluations, only: [:create, :update, :destroy]
+      resources :grades, only: [:create, :update, :destroy]
 
       # Search
       get '/search', to: 'search#index'

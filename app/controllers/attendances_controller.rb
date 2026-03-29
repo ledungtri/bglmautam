@@ -2,16 +2,19 @@
 #
 # Table name: attendances
 #
-#  id              :integer          not null, primary key
-#  attendable_type :string
-#  date            :date             not null
-#  deleted_at      :datetime
-#  note            :string
-#  notice_date     :date
-#  status          :string           not null
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
-#  attendable_id   :integer
+#  id                    :integer          not null, primary key
+#  attendable_type       :string
+#  date                  :date             not null
+#  deleted_at            :datetime
+#  note                  :string
+#  notice_date           :date
+#  reason                :string
+#  status                :string           not null
+#  substitute_lesson     :string
+#  created_at            :datetime         not null
+#  updated_at            :datetime         not null
+#  attendable_id         :integer
+#  substitute_teacher_id :integer
 #
 # Indexes
 #

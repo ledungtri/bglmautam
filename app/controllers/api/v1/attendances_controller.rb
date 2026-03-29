@@ -69,7 +69,7 @@ module Api
       end
 
       def attendance_params
-        params.require(:attendance).permit(:attendable_type, :attendable_id, :date, :status, :note)
+        params.require(:attendance).permit(:attendable_type, :attendable_id, :date, :status, :reason, :substitute_teacher_id, :substitute_lesson, :note)
       end
 
       def authorize_attendance
