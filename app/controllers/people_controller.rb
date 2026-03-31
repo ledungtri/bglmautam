@@ -19,7 +19,12 @@ class PeopleController < ApplicationController
   before_action :set_person, except: %i[index create]
 
   def index
+     authorize Person
 
+    @teaching_assignments = TeachingAssignment.joins(:classroom).where('classrooms.year = ?', @current_year).sort_by(&:sort_param)
+    respond_to do |format|
+      format.html
+    end
   end
 
   def show
