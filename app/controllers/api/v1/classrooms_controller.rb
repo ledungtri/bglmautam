@@ -169,7 +169,7 @@ module Api
           enrollments = classroom.enrollments.includes(:grades, :attendances, :evaluation)
           instructors = serialize(classroom.teaching_assignments.includes(:person))
 
-          grade_types = ['Giữa HK 1', 'Cuối HK1', 'Giữa HK2', 'Cuối HK2']
+          grade_types = ['Giữa HK 1', 'Cuối HK 1', 'Giữa HK 2', 'Cuối HK 2']
           raw_grade_counts = enrollments.flat_map(&:grades).group_by(&:name).transform_values(&:count)
           grade_counts = grade_types.each_with_object({}) { |t, h| h[t] = raw_grade_counts[t] || 0 }
           evaluation_count = enrollments.count { |e| e.evaluation.present? }
