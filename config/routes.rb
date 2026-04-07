@@ -61,6 +61,7 @@ Rails.application.routes.draw do
       # Main resources (full CRUD)
       resources :classrooms do
         collection do
+          get :overview
           get :custom_export
           get :statistics_pdf
         end
