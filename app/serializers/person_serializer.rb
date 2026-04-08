@@ -18,7 +18,7 @@
 #  updated_at     :datetime         not null
 #
 class PersonSerializer < ApplicationSerializer
-  attributes :christian_name, :name, :gender, :birth_date, :birth_place,
+  attributes :christian_name, :name, :full_name, :gender, :birth_date, :birth_place,
              :data, :nickname, :avatar_url, :primary_phone
 
   has_many :enrollments

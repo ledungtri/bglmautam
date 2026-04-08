@@ -167,7 +167,7 @@ module Api
 
         data = classrooms.map do |classroom|
           enrollments = classroom.enrollments.includes(:grades, :attendances, :evaluation)
-          instructors = serialize(classroom.teaching_assignments.includes(:person))
+          teaching_assignments = serialize(classroom.teaching_assignments.includes(:person).sort_by(&:sort_param))
 
           year_start = Date.new(year.to_i, 9, 1).then { |d| d + ((7 - d.wday) % 7) }
           year_end   = Date.new(year.to_i + 1, 5, 31)
@@ -218,7 +218,7 @@ module Api
             year: classroom.year,
             family: classroom.family,
             location: classroom.location,
-            instructors: instructors,
+            teaching_assignments: teaching_assignments,
             enrollment_result_counts: result_counts,
             grade_counts: grade_counts,
             evaluation_count: evaluation_count,
