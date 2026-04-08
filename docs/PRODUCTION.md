@@ -250,7 +250,7 @@ echo "Starting React deployment..."
 cd /root/bglmautam-react
 
 echo "Pulling latest code..."
-git pull origin master
+git pull origin main
 
 echo "Installing dependencies..."
 npm install
