@@ -162,71 +162,7 @@ module Api
       def overview
         authorize Classroom
         year = params[:year] || 2025
-        classrooms = Classroom.where(year: year).sort_by(&:sort_param)
-        result_types = ResourceType.for_key('enrollment_result').pluck(:value)
-
-        data = classrooms.map do |classroom|
-          enrollments = classroom.enrollments.includes(:grades, :attendances, :evaluation)
-          teaching_assignments = serialize(classroom.teaching_assignments.includes(:person).sort_by(&:sort_param))
-
-          year_start = Date.new(year.to_i, 9, 1).then { |d| d + ((7 - d.wday) % 7) }
-          year_end   = Date.new(year.to_i + 1, 5, 31)
-          sundays    = (year_start..year_end).select(&:sunday?)
-
-          active_enrollment_count = enrollments.count { |e| ['Đang Học', 'Lên Lớp'].include?(e.result) }
-
-          grade_status = lambda do |count|
-            return nil if active_enrollment_count == 0
-            coverage = count.to_f / active_enrollment_count
-            if coverage >= 0.9 then 'good'
-            elsif coverage >= 0.7 then 'medium'
-            else 'bad'
-            end
-          end
-
-          grade_types = ['Giữa HK 1', 'Cuối HK 1', 'Giữa HK 2', 'Cuối HK 2']
-          raw_grade_counts = enrollments.flat_map(&:grades).group_by(&:name).transform_values(&:count)
-          grade_counts = grade_types.each_with_object({}) do |t, h|
-            count = raw_grade_counts[t] || 0
-            h[t] = { count: count, status: grade_status.call(count) }
-          end
-          evaluation_raw = enrollments.count { |e| e.evaluation.present? }
-          evaluation_count = { count: evaluation_raw, status: grade_status.call(evaluation_raw) }
-          attendance_dates = enrollments.flat_map(&:attendances).map(&:date)
-          attendance_by_week = sundays.each_with_object({}) do |sunday, h|
-            count = attendance_dates.count { |d| d == sunday }
-            status = if sunday > Date.today || active_enrollment_count == 0
-              nil
-            else
-              coverage = count.to_f / active_enrollment_count
-              if coverage >= 0.9 then 'good'
-              elsif coverage >= 0.7 then 'medium'
-              else 'bad'
-              end
-            end
-            h[sunday.to_s] = { count: count, status: status }
-          end
-
-          enrollments_by_result = enrollments.group_by(&:result)
-          result_counts = result_types.each_with_object({}) do |type, h|
-            h[type] = enrollments_by_result[type]&.count || 0
-          end
-
-          {
-            id: classroom.id,
-            name: classroom.name,
-            year: classroom.year,
-            family: classroom.family,
-            location: classroom.location,
-            teaching_assignments: teaching_assignments,
-            enrollment_result_counts: result_counts,
-            grade_counts: grade_counts,
-            evaluation_count: evaluation_count,
-            attendance_counts_by_week: attendance_by_week
-          }
-        end
-
-        render json: { data: data }
+        render json: { data: ClassroomOverviewQuery.new(year).call }
       end
 
       # GET /api/v1/classrooms/statistics_pdf
