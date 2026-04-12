@@ -1,13 +1,5 @@
 ,,,,,,,,,,,,,,
 Ngày vắng,Lớp,Phụ Trách,Tên Giáo Lý Viên,Tên Ngắn,Vlookup value,Vắng,Sort Vắng,Lý do vắng,Có cần người dạy thế hay không?,Nội dung bài dạy thế,Tên Giáo Lý Viên dạy thế,Giải thích cụ thể hơn về lý do (nếu cần),Ghi chú khác (nếu cần),Timestamp
-07/09/2025,Khai Tâm A,Dự Trưởng,Maria Nguyễn Thị Kim Phương,chị Kim Phương,chị Kim Phương 45907,Vắng Họp,,,,,,,,07/09/2025
-07/09/2025,Khai Tâm A,Vào Đời 1,Têrêsa Nguyễn Đăng Kha,Đăng Kha,Đăng Kha 45907,Vắng Họp,,,,,,,,07/09/2025
-07/09/2025,Khai Tâm B,Vào Đời 2,Maria Nguyễn Lê Hoàng Ngọc,Hoàng Ngọc,Hoàng Ngọc 45907,Vắng Họp,,,,,,,,07/09/2025
-07/09/2025,Rước Lễ 2C,Vào Đời 1,Maria Huỳnh Phương Uyên,Phương Uyên,Phương Uyên 45907,Vắng Họp,,,,,,,,07/09/2025
-07/09/2025,Thêm Sức 1A,Vào Đời 1,Têrêsa Trần Ngọc Anh Thư,Anh Thư 2k7,Anh Thư 2k7 45907,Vắng Họp,,,,,,,,07/09/2025
-07/09/2025,Thêm Sức 1C,Dự Trưởng,Anna Ngô Ngọc Quỳnh Như,Quỳnh Như,Quỳnh Như 45907,Vắng Họp,,,,,,,,07/09/2025
-07/09/2025,Hỗ Trợ,Huynh Trưởng,Phêrô Nguyễn Hùng Anh,Hùng Anh,Hùng Anh 45907,Vắng Họp,,,,,,,,07/09/2025
-07/09/2025,,,Maria Hoàng Thị Anh Thư,Anh Thư 2k6,Anh Thư 2k6 45907,Vắng Họp,,,,,,,,07/09/2025
 14/09/2025,Rước Lễ 2A,Huynh Trưởng,Maria Phan Hồng Ngọc,Hồng Ngọc,Hồng Ngọc 45914,Báo Trễ,,Bận việc đột xuất,,,,,,13/09/2025
 14/09/2025,,,Maria Hoàng Thị Anh Thư,Anh Thư 2k6,Anh Thư 2k6 45914,Báo Trễ,,Ôn thi,,,,,,13/09/2025
 14/09/2025,,,Anna Trần Thị Thanh Thúy,Thanh Thúy,Thanh Thúy 45914,Báo Trễ,,Bệnh / Chấn thương,,,,,,14/09/2025 17:28:13
@@ -50,19 +42,6 @@ Ngày vắng,Lớp,Phụ Trách,Tên Giáo Lý Viên,Tên Ngắn,Vlookup value,V
 28/09/2025,,,Maria Hoàng Thị Anh Thư,Anh Thư 2k6,Anh Thư 2k6 45928,Không Phép,,,,,,,,
 28/09/2025,,,Maria Goretti Trương Phạm Thảo Minh,Thảo Minh,Thảo Minh 45928,Không Phép,,,,,,,,
 28/09/2025,Hỗ Trợ,Huynh Trưởng,Phêrô Nguyễn Hùng Anh,Hùng Anh,Hùng Anh 45928,Không Phép,,Công việc bên trường / chỗ làm / nhà dòng,,,,,,
-28/09/2025,Khai Tâm A,Huynh Trưởng,Maria Nguyễn Đặng Thảo Vy,Thảo Vy,Thảo Vy 45928,Vắng Họp,,,,,,,,
-28/09/2025,Khai Tâm A,Dự Trưởng,Phanxicô Nguyễn Nhật Quang,Nhật Quang,Nhật Quang 45928,Vắng Họp,,,,,,,,
-28/09/2025,Khai Tâm A,Vào Đời 1,Têrêsa Nguyễn Đăng Kha,Đăng Kha,Đăng Kha 45928,Vắng Họp,,,,,,,,
-28/09/2025,Khai Tâm B,Vào Đời 2,Maria Nguyễn Lê Hoàng Ngọc,Hoàng Ngọc,Hoàng Ngọc 45928,Vắng Họp,,,,,,,,
-28/09/2025,Rước Lễ 2A,Dự Trưởng,Giuse Phùng Trần Đăng Khoa,Phùng Khoa,Phùng Khoa 45928,Vắng Họp,,,,,,,,
-28/09/2025,Rước Lễ 2B,Vào Đời 1,Giuse Nguyễn Quốc Huy,Quốc Huy,Quốc Huy 45928,Vắng Họp,,,,,,,,
-28/09/2025,Thêm Sức 1A,Huynh Trưởng,Giuse Lâm Vũ Hoàng Tuấn,Hoàng Tuấn,Hoàng Tuấn 45928,Vắng Họp,,,,,,,,
-28/09/2025,Thêm Sức 1B,Vào Đời 1,Giuse Khấu Tấn Đạt,Tấn Đạt,Tấn Đạt 45928,Vắng Họp,,,,,,,,
-28/09/2025,Thêm Sức 1C,Vào Đời 2,Phêrô Nguyễn Quang Minh,Quang Minh,Quang Minh 45928,Vắng Họp,,,,,,,,
-28/09/2025,Thêm Sức 2A,Vào Đời 2,Maria Nguyễn Anh Thư,Anh Thư 2k9,Anh Thư 2k9 45928,Vắng Họp,,,,,,,,
-28/09/2025,Thêm Sức 2B,Vào Đời 2,Vinh Sơn Nguyễn Cao Bảo Minh,Bảo Minh,Bảo Minh 45928,Vắng Họp,,,,,,,,
-28/09/2025,,,Đaminh Huỳnh Lê Minh Quân,Minh Quân,Minh Quân 45928,Vắng Họp,,,,,,,,
-28/09/2025,Thêm Sức 3C,Vào Đời 2,Maria Hà Thanh Mai,Thanh Mai,Thanh Mai 45928,Vắng Họp,,,,,,,,
 28/09/2025,Rước Lễ 2A,Vào Đời 2,Fx Nguyễn Duy Toàn,Duy Toàn,Duy Toàn 45928,Vắng Lễ,,,,,,,,
 28/09/2025,Thêm Sức 3C,Huynh Trưởng,Phêrô Nguyễn Lâm Chấn Nghi,Chấn Nghi,Chấn Nghi 45928,Vắng Lễ,,,,,,,,
 28/09/2025,Thêm Sức 3C,Vào Đời 2,Maria Hà Thanh Mai,Thanh Mai,Thanh Mai 45928,Vắng Lễ,,,,,,,,
@@ -185,35 +164,6 @@ Ngày vắng,Lớp,Phụ Trách,Tên Giáo Lý Viên,Tên Ngắn,Vlookup value,V
 02/11/2025,Bao Đồng 3B,Tu Sĩ,Maria Trần Bích Thuận,Sơ Thuận (PL),Sơ Thuận (PL) 45963,Không Phép,,,,,Phúc Điền,,,
 02/11/2025,Bao Đồng 3B,Huynh Trưởng,Anna Nguyễn Trần Hoài Phương,Hoài Phương,Hoài Phương 45963,Không Phép,,Bận việc gia đình,,,Phúc Điền,,,
 02/11/2025,Hỗ Trợ,Huynh Trưởng,Phêrô Nguyễn Hùng Anh,Hùng Anh,Hùng Anh 45963,Không Phép,,,,,,,,
-02/11/2025,Khai Tâm A,Huynh Trưởng,Maria Nguyễn Đặng Thảo Vy,Thảo Vy,Thảo Vy 45963,Vắng Họp,,Chăm gia đình,,,,,,
-02/11/2025,Khai Tâm A,Vào Đời 1,Têrêsa Nguyễn Đăng Kha,Đăng Kha,Đăng Kha 45963,Vắng Họp,,Tập hát ca đoàn,,,,,,
-02/11/2025,Khai Tâm B,Vào Đời 2,Maria Nguyễn Lê Hoàng Ngọc,Hoàng Ngọc,Hoàng Ngọc 45963,Vắng Họp,,Đi học,,,,,,
-02/11/2025,Khai Tâm B,Vào Đời 1,Maria Võ Phương Hằng,Phương Hằng,Phương Hằng 45963,Vắng Họp,,Tập hát ca đoàn,,,,,,
-02/11/2025,Khai Tâm B,Vào Đời 1,GBt Nguyễn Nhất Lãm,Nhất Lãm,Nhất Lãm 45963,Vắng Họp,,Đi học,,,,,,
-02/11/2025,,,Maria Hoàng Thị Anh Thư,Anh Thư 2k6,Anh Thư 2k6 45963,Vắng Họp,,Đi học,,,,,,
-02/11/2025,Rước Lễ 2B,Tu Sĩ,Maria Nguyễn Thị Thủy,Sơ Thủy (NK),Sơ Thủy (NK) 45963,Vắng Họp,,,,,,,,
-02/11/2025,Rước Lễ 2B,Dự Trưởng,Phaolô Ngô Lê Bảo Khánh,Bảo Khánh,Bảo Khánh 45963,Vắng Họp,,,,,,,,
-02/11/2025,,Vào Đời 2,Maria Huỳnh Thiên Vân,Thiên Vân,Thiên Vân 45963,Vắng Họp,,,,,,,,
-02/11/2025,Rước Lễ 2B,Vào Đời 1,Giuse Nguyễn Quốc Huy,Quốc Huy,Quốc Huy 45963,Vắng Họp,,,,,,,,
-02/11/2025,Rước Lễ 2C,Vào Đời 2,Phaolô Nguyễn Phúc Nguyên,Phúc Nguyên,Phúc Nguyên 45963,Vắng Họp,,,,,,,,
-02/11/2025,,,Đaminh Huỳnh Lê Minh Quân,Minh Quân,Minh Quân 45963,Vắng Họp,,,,,,,,
-02/11/2025,Rước Lễ 3A,Vào Đời 2,Têrêsa Nguyễn Minh Phương,Minh Phương,Minh Phương 45963,Vắng Họp,,Tập hát ca đoàn,,,,,,
-02/11/2025,Rước Lễ 3B,Tu Sĩ,Cêcilia Đinh Thùy Lan Chi,Sơ Chi (Prado),Sơ Chi (Prado) 45963,Vắng Họp,,,,,,,,
-02/11/2025,Rước Lễ 3C,Tu Sĩ,Maria Nguyễn Mai Thiên Vân,Sơ Vân (AL),Sơ Vân (AL) 45963,Vắng Họp,,,,,,,,
-02/11/2025,Thêm Sức 1C,Tu Sĩ,Têrêsa Trần Thị Vinh,Sơ Vinh (NK),Sơ Vinh (NK) 45963,Vắng Họp,,,,,,,,
-02/11/2025,Thêm Sức 1C,Vào Đời 2,Phêrô Nguyễn Quang Minh,Quang Minh,Quang Minh 45963,Vắng Họp,,,,,,,,
-02/11/2025,Thêm Sức 2A,Vào Đời 2,Giuse Lại Vũ Minh Quang,Minh Quang,Minh Quang 45963,Vắng Họp,,,,,,,,
-02/11/2025,Thêm Sức 2A,Vào Đời 2,Maria Nguyễn Anh Thư,Anh Thư 2k9,Anh Thư 2k9 45963,Vắng Họp,,,,,,,,
-02/11/2025,Thêm Sức 2B,Vào Đời 2,Vinh Sơn Nguyễn Cao Bảo Minh,Bảo Minh,Bảo Minh 45963,Vắng Họp,,,,,,,,
-02/11/2025,Thêm Sức 2C,Vào Đời 1,Tôma Nguyễn Khang Thịnh,Khang Thịnh,Khang Thịnh 45963,Vắng Họp,,Tập hát ca đoàn,,,,,,
-02/11/2025,,,Maria Lương Thị Bích,Sơ Bích (AL),Sơ Bích (AL) 45963,Vắng Họp,,,,,,,,
-02/11/2025,,,Anna Trần Hoàng Thạch An,Thạch An,Thạch An 45963,Vắng Họp,,,,,,,,
-02/11/2025,Thêm Sức 3C,Vào Đời 2,Maria Hà Thanh Mai,Thanh Mai,Thanh Mai 45963,Vắng Họp,,Tập hát ca đoàn,,,,,,
-02/11/2025,Bao Đồng 1A,Dự Trưởng,Agata Nguyễn Thị Kim Hằng,Kim Hằng,Kim Hằng 45963,Vắng Họp,,,,,,,,
-02/11/2025,Bao Đồng 1B,Huynh Trưởng,Giuse Đặng Hoàng Minh,anh Minh,anh Minh 45963,Vắng Họp,,Bận việc gia đình,,,,,,
-02/11/2025,Bao Đồng 2A,Huynh Trưởng,Phêrô Trần Quang Vũ,Quang Vũ,Quang Vũ 45963,Vắng Họp,,Về quê,,,,,,
-02/11/2025,Bao Đồng 2B,Huynh Trưởng,Giuse Lê Quốc Thắng,Quốc Thắng,Quốc Thắng 45963,Vắng Họp,,,,,,,,
-02/11/2025,Bao Đồng 3A,Tu Sĩ,Têrêsa Nguyễn Thị Mỹ Dung,Sơ Dung (NK),Sơ Dung (NK) 45963,Vắng Họp,,,,,,,,
 02/11/2025,,Vào Đời 2,Giuse Lê Bảo Nguyên,Bảo Nguyên,Bảo Nguyên 45963,Vắng Lễ,,đi trễ,,,,,,
 02/11/2025,Thêm Sức 2C,Vào Đời 1,Tôma Nguyễn Khang Thịnh,Khang Thịnh,Khang Thịnh 45963,Vắng Lễ,,,,,,,,
 02/11/2025,Khai Tâm B,Huynh Trưởng,Maria Lê Trâm Anh,Trâm Anh,Trâm Anh 45963,Vắng Lễ,,,,,,,,
@@ -418,7 +368,7 @@ Ngày vắng,Lớp,Phụ Trách,Tên Giáo Lý Viên,Tên Ngắn,Vlookup value,V
 11/01/2026,Thêm Sức 2A,Vào Đời 2,Giuse Lại Vũ Minh Quang,Minh Quang,Minh Quang 46033,Vắng Lễ,,Vướng lịch học thêm,,,,,,
 11/01/2026,Hỗ Trợ,Vào Đời 2,Cêcilia Đoàn Trần Phương Vy,Vy Đoàn,Vy Đoàn 46033,Vắng Lễ,,,,,,,,
 18/01/2026,Khai Tâm A,Huynh Trưởng,Maria Nguyễn Đặng Thảo Vy,Thảo Vy,Thảo Vy 46040,Báo Trễ,,Bận việc gia đình,Không. Đã có Giáo Lý Viên trong lớp phụ trách.,Sinh hoạt lớp+ làm hoa mai,chị Kim Phương,Họp PH cho con,,16/01/2026 20:14:26
-18/01/2026,Rước Lễ 2A,Huynh Trưởng,Maria Phan Hồng Ngọc,Hồng Ngọc,Hồng Ngọc 46040,Báo Trễ,,Công việc bên trường / chỗ làm / nhà dòng,Không. Đã có Giáo Lý Viên trong lớp phụ trách.,Sửa bài thu hoạch,Sơ Uyên (PL),,Báo đột xuất trưa nay nên con/em báo trễ,16/01/2026 15:43:13
+18/01/2026,Rước Lễ 2A,Huynh Trưởng,Maria Phan Hồng Ngọc,Hồng Ngọc,Hồng Ngọc 46040,Báo Trễ,,,Không. Đã có Giáo Lý Viên trong lớp phụ trách.,Sửa bài thu hoạch,Sơ Uyên (PL),,Báo đột xuất trưa nay nên con/em báo trễ,16/01/2026 15:43:13
 18/01/2026,Bao Đồng 3B,Huynh Trưởng,Giuse Nguyễn Phúc Điền,Phúc Điền,Phúc Điền 46040,Báo Trễ,,Bận việc gia đình,Không. Đã có Giáo Lý Viên trong lớp phụ trách.,GG7,Sơ Thuận (PL),,,17/01/2026 17:28:46
 18/01/2026,Khai Tâm B,Vào Đời 2,Maria Nguyễn Lê Hoàng Ngọc,Hoàng Ngọc,Hoàng Ngọc 46040,Có Phép,,Về quê,,,,về quê 49 ngày của ông,,15/01/2026 19:20:29
 18/01/2026,Bao Đồng 3A,Vào Đời 2,Têrêsa Lê Nguyễn Kim Ngân,Kim Ngân,Kim Ngân 46040,Có Phép,,Đi thi,,,,,,15/01/2026 15:28:03
