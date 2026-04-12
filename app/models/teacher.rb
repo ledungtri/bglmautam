@@ -69,7 +69,7 @@ class Teacher < ApplicationRecord
         'occupation' => occupation
       }
     }
-    person.save
+    person.save!
 
     person.phones.where(primary: true).first_or_create.update(number: phone) if phone
     person.emails.where(primary: true).first_or_create.update(address: email) if email
