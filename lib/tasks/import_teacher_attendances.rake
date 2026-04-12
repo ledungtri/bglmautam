@@ -15,40 +15,45 @@ namespace :import do
       exit 1
     end
 
-    # Build classroom name → id lookup: "Khai Tâm A" → id
-    # Classroom#name returns "#{family} #{level}#{group}".strip
-    classroom_lookup = Classroom.where(year: year).index_by(&:name)
+    # Validate attendance statuses exist as resource types
+    valid_statuses = ResourceType.where(key: 'attendance_status').pluck(:value).to_set
+    puts "Known attendance statuses: #{valid_statuses.to_a.join(', ')}"
 
-    # Build teacher name lookup: full_name → teacher, nickname → teacher
-    teacher_by_full_name = Teacher.all.index_by { |t| "#{t.christian_name} #{t.full_name}".strip }
-    teacher_by_nickname  = Teacher.all.index_by { |t| t.nickname.to_s.strip }
+    # Build teacher lookup: limited to teachers with assignments in classrooms for the given year
+    # (including soft-deleted assignments)
+    teachers = Teacher.joins("INNER JOIN teaching_assignments ON teaching_assignments.teacher_id = teachers.id")
+                      .joins("INNER JOIN classrooms ON classrooms.id = teaching_assignments.classroom_id")
+                      .where(classrooms: { year: year, deleted_at: nil })
+                      .distinct
+    teacher_by_full_name = teachers.index_by { |t| "#{t.christian_name} #{t.full_name}".strip }
+    teacher_by_nickname  = teachers.index_by { |t| t.nickname.to_s.strip }
 
-    stats = { created: 0, skipped: 0, errors: 0 }
-    unmatched_classrooms = Set.new
-    unmatched_teachers   = Set.new
+    stats = { created: 0, duplicate: 0, errors: 0 }
+    unknown_statuses = Set.new
 
-    rows = CSV.read(csv_path, headers: true, encoding: 'UTF-8', skip_lines: /^,+$/)
-              .reject { |row| row['Ngày vắng'].blank? || row['Lớp'].blank? || row['Tên Giáo Lý Viên'].blank? }
+    all_rows = CSV.read(csv_path, headers: true, encoding: 'UTF-8', skip_lines: /^,+$/)
+    incomplete = all_rows.count { |row| row['Ngày vắng'].blank? || row['Tên Giáo Lý Viên'].blank? }
+    rows = all_rows.reject { |row| row['Ngày vắng'].blank? || row['Tên Giáo Lý Viên'].blank? }
 
-    puts "Processing #{rows.count} rows..."
+    puts "Processing #{rows.count} rows (#{incomplete} incomplete rows skipped)..."
+    puts
 
     rows.each_with_index do |row, i|
+      line = i + 2
+
       # --- Parse date ---
       begin
         date = Date.strptime(row['Ngày vắng'].strip, '%d/%m/%Y')
       rescue Date::Error
-        puts "  [#{i + 2}] ERROR: invalid date '#{row['Ngày vắng']}'"
+        puts "  [#{line}] ERROR: invalid date '#{row['Ngày vắng']}'"
         stats[:errors] += 1
         next
       end
 
-      # --- Look up classroom ---
-      classroom_name = row['Lớp'].strip
-      classroom = classroom_lookup[classroom_name]
-      unless classroom
-        unmatched_classrooms << classroom_name
-        stats[:skipped] += 1
-        next
+      # --- Check attendance status ---
+      status = row['Vắng']&.strip
+      if status.present? && !valid_statuses.include?(status)
+        unknown_statuses << status
       end
 
       # --- Look up teacher ---
@@ -56,31 +61,47 @@ namespace :import do
       nickname     = row['Tên Ngắn']&.strip
       teacher = teacher_by_full_name[teacher_name] || teacher_by_nickname[nickname.to_s]
       unless teacher
-        unmatched_teachers << teacher_name
-        stats[:skipped] += 1
+        puts "  [#{line}] ERROR: teacher not found '#{teacher_name}'"
+        stats[:errors] += 1
         next
       end
 
-      # --- Look up teaching assignment ---
-      position = row['Phụ Trách']&.strip
-      assignment = TeachingAssignment.find_by(teacher_id: teacher.id, classroom_id: classroom.id)
+      # --- Find teaching assignment for year, fall back to last deleted ---
+      assignment = TeachingAssignment
+                     .joins(:classroom)
+                     .where(teacher_id: teacher.id, classrooms: { year: year })
+                     .first
+
       unless assignment
-        puts "  [#{i + 2}] SKIP: no teaching assignment for #{teacher_name} in #{classroom_name}"
-        stats[:skipped] += 1
-        next
+        assignment = TeachingAssignment
+                       .with_deleted
+                       .joins(:classroom)
+                       .where(teacher_id: teacher.id, classrooms: { year: year })
+                       .order(deleted_at: :desc)
+                       .first
+        if assignment
+          puts "  [#{line}] WARN: using deleted assignment for '#{teacher_name}' (deleted #{assignment.deleted_at&.to_date})"
+        else
+          puts "  [#{line}] ERROR: no assignment found for '#{teacher_name}' in year #{year}"
+          stats[:errors] += 1
+          next
+        end
       end
 
-      # --- Skip if attendance already exists for this assignment + date ---
-      if Attendance.exists?(attendable: assignment, date: date)
-        stats[:skipped] += 1
+      # --- Skip duplicates ---
+      if Attendance.with_deleted.exists?(attendable: assignment, date: date)
+        stats[:duplicate] += 1
         next
       end
 
       # --- Look up substitute teacher ---
       sub_name    = row['Tên Giáo Lý Viên dạy thế']&.strip
       sub_teacher = sub_name.present? ? (teacher_by_full_name[sub_name] || teacher_by_nickname[sub_name]) : nil
+      if sub_name.present? && sub_teacher.nil?
+        puts "  [#{line}] WARN: substitute teacher not found '#{sub_name}', importing without substitute"
+      end
 
-      # --- Build note from extra explanation columns ---
+      # --- Build note ---
       note_parts = [
         row['Giải thích cụ thể hơn về lý do (nếu cần)'],
         row['Ghi chú khác (nếu cần)']
@@ -92,7 +113,7 @@ namespace :import do
         Attendance.create!(
           attendable:             assignment,
           date:                   date,
-          status:                 row['Vắng']&.strip,
+          status:                 status,
           reason:                 row['Lý do vắng']&.strip.presence,
           substitute_teacher_id:  sub_teacher&.id,
           substitute_lesson:      row['Nội dung bài dạy thế']&.strip.presence,
@@ -102,23 +123,19 @@ namespace :import do
 
       stats[:created] += 1
     rescue => e
-      puts "  [#{i + 2}] ERROR: #{e.message}"
+      puts "  [#{line}] ERROR: #{e.message}"
       stats[:errors] += 1
     end
 
-    puts "\n--- Done ---"
-    puts "  Created : #{stats[:created]}"
-    puts "  Skipped : #{stats[:skipped]}"
-    puts "  Errors  : #{stats[:errors]}"
+    puts
+    puts "--- Done ---"
+    puts "  Created    : #{stats[:created]}"
+    puts "  Duplicates : #{stats[:duplicate]}"
+    puts "  Errors     : #{stats[:errors]}"
 
-    unless unmatched_classrooms.empty?
-      puts "\nUnmatched classrooms (check YEAR or spelling):"
-      unmatched_classrooms.sort.each { |name| puts "  - #{name}" }
-    end
-
-    unless unmatched_teachers.empty?
-      puts "\nUnmatched teachers (check full_name / nickname):"
-      unmatched_teachers.sort.each { |name| puts "  - #{name}" }
+    unless unknown_statuses.empty?
+      puts "\nUnknown attendance statuses (add to resource_types):"
+      unknown_statuses.sort.each { |s| puts "  - #{s}" }
     end
   end
 end
