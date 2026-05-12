@@ -170,6 +170,14 @@ class ClassroomsController < ApplicationController
               disposition: 'inline'
   end
 
+  def students_xlsx
+    xlsx = StudentsExcelExport.new(@classroom).generate
+    send_data xlsx,
+              filename: "#{@classroom.name} Năm Học #{@classroom.long_year}.xlsx",
+              type: 'application/xlsx',
+              disposition: 'attachment'
+  end
+
   def attendances
     authorize @classroom, :show?
 

@@ -23,6 +23,7 @@ Rails.application.routes.draw do
     get '/evaluations', to: 'classrooms#evaluations'
     get '/custom_export', to: 'classrooms#custom_export_form'
     post '/custom_export', to: 'classrooms#custom_export'
+    get '/students_xlsx', to: 'classrooms#students_xlsx'
   end
 
   secondary_resources = [
