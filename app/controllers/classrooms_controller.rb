@@ -198,6 +198,16 @@ class ClassroomsController < ApplicationController
 
   def evaluations
     authorize @classroom, :update_evaluation?
+    respond_to do |format|
+      format.html
+      format.pdf do
+        pdf = EvaluationsPdf.new(@classroom)
+        send_data pdf.render,
+                  filename: "#{@classroom.name} - Nhận Xét & Điểm Số.pdf",
+                  type: 'application/pdf',
+                  disposition: 'inline'
+      end
+    end
   end
 
 private

@@ -22,6 +22,7 @@
     ]
 
     admin_actions = [
+      { label: 'In Nhận Xét', path: classroom_evaluations_path(@classroom, format: :pdf), params: { style: :compact } },
       { label: 'In DS Dán Bảng', path: classroom_path(format: :pdf), params: { style: :compact } },
       { label: 'In SĐT GLV', path: classroom_path(format: :pdf), params: { style: :teachers_contact } }
     ]
