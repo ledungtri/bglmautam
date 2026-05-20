@@ -58,6 +58,14 @@ class StudentsController < ApplicationController
            send_data pdf.render, filename: "Danh Sách Thiếu Nhi Năm Học #{@current_year_long}.pdf", type: 'application/pdf', disposition: 'inline'
          end
        end
+       format.xlsx do
+         title = "Danh Sách Thiếu Nhi Năm Học #{@current_year_long}"
+         xlsx = StudentsExcelExport.new(@enrollments, title).generate
+         send_data xlsx,
+                   filename: "#{title}.xlsx",
+                   type: 'application/xlsx',
+                   disposition: 'attachment'
+       end
      end
    end
 

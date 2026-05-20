@@ -1,14 +1,14 @@
 class StudentsExcelExport
-  def initialize(classroom)
-    @classroom = classroom
-    @enrollments = classroom.enrollments.sort_by(&:sort_param)
+  def initialize(enrollments, title)
+    @enrollments = enrollments.sort_by(&:sort_param)
+    @title = title
   end
 
   def generate
     package = Axlsx::Package.new
     workbook = package.workbook
 
-    workbook.add_worksheet(name: @classroom.name) do |sheet|
+    workbook.add_worksheet(name: @title.truncate(31)) do |sheet|
       header_style = sheet.styles.add_style(b: true, alignment: { horizontal: :center })
 
       sheet.add_row(
@@ -22,7 +22,7 @@ class StudentsExcelExport
           'Tên Thánh Cha', 'Họ và Tên Cha', 'ĐT Cha',
           'Tên Thánh Mẹ', 'Họ và Tên Mẹ', 'ĐT Mẹ',
           'Số Nhà', 'Đường', 'Phường/Xã', 'Quận/Huyện', 'Xóm Giáo',
-          'Kết Quả'
+          'Lớp', 'Kết Quả'
         ],
         style: header_style
       )
@@ -43,9 +43,9 @@ class StudentsExcelExport
             student.father_christian_name, student.father_full_name, student.father_phone,
             student.mother_christian_name, student.mother_full_name, student.mother_phone,
             student.street_number, student.street_name, student.ward, student.district, student.area,
-            enrollment.result
+            enrollment.classroom.name, enrollment.result
           ],
-          types: Array.new(27, :string).unshift(:integer),
+          types: Array.new(28, :string).unshift(:integer),
           style: [
             nil,
             nil, nil, nil, nil, nil, text_style,
@@ -53,7 +53,7 @@ class StudentsExcelExport
             nil, nil, text_style,
             nil, nil, text_style,
             nil, nil, nil, nil, nil,
-            nil
+            nil, nil
           ]
         )
       end

@@ -1,9 +1,10 @@
 <%
   actions = [
     { label: 'In Danh Sách', path: students_path(format: "pdf") },
-    { label: 'In SYLL Trống', path: students_path(format: "pdf"), params: { style: :empty } }
+    { label: 'In SYLL Trống', path: students_path(format: "pdf"), params: { style: :empty } },
+    { label: 'Xuất Excel', path: students_path(format: "xlsx") }
   ]
 %>
 
-<%= render 'info_table', enrollments: @enrollments %>
 <%= render 'components/button_group', heading: 'In / Ấn', actions: actions %>
+<%= render 'info_table', enrollments: @enrollments %>

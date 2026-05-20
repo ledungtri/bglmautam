@@ -171,7 +171,7 @@ class ClassroomsController < ApplicationController
   end
 
   def students_xlsx
-    xlsx = StudentsExcelExport.new(@classroom).generate
+    xlsx = StudentsExcelExport.new(@classroom.enrollments, @classroom.name).generate
     send_data xlsx,
               filename: "#{@classroom.name} Năm Học #{@classroom.long_year}.xlsx",
               type: 'application/xlsx',
