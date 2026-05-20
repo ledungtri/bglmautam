@@ -1,6 +1,6 @@
 class EmailPolicy < ApplicationPolicy
   def create?
-    true # TODO: Restrict policy
+    admin_or_owner_of_person?(record.emailable)
   end
 
   alias update? create?

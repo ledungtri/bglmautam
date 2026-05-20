@@ -1,6 +1,6 @@
 class PhonePolicy < ApplicationPolicy
   def create?
-    true # TODO: Restrict policy
+    admin_or_owner_of_person?(record.phoneable)
   end
 
   alias update? create?

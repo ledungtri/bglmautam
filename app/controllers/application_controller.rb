@@ -32,6 +32,10 @@ private
     @current_user = User.find(session[:user_id]) if session[:user_id]
   end
 
+  def pundit_user
+    UserContext.new(user: @current_user, current_year: @current_year)
+  end
+
   def auth
     redirect_to login_path unless current_user
   end

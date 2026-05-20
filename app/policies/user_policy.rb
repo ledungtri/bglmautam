@@ -4,9 +4,12 @@ class UserPolicy < ApplicationPolicy
   end
 
   def create?
+      admin?
+  end
+
+  def update?
     admin_or_self?(record)
   end
 
-  alias update? create?
   alias destroy? create?
 end

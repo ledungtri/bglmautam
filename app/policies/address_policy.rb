@@ -1,6 +1,6 @@
 class AddressPolicy < ApplicationPolicy
   def create?
-    true # TODO: Restrict policy
+    admin_or_owner_of_person?(record.addressable)
   end
 
   alias update? create?

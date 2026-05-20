@@ -33,6 +33,10 @@ module Api
         unauthorized
       end
 
+      def pundit_user
+        UserContext.new(user: @current_user, current_year: params[:year]&.to_i || 2025)
+      end
+
       def pagination_meta(collection)
         {
           current_page: collection.current_page,

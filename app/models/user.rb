@@ -42,54 +42,6 @@ class User < ApplicationRecord
     }
   ]
 
-  def admin_or_self?(user)
-    admin? || self?(user)
-  end
-
-  def admin_or_teacher_of_classroom?(classroom, year)
-    admin? || teacher_of_classroom?(classroom, year)
-  end
-
-  def admin_or_self_teacher?(teacher)
-    admin? || self_teacher?(teacher)
-  end
-
-  def admin_or_self_teaching_assignment?(teaching_assignment)
-    admin? || self_teaching_assignment?(teaching_assignment)
-  end
-
-  def admin_or_teacher_of_enrollment?(enrollment, year)
-    admin? || teacher_of_enrollment?(enrollment, year)
-  end
-
-  def admin_or_teacher_of_student?(student, year)
-    admin? || teacher_of_student?(student, year)
-  end
-
-  def self?(user)
-    self == user
-  end
-
-  def self_teacher?(teacher)
-    self?(teacher.user)
-  end
-
-  def self_teaching_assignment?(teaching_assignment)
-    self_teacher?(teaching_assignment.teacher)
-  end
-
-  def teacher_of_classroom?(classroom, year)
-    self.teacher&.teaching_assignments&.for_year(year)&.map(&:classroom)&.include?(classroom)
-  end
-
-  def teacher_of_enrollment?(enrollment, year)
-    teacher_of_classroom?(enrollment&.classroom, year)
-  end
-
-  def teacher_of_student?(student, year)
-    teacher_of_enrollment?(student.enrollments.for_year(year)&.first, year)
-  end
-
 private
 
   def sync_person
