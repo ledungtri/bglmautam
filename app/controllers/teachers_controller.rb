@@ -42,6 +42,13 @@ class TeachersController < ApplicationController
                   type: 'application/pdf',
                   disposition: 'inline'
       end
+      format.xlsx do
+        xlsx = TeachersExcelExport.new(@teaching_assignments, @current_year).generate
+        send_data xlsx,
+                  filename: "Danh Sách GLV Năm Học #{@current_year_long}.xlsx",
+                  type: 'application/xlsx',
+                  disposition: 'attachment'
+      end
     end
   end
 

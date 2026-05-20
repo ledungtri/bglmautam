@@ -2,7 +2,8 @@
   actions = [
     { label: 'In Danh Sách GLV', path: teachers_path(format: :pdf) },
     { label: 'In Bảng Tự Tạo', path: teachers_custom_export_path },
-    { label: 'Điểm Danh', path: 'teachers/attendances' }
+    { label: 'Điểm Danh', path: 'teachers/attendances' },
+    { label: 'Xuất Excel', path: teachers_path(format: :xlsx) }
   ]
 %>
 
