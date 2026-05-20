@@ -53,7 +53,7 @@
 <%= render 'components/form/form',
            heading: 'Thông tin đăng nhập',
            object: user,
-           editable: user && @current_user.admin_or_self_teacher?(teacher) if teacher
+           editable: user && policy(teacher).update? if teacher
 %>
 
 <%= render 'components/button_group', heading: 'In Ấn', actions: [{ label: 'In Sơ Yếu Lý Lịch', path: student_path(format: "pdf") }] if student %>

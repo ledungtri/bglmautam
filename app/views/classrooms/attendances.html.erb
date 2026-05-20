@@ -10,7 +10,7 @@
   sundays = (start_date..end_date).to_a.select {|k| k.wday == 0}
 
   enrollments = @classroom.enrollments.where(result: 'Đang Học').reorder(nil).sort_by(&:sort_param)
-  editable =  @current_user.admin_or_teacher_of_classroom?(@classroom, @current_year)
+  editable = policy(@classroom).update_evaluation?
   attendances = Attendance.where(attendable: enrollments)
 %>
 

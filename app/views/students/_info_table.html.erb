@@ -31,7 +31,7 @@
             <td style='width:  73px'><%= classroom ? (link_to classroom.name, classroom) : '' %></td>
             <td style='width:  73px'>
               <%=
-                editable = @current_user.admin_or_teacher_of_enrollment?(enrollment, @current_year)
+                editable = policy(enrollment).update?
                 render 'components/form/inline_select', object: enrollment, field: :result, enabled: editable if enrollment.id
               %>
             </td>

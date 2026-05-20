@@ -2,7 +2,7 @@
 <%= render 'components/collapsible', heading: 'Hành Trình Thiêng Liêng' do %>
   <% enrollments ||= [] %>
   <% enrollments.each do |enrollment| %>
-    <%= render 'enrollments/detail', enrollment: enrollment, editable: @current_user.admin_or_teacher_of_enrollment?(enrollment, @current_year) %>
+    <%= render 'enrollments/detail', enrollment: enrollment, editable: policy(enrollment).update? %>
   <% end %>
   <%= render('enrollments/new') if @student %>
 <% end unless enrollments.empty? && !@student %>

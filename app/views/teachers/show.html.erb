@@ -11,7 +11,7 @@
 <%= render 'components/form/form',
            heading: 'Thông Tin Giáo Lý Viên',
            object: @teacher,
-           editable: @current_user.admin_or_self_teacher?(@teacher)
+           editable: policy(@teacher).update?
 %>
 <%= render 'teaching_assignments/index', teaching_assignments: @teacher.teaching_assignments, teacher: @teacher %>
 <% user = @teacher.user %>
@@ -19,10 +19,10 @@
 <%= render 'components/form/form',
            heading: 'Thông tin đăng nhập',
            object: user,
-           editable: @current_user.admin_or_self_teacher?(@teacher) if user
+           editable: policy(@teacher).update? if user
 %>
 
-<% if @current_user.admin? && @current_user.self_teacher?(@teacher) %>
+<% if @current_user.admin? && @current_user == @teacher.user %>
   <%= render 'components/button_group', heading: 'Chức năng Admin', actions: admin_actions %>
 <% end %>
 
