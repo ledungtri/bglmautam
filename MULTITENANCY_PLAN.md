@@ -279,7 +279,7 @@ end
 ## Progress Checklist
 
 - [x] Phase 1: Organization model + acts_as_tenant gem installed
-- [ ] Phase 2: Nullable org_id columns on all 12 tables (dev + prod)
+- [x] Phase 2: Nullable org_id columns on all 12 tables (dev + prod)
 - [ ] Phase 3: Mautam org seeded + all prod rows backfilled + verified
 - [ ] Phase 4: NOT NULL enforced, models wired, controllers set tenant, seeds updated
 - [ ] Phase 5: super_admin flag + tenant rake task

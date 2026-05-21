@@ -9,16 +9,19 @@
 #  username        :string           not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  organization_id :bigint
 #  person_id       :integer
 #  teacher_id      :integer
 #
 # Indexes
 #
-#  index_users_on_deleted_at  (deleted_at)
-#  index_users_on_person_id   (person_id)
+#  index_users_on_deleted_at       (deleted_at)
+#  index_users_on_organization_id  (organization_id)
+#  index_users_on_person_id        (person_id)
 #
 # Foreign Keys
 #
+#  fk_rails_...  (organization_id => organizations.id)
 #  fk_rails_...  (person_id => people.id)
 #
 class UsersController < SecondaryResourcesController

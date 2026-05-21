@@ -31,11 +31,17 @@
 #  ward                  :string
 #  created_at            :datetime         not null
 #  updated_at            :datetime         not null
+#  organization_id       :bigint
 #  person_id             :integer
 #
 # Indexes
 #
-#  index_students_on_deleted_at  (deleted_at)
+#  index_students_on_deleted_at       (deleted_at)
+#  index_students_on_organization_id  (organization_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (organization_id => organizations.id)
 #
 class Student < ApplicationRecord
   include PersonConcern

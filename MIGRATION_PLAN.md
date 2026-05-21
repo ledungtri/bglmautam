@@ -20,7 +20,7 @@
 | I | Rails: Students API endpoint | [ ] Pending |
 | J | React: Student list/detail pages | [ ] Pending |
 | K | Rails: Permission system refactor (Pundit + UserContext) | [x] Complete |
-| L | Rails: Multi-tenancy (acts_as_tenant) | [ ] In Progress — Phase 1 done |
+| L | Rails: Multi-tenancy (acts_as_tenant) | [ ] In Progress — Phases 1-2 done |
 | M | React: Attendance editing, Search, PDF buttons, Mobile nav | [ ] Pending |
 | N | Rails + React: Production config fixes | [ ] Pending |
 | O | Rails: Flatten Phone/Email/Address into Person columns | [x] Complete |
@@ -625,7 +625,7 @@ See `MULTITENANCY_PLAN.md` for full detail. Current state:
 | Phase | Description | Status |
 |-------|-------------|--------|
 | 1 | Organization model + acts_as_tenant gem | ✅ Done |
-| 2 | Add nullable organization_id to all 15 tables | [ ] Pending |
+| 2 | Add nullable organization_id to all 12 tables | ✅ Done |
 | 3 | Seed Mautam org + backfill prod data | [ ] Pending |
 | 4 | Enforce NOT NULL + wire acts_as_tenant into models/controllers | [ ] Pending |
 

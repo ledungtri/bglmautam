@@ -2,18 +2,35 @@
 #
 # Table name: people
 #
-#  id             :integer          not null, primary key
-#  avatar_url     :string
-#  birth_date     :date             not null
-#  birth_place    :string
-#  christian_name :string
-#  data           :jsonb
-#  deleted_at     :datetime
-#  gender         :string           not null
-#  name           :string           not null
-#  nickname       :string
-#  created_at     :datetime         not null
-#  updated_at     :datetime         not null
+#  id              :integer          not null, primary key
+#  area            :string
+#  avatar_url      :string
+#  birth_date      :date             not null
+#  birth_place     :string
+#  christian_name  :string
+#  city            :string
+#  data            :jsonb
+#  deleted_at      :datetime
+#  district        :string
+#  email           :string
+#  gender          :string           not null
+#  name            :string           not null
+#  nickname        :string
+#  phone           :string
+#  street_name     :string
+#  street_number   :string
+#  ward            :string
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  organization_id :bigint
+#
+# Indexes
+#
+#  index_people_on_organization_id  (organization_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (organization_id => organizations.id)
 #
 class Person < ApplicationRecord
   include VnTextUtils

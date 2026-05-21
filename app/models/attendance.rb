@@ -14,12 +14,18 @@
 #  created_at            :datetime         not null
 #  updated_at            :datetime         not null
 #  attendable_id         :integer
+#  organization_id       :bigint
 #  substitute_teacher_id :integer
 #
 # Indexes
 #
 #  idx_on_attendable_type_attendable_id_date_7297b26825    (attendable_type,attendable_id,date)
 #  index_attendances_on_attendable_type_and_attendable_id  (attendable_type,attendable_id)
+#  index_attendances_on_organization_id                    (organization_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (organization_id => organizations.id)
 #
 class Attendance < ApplicationRecord
   belongs_to :attendable, polymorphic: true

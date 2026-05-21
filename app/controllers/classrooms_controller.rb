@@ -2,19 +2,25 @@
 #
 # Table name: classrooms
 #
-#  id         :integer          not null, primary key
-#  deleted_at :datetime
-#  family     :string
-#  group      :string
-#  level      :integer
-#  location   :string
-#  year       :integer          not null
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id              :integer          not null, primary key
+#  deleted_at      :datetime
+#  family          :string
+#  group           :string
+#  level           :integer
+#  location        :string
+#  year            :integer          not null
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  organization_id :bigint
 #
 # Indexes
 #
-#  index_classrooms_on_deleted_at  (deleted_at)
+#  index_classrooms_on_deleted_at       (deleted_at)
+#  index_classrooms_on_organization_id  (organization_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (organization_id => organizations.id)
 #
 class ClassroomsController < ApplicationController
   before_action :set_classroom, except: %i[index new create classrooms_custom_export_form classrooms_custom_export]
