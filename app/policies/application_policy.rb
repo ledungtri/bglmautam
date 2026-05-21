@@ -69,7 +69,4 @@ private
     user.teacher&.teaching_assignments&.for_year(@current_year)&.map(&:classroom)&.include?(enrollment.classroom)
   end
 
-  def admin_or_owner_of_person?(person)
-    admin? || user.person == person
-  end
 end

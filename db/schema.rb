@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2026_03_29_082951) do
+ActiveRecord::Schema[7.2].define(version: 2026_05_21_192452) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -131,7 +131,7 @@ ActiveRecord::Schema[7.2].define(version: 2026_03_29_082951) do
     t.string "christian_name"
     t.string "name", null: false
     t.string "gender", null: false
-    t.date "birth_date"
+    t.date "birth_date", null: false
     t.string "birth_place"
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
@@ -139,6 +139,14 @@ ActiveRecord::Schema[7.2].define(version: 2026_03_29_082951) do
     t.jsonb "data"
     t.string "nickname"
     t.string "avatar_url"
+    t.string "phone"
+    t.string "email"
+    t.string "street_number"
+    t.string "street_name"
+    t.string "ward"
+    t.string "district"
+    t.string "city"
+    t.string "area"
   end
 
   create_table "phones", id: :serial, force: :cascade do |t|

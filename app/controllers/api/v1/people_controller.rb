@@ -53,8 +53,9 @@ module Api
 
       def person_params
         params.require(:person).permit(
-          :first_name, :middle_name, :last_name, :full_name,
-          :christian_name, :date_of_birth, :sex, :avatar_url
+          :christian_name, :name, :nickname, :birth_date, :birth_place, :gender, :avatar_url,
+          :phone, :email,
+          :street_number, :street_name, :ward, :district, :city, :area
         )
       end
     end

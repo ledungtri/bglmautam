@@ -13,22 +13,6 @@
            object: @person,
            editable: editable
 %>
-<%= render 'components/form/form',
-           heading: 'Số Điện Thoại',
-           object: @person.phones.first_or_initialize(primary: true),
-           editable: editable
-%>
-<%= render 'components/form/form',
-           heading: 'Email',
-           object: @person.emails.first_or_initialize(primary: true),
-           editable: editable
-%>
-<%= render 'components/form/form',
-           heading: 'Địa Chỉ Nhà',
-           object: @person.addresses.first_or_initialize(primary: true),
-           editable: editable
-%>
-
 <%= render 'components/form/data_fields',
            object: @person,
            schema_key: 'sacraments',

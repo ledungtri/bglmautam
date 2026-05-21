@@ -6,7 +6,7 @@
 #
 #  id             :integer          not null, primary key
 #  avatar_url     :string
-#  birth_date     :date
+#  birth_date     :date             not null
 #  birth_place    :string
 #  christian_name :string
 #  data           :jsonb
@@ -19,10 +19,10 @@
 #
 class PersonSerializer < ApplicationSerializer
   attributes :christian_name, :name, :full_name, :gender, :birth_date, :birth_place,
-             :data, :nickname, :avatar_url, :primary_phone
+             :data, :nickname, :avatar_url,
+             :phone, :email,
+             :street_number, :street_name, :ward, :district, :city, :area
 
   has_many :enrollments
   has_many :teaching_assignments
-  has_many :phones
-  has_many :addresses
 end

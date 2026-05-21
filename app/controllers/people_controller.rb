@@ -4,7 +4,7 @@
 #
 #  id             :integer          not null, primary key
 #  avatar_url     :string
-#  birth_date     :date
+#  birth_date     :date             not null
 #  birth_place    :string
 #  christian_name :string
 #  data           :jsonb
@@ -48,13 +48,8 @@ class PeopleController < ApplicationController
 
   def person_params
     params.require(:person).permit(
-      :christian_name,
-      :name,
-      :nickname,
-      :birth_date,
-      :birth_place,
-      :gender,
-      :avatar_url
+      :christian_name, :name, :nickname, :birth_date, :birth_place, :gender, :avatar_url,
+      :phone, :email, :street_number, :street_name, :ward, :district, :city, :area
     )
   end
 end

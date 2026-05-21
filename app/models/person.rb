@@ -4,7 +4,7 @@
 #
 #  id             :integer          not null, primary key
 #  avatar_url     :string
-#  birth_date     :date
+#  birth_date     :date             not null
 #  birth_place    :string
 #  christian_name :string
 #  data           :jsonb
@@ -20,7 +20,8 @@ class Person < ApplicationRecord
   include DataFieldable
 
   def self.ransackable_attributes(auth_object = nil)
-    %w[christian_name name gender birth_date birth_place nickname created_at updated_at]
+    %w[christian_name name gender birth_date birth_place nickname phone email
+       street_number street_name ward district city area created_at updated_at]
   end
 
   def self.ransackable_associations(auth_object = nil)
@@ -30,10 +31,6 @@ class Person < ApplicationRecord
   has_one :user
   has_one :teacher
   has_one :student
-  has_many :phones, as: :phoneable
-  has_many :emails, as: :emailable
-  has_many :addresses, as: :addressable
-
   has_many :enrollments
   # has_many :classrooms, through: :enrollments
 
@@ -55,7 +52,15 @@ class Person < ApplicationRecord
         { field_name: :nickname, label: 'Tên Ngắn', display_permission: -> (user) { user.admin? } },
         { field_name: :birth_date, label: 'Ngày Sinh', field_type: :date_field },
         { field_name: :birth_place, label: 'Nơi Sinh' },
-        { field_name: :avatar_url, label: 'Ảnh Đại Diện' },
+        { field_name: :phone, label: 'Số Điện Thoại' },
+        { field_name: :email, label: 'Email' },
+        { field_name: :street_number, label: 'Số Nhà' },
+        { field_name: :street_name, label: 'Đường' },
+        { field_name: :ward, label: 'Phường/Xã' },
+        { field_name: :district, label: 'Quận/Huyện' },
+        { field_name: :city, label: 'Thành Phố' },
+        { field_name: :area, label: 'Xóm Giáo' },
+        { field_name: :avatar_url, label: 'Ảnh Đại Diện' }
       ]
     }
   ]
@@ -64,12 +69,12 @@ class Person < ApplicationRecord
     "#{christian_name} #{name}".squish
   end
 
-  def primary_phone
-    phones.where(primary: true).take&.number
-  end
-
-  def primary_email
-    emails.where(primary: true).take&.address
+  def full_address
+    parts = [
+      [street_number, street_name].compact.join(" ").presence,
+      ward, district, city
+    ].compact.reject(&:empty?)
+    parts.join(", ").presence
   end
 
   def sort_param

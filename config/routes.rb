@@ -32,10 +32,7 @@ Rails.application.routes.draw do
     :evaluations,
     :grades,
     :users,
-    :attendances,
-    :phones,
-    :emails,
-    :addresses
+    :attendances
   ]
   resources :users, only: [:index]
 
