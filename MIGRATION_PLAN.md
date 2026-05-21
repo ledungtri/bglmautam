@@ -1,6 +1,6 @@
 # Migration Plan: bglmautam to Rails API + React Frontend
 
-> **Last Updated:** 2026-01-25
+> **Last Updated:** 2026-05-22
 > **Goal:** Complete the migration to a Rails API backend + mobile-friendly React frontend.
 
 ---
@@ -16,7 +16,15 @@
 | E | Rails API v1 Base | [x] Complete |
 | F | Rails Auth Endpoints | [x] Complete |
 | G | React Auth Integration | [x] Complete |
-| H+ | Feature Completion | [ ] In Progress |
+| H | Rails: Classrooms, Enrollments, Attendances, Grades, Evaluations, Search, PDF API | [x] Complete |
+| I | Rails: Students API endpoint | [ ] Pending |
+| J | React: Student list/detail pages | [ ] Pending |
+| K | Rails: Permission system refactor (Pundit + UserContext) | [x] Complete |
+| L | Rails: Multi-tenancy (acts_as_tenant) | [ ] In Progress — Phase 1 done |
+| M | React: Attendance editing, Search, PDF buttons, Mobile nav | [ ] Pending |
+| N | Rails + React: Production config fixes | [ ] Pending |
+| O | Rails: Flatten Phone/Email/Address into Person columns | [x] Complete |
+| P | Rails: Drop phones/emails/addresses tables (post-flatten cleanup) | [ ] Pending |
 
 ---
 
@@ -24,32 +32,44 @@
 
 ### Rails Backend (bglmautam)
 - Rails 7.2, Ruby 3.3.0
-- Session-based auth with bcrypt
-- Pundit authorization (admin, teacher-of-classroom, self)
-- Existing `/api` namespace (read-only, no auth)
-- Has `rack-cors`, `active_model_serializers`, `ransack`
+- Session-based auth (web) + JWT access/refresh token pair in HTTP-only cookies (API)
+- Pundit authorization with `UserContext` (admin, teacher-of-classroom, self) — refactored 2026-05-22
+- Full `/api/v1` namespace with JWT auth
+- `acts_as_tenant` gem installed, `Organization` model created — multi-tenancy Phase 1 done
+
+**Live API v1 endpoints:**
+- `auth` — login, logout, refresh, me
+- `classrooms` — full CRUD + enrollments, teaching_assignments, attendances, evaluations, overview, PDF/XLSX exports
+- `enrollments`, `teaching_assignments`, `attendances`, `grades`, `evaluations` — full CRUD
+- `people` — index, show, update
+- `users` — full CRUD (admin only)
+- `data_schemas` — full CRUD (admin only)
+- `search`, `resource_types` — read only
+
+**Missing API endpoint:**
+- `students` — no dedicated endpoint; students are accessed through `people` and `enrollments`
 
 ### React Frontend (bglmautam-react)
 - Create React App + JavaScript
-- Material UI (continuing with this)
+- Material UI
 - TanStack React Query
 - React Router v6
-- Axios
+- Axios with JWT cookie auth
 
 **Existing React routes:**
-- `/` and `/classrooms` - Classroom list
-- `/classrooms/:id` - Classroom details with tabs
-- `/teachers` - Teacher list
-- `/people/:id` - Person details
-- `/admin` - Admin page
+- `/login` — auth
+- `/` and `/classrooms` — Classroom list
+- `/classrooms/:id` — Classroom details with tabs
+- `/teachers` — Teacher list
+- `/people/:id` — Person details
+- `/admin` — Admin page
 
-**Missing features:**
-- Authentication (login, protected routes)
+**Missing React features:**
 - Student list/detail pages
-- Attendance CRUD operations
-- Search functionality
-- PDF exports
-- Mobile responsiveness improvements
+- Attendance CRUD UI
+- Search page
+- PDF download buttons
+- Mobile navigation improvements
 
 ---
 
@@ -558,22 +578,113 @@ end
 
 ---
 
-### Phase H+: Feature Completion (After Auth Works)
+### Phase H: Rails API — ✅ Complete (except Students)
 
-**Add remaining features incrementally.**
+All major API endpoints are live. The only missing dedicated endpoint is `students_controller`. Students are currently accessible through `people` (person record) and `enrollments` (classroom participation). A dedicated `/api/v1/students` endpoint may be added if the React frontend needs it (Phase I).
 
-| Phase | Features | Status |
-|-------|----------|--------|
-| H | Rails: Classrooms v1 CRUD endpoints | [ ] |
-| I | Rails: Students v1 CRUD endpoints | [ ] |
-| J | React: Student list/detail pages | [ ] |
-| K | Rails: Attendances v1 CRUD | [ ] |
-| L | React: Attendance editing | [ ] |
-| M | Rails: Search endpoint | [ ] |
-| N | React: Search page | [ ] |
-| O | React: Mobile navigation | [ ] |
-| P | Rails: PDF export endpoints | [ ] |
-| Q | React: PDF download buttons | [ ] |
+---
+
+### Phase I: Rails Students API — Pending
+
+**Goal:** Add a dedicated `GET /api/v1/students` endpoint if needed by the React frontend.
+
+May not be necessary — students are fully reachable via `/people` and `/enrollments`. Decide when building Phase J.
+
+---
+
+### Phase J: React Student Pages — Pending
+
+**Goal:** Student list and detail pages in React.
+
+| # | Task | Notes |
+|---|------|-------|
+| 1 | Student list page | Filter by year, classroom |
+| 2 | Student detail page | Show enrollments, grades, attendance |
+| 3 | Link from classroom detail | Already has student tabs — wire up navigation |
+
+**Dependency:** Multi-tenancy Phase 4 must be complete before shipping to prod (API will be tenant-scoped).
+
+---
+
+### Phase K: Permission System Refactor — ✅ Complete (2026-05-22)
+
+- `UserContext` struct threads request year into Pundit policies
+- `ApplicationPolicy` initializer reads from `UserContext` instead of hardcoded 2025
+- `pundit_user` override in both `ApplicationController` and `Api::V1::BaseController`
+- Auth methods removed from `User` model — policies are now the single source of truth
+- `teacher_of_classroom?` bug fixed (was checking only `.first` classroom)
+- Contact policies (Address, Email, Phone) now restrict to owner or admin
+- Views updated to use `policy(record).action?` instead of `current_user.admin_or_*`
+
+---
+
+### Phase L: Multi-Tenancy — In Progress
+
+See `MULTITENANCY_PLAN.md` for full detail. Current state:
+
+| Phase | Description | Status |
+|-------|-------------|--------|
+| 1 | Organization model + acts_as_tenant gem | ✅ Done |
+| 2 | Add nullable organization_id to all 15 tables | [ ] Pending |
+| 3 | Seed Mautam org + backfill prod data | [ ] Pending |
+| 4 | Enforce NOT NULL + wire acts_as_tenant into models/controllers | [ ] Pending |
+
+**All React feature work intended for production should wait until Phase L-4 is complete.** The API currently returns unscoped data; after Phase L-4, every response will be scoped to the logged-in user's organization.
+
+---
+
+### Phase M: Remaining React Features — Pending
+
+| # | Feature | Depends on |
+|---|---------|------------|
+| 1 | Attendance CRUD UI | Phase L-4 (tenant-scoped API) |
+| 2 | Search page | Phase L-4 |
+| 3 | PDF download buttons | Phase L-4 |
+| 4 | Mobile navigation improvements | Independent |
+
+---
+
+### Phase N: Production Config Fixes — Pending
+
+| # | Issue | File | Fix |
+|---|-------|------|-----|
+| 1 | `consider_all_requests_local = true` | `config/environments/production.rb` | Change to `false` — currently exposes full stack traces to all users |
+| 2 | `log_level = :debug` | `config/environments/production.rb` | Change to `:info` |
+| 3 | DB password in plaintext | `config/database.yml` | Move to `ENV['DATABASE_PASSWORD']` |
+| 4 | Production DB name is `bglmautam_development` | `config/database.yml` | Rename to `bglmautam_production` on server |
+
+### Phase O: Flatten Phone/Email/Address into Person — ✅ Complete (2026-05-22)
+
+Removed the `Phone`, `Email`, and `Address` polymorphic join models and moved all data into direct columns on `people`.
+
+- Migration `20260521192452_flatten_contact_fields_on_people.rb` — adds 8 columns (`phone`, `email`, `street_number`, `street_name`, `ward`, `district`, `city`, `area`) and backfills from old tables in the same transaction
+- `Person` model — `FIELD_SETS` updated with phone/email/address fields; `full_address` helper added; polymorphic `has_many` associations removed
+- `PersonSerializer` — now returns flat attributes instead of `has_many :phones/:addresses` + `primary_phone`
+- `Student#sync_person` and `Teacher#sync_person` — updated to write directly to `person.phone`, `person.email`, and address columns instead of the deleted polymorphic models; also fixed a pre-existing bug where `declaration_date`/`declaration_place` were copying `confirmation` values
+- `people/show.html.erb` — removed separate Phone/Email/Address form renders; fields now appear in the main person `FIELD_SETS` form
+- Deleted: `phones_controller`, `emails_controller`, `addresses_controller`, `phone_policy`, `email_policy`, `address_policy`, `phone.rb`, `email.rb`, `address.rb`
+- Routes: removed `:phones`, `:emails`, `:addresses` from `secondary_resources`
+- `ApplicationPolicy`: removed `admin_or_owner_of_person?` (no longer needed)
+
+Old tables (`phones`, `emails`, `addresses`) left in DB — see Phase P.
+
+---
+
+### Phase P: Drop phones/emails/addresses Tables — Pending
+
+After verifying the flatten data looks correct in production, drop the now-unused polymorphic tables.
+
+**Prerequisite:** confirm row counts on prod match expectations — `SELECT COUNT(*) FROM people WHERE phone IS NOT NULL` should match the old `phones` primary row count.
+
+```ruby
+class DropPhoneEmailAddressTables < ActiveRecord::Migration[7.2]
+  def change
+    drop_table :phones
+    drop_table :emails
+    drop_table :addresses
+  end
+end
+```
 
 ---
 
@@ -622,14 +733,24 @@ src/components/layout/MobileNav.js      # Phase O: Mobile nav
 
 ---
 
-## Industry Standards Issues Found
+## Issues Found
 
-| Area | Issue | Priority | Phase |
-|------|-------|----------|-------|
-| CORS `origins '*'` | Security vulnerability | CRITICAL | D |
-| State update in render | Causes infinite loops | CRITICAL | A |
-| QueryClient recreation | Performance issue | HIGH | A |
-| Missing DB indexes | Slow queries | HIGH | C |
-| No error handling | Poor UX | HIGH | B, E |
-| Hardcoded API URL | Deployment issues | MEDIUM | B |
-| Invalid key props | React warnings | MEDIUM | A |
+| Area | Issue | Priority | Status |
+|------|-------|----------|--------|
+| CORS `origins '*'` | Security vulnerability | CRITICAL | ✅ Fixed (Phase D) |
+| State update in render | Causes infinite loops | CRITICAL | ✅ Fixed (Phase A) |
+| QueryClient recreation | Performance issue | HIGH | ✅ Fixed (Phase A) |
+| Missing DB indexes | Slow queries | HIGH | ✅ Fixed (Phase C) |
+| No error handling | Poor UX | HIGH | ✅ Fixed (Phase B, E) |
+| Hardcoded API URL | Deployment issues | MEDIUM | ✅ Fixed (Phase B) |
+| Invalid key props | React warnings | MEDIUM | ✅ Fixed (Phase A) |
+| `teacher_of_classroom?` only checked first assignment | Auth bug | HIGH | ✅ Fixed (Phase K) |
+| Auth logic duplicated across User model + policies | Maintainability | MEDIUM | ✅ Fixed (Phase K) |
+| Hardcoded `@current_year = 2025` in policies | Wrong auth in non-current years | MEDIUM | ✅ Fixed (Phase K) |
+| Contact policies open to any authenticated user | Security gap | HIGH | ✅ Fixed (Phase K) |
+| `consider_all_requests_local = true` in production | Exposes stack traces | CRITICAL | [ ] Pending (Phase N) |
+| `log_level = :debug` in production | Leaks sensitive data in logs | MEDIUM | [ ] Pending (Phase N) |
+| DB password plaintext in database.yml | Credential exposure risk | HIGH | [ ] Pending (Phase N) |
+| No multi-tenancy | All data globally visible | HIGH | [ ] In Progress (Phase L) |
+| `Student#sync_person` wrote `date_confirmation` into `declaration_date` | Wrong sacrament data | MEDIUM | ✅ Fixed (Phase O) |
+| `Student#sync_person` / `Teacher#sync_person` wrote to deleted Phone/Email/Address models | Runtime crash on student/teacher save | CRITICAL | ✅ Fixed (Phase O) |

@@ -36,15 +36,17 @@ The app currently serves a single Catholic parish (Mautam). The goal is to make 
 
 **Goal:** Add `organization_id` to every tenant-scoped table as a nullable column. App still works unchanged because columns are nullable and models don't call `acts_as_tenant` yet.
 
-### Tables to update (15 total)
-`users`, `people`, `students`, `teachers`, `classrooms`, `enrollments`, `teaching_assignments`, `attendances`, `grades`, `evaluations`, `data_schemas`, `resource_types`, `addresses`, `emails`, `phones`
+### Tables to update (12 total)
+`users`, `people`, `students`, `teachers`, `classrooms`, `enrollments`, `teaching_assignments`, `attendances`, `grades`, `evaluations`, `data_schemas`, `resource_types`
+
+Note: `phones`, `emails`, and `addresses` were polymorphic join tables that have since been replaced by direct columns on `people` (Phase O of the migration plan) — they are not included.
 
 ### Migration pattern (one migration, safe for prod)
 ```ruby
 def change
   tables = %i[users people students teachers classrooms enrollments
               teaching_assignments attendances grades evaluations
-              data_schemas resource_types addresses emails phones]
+              data_schemas resource_types]
   tables.each do |t|
     add_reference t, :organization, null: true, foreign_key: true, index: true
   end
@@ -73,7 +75,7 @@ end
 
    tables = [User, Person, Student, Teacher, Classroom, Enrollment,
              TeachingAssignment, Attendance, Grade, Evaluation,
-             DataSchema, ResourceType, Address, Email, Phone]
+             DataSchema, ResourceType]
 
    tables.each do |model|
      # unscoped + with_deleted to catch soft-deleted (paranoia) records
@@ -108,7 +110,7 @@ end
 def change
   tables = %i[users people students teachers classrooms enrollments
               teaching_assignments attendances grades evaluations
-              data_schemas resource_types addresses emails phones]
+              data_schemas resource_types]
   tables.each do |t|
     change_column_null t, :organization_id, false
   end
@@ -158,7 +160,7 @@ end
 
 ### Files changed
 - `db/migrate/TIMESTAMP_change_organization_id_not_null.rb`
-- `app/models/*.rb` (15 files — add `acts_as_tenant :organization`)
+- `app/models/*.rb` (12 files — add `acts_as_tenant :organization`)
 - `app/controllers/application_controller.rb`
 - `app/controllers/api/v1/base_controller.rb`
 - `app/policies/application_policy.rb` (review Scope)
@@ -276,8 +278,8 @@ end
 
 ## Progress Checklist
 
-- [ ] Phase 1: Organization model + acts_as_tenant gem installed
-- [ ] Phase 2: Nullable org_id columns on all 15 tables (dev + prod)
+- [x] Phase 1: Organization model + acts_as_tenant gem installed
+- [ ] Phase 2: Nullable org_id columns on all 12 tables (dev + prod)
 - [ ] Phase 3: Mautam org seeded + all prod rows backfilled + verified
 - [ ] Phase 4: NOT NULL enforced, models wired, controllers set tenant, seeds updated
 - [ ] Phase 5: super_admin flag + tenant rake task
