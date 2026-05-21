@@ -69,16 +69,13 @@ class Teacher < ApplicationRecord
         'occupation' => occupation
       }
     }
+    person.phone = phone
+    person.email = email
+    person.street_number = street_number
+    person.street_name = street_name
+    person.ward = ward
+    person.district = district
     person.save!
-
-    person.phones.where(primary: true).first_or_create.update(number: phone) if phone
-    person.emails.where(primary: true).first_or_create.update(address: email) if email
-    person.addresses.where(primary: true).first_or_initialize.update(
-      street_number: street_number,
-      street_name: street_name,
-      ward: ward,
-      district: district
-    ) if street_name
 
     self.person_id = person.id unless person_id
   end

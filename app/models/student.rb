@@ -130,6 +130,12 @@ class Student < ApplicationRecord
     person.gender = gender
     person.birth_date = date_birth
     person.birth_place = place_birth
+    person.phone = phone
+    person.street_number = street_number
+    person.street_name = street_name
+    person.ward = ward
+    person.district = district
+    person.area = area
     person.data = {
       'sacraments' => {
         'baptism_date' => date_baptism,
@@ -138,8 +144,8 @@ class Student < ApplicationRecord
         'communion_place' => place_communion,
         'confirmation_date' => date_confirmation,
         'confirmation_place' => place_confirmation,
-        'declaration_date' => date_confirmation,
-        'declaration_place' => place_confirmation
+        'declaration_date' => date_declaration,
+        'declaration_place' => place_declaration
       },
       'parents_info' => {
         'father_christian_name' => father_christian_name,
@@ -151,16 +157,6 @@ class Student < ApplicationRecord
       }
     }
     person.save
-
-    person.phones.where(primary: true).first_or_create.update(number: phone) if phone
-
-    person.addresses.where(primary: true).first_or_initialize.update(
-      street_number: street_number,
-      street_name: street_name,
-      ward: ward,
-      district: district,
-      area: area
-    ) if street_name
 
     self.person_id = person.id unless person_id
   end
