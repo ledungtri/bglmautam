@@ -13,7 +13,6 @@
 ActiveRecord::Schema[7.2].define(version: 2026_03_29_082951) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-  enable_extension "unaccent"
 
   create_table "addresses", id: :serial, force: :cascade do |t|
     t.string "street_number"
@@ -116,6 +115,16 @@ ActiveRecord::Schema[7.2].define(version: 2026_03_29_082951) do
     t.datetime "deleted_at", precision: nil
     t.integer "weight", default: 1
     t.index ["enrollment_id"], name: "index_grades_on_enrollment_id"
+  end
+
+  create_table "organizations", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "slug", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_organizations_on_deleted_at"
+    t.index ["slug"], name: "index_organizations_on_slug", unique: true
   end
 
   create_table "people", id: :serial, force: :cascade do |t|

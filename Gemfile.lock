@@ -79,6 +79,8 @@ GEM
       minitest (>= 5.1)
       securerandom (>= 0.3)
       tzinfo (~> 2.0, >= 2.0.5)
+    acts_as_tenant (1.0.1)
+      rails (>= 6.0)
     annotate (3.2.0)
       activerecord (>= 3.2, < 8.0)
       rake (>= 10.4, < 14.0)
@@ -308,6 +310,7 @@ PLATFORMS
 
 DEPENDENCIES
   active_model_serializers
+  acts_as_tenant
   annotate
   base64
   bcrypt

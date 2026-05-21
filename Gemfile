@@ -81,3 +81,6 @@ group :development do
 end
 
 gem "pundit", "~> 2.3"
+
+# Multi-tenancy row-level isolation
+gem 'acts_as_tenant'
