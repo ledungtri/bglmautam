@@ -17,8 +17,11 @@
 #  name            :string           not null
 #  nickname        :string
 #  phone           :string
+#  province        :string
+#  street_address  :string
 #  street_name     :string
 #  street_number   :string
+#  subregion       :string
 #  ward            :string
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null

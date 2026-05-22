@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2026_05_22_084007) do
+ActiveRecord::Schema[7.2].define(version: 2026_05_22_120444) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -142,6 +142,9 @@ ActiveRecord::Schema[7.2].define(version: 2026_05_22_084007) do
     t.string "ward"
     t.string "district"
     t.string "city"
+    t.string "street_address"
+    t.string "province"
+    t.string "subregion"
     t.index ["deleted_at"], name: "index_organizations_on_deleted_at"
     t.index ["slug"], name: "index_organizations_on_slug", unique: true
   end
@@ -167,6 +170,9 @@ ActiveRecord::Schema[7.2].define(version: 2026_05_22_084007) do
     t.string "city"
     t.string "area"
     t.bigint "organization_id"
+    t.string "street_address"
+    t.string "province"
+    t.string "subregion"
     t.index ["organization_id"], name: "index_people_on_organization_id"
   end
 

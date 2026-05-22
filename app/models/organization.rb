@@ -2,19 +2,22 @@
 #
 # Table name: organizations
 #
-#  id            :bigint           not null, primary key
-#  city          :string
-#  deleted_at    :datetime
-#  district      :string
-#  email         :string
-#  name          :string           not null
-#  phone         :string
-#  slug          :string           not null
-#  street_name   :string
-#  street_number :string
-#  ward          :string
-#  created_at    :datetime         not null
-#  updated_at    :datetime         not null
+#  id             :bigint           not null, primary key
+#  city           :string
+#  deleted_at     :datetime
+#  district       :string
+#  email          :string
+#  name           :string           not null
+#  phone          :string
+#  province       :string
+#  slug           :string           not null
+#  street_address :string
+#  street_name    :string
+#  street_number  :string
+#  subregion      :string
+#  ward           :string
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
 #
 # Indexes
 #
