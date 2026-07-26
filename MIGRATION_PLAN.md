@@ -25,6 +25,9 @@
 | N | Rails + React: Production config fixes | [ ] Pending |
 | O | Rails: Flatten Phone/Email/Address into Person columns | [x] Complete |
 | P | Rails: Drop phones/emails/addresses tables (post-flatten cleanup) | [ ] Pending |
+| Q | Rails: Seed Vietnamese address reference tables (vn_provinces, vn_districts, vn_wards) | [ ] Pending |
+| R | Rails: Vietnamese address format migration — cleanup, backfill, decommission old fields, rename subregion→ward | [ ] Pending |
+| S | Rails: Consolidate Student/Teacher into Person — sacraments as columns, parent-info/occupation as custom fields, decommission Student/Teacher | [ ] Pending |
 
 ---
 
@@ -592,15 +595,23 @@ May not be necessary — students are fully reachable via `/people` and `/enroll
 
 ---
 
-### Phase J: React Student Pages — Pending
+### Phase J: React Student Pages — Partially Done (audited 2026-07-26)
 
 **Goal:** Student list and detail pages in React.
 
-| # | Task | Notes |
-|---|------|-------|
-| 1 | Student list page | Filter by year, classroom |
-| 2 | Student detail page | Show enrollments, grades, attendance |
-| 3 | Link from classroom detail | Already has student tabs — wire up navigation |
+Re-audited against the actual Rails ERB UI (`/students`, `/teachers`, `/people/show`) vs. the current React app. `StudentList`/`TeacherList` and a basic `PersonDetails` page already exist, but several pieces are stubbed, unwired, or missing outright:
+
+| # | Task | Status | Notes |
+|---|------|--------|-------|
+| 1 | Student list page | [x] Done | Read-only card list, `/students` |
+| 2 | Teacher list page | [x] Done | Read-only card list, `/teachers` |
+| 3 | Link from classroom detail | [x] Done | Classroom tabs link into person pages |
+| 4 | **PersonDetails tab content** | [ ] **Broken** | All 4 tabs ("Thông Tin Cơ Bản", "Thông Tin Liên Hệ", "Hành Trình Thiêng Liêng", "Hành Trình Tông Đồ") render the same `EvaluationsTab` component — stub, not real per-tab content. Rails equivalent (`people/show`) shows base info + sacraments + parents_info + additional_info as distinct sections. |
+| 5 | **PersonDetails edit/delete** | [ ] **Broken** | "Cập Nhật"/"Xóa" menu items have no `onClick` handler — dead buttons. |
+| 6 | Student/Teacher create+edit forms | [ ] Missing | No create/edit form exists in React for a Person, Enrollment, or TeachingAssignment record — Rails has full CRUD via `students_controller`/`teachers_controller`. Only result/position selects and attendance status are mutable inline today. |
+| 7 | Grade entry UI | [ ] Missing | Rails `evaluations` view has real per-student grade entry (4 term grades). React's evaluations tab only has comment + result select, no grade fields. |
+| 8 | DataSchema-driven custom fields | [ ] Missing | `/data-schemas` admin CRUD exists and works, but nothing renders schema-driven fields dynamically in any React form — current "custom" fields are hardcoded `additionalInfos` props, not schema-driven like Rails' `_data_fields` partial. Schemas defined in the admin UI currently have zero effect. |
+| 9 | Export buttons on Student/Teacher list | [ ] Broken | Menu items ("In Danh Sách", "Xuất Excel") exist visually but have no `onClick` — unlike `ClassroomDetails`, where the equivalent buttons are correctly wired via `window.open`. |
 
 **Dependency:** Multi-tenancy Phase 4 must be complete before shipping to prod (API will be tenant-scoped).
 
@@ -633,14 +644,15 @@ See `MULTITENANCY_PLAN.md` for full detail. Current state:
 
 ---
 
-### Phase M: Remaining React Features — Pending
+### Phase M: Remaining React Features — Partially Done (audited 2026-07-26)
 
-| # | Feature | Depends on |
-|---|---------|------------|
-| 1 | Attendance CRUD UI | Phase L-4 (tenant-scoped API) |
-| 2 | Search page | Phase L-4 |
-| 3 | PDF download buttons | Phase L-4 |
-| 4 | Mobile navigation improvements | Independent |
+| # | Feature | Status | Depends on |
+|---|---------|--------|------------|
+| 1 | Attendance CRUD UI | [x] Done | Classroom + standalone teacher-attendance pages support create/update via inline status select (no delete UI, matches Rails) |
+| 2 | Search page | [x] Done | `/search`, debounced, groups Students/Teachers |
+| 3 | PDF download buttons (Classroom) | [x] Done | Wired via `window.open` + `CustomExportDialog` |
+| 3b | PDF/Excel buttons (Student/Teacher lists) | [ ] Broken | See Phase J #9 — buttons present, not wired |
+| 4 | Mobile navigation improvements | [ ] Pending | Independent — no real mobile/desktop nav split today; single centered 900px shell with a MUI drawer regardless of viewport |
 
 ---
 
@@ -667,6 +679,66 @@ Removed the `Phone`, `Email`, and `Address` polymorphic join models and moved al
 - `ApplicationPolicy`: removed `admin_or_owner_of_person?` (no longer needed)
 
 Old tables (`phones`, `emails`, `addresses`) left in DB — see Phase P.
+
+---
+
+### Phase Q: Seed Vietnamese Address Reference Tables — Pending
+
+Seed `vn_provinces`, `vn_districts`, and `vn_wards` from the [provinces.open-api.vn v1 API](https://provinces.open-api.vn/api/v1/redoc). Full detail in [`docs/VIETNAMESE_ADDRESS_PLAN.md`](docs/VIETNAMESE_ADDRESS_PLAN.md) Phase 1.
+
+**Key deliverables:**
+- Migration: `CreateVnAddressReferenceTables` — three tables with integer PKs
+- Models: `VnProvince`, `VnDistrict`, `VnWard` (`app/models/vn_*.rb`)
+- Service: `VietnameseAddressSeeder` (`app/services/vietnamese_address_seeder.rb`)
+- Run: `rails runner 'VietnameseAddressSeeder.seed!'`
+
+**Verification:** `VnProvince.count` = 63, `VnWard.count` > 10_000
+
+---
+
+### Phase R: Vietnamese Address Format Migration — Pending
+
+Migrate `people` and `organizations` from the old address format (`street_number`, `street_name`, `ward`, `district`, `city`) to the new format (`street_address`, `province`/`province_code`, `subregion`/`ward_code`→`ward`). Depends on Phase Q. Full detail in [`docs/VIETNAMESE_ADDRESS_PLAN.md`](docs/VIETNAMESE_ADDRESS_PLAN.md).
+
+**Phases (in safe deployment order):**
+1. Add `province_code` + `ward_code` integer columns to both tables
+2. Data cleanup — audit ward/city values (all assumed HCMC, province code 79)
+3. Backfill new fields from old; match wards against `vn_wards` table
+4. Update `Person` FIELD_SETS, `PersonSerializer`, controller permitted params
+5. Add `GET /api/v1/addresses/provinces` + `.../wards` endpoints for frontend dropdowns
+6. Drop old columns: `street_number`, `street_name`, `ward`, `district`, `city` (after prod audit)
+7. Rename `subregion` → `ward`
+
+**Prerequisite:** Phase Q complete (reference tables seeded).
+
+---
+
+### Phase S: Consolidate Student/Teacher into Person — Pending (decided 2026-07-27)
+
+**Decision:** `Person` becomes the single canonical model. `Student` and `Teacher` are decommissioned entirely, not merely thinned — `sync_person` is transitional bridge scaffolding for this migration, not a permanent dual-write. This extends the same expand-and-contract pattern Phase O used for contact fields.
+
+**Field disposition:**
+- **Sacraments** (`date_baptism`/`place_baptism`, communion, confirmation, declaration) → **native columns on `people`**, carrying the same presence-pairing validations Student has today (`validates_presence_of :date_baptism, if: :place_baptism?`, etc.). Not custom fields — this data is used in PDFs/exports and completion-tracking logic, and is core/universal rather than tenant-variable.
+- **Parent info** (father/mother christian_name, full_name, phone) → **custom fields** via the existing `DataSchema` entity `Person` / key `parents_info` (already seeded correctly in `db/seeds/data_schemas.yml` and `lib/tasks/create_data_schemas.rake`). Confirmed via grep that these fields are only ever read for display (`students_excel_export.rb`, `_info_table.html.erb`, `attendances.html.erb`) — never filtered, sorted, or joined — so jsonb has no query-performance downside here. Note: the `format: { with: /\A\d+\z/ }` validation currently on `father_phone`/`mother_phone` has no equivalent in `DataSchema` yet; either drop that check or extend `DataSchema` fields with an optional format/pattern validator.
+- **Teacher occupation / patron day (`named_date`)** → **custom fields** via existing `DataSchema` entity `Person` / key `additional_info` (already seeded).
+- **Existing `DataSchema` key `sacraments` (entity `Person`)** must be removed once sacraments become native columns — it's currently a conflicting write path (see bug below).
+
+**Known bug this migration fixes:** `Student#sync_person` overwrites `person.data['sacraments']`/`person.data['parents_info']` wholesale on every Student save, while `DataFieldsController#update` lets the Person profile page edit `person.data` directly with no write-back to `Student`'s real columns. Whichever was saved more recently silently wins. Moving sacraments to native `Person` columns and parent-info fully to `Person`-scoped custom fields collapses this to one write path.
+
+**Steps (in order):**
+1. Add required-field validation for `DataFieldable` models (validate presence for any `DataSchema` field flagged `required`, scoped to that record's `data` keys) — today `required` is a permitted param with no enforcement anywhere (`DataFieldsController`/`DataFieldable#update_data_field` skip it entirely). Must land before step 4 makes custom fields the sole source of truth for parent-info/additional-info.
+2. Add sacrament columns + validations to `people`; update `Person::FIELD_SETS`. Also port over `Student`-only validations and helper methods that have no other home yet: `validates_presence_of :gender, :date_birth`, the `Nam`/`Nữ` gender inclusion check, `father_name`/`mother_name` helpers, `result(classroom)`, and the `in_classroom` scope.
+3. Point `Student#sync_person` at the new `Person` sacrament columns (bridge); remove the `DataSchema` `sacraments`/entity-Person entry.
+4. Confirm `parents_info`/`additional_info` custom fields round-trip correctly against `Person` (now enforced via step 1's validation); drop the now-redundant native `father_*`/`mother_*` columns from `Student` and `occupation`/`named_date` from `Teacher`.
+5. Repoint `enrollments.student_id` → `person_id`, `teaching_assignments.teacher_id` → `person_id`: add the new column, backfill, verify row counts match the old FK (same audit pattern as Phase P) before dropping the old column — don't do this in one shot.
+6. Update `User`/`AuthController` to derive teacher status from `person.teaching_assignments.any?` instead of `person.teacher` (currently `user.person&.teacher&.id`).
+7. Move the `Pundit`/`UserContext` teacher-of-classroom authorization logic (the `teacher_of_classroom?` bug fixed in Phase K against `Teacher`) to operate on `Person` instead.
+8. Rewrite Rails and React surfaces to query `Person` scoped by association presence (`person.enrollments.any?` / `person.teaching_assignments.any?`) instead of a dedicated `Student`/`Teacher` model — tracked as two sub-steps given the surface area found in the UI audit:
+   - **8a. Rails:** `StudentsController`/`TeachersController` → Person-scoped controllers/routes; `StudentPolicy`/`TeacherPolicy` → a Person-scoped policy; the ~10 PDF classes (`StudentsPdf`, `TeachersPdf`, `CompactStudentsPdf`, etc.) and 2 Excel exporters updated to query `Person`.
+   - **8b. React:** `StudentList`, `TeacherList`, `PersonDetails`, and related components/API calls updated to the new Person-scoped endpoints.
+9. Remove `sync_person`; drop `students` and `teachers` tables.
+
+**Note:** supersedes Phase J item 6 (Student/Teacher create+edit forms) and Phase I (dedicated Students API) — once decommissioned, these become Person-scoped forms/endpoints instead.
 
 ---
 
