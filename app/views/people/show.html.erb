@@ -32,7 +32,7 @@
 %>
 
 <%= render 'enrollments/index', enrollments: student.enrollments if student %>
-<%= render 'teaching_assignments/index', teaching_assignments: teacher.teaching_assignments, teacher: teacher %>
+<%= render 'teaching_assignments/index', teaching_assignments: teacher&.teaching_assignments, teacher: teacher %>
 
 <%= render 'components/form/form',
            heading: 'Thông tin đăng nhập',
