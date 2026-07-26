@@ -18,11 +18,13 @@
 #  nickname        :string
 #  phone           :string
 #  province        :string
+#  province_code   :integer
 #  street_address  :string
 #  street_name     :string
 #  street_number   :string
 #  subregion       :string
 #  ward            :string
+#  ward_code       :integer
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  organization_id :bigint

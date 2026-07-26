@@ -15,6 +15,8 @@ The current address format on `people` and `organizations` (street_number, stree
 **New format columns (already added):** `street_address`, `province`, `subregion`
 **After decommission:** rename `subregion` → `ward`
 
+**Note:** `organizations` has no legacy data (fresh table, no rows), so the old columns were already dropped directly via `RemoveV1AddressFieldsFromOrganizations` instead of waiting for Phase 7 below. `organizations` skips Phases 3/4 (no data to clean up or backfill) but still needs Phase 2 (`province_code`/`ward_code`) and Phase 8 (`subregion` → `ward` rename) once those land. Phases 3, 4, and 7 below apply to `people` only.
+
 All existing address data is assumed to be in **Ho Chi Minh City** (province code `79`).
 
 ---

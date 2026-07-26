@@ -25,8 +25,8 @@
 | N | Rails + React: Production config fixes | [ ] Pending |
 | O | Rails: Flatten Phone/Email/Address into Person columns | [x] Complete |
 | P | Rails: Drop phones/emails/addresses tables (post-flatten cleanup) | [ ] Pending |
-| Q | Rails: Seed Vietnamese address reference tables (vn_provinces, vn_districts, vn_wards) | [ ] Pending |
-| R | Rails: Vietnamese address format migration — cleanup, backfill, decommission old fields, rename subregion→ward | [ ] Pending |
+| Q | Rails: Seed Vietnamese address reference tables (vn_provinces, vn_districts, vn_wards) | [ ] In Progress — Phase 1 (tables/models/seeder) written, not yet run against a live DB |
+| R | Rails: Vietnamese address format migration — cleanup, backfill, decommission old fields, rename subregion→ward | [ ] In Progress — Phase 1 (province_code/ward_code columns) written, not yet run against a live DB |
 | S | Rails: Consolidate Student/Teacher into Person — sacraments as columns, parent-info/occupation as custom fields, decommission Student/Teacher | [ ] Pending |
 
 ---
@@ -688,26 +688,26 @@ Old tables (`phones`, `emails`, `addresses`) left in DB — see Phase P.
 
 ---
 
-### Phase Q: Seed Vietnamese Address Reference Tables — Pending
+### Phase Q: Seed Vietnamese Address Reference Tables — In Progress
 
 Seed `vn_provinces`, `vn_districts`, and `vn_wards` from the [provinces.open-api.vn v1 API](https://provinces.open-api.vn/api/v1/redoc). Full detail in [`docs/VIETNAMESE_ADDRESS_PLAN.md`](docs/VIETNAMESE_ADDRESS_PLAN.md) Phase 1.
 
 **Key deliverables:**
-- Migration: `CreateVnAddressReferenceTables` — three tables with integer PKs
-- Models: `VnProvince`, `VnDistrict`, `VnWard` (`app/models/vn_*.rb`)
-- Service: `VietnameseAddressSeeder` (`app/services/vietnamese_address_seeder.rb`)
-- Run: `rails runner 'VietnameseAddressSeeder.seed!'`
+- Migration: `CreateVnAddressReferenceTables` — three tables with integer PKs ✅ written
+- Models: `VnProvince`, `VnDistrict`, `VnWard` (`app/models/vn_*.rb`) ✅ written
+- Service: `VietnameseAddressSeeder` (`app/services/vietnamese_address_seeder.rb`) ✅ written, call added to `db/seeds.rb`
+- Run: `rails runner 'VietnameseAddressSeeder.seed!'` — ⏳ not yet run; no reachable local DB in this session (`db:migrate` fails with `PG::ConnectionBad`/password auth error for `bglmautam`)
 
-**Verification:** `VnProvince.count` = 63, `VnWard.count` > 10_000
+**Verification (once migrated + seeded):** `VnProvince.count` = 63, `VnWard.count` > 10_000
 
 ---
 
-### Phase R: Vietnamese Address Format Migration — Pending
+### Phase R: Vietnamese Address Format Migration — In Progress
 
-Migrate `people` and `organizations` from the old address format (`street_number`, `street_name`, `ward`, `district`, `city`) to the new format (`street_address`, `province`/`province_code`, `subregion`/`ward_code`→`ward`). Depends on Phase Q. Full detail in [`docs/VIETNAMESE_ADDRESS_PLAN.md`](docs/VIETNAMESE_ADDRESS_PLAN.md).
+Migrate `people` from the old address format (`street_number`, `street_name`, `ward`, `district`, `city`) to the new format (`street_address`, `province`/`province_code`, `subregion`/`ward_code`→`ward`). `organizations` has no legacy data, so it already dropped the old columns directly (see `RemoveV1AddressFieldsFromOrganizations` migration) and only needs the `province_code`/`ward_code` + rename steps below. Depends on Phase Q. Full detail in [`docs/VIETNAMESE_ADDRESS_PLAN.md`](docs/VIETNAMESE_ADDRESS_PLAN.md).
 
 **Phases (in safe deployment order):**
-1. Add `province_code` + `ward_code` integer columns to both tables
+1. Add `province_code` + `ward_code` integer columns to both tables ✅ migration written (`AddAddressCodeColumnsToPeopleAndOrganizations`), not yet run against a live DB
 2. Data cleanup — audit ward/city values (all assumed HCMC, province code 79)
 3. Backfill new fields from old; match wards against `vn_wards` table
 4. Update `Person` FIELD_SETS, `PersonSerializer`, controller permitted params

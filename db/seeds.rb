@@ -9885,3 +9885,5 @@ User.create!([
   {id: 89, username: "0775130531", password_digest: "$2a$12$GHXwf7tgnhselTZm27YhYep1o7vt2lFh9G/7z251ji6sVBuaepSUy", created_at: "2024-03-05 07:43:30", updated_at: "2024-03-05 07:43:30", admin: false, teacher_id: 4520, deleted_at: nil, person_id: nil},
   {id: 90, username: "0345975827", password_digest: "$2a$12$1cHdv7y/T7Y0Cq7IGGvHaes5gyW.6A.eJ1toj5YW9bxuoyXy4ElEe", created_at: "2024-04-23 14:49:12", updated_at: "2024-04-23 14:49:12", admin: false, teacher_id: 4529, deleted_at: nil, person_id: nil}
 ])
+
+VietnameseAddressSeeder.seed!
