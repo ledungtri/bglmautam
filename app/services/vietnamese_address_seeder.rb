@@ -16,7 +16,7 @@ class VietnameseAddressSeeder
   end
 
   def self.seed_districts
-    data = fetch("/d")
+    data = fetch("/d/")
     VnDistrict.upsert_all(
       data.map { |d| d.slice("code", "name", "division_type", "codename", "province_code") },
       unique_by: :code
@@ -24,7 +24,7 @@ class VietnameseAddressSeeder
   end
 
   def self.seed_wards
-    data = fetch("/w")
+    data = fetch("/w/")
     data.each_slice(1000) do |batch|
       VnWard.upsert_all(
         batch.map { |w| w.slice("code", "name", "division_type", "codename", "district_code") },
