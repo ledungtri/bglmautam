@@ -639,8 +639,13 @@ See `MULTITENANCY_PLAN.md` for full detail. Current state:
 | 2 | Add nullable organization_id to all 12 tables | ✅ Done |
 | 3 | Seed Mautam org + backfill prod data | [ ] Pending |
 | 4 | Enforce NOT NULL + wire acts_as_tenant into models/controllers | [ ] Pending |
+| 5 | Add `organization_id` to `versions` (PaperTrail) | [ ] Pending |
 
 **All React feature work intended for production should wait until Phase L-4 is complete.** The API currently returns unscoped data; after Phase L-4, every response will be scoped to the logged-in user's organization.
+
+**L-5 detail:** `versions` (PaperTrail's audit table, `has_paper_trail` is included repo-wide in `ApplicationRecord`) was excluded from the original 12-table `organization_id` rollout since it only has `item_type`/`item_id`. Without it, any cross-tenant "recent changes" admin view would leak other orgs' audit history. Add:
+- Migration: nullable `organization_id` bigint + index on `versions`.
+- `ApplicationRecord`: `has_paper_trail meta: { organization_id: ->(record) { record.try(:organization_id) } }` so it's captured automatically on every version write — `try` handles models that don't have the column (`Organization` itself, and `Address`/`Email`/`Phone` pending removal in Phase P).
 
 ---
 
@@ -664,6 +669,7 @@ See `MULTITENANCY_PLAN.md` for full detail. Current state:
 | 2 | `log_level = :debug` | `config/environments/production.rb` | Change to `:info` |
 | 3 | DB password in plaintext | `config/database.yml` | Move to `ENV['DATABASE_PASSWORD']` |
 | 4 | Production DB name is `bglmautam_development` | `config/database.yml` | Rename to `bglmautam_production` on server |
+| 5 | No error tracking/alerting — errors only visible by tailing `log/production.log` (or STDOUT) over SSH | `Gemfile`, new `config/initializers/sentry.rb` | Add `sentry-ruby` + `sentry-rails` gems; configure DSN via `ENV['SENTRY_DSN']`. Free Developer tier (5K events/month, 1 user) is plenty at this app's scale. |
 
 ### Phase O: Flatten Phone/Email/Address into Person — ✅ Complete (2026-05-22)
 
