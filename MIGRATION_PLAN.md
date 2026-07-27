@@ -29,6 +29,7 @@
 | R | Rails: Vietnamese address format migration — cleanup, backfill, decommission old fields, rename subregion→ward | [ ] In Progress — Phase 1 (province_code/ward_code columns) done and deployed; phases 2-7 not started |
 | S | Rails: Consolidate Student/Teacher into Person — sacraments as columns, parent-info/occupation as custom fields, decommission Student/Teacher | [ ] Steps 1-4 deployed to prod, migrations + data cleanup run, final verification in progress |
 | T | Rails: Add Sentry error tracking | [ ] Pending |
+| U | Rails + React: Add creator (`person_id`) to Evaluation, show author on note | [ ] Pending |
 
 ---
 
@@ -41,7 +42,7 @@ Ranked by risk × effort, not by phase letter. Superseded phase-by-phase status 
 3. **Tier 2 — In-flight structural migrations (independent of each other).**
    - Phase S steps 1-4 (Student/Teacher → Person) — ✅ deployed to prod (2026-07-27); fixed a live data-integrity bug (`sync_person` silently clobbering Person-profile-page edits). Final health/data verification requested, results pending.
    - Phase R phases 2-7 (Vietnamese address format) — Phase Q shipped to prod; phase 1 (`province_code`/`ward_code` columns) is also confirmed migrated on prod (verified via `db:migrate:status` during Phase L work). Phases 2-7 (data cleanup, backfill, decommission old fields, rename) not yet started.
-4. **Tier 3 — Low-risk housekeeping, do opportunistically.** Phase P (drop `phones`/`emails`/`addresses` tables once prod row counts are audited), Phase T (Sentry error tracking — valuable for ops visibility, not blocking, needs a DSN from you first).
+4. **Tier 3 — Low-risk housekeeping, do opportunistically.** Phase P (drop `phones`/`emails`/`addresses` tables once prod row counts are audited), Phase T (Sentry error tracking — valuable for ops visibility, not blocking, needs a DSN from you first), Phase U (Evaluation creator/author — small additive nullable column, no dependents).
 5. **Tier 4 — Bottom of the list.** Phase I (Students API), Phase J (React student pages), Phase M (remaining React features / mobile nav). The Rails ERB UI already has full working equivalents for all of these (CRUD forms, real per-tab content, wired export/PDF buttons) — this tier is purely about the React app catching up, and per Tier 1's dependency note shouldn't ship new functionality to production ahead of multi-tenancy anyway. Exception worth considering case-by-case: fixing an already-broken button (e.g. Phase J's dead `onClick` handlers) doesn't expose new data, so isolated bug fixes here could reasonably jump the queue independently of Tier 1.
 
 ---
@@ -811,6 +812,25 @@ Split out from Phase N item 5. No error tracking/alerting exists today — error
 - Free Developer tier (5K events/month, 1 user) is plenty at this app's scale.
 
 **Prerequisite:** needs a Sentry account/DSN from you first — nothing to implement until that exists.
+
+---
+
+### Phase U: Add Evaluation Creator — Pending
+
+**Goal:** Track which teacher/person wrote an `Evaluation` (the "Nhận Xét" note on an enrollment), so the UI can show "— Teacher Name" attribution. Motivated by the `EnrollmentHistoryCard.js` quote-block redesign — currently `Evaluation` has no author reference at all (`content`, `evaluable_type`, `evaluable_id`, `organization_id` only; confirmed via `app/models/evaluation.rb` and `app/serializers/evaluation_serializer.rb`).
+
+**Rails:**
+1. Migration: add nullable `person_id` (bigint, FK → `people`, indexed) to `evaluations`. Nullable — existing rows have no known author and shouldn't be backfilled with a guess.
+2. `Evaluation` model: `belongs_to :person, optional: true`.
+3. `EvaluationSerializer`: add `belongs_to :person` so responses include `person.full_name` alongside `content`.
+4. `EvaluationsController#create`: set `person_id` from `current_user.person_id` server-side (don't accept a client-supplied value — this is "who wrote it," not user-editable data). No policy change needed; existing teacher-of-classroom scoping already covers who's allowed to write an evaluation.
+
+**React:**
+5. `EnrollmentHistoryCard.js` / `EvaluationCard.js`: render `evaluation.person?.full_name` as an attribution line after the note content (e.g. "— {name}"); omit the line entirely when `person` is null (all pre-existing evaluations).
+
+**Verification:**
+- Create a new evaluation as a teacher user → confirm `person_id` is set to that teacher's own person record and the UI shows "— {Teacher Name}".
+- Confirm pre-existing evaluations (no `person_id`) still render with no attribution line, no crash.
 
 ---
 
