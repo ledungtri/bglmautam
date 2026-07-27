@@ -165,6 +165,11 @@ module Api
         render json: { data: ClassroomOverviewQuery.new(year).call }
       end
 
+      # GET /api/v1/classrooms/:id/overview_card
+      def overview_card
+        render json: { data: ClassroomOverviewQuery.new(@classroom.year).call_for_classroom(@classroom) }
+      end
+
       # GET /api/v1/classrooms/statistics_pdf
       def statistics_pdf
         year = params[:year] || Date.current.year

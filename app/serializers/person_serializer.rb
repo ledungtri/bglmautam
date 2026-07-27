@@ -51,7 +51,9 @@ class PersonSerializer < ApplicationSerializer
   attributes :christian_name, :name, :full_name, :gender, :birth_date, :birth_place,
              :data, :nickname, :avatar_url,
              :phone, :email,
-             :street_number, :street_name, :ward, :district, :city, :area
+             :street_number, :street_name, :ward, :district, :city, :area,
+             :date_baptism, :place_baptism, :date_communion, :place_communion,
+             :date_confirmation, :place_confirmation, :date_declaration, :place_declaration
 
   has_many :enrollments
   has_many :teaching_assignments

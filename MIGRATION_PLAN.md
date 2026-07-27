@@ -621,8 +621,8 @@ Re-audited against the actual Rails ERB UI (`/students`, `/teachers`, `/people/s
 | 1 | Student list page | [x] Done | Read-only card list, `/students` |
 | 2 | Teacher list page | [x] Done | Read-only card list, `/teachers` |
 | 3 | Link from classroom detail | [x] Done | Classroom tabs link into person pages |
-| 4 | **PersonDetails tab content** | [ ] **Broken** | All 4 tabs ("Thông Tin Cơ Bản", "Thông Tin Liên Hệ", "Hành Trình Thiêng Liêng", "Hành Trình Tông Đồ") render the same `EvaluationsTab` component — stub, not real per-tab content. Rails equivalent (`people/show`) shows base info + sacraments + parents_info + additional_info as distinct sections. |
-| 5 | **PersonDetails edit/delete** | [ ] **Broken** | "Cập Nhật"/"Xóa" menu items have no `onClick` handler — dead buttons. |
+| 4 | **PersonDetails tab content** | [x] Done (2026-07-27) | Each tab now has real content: `BasicInfoTab` (name/gender/birth), `ContactInfoTab` (phone/email/address + `parents_info`), `SpiritualJourneyTab` (sacraments + enrollment/classroom history via `/api/v1/enrollments?filters[person_id_eq]`), `ApostolicJourneyTab` (`additional_info` + teaching-assignment/classroom history via `/api/v1/teaching_assignments?filters[person_id_eq]`). Required also adding the sacrament columns to `PersonSerializer`, which Phase S step 2 had added to the `people` table but never exposed over the API. Read-only — edit/delete is still item 5. |
+| 5 | **PersonDetails edit/delete** | [x] Done (2026-07-27) | "Cập Nhật" opens `PersonEditDialog` (`PUT /api/v1/people/:id`, already-supported fields). "Xóa" opens `PersonDeleteDialog` (`DELETE /api/v1/people/:id`) — this endpoint didn't exist yet (route + controller action added, cascades to `enrollments`/`teaching_assignments`/`student`/`teacher`/`user`, soft-delete via `paranoia`, same pattern as `ClassroomsController#destroy`). Found along the way: the legacy Rails `PeopleController` had the same gap — route declared `:destroy` but no matching action, so its "Xóa" button would 500 if clicked; fixed there too. |
 | 6 | Student/Teacher create+edit forms | [ ] Missing | No create/edit form exists in React for a Person, Enrollment, or TeachingAssignment record — Rails has full CRUD via `students_controller`/`teachers_controller`. Only result/position selects and attendance status are mutable inline today. |
 | 7 | Grade entry UI | [ ] Missing | Rails `evaluations` view has real per-student grade entry (4 term grades). React's evaluations tab only has comment + result select, no grade fields. |
 | 8 | DataSchema-driven custom fields | [ ] Missing | `/data-schemas` admin CRUD exists and works, but nothing renders schema-driven fields dynamically in any React form — current "custom" fields are hardcoded `additionalInfos` props, not schema-driven like Rails' `_data_fields` partial. Schemas defined in the admin UI currently have zero effect. |
@@ -681,6 +681,7 @@ The app is now fully tenant-scoped. Confirmed in prod via `ActsAsTenant.with_ten
 | 3 | PDF download buttons (Classroom) | [x] Done | Wired via `window.open` + `CustomExportDialog` |
 | 3b | PDF/Excel buttons (Student/Teacher lists) | [ ] Broken | See Phase J #9 — buttons present, not wired |
 | 4 | Mobile navigation improvements | [ ] Pending | Independent — no real mobile/desktop nav split today; single centered 900px shell with a MUI drawer regardless of viewport |
+| 5 | Classroom "Tổng Quan" (Overview) tab | [x] Done (2026-07-27) | Admin-only tab on `ClassroomDetails`, gated via `useAuth().isAdmin`; reuses the existing `ClassroomCard` component against a new single-classroom endpoint (`GET /api/v1/classrooms/:id/overview_card` → `ClassroomOverviewQuery#call_for_classroom`) instead of refetching the full list-page overview query |
 
 ---
 

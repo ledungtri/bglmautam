@@ -3,7 +3,7 @@
 module Api
   module V1
     class PeopleController < BaseController
-      before_action :set_person, only: [:show, :update]
+      before_action :set_person, only: [:show, :update, :destroy]
 
       # GET /api/v1/people
       def index
@@ -25,6 +25,20 @@ module Api
         else
           render json: { errors: @person.errors.full_messages }, status: :unprocessable_entity
         end
+      end
+
+      # DELETE /api/v1/people/:id
+      def destroy
+        authorize @person
+
+        @person.enrollments.each(&:destroy)
+        @person.teaching_assignments.each(&:destroy)
+        @person.student&.destroy
+        @person.teacher&.destroy
+        @person.user&.destroy
+
+        @person.destroy
+        head :no_content
       end
 
       private

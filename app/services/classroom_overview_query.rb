@@ -12,6 +12,10 @@ class ClassroomOverviewQuery
     classrooms.map { |classroom| classroom_data(classroom) }
   end
 
+  def call_for_classroom(classroom)
+    classroom_data(classroom)
+  end
+
   private
 
   def classrooms

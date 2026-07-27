@@ -64,6 +64,7 @@ Rails.application.routes.draw do
           get :statistics_pdf
         end
         member do
+          get :overview_card
           get :enrollments
           get :teaching_assignments
           get :attendances
@@ -75,7 +76,7 @@ Rails.application.routes.draw do
         end
       end
 
-      resources :people, only: [:index, :show, :update]
+      resources :people, only: [:index, :show, :update, :destroy]
       resources :users, only: [:index, :show, :create, :update, :destroy]
       resources :data_schemas do
         collection do

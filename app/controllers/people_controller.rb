@@ -70,6 +70,20 @@ class PeopleController < ApplicationController
     redirect_back(fallback_location: root_path)
   end
 
+  def destroy
+    authorize @person
+
+    @person.enrollments.each(&:destroy)
+    @person.teaching_assignments.each(&:destroy)
+    @person.student&.destroy
+    @person.teacher&.destroy
+    @person.user&.destroy
+
+    @person.destroy
+    flash[:success] = 'Person was successfully destroyed.'
+    redirect_to root_path
+  end
+
   private
 
   def set_person
