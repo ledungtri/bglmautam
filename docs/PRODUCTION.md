@@ -47,6 +47,19 @@ acadex.bglmautam.com → Cloudflare → Nginx (443) → Static files (/root/bglm
 
 ## Deployment
 
+### Environment Variables
+
+Secrets (`DATABASE_PASSWORD`, and any future ones like `SENTRY_DSN`) live in `/root/.env.production` on the server — chmod 600, never committed to git (it's outside both repo working trees, so there's nothing to `.gitignore`).
+
+```bash
+# /root/.env.production
+export DATABASE_PASSWORD='...'
+```
+
+- `deploy.sh` sources it explicitly before running any bare `rake`/`rails` command (see below) — a bash script invoked as `./deploy.sh` is a non-interactive, non-login shell, so `/root/.bashrc` is **not** sourced automatically, even though `DATABASE_PASSWORD` may also be exported there for interactive SSH sessions.
+- `ecosystem.config.js`'s `env` block on the server keeps its own copy of `DATABASE_PASSWORD` for the PM2-spawned Rails process — PM2 doesn't read shell-exported variables either. This means the password currently lives in two places (`.env.production` and `ecosystem.config.js`); if that duplication becomes annoying, `ecosystem.config.js` could instead load `/root/.env.production` itself (e.g. via the `dotenv` npm package) and reference `process.env.DATABASE_PASSWORD`.
+- If you ever run `rails console`/`rake` by hand over SSH and hit `ActiveRecord::ConnectionNotEstablished ... no password supplied`, run `source /root/.env.production` first (or just `export DATABASE_PASSWORD=...` for that session).
+
 ### Standard Deployment Process
 
 #### 1. Push Changes to GitHub
@@ -75,6 +88,7 @@ bundle install --deployment --without development test
 
 #### 5. Run Database Migrations (if any)
 ```bash
+source /root/.env.production
 RAILS_ENV=production bundle exec rake db:migrate
 ```
 
@@ -109,6 +123,10 @@ Save this as `deploy.sh` on the production server:
 set -e
 
 echo "🚀 Starting deployment..."
+
+# Load secrets (DATABASE_PASSWORD, etc.) — not sourced automatically
+# since this script runs as a non-interactive, non-login shell
+source /root/.env.production
 
 # Navigate to app directory
 cd /root/bglmautam
