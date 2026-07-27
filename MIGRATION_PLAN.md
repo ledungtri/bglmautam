@@ -22,7 +22,7 @@
 | K | Rails: Permission system refactor (Pundit + UserContext) | [x] Complete |
 | L | Rails: Multi-tenancy (acts_as_tenant) | [ ] In Progress — Phases 1-2 done |
 | M | React: Attendance editing, Search, PDF buttons, Mobile nav | [ ] Pending |
-| N | Rails + React: Production config fixes | [ ] Pending |
+| N | Rails + React: Production config fixes | [ ] In Progress — items 1-4 done and deployed, item 5 (Sentry) pending |
 | O | Rails: Flatten Phone/Email/Address into Person columns | [x] Complete |
 | P | Rails: Drop phones/emails/addresses tables (post-flatten cleanup) | [ ] Pending |
 | Q | Rails: Seed Vietnamese address reference tables (vn_provinces, vn_districts, vn_wards) | [x] Complete — ran on prod |
@@ -35,12 +35,12 @@
 
 Ranked by risk × effort, not by phase letter. Superseded phase-by-phase status stays in the table above; this section is the actual work order.
 
-1. **Tier 0 — Fix immediately.** ✅ Done in code (Phase N items 1-3): `consider_all_requests_local` → `false`, `log_level` → `:info`, DB password → `ENV.fetch("DATABASE_PASSWORD")`. **Not yet deployed** — see the deploy note under Phase N below before pushing to prod, since the app will fail to boot without `DATABASE_PASSWORD` set on the server first.
+1. **Tier 0 — Fix immediately.** ✅ Complete and deployed (Phase N items 1-4): `consider_all_requests_local` → `false`, `log_level` → `:info`, DB password rotated + moved to `ENV.fetch("DATABASE_PASSWORD")`, prod DB renamed `bglmautam_development` → `bglmautam_production`.
 2. **Tier 1 — Finish multi-tenancy (Phase L, steps 3-5).** Steps 1-2 (Organization model, nullable `organization_id` on all tables) are done. Steps 3-5 (seed org + backfill prod data, enforce `NOT NULL` + wire `acts_as_tenant`, add `organization_id` to `versions`) are what's actually blocking — the doc's own dependency note says all new React feature work should wait until step 4 lands, since the API currently returns unscoped data. Audit for `organization_id IS NULL` rows before enforcing `NOT NULL` — `acts_as_tenant`'s default scoping means any row that slips through the backfill silently vanishes from every index page, not an error.
 3. **Tier 2 — In-flight structural migrations (independent of each other).**
    - Phase S steps 1-4 (Student/Teacher → Person) — planned in `docs/STUDENT_TEACHER_TO_PERSON_PLAN.md`; fixes a live data-integrity bug (`sync_person` silently clobbering Person-profile-page edits). Prioritized ahead of Phase R since it fixes an active bug rather than just modernizing a format.
    - Phase R phases 2-7 (Vietnamese address format) — Phase Q shipped to prod; phase 1 (code columns) is written but unmigrated.
-4. **Tier 3 — Low-risk housekeeping, do opportunistically.** Phase P (drop `phones`/`emails`/`addresses` tables once prod row counts are audited), Phase N item 5 (Sentry error tracking — valuable for ops visibility, not blocking, needs a DSN from you first). Phase N item 4 (rename the production DB from `bglmautam_development` to `bglmautam_production`) also sits here — needs coordinated downtime, not urgent.
+4. **Tier 3 — Low-risk housekeeping, do opportunistically.** Phase P (drop `phones`/`emails`/`addresses` tables once prod row counts are audited), Phase N item 5 (Sentry error tracking — valuable for ops visibility, not blocking, needs a DSN from you first).
 5. **Tier 4 — Bottom of the list.** Phase I (Students API), Phase J (React student pages), Phase M (remaining React features / mobile nav). The Rails ERB UI already has full working equivalents for all of these (CRUD forms, real per-tab content, wired export/PDF buttons) — this tier is purely about the React app catching up, and per Tier 1's dependency note shouldn't ship new functionality to production ahead of multi-tenancy anyway. Exception worth considering case-by-case: fixing an already-broken button (e.g. Phase J's dead `onClick` handlers) doesn't expose new data, so isolated bug fixes here could reasonably jump the queue independently of Tier 1.
 
 ---
@@ -675,22 +675,17 @@ See `MULTITENANCY_PLAN.md` for full detail. Current state:
 
 ---
 
-### Phase N: Production Config Fixes — Items 1-3 Done (code), Deploy Pending
+### Phase N: Production Config Fixes — Items 1-4 Complete (2026-07-27), Item 5 Pending
 
 | # | Issue | File | Fix |
 |---|-------|------|-----|
-| 1 | `consider_all_requests_local = true` | `config/environments/production.rb` | ✅ Changed to `false` |
-| 2 | `log_level = :debug` | `config/environments/production.rb` | ✅ Changed to `:info` |
-| 3 | DB password in plaintext | `config/database.yml` | ✅ Production now reads `ENV.fetch("DATABASE_PASSWORD")` (no fallback — see deploy note below) |
-| 4 | Production DB name is `bglmautam_development` | `config/database.yml` | [ ] Pending — needs coordinated downtime (rename DB + update config in the same deploy), not done yet |
+| 1 | `consider_all_requests_local = true` | `config/environments/production.rb` | ✅ Changed to `false`, deployed |
+| 2 | `log_level = :debug` | `config/environments/production.rb` | ✅ Changed to `:info`, deployed |
+| 3 | DB password in plaintext | `config/database.yml` | ✅ Production reads `ENV.fetch("DATABASE_PASSWORD")`; actual Postgres password rotated, deployed |
+| 4 | Production DB name is `bglmautam_development` | `config/database.yml` | ✅ Renamed to `bglmautam_production` on the server, config updated to match, deployed |
 | 5 | No error tracking/alerting — errors only visible by tailing `log/production.log` (or STDOUT) over SSH | `Gemfile`, new `config/initializers/sentry.rb` | [ ] Pending — needs a Sentry account/DSN from you first |
 
-**⚠️ Deploy note for items 1-3:** `config/database.yml` now requires `DATABASE_PASSWORD` to be set in the production environment — it has no plaintext fallback, so **the app will fail to boot if deployed before the env var is set on the server.** Before running `git pull`/`pm2 restart` on prod:
-1. SSH into the server and add `DATABASE_PASSWORD: 'admin@bglmautam'` (the current real password) to the `env: {}` block in `/root/bglmautam/ecosystem.config.js` — **edit only the server's copy, do not commit this value** (the file is tracked in git; `CORS_ORIGINS` already lives there as a precedent for non-secret env vars, but a real secret must stay server-local).
-2. Restart via `pm2 restart bglmautam --update-env` (or `pm2 delete` + `pm2 start ecosystem.config.js` if `--update-env` doesn't pick up new keys) so the new env var is loaded.
-3. **Full remediation also requires rotating the actual Postgres password** away from `admin@bglmautam` — that value is already in git history (was committed in `config/database.yml` in earlier commits) and remains discoverable there even after this fix removes it from the current file. Rotating it is a separate DB-side action: `ALTER USER bglmautam WITH PASSWORD '<new password>';` in `psql`, then update the server's `ecosystem.config.js` env value to match.
-
-Also added `/.env` and `/.env.*` to `.gitignore` so a future `.env`-based setup (e.g. `dotenv-rails`) doesn't accidentally get committed.
+**Notes for future manual ops work:** `DATABASE_PASSWORD` must be exported in any bare SSH shell before running `rails console`/`rake` commands by hand — `ecosystem.config.js`'s `env` block only reaches the process PM2 spawns, not an ad-hoc shell command. It's set in `/root/.bashrc` on the server for this. Also added `/.env` and `/.env.*` to `.gitignore` so a future `.env`-based setup (e.g. `dotenv-rails`) doesn't accidentally get committed.
 
 ### Phase O: Flatten Phone/Email/Address into Person — ✅ Complete (2026-05-22)
 
@@ -851,9 +846,9 @@ src/components/layout/MobileNav.js      # Phase O: Mobile nav
 | Auth logic duplicated across User model + policies | Maintainability | MEDIUM | ✅ Fixed (Phase K) |
 | Hardcoded `@current_year = 2025` in policies | Wrong auth in non-current years | MEDIUM | ✅ Fixed (Phase K) |
 | Contact policies open to any authenticated user | Security gap | HIGH | ✅ Fixed (Phase K) |
-| `consider_all_requests_local = true` in production | Exposes stack traces | CRITICAL | ✅ Fixed (Phase N) — pending deploy |
-| `log_level = :debug` in production | Leaks sensitive data in logs | MEDIUM | ✅ Fixed (Phase N) — pending deploy |
-| DB password plaintext in database.yml | Credential exposure risk | HIGH | ✅ Fixed in code (Phase N) — pending deploy + password rotation, see Phase N deploy note |
+| `consider_all_requests_local = true` in production | Exposes stack traces | CRITICAL | ✅ Fixed (Phase N) |
+| `log_level = :debug` in production | Leaks sensitive data in logs | MEDIUM | ✅ Fixed (Phase N) |
+| DB password plaintext in database.yml | Credential exposure risk | HIGH | ✅ Fixed (Phase N) — password rotated |
 | No multi-tenancy | All data globally visible | HIGH | [ ] In Progress (Phase L) |
 | `Student#sync_person` wrote `date_confirmation` into `declaration_date` | Wrong sacrament data | MEDIUM | ✅ Fixed (Phase O) |
 | `Student#sync_person` / `Teacher#sync_person` wrote to deleted Phone/Email/Address models | Runtime crash on student/teacher save | CRITICAL | ✅ Fixed (Phase O) |
