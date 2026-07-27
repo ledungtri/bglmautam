@@ -27,7 +27,7 @@
 | P | Rails: Drop phones/emails/addresses tables (post-flatten cleanup) | [ ] Pending |
 | Q | Rails: Seed Vietnamese address reference tables (vn_provinces, vn_districts, vn_wards) | [x] Complete — ran on prod |
 | R | Rails: Vietnamese address format migration — cleanup, backfill, decommission old fields, rename subregion→ward | [ ] In Progress — Phase 1 (province_code/ward_code columns) written, not yet run against a live DB |
-| S | Rails: Consolidate Student/Teacher into Person — sacraments as columns, parent-info/occupation as custom fields, decommission Student/Teacher | [ ] Steps 1-4 Planned |
+| S | Rails: Consolidate Student/Teacher into Person — sacraments as columns, parent-info/occupation as custom fields, decommission Student/Teacher | [ ] Steps 1-4 done, verified locally, not yet deployed |
 | T | Rails: Add Sentry error tracking | [ ] Pending |
 
 ---
@@ -745,11 +745,13 @@ Migrate `people` from the old address format (`street_number`, `street_name`, `w
 
 ---
 
-### Phase S: Consolidate Student/Teacher into Person — Steps 1-4 Planned (decided 2026-07-27)
+### Phase S: Consolidate Student/Teacher into Person — Steps 1-4 ✅ Done, Verified Locally, Not Deployed (2026-07-27)
 
 **Decision:** `Person` becomes the single canonical model. `Student` and `Teacher` are decommissioned entirely, not merely thinned — `sync_person` is transitional bridge scaffolding for this migration, not a permanent dual-write. This extends the same expand-and-contract pattern Phase O used for contact fields.
 
-Steps 1-4 (the backend data-layer groundwork) are planned in full detail, including two bugs found during planning, in [`docs/STUDENT_TEACHER_TO_PERSON_PLAN.md`](docs/STUDENT_TEACHER_TO_PERSON_PLAN.md). Summary of field disposition and steps below; steps 5-9 remain at the summary level only.
+Steps 1-4 (the backend data-layer groundwork) are implemented, verified against a local copy of production-scale data, and detailed in full — including two bugs found during planning and one found during verification — in [`docs/STUDENT_TEACHER_TO_PERSON_PLAN.md`](docs/STUDENT_TEACHER_TO_PERSON_PLAN.md). Summary of field disposition and steps below; steps 5-9 remain at the summary level only.
+
+**Verification performed locally (2026-07-27):** full migration chain (sacrament columns → backfill → drop redundant columns) run cleanly against 1978 real students/2290 real people; backfilled sacrament data spot-checked and matches source `Student` records exactly; `db/schema.rb` confirmed to match a fresh `db:schema:dump` byte-for-byte; full Minitest suite passing (9/9); real HTTP requests confirmed `/people/:id` renders correctly (no crash from the removed `data_fields` render call), the step 1 bug fix actually persists custom-field submissions now, and both `/students/:id` and `/teachers/:id` still render correctly via the `attr_accessor`/`after_find` bridge. Also found and fixed an unrelated bug during this pass: `database.yml`'s `ENV.fetch("DATABASE_PASSWORD")` (from Phase N) was breaking `development`/`test`, not just guarding production, since Rails ERB-renders the whole file regardless of active environment — changed to `ENV["DATABASE_PASSWORD"]` (no exception if unset); production is unaffected since the var is already set there.
 
 **Field disposition:**
 - **Sacraments** (`date_baptism`/`place_baptism`, communion, confirmation, declaration) → **native columns on `people`**, carrying the same presence-pairing validations Student has today (`validates_presence_of :date_baptism, if: :place_baptism?`, etc.). Not custom fields — this data is used in PDFs/exports and completion-tracking logic, and is core/universal rather than tenant-variable.
@@ -762,10 +764,10 @@ Steps 1-4 (the backend data-layer groundwork) are planned in full detail, includ
 **Second bug found during planning (blocks step 1):** `DataFieldsController#data_field_params` reads `f['field']`, but every seeded schema and the rendering partials use `field_name` — the Person-profile custom-fields form (sacraments/parents_info/additional_info) currently permits nothing and silently no-ops on submit. Must be fixed as part of step 1.
 
 **Steps (in order):**
-1. [ ] Planned — Add required-field validation for `DataFieldable` models (validate presence for any `DataSchema` field flagged `required`, scoped to that record's `data` keys) — today `required` is a permitted param with no enforcement anywhere. Also fixes the `field`/`field_name` bug above. Must land before step 4 makes custom fields the sole source of truth for parent-info/additional-info.
-2. [ ] Planned — Add sacrament columns + validations to `people`; update `Person::FIELD_SETS`; add `father_name`/`mother_name` helpers. (`validates_presence_of :gender, :date_birth`, the gender inclusion check, and `in_classroom` are already present on `Person` independently — nothing to port there; `Student.result(classroom)` has zero callers, not ported.)
-3. [ ] Planned — Point `Student#sync_person` at the new `Person` sacrament columns (bridge), with a backfill migration preferring `Student`'s column over stale `person.data['sacraments']`; remove the `DataSchema` `sacraments`/entity-Person entry.
-4. [ ] Planned — Confirm `parents_info`/`additional_info` custom fields round-trip correctly against `Person`; drop the now-redundant native `father_*`/`mother_*` columns from `Student` and `occupation`/`named_date` from `Teacher`, replaced with `attr_accessor` + `after_find` compatibility shims so the ~8 existing call sites (views/PDFs/Excel exports) keep working unchanged until step 8.
+1. ✅ Done — Add required-field validation for `DataFieldable` models (validate presence for any `DataSchema` field flagged `required`, scoped to that record's `data` keys) — today `required` is a permitted param with no enforcement anywhere. Also fixes the `field`/`field_name` bug above.
+2. ✅ Done — Add sacrament columns + validations to `people`; update `Person::FIELD_SETS`; add `father_name`/`mother_name` helpers. (`validates_presence_of :gender, :date_birth`, the gender inclusion check, and `in_classroom` are already present on `Person` independently — nothing to port there; `Student.result(classroom)` has zero callers, not ported.)
+3. ✅ Done — Point `Student#sync_person` at the new `Person` sacrament columns (bridge), with a backfill migration preferring `Student`'s column over stale `person.data['sacraments']`; removed the corresponding `render 'components/form/data_fields', schema_key: 'sacraments'` block from `people/show.html.erb` in the same change. The `DataSchema` `sacraments`/entity-Person row itself still needs to be destroyed via console command as part of deploying this (data cleanup, not a schema migration — see deploy note).
+4. ✅ Done — `parents_info`/`additional_info` custom fields round-trip correctly against `Person` (verified via real HTTP POST to `/people/:id/data_fields/parents_info`); dropped the now-redundant native `father_*`/`mother_*` columns from `Student` and `occupation`/`named_date` from `Teacher`, replaced with `attr_accessor` + `after_find` compatibility shims so the ~8 existing call sites (views/PDFs/Excel exports) keep working unchanged until step 8 — confirmed via rendering `/students/:id` and `/teachers/:id` directly.
 5. Repoint `enrollments.student_id` → `person_id`, `teaching_assignments.teacher_id` → `person_id`: add the new column, backfill, verify row counts match the old FK (same audit pattern as Phase P) before dropping the old column — don't do this in one shot.
 6. Update `User`/`AuthController` to derive teacher status from `person.teaching_assignments.any?` instead of `person.teacher` (currently `user.person&.teacher&.id`).
 7. Move the `Pundit`/`UserContext` teacher-of-classroom authorization logic (the `teacher_of_classroom?` bug fixed in Phase K against `Teacher`) to operate on `Person` instead.

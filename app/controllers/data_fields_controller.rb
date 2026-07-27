@@ -32,6 +32,6 @@ class DataFieldsController < ApplicationController
   end
 
   def data_field_params
-    params.permit(@schema.fields.map{ |f| f['field'] })
+    params.permit(@schema.fields.map{ |f| f['field_name'] })
   end
 end

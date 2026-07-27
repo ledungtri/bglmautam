@@ -11,7 +11,7 @@
 #  year            :integer          not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
-#  organization_id :bigint
+#  organization_id :bigint           not null
 #
 # Indexes
 #

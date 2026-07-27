@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2026_07_27_172114) do
+ActiveRecord::Schema[7.2].define(version: 2026_07_27_174309) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -172,6 +172,14 @@ ActiveRecord::Schema[7.2].define(version: 2026_07_27_172114) do
     t.string "subregion"
     t.integer "province_code"
     t.integer "ward_code"
+    t.date "date_baptism"
+    t.string "place_baptism"
+    t.date "date_communion"
+    t.string "place_communion"
+    t.date "date_confirmation"
+    t.string "place_confirmation"
+    t.date "date_declaration"
+    t.string "place_declaration"
     t.index ["organization_id"], name: "index_people_on_organization_id"
   end
 
@@ -217,12 +225,6 @@ ActiveRecord::Schema[7.2].define(version: 2026_07_27_172114) do
     t.string "ward"
     t.string "district"
     t.string "area"
-    t.string "father_christian_name"
-    t.string "father_full_name"
-    t.string "father_phone"
-    t.string "mother_christian_name"
-    t.string "mother_full_name"
-    t.string "mother_phone"
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.datetime "deleted_at", precision: nil
@@ -235,9 +237,7 @@ ActiveRecord::Schema[7.2].define(version: 2026_07_27_172114) do
   create_table "teachers", id: :serial, force: :cascade do |t|
     t.string "christian_name"
     t.string "full_name"
-    t.string "named_date"
     t.date "date_birth"
-    t.string "occupation"
     t.string "phone"
     t.string "email"
     t.string "street_number"
@@ -300,7 +300,7 @@ ActiveRecord::Schema[7.2].define(version: 2026_07_27_172114) do
     t.index ["organization_id"], name: "index_versions_on_organization_id"
   end
 
-  create_table "vn_districts", primary_key: "code", id: :integer, default: nil, force: :cascade do |t|
+  create_table "vn_districts", primary_key: "code", id: :serial, force: :cascade do |t|
     t.string "name", null: false
     t.string "division_type"
     t.string "codename"
@@ -308,14 +308,14 @@ ActiveRecord::Schema[7.2].define(version: 2026_07_27_172114) do
     t.index ["province_code"], name: "index_vn_districts_on_province_code"
   end
 
-  create_table "vn_provinces", primary_key: "code", id: :integer, default: nil, force: :cascade do |t|
+  create_table "vn_provinces", primary_key: "code", id: :serial, force: :cascade do |t|
     t.string "name", null: false
     t.string "division_type"
     t.string "codename"
     t.integer "phone_code"
   end
 
-  create_table "vn_wards", primary_key: "code", id: :integer, default: nil, force: :cascade do |t|
+  create_table "vn_wards", primary_key: "code", id: :serial, force: :cascade do |t|
     t.string "name", null: false
     t.string "division_type"
     t.string "codename"

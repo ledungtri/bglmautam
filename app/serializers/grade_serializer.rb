@@ -10,7 +10,7 @@
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  enrollment_id   :integer
-#  organization_id :bigint
+#  organization_id :bigint           not null
 #
 # Indexes
 #

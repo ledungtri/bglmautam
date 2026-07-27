@@ -10,9 +10,7 @@
 #  email           :string
 #  full_name       :string
 #  gender          :string
-#  named_date      :string
 #  nickname        :string
-#  occupation      :string
 #  phone           :string
 #  street_name     :string
 #  street_number   :string
@@ -41,6 +39,9 @@ class Teacher < ApplicationRecord
   belongs_to :person
   # TODO: email = right format, allow nil
 
+  attr_accessor :named_date, :occupation
+
+  after_find :load_additional_info
   before_validation :sync_person
 
   FIELD_SETS = [
@@ -70,12 +71,6 @@ class Teacher < ApplicationRecord
     person.nickname = nickname
     person.gender = gender
     person.birth_date = date_birth
-    person.data = {
-      'additional_info' => {
-        'named_date' => named_date,
-        'occupation' => occupation
-      }
-    }
     person.phone = phone
     person.email = email
     person.street_number = street_number
@@ -83,7 +78,19 @@ class Teacher < ApplicationRecord
     person.ward = ward
     person.district = district
     person.save!
+    person.update_data_field('additional_info', {
+      'named_date' => named_date,
+      'occupation' => occupation
+    })
 
     self.person_id = person.id unless person_id
+  end
+
+  private
+
+  def load_additional_info
+    info = person&.data_field_by_key('additional_info') || {}
+    self.named_date = info['named_date']
+    self.occupation = info['occupation']
   end
 end

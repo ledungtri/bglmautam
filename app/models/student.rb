@@ -2,37 +2,31 @@
 #
 # Table name: students
 #
-#  id                    :integer          not null, primary key
-#  area                  :string
-#  christian_name        :string
-#  date_baptism          :date
-#  date_birth            :date
-#  date_communion        :date
-#  date_confirmation     :date
-#  date_declaration      :date
-#  deleted_at            :datetime
-#  district              :string
-#  father_christian_name :string
-#  father_full_name      :string
-#  father_phone          :string
-#  full_name             :string
-#  gender                :string
-#  mother_christian_name :string
-#  mother_full_name      :string
-#  mother_phone          :string
-#  phone                 :string
-#  place_baptism         :string
-#  place_birth           :string
-#  place_communion       :string
-#  place_confirmation    :string
-#  place_declaration     :string
-#  street_name           :string
-#  street_number         :string
-#  ward                  :string
-#  created_at            :datetime         not null
-#  updated_at            :datetime         not null
-#  organization_id       :bigint           not null
-#  person_id             :integer
+#  id                 :integer          not null, primary key
+#  area               :string
+#  christian_name     :string
+#  date_baptism       :date
+#  date_birth         :date
+#  date_communion     :date
+#  date_confirmation  :date
+#  date_declaration   :date
+#  deleted_at         :datetime
+#  district           :string
+#  full_name          :string
+#  gender             :string
+#  phone              :string
+#  place_baptism      :string
+#  place_birth        :string
+#  place_communion    :string
+#  place_confirmation :string
+#  place_declaration  :string
+#  street_name        :string
+#  street_number      :string
+#  ward               :string
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
+#  organization_id    :bigint           not null
+#  person_id          :integer
 #
 # Indexes
 #
@@ -51,6 +45,9 @@ class Student < ApplicationRecord
   has_many :classrooms, through: :enrollments
   belongs_to :person
 
+  attr_accessor :father_christian_name, :father_full_name, :father_phone,
+                :mother_christian_name, :mother_full_name, :mother_phone
+
   validates_presence_of :gender, :date_birth
   validates :gender, inclusion: { in: %w[Nam Nữ], message: 'have to be either Nam or Nữ' }
 
@@ -59,11 +56,9 @@ class Student < ApplicationRecord
   validates_presence_of :date_confirmation, if: :place_confirmation?
   validates_presence_of :date_declaration, if: :place_declaration?
 
-  validates :father_phone, format: { with: /\A\d+\z/, message: 'only allows numbers' }, allow_blank: true
-  validates :mother_phone, format: { with: /\A\d+\z/, message: 'only allows numbers' }, allow_blank: true
-
   scope :in_classroom, -> (classroom) { joins(:enrollments).where('enrollments.classroom_id': classroom.id) }
 
+  after_find :load_parents_info
   before_validation :sync_person
 
   FIELD_SETS = [
@@ -143,28 +138,36 @@ class Student < ApplicationRecord
     person.ward = ward
     person.district = district
     person.area = area
-    person.data = {
-      'sacraments' => {
-        'baptism_date' => date_baptism,
-        'baptism_place' => place_baptism,
-        'communion_date' => date_communion,
-        'communion_place' => place_communion,
-        'confirmation_date' => date_confirmation,
-        'confirmation_place' => place_confirmation,
-        'declaration_date' => date_declaration,
-        'declaration_place' => place_declaration
-      },
-      'parents_info' => {
-        'father_christian_name' => father_christian_name,
-        'father_name' => father_full_name,
-        'father_phone' => father_phone,
-        'mother_christian_name' => mother_christian_name,
-        'mother_name' => mother_full_name,
-        'mother_phone' => mother_phone
-      }
-    }
+    person.date_baptism = date_baptism
+    person.place_baptism = place_baptism
+    person.date_communion = date_communion
+    person.place_communion = place_communion
+    person.date_confirmation = date_confirmation
+    person.place_confirmation = place_confirmation
+    person.date_declaration = date_declaration
+    person.place_declaration = place_declaration
     person.save
+    person.update_data_field('parents_info', {
+      'father_christian_name' => father_christian_name,
+      'father_name' => father_full_name,
+      'father_phone' => father_phone,
+      'mother_christian_name' => mother_christian_name,
+      'mother_name' => mother_full_name,
+      'mother_phone' => mother_phone
+    })
 
     self.person_id = person.id unless person_id
+  end
+
+  private
+
+  def load_parents_info
+    info = person&.data_field_by_key('parents_info') || {}
+    self.father_christian_name = info['father_christian_name']
+    self.father_full_name = info['father_name']
+    self.father_phone = info['father_phone']
+    self.mother_christian_name = info['mother_christian_name']
+    self.mother_full_name = info['mother_name']
+    self.mother_phone = info['mother_phone']
   end
 end

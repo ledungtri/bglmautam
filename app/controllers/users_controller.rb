@@ -9,7 +9,7 @@
 #  username        :string           not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
-#  organization_id :bigint
+#  organization_id :bigint           not null
 #  person_id       :integer
 #  teacher_id      :integer
 #

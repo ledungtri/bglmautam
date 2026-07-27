@@ -10,16 +10,14 @@
 #  email           :string
 #  full_name       :string
 #  gender          :string
-#  named_date      :string
 #  nickname        :string
-#  occupation      :string
 #  phone           :string
 #  street_name     :string
 #  street_number   :string
 #  ward            :string
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
-#  organization_id :bigint
+#  organization_id :bigint           not null
 #  person_id       :integer
 #
 # Indexes

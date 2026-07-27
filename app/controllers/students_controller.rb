@@ -2,37 +2,31 @@
 #
 # Table name: students
 #
-#  id                    :integer          not null, primary key
-#  area                  :string
-#  christian_name        :string
-#  date_baptism          :date
-#  date_birth            :date
-#  date_communion        :date
-#  date_confirmation     :date
-#  date_declaration      :date
-#  deleted_at            :datetime
-#  district              :string
-#  father_christian_name :string
-#  father_full_name      :string
-#  father_phone          :string
-#  full_name             :string
-#  gender                :string
-#  mother_christian_name :string
-#  mother_full_name      :string
-#  mother_phone          :string
-#  phone                 :string
-#  place_baptism         :string
-#  place_birth           :string
-#  place_communion       :string
-#  place_confirmation    :string
-#  place_declaration     :string
-#  street_name           :string
-#  street_number         :string
-#  ward                  :string
-#  created_at            :datetime         not null
-#  updated_at            :datetime         not null
-#  organization_id       :bigint
-#  person_id             :integer
+#  id                 :integer          not null, primary key
+#  area               :string
+#  christian_name     :string
+#  date_baptism       :date
+#  date_birth         :date
+#  date_communion     :date
+#  date_confirmation  :date
+#  date_declaration   :date
+#  deleted_at         :datetime
+#  district           :string
+#  full_name          :string
+#  gender             :string
+#  phone              :string
+#  place_baptism      :string
+#  place_birth        :string
+#  place_communion    :string
+#  place_confirmation :string
+#  place_declaration  :string
+#  street_name        :string
+#  street_number      :string
+#  ward               :string
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
+#  organization_id    :bigint           not null
+#  person_id          :integer
 #
 # Indexes
 #

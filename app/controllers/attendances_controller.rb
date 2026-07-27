@@ -14,7 +14,7 @@
 #  created_at            :datetime         not null
 #  updated_at            :datetime         not null
 #  attendable_id         :integer
-#  organization_id       :bigint
+#  organization_id       :bigint           not null
 #  substitute_teacher_id :integer
 #
 # Indexes

@@ -2,11 +2,11 @@
 #
 # Table name: vn_wards
 #
-#  code           :integer          not null, primary key
-#  name           :string           not null
-#  division_type  :string
-#  codename       :string
-#  district_code  :integer          not null
+#  code          :integer          not null, primary key
+#  codename      :string
+#  district_code :integer          not null
+#  division_type :string
+#  name          :string           not null
 #
 # Indexes
 #
