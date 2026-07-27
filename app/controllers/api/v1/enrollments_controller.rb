@@ -7,7 +7,7 @@ module Api
 
       # GET /api/v1/enrollments
       def index
-        @enrollments = scope.result.sort_by(&:sort_param)
+        @enrollments = scope.result.includes(:grades, :attendances, :evaluation).sort_by(&:sort_param)
         render_collection @enrollments
       end
 

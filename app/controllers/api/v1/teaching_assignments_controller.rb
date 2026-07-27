@@ -7,7 +7,7 @@ module Api
 
       # GET /api/v1/teaching_assignments
       def index
-        @teaching_assignments = scope.result.sort_by(&:sort_param)
+        @teaching_assignments = scope.result.includes(:attendances).sort_by(&:sort_param)
         render_collection @teaching_assignments
       end
 

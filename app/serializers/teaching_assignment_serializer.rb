@@ -28,7 +28,11 @@
 #  fk_rails_...  (person_id => people.id)
 #
 class TeachingAssignmentSerializer < ApplicationSerializer
-  attributes :position
+  attributes :position, :attendance_status_counts
   belongs_to :person
   belongs_to :classroom
+
+  def attendance_status_counts
+    object.attendances.group_by(&:status).transform_values(&:count)
+  end
 end

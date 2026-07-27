@@ -28,7 +28,36 @@
 #  fk_rails_...  (person_id => people.id)
 #
 class EnrollmentSerializer < ApplicationSerializer
-  attributes :result
+  attributes :result, :average_grade, :attended_count, :mass_absence_count, :absence_count
   belongs_to :person
   belongs_to :classroom
+  has_many :grades
+  has_one :evaluation
+
+  def average_grade
+    object.average_grade
+  end
+
+  def attended_count
+    attendance_counts[:attended]
+  end
+
+  def mass_absence_count
+    attendance_counts[:mass_absence]
+  end
+
+  def absence_count
+    attendance_counts[:absence]
+  end
+
+  private
+
+  def attendance_counts
+    @attendance_counts ||= begin
+      attendances = object.attendances
+      attended = attendances.count { |a| a.status == 'Hiện Diện' }
+      mass_absence = attendances.count { |a| a.status == 'Vắng Lễ' }
+      { attended: attended, mass_absence: mass_absence, absence: attendances.size - attended - mass_absence }
+    end
+  end
 end
