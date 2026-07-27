@@ -22,12 +22,13 @@
 | K | Rails: Permission system refactor (Pundit + UserContext) | [x] Complete |
 | L | Rails: Multi-tenancy (acts_as_tenant) | [ ] In Progress — Phases 1-2 done |
 | M | React: Attendance editing, Search, PDF buttons, Mobile nav | [ ] Pending |
-| N | Rails + React: Production config fixes | [ ] In Progress — items 1-4 done and deployed, item 5 (Sentry) pending |
+| N | Rails + React: Production config fixes | [x] Complete |
 | O | Rails: Flatten Phone/Email/Address into Person columns | [x] Complete |
 | P | Rails: Drop phones/emails/addresses tables (post-flatten cleanup) | [ ] Pending |
 | Q | Rails: Seed Vietnamese address reference tables (vn_provinces, vn_districts, vn_wards) | [x] Complete — ran on prod |
 | R | Rails: Vietnamese address format migration — cleanup, backfill, decommission old fields, rename subregion→ward | [ ] In Progress — Phase 1 (province_code/ward_code columns) written, not yet run against a live DB |
 | S | Rails: Consolidate Student/Teacher into Person — sacraments as columns, parent-info/occupation as custom fields, decommission Student/Teacher | [ ] Steps 1-4 Planned |
+| T | Rails: Add Sentry error tracking | [ ] Pending |
 
 ---
 
@@ -40,7 +41,7 @@ Ranked by risk × effort, not by phase letter. Superseded phase-by-phase status 
 3. **Tier 2 — In-flight structural migrations (independent of each other).**
    - Phase S steps 1-4 (Student/Teacher → Person) — planned in `docs/STUDENT_TEACHER_TO_PERSON_PLAN.md`; fixes a live data-integrity bug (`sync_person` silently clobbering Person-profile-page edits). Prioritized ahead of Phase R since it fixes an active bug rather than just modernizing a format.
    - Phase R phases 2-7 (Vietnamese address format) — Phase Q shipped to prod; phase 1 (code columns) is written but unmigrated.
-4. **Tier 3 — Low-risk housekeeping, do opportunistically.** Phase P (drop `phones`/`emails`/`addresses` tables once prod row counts are audited), Phase N item 5 (Sentry error tracking — valuable for ops visibility, not blocking, needs a DSN from you first).
+4. **Tier 3 — Low-risk housekeeping, do opportunistically.** Phase P (drop `phones`/`emails`/`addresses` tables once prod row counts are audited), Phase T (Sentry error tracking — valuable for ops visibility, not blocking, needs a DSN from you first).
 5. **Tier 4 — Bottom of the list.** Phase I (Students API), Phase J (React student pages), Phase M (remaining React features / mobile nav). The Rails ERB UI already has full working equivalents for all of these (CRUD forms, real per-tab content, wired export/PDF buttons) — this tier is purely about the React app catching up, and per Tier 1's dependency note shouldn't ship new functionality to production ahead of multi-tenancy anyway. Exception worth considering case-by-case: fixing an already-broken button (e.g. Phase J's dead `onClick` handlers) doesn't expose new data, so isolated bug fixes here could reasonably jump the queue independently of Tier 1.
 
 ---
@@ -675,7 +676,7 @@ See `MULTITENANCY_PLAN.md` for full detail. Current state:
 
 ---
 
-### Phase N: Production Config Fixes — Items 1-4 Complete (2026-07-27), Item 5 Pending
+### Phase N: Production Config Fixes — ✅ Complete (2026-07-27)
 
 | # | Issue | File | Fix |
 |---|-------|------|-----|
@@ -683,7 +684,8 @@ See `MULTITENANCY_PLAN.md` for full detail. Current state:
 | 2 | `log_level = :debug` | `config/environments/production.rb` | ✅ Changed to `:info`, deployed |
 | 3 | DB password in plaintext | `config/database.yml` | ✅ Production reads `ENV.fetch("DATABASE_PASSWORD")`; actual Postgres password rotated, deployed |
 | 4 | Production DB name is `bglmautam_development` | `config/database.yml` | ✅ Renamed to `bglmautam_production` on the server, config updated to match, deployed |
-| 5 | No error tracking/alerting — errors only visible by tailing `log/production.log` (or STDOUT) over SSH | `Gemfile`, new `config/initializers/sentry.rb` | [ ] Pending — needs a Sentry account/DSN from you first |
+
+Error tracking/alerting (Sentry) split out to Phase T.
 
 **Notes for future manual ops work:** `DATABASE_PASSWORD` must be exported in any bare SSH shell before running `rails console`/`rake` commands by hand — `ecosystem.config.js`'s `env` block only reaches the process PM2 spawns, not an ad-hoc shell command. It's set in `/root/.bashrc` on the server for this. Also added `/.env` and `/.env.*` to `.gitignore` so a future `.env`-based setup (e.g. `dotenv-rails`) doesn't accidentally get committed.
 
@@ -783,6 +785,19 @@ class DropPhoneEmailAddressTables < ActiveRecord::Migration[7.2]
   end
 end
 ```
+
+---
+
+### Phase T: Add Sentry Error Tracking — Pending
+
+Split out from Phase N item 5. No error tracking/alerting exists today — errors are only visible by tailing `log/production.log` (or PM2's STDOUT capture) over SSH.
+
+**Key deliverables:**
+- Add `sentry-ruby` + `sentry-rails` gems to `Gemfile`.
+- New `config/initializers/sentry.rb`, configured with DSN via `ENV['SENTRY_DSN']` (same env-var pattern as `DATABASE_PASSWORD` — set in `ecosystem.config.js`'s `env` block on the server, never committed).
+- Free Developer tier (5K events/month, 1 user) is plenty at this app's scale.
+
+**Prerequisite:** needs a Sentry account/DSN from you first — nothing to implement until that exists.
 
 ---
 
