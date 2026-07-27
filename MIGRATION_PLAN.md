@@ -20,7 +20,7 @@
 | I | Rails: Students API endpoint | [ ] Pending |
 | J | React: Student list/detail pages | [ ] Pending |
 | K | Rails: Permission system refactor (Pundit + UserContext) | [x] Complete |
-| L | Rails: Multi-tenancy (acts_as_tenant) | [ ] In Progress — Phases 1-4 done and deployed, Phase 5 (versions/PaperTrail) pending |
+| L | Rails: Multi-tenancy (acts_as_tenant) | [ ] In Progress — Phases 1-4 done and deployed, Phase 5 (versions/PaperTrail) code done, not deployed |
 | M | React: Attendance editing, Search, PDF buttons, Mobile nav | [ ] Pending |
 | N | Rails + React: Production config fixes | [x] Complete |
 | O | Rails: Flatten Phone/Email/Address into Person columns | [x] Complete |
@@ -654,7 +654,7 @@ See `MULTITENANCY_PLAN.md` for full detail. Current state:
 | 2 | Add nullable organization_id to all 12 tables | ✅ Done |
 | 3 | Seed Mautam org + backfill prod data | ✅ Done — ran and verified clean on prod |
 | 4 | Enforce NOT NULL + wire acts_as_tenant into models/controllers | ✅ Done — deployed and confirmed working (see incidents below) |
-| 5 | Add `organization_id` to `versions` (PaperTrail) | [ ] Pending — not in this pass |
+| 5 | Add `organization_id` to `versions` (PaperTrail) | ✅ Code done (2026-07-27), not yet deployed |
 
 The app is now fully tenant-scoped. Confirmed in prod via `ActsAsTenant.with_tenant(mautam) { ... }`: 343 classrooms, 1929 students, 332 teachers all correctly scoped.
 
@@ -666,9 +666,9 @@ The app is now fully tenant-scoped. Confirmed in prod via `ActsAsTenant.with_ten
 
 **Note:** two separate bugs found in `MULTITENANCY_PLAN.md` while implementing step 4 and fixed in that doc — its Phase 4c snippet referenced a `current_api_user` method that doesn't exist (actual method is `current_user`), and its Phase 4d ("review Pundit Scope#resolve") doesn't apply since this app has no Pundit `Scope` classes at all (confirmed via grep across all 13 policy files) — `acts_as_tenant`'s automatic query scoping is the only mechanism needed, no policy changes required.
 
-**L-5 detail:** `versions` (PaperTrail's audit table, `has_paper_trail` is included repo-wide in `ApplicationRecord`) was excluded from the original 12-table `organization_id` rollout since it only has `item_type`/`item_id`. Without it, any cross-tenant "recent changes" admin view would leak other orgs' audit history. Add:
-- Migration: nullable `organization_id` bigint + index on `versions`.
-- `ApplicationRecord`: `has_paper_trail meta: { organization_id: ->(record) { record.try(:organization_id) } }` so it's captured automatically on every version write — `try` handles models that don't have the column (`Organization` itself, and `Address`/`Email`/`Phone` pending removal in Phase P).
+**L-5 detail:** `versions` (PaperTrail's audit table, `has_paper_trail` is included repo-wide in `ApplicationRecord`) was excluded from the original 12-table `organization_id` rollout since it only has `item_type`/`item_id`. Without it, any cross-tenant "recent changes" admin view would leak other orgs' audit history. Done (2026-07-27):
+- Migration `AddOrganizationIdToVersions` — nullable `organization_id` bigint + index + FK on `versions`. Nullable and no backfill needed — historical audit rows legitimately have no org context, new ones get it automatically going forward. No `acts_as_tenant`/query-scoping added to `PaperTrail::Version` itself (no dedicated admin view reads it yet), so this carries none of Phase L step 4's deploy-ordering risk.
+- `ApplicationRecord`: `has_paper_trail meta: { organization_id: ->(record) { record.try(:organization_id) } }` so it's captured automatically on every version write — `try` handles `Organization` itself (the only model without the column; `Address`/`Email`/`Phone` model classes were already deleted in Phase O, only their DB tables remain pending Phase P).
 
 ---
 

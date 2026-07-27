@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2026_07_27_153103) do
+ActiveRecord::Schema[7.2].define(version: 2026_07_27_172114) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -295,7 +295,9 @@ ActiveRecord::Schema[7.2].define(version: 2026_07_27_153103) do
     t.text "object"
     t.datetime "created_at", precision: nil
     t.text "object_changes"
+    t.bigint "organization_id"
     t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"
+    t.index ["organization_id"], name: "index_versions_on_organization_id"
   end
 
   create_table "vn_districts", primary_key: "code", id: :integer, default: nil, force: :cascade do |t|
@@ -338,4 +340,5 @@ ActiveRecord::Schema[7.2].define(version: 2026_07_27_153103) do
   add_foreign_key "teaching_assignments", "people"
   add_foreign_key "users", "organizations"
   add_foreign_key "users", "people"
+  add_foreign_key "versions", "organizations"
 end
