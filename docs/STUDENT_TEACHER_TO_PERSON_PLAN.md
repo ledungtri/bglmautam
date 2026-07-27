@@ -1,11 +1,13 @@
 # Consolidate Student/Teacher into Person
 
-> **Status:** Steps 1-4 ✅ implemented and verified locally (2026-07-27) — not yet deployed to production. Steps 5-9 not yet detailed here.
+> **Status:** Steps 1-4 ✅ implemented, verified locally, and deployed to production (2026-07-27). Steps 5-9 not yet detailed here.
 > **Related:** `MIGRATION_PLAN.md` Phase S.
 
 **Verification performed (2026-07-27):** implemented and dress-rehearsed against a full copy of production-scale data (1978 students, 2290 people) in local dev — ran the complete migration chain (sacrament columns → backfill → drop redundant columns) cleanly, confirmed backfilled sacrament data matches source Student records exactly (spot-checked), confirmed `db/schema.rb` matches a fresh `db:schema:dump` byte-for-byte, ran the full Minitest suite (9/9 passing), and functionally verified via real HTTP requests: `/people/:id` renders correctly (sacraments section shows via the new native form, no crash from the removed `data_fields` render call), submitting the parents_info custom-fields form now actually persists (confirming the step 1 bug fix), and both `/students/:id` and `/teachers/:id` still render correctly with the `attr_accessor`/`after_find` bridge in place.
 
 **One unrelated bug found and fixed during this verification:** `config/database.yml`'s `ENV.fetch("DATABASE_PASSWORD")` (added in Phase N) was breaking `development`/`test` environments too, not just guarding production — Rails renders the entire `database.yml` through ERB before selecting the active environment's section, so a bare `.fetch` with no default anywhere in the file raises regardless of `RAILS_ENV`. Changed to `ENV["DATABASE_PASSWORD"]` (no exception if unset) — production behavior is unchanged since the env var is already set there.
+
+**Deployed to prod (2026-07-27):** `rake db:migrate` applied all three migrations in sequence in one pass — no manual pre-step needed, unlike Phase L's backfill (this one's a real ActiveRecord migration, not a console script). The `sacraments` `DataSchema` row was destroyed via console command post-deploy. Final health/data verification requested, results pending.
 
 ---
 
