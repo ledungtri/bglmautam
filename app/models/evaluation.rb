@@ -9,7 +9,7 @@
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  evaluable_id    :integer
-#  organization_id :bigint
+#  organization_id :bigint           not null
 #
 # Indexes
 #
@@ -21,6 +21,7 @@
 #  fk_rails_...  (organization_id => organizations.id)
 #
 class Evaluation < ApplicationRecord
+  acts_as_tenant :organization
   belongs_to :evaluable, polymorphic: true
 
   validates_presence_of :evaluable_type, :evaluable_id

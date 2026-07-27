@@ -9,7 +9,7 @@
 #  username        :string           not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
-#  organization_id :bigint
+#  organization_id :bigint           not null
 #  person_id       :integer
 #  teacher_id      :integer
 #
@@ -25,6 +25,7 @@
 #  fk_rails_...  (person_id => people.id)
 #
 class User < ApplicationRecord
+  acts_as_tenant :organization
   has_secure_password
   belongs_to :teacher
   belongs_to :person

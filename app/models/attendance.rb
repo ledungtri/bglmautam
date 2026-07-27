@@ -14,7 +14,7 @@
 #  created_at            :datetime         not null
 #  updated_at            :datetime         not null
 #  attendable_id         :integer
-#  organization_id       :bigint
+#  organization_id       :bigint           not null
 #  substitute_teacher_id :integer
 #
 # Indexes
@@ -28,6 +28,7 @@
 #  fk_rails_...  (organization_id => organizations.id)
 #
 class Attendance < ApplicationRecord
+  acts_as_tenant :organization
   belongs_to :attendable, polymorphic: true
   belongs_to :substitute_teacher, class_name: 'Teacher', optional: true
 

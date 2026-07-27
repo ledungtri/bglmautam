@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   include Pundit::Authorization
 
-  before_action :set_current_year, :set_current_user, :auth, :set_paper_trail_whodunnit
+  before_action :set_current_year, :set_current_user, :set_tenant, :auth, :set_paper_trail_whodunnit
   # after_action :verify_authorized
 
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
@@ -30,6 +30,10 @@ private
 
   def set_current_user
     @current_user = User.find(session[:user_id]) if session[:user_id]
+  end
+
+  def set_tenant
+    set_current_tenant(@current_user.organization) if @current_user
   end
 
   def pundit_user

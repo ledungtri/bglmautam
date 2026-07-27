@@ -11,7 +11,7 @@
 #  weight          :integer          default(0), not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
-#  organization_id :bigint
+#  organization_id :bigint           not null
 #
 # Indexes
 #
@@ -22,6 +22,7 @@
 #  fk_rails_...  (organization_id => organizations.id)
 #
 class DataSchema < ApplicationRecord
+  acts_as_tenant :organization
   SUPPORTED_ENTITIES = %w[Person Enrollment TeachingAssignment].freeze
   SUPPORTED_FIELD_TYPES = %w[text number select date checkbox textarea].freeze
 

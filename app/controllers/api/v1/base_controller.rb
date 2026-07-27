@@ -7,6 +7,7 @@ module Api
       include Pundit::Authorization
 
       before_action :authenticate_user!
+      before_action :set_tenant
 
       # Error handling
       rescue_from ActiveRecord::RecordNotFound, with: :not_found
@@ -31,6 +32,10 @@ module Api
         @current_user = User.find(payload[:user_id])
       rescue ActiveRecord::RecordNotFound
         unauthorized
+      end
+
+      def set_tenant
+        set_current_tenant(current_user.organization) if current_user
       end
 
       def pundit_user

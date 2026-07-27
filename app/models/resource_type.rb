@@ -9,7 +9,7 @@
 #  weight          :string           default("0"), not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
-#  organization_id :bigint
+#  organization_id :bigint           not null
 #
 # Indexes
 #
@@ -20,6 +20,7 @@
 #  fk_rails_...  (organization_id => organizations.id)
 #
 class ResourceType < ApplicationRecord
+  acts_as_tenant :organization
   default_scope { order(:weight) }
   scope :for_key, -> (key) { where(key: key) }
 end

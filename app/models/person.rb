@@ -27,7 +27,7 @@
 #  ward_code       :integer
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
-#  organization_id :bigint
+#  organization_id :bigint           not null
 #
 # Indexes
 #
@@ -38,6 +38,7 @@
 #  fk_rails_...  (organization_id => organizations.id)
 #
 class Person < ApplicationRecord
+  acts_as_tenant :organization
   include VnTextUtils
   include DataFieldable
 

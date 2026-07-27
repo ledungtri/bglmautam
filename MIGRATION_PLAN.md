@@ -37,7 +37,7 @@
 Ranked by risk × effort, not by phase letter. Superseded phase-by-phase status stays in the table above; this section is the actual work order.
 
 1. **Tier 0 — Fix immediately.** ✅ Complete and deployed (Phase N items 1-4): `consider_all_requests_local` → `false`, `log_level` → `:info`, DB password rotated + moved to `ENV.fetch("DATABASE_PASSWORD")`, prod DB renamed `bglmautam_development` → `bglmautam_production`.
-2. **Tier 1 — Finish multi-tenancy (Phase L, steps 3-5).** Steps 1-2 (Organization model, nullable `organization_id` on all tables) are done. Steps 3-5 (seed org + backfill prod data, enforce `NOT NULL` + wire `acts_as_tenant`, add `organization_id` to `versions`) are what's actually blocking — the doc's own dependency note says all new React feature work should wait until step 4 lands, since the API currently returns unscoped data. Audit for `organization_id IS NULL` rows before enforcing `NOT NULL` — `acts_as_tenant`'s default scoping means any row that slips through the backfill silently vanishes from every index page, not an error.
+2. **Tier 1 — Finish multi-tenancy (Phase L, steps 3-5).** Steps 1-2 (Organization model, nullable `organization_id` on all tables) are done. Step 4's code is done (2026-07-27) — `acts_as_tenant` on all 12 models, `set_tenant` wired into both controllers, NOT NULL migration written, `db/seeds.rb` wrapped — but **not deployed**. Step 3 (seed org + backfill prod data) must run first, alone, and be verified clean before step 4 ships (see the deploy-ordering note under Phase L). Step 5 (`organization_id` on `versions`/PaperTrail) is still untouched — small and self-contained, worth a quick follow-up pass.
 3. **Tier 2 — In-flight structural migrations (independent of each other).**
    - Phase S steps 1-4 (Student/Teacher → Person) — planned in `docs/STUDENT_TEACHER_TO_PERSON_PLAN.md`; fixes a live data-integrity bug (`sync_person` silently clobbering Person-profile-page edits). Prioritized ahead of Phase R since it fixes an active bug rather than just modernizing a format.
    - Phase R phases 2-7 (Vietnamese address format) — Phase Q shipped to prod; phase 1 (code columns) is written but unmigrated.
@@ -652,11 +652,15 @@ See `MULTITENANCY_PLAN.md` for full detail. Current state:
 |-------|-------------|--------|
 | 1 | Organization model + acts_as_tenant gem | ✅ Done |
 | 2 | Add nullable organization_id to all 12 tables | ✅ Done |
-| 3 | Seed Mautam org + backfill prod data | [ ] Pending |
-| 4 | Enforce NOT NULL + wire acts_as_tenant into models/controllers | [ ] Pending |
-| 5 | Add `organization_id` to `versions` (PaperTrail) | [ ] Pending |
+| 3 | Seed Mautam org + backfill prod data | [ ] Pending — script ready, must run first, alone (see deploy note) |
+| 4 | Enforce NOT NULL + wire acts_as_tenant into models/controllers | [ ] Code done (2026-07-27), not deployed — migration must not run until step 3 is verified clean |
+| 5 | Add `organization_id` to `versions` (PaperTrail) | [ ] Pending — not in this pass, see note below |
 
 **All React feature work intended for production should wait until Phase L-4 is complete.** The API currently returns unscoped data; after Phase L-4, every response will be scoped to the logged-in user's organization.
+
+**Step 3 and step 4 must ship as two separate deploys, never one.** Once `acts_as_tenant :organization` is on a model, any row with `organization_id: NULL` becomes invisible the instant a tenant is set on a request — not an error, it just silently vanishes from every index/show. Deploying step 4 before step 3's backfill is verified clean (zero `organization_id IS NULL` rows across all 12 tables) means every existing user's data disappears the moment it ships.
+
+**Note (2026-07-27):** two bugs found in `MULTITENANCY_PLAN.md` while implementing step 4 and fixed in that doc — its Phase 4c snippet referenced a `current_api_user` method that doesn't exist (actual method is `current_user`), and its Phase 4d ("review Pundit Scope#resolve") doesn't apply since this app has no Pundit `Scope` classes at all (confirmed via grep across all 13 policy files) — `acts_as_tenant`'s automatic query scoping is the only mechanism needed, no policy changes required.
 
 **L-5 detail:** `versions` (PaperTrail's audit table, `has_paper_trail` is included repo-wide in `ApplicationRecord`) was excluded from the original 12-table `organization_id` rollout since it only has `item_type`/`item_id`. Without it, any cross-tenant "recent changes" admin view would leak other orgs' audit history. Add:
 - Migration: nullable `organization_id` bigint + index on `versions`.

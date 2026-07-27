@@ -58,7 +58,7 @@ end
 
 ### Verify before moving on
 - `rails db:migrate` succeeds on dev and production
-- `rails db:schema:dump` shows `organization_id` on all 15 tables
+- `rails db:schema:dump` shows `organization_id` on all 12 tables
 - App still boots and works (nullable, no scoping yet)
 
 ---
@@ -66,6 +66,8 @@ end
 ## Phase 3: Prod data migration — seed Mautam + backfill
 
 **Goal:** Create the Mautam Organization record and stamp every existing row with its ID. This is the irreversible prod step — do it after Phase 2 is deployed.
+
+**⚠️ Critical ordering note:** this must be run and verified (zero `organization_id IS NULL` rows across all 12 tables) **before** Phase 4's code ships. Once `acts_as_tenant :organization` is on a model, any row with `organization_id: NULL` becomes invisible the instant a tenant is set on a request — not an error, it just silently vanishes from every index/show. Deploying Phase 4 before this backfill is verified clean means every existing user's data disappears the moment it ships. Treat Phase 3 and Phase 4 as two separate deploys, never one.
 
 ### Steps
 
@@ -142,12 +144,13 @@ end
 before_action :set_tenant
 
 def set_tenant
-  set_current_tenant(current_api_user.organization) if current_api_user
+  set_current_tenant(current_user.organization) if current_user
 end
 ```
+(Corrected from an earlier draft of this doc that referenced `current_api_user`, which doesn't exist in this codebase — the actual method is `current_user`, backed by `@current_user`.)
 
 #### 4d. Update Pundit policies
-`acts_as_tenant` raises `ActiveRecord::RecordNotFound` for cross-tenant access automatically. Review `Scope#resolve` in each policy — `scope.all` is sufficient (acts_as_tenant adds the WHERE clause). No explicit `organization_id` checks needed in policy methods.
+`acts_as_tenant` raises `ActiveRecord::RecordNotFound` for cross-tenant access automatically. **N/A for this app** — grepped all 13 policy files and confirmed there is no Pundit `Scope` class anywhere; controllers query models directly (`Model.all`/`Model.where`), so `acts_as_tenant`'s automatic `default_scope` is the only mechanism needed and applies with zero policy changes. (Verified no controller uses `.unscoped` in a way that would bypass it.)
 
 #### 4e. Update seeds.rb
 Wrap existing seed data in `ActsAsTenant.with_tenant(mautam) { ... }` so reseed works correctly:
@@ -280,6 +283,6 @@ end
 
 - [x] Phase 1: Organization model + acts_as_tenant gem installed
 - [x] Phase 2: Nullable org_id columns on all 12 tables (dev + prod)
-- [ ] Phase 3: Mautam org seeded + all prod rows backfilled + verified
-- [ ] Phase 4: NOT NULL enforced, models wired, controllers set tenant, seeds updated
-- [ ] Phase 5: super_admin flag + tenant rake task
+- [ ] Phase 3: Mautam org seeded + all prod rows backfilled + verified — **run this first, alone, before Phase 4 ships**
+- [ ] Phase 4: Code written (NOT NULL migration, `acts_as_tenant` on all 12 models, `set_tenant` wired into both controllers, `db/seeds.rb` wrapped) — not yet deployed; migration must not run until Phase 3 is verified clean
+- [ ] Phase 5: super_admin flag + tenant rake task — deferred until a second parish needs onboarding

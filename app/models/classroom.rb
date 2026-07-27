@@ -11,7 +11,7 @@
 #  year            :integer          not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
-#  organization_id :bigint
+#  organization_id :bigint           not null
 #
 # Indexes
 #
@@ -23,6 +23,7 @@
 #  fk_rails_...  (organization_id => organizations.id)
 #
 class Classroom < ApplicationRecord
+  acts_as_tenant :organization
   has_many :enrollments
   has_many :students, through: :enrollments
   # has_many :people, through: :guidances

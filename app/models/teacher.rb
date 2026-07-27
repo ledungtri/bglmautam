@@ -19,7 +19,7 @@
 #  ward            :string
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
-#  organization_id :bigint
+#  organization_id :bigint           not null
 #  person_id       :integer
 #
 # Indexes
@@ -32,6 +32,7 @@
 #  fk_rails_...  (organization_id => organizations.id)
 #
 class Teacher < ApplicationRecord
+  acts_as_tenant :organization
   include PersonConcern
 
   has_one :user

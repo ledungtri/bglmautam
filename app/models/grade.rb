@@ -10,7 +10,7 @@
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  enrollment_id   :integer
-#  organization_id :bigint
+#  organization_id :bigint           not null
 #
 # Indexes
 #
@@ -22,5 +22,6 @@
 #  fk_rails_...  (organization_id => organizations.id)
 #
 class Grade < ApplicationRecord
+  acts_as_tenant :organization
   belongs_to :enrollment
 end

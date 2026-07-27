@@ -8,7 +8,7 @@
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  classroom_id    :integer
-#  organization_id :bigint
+#  organization_id :bigint           not null
 #  person_id       :integer
 #  teacher_id      :integer
 #
@@ -28,6 +28,7 @@
 #  fk_rails_...  (person_id => people.id)
 #
 class TeachingAssignment < ApplicationRecord
+  acts_as_tenant :organization
   include ClassroomRelationship
 
   has_many :attendances, as: :attendable

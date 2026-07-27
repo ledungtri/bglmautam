@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2026_07_27_023100) do
+ActiveRecord::Schema[7.2].define(version: 2026_07_27_153103) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -43,7 +43,7 @@ ActiveRecord::Schema[7.2].define(version: 2026_07_27_023100) do
     t.string "reason"
     t.integer "substitute_teacher_id"
     t.string "substitute_lesson"
-    t.bigint "organization_id"
+    t.bigint "organization_id", null: false
     t.index ["attendable_type", "attendable_id", "date"], name: "idx_on_attendable_type_attendable_id_date_7297b26825"
     t.index ["attendable_type", "attendable_id"], name: "index_attendances_on_attendable_type_and_attendable_id"
     t.index ["organization_id"], name: "index_attendances_on_organization_id"
@@ -58,7 +58,7 @@ ActiveRecord::Schema[7.2].define(version: 2026_07_27_023100) do
     t.datetime "updated_at", precision: nil, null: false
     t.datetime "deleted_at", precision: nil
     t.integer "level"
-    t.bigint "organization_id"
+    t.bigint "organization_id", null: false
     t.index ["deleted_at"], name: "index_classrooms_on_deleted_at"
     t.index ["organization_id"], name: "index_classrooms_on_organization_id"
   end
@@ -72,7 +72,7 @@ ActiveRecord::Schema[7.2].define(version: 2026_07_27_023100) do
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.datetime "deleted_at", precision: nil
-    t.bigint "organization_id"
+    t.bigint "organization_id", null: false
     t.index ["organization_id"], name: "index_data_schemas_on_organization_id"
   end
 
@@ -95,7 +95,7 @@ ActiveRecord::Schema[7.2].define(version: 2026_07_27_023100) do
     t.datetime "updated_at", precision: nil, null: false
     t.datetime "deleted_at", precision: nil
     t.integer "person_id"
-    t.bigint "organization_id"
+    t.bigint "organization_id", null: false
     t.index ["classroom_id"], name: "index_enrollments_on_classroom_id"
     t.index ["deleted_at"], name: "index_enrollments_on_deleted_at"
     t.index ["organization_id"], name: "index_enrollments_on_organization_id"
@@ -111,7 +111,7 @@ ActiveRecord::Schema[7.2].define(version: 2026_07_27_023100) do
     t.datetime "deleted_at", precision: nil
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
-    t.bigint "organization_id"
+    t.bigint "organization_id", null: false
     t.index ["evaluable_type", "evaluable_id"], name: "index_evaluations_on_evaluable_type_and_evaluable_id"
     t.index ["organization_id"], name: "index_evaluations_on_organization_id"
   end
@@ -124,7 +124,7 @@ ActiveRecord::Schema[7.2].define(version: 2026_07_27_023100) do
     t.datetime "updated_at", precision: nil, null: false
     t.datetime "deleted_at", precision: nil
     t.integer "weight", default: 1
-    t.bigint "organization_id"
+    t.bigint "organization_id", null: false
     t.index ["enrollment_id"], name: "index_grades_on_enrollment_id"
     t.index ["organization_id"], name: "index_grades_on_organization_id"
   end
@@ -166,7 +166,7 @@ ActiveRecord::Schema[7.2].define(version: 2026_07_27_023100) do
     t.string "district"
     t.string "city"
     t.string "area"
-    t.bigint "organization_id"
+    t.bigint "organization_id", null: false
     t.string "street_address"
     t.string "province"
     t.string "subregion"
@@ -193,7 +193,7 @@ ActiveRecord::Schema[7.2].define(version: 2026_07_27_023100) do
     t.datetime "created_at", precision: nil, null: false
     t.datetime "updated_at", precision: nil, null: false
     t.datetime "deleted_at", precision: nil
-    t.bigint "organization_id"
+    t.bigint "organization_id", null: false
     t.index ["organization_id"], name: "index_resource_types_on_organization_id"
   end
 
@@ -227,7 +227,7 @@ ActiveRecord::Schema[7.2].define(version: 2026_07_27_023100) do
     t.datetime "updated_at", precision: nil, null: false
     t.datetime "deleted_at", precision: nil
     t.integer "person_id"
-    t.bigint "organization_id"
+    t.bigint "organization_id", null: false
     t.index ["deleted_at"], name: "index_students_on_deleted_at"
     t.index ["organization_id"], name: "index_students_on_organization_id"
   end
@@ -250,7 +250,7 @@ ActiveRecord::Schema[7.2].define(version: 2026_07_27_023100) do
     t.string "gender"
     t.integer "person_id"
     t.string "nickname"
-    t.bigint "organization_id"
+    t.bigint "organization_id", null: false
     t.index ["deleted_at"], name: "index_teachers_on_deleted_at"
     t.index ["organization_id"], name: "index_teachers_on_organization_id"
   end
@@ -263,7 +263,7 @@ ActiveRecord::Schema[7.2].define(version: 2026_07_27_023100) do
     t.datetime "updated_at", precision: nil, null: false
     t.datetime "deleted_at", precision: nil
     t.integer "person_id"
-    t.bigint "organization_id"
+    t.bigint "organization_id", null: false
     t.index ["classroom_id"], name: "index_teaching_assignments_on_classroom_id"
     t.index ["deleted_at"], name: "index_teaching_assignments_on_deleted_at"
     t.index ["organization_id"], name: "index_teaching_assignments_on_organization_id"
@@ -281,7 +281,7 @@ ActiveRecord::Schema[7.2].define(version: 2026_07_27_023100) do
     t.integer "teacher_id"
     t.datetime "deleted_at", precision: nil
     t.integer "person_id"
-    t.bigint "organization_id"
+    t.bigint "organization_id", null: false
     t.index ["deleted_at"], name: "index_users_on_deleted_at"
     t.index ["organization_id"], name: "index_users_on_organization_id"
     t.index ["person_id"], name: "index_users_on_person_id"
