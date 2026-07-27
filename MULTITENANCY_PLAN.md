@@ -130,6 +130,12 @@ Note: `Organization` itself does NOT call `acts_as_tenant` (it's the root).
 
 #### 4c. Set current tenant in controllers
 
+**Required first, in both controllers' class body:**
+```ruby
+set_current_tenant_through_filter
+```
+`acts_as_tenant` does not define a `set_current_tenant` instance method automatically — it only exists once a controller calls this class macro (it `include`s a `Filter` concern that defines it). Skipping this produces `NoMethodError: undefined method 'set_current_tenant'` on every single request, discovered in production 2026-07-27 (see `MIGRATION_PLAN.md` Phase L incidents) — this only surfaces at runtime, a static read of the gem's docs/API doesn't make the requirement obvious.
+
 **`app/controllers/application_controller.rb`** — add after `set_current_user`:
 ```ruby
 before_action :set_tenant
@@ -283,6 +289,6 @@ end
 
 - [x] Phase 1: Organization model + acts_as_tenant gem installed
 - [x] Phase 2: Nullable org_id columns on all 12 tables (dev + prod)
-- [ ] Phase 3: Mautam org seeded + all prod rows backfilled + verified — **run this first, alone, before Phase 4 ships**
-- [ ] Phase 4: Code written (NOT NULL migration, `acts_as_tenant` on all 12 models, `set_tenant` wired into both controllers, `db/seeds.rb` wrapped) — not yet deployed; migration must not run until Phase 3 is verified clean
+- [x] Phase 3: Mautam org seeded + all prod rows backfilled + verified (2026-07-27)
+- [x] Phase 4: NOT NULL enforced, `acts_as_tenant` on all 12 models, `set_tenant` wired into both controllers (incl. required `set_current_tenant_through_filter`), `db/seeds.rb` wrapped — deployed and confirmed working in prod (2026-07-27)
 - [ ] Phase 5: super_admin flag + tenant rake task — deferred until a second parish needs onboarding

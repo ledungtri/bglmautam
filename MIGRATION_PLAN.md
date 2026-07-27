@@ -20,7 +20,7 @@
 | I | Rails: Students API endpoint | [ ] Pending |
 | J | React: Student list/detail pages | [ ] Pending |
 | K | Rails: Permission system refactor (Pundit + UserContext) | [x] Complete |
-| L | Rails: Multi-tenancy (acts_as_tenant) | [ ] In Progress — Phases 1-2 done |
+| L | Rails: Multi-tenancy (acts_as_tenant) | [ ] In Progress — Phases 1-4 done and deployed, Phase 5 (versions/PaperTrail) pending |
 | M | React: Attendance editing, Search, PDF buttons, Mobile nav | [ ] Pending |
 | N | Rails + React: Production config fixes | [x] Complete |
 | O | Rails: Flatten Phone/Email/Address into Person columns | [x] Complete |
@@ -37,7 +37,7 @@
 Ranked by risk × effort, not by phase letter. Superseded phase-by-phase status stays in the table above; this section is the actual work order.
 
 1. **Tier 0 — Fix immediately.** ✅ Complete and deployed (Phase N items 1-4): `consider_all_requests_local` → `false`, `log_level` → `:info`, DB password rotated + moved to `ENV.fetch("DATABASE_PASSWORD")`, prod DB renamed `bglmautam_development` → `bglmautam_production`.
-2. **Tier 1 — Finish multi-tenancy (Phase L, steps 3-5).** Steps 1-2 (Organization model, nullable `organization_id` on all tables) are done. Step 4's code is done (2026-07-27) — `acts_as_tenant` on all 12 models, `set_tenant` wired into both controllers, NOT NULL migration written, `db/seeds.rb` wrapped — but **not deployed**. Step 3 (seed org + backfill prod data) must run first, alone, and be verified clean before step 4 ships (see the deploy-ordering note under Phase L). Step 5 (`organization_id` on `versions`/PaperTrail) is still untouched — small and self-contained, worth a quick follow-up pass.
+2. **Tier 1 — Finish multi-tenancy (Phase L, steps 3-5).** ✅ Steps 1-4 complete and deployed (2026-07-27): Mautam org seeded + prod backfilled + verified, NOT NULL enforced, `acts_as_tenant` wired into all 12 models, `set_tenant` active in both controllers, `db/seeds.rb` wrapped. Confirmed working in prod: tenant-scoped counts return real data (343 classrooms, 1929 students, 332 teachers), no cross-tenant leakage. Step 5 (`organization_id` on `versions`/PaperTrail) is still untouched — small and self-contained, worth a quick follow-up pass.
 3. **Tier 2 — In-flight structural migrations (independent of each other).**
    - Phase S steps 1-4 (Student/Teacher → Person) — planned in `docs/STUDENT_TEACHER_TO_PERSON_PLAN.md`; fixes a live data-integrity bug (`sync_person` silently clobbering Person-profile-page edits). Prioritized ahead of Phase R since it fixes an active bug rather than just modernizing a format.
    - Phase R phases 2-7 (Vietnamese address format) — Phase Q shipped to prod; phase 1 (code columns) is written but unmigrated.
@@ -644,7 +644,7 @@ Re-audited against the actual Rails ERB UI (`/students`, `/teachers`, `/people/s
 
 ---
 
-### Phase L: Multi-Tenancy — In Progress
+### Phase L: Multi-Tenancy — Steps 1-4 ✅ Complete and Deployed (2026-07-27)
 
 See `MULTITENANCY_PLAN.md` for full detail. Current state:
 
@@ -652,15 +652,19 @@ See `MULTITENANCY_PLAN.md` for full detail. Current state:
 |-------|-------------|--------|
 | 1 | Organization model + acts_as_tenant gem | ✅ Done |
 | 2 | Add nullable organization_id to all 12 tables | ✅ Done |
-| 3 | Seed Mautam org + backfill prod data | [ ] Pending — script ready, must run first, alone (see deploy note) |
-| 4 | Enforce NOT NULL + wire acts_as_tenant into models/controllers | [ ] Code done (2026-07-27), not deployed — migration must not run until step 3 is verified clean |
-| 5 | Add `organization_id` to `versions` (PaperTrail) | [ ] Pending — not in this pass, see note below |
+| 3 | Seed Mautam org + backfill prod data | ✅ Done — ran and verified clean on prod |
+| 4 | Enforce NOT NULL + wire acts_as_tenant into models/controllers | ✅ Done — deployed and confirmed working (see incidents below) |
+| 5 | Add `organization_id` to `versions` (PaperTrail) | [ ] Pending — not in this pass |
 
-**All React feature work intended for production should wait until Phase L-4 is complete.** The API currently returns unscoped data; after Phase L-4, every response will be scoped to the logged-in user's organization.
+The app is now fully tenant-scoped. Confirmed in prod via `ActsAsTenant.with_tenant(mautam) { ... }`: 343 classrooms, 1929 students, 332 teachers all correctly scoped.
 
-**Step 3 and step 4 must ship as two separate deploys, never one.** Once `acts_as_tenant :organization` is on a model, any row with `organization_id: NULL` becomes invisible the instant a tenant is set on a request — not an error, it just silently vanishes from every index/show. Deploying step 4 before step 3's backfill is verified clean (zero `organization_id IS NULL` rows across all 12 tables) means every existing user's data disappears the moment it ships.
+**All React feature work intended for production can now proceed** — the API scopes every response to the logged-in user's organization.
 
-**Note (2026-07-27):** two bugs found in `MULTITENANCY_PLAN.md` while implementing step 4 and fixed in that doc — its Phase 4c snippet referenced a `current_api_user` method that doesn't exist (actual method is `current_user`), and its Phase 4d ("review Pundit Scope#resolve") doesn't apply since this app has no Pundit `Scope` classes at all (confirmed via grep across all 13 policy files) — `acts_as_tenant`'s automatic query scoping is the only mechanism needed, no policy changes required.
+**Two production incidents during this deploy, both fixed same-day:**
+1. **`DATABASE_PASSWORD` KeyError crash-loop.** The value was correctly set in `ecosystem.config.js`'s `env` block (from the Phase N rollout), but `pm2 restart --update-env` didn't pick it up for an already-running process — same gotcha documented in Phase N, recurring because this was a fresh restart of a process PM2 had cached without that env var. Fixed with a full `pm2 delete bglmautam && pm2 start ecosystem.config.js`. Also affects any bare `rake`/`rails runner` command run over SSH — remember to `export DATABASE_PASSWORD=...` in the shell first, separate from PM2's copy.
+2. **`NoMethodError: undefined method 'set_current_tenant'`** on every request after the first successful boot. `acts_as_tenant` only defines that instance method when a controller calls its `set_current_tenant_through_filter` class macro — neither `ApplicationController` nor `Api::V1::BaseController` did. This wasn't caught by either research pass before implementation since it required actually booting the app to surface (a static grep of the gem's public API wouldn't have caught the DSL requirement). Fixed by adding `set_current_tenant_through_filter` to both controllers.
+
+**Note:** two separate bugs found in `MULTITENANCY_PLAN.md` while implementing step 4 and fixed in that doc — its Phase 4c snippet referenced a `current_api_user` method that doesn't exist (actual method is `current_user`), and its Phase 4d ("review Pundit Scope#resolve") doesn't apply since this app has no Pundit `Scope` classes at all (confirmed via grep across all 13 policy files) — `acts_as_tenant`'s automatic query scoping is the only mechanism needed, no policy changes required.
 
 **L-5 detail:** `versions` (PaperTrail's audit table, `has_paper_trail` is included repo-wide in `ApplicationRecord`) was excluded from the original 12-table `organization_id` rollout since it only has `item_type`/`item_id`. Without it, any cross-tenant "recent changes" admin view would leak other orgs' audit history. Add:
 - Migration: nullable `organization_id` bigint + index on `versions`.
