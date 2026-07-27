@@ -5,6 +5,7 @@ module Api
     class BaseController < ActionController::API
       include ActionController::Cookies
       include Pundit::Authorization
+      set_current_tenant_through_filter
 
       before_action :authenticate_user!
       before_action :set_tenant

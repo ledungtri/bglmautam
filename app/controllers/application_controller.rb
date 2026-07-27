@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   include Pundit::Authorization
+  set_current_tenant_through_filter
 
   before_action :set_current_year, :set_current_user, :set_tenant, :auth, :set_paper_trail_whodunnit
   # after_action :verify_authorized
