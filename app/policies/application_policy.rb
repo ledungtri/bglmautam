@@ -69,4 +69,12 @@ private
     user.teacher&.teaching_assignments&.for_year(@current_year)&.map(&:classroom)&.include?(enrollment.classroom)
   end
 
+  def admin_or_teacher_of_teaching_assignment?(teaching_assignment)
+    admin? || teacher_of_teaching_assignment?(teaching_assignment)
+  end
+
+  def teacher_of_teaching_assignment?(teaching_assignment)
+    user.teacher&.teaching_assignments&.for_year(@current_year)&.map(&:classroom)&.include?(teaching_assignment.classroom)
+  end
+
 end

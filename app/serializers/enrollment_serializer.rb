@@ -28,7 +28,7 @@
 #  fk_rails_...  (person_id => people.id)
 #
 class EnrollmentSerializer < ApplicationSerializer
-  attributes :result, :average_grade, :attended_count, :mass_absence_count, :absence_count
+  attributes :result, :average_grade, :attended_count, :mass_absence_count, :absence_count, :attendance_status_counts
   belongs_to :person
   belongs_to :classroom
   has_many :grades
@@ -36,6 +36,10 @@ class EnrollmentSerializer < ApplicationSerializer
 
   def average_grade
     object.average_grade
+  end
+
+  def attendance_status_counts
+    object.attendances.group_by(&:status).transform_values(&:count)
   end
 
   def attended_count

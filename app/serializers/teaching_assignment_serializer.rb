@@ -31,6 +31,7 @@ class TeachingAssignmentSerializer < ApplicationSerializer
   attributes :position, :attendance_status_counts
   belongs_to :person
   belongs_to :classroom
+  has_one :evaluation
 
   def attendance_status_counts
     object.attendances.group_by(&:status).transform_values(&:count)

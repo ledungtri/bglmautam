@@ -32,6 +32,7 @@ class TeachingAssignment < ApplicationRecord
   include ClassroomRelationship
 
   has_many :attendances, as: :attendable
+  has_one :evaluation, as: :evaluable
   belongs_to :teacher
   belongs_to :person
 

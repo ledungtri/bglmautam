@@ -46,9 +46,15 @@ module Api
       end
 
       def authorize_evaluation
-        if @evaluation.evaluable_type == 'Enrollment'
+        case @evaluation.evaluable_type
+        when 'Enrollment'
           enrollment = @evaluation.evaluable || Enrollment.find(@evaluation.evaluable_id)
           authorize enrollment, :update?
+        when 'TeachingAssignment'
+          teaching_assignment = @evaluation.evaluable || TeachingAssignment.find(@evaluation.evaluable_id)
+          authorize teaching_assignment, :update?
+        else
+          raise Pundit::NotAuthorizedError
         end
       end
     end
