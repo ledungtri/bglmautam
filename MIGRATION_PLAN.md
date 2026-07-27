@@ -25,9 +25,23 @@
 | N | Rails + React: Production config fixes | [ ] Pending |
 | O | Rails: Flatten Phone/Email/Address into Person columns | [x] Complete |
 | P | Rails: Drop phones/emails/addresses tables (post-flatten cleanup) | [ ] Pending |
-| Q | Rails: Seed Vietnamese address reference tables (vn_provinces, vn_districts, vn_wards) | [ ] In Progress — Phase 1 (tables/models/seeder) written, not yet run against a live DB |
+| Q | Rails: Seed Vietnamese address reference tables (vn_provinces, vn_districts, vn_wards) | [x] Complete — ran on prod |
 | R | Rails: Vietnamese address format migration — cleanup, backfill, decommission old fields, rename subregion→ward | [ ] In Progress — Phase 1 (province_code/ward_code columns) written, not yet run against a live DB |
-| S | Rails: Consolidate Student/Teacher into Person — sacraments as columns, parent-info/occupation as custom fields, decommission Student/Teacher | [ ] Pending |
+| S | Rails: Consolidate Student/Teacher into Person — sacraments as columns, parent-info/occupation as custom fields, decommission Student/Teacher | [ ] Steps 1-4 Planned |
+
+---
+
+## Prioritized Backlog (2026-07-27)
+
+Ranked by risk × effort, not by phase letter. Superseded phase-by-phase status stays in the table above; this section is the actual work order.
+
+1. **Tier 0 — Fix immediately.** ✅ Done in code (Phase N items 1-3): `consider_all_requests_local` → `false`, `log_level` → `:info`, DB password → `ENV.fetch("DATABASE_PASSWORD")`. **Not yet deployed** — see the deploy note under Phase N below before pushing to prod, since the app will fail to boot without `DATABASE_PASSWORD` set on the server first.
+2. **Tier 1 — Finish multi-tenancy (Phase L, steps 3-5).** Steps 1-2 (Organization model, nullable `organization_id` on all tables) are done. Steps 3-5 (seed org + backfill prod data, enforce `NOT NULL` + wire `acts_as_tenant`, add `organization_id` to `versions`) are what's actually blocking — the doc's own dependency note says all new React feature work should wait until step 4 lands, since the API currently returns unscoped data. Audit for `organization_id IS NULL` rows before enforcing `NOT NULL` — `acts_as_tenant`'s default scoping means any row that slips through the backfill silently vanishes from every index page, not an error.
+3. **Tier 2 — In-flight structural migrations (independent of each other).**
+   - Phase S steps 1-4 (Student/Teacher → Person) — planned in `docs/STUDENT_TEACHER_TO_PERSON_PLAN.md`; fixes a live data-integrity bug (`sync_person` silently clobbering Person-profile-page edits). Prioritized ahead of Phase R since it fixes an active bug rather than just modernizing a format.
+   - Phase R phases 2-7 (Vietnamese address format) — Phase Q shipped to prod; phase 1 (code columns) is written but unmigrated.
+4. **Tier 3 — Low-risk housekeeping, do opportunistically.** Phase P (drop `phones`/`emails`/`addresses` tables once prod row counts are audited), Phase N item 5 (Sentry error tracking — valuable for ops visibility, not blocking, needs a DSN from you first). Phase N item 4 (rename the production DB from `bglmautam_development` to `bglmautam_production`) also sits here — needs coordinated downtime, not urgent.
+5. **Tier 4 — Bottom of the list.** Phase I (Students API), Phase J (React student pages), Phase M (remaining React features / mobile nav). The Rails ERB UI already has full working equivalents for all of these (CRUD forms, real per-tab content, wired export/PDF buttons) — this tier is purely about the React app catching up, and per Tier 1's dependency note shouldn't ship new functionality to production ahead of multi-tenancy anyway. Exception worth considering case-by-case: fixing an already-broken button (e.g. Phase J's dead `onClick` handlers) doesn't expose new data, so isolated bug fixes here could reasonably jump the queue independently of Tier 1.
 
 ---
 
@@ -661,15 +675,22 @@ See `MULTITENANCY_PLAN.md` for full detail. Current state:
 
 ---
 
-### Phase N: Production Config Fixes — Pending
+### Phase N: Production Config Fixes — Items 1-3 Done (code), Deploy Pending
 
 | # | Issue | File | Fix |
 |---|-------|------|-----|
-| 1 | `consider_all_requests_local = true` | `config/environments/production.rb` | Change to `false` — currently exposes full stack traces to all users |
-| 2 | `log_level = :debug` | `config/environments/production.rb` | Change to `:info` |
-| 3 | DB password in plaintext | `config/database.yml` | Move to `ENV['DATABASE_PASSWORD']` |
-| 4 | Production DB name is `bglmautam_development` | `config/database.yml` | Rename to `bglmautam_production` on server |
-| 5 | No error tracking/alerting — errors only visible by tailing `log/production.log` (or STDOUT) over SSH | `Gemfile`, new `config/initializers/sentry.rb` | Add `sentry-ruby` + `sentry-rails` gems; configure DSN via `ENV['SENTRY_DSN']`. Free Developer tier (5K events/month, 1 user) is plenty at this app's scale. |
+| 1 | `consider_all_requests_local = true` | `config/environments/production.rb` | ✅ Changed to `false` |
+| 2 | `log_level = :debug` | `config/environments/production.rb` | ✅ Changed to `:info` |
+| 3 | DB password in plaintext | `config/database.yml` | ✅ Production now reads `ENV.fetch("DATABASE_PASSWORD")` (no fallback — see deploy note below) |
+| 4 | Production DB name is `bglmautam_development` | `config/database.yml` | [ ] Pending — needs coordinated downtime (rename DB + update config in the same deploy), not done yet |
+| 5 | No error tracking/alerting — errors only visible by tailing `log/production.log` (or STDOUT) over SSH | `Gemfile`, new `config/initializers/sentry.rb` | [ ] Pending — needs a Sentry account/DSN from you first |
+
+**⚠️ Deploy note for items 1-3:** `config/database.yml` now requires `DATABASE_PASSWORD` to be set in the production environment — it has no plaintext fallback, so **the app will fail to boot if deployed before the env var is set on the server.** Before running `git pull`/`pm2 restart` on prod:
+1. SSH into the server and add `DATABASE_PASSWORD: 'admin@bglmautam'` (the current real password) to the `env: {}` block in `/root/bglmautam/ecosystem.config.js` — **edit only the server's copy, do not commit this value** (the file is tracked in git; `CORS_ORIGINS` already lives there as a precedent for non-secret env vars, but a real secret must stay server-local).
+2. Restart via `pm2 restart bglmautam --update-env` (or `pm2 delete` + `pm2 start ecosystem.config.js` if `--update-env` doesn't pick up new keys) so the new env var is loaded.
+3. **Full remediation also requires rotating the actual Postgres password** away from `admin@bglmautam` — that value is already in git history (was committed in `config/database.yml` in earlier commits) and remains discoverable there even after this fix removes it from the current file. Rotating it is a separate DB-side action: `ALTER USER bglmautam WITH PASSWORD '<new password>';` in `psql`, then update the server's `ecosystem.config.js` env value to match.
+
+Also added `/.env` and `/.env.*` to `.gitignore` so a future `.env`-based setup (e.g. `dotenv-rails`) doesn't accidentally get committed.
 
 ### Phase O: Flatten Phone/Email/Address into Person — ✅ Complete (2026-05-22)
 
@@ -688,17 +709,17 @@ Old tables (`phones`, `emails`, `addresses`) left in DB — see Phase P.
 
 ---
 
-### Phase Q: Seed Vietnamese Address Reference Tables — In Progress
+### Phase Q: Seed Vietnamese Address Reference Tables — Complete
 
 Seed `vn_provinces`, `vn_districts`, and `vn_wards` from the [provinces.open-api.vn v1 API](https://provinces.open-api.vn/api/v1/redoc). Full detail in [`docs/VIETNAMESE_ADDRESS_PLAN.md`](docs/VIETNAMESE_ADDRESS_PLAN.md) Phase 1.
 
 **Key deliverables:**
-- Migration: `CreateVnAddressReferenceTables` — three tables with integer PKs ✅ written
+- Migration: `CreateVnAddressReferenceTables` — three tables with integer PKs ✅ written and run on prod
 - Models: `VnProvince`, `VnDistrict`, `VnWard` (`app/models/vn_*.rb`) ✅ written
 - Service: `VietnameseAddressSeeder` (`app/services/vietnamese_address_seeder.rb`) ✅ written, call added to `db/seeds.rb`
-- Run: `rails runner 'VietnameseAddressSeeder.seed!'` — ⏳ not yet run; no reachable local DB in this session (`db:migrate` fails with `PG::ConnectionBad`/password auth error for `bglmautam`)
+- Run: `rails runner 'VietnameseAddressSeeder.seed!'` — ✅ ran on prod. Initial run hit `JSON::ParserError` on `seed_districts`/`seed_wards`: `provinces.open-api.vn` 307-redirects `/d` → `/d/` and `/w` → `/w/`, but `Net::HTTP.get_response` doesn't follow redirects, so `fetch` got an empty body. Fixed by using the canonical trailing-slash paths (`/d/`, `/w/`) directly in the seeder.
 
-**Verification (once migrated + seeded):** `VnProvince.count` = 63, `VnWard.count` > 10_000
+**Verification:** `VnProvince.count` = 63, `VnWard.count` > 10_000
 
 ---
 
@@ -719,23 +740,27 @@ Migrate `people` from the old address format (`street_number`, `street_name`, `w
 
 ---
 
-### Phase S: Consolidate Student/Teacher into Person — Pending (decided 2026-07-27)
+### Phase S: Consolidate Student/Teacher into Person — Steps 1-4 Planned (decided 2026-07-27)
 
 **Decision:** `Person` becomes the single canonical model. `Student` and `Teacher` are decommissioned entirely, not merely thinned — `sync_person` is transitional bridge scaffolding for this migration, not a permanent dual-write. This extends the same expand-and-contract pattern Phase O used for contact fields.
 
+Steps 1-4 (the backend data-layer groundwork) are planned in full detail, including two bugs found during planning, in [`docs/STUDENT_TEACHER_TO_PERSON_PLAN.md`](docs/STUDENT_TEACHER_TO_PERSON_PLAN.md). Summary of field disposition and steps below; steps 5-9 remain at the summary level only.
+
 **Field disposition:**
 - **Sacraments** (`date_baptism`/`place_baptism`, communion, confirmation, declaration) → **native columns on `people`**, carrying the same presence-pairing validations Student has today (`validates_presence_of :date_baptism, if: :place_baptism?`, etc.). Not custom fields — this data is used in PDFs/exports and completion-tracking logic, and is core/universal rather than tenant-variable.
-- **Parent info** (father/mother christian_name, full_name, phone) → **custom fields** via the existing `DataSchema` entity `Person` / key `parents_info` (already seeded correctly in `db/seeds/data_schemas.yml` and `lib/tasks/create_data_schemas.rake`). Confirmed via grep that these fields are only ever read for display (`students_excel_export.rb`, `_info_table.html.erb`, `attendances.html.erb`) — never filtered, sorted, or joined — so jsonb has no query-performance downside here. Note: the `format: { with: /\A\d+\z/ }` validation currently on `father_phone`/`mother_phone` has no equivalent in `DataSchema` yet; either drop that check or extend `DataSchema` fields with an optional format/pattern validator.
+- **Parent info** (father/mother christian_name, full_name, phone) → **custom fields** via the existing `DataSchema` entity `Person` / key `parents_info` (already seeded correctly in `lib/tasks/create_data_schemas.rake`). Confirmed via grep that these fields are only ever read for display (`students_excel_export.rb`, `_info_table.html.erb`, `attendances.html.erb`) — never filtered, sorted, or joined — so jsonb has no query-performance downside here. The `format: { with: /\A\d+\z/ }` validation currently on `father_phone`/`mother_phone` has no equivalent elsewhere on `Person` (`phone`, `Organization#phone` aren't format-validated either) — dropped rather than generalizing the required-field validator to also support `format`.
 - **Teacher occupation / patron day (`named_date`)** → **custom fields** via existing `DataSchema` entity `Person` / key `additional_info` (already seeded).
 - **Existing `DataSchema` key `sacraments` (entity `Person`)** must be removed once sacraments become native columns — it's currently a conflicting write path (see bug below).
 
-**Known bug this migration fixes:** `Student#sync_person` overwrites `person.data['sacraments']`/`person.data['parents_info']` wholesale on every Student save, while `DataFieldsController#update` lets the Person profile page edit `person.data` directly with no write-back to `Student`'s real columns. Whichever was saved more recently silently wins. Moving sacraments to native `Person` columns and parent-info fully to `Person`-scoped custom fields collapses this to one write path.
+**Known bug this migration fixes:** `Student#sync_person` overwrites `person.data['sacraments']`/`person.data['parents_info']` wholesale on every Student save, while `DataFieldsController#update` lets the Person profile page edit `person.data` directly with no write-back to `Student`'s real columns. Whichever was saved more recently silently wins. Moving sacraments to native `Person` columns and parent-info fully to `Person`-scoped custom fields (merged via `update_data_field`, not wholesale overwrite) collapses this to one write path.
+
+**Second bug found during planning (blocks step 1):** `DataFieldsController#data_field_params` reads `f['field']`, but every seeded schema and the rendering partials use `field_name` — the Person-profile custom-fields form (sacraments/parents_info/additional_info) currently permits nothing and silently no-ops on submit. Must be fixed as part of step 1.
 
 **Steps (in order):**
-1. Add required-field validation for `DataFieldable` models (validate presence for any `DataSchema` field flagged `required`, scoped to that record's `data` keys) — today `required` is a permitted param with no enforcement anywhere (`DataFieldsController`/`DataFieldable#update_data_field` skip it entirely). Must land before step 4 makes custom fields the sole source of truth for parent-info/additional-info.
-2. Add sacrament columns + validations to `people`; update `Person::FIELD_SETS`. Also port over `Student`-only validations and helper methods that have no other home yet: `validates_presence_of :gender, :date_birth`, the `Nam`/`Nữ` gender inclusion check, `father_name`/`mother_name` helpers, `result(classroom)`, and the `in_classroom` scope.
-3. Point `Student#sync_person` at the new `Person` sacrament columns (bridge); remove the `DataSchema` `sacraments`/entity-Person entry.
-4. Confirm `parents_info`/`additional_info` custom fields round-trip correctly against `Person` (now enforced via step 1's validation); drop the now-redundant native `father_*`/`mother_*` columns from `Student` and `occupation`/`named_date` from `Teacher`.
+1. [ ] Planned — Add required-field validation for `DataFieldable` models (validate presence for any `DataSchema` field flagged `required`, scoped to that record's `data` keys) — today `required` is a permitted param with no enforcement anywhere. Also fixes the `field`/`field_name` bug above. Must land before step 4 makes custom fields the sole source of truth for parent-info/additional-info.
+2. [ ] Planned — Add sacrament columns + validations to `people`; update `Person::FIELD_SETS`; add `father_name`/`mother_name` helpers. (`validates_presence_of :gender, :date_birth`, the gender inclusion check, and `in_classroom` are already present on `Person` independently — nothing to port there; `Student.result(classroom)` has zero callers, not ported.)
+3. [ ] Planned — Point `Student#sync_person` at the new `Person` sacrament columns (bridge), with a backfill migration preferring `Student`'s column over stale `person.data['sacraments']`; remove the `DataSchema` `sacraments`/entity-Person entry.
+4. [ ] Planned — Confirm `parents_info`/`additional_info` custom fields round-trip correctly against `Person`; drop the now-redundant native `father_*`/`mother_*` columns from `Student` and `occupation`/`named_date` from `Teacher`, replaced with `attr_accessor` + `after_find` compatibility shims so the ~8 existing call sites (views/PDFs/Excel exports) keep working unchanged until step 8.
 5. Repoint `enrollments.student_id` → `person_id`, `teaching_assignments.teacher_id` → `person_id`: add the new column, backfill, verify row counts match the old FK (same audit pattern as Phase P) before dropping the old column — don't do this in one shot.
 6. Update `User`/`AuthController` to derive teacher status from `person.teaching_assignments.any?` instead of `person.teacher` (currently `user.person&.teacher&.id`).
 7. Move the `Pundit`/`UserContext` teacher-of-classroom authorization logic (the `teacher_of_classroom?` bug fixed in Phase K against `Teacher`) to operate on `Person` instead.
@@ -826,9 +851,9 @@ src/components/layout/MobileNav.js      # Phase O: Mobile nav
 | Auth logic duplicated across User model + policies | Maintainability | MEDIUM | ✅ Fixed (Phase K) |
 | Hardcoded `@current_year = 2025` in policies | Wrong auth in non-current years | MEDIUM | ✅ Fixed (Phase K) |
 | Contact policies open to any authenticated user | Security gap | HIGH | ✅ Fixed (Phase K) |
-| `consider_all_requests_local = true` in production | Exposes stack traces | CRITICAL | [ ] Pending (Phase N) |
-| `log_level = :debug` in production | Leaks sensitive data in logs | MEDIUM | [ ] Pending (Phase N) |
-| DB password plaintext in database.yml | Credential exposure risk | HIGH | [ ] Pending (Phase N) |
+| `consider_all_requests_local = true` in production | Exposes stack traces | CRITICAL | ✅ Fixed (Phase N) — pending deploy |
+| `log_level = :debug` in production | Leaks sensitive data in logs | MEDIUM | ✅ Fixed (Phase N) — pending deploy |
+| DB password plaintext in database.yml | Credential exposure risk | HIGH | ✅ Fixed in code (Phase N) — pending deploy + password rotation, see Phase N deploy note |
 | No multi-tenancy | All data globally visible | HIGH | [ ] In Progress (Phase L) |
 | `Student#sync_person` wrote `date_confirmation` into `declaration_date` | Wrong sacrament data | MEDIUM | ✅ Fixed (Phase O) |
 | `Student#sync_person` / `Teacher#sync_person` wrote to deleted Phone/Email/Address models | Runtime crash on student/teacher save | CRITICAL | ✅ Fixed (Phase O) |

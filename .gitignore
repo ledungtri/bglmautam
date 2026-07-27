@@ -18,3 +18,7 @@
 /.idea/
 
 goorm.manifest
+
+# Local secrets — never commit real credentials.
+/.env
+/.env.*

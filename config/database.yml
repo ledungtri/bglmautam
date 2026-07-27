@@ -14,7 +14,8 @@ development:
 
 production:
   <<: *default
-  database: bglmautam_development
+  database: bglmautam_production
+  password: <%= ENV.fetch("DATABASE_PASSWORD") %>
 
 test:
   <<: *default
