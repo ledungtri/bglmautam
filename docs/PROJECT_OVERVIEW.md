@@ -1,6 +1,6 @@
 # Project Overview: bglmautam
 
-_Last updated: 2026-07-26_
+_Last updated: 2026-07-27_
 
 ## What this project is
 
@@ -43,9 +43,9 @@ Core entities (all in `app/models/`), all soft-deletable (`paranoia` gem, `delet
 
 | Entity | Purpose |
 |---|---|
-| `Person` | Unifying identity record — name, gender, birth info, avatar, flattened contact/address fields, `data` jsonb for custom fields. `has_one :user/:teacher/:student`. |
-| `Student` | Sacrament dates/places, parent contact info, legacy address/phone fields (synced into `Person`). |
-| `Teacher` | Contact info, occupation, legacy address/phone fields (synced into `Person`). |
+| `Person` | Unifying identity record — name, gender, birth info, avatar, flattened contact/address fields, native sacrament columns (Baptism/Communion/Confirmation/Declaration dates+places), `data` jsonb for custom fields (parent contact info, teacher occupation/patron day). `has_one :user/:teacher/:student`. |
+| `Student` | Legacy address/phone fields (synced into `Person`); sacraments live on `Person` now (`Student` still has its own copy of those specific columns, kept in sync via `sync_person`, pending full decommission). Parent-contact fields (`father_*`/`mother_*`) are virtual attributes (`attr_accessor`) backed by `Person`'s custom-field jsonb, not real DB columns. |
+| `Teacher` | Contact info, legacy address/phone fields (synced into `Person`). Occupation/patron day (`named_date`) are virtual attributes backed by `Person`'s custom-field jsonb, not real DB columns. |
 | `Classroom` | Year, family/level, group, location. |
 | `Enrollment` | Join of student ↔ classroom for a year, plus `result` (outcome, from `ResourceType` lookup). |
 | `TeachingAssignment` | Join of teacher ↔ classroom for a year, plus `position` (from `ResourceType` lookup). |
@@ -58,9 +58,10 @@ Core entities (all in `app/models/`), all soft-deletable (`paranoia` gem, `delet
 
 Notable in-progress technical states:
 
-- **Contact/address flattening (recently completed)**: `Address`/`Phone`/`Email` were previously separate polymorphic tables; their data has been flattened directly onto `Person` (and duplicated onto `Organization`). The old tables still exist in the DB, pending a not-yet-written migration to drop them. `Student`/`Teacher` still carry their own legacy copies of these fields, synced into `Person` via a `before_validation :sync_person` callback — this dual storage is a deliberate, temporary transitional state.
-- **Multi-tenancy (in progress, not enforced)**: An `Organization` model and nullable `organization_id` columns have been added to all 12 domain tables, but **no model uses `acts_as_tenant`, no controller sets a current tenant, and no query is actually scoped by organization** — the gem is installed and the schema is ready, but today all data is still effectively global/single-tenant. See `MULTITENANCY_PLAN.md` (Phases 1–2 of 5 done; backfill, NOT NULL enforcement, and tenant wiring are pending).
-- **Vietnamese address format overhaul (planned, not started)**: `docs/VIETNAMESE_ADDRESS_PLAN.md` describes introducing `VnProvince`/`VnDistrict`/`VnWard` reference tables (seeded from `provinces.open-api.vn`) and migrating `people`/`organizations` to `province_code`/`ward_code`-based addressing. No code exists yet — this is purely a planning document.
+- **Contact/address flattening (completed)**: `Address`/`Phone`/`Email` were previously separate polymorphic tables; their data has been flattened directly onto `Person` (and duplicated onto `Organization`). The old tables still exist in the DB, pending a not-yet-written migration to drop them (`MIGRATION_PLAN.md` Phase P). `Student`/`Teacher` still carry their own legacy copies of address/phone fields, synced into `Person` via a `before_validation :sync_person` callback — this dual storage is a deliberate, temporary transitional state.
+- **Student/Teacher → Person consolidation (steps 1-4 of 9 deployed, 2026-07-27)**: `Person` is becoming the single canonical model, decommissioning `Student`/`Teacher` entirely rather than just thinning them. Sacraments now live as native columns on `Person` (Student's own copies of those columns still exist too, synced via `sync_person`, pending decommission in a later step). Parent-contact info and teacher occupation/patron-day moved to `Person`-scoped custom fields (`DataSchema`/jsonb `data`); `Student`/`Teacher` expose them as `attr_accessor` virtual attributes (populated via `after_find`) so existing views/PDFs/Excel exports keep working unchanged. A required-field validator for custom fields was also added (previously `required` was accepted but never enforced). FK re-pointing (`enrollments.student_id`/`teaching_assignments.teacher_id` → `person_id`), full policy/controller/PDF/React rewrite to query `Person` directly, and dropping the `students`/`teachers` tables are still pending (steps 5-9). See `docs/STUDENT_TEACHER_TO_PERSON_PLAN.md` and `MIGRATION_PLAN.md` Phase S.
+- **Multi-tenancy (deployed, 2026-07-27)**: `acts_as_tenant` is wired into all 12 domain tables plus `versions` (PaperTrail's audit table) — `organization_id` is `NOT NULL` everywhere, every model calls `acts_as_tenant :organization`, and both the session-based and JWT-based controllers set the current tenant from the logged-in user. Cross-tenant access is verified blocked end-to-end (a user from one org gets a 404 requesting another org's record by ID). The only remaining piece is a `super_admin` flag + tenant-onboarding rake task (`MULTITENANCY_PLAN.md` Phase 5), deferred until there's an actual second parish to onboard.
+- **Vietnamese address format overhaul (in progress)**: `docs/VIETNAMESE_ADDRESS_PLAN.md` describes introducing `VnProvince`/`VnDistrict`/`VnWard` reference tables (seeded from `provinces.open-api.vn`) and migrating `people`/`organizations` to `province_code`/`ward_code`-based addressing. The reference tables are created and seeded on prod (63 provinces, 10,000+ wards); `province_code`/`ward_code` columns exist on `people`/`organizations`. Data cleanup, backfill, old-field decommission, and the rename to `ward` are still pending (`MIGRATION_PLAN.md` Phase R).
 
 ### Authorization — who can manage what, technically
 
@@ -72,12 +73,12 @@ Notable in-progress technical states:
 
 - Legacy server-rendered controllers/views coexist with a full `/api/v1` JSON API (serializers via `active_model_serializers`, filtering via `ransack`, pagination via `kaminari`); PDF/XLSX export logic is currently duplicated between the two UIs during the migration.
 - No background jobs or mailers exist in the codebase (no `app/jobs`, `app/mailers`) — no async processing or email notifications.
-- No automated test suite currently exists (`test/` is effectively empty).
-- Deployed on a Hostinger VPS behind Cloudflare, Nginx + Puma (PM2-managed), per `docs/PRODUCTION.md`. Known pending production hardening items (tracked in `MIGRATION_PLAN.md`): `consider_all_requests_local = true` and debug-level logging left on in production, and a plaintext DB password in `config/database.yml`.
+- A minimal automated test suite now exists (`test/test_helper.rb` + `test/models/person_test.rb`/`student_test.rb`, 9 Minitest cases covering Phase S's required-field validator, sacrament validations, and `sync_person` round-trip) — added 2026-07-27 as the first real test coverage in the repo. Still no controller/system/request specs.
+- Deployed on a Hostinger VPS behind Cloudflare, Nginx + Puma (PM2-managed), per `docs/PRODUCTION.md`. Production hardening (Phase N) is complete: `consider_all_requests_local` is `false`, log level is `:info`, the DB password is env-var-based (rotated off its old plaintext value), and the production DB itself was renamed from `bglmautam_development` to `bglmautam_production`. Error tracking (Sentry) is the one item still pending, tracked separately as Phase T since it needs an external account/DSN.
 
 ### Active development arc (recent commits)
 
-The most recent development sequence: (1) Pundit/policy refactor → (2) multi-tenancy foundation (`Organization` model + `organization_id` columns) → (3) flattening `Address`/`Email`/`Phone` into `Person` → (4) new address fields laying groundwork for the Vietnamese address migration.
+Recent development sequence: (1) Pundit/policy refactor → (2) multi-tenancy foundation (`Organization` model + `organization_id` columns) → (3) flattening `Address`/`Email`/`Phone` into `Person` → (4) Vietnamese address reference tables seeded to prod → (5) production hardening (Phase N: stack traces, logging, DB credentials/naming) → (6) multi-tenancy fully wired and deployed (Phase L) → (7) Student/Teacher → Person consolidation steps 1-4 deployed (Phase S).
 
 ---
 
@@ -86,4 +87,5 @@ The most recent development sequence: (1) Pundit/policy refactor → (2) multi-t
 - `MIGRATION_PLAN.md` — Rails API + React frontend migration tracker
 - `MULTITENANCY_PLAN.md` — multi-tenancy rollout plan
 - `docs/VIETNAMESE_ADDRESS_PLAN.md` — Vietnamese address format migration plan
+- `docs/STUDENT_TEACHER_TO_PERSON_PLAN.md` — Student/Teacher → Person consolidation plan (steps 1-4)
 - `docs/PRODUCTION.md` — production ops runbook

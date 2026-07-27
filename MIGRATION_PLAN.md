@@ -1,6 +1,6 @@
 # Migration Plan: bglmautam to Rails API + React Frontend
 
-> **Last Updated:** 2026-05-22
+> **Last Updated:** 2026-07-27
 > **Goal:** Complete the migration to a Rails API backend + mobile-friendly React frontend.
 
 ---
@@ -20,13 +20,13 @@
 | I | Rails: Students API endpoint | [ ] Pending |
 | J | React: Student list/detail pages | [ ] Pending |
 | K | Rails: Permission system refactor (Pundit + UserContext) | [x] Complete |
-| L | Rails: Multi-tenancy (acts_as_tenant) | [ ] In Progress — Phases 1-4 done and deployed, Phase 5 (versions/PaperTrail) code done, not deployed |
+| L | Rails: Multi-tenancy (acts_as_tenant) | [x] Complete — all 5 phases done and deployed |
 | M | React: Attendance editing, Search, PDF buttons, Mobile nav | [ ] Pending |
 | N | Rails + React: Production config fixes | [x] Complete |
 | O | Rails: Flatten Phone/Email/Address into Person columns | [x] Complete |
 | P | Rails: Drop phones/emails/addresses tables (post-flatten cleanup) | [ ] Pending |
 | Q | Rails: Seed Vietnamese address reference tables (vn_provinces, vn_districts, vn_wards) | [x] Complete — ran on prod |
-| R | Rails: Vietnamese address format migration — cleanup, backfill, decommission old fields, rename subregion→ward | [ ] In Progress — Phase 1 (province_code/ward_code columns) written, not yet run against a live DB |
+| R | Rails: Vietnamese address format migration — cleanup, backfill, decommission old fields, rename subregion→ward | [ ] In Progress — Phase 1 (province_code/ward_code columns) done and deployed; phases 2-7 not started |
 | S | Rails: Consolidate Student/Teacher into Person — sacraments as columns, parent-info/occupation as custom fields, decommission Student/Teacher | [ ] Steps 1-4 deployed to prod, migrations + data cleanup run, final verification in progress |
 | T | Rails: Add Sentry error tracking | [ ] Pending |
 
@@ -37,10 +37,10 @@
 Ranked by risk × effort, not by phase letter. Superseded phase-by-phase status stays in the table above; this section is the actual work order.
 
 1. **Tier 0 — Fix immediately.** ✅ Complete and deployed (Phase N items 1-4): `consider_all_requests_local` → `false`, `log_level` → `:info`, DB password rotated + moved to `ENV.fetch("DATABASE_PASSWORD")`, prod DB renamed `bglmautam_development` → `bglmautam_production`.
-2. **Tier 1 — Finish multi-tenancy (Phase L, steps 3-5).** ✅ Steps 1-4 complete and deployed (2026-07-27): Mautam org seeded + prod backfilled + verified, NOT NULL enforced, `acts_as_tenant` wired into all 12 models, `set_tenant` active in both controllers, `db/seeds.rb` wrapped. Confirmed working in prod: tenant-scoped counts return real data (343 classrooms, 1929 students, 332 teachers), no cross-tenant leakage. Step 5 (`organization_id` on `versions`/PaperTrail) is still untouched — small and self-contained, worth a quick follow-up pass.
+2. **Tier 1 — Finish multi-tenancy (Phase L).** ✅ Fully complete and deployed (2026-07-27), all 5 phases including `organization_id` on `versions`/PaperTrail. Confirmed working in prod, and cross-tenant isolation re-verified locally with a real second org (see Phase L section for detail). Nothing left here.
 3. **Tier 2 — In-flight structural migrations (independent of each other).**
-   - Phase S steps 1-4 (Student/Teacher → Person) — planned in `docs/STUDENT_TEACHER_TO_PERSON_PLAN.md`; fixes a live data-integrity bug (`sync_person` silently clobbering Person-profile-page edits). Prioritized ahead of Phase R since it fixes an active bug rather than just modernizing a format.
-   - Phase R phases 2-7 (Vietnamese address format) — Phase Q shipped to prod; phase 1 (code columns) is written but unmigrated.
+   - Phase S steps 1-4 (Student/Teacher → Person) — ✅ deployed to prod (2026-07-27); fixed a live data-integrity bug (`sync_person` silently clobbering Person-profile-page edits). Final health/data verification requested, results pending.
+   - Phase R phases 2-7 (Vietnamese address format) — Phase Q shipped to prod; phase 1 (`province_code`/`ward_code` columns) is also confirmed migrated on prod (verified via `db:migrate:status` during Phase L work). Phases 2-7 (data cleanup, backfill, decommission old fields, rename) not yet started.
 4. **Tier 3 — Low-risk housekeeping, do opportunistically.** Phase P (drop `phones`/`emails`/`addresses` tables once prod row counts are audited), Phase T (Sentry error tracking — valuable for ops visibility, not blocking, needs a DSN from you first).
 5. **Tier 4 — Bottom of the list.** Phase I (Students API), Phase J (React student pages), Phase M (remaining React features / mobile nav). The Rails ERB UI already has full working equivalents for all of these (CRUD forms, real per-tab content, wired export/PDF buttons) — this tier is purely about the React app catching up, and per Tier 1's dependency note shouldn't ship new functionality to production ahead of multi-tenancy anyway. Exception worth considering case-by-case: fixing an already-broken button (e.g. Phase J's dead `onClick` handlers) doesn't expose new data, so isolated bug fixes here could reasonably jump the queue independently of Tier 1.
 
@@ -644,7 +644,7 @@ Re-audited against the actual Rails ERB UI (`/students`, `/teachers`, `/people/s
 
 ---
 
-### Phase L: Multi-Tenancy — Steps 1-4 ✅ Complete and Deployed (2026-07-27)
+### Phase L: Multi-Tenancy — ✅ Complete and Deployed, All 5 Phases (2026-07-27)
 
 See `MULTITENANCY_PLAN.md` for full detail. Current state:
 
@@ -654,9 +654,9 @@ See `MULTITENANCY_PLAN.md` for full detail. Current state:
 | 2 | Add nullable organization_id to all 12 tables | ✅ Done |
 | 3 | Seed Mautam org + backfill prod data | ✅ Done — ran and verified clean on prod |
 | 4 | Enforce NOT NULL + wire acts_as_tenant into models/controllers | ✅ Done — deployed and confirmed working (see incidents below) |
-| 5 | Add `organization_id` to `versions` (PaperTrail) | ✅ Code done (2026-07-27), not yet deployed |
+| 5 | Add `organization_id` to `versions` (PaperTrail) | ✅ Done — deployed and confirmed on prod (migration status `up`, column present, PM2 healthy) |
 
-The app is now fully tenant-scoped. Confirmed in prod via `ActsAsTenant.with_tenant(mautam) { ... }`: 343 classrooms, 1929 students, 332 teachers all correctly scoped.
+The app is now fully tenant-scoped. Confirmed in prod via `ActsAsTenant.with_tenant(mautam) { ... }`: 343 classrooms, 1929 students, 332 teachers all correctly scoped. Cross-tenant isolation was further re-verified locally (2026-07-27) with a real second organization: tenant-scoped counts stay isolated, direct ID lookups across tenants correctly raise `RecordNotFound`, and a real HTTP request from an "other org" user to a Mautam-owned record returns 404 end-to-end.
 
 **All React feature work intended for production can now proceed** — the API scopes every response to the logged-in user's organization.
 
@@ -733,7 +733,7 @@ Seed `vn_provinces`, `vn_districts`, and `vn_wards` from the [provinces.open-api
 Migrate `people` from the old address format (`street_number`, `street_name`, `ward`, `district`, `city`) to the new format (`street_address`, `province`/`province_code`, `subregion`/`ward_code`→`ward`). `organizations` has no legacy data, so it already dropped the old columns directly (see `RemoveV1AddressFieldsFromOrganizations` migration) and only needs the `province_code`/`ward_code` + rename steps below. Depends on Phase Q. Full detail in [`docs/VIETNAMESE_ADDRESS_PLAN.md`](docs/VIETNAMESE_ADDRESS_PLAN.md).
 
 **Phases (in safe deployment order):**
-1. Add `province_code` + `ward_code` integer columns to both tables ✅ migration written (`AddAddressCodeColumnsToPeopleAndOrganizations`), not yet run against a live DB
+1. Add `province_code` + `ward_code` integer columns to both tables ✅ done — migration (`AddAddressCodeColumnsToPeopleAndOrganizations`) confirmed migrated on prod (`up` in `db:migrate:status`, verified during Phase L work)
 2. Data cleanup — audit ward/city values (all assumed HCMC, province code 79)
 3. Backfill new fields from old; match wards against `vn_wards` table
 4. Update `Person` FIELD_SETS, `PersonSerializer`, controller permitted params
@@ -876,6 +876,8 @@ src/components/layout/MobileNav.js      # Phase O: Mobile nav
 | `consider_all_requests_local = true` in production | Exposes stack traces | CRITICAL | ✅ Fixed (Phase N) |
 | `log_level = :debug` in production | Leaks sensitive data in logs | MEDIUM | ✅ Fixed (Phase N) |
 | DB password plaintext in database.yml | Credential exposure risk | HIGH | ✅ Fixed (Phase N) — password rotated |
-| No multi-tenancy | All data globally visible | HIGH | [ ] In Progress (Phase L) |
+| No multi-tenancy | All data globally visible | HIGH | ✅ Fixed (Phase L) — cross-tenant isolation confirmed end-to-end |
 | `Student#sync_person` wrote `date_confirmation` into `declaration_date` | Wrong sacrament data | MEDIUM | ✅ Fixed (Phase O) |
 | `Student#sync_person` / `Teacher#sync_person` wrote to deleted Phone/Email/Address models | Runtime crash on student/teacher save | CRITICAL | ✅ Fixed (Phase O) |
+| `Student#sync_person`/`Teacher#sync_person` wholesale-overwrote `person.data`, clobbering Person-profile-page custom-field edits | Silent data loss, last-write-wins | MEDIUM | ✅ Fixed (Phase S) — now merges via `update_data_field` |
+| `DataFieldsController#data_field_params` read `f['field']` instead of `f['field_name']` | Custom-fields form (sacraments/parents_info/additional_info) silently permitted nothing | MEDIUM | ✅ Fixed (Phase S) |
