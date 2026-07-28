@@ -83,7 +83,15 @@ class Classroom < ApplicationRecord
     # Person query) for every teaching assignment. Re-add only the :person include we actually need.
     teaching_assignments.unscope(:includes, :order).includes(:person)
                          .sort_by { |ta| [ta.position_sort_param, ta.person&.sort_param.to_s] }
-                         .map { |ta| { id: ta.id, position: ta.position, person: { id: ta.person_id, full_name: ta.person&.full_name } } }
+                         .map do |ta|
+                           person = ta.person && {
+                             id: ta.person.id,
+                             full_name: ta.person.full_name,
+                             birth_date: ta.person.birth_date,
+                             phone: ta.person.phone
+                           }
+                           { id: ta.id, position: ta.position, person: person }
+                         end
   end
 
   def sort_param
