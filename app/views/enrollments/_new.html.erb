@@ -12,7 +12,7 @@
 
 <%= form_for(enrollment) do |f| %>
   <%= render 'components/form/error_notification', object: enrollment %>
-  <%= f.hidden_field :student_id, value: @student.id %>
+  <%= f.hidden_field :person_id, value: @student.person_id %>
   <%= f.hidden_field :result, value: "Đang Học" %>
 
   <table id="enrollment-form" style="display: none" data-turbolinks-permanent>

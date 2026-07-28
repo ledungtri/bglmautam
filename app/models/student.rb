@@ -114,7 +114,7 @@ class Student < ApplicationRecord
   ]
 
   def result(classroom)
-    enrollments.where(student_id: id, classroom_id: classroom.id).take.result
+    enrollments.where(person_id: person_id, classroom_id: classroom.id).take.result
   end
 
   def father_name

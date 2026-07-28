@@ -79,11 +79,11 @@ namespace :admin do
     current_enrollments = Enrollment.for_year(year).where(result: ['Lên Lớp', 'Học Lại', 'Dự Thính'])
     existing_new_enrollments = Enrollment.for_year(year + 1)
     current_enrollments.each do |enrollment|
-      existing_enrollment = existing_new_enrollments.find { |e| e.student_id == enrollment.student_id }
+      existing_enrollment = existing_new_enrollments.find { |e| e.person_id == enrollment.person_id }
       next if existing_enrollment
 
       mapping = enrollment.result == 'Lên Lớp' ? next_classroom_mapping : same_classroom_mapping
-      Enrollment.create(classroom_id: mapping[enrollment.classroom_id], student_id: enrollment.student_id, result: 'Đang Học')
+      Enrollment.create(classroom_id: mapping[enrollment.classroom_id], person_id: enrollment.person_id, result: 'Đang Học')
     end
   end
 end

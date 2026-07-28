@@ -19,6 +19,7 @@
 #  index_enrollments_on_organization_id        (organization_id)
 #  index_enrollments_on_person_id              (person_id)
 #  index_enrollments_on_student_id             (student_id)
+#  index_enrollments_unique_person_classroom   (person_id,classroom_id) UNIQUE WHERE (deleted_at IS NULL)
 #  index_enrollments_unique_student_classroom  (student_id,classroom_id) UNIQUE WHERE (deleted_at IS NULL)
 #
 # Foreign Keys
@@ -40,6 +41,6 @@ private
   end
 
   def permit_params
-    [:result, :student_id, :classroom_id]
+    [:result, :person_id, :classroom_id]
   end
 end

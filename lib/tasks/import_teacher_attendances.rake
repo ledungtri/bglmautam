@@ -21,7 +21,7 @@ namespace :import do
 
     # Build teacher lookup: limited to teachers with assignments in classrooms for the given year
     # (including soft-deleted assignments)
-    teachers = Teacher.joins("INNER JOIN teaching_assignments ON teaching_assignments.teacher_id = teachers.id")
+    teachers = Teacher.joins("INNER JOIN teaching_assignments ON teaching_assignments.person_id = teachers.person_id")
                       .joins("INNER JOIN classrooms ON classrooms.id = teaching_assignments.classroom_id")
                       .where(classrooms: { year: year, deleted_at: nil })
                       .distinct
@@ -69,14 +69,14 @@ namespace :import do
       # --- Find teaching assignment for year, fall back to last deleted ---
       assignment = TeachingAssignment
                      .joins(:classroom)
-                     .where(teacher_id: teacher.id, classrooms: { year: year })
+                     .where(person_id: teacher.person_id, classrooms: { year: year })
                      .first
 
       unless assignment
         assignment = TeachingAssignment
                        .with_deleted
                        .joins(:classroom)
-                       .where(teacher_id: teacher.id, classrooms: { year: year })
+                       .where(person_id: teacher.person_id, classrooms: { year: year })
                        .order(deleted_at: :desc)
                        .first
         if assignment

@@ -19,6 +19,7 @@
 #  index_teaching_assignments_on_organization_id        (organization_id)
 #  index_teaching_assignments_on_person_id              (person_id)
 #  index_teaching_assignments_on_teacher_id             (teacher_id)
+#  index_teaching_assignments_unique_person_classroom   (person_id,classroom_id) UNIQUE WHERE (deleted_at IS NULL)
 #  index_teaching_assignments_unique_teacher_classroom  (teacher_id,classroom_id) UNIQUE WHERE (deleted_at IS NULL)
 #
 # Foreign Keys
@@ -38,7 +39,7 @@ class TeachingAssignment < ApplicationRecord
 
   before_validation :sync_person
 
-  validates_presence_of :teacher_id, :classroom_id
+  validates_presence_of :teacher_id, :person_id, :classroom_id
 
   def self.ransackable_attributes(auth_object = nil)
     %w[position teacher_id classroom_id person_id]
@@ -73,6 +74,10 @@ class TeachingAssignment < ApplicationRecord
 private
 
   def sync_person
-    self.person_id = teacher.person_id
+    if person_id.blank? && teacher_id.present?
+      self.person_id = Teacher.with_deleted.find(teacher_id).person_id
+    elsif teacher_id.blank? && person_id.present?
+      self.teacher_id = person&.teacher&.id
+    end
   end
 end

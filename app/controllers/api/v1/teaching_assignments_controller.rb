@@ -57,7 +57,7 @@ module Api
       end
 
       def teaching_assignment_params
-        params.require(:teaching_assignment).permit(:teacher_id, :classroom_id, :position)
+        params.require(:teaching_assignment).permit(:person_id, :classroom_id, :position)
       end
     end
   end

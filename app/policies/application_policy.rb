@@ -46,11 +46,7 @@ private
   end
 
   def admin_or_teacher_of_classroom?(classroom)
-    admin? || teacher_of_classroom?(classroom)
-  end
-
-  def teacher_of_classroom?(classroom)
-    user.teacher&.teaching_assignments&.for_year(@current_year)&.map(&:classroom)&.include?(classroom)
+    admin? || assigned_classrooms.include?(classroom)
   end
 
   def admin_or_self_teacher?(teacher)
@@ -58,23 +54,21 @@ private
   end
 
   def admin_or_teacher_of_student?(student)
-    admin_or_teacher_of_enrollment?(student.enrollments.for_year(@current_year)&.first)
+    admin_or_teacher_of_enrollment?(student.person.enrollments.for_year(@current_year)&.first)
   end
 
   def admin_or_teacher_of_enrollment?(enrollment)
-    admin? || teacher_of_enrollment?(enrollment)
-  end
-
-  def teacher_of_enrollment?(enrollment)
-    user.teacher&.teaching_assignments&.for_year(@current_year)&.map(&:classroom)&.include?(enrollment.classroom)
+    admin? || assigned_classrooms.include?(enrollment.classroom)
   end
 
   def admin_or_teacher_of_teaching_assignment?(teaching_assignment)
-    admin? || teacher_of_teaching_assignment?(teaching_assignment)
+    admin? || assigned_classrooms.include?(teaching_assignment.classroom)
   end
 
-  def teacher_of_teaching_assignment?(teaching_assignment)
-    user.teacher&.teaching_assignments&.for_year(@current_year)&.map(&:classroom)&.include?(teaching_assignment.classroom)
+  # Classrooms `user` is assigned to teach this year, resolved via Person (not Teacher) —
+  # the single source of truth every admin_or_teacher_of_* predicate above checks against.
+  def assigned_classrooms
+    @assigned_classrooms ||= user&.person&.teaching_assignments&.for_year(@current_year)&.map(&:classroom) || []
   end
 
 end

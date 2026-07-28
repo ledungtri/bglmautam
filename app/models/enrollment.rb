@@ -19,6 +19,7 @@
 #  index_enrollments_on_organization_id        (organization_id)
 #  index_enrollments_on_person_id              (person_id)
 #  index_enrollments_on_student_id             (student_id)
+#  index_enrollments_unique_person_classroom   (person_id,classroom_id) UNIQUE WHERE (deleted_at IS NULL)
 #  index_enrollments_unique_student_classroom  (student_id,classroom_id) UNIQUE WHERE (deleted_at IS NULL)
 #
 # Foreign Keys
@@ -39,7 +40,7 @@ class Enrollment < ApplicationRecord
 
   before_validation :sync_person
 
-  validates_presence_of :student_id, :person_id, :classroom_id, :result
+  validates_presence_of :person_id, :classroom_id, :result
 
   default_scope { includes(:student) }
 
@@ -82,6 +83,10 @@ class Enrollment < ApplicationRecord
 private
 
   def sync_person
-    self.person_id = Student.find(student_id).person_id
+    if person_id.blank? && student_id.present?
+      self.person_id = Student.with_deleted.find(student_id).person_id
+    elsif student_id.blank? && person_id.present?
+      self.student_id = person&.student&.id
+    end
   end
 end

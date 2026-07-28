@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2026_07_27_174309) do
+ActiveRecord::Schema[7.2].define(version: 2026_07_28_080600) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -99,6 +99,7 @@ ActiveRecord::Schema[7.2].define(version: 2026_07_27_174309) do
     t.index ["classroom_id"], name: "index_enrollments_on_classroom_id"
     t.index ["deleted_at"], name: "index_enrollments_on_deleted_at"
     t.index ["organization_id"], name: "index_enrollments_on_organization_id"
+    t.index ["person_id", "classroom_id"], name: "index_enrollments_unique_person_classroom", unique: true, where: "(deleted_at IS NULL)"
     t.index ["person_id"], name: "index_enrollments_on_person_id"
     t.index ["student_id", "classroom_id"], name: "index_enrollments_unique_student_classroom", unique: true, where: "(deleted_at IS NULL)"
     t.index ["student_id"], name: "index_enrollments_on_student_id"
@@ -267,6 +268,7 @@ ActiveRecord::Schema[7.2].define(version: 2026_07_27_174309) do
     t.index ["classroom_id"], name: "index_teaching_assignments_on_classroom_id"
     t.index ["deleted_at"], name: "index_teaching_assignments_on_deleted_at"
     t.index ["organization_id"], name: "index_teaching_assignments_on_organization_id"
+    t.index ["person_id", "classroom_id"], name: "index_teaching_assignments_unique_person_classroom", unique: true, where: "(deleted_at IS NULL)"
     t.index ["person_id"], name: "index_teaching_assignments_on_person_id"
     t.index ["teacher_id", "classroom_id"], name: "index_teaching_assignments_unique_teacher_classroom", unique: true, where: "(deleted_at IS NULL)"
     t.index ["teacher_id"], name: "index_teaching_assignments_on_teacher_id"

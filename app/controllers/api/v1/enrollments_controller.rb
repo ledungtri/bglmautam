@@ -57,7 +57,7 @@ module Api
       end
 
       def enrollment_params
-        params.require(:enrollment).permit(:student_id, :classroom_id, :result)
+        params.require(:enrollment).permit(:person_id, :classroom_id, :result)
       end
     end
   end

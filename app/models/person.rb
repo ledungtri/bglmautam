@@ -63,10 +63,12 @@ class Person < ApplicationRecord
   has_one :teacher
   has_one :student
   has_many :enrollments
-  # has_many :classrooms, through: :enrollments
-
   has_many :teaching_assignments
-  # has_many :classrooms, through: :teaching_assignments
+  # NOTE: intentionally no `has_many :classrooms, through: :enrollments/:teaching_assignments` —
+  # Person has both associations, so they'd collide on the same `classrooms` method name.
+  # Student#classrooms/Teacher#classrooms (each has only one path) have zero callers today, so
+  # this hasn't been needed; revisit with distinct names (e.g. enrolled_classrooms/taught_classrooms)
+  # if a caller actually needs it.
 
   validates_presence_of :name, :gender, :birth_date
   validates :gender, inclusion: { in: %w[Nam Nữ], message: 'have to be either Nam or Nữ' }
@@ -127,6 +129,38 @@ class Person < ApplicationRecord
     "#{data_field_value('parents_info', 'mother_christian_name')} #{data_field_value('parents_info', 'mother_name')}".squish
   end
 
+  def father_christian_name
+    data_field_value('parents_info', 'father_christian_name')
+  end
+
+  def father_full_name
+    data_field_value('parents_info', 'father_name')
+  end
+
+  def father_phone
+    data_field_value('parents_info', 'father_phone')
+  end
+
+  def mother_christian_name
+    data_field_value('parents_info', 'mother_christian_name')
+  end
+
+  def mother_full_name
+    data_field_value('parents_info', 'mother_name')
+  end
+
+  def mother_phone
+    data_field_value('parents_info', 'mother_phone')
+  end
+
+  def named_date
+    data_field_value('additional_info', 'named_date')
+  end
+
+  def occupation
+    data_field_value('additional_info', 'occupation')
+  end
+
   def full_address
     parts = [
       [street_number, street_name].compact.join(" ").presence,
@@ -137,5 +171,9 @@ class Person < ApplicationRecord
 
   def sort_param
     normalize(reverse(name))
+  end
+
+  def result(classroom)
+    enrollments.where(classroom_id: classroom.id).take.result
   end
 end
