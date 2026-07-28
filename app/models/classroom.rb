@@ -68,9 +68,22 @@ class Classroom < ApplicationRecord
   def enrollments_overview
     stats = {}
     types = ResourceType.for_key('enrollment_result').pluck(:value)
-    enrollments_by_result = enrollments.group_by(&:result)
-    types.each { |type| stats[type] = enrollments_by_result[type]&.count || 0 }
+    # unscope(:includes) — Enrollment's default_scope eager-loads `student: :person`, which is
+    # irrelevant here and, worse, triggers Student#load_parents_info's after_find callback (a
+    # per-record Person query) for every enrollment. A grouped count needs neither the includes
+    # nor any Enrollment instantiation at all.
+    counts_by_result = enrollments.unscope(:includes, :order).group(:result).count
+    types.each { |type| stats[type] = counts_by_result[type] || 0 }
     stats
+  end
+
+  def teaching_assignments_overview
+    # unscope(:includes) — TeachingAssignment's default_scope eager-loads :teacher, which is not
+    # needed here and triggers Teacher#load_additional_info's after_find callback (a per-record
+    # Person query) for every teaching assignment. Re-add only the :person include we actually need.
+    teaching_assignments.unscope(:includes, :order).includes(:person)
+                         .sort_by { |ta| [ta.position_sort_param, ta.person&.sort_param.to_s] }
+                         .map { |ta| { id: ta.id, position: ta.position, person: { id: ta.person_id, full_name: ta.person&.full_name } } }
   end
 
   def sort_param

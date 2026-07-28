@@ -23,5 +23,5 @@
 #  fk_rails_...  (organization_id => organizations.id)
 #
 class ClassroomSerializer < ApplicationSerializer
-  attributes :year, :long_year, :name, :family, :group, :level, :location, :enrollments_overview
+  attributes :year, :long_year, :name, :family, :group, :level, :location, :enrollments_overview, :teaching_assignments_overview
 end

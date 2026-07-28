@@ -42,7 +42,10 @@ class Enrollment < ApplicationRecord
 
   validates_presence_of :person_id, :classroom_id, :result
 
-  default_scope { includes(:student) }
+  # `student: :person` (not just `:student`) because Student#load_parents_info (an after_find
+  # callback) reads `person.data_field_by_key`, which would otherwise fire an individual Person
+  # query per enrollment loaded — a severe N+1 across any endpoint that lists enrollments.
+  default_scope { includes(student: :person) }
 
   def self.ransackable_attributes(auth_object = nil)
     %w[classroom_id created_at deleted_at id person_id result student_id updated_at]
