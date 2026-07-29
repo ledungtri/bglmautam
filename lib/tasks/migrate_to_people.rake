@@ -3,14 +3,16 @@ namespace :admin do
     org = Organization.first
     abort 'ERROR: No organization found. Run Phase L seeding first.' unless org
 
-    total = Teacher.count
+    # Use unscoped to include soft-deleted teachers - active teaching_assignments
+    # may still reference them
+    total = Teacher.unscoped.count
     count = 0
 
     ActsAsTenant.with_tenant(org) do
-      Teacher.find_each do |teacher|
+      Teacher.unscoped.find_each do |teacher|
         puts '-----------------------------------------------'
         puts "Migrating #{count += 1}/#{total}..."
-        puts "Teacher Id: #{teacher.id}"
+        puts "Teacher Id: #{teacher.id} (deleted: #{teacher.deleted_at.present?})"
         teacher.sync_person
       end
     end
@@ -20,41 +22,59 @@ namespace :admin do
     org = Organization.first
     abort 'ERROR: No organization found. Run Phase L seeding first.' unless org
 
-    total = Student.count
+    # Use unscoped to include soft-deleted students
+    total = Student.unscoped.count
     count = 0
 
     ActsAsTenant.with_tenant(org) do
-      Student.find_each do |student|
+      Student.unscoped.find_each do |student|
         puts '-----------------------------------------------'
         puts "Migrating #{count += 1}/#{total}..."
-        puts "Student Id: #{student.id}"
+        puts "Student Id: #{student.id} (deleted: #{student.deleted_at.present?})"
         student.sync_person
       end
     end
   end
 
   task teacher_person_id: :environment do
-    total = Teacher.count
+    # Use unscoped to include soft-deleted teachers - active teaching_assignments
+    # may still reference them
+    total = Teacher.unscoped.count
     count = 0
 
-    Teacher.find_each do |teacher|
+    Teacher.unscoped.find_each do |teacher|
       puts '-----------------------------------------------'
       puts "Migrating #{count += 1}/#{total}..."
-      puts "Teacher Id: #{teacher.id}"
-      User.where(teacher_id: teacher.id).update_all(person_id: teacher.person_id)
-      TeachingAssignment.where(teacher_id: teacher.id).update_all(person_id: teacher.person_id)
+      puts "Teacher Id: #{teacher.id} (deleted: #{teacher.deleted_at.present?})"
+
+      # Skip if teacher has no person_id (means sync_person never ran or failed)
+      if teacher.person_id.nil?
+        puts "  SKIP - teacher.person_id is NULL (run admin:teachers_to_people first)"
+        next
+      end
+
+      User.unscoped.where(teacher_id: teacher.id).update_all(person_id: teacher.person_id)
+      TeachingAssignment.unscoped.where(teacher_id: teacher.id).update_all(person_id: teacher.person_id)
     end
   end
 
   task student_person_id: :environment do
-    total = Student.count
+    # Use unscoped to include soft-deleted students
+    total = Student.unscoped.count
     count = 0
 
-    Student.find_each do |student|
+    Student.unscoped.find_each do |student|
       puts '-----------------------------------------------'
       puts "Migrating #{count += 1}/#{total}..."
-      puts "Student Id: #{student.id}"
-      Enrollment.where(student_id: student.id).update_all(person_id: student.person_id)
+      puts "Student Id: #{student.id} (deleted: #{student.deleted_at.present?})"
+
+      # Skip if student has no person_id (means sync_person never ran or failed)
+      if student.person_id.nil?
+        puts "  SKIP - student.person_id is NULL (run admin:students_to_people first)"
+        next
+      end
+
+      Enrollment.unscoped.where(student_id: student.id).update_all(person_id: student.person_id)
     end
   end
 
