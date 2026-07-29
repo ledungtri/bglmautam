@@ -14,6 +14,7 @@ namespace :admin do
         puts "Migrating #{count += 1}/#{total}..."
         puts "Teacher Id: #{teacher.id} (deleted: #{teacher.deleted_at.present?})"
         teacher.sync_person
+        teacher.update_column(:person_id, teacher.person_id)
       end
     end
   end
@@ -32,6 +33,7 @@ namespace :admin do
         puts "Migrating #{count += 1}/#{total}..."
         puts "Student Id: #{student.id} (deleted: #{student.deleted_at.present?})"
         student.sync_person
+        student.update_column(:person_id, student.person_id)
       end
     end
   end
