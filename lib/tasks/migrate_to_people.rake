@@ -1,25 +1,35 @@
 namespace :admin do
   task teachers_to_people: :environment do
+    org = Organization.first
+    abort 'ERROR: No organization found. Run Phase L seeding first.' unless org
+
     total = Teacher.count
     count = 0
 
-    Teacher.find_each do |teacher|
-      puts '-----------------------------------------------'
-      puts "Migrating #{count += 1}/#{total}..."
-      puts "Teacher Id: #{teacher.id}"
-      teacher.sync_person
+    ActsAsTenant.with_tenant(org) do
+      Teacher.find_each do |teacher|
+        puts '-----------------------------------------------'
+        puts "Migrating #{count += 1}/#{total}..."
+        puts "Teacher Id: #{teacher.id}"
+        teacher.sync_person
+      end
     end
   end
 
   task students_to_people: :environment do
+    org = Organization.first
+    abort 'ERROR: No organization found. Run Phase L seeding first.' unless org
+
     total = Student.count
     count = 0
 
-    Student.find_each do |student|
-      puts '-----------------------------------------------'
-      puts "Migrating #{count += 1}/#{total}..."
-      puts "Student Id: #{student.id}"
-      student.sync_person
+    ActsAsTenant.with_tenant(org) do
+      Student.find_each do |student|
+        puts '-----------------------------------------------'
+        puts "Migrating #{count += 1}/#{total}..."
+        puts "Student Id: #{student.id}"
+        student.sync_person
+      end
     end
   end
 
