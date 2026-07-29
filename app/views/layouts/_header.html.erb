@@ -13,8 +13,8 @@
     </form>
     <a href="/classrooms">Lớp Học</a>
     <a href="/teachers">Giáo Lý Viên</a>
-    <% if @current_user %>
-      <a href=<%= teacher_url(@current_user.teacher) %>>Người dùng</a>
+    <% if @current_user&.person %>
+      <a href=<%= person_url(@current_user.person) %>>Người dùng</a>
     <% end %>
     <a href="/logout">Đăng Xuất</a>
   </nav>

@@ -27,7 +27,7 @@
 class User < ApplicationRecord
   acts_as_tenant :organization
   has_secure_password
-  belongs_to :teacher
+  belongs_to :teacher, optional: true
   belongs_to :person
 
   validates_presence_of :username, :password_digest
@@ -49,6 +49,10 @@ class User < ApplicationRecord
 private
 
   def sync_person
-    self.person_id = teacher.person_id
+    if person_id.blank? && teacher_id.present?
+      self.person_id = Teacher.with_deleted.find(teacher_id).person_id
+    elsif teacher_id.blank? && person_id.present?
+      self.teacher_id = person&.teacher&.id
+    end
   end
 end
