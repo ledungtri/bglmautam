@@ -48,11 +48,29 @@ namespace :admin do
     end
   end
 
+  desc 'Backfill NULL organization_id on orphaned Person records (Phase L/S prerequisite)'
+  task backfill_person_organization_id: :environment do
+    org = Organization.first
+    abort 'ERROR: No organization found. Run Phase L seeding first.' unless org
+
+    count = Person.unscoped.where(organization_id: nil).count
+    if count.zero?
+      puts 'OK - All Person records have organization_id set'
+    else
+      puts "Fixing #{count} Person records with NULL organization_id..."
+      Person.unscoped.where(organization_id: nil).update_all(organization_id: org.id)
+      puts "✅ Fixed #{count} records → organization_id: #{org.id} (#{org.name})"
+    end
+  end
+
   desc 'Audit person_id backfill coverage on enrollments/teaching_assignments before repointing FKs (Phase S step 5)'
   task audit_person_id_coverage: :environment do
     def report(label, count)
       puts "#{count.zero? ? 'OK' : 'FOUND'} - #{label}: #{count}"
     end
+
+    puts '=== People (Prerequisites) ==='
+    report('People with NULL organization_id', Person.unscoped.where(organization_id: nil).count)
 
     puts '=== Enrollments ==='
     report('missing person_id (active)', Enrollment.where(person_id: nil).count)
