@@ -52,6 +52,7 @@ Rails.application.routes.draw do
       post '/auth/logout', to: 'auth#logout'
       post '/auth/refresh', to: 'auth#refresh'
       get '/auth/me', to: 'auth#me'
+      put '/auth/me', to: 'auth#update_me'
 
       # Resource types
       get '/resource_types/:key', to: 'resource_types#index'

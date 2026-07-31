@@ -6,7 +6,7 @@ module Api
       include ActionController::Cookies
 
       # Skip authentication for login endpoint
-      before_action :authenticate_user!, only: [:me, :logout]
+      before_action :authenticate_user!, only: [:me, :update_me, :logout]
 
       # POST /api/v1/auth/login
       def login
@@ -45,7 +45,22 @@ module Api
         render json: { data: serialize(current_user) }, status: :ok
       end
 
+      # PUT /api/v1/auth/me
+      # Self-service update: intentionally does not permit :admin, unlike
+      # Api::V1::UsersController, so a user can never elevate their own privileges here.
+      def update_me
+        if current_user.update(me_params)
+          render json: { data: serialize(current_user) }, status: :ok
+        else
+          render json: { errors: current_user.errors.full_messages }, status: :unprocessable_entity
+        end
+      end
+
       private
+
+      def me_params
+        params.require(:user).permit(:username, :password, :password_confirmation)
+      end
 
       def current_user
         @current_user
