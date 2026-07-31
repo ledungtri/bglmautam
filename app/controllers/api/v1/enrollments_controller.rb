@@ -7,8 +7,19 @@ module Api
 
       # GET /api/v1/enrollments
       def index
-        @enrollments = scope.result.includes(:grades, :attendances, :evaluation).sort_by(&:sort_param)
-        render_collection @enrollments
+        # `.includes(:grades, :attendances, ...)` here would combine two `has_many`
+        # associations in one call — Rails responds by eager-loading everything through
+        # a single JOIN, which fans out into a grades × attendances cartesian product
+        # per enrollment. At a few hundred enrollments that's tens of thousands of
+        # duplicate rows to deserialize in Ruby. The explicit preloader issues one
+        # simple batched query per association instead (both `student` and `person` are
+        # needed: `student` for `sort_param`, `person` for `EnrollmentSerializer`).
+        @enrollments = scope.result.unscope(:includes, :order).to_a
+        ActiveRecord::Associations::Preloader.new(
+          records: @enrollments,
+          associations: [:person, :classroom, :student, :grades, :attendances, :evaluation]
+        ).call
+        render_collection @enrollments.sort_by(&:sort_param)
       end
 
       # GET /api/v1/enrollments/:id

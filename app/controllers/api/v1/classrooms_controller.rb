@@ -72,30 +72,6 @@ module Api
         render_collection attendances
       end
 
-      # GET /api/v1/classrooms/:id/evaluations
-      def evaluations
-        enrollments = @classroom.enrollments.includes(:person, :evaluation, :grades, :attendances).sort_by(&:sort_param)
-        data = enrollments.map do |enrollment|
-          attendances = enrollment.attendances
-          attended_count = attendances.count { |a| a.status == 'Hiện Diện' }
-          mass_absence_count = attendances.count { |a| a.status == 'Vắng Lễ' }
-          absence_count = attendances.count - attended_count - mass_absence_count
-          {
-            id: enrollment.id,
-            result: enrollment.result,
-            person: serialize(enrollment.person),
-            classroom: { id: @classroom.id },
-            evaluation: enrollment.evaluation ? serialize(enrollment.evaluation) : nil,
-            grades: serialize(enrollment.grades),
-            average_grade: enrollment.average_grade,
-            attended_count: attended_count,
-            mass_absence_count: mass_absence_count,
-            absence_count: absence_count
-          }
-        end
-        render json: { data: data }
-      end
-
       # GET /api/v1/classrooms/:id/students_pdf
       def students_pdf
         enrollments = @classroom.enrollments.sort_by(&:sort_param)

@@ -7,8 +7,15 @@ module Api
 
       # GET /api/v1/teaching_assignments
       def index
-        @teaching_assignments = scope.result.includes(:attendances).sort_by(&:sort_param)
-        render_collection @teaching_assignments
+        # See the equivalent comment in EnrollmentsController#index: explicit preloading
+        # avoids `ClassroomRelationship`'s default-scope join turning a plain `.includes`
+        # into an expensive eager-load. `teacher` is needed for `sort_param`.
+        @teaching_assignments = scope.result.unscope(:includes, :order).to_a
+        ActiveRecord::Associations::Preloader.new(
+          records: @teaching_assignments,
+          associations: [:person, :classroom, :teacher, :attendances, :evaluation]
+        ).call
+        render_collection @teaching_assignments.sort_by(&:sort_param)
       end
 
       # GET /api/v1/teaching_assignments/:id

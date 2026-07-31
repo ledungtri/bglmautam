@@ -8,13 +8,13 @@ module Api
 
       # GET /api/v1/users
       def index
-        @users = User.page(params[:page]).per(params[:per_page] || 50)
-        render_collection @users.map { |u| user_json(u) }, meta: pagination_meta(@users)
+        @users = scope.result.page(params[:page]).per(params[:per_page] || 50)
+        render_collection @users, meta: pagination_meta(@users)
       end
 
       # GET /api/v1/users/:id
       def show
-        render_resource user_json(@user)
+        render_resource @user
       end
 
       # POST /api/v1/users
@@ -22,7 +22,7 @@ module Api
         @user = User.new(user_params)
 
         if @user.save
-          render_resource user_json(@user), status: :created
+          render_resource @user, status: :created
         else
           render json: { errors: @user.errors.full_messages }, status: :unprocessable_entity
         end
@@ -31,7 +31,7 @@ module Api
       # PATCH/PUT /api/v1/users/:id
       def update
         if @user.update(user_params)
-          render_resource user_json(@user)
+          render_resource @user
         else
           render json: { errors: @user.errors.full_messages }, status: :unprocessable_entity
         end
@@ -45,6 +45,10 @@ module Api
 
       private
 
+      def scope
+        User.ransack(params[:filters])
+      end
+
       def require_admin!
         render json: { error: 'Admin access required' }, status: :forbidden unless current_user.admin?
       end
@@ -54,20 +58,7 @@ module Api
       end
 
       def user_params
-        params.require(:user).permit(:username, :password, :password_confirmation, :teacher_id, :admin)
-      end
-
-      def user_json(user)
-        {
-          id: user.id,
-          username: user.username,
-          admin: user.admin,
-          teacher_id: user.teacher_id,
-          person_id: user.person_id,
-          person_name: user.person&.full_name,
-          created_at: user.created_at,
-          updated_at: user.updated_at
-        }
+        params.require(:user).permit(:username, :password, :password_confirmation, :teacher_id, :person_id, :admin)
       end
     end
   end

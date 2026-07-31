@@ -67,7 +67,7 @@ class TeachingAssignment < ApplicationRecord
   end
 
   def position_sort_param
-    positions = ResourceType.for_key('teaching_assignment_position').pluck(:value)
+    positions = ResourceType.values_for('teaching_assignment_position')
     positions.find_index(position) || positions.count
   end
 

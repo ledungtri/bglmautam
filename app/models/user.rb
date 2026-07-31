@@ -34,6 +34,14 @@ class User < ApplicationRecord
 
   before_validation :sync_person
 
+  def self.ransackable_attributes(auth_object = nil)
+    %w[admin created_at deleted_at id person_id teacher_id updated_at username]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    %w[person teacher]
+  end
+
   FIELD_SETS = [
     {
       key: 'user',

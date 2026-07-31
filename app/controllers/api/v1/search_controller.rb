@@ -23,6 +23,8 @@ module Api
               id: person.id,
               name: person.name,
               christian_name: person.christian_name,
+              birth_date: person.birth_date,
+              data: person.data,
               enrollment: enrollment ? {
                 id: enrollment.id,
                 result: enrollment.result,
@@ -47,6 +49,8 @@ module Api
               id: person.id,
               name: person.name,
               christian_name: person.christian_name,
+              birth_date: person.birth_date,
+              phone: person.phone,
               teaching_assignment: teaching_assignment ? {
                 id: teaching_assignment.id,
                 position: teaching_assignment.position,

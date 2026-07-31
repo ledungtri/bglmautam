@@ -68,7 +68,6 @@ Rails.application.routes.draw do
           get :enrollments
           get :teaching_assignments
           get :attendances
-          get :evaluations
           get :students_pdf
           get :personal_details_pdf
           get :classroom_custom_export

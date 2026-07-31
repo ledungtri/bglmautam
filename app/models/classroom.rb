@@ -67,7 +67,7 @@ class Classroom < ApplicationRecord
 
   def enrollments_overview
     stats = {}
-    types = ResourceType.for_key('enrollment_result').pluck(:value)
+    types = ResourceType.values_for('enrollment_result')
     # unscope(:includes) — Enrollment's default_scope eager-loads `student: :person`, which is
     # irrelevant here and, worse, triggers Student#load_parents_info's after_find callback (a
     # per-record Person query) for every enrollment. A grouped count needs neither the includes

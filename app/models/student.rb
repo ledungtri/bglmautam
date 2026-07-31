@@ -45,8 +45,8 @@ class Student < ApplicationRecord
   has_many :classrooms, through: :enrollments
   belongs_to :person
 
-  attr_accessor :father_christian_name, :father_full_name, :father_phone,
-                :mother_christian_name, :mother_full_name, :mother_phone
+  attr_writer :father_christian_name, :father_full_name, :father_phone,
+              :mother_christian_name, :mother_full_name, :mother_phone
 
   validates_presence_of :gender, :date_birth
   validates :gender, inclusion: { in: %w[Nam Nữ], message: 'have to be either Nam or Nữ' }
@@ -58,7 +58,6 @@ class Student < ApplicationRecord
 
   scope :in_classroom, -> (classroom) { joins(:enrollments).where('enrollments.classroom_id': classroom.id) }
 
-  after_find :load_parents_info
   before_validation :sync_person
 
   FIELD_SETS = [
@@ -125,6 +124,40 @@ class Student < ApplicationRecord
     "#{mother_christian_name} #{mother_full_name}".squish
   end
 
+  # Lazy: only reads `person` (a query) the first time one of these is actually
+  # accessed, instead of unconditionally on every Student load (was an `after_find`
+  # callback — a severe N+1 across any endpoint that lists students/enrollments,
+  # since `person` isn't preloaded by the time `after_find` fires on nested includes).
+  def father_christian_name
+    return @father_christian_name if defined?(@father_christian_name)
+    @father_christian_name = parents_info['father_christian_name']
+  end
+
+  def father_full_name
+    return @father_full_name if defined?(@father_full_name)
+    @father_full_name = parents_info['father_name']
+  end
+
+  def father_phone
+    return @father_phone if defined?(@father_phone)
+    @father_phone = parents_info['father_phone']
+  end
+
+  def mother_christian_name
+    return @mother_christian_name if defined?(@mother_christian_name)
+    @mother_christian_name = parents_info['mother_christian_name']
+  end
+
+  def mother_full_name
+    return @mother_full_name if defined?(@mother_full_name)
+    @mother_full_name = parents_info['mother_name']
+  end
+
+  def mother_phone
+    return @mother_phone if defined?(@mother_phone)
+    @mother_phone = parents_info['mother_phone']
+  end
+
   def sync_person
     person = person_id ? Person.find(person_id) : Person.new
     person.christian_name = christian_name
@@ -161,13 +194,7 @@ class Student < ApplicationRecord
 
   private
 
-  def load_parents_info
-    info = person&.data_field_by_key('parents_info') || {}
-    self.father_christian_name = info['father_christian_name']
-    self.father_full_name = info['father_name']
-    self.father_phone = info['father_phone']
-    self.mother_christian_name = info['mother_christian_name']
-    self.mother_full_name = info['mother_name']
-    self.mother_phone = info['mother_phone']
+  def parents_info
+    @parents_info ||= person&.data_field_by_key('parents_info') || {}
   end
 end
