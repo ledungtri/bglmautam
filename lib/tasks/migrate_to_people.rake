@@ -131,6 +131,187 @@ namespace :admin do
     )
   end
 
+  desc 'Soft-delete Student/Teacher rows with no enrollments/teaching_assignments (any linkage). DRY_RUN=false to actually delete.'
+  task cleanup_orphaned_students_and_teachers: :environment do
+    dry_run = ENV['DRY_RUN'] != 'false'
+    puts dry_run ? "[DRY RUN] No records will be deleted. Re-run with DRY_RUN=false to actually delete." : "[LIVE RUN] Matching records will be soft-deleted."
+
+    def has_enrollment?(student)
+      Enrollment.with_deleted.where(student_id: student.id).exists? ||
+        (student.person_id.present? && Enrollment.with_deleted.where(person_id: student.person_id).exists?)
+    end
+
+    def has_teaching_assignment?(teacher)
+      TeachingAssignment.with_deleted.where(teacher_id: teacher.id).exists? ||
+        (teacher.person_id.present? && TeachingAssignment.with_deleted.where(person_id: teacher.person_id).exists?)
+    end
+
+    puts "\n=== Students with zero enrollments ==="
+    student_count = 0
+    Student.find_each do |student|
+      next if has_enrollment?(student)
+
+      person = student.person
+      # Safety rail: never touch a row backing a real login, dry-run or not.
+      if person&.user
+        puts "SKIP student_id=#{student.id} person_id=#{student.person_id} name=#{person.name} — has a User account (#{person.user.username}), not orphaned data"
+        next
+      end
+
+      student_count += 1
+      puts "#{dry_run ? '[DRY RUN] would destroy' : 'destroying'} student_id=#{student.id} person_id=#{student.person_id} name=#{person&.name || student.full_name} created_at=#{student.created_at.to_date}"
+      student.destroy unless dry_run
+    end
+    puts "Students #{dry_run ? 'that would be' : ''} destroyed: #{student_count}"
+
+    puts "\n=== Teachers with zero teaching_assignments ==="
+    teacher_count = 0
+    Teacher.find_each do |teacher|
+      next if has_teaching_assignment?(teacher)
+
+      person = teacher.person
+      if person&.user
+        puts "SKIP teacher_id=#{teacher.id} person_id=#{teacher.person_id} name=#{person.name} — has a User account (#{person.user.username}), not orphaned data"
+        next
+      end
+
+      teacher_count += 1
+      puts "#{dry_run ? '[DRY RUN] would destroy' : 'destroying'} teacher_id=#{teacher.id} person_id=#{teacher.person_id} name=#{person&.name || teacher.full_name} created_at=#{teacher.created_at.to_date}"
+      teacher.destroy unless dry_run
+    end
+    puts "Teachers #{dry_run ? 'that would be' : ''} destroyed: #{teacher_count}"
+  end
+
+  desc 'Soft-delete Person rows with no enrollments/teaching_assignments ever. DRY_RUN=false to actually delete.'
+  task cleanup_orphaned_people: :environment do
+    dry_run = ENV['DRY_RUN'] != 'false'
+    puts dry_run ? "[DRY RUN] No records will be deleted. Re-run with DRY_RUN=false to actually delete." : "[LIVE RUN] Matching records will be soft-deleted."
+
+    # Teacher rows referenced as a substitute on some Attendance are meaningfully
+    # still in use even with zero teaching_assignments of their own — never touch those.
+    substitute_teacher_ids = Attendance.with_deleted.where.not(substitute_teacher_id: nil).distinct.pluck(:substitute_teacher_id)
+
+    def has_activity?(person_id)
+      Enrollment.with_deleted.where(person_id: person_id).exists? ||
+        TeachingAssignment.with_deleted.where(person_id: person_id).exists?
+    end
+
+    # Only counts as a safe duplicate if that other record actually has real
+    # activity — otherwise two mutually-orphaned copies would "vouch" for each
+    # other and both get destroyed, losing the person from the system entirely.
+    def active_duplicate_for(person)
+      Person.where(name: person.name, birth_date: person.birth_date).where.not(id: person.id)
+            .find { |candidate| has_activity?(candidate.id) }
+    end
+
+    def orphaned_sibling_ids(person)
+      Person.where(name: person.name, birth_date: person.birth_date).where.not(id: person.id).pluck(:id)
+    end
+
+    count = 0
+    with_active_duplicate = 0
+    without_any_duplicate = 0
+    cluster_count = 0
+    Person.find_each do |person|
+      next if has_activity?(person.id)
+
+      if person.user
+        puts "SKIP person_id=#{person.id} name=#{person.name} — has a User account (#{person.user.username}), not orphaned data"
+        next
+      end
+
+      teacher = person.teacher
+      if teacher && substitute_teacher_ids.include?(teacher.id)
+        puts "SKIP person_id=#{person.id} name=#{person.name} — teacher_id=#{teacher.id} is referenced as a substitute teacher on an Attendance"
+        next
+      end
+
+      active_dup = active_duplicate_for(person)
+      if active_dup
+        with_active_duplicate += 1
+        count += 1
+        puts "#{dry_run ? '[DRY RUN] would destroy' : 'destroying'} person_id=#{person.id} name=#{person.name} birth_date=#{person.birth_date} created_at=#{person.created_at.to_date} " \
+             "— DUPLICATE of genuinely-active person_id=#{active_dup.id} (has a real enrollment/teaching_assignment)"
+        teacher&.destroy unless dry_run
+        person.student&.destroy unless dry_run
+        person.destroy unless dry_run
+        next
+      end
+
+      siblings = orphaned_sibling_ids(person)
+      if siblings.any?
+        cluster_count += 1
+        puts "CLUSTER (NOT auto-deleting, needs manual review) person_id=#{person.id} name=#{person.name} birth_date=#{person.birth_date} created_at=#{person.created_at.to_date} " \
+             "— #{siblings.size} other orphaned duplicate(s) with the same name+dob (ids: #{siblings.join(', ')}), none has any real enrollment/teaching_assignment"
+        next
+      end
+
+      without_any_duplicate += 1
+      count += 1
+      puts "#{dry_run ? '[DRY RUN] would destroy' : 'destroying'} person_id=#{person.id} name=#{person.name} birth_date=#{person.birth_date} created_at=#{person.created_at.to_date} " \
+           "(live teacher=#{!!teacher} live student=#{!!person.student}) — NO duplicate at all — would be the only record of this person"
+      next if dry_run
+
+      teacher&.destroy
+      person.student&.destroy
+      person.destroy
+    end
+    puts "People #{dry_run ? 'that would be' : ''} destroyed: #{count} (#{with_active_duplicate} with a genuinely-active duplicate, #{without_any_duplicate} with no duplicate at all)"
+    puts "People flagged as mutual-orphan clusters, left untouched: #{cluster_count}"
+  end
+
+  desc 'Audit for duplicate/colliding User accounts. Read-only, never deletes anything.'
+  task audit_duplicate_users: :environment do
+    puts "=== Duplicate usernames (same username, 2+ User rows) ==="
+    dupes = User.unscoped.group(:username).having('count(*) > 1').count
+    if dupes.empty?
+      puts 'OK - none found'
+    else
+      dupes.each do |username, n|
+        puts "\nusername=#{username} (#{n} accounts)"
+        User.unscoped.where(username: username).find_each do |u|
+          person = u.person
+          puts "  user_id=#{u.id} deleted_at=#{u.deleted_at.inspect} admin=#{u.admin} " \
+               "person_id=#{u.person_id} person_name=#{person&.name} person_birth_date=#{person&.birth_date} " \
+               "person_deleted_at=#{person&.deleted_at.inspect} created_at=#{u.created_at.to_date}"
+        end
+      end
+    end
+
+    puts "\n=== One person_id with more than one User row (has_one :user violated) ==="
+    person_id_dupes = User.unscoped.group(:person_id).having('count(*) > 1').count.except(nil)
+    if person_id_dupes.empty?
+      puts 'OK - none found'
+    else
+      person_id_dupes.each_key do |person_id|
+        person = Person.find_by(id: person_id)
+        puts "\nperson_id=#{person_id} name=#{person&.name}"
+        User.unscoped.where(person_id: person_id).find_each do |u|
+          puts "  user_id=#{u.id} username=#{u.username} deleted_at=#{u.deleted_at.inspect} admin=#{u.admin} created_at=#{u.created_at.to_date}"
+        end
+      end
+    end
+
+    puts "\n=== Different Person records (same name+birth_date), each with their own separate User ==="
+    # Distinct from both checks above: each of these has a *different* person_id and
+    # may have its own unique username, but they're duplicate Person records for what
+    # looks like the same real individual, each with its own separate working login.
+    person_ids_with_user = Person.joins(:user).distinct.pluck(:id)
+    groups = Person.where(id: person_ids_with_user).group(:name, :birth_date).having('count(*) > 1').count
+    if groups.empty?
+      puts 'OK - none found'
+    else
+      groups.each_key do |name, birth_date|
+        puts "\nname=#{name} birth_date=#{birth_date}"
+        Person.where(name: name, birth_date: birth_date, id: person_ids_with_user).find_each do |person|
+          u = person.user
+          puts "  person_id=#{person.id} person_created_at=#{person.created_at.to_date} " \
+               "user_id=#{u.id} username=#{u.username} admin=#{u.admin} user_created_at=#{u.created_at.to_date}"
+        end
+      end
+    end
+  end
+
   desc 'Verify Phase S steps 1-4: sacrament backfill coverage + parents_info sanity counts'
   task verify_sacrament_and_parents_info: :environment do
     def report(label, count)

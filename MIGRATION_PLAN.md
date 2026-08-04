@@ -791,6 +791,12 @@ Steps 1-4 (the backend data-layer groundwork) are implemented, verified against 
 
 **Note:** supersedes Phase J item 6 (Student/Teacher create+edit forms) and Phase I (dedicated Students API) — once decommissioned, these become Person-scoped forms/endpoints instead.
 
+**Incident (2026-07-29) — duplicate Person records from a since-fixed migration bug:** the pre-`7439a75` version of `admin:teachers_to_people`/`admin:students_to_people` called `sync_person` (a `before_validation` callback) directly without a subsequent save, so the backfilled `person_id` was only ever set in memory and never persisted. Re-running the task against still-unlinked rows therefore created a fresh duplicate `Person` on every invocation instead of finding the one already backfilled. `7439a75` (2026-07-29 17:21 UTC, one minute after the duplicate burst) fixed this by adding the missing `update_column`; the current task is idempotent and safe to re-run. Fallout from the broken runs — ~90 orphaned `Person`/`Student`/`Teacher` rows with no `Enrollment`/`TeachingAssignment` — was cleaned up via two new rake tasks in `lib/tasks/migrate_to_people.rake`: `admin:cleanup_orphaned_students_and_teachers` and `admin:cleanup_orphaned_people` (both dry-run by default, `DRY_RUN=false` to actually soft-delete; both skip any row backing a live `User` account or referenced as `Attendance#substitute_teacher_id`, and the Person-level task only treats a duplicate as safe to remove if the *other* same-name+birth_date record actually has real enrollment/teaching_assignment history — otherwise it's reported as a manual-review cluster instead of auto-deleted).
+
+**Decided against:** a DB-level uniqueness constraint on `Person` (e.g. `name` + `birth_date`) — there's no reliable natural key here (siblings/cousins can share a name and an approximate or placeholder DOB), so this would produce false-positive rejections rather than actually prevent duplicates.
+
+**Follow-up worth doing:** surface orphaned `Person`/`Student`/`Teacher` records (no enrollment/teaching_assignment ever, per the same criteria as the cleanup rake tasks) in the admin UI instead of only being discoverable via a Rails console/rake task, so this kind of duplicate-data fallout can be reviewed and cleaned up by hand as it accumulates, rather than requiring an ad hoc investigation each time.
+
 ---
 
 ### Phase P: Drop phones/emails/addresses Tables — Pending
