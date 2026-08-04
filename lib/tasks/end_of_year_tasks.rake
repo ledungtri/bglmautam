@@ -13,26 +13,31 @@ namespace :admin do
     require "tty-prompt"
     prompt = TTY::Prompt.new
 
-    year = prompt.ask("Năm Học?", convert: :integer)
-    alphabet = ("A".."Z").to_a
+    slug = prompt.ask("Tenant slug?")
+    organization = Organization.find_by!(slug: slug)
 
-    kt_size = prompt.ask("Bao nhiêu lớp Khai Tâm?", convert: :integer)
-    case kt_size
-    when 1
-      Classroom.create(year: year, family: 'Khai Tâm', level: '', group: '')
-    when 2..24
-      (1..kt_size).each { |i| Classroom.create(year: year, family: 'Khai Tâm', level: '', group: alphabet[i - 1]) }
-    end
+    ActsAsTenant.with_tenant(organization) do
+      year = prompt.ask("Năm Học?", convert: :integer)
+      alphabet = ("A".."Z").to_a
 
-    ['Rước Lễ', 'Thêm Sức', 'Bao Đồng'].each do |family|
-      [1, 2, 3].each do |level|
-        size = prompt.ask("Bao nhiêu lớp #{family} #{level}?", convert: :integer)
+      kt_size = prompt.ask("Bao nhiêu lớp Khai Tâm?", convert: :integer)
+      case kt_size
+      when 1
+        Classroom.create(year: year, family: 'Khai Tâm', level: '', group: '')
+      when 2..24
+        (1..kt_size).each { |i| Classroom.create(year: year, family: 'Khai Tâm', level: '', group: alphabet[i - 1]) }
+      end
 
-        case size
-        when 1
-          Classroom.create(year: year, family: family, level: level, group: '')
-        when 2..24
-          (1..size).each { |i| Classroom.create(year: year, family: family, level: level, group: alphabet[i - 1]) }
+      ['Rước Lễ', 'Thêm Sức', 'Bao Đồng'].each do |family|
+        [1, 2, 3].each do |level|
+          size = prompt.ask("Bao nhiêu lớp #{family} #{level}?", convert: :integer)
+
+          case size
+          when 1
+            Classroom.create(year: year, family: family, level: level, group: '')
+          when 2..24
+            (1..size).each { |i| Classroom.create(year: year, family: family, level: level, group: alphabet[i - 1]) }
+          end
         end
       end
     end
@@ -61,29 +66,34 @@ namespace :admin do
     require "tty-prompt"
     prompt = TTY::Prompt.new
 
-    year = prompt.ask("Năm Học hiện tại?", convert: :integer)
-    current_classrooms = Classroom.where(year: year)
-    next_year_classrooms = Classroom.where(year: year + 1)
+    slug = prompt.ask("Tenant slug?")
+    organization = Organization.find_by!(slug: slug)
 
-    same_classroom_mapping = {}
-    next_classroom_mapping = {}
+    ActsAsTenant.with_tenant(organization) do
+      year = prompt.ask("Năm Học hiện tại?", convert: :integer)
+      current_classrooms = Classroom.where(year: year)
+      next_year_classrooms = Classroom.where(year: year + 1)
 
-    current_classrooms.each do |current_classroom|
-      matching_same_classroom = next_year_classrooms.find { |c| c.name == current_classroom.name }
-      same_classroom_mapping[current_classroom.id] = matching_same_classroom.id if matching_same_classroom
+      same_classroom_mapping = {}
+      next_classroom_mapping = {}
 
-      matching_next_classroom = next_year_classrooms.find { |c| c.name == next_classroom_name(current_classroom) }
-      next_classroom_mapping[current_classroom.id] = matching_next_classroom.id if matching_next_classroom
-    end
+      current_classrooms.each do |current_classroom|
+        matching_same_classroom = next_year_classrooms.find { |c| c.name == current_classroom.name }
+        same_classroom_mapping[current_classroom.id] = matching_same_classroom.id if matching_same_classroom
 
-    current_enrollments = Enrollment.for_year(year).where(result: ['Lên Lớp', 'Học Lại', 'Dự Thính'])
-    existing_new_enrollments = Enrollment.for_year(year + 1)
-    current_enrollments.each do |enrollment|
-      existing_enrollment = existing_new_enrollments.find { |e| e.person_id == enrollment.person_id }
-      next if existing_enrollment
+        matching_next_classroom = next_year_classrooms.find { |c| c.name == next_classroom_name(current_classroom) }
+        next_classroom_mapping[current_classroom.id] = matching_next_classroom.id if matching_next_classroom
+      end
 
-      mapping = enrollment.result == 'Lên Lớp' ? next_classroom_mapping : same_classroom_mapping
-      Enrollment.create(classroom_id: mapping[enrollment.classroom_id], person_id: enrollment.person_id, result: 'Đang Học')
+      current_enrollments = Enrollment.for_year(year).where(result: ['Lên Lớp', 'Học Lại', 'Dự Thính'])
+      existing_new_enrollments = Enrollment.for_year(year + 1)
+      current_enrollments.each do |enrollment|
+        existing_enrollment = existing_new_enrollments.find { |e| e.person_id == enrollment.person_id }
+        next if existing_enrollment
+
+        mapping = enrollment.result == 'Lên Lớp' ? next_classroom_mapping : same_classroom_mapping
+        Enrollment.create(classroom_id: mapping[enrollment.classroom_id], person_id: enrollment.person_id, result: 'Đang Học')
+      end
     end
   end
 end
